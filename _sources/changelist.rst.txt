@@ -1,0 +1,102 @@
+Changelist 
+========= 
+| **Mon 13 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Mon 13 Sep** : Readme updates, doc build fixes.
+| **Mon 13 Sep** : adding stat for counting submitted encoder frames per sec
+| **Fri 10 Sep** : Record number of encoded video frames per sec and print in Unity
+| **Thu 09 Sep** : Only stream global illumination textures required by currently streamed nodes.
+| **Thu 09 Sep** : Renamed avs::Node to avs::PipelineNode to resolve confusion in naming. Texture overlay for debugging. Rearranged buttons in Quest.
+| **Wed 08 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Wed 08 Sep** : Added OpenVR. Rename SCServer to teleport namespace.
+| **Tue 07 Sep** : Geometry still waiting for materials now renders
+| **Tue 07 Sep** : Android Client: move mScene.Frame() to after sessionClient.Frame(), so that remote updates of origin transform are applied to both hands and camera in the same frame.
+| **Mon 06 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Mon 06 Sep** : Now cachePath is set from engine, shared across any instances.
+| **Mon 06 Sep** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Mon 06 Sep** : Added missing files for client/VisualStudio/TeleportVRQuestClient/TeleportVRQuestClient
+| **Mon 06 Sep** : Added manually copied draco_features.h to Android project.
+| **Mon 06 Sep** : Re-added draco as first time didn't work correctly.
+| **Mon 06 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Mon 06 Sep** : Add draco manually to .gitmodules.
+| **Mon 06 Sep** : Update client renderer render function signature
+| **Thu 02 Sep** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Thu 02 Sep** : Update Visual Studio project and build scripts for debugging C++ on Android.
+| **Thu 02 Sep** : Multipler lightmaps supported now, each node has its own lightmap uid. Resources are stored with their names in the filename for clarity.
+| **Wed 01 Sep** : Node now contains globalIlluminationUid. Multiple GI textures are streamed.
+| **Fri 27 Aug** : Changed OVRFW::GlGeometry::IndexType from a static to a nonstatic member. This resolves the disappearing video bug. Filled in libavstream.rst documentation.
+| **Thu 26 Aug** : Accessor::DataType now maps directly to uint8_t e.g. SCALAR is 1, VEC3 is 3 etc.
+| **Wed 25 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Wed 25 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Tue 24 Aug** : Added vulkan_wrapper.h/.cpp and removed vulkan test code.
+| **Tue 24 Aug** : Initial commit for a VisualStudio version TeleportVRQuestClient. Android - NDK C++17 - Gradle.
+| **Fri 20 Aug** : Could not get the Draco subobject system to work, therefore, we compress each subMesh individually, this seems to work ok.
+| **Thu 19 Aug** : Initial draco implementation for geometry compression - doesn't work properly for multiple sub-objects in a mesh.
+| **Thu 12 Aug** : fixing incorrect stream numbers
+| **Thu 12 Aug** : Adding separate network stream for video tag data
+| **Mon 09 Aug** : fixing android compile error
+| **Mon 09 Aug** : Adding multiple input and output buffers to nvidia encoder
+| **Fri 06 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Fri 06 Aug** : Fixup PC client shaders for lightmapped objects.
+| **Thu 05 Aug** : Merge pull request #97 from simul/add_async_encoding
+| **Thu 05 Aug** : Merge branch 'master' into add_async_encoding
+| **Thu 05 Aug** : Making encoder asynchronous
+| **Wed 04 Aug** : Fix effect-switching and enable dynamic diffuse ambient.
+| **Wed 04 Aug** : Report error if shader resource is mismatched in OVRNode SurfaceDef setup.
+| **Wed 04 Aug** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Wed 04 Aug** : fix shader inputs
+| **Wed 04 Aug** : Fix miss named colour and alpha kernels in libavstream/src/decoders/dec_nvidia.cpp.
+| **Tue 03 Aug** : Compile fix
+| **Tue 03 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Tue 03 Aug** : Added nomipsampler for unmipped 2d textures. Now each OvrNode has its own PerMeshInstanceData.
+| **Tue 03 Aug** : fixing pc client compile error and video decoder proxy shutdown issue
+| **Mon 02 Aug** : Make encoder use ultra low latency tuning preset
+| **Sun 01 Aug** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Sun 01 Aug** : lightmap support work.
+| **Sat 31 Jul** : Adding timer to libavstream for getting connection time
+| **Thu 29 Jul** : Fixing frames displayed stat
+| **Wed 28 Jul** : Chaning texture create info to have each mip as vector of char
+| **Wed 28 Jul** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Wed 28 Jul** : Include folder for stb_image.h
+| **Wed 28 Jul** : fixing cras when deleting mips
+| **Tue 27 Jul** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Tue 27 Jul** : Now png-format textures can be sent.
+| **Mon 26 Jul** : Adding stats to pc client and android to display video frames, received, decoded and displayed per sec
+| **Sat 24 Jul** : Adding connection time and decoder packets per second stats to networksource
+| **Tue 20 Jul** : Fixing error causes by null session component when receiving input messages
+| **Tue 20 Jul** : Making video texture size part of client settings
+| **Fri 16 Jul** : Fixing issues with alpha decoidng on android
+| **Tue 13 Jul** : Fixing crash with alpha decoding when using cubemap on pc and android
+| **Fri 09 Jul** : removing unused class member
+| **Fri 09 Jul** : Adding second decoder to android for alpha. Only decodes alpha part after first frame. Fixing a few decoding bugs with releasing outputbuffer
+| **Tue 06 Jul** : Adding separate alpha surface for alpha decoding on android
+| **Fri 02 Jul** : Fixing android decoder buffer dequeue spam messages
+| **Tue 29 Jun** : Fixing enum that was causing no video
+| **Tue 29 Jun** : Merge pull request #96 from simul/pc_alpha
+| **Tue 29 Jun** : pc now fully works with alha encoding enabled
+| **Mon 28 Jun** : Correctly setting u_LightmapScaleOffset.
+| **Mon 28 Jun** : Support for lightmaps should now be enabled on Android.
+| **Fri 25 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Fri 25 Jun** : Add NodeRenderState and stationary flag for avstream Nodes. Add RGBA32F texture format. Add SetupLightingCommand. Add lightmapScaleOffset and isStatic flag for client nodes. Add BC6H CompressionFormat. Add maxTextureSize to CasterSettings.
+| **Fri 25 Jun** : Adding some low latency settings to video encoder
+| **Mon 21 Jun** : Adding support for alpha layer encoding in android. Fixing reconnection issue
+| **Sat 19 Jun** : Merge pull request #95 from simul/alpha
+| **Sat 19 Jun** : Adding alpha layer encoding. Off by default until android confirmed
+| **Fri 18 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Thu 17 Jun** : Fix crash on server when receiving input events. Now using std::vector::insert(...), rather than memcpy; this is more efficient and safer.
+| **Thu 17 Jun** : Fix Android highlighting resetting the current effect pass and highlighting resetting on effect pass change.
+| **Wed 16 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Wed 16 Jun** : PBRSimple shader implemented - the simplest possible shader that supports ambient/diffuse light.
+| **Wed 16 Jun** : Can now set speed of an animation.
+| **Wed 16 Jun** : Switch back to using diffuseCubemapTexture for diffuse. Disable AO while not fully functional.
+| **Tue 15 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Tue 15 Jun** : Added diffuse Multiplier to cube tag.
+| **Tue 15 Jun** : Nodes are now designated as highlighted when a message is received from the server. Currently only Android has a visual effect.
+| **Mon 14 Jun** : Removing commented out code in perspective shader
+| **Mon 14 Jun** : Fix/revert Android client bugs.
+| **Mon 14 Jun** : Fix Android video texture failing IsValid(...) check. Set depth to one in create info of Android video texture.
+| **Fri 11 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Fri 11 Jun** : Directional vertex lighting fn. Re-enable combined tex.
+| **Fri 11 Jun** : Fixing perspective rendering on pc
+| **Fri 11 Jun** : Controller grab animation time is now controlled by the strength of the trigger press.
+| **Thu 10 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Thu 10 Jun** : Disable normal and combined textures by default on Android. Also shader optimizations.
