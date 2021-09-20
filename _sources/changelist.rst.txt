@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Fri 17 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Fri 17 Sep** : Fix some controller state bugs. Fix bug in node hierarchies where if child nodes arrive first their positions will be wrong. Better PC geometry OSD information.
 | **Fri 17 Sep** : Merge branch 'master' of github.com:simul/RemotePlay into master
 | **Fri 17 Sep** : Added TeleportVRQuestClientLib.vcxproj and moved the C++ files over and modified them. Compiling and debugging with IntelliSense on Samsung Galaxy S8 with Vulkan. Removed externalNativeBuild and CMakeLists.txt from Gradle and used Visual Studio's reference to link in the built .so. Update TeleportVRQuestClient.androidproj.user AdditionalSymbolSearchPaths. Added some basic errors messaging to vulkan_wrapper.h. Added android_native_app_glue_build.c to compile android_native_app_glue directly into out main library binary.
 | **Fri 17 Sep** : Fixing android and windows timer discrepancy. Both now return in milliseconds
@@ -98,5 +100,3 @@ Changelist
 | **Mon 14 Jun** : Fix/revert Android client bugs.
 | **Mon 14 Jun** : Fix Android video texture failing IsValid(...) check. Set depth to one in create info of Android video texture.
 | **Fri 11 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Fri 11 Jun** : Directional vertex lighting fn. Re-enable combined tex.
-| **Fri 11 Jun** : Fixing perspective rendering on pc
