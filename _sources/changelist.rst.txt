@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Mon 20 Sep** : Add doc rst files.
 | **Fri 17 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Fri 17 Sep** : Fix some controller state bugs. Fix bug in node hierarchies where if child nodes arrive first their positions will be wrong. Better PC geometry OSD information.
 | **Fri 17 Sep** : Merge branch 'master' of github.com:simul/RemotePlay into master
@@ -99,4 +100,3 @@ Changelist
 | **Mon 14 Jun** : Removing commented out code in perspective shader
 | **Mon 14 Jun** : Fix/revert Android client bugs.
 | **Mon 14 Jun** : Fix Android video texture failing IsValid(...) check. Set depth to one in create info of Android video texture.
-| **Fri 11 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
