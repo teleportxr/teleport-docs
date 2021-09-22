@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Wed 22 Sep** : Add cmake option to allowusing D3D12 or 11. 12 has issues currently and 11 is default
 | **Mon 20 Sep** : Add doc rst files.
 | **Fri 17 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Fri 17 Sep** : Fix some controller state bugs. Fix bug in node hierarchies where if child nodes arrive first their positions will be wrong. Better PC geometry OSD information.
@@ -99,4 +100,3 @@ Changelist
 | **Tue 15 Jun** : Nodes are now designated as highlighted when a message is received from the server. Currently only Android has a visual effect.
 | **Mon 14 Jun** : Removing commented out code in perspective shader
 | **Mon 14 Jun** : Fix/revert Android client bugs.
-| **Mon 14 Jun** : Fix Android video texture failing IsValid(...) check. Set depth to one in create info of Android video texture.
