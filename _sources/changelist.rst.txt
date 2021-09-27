@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sun 26 Sep** : Geometry now renders with D3D12
 | **Thu 23 Sep** : Add specific shader vertex for animation to prevent pipeline state creation failure on d3d12 when mesh doesn't have joints or weights
 | **Wed 22 Sep** : Fix d3d12 constant buffer exceeding max decsriptors
 | **Wed 22 Sep** : Add cmake option to allowusing D3D12 or 11. 12 has issues currently and 11 is default
@@ -99,4 +100,3 @@ Changelist
 | **Wed 16 Jun** : Switch back to using diffuseCubemapTexture for diffuse. Disable AO while not fully functional.
 | **Tue 15 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Tue 15 Jun** : Added diffuse Multiplier to cube tag.
-| **Tue 15 Jun** : Nodes are now designated as highlighted when a message is received from the server. Currently only Android has a visual effect.
