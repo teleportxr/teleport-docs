@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Fri 08 Oct** : Node priority system added. Quest 1 won't stream meshes on nodes priority<0.
+| **Fri 08 Oct** : Add client UI for Android
 | **Sun 26 Sep** : Geometry now renders with D3D12
 | **Thu 23 Sep** : Add specific shader vertex for animation to prevent pipeline state creation failure on d3d12 when mesh doesn't have joints or weights
 | **Wed 22 Sep** : Fix d3d12 constant buffer exceeding max decsriptors
@@ -98,5 +100,3 @@ Changelist
 | **Wed 16 Jun** : PBRSimple shader implemented - the simplest possible shader that supports ambient/diffuse light.
 | **Wed 16 Jun** : Can now set speed of an animation.
 | **Wed 16 Jun** : Switch back to using diffuseCubemapTexture for diffuse. Disable AO while not fully functional.
-| **Tue 15 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Tue 15 Jun** : Added diffuse Multiplier to cube tag.
