@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Mon 11 Oct** : Merge pull request #98 from simul/fix_memory_leak
+| **Mon 11 Oct** : Changing to use same command list for creating buffers and redering commands on d3d12
 | **Fri 08 Oct** : Node priority system added. Quest 1 won't stream meshes on nodes priority<0.
 | **Fri 08 Oct** : Add client UI for Android
 | **Sun 26 Sep** : Geometry now renders with D3D12
@@ -98,5 +100,3 @@ Changelist
 | **Thu 17 Jun** : Fix Android highlighting resetting the current effect pass and highlighting resetting on effect pass change.
 | **Wed 16 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Wed 16 Jun** : PBRSimple shader implemented - the simplest possible shader that supports ambient/diffuse light.
-| **Wed 16 Jun** : Can now set speed of an animation.
-| **Wed 16 Jun** : Switch back to using diffuseCubemapTexture for diffuse. Disable AO while not fully functional.
