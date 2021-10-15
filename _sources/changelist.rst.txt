@@ -1,5 +1,10 @@
 Changelist 
 ========= 
+| **Thu 14 Oct** : Merge pull request #99 from simul/packet_receive_change
+| **Thu 14 Oct** : making async process packets configurable
+| **Thu 14 Oct** : Adding ringbuffer back to networksource
+| **Wed 13 Oct** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Wed 13 Oct** : Android UI functional. Note: format of client.ini changed for Android e.g. SERVER_IP=test.teleportvr.io:10600,drwho.teleportvr.io:10800 comma-separated list of url:port combinations.
 | **Mon 11 Oct** : Merge pull request #98 from simul/fix_memory_leak
 | **Mon 11 Oct** : Changing to use same command list for creating buffers and redering commands on d3d12
 | **Fri 08 Oct** : Node priority system added. Quest 1 won't stream meshes on nodes priority<0.
@@ -95,8 +100,3 @@ Changelist
 | **Mon 21 Jun** : Adding support for alpha layer encoding in android. Fixing reconnection issue
 | **Sat 19 Jun** : Merge pull request #95 from simul/alpha
 | **Sat 19 Jun** : Adding alpha layer encoding. Off by default until android confirmed
-| **Fri 18 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Thu 17 Jun** : Fix crash on server when receiving input events. Now using std::vector::insert(...), rather than memcpy; this is more efficient and safer.
-| **Thu 17 Jun** : Fix Android highlighting resetting the current effect pass and highlighting resetting on effect pass change.
-| **Wed 16 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Wed 16 Jun** : PBRSimple shader implemented - the simplest possible shader that supports ambient/diffuse light.
