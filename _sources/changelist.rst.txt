@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Wed 20 Oct** : fix compile error
+| **Tue 19 Oct** : Fix d3d12 decoder incorrect frame size
 | **Thu 14 Oct** : Merge pull request #99 from simul/packet_receive_change
 | **Thu 14 Oct** : making async process packets configurable
 | **Thu 14 Oct** : Adding ringbuffer back to networksource
@@ -98,5 +100,3 @@ Changelist
 | **Fri 25 Jun** : Add NodeRenderState and stationary flag for avstream Nodes. Add RGBA32F texture format. Add SetupLightingCommand. Add lightmapScaleOffset and isStatic flag for client nodes. Add BC6H CompressionFormat. Add maxTextureSize to CasterSettings.
 | **Fri 25 Jun** : Adding some low latency settings to video encoder
 | **Mon 21 Jun** : Adding support for alpha layer encoding in android. Fixing reconnection issue
-| **Sat 19 Jun** : Merge pull request #95 from simul/alpha
-| **Sat 19 Jun** : Adding alpha layer encoding. Off by default until android confirmed
