@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 21 Oct** : Making changes to client to stop CUDT exception spamming
 | **Wed 20 Oct** : fix compile error
 | **Tue 19 Oct** : Fix d3d12 decoder incorrect frame size
 | **Thu 14 Oct** : Merge pull request #99 from simul/packet_receive_change
@@ -99,4 +100,3 @@ Changelist
 | **Fri 25 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Fri 25 Jun** : Add NodeRenderState and stationary flag for avstream Nodes. Add RGBA32F texture format. Add SetupLightingCommand. Add lightmapScaleOffset and isStatic flag for client nodes. Add BC6H CompressionFormat. Add maxTextureSize to CasterSettings.
 | **Fri 25 Jun** : Adding some low latency settings to video encoder
-| **Mon 21 Jun** : Adding support for alpha layer encoding in android. Fixing reconnection issue
