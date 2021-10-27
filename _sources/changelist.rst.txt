@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Tue 26 Oct** : Add some cleanup to decoder
 | **Fri 22 Oct** : fixing CUDT spamming on server
 | **Thu 21 Oct** : Making changes to client to stop CUDT exception spamming
 | **Wed 20 Oct** : fix compile error
@@ -99,4 +100,3 @@ Changelist
 | **Mon 28 Jun** : Correctly setting u_LightmapScaleOffset.
 | **Mon 28 Jun** : Support for lightmaps should now be enabled on Android.
 | **Fri 25 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Fri 25 Jun** : Add NodeRenderState and stationary flag for avstream Nodes. Add RGBA32F texture format. Add SetupLightingCommand. Add lightmapScaleOffset and isStatic flag for client nodes. Add BC6H CompressionFormat. Add maxTextureSize to CasterSettings.
