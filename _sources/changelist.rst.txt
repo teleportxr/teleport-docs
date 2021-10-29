@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Wed 27 Oct** : Adding libcurl submodue and fixing clientrenderer compile errors
 | **Tue 26 Oct** : Add some cleanup to decoder
 | **Fri 22 Oct** : fixing CUDT spamming on server
 | **Thu 21 Oct** : Making changes to client to stop CUDT exception spamming
@@ -99,4 +100,3 @@ Changelist
 | **Tue 29 Jun** : pc now fully works with alha encoding enabled
 | **Mon 28 Jun** : Correctly setting u_LightmapScaleOffset.
 | **Mon 28 Jun** : Support for lightmaps should now be enabled on Android.
-| **Fri 25 Jun** : Merge branch 'master' of github.com:simul/RemotePlay
