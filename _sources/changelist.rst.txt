@@ -1,5 +1,12 @@
 Changelist 
 ========= 
+| **Fri 05 Nov** : using snprintf to avoid warning
+| **Fri 05 Nov** : Fixed Android shaders.
+| **Fri 05 Nov** : Adding fix for http port being 0
+| **Thu 04 Nov** : Merge pull request #100 from simul/openssl_update
+| **Thu 04 Nov** : Adding OpenSSL version 1.1.1 binaries
+| **Thu 04 Nov** : Add initial pc_client GUI.
+| **Tue 02 Nov** : Adding cpp-http lib
 | **Wed 27 Oct** : Adding libcurl submodue and fixing clientrenderer compile errors
 | **Tue 26 Oct** : Add some cleanup to decoder
 | **Fri 22 Oct** : fixing CUDT spamming on server
@@ -93,10 +100,3 @@ Changelist
 | **Tue 13 Jul** : Fixing crash with alpha decoding when using cubemap on pc and android
 | **Fri 09 Jul** : removing unused class member
 | **Fri 09 Jul** : Adding second decoder to android for alpha. Only decodes alpha part after first frame. Fixing a few decoding bugs with releasing outputbuffer
-| **Tue 06 Jul** : Adding separate alpha surface for alpha decoding on android
-| **Fri 02 Jul** : Fixing android decoder buffer dequeue spam messages
-| **Tue 29 Jun** : Fixing enum that was causing no video
-| **Tue 29 Jun** : Merge pull request #96 from simul/pc_alpha
-| **Tue 29 Jun** : pc now fully works with alha encoding enabled
-| **Mon 28 Jun** : Correctly setting u_LightmapScaleOffset.
-| **Mon 28 Jun** : Support for lightmaps should now be enabled on Android.
