@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>The Teleport VR Protocol &mdash; TeleportVR  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LibAVStream" href="libavstream.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> TeleportVR
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Teleport VR Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#discovery">Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#streaming">Streaming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teleportclient.html">The TeleportClient library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clientrenderer.html">Client Renderer Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unity.html">Unity Plugin</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TeleportVR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>The Teleport VR Protocol</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/protocol.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="the-teleport-vr-protocol">
+<h1>The Teleport VR Protocol<a class="headerlink" href="#the-teleport-vr-protocol" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>The protocol operates four main connections between a client and server:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Service Connection:</p></td>
+<td><p>Two-way communication between client and server, uses Enet over UDP.</p></td>
+</tr>
+<tr class="row-even"><td><p>Video Stream:</p></td>
+<td><p>A one-way stream of video from server to client, uses SRT and EFP over UDP.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Geometry Stream:</p></td>
+<td><p>A one-way stream of video from server to client, uses SRT and EFP over UDP.</p></td>
+</tr>
+<tr class="row-even"><td><p>Static data connection</p></td>
+<td><p>An http/s connection for data files.</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition, a Discovery connection is used only on connection startup, for new clients to connect to a server.
+The Service Connection controls the others and is the main line of information between the client and server.</p>
+</div>
+<div class="section" id="discovery">
+<h2>Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h2>
+<p>A server usually remains in the <em>Discovery</em> state while running.</p>
+<p>The <strong>Discovery Socket</strong> is opened, as a nonblocking broadcast socket. It is bound to the server’s address with the <strong>Server Discovery Port</strong> (default 10600).</p>
+<p>A <strong>Client</strong> that wants to join (the <strong>Connecting Client</strong>) periodically sends to the server a four-byte <strong>Connection Request</strong> packet containing an unsigned 32-bit integer, the <strong>Client ID</strong>.</p>
+<p>The <strong>Discovery Service</strong> listens on the <strong>Discovery Socket</strong> for a <strong>Connection Request</strong> from a <strong>Connecting Client</strong>. When one is received, if the server is set to filter client addresses, the <strong>Connecting Client</strong>’s address is filtered, and the connection is discarded it does not match the filter.</p>
+<p>Otherwise, the server sends the <strong>Connecting Client</strong> on the <strong>Client Discovery Port</strong> a 6-byte <strong>Service Discovery Response</strong> consisting of the <strong>Client ID</strong> (4 bytes) and the <strong>Service Server Port</strong> (2 bytes as an unsigned 16-bit integer). The <strong>Server Service Port</strong> must be different for each <strong>Client</strong>.</p>
+<p>In between periodically sending its <strong>Connection Request</strong> packets, a <strong>Connecting Client</strong> listens on the <strong>Client Discovery Port</strong> for the <strong>Service Discovery Response</strong>. On receiving this, it destroys its <strong>Discovery Socket</strong> and starts its <strong>Service Connection</strong> bound to the <strong>Server Service Port</strong>.</p>
+</div>
+<div class="section" id="streaming">
+<h2>Streaming<a class="headerlink" href="#streaming" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="initialization">
+<h3>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h3>
+<p>After a <strong>Connecting Client</strong> is discovered and accepted, the Server creates the Service Connection, a nonblocking connection bound to the <strong>Server Service Port</strong>. The <strong>Service Connection</strong> uses enet ([<a class="reference external" href="http://enet.bespin.org/](http://enet.bespin.org/">http://enet.bespin.org/](http://enet.bespin.org/</a>)), a thin UDP manager, to ensure packet reliability and in-order delivery. The connection has eight channels: <em>Handshake, Control, DisplayInfo, HeadPose, ResourceRequest, KeyframeRequest, ClientMessage</em> and <em>Origin</em>.</p>
+<p>The <strong>Connecting Client</strong> on receiving its <strong>Service Discovery Response</strong> opens the enet connection on its <strong>Client Service Socket</strong> as nonblocking, bound to the <strong>Client Service Port</strong>. This connects to the <strong>Server</strong> on the <strong>Server Service Port</strong>.</p>
+<p>When the Server receives the <strong>Enet Connection Request</strong>, it considers <strong>Discovery</strong> to be complete for this <strong>Client</strong>. The <strong>Server</strong> sends the <strong>Setup Command</strong> to the <strong>Client</strong> on the <strong>Service Connection</strong>’s <strong>Control</strong> channel.</p>
+<p>All packets on the <strong>Control</strong> channel are of the form:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>member</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>commandPayloadType</p></td>
+</tr>
+<tr class="row-odd"><td><p>1+</p></td>
+<td><p>command</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Setup Command</strong> is</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>member</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>commandPayloadType=Setup=2</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 (signed)</p></td>
+<td><p>server_streaming_port</p></td>
+</tr>
+<tr class="row-even"><td><p>4 (signed)</p></td>
+<td><p>server_http_port</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 (unsigned)</p></td>
+<td><p>debug_stream</p></td>
+</tr>
+<tr class="row-even"><td><p>4 (unsigned)</p></td>
+<td><p>do_checksums</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 (unsigned)</p></td>
+<td><p>debug_network_packets</p></td>
+</tr>
+<tr class="row-even"><td><p>4 (signed)</p></td>
+<td><p>requiredLatencyMs</p></td>
+</tr>
+<tr class="row-odd"><td><p>4 (unsigned)</p></td>
+<td><p>idle_connection_timeout</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>server_id</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>control_model</p></td>
+</tr>
+<tr class="row-even"><td><p>VideoConfig</p></td>
+<td><p>video_config</p></td>
+</tr>
+<tr class="row-odd"><td><p>12 (3 floats)</p></td>
+<td><p>bodyOffsetFromHead</p></td>
+</tr>
+<tr class="row-even"><td><p>AxesStandard</p></td>
+<td><p>axesStandard</p></td>
+</tr>
+<tr class="row-odd"><td><p>1 (unsigned)</p></td>
+<td><p>audio_input_enabled</p></td>
+</tr>
+<tr class="row-even"><td><p>8 (signed)</p></td>
+<td><p>startTimestamp</p></td>
+</tr>
+</tbody>
+</table>
+<p>The  <strong>Client</strong> then initiates its streaming connection with the given <strong>Server Streaming Port</strong> from the <strong>**Setup Command**</strong>. The Client sends a <strong>Handshake</strong> on the Handshake channel of the Service Connection.</p>
+<p>When the <strong>Server</strong> receives the <strong>Handshake</strong>, it starts streaming proper. The <strong>Streaming Connection</strong> is created on the <strong>Server Streaming Port</strong>, which is by default (<strong>Server Service Port</strong> + 1). The Handshake is of variable size, as it contains a list of the resource uid’s that it already has cached.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="libavstream.html" class="btn btn-neutral float-right" title="LibAVStream" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Simul Software Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

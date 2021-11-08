@@ -88,6 +88,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teleportclient.html">The TeleportClient library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="clientrenderer.html">Client Renderer Library</a></li>
@@ -162,12 +163,22 @@
   <div class="section" id="changelist">
 <h1>Changelist<a class="headerlink" href="#changelist" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
+<div class="line"><strong>Mon 08 Nov</strong> : Refactoring: ResourceManagers is now GeometryCache. Get head pose from UseOpenXR if active.</div>
+<div class="line"><strong>Sun 07 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
+<div class="line"><strong>Sat 06 Nov</strong> : Updating openssl static libs</div>
+<div class="line"><strong>Fri 05 Nov</strong> : fixing compile errors in clientrenderer</div>
+<div class="line"><strong>Fri 05 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
+<div class="line"><strong>Fri 05 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
+<div class="line"><strong>Fri 05 Nov</strong> : Added protocol.rst</div>
 <div class="line"><strong>Fri 05 Nov</strong> : using snprintf to avoid warning</div>
 <div class="line"><strong>Fri 05 Nov</strong> : Fixed Android shaders.</div>
 <div class="line"><strong>Fri 05 Nov</strong> : Adding fix for http port being 0</div>
+<div class="line"><strong>Fri 05 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
+<div class="line"><strong>Fri 05 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
 <div class="line"><strong>Thu 04 Nov</strong> : Merge pull request #100 from simul/openssl_update</div>
 <div class="line"><strong>Thu 04 Nov</strong> : Adding OpenSSL version 1.1.1 binaries</div>
 <div class="line"><strong>Thu 04 Nov</strong> : Add initial pc_client GUI.</div>
+<div class="line"><strong>Wed 03 Nov</strong> : Add UseOpenXR</div>
 <div class="line"><strong>Tue 02 Nov</strong> : Adding cpp-http lib</div>
 <div class="line"><strong>Wed 27 Oct</strong> : Adding libcurl submodue and fixing clientrenderer compile errors</div>
 <div class="line"><strong>Tue 26 Oct</strong> : Add some cleanup to decoder</div>
@@ -252,16 +263,6 @@
 <div class="line"><strong>Wed 28 Jul</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay into master</div>
 <div class="line"><strong>Wed 28 Jul</strong> : Include folder for stb_image.h</div>
 <div class="line"><strong>Wed 28 Jul</strong> : fixing cras when deleting mips</div>
-<div class="line"><strong>Tue 27 Jul</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
-<div class="line"><strong>Tue 27 Jul</strong> : Now png-format textures can be sent.</div>
-<div class="line"><strong>Mon 26 Jul</strong> : Adding stats to pc client and android to display video frames, received, decoded and displayed per sec</div>
-<div class="line"><strong>Sat 24 Jul</strong> : Adding connection time and decoder packets per second stats to networksource</div>
-<div class="line"><strong>Tue 20 Jul</strong> : Fixing error causes by null session component when receiving input messages</div>
-<div class="line"><strong>Tue 20 Jul</strong> : Making video texture size part of client settings</div>
-<div class="line"><strong>Fri 16 Jul</strong> : Fixing issues with alpha decoidng on android</div>
-<div class="line"><strong>Tue 13 Jul</strong> : Fixing crash with alpha decoding when using cubemap on pc and android</div>
-<div class="line"><strong>Fri 09 Jul</strong> : removing unused class member</div>
-<div class="line"><strong>Fri 09 Jul</strong> : Adding second decoder to android for alpha. Only decodes alpha part after first frame. Fixing a few decoding bugs with releasing outputbuffer</div>
 </div>
 </div>
 

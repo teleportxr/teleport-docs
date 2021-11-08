@@ -42,7 +42,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The TeleportClient library" href="teleportclient.html" />
-    <link rel="prev" title="Introduction" href="introduction.html" /> 
+    <link rel="prev" title="The Teleport VR Protocol" href="protocol.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,6 +90,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">LibAVStream</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a></li>
@@ -177,278 +178,132 @@
 </div>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7ContextE">
-<span id="_CPPv3N3avs7ContextE"></span><span id="_CPPv2N3avs7ContextE"></span><span id="avs::Context"></span><span class="target" id="classavs_1_1_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#_CPPv4N3avs7ContextE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Global library context.</p>
-<p><a class="reference internal" href="#classavs_1_1_context"><span class="std std-ref">Context</span></a> object managing application-global state. <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>A single instance of this class must be instantiated by the application before accessing any other library functionality. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Context” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-</p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs8PipelineE">
-<span id="_CPPv3N3avs8PipelineE"></span><span id="_CPPv2N3avs8PipelineE"></span><span id="avs::Pipeline"></span><span class="target" id="classavs_1_1_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pipeline</span></span></span><a class="headerlink" href="#_CPPv4N3avs8PipelineE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A pipeline.</p>
-<p>A pipeline is a collection of nodes linked together in a serial manner such that each node produces output for the next node. A pipeline does not take ownership of its nodes; a single node can be a member of more than one pipeline.</p>
-<p>It is recommended to create no more than a single pipeline per application thread and link pipelines via shared <a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">Queue</span></a> or <a class="reference internal" href="#classavs_1_1_buffer"><span class="std std-ref">Buffer</span></a> nodes to ensure thread safety. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs5TimerE">
-<span id="_CPPv3N3avs5TimerE"></span><span id="_CPPv2N3avs5TimerE"></span><span id="avs::Timer"></span><span class="target" id="classavs_1_1_timer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Timer</span></span></span><a class="headerlink" href="#_CPPv4N3avs5TimerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classavs_1_1_timer"><span class="std std-ref">Timer</span></a> for getting the elapsed between the start time and the current time. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Pipeline” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Timer” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
 </div>
 <div class="section" id="avs-interface-classes">
 <h2>avs Interface Classes<a class="headerlink" href="#avs-interface-classes" title="Permalink to this headline">¶</a></h2>
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs27AudioTargetBackendInterfaceE">
-<span id="_CPPv3N3avs27AudioTargetBackendInterfaceE"></span><span id="_CPPv2N3avs27AudioTargetBackendInterfaceE"></span><span id="avs::AudioTargetBackendInterface"></span><span class="target" id="classavs_1_1_audio_target_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTargetBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">UseInternalAllocator</span></span><a class="headerlink" href="#_CPPv4N3avs27AudioTargetBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Audio target backend interface. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs28AudioEncoderBackendInterfaceE">
-<span id="_CPPv3N3avs28AudioEncoderBackendInterfaceE"></span><span id="_CPPv2N3avs28AudioEncoderBackendInterfaceE"></span><span id="avs::AudioEncoderBackendInterface"></span><span class="target" id="classavs_1_1_audio_encoder_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncoderBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">UseInternalAllocator</span></span><a class="headerlink" href="#_CPPv4N3avs28AudioEncoderBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Audio encoder backend interface. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs11IOInterfaceE">
-<span id="_CPPv3N3avs11IOInterfaceE"></span><span id="_CPPv2N3avs11IOInterfaceE"></span><span id="avs::IOInterface"></span><span class="target" id="classavs_1_1_i_o_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IOInterface</span></span></span><a class="headerlink" href="#_CPPv4N3avs11IOInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>General (stream of bytes) I/O node interface.</p>
-<p>Nodes implementing this interface can act as data sources and/or sinks for the purpose of arbitrary reads and/or writes. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_buffer"><span class="std std-ref">avs::Buffer</span></a>, <a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">avs::File</span></a>, <a class="reference internal" href="#classavs_1_1_null_sink"><span class="std std-ref">avs::NullSink</span></a>, <a class="reference internal" href="#classavs_1_1_packetizer"><span class="std std-ref">avs::Packetizer</span></a>, <a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">avs::Queue</span></a></p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs15PacketInterfaceE">
-<span id="_CPPv3N3avs15PacketInterfaceE"></span><span id="_CPPv2N3avs15PacketInterfaceE"></span><span id="avs::PacketInterface"></span><span class="target" id="classavs_1_1_packet_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PacketInterface</span></span></span><a class="headerlink" href="#_CPPv4N3avs15PacketInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Packet I/O node interface.</p>
-<p>Nodes implementing this interface can act as data sources and/or sinks for the purpose of packet reads and/or writes. Packet reads (writes) operate on atomic chunks of data - packets cannot be partially read or written. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">avs::File</span></a>, <a class="reference internal" href="#classavs_1_1_null_sink"><span class="std std-ref">avs::NullSink</span></a></p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs16SurfaceInterfaceE">
-<span id="_CPPv3N3avs16SurfaceInterfaceE"></span><span id="_CPPv2N3avs16SurfaceInterfaceE"></span><span id="avs::SurfaceInterface"></span><span class="target" id="classavs_1_1_surface_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SurfaceInterface</span></span></span><a class="headerlink" href="#_CPPv4N3avs16SurfaceInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">Surface</span></a> node interface.</p>
-<p>Nodes implementing this interface can act as data sources/sinks for the purpose of providing access to a surface. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">avs::Surface</span></a></p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs23GeometrySourceInterfaceE">
-<span id="_CPPv3N3avs23GeometrySourceInterfaceE"></span><span id="_CPPv2N3avs23GeometrySourceInterfaceE"></span><span id="avs::GeometrySourceInterface"></span><span class="target" id="classavs_1_1_geometry_source_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometrySourceInterface</span></span></span><a class="headerlink" href="#_CPPv4N3avs23GeometrySourceInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Mesh interface.</p>
-<p>Nodes implementing this interface can act as data sources/sinks for the purpose of providing access to a mesh. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">avs::GeometrySource</span></a></p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs23GeometryTargetInterfaceE">
-<span id="_CPPv3N3avs23GeometryTargetInterfaceE"></span><span id="_CPPv2N3avs23GeometryTargetInterfaceE"></span><span id="avs::GeometryTargetInterface"></span><span class="target" id="classavs_1_1_geometry_target_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryTargetInterface</span></span></span><a class="headerlink" href="#_CPPv4N3avs23GeometryTargetInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Geometry target interface.</p>
-<p>Nodes implementing this interface can act as data sinks for the purpose of building geometry. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_geometry_target"><span class="std std-ref">avs::GeometryTarget</span></a></p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs20AudioTargetInterfaceE">
-<span id="_CPPv3N3avs20AudioTargetInterfaceE"></span><span id="_CPPv2N3avs20AudioTargetInterfaceE"></span><span id="avs::AudioTargetInterface"></span><span class="target" id="classavs_1_1_audio_target_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTargetInterface</span></span></span><a class="headerlink" href="#_CPPv4N3avs20AudioTargetInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Audio target interface.</p>
-<p>Nodes implementing this interface can act as data sinks for the purpose of decoding and playing audio. </p>
-<p>Subclassed by avs::AudioTarget</p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::AudioTargetBackendInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::AudioEncoderBackendInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::IOInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::PacketInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::SurfaceInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::GeometrySourceInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::GeometryTargetInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::AudioTargetInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
 </div>
 <div class="section" id="avs-nodes">
 <h2>avs Nodes<a class="headerlink" href="#avs-nodes" title="Permalink to this headline">¶</a></h2>
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs12PipelineNodeE">
-<span id="_CPPv3N3avs12PipelineNodeE"></span><span id="_CPPv2N3avs12PipelineNodeE"></span><span id="avs::PipelineNode"></span><span class="target" id="classavs_1_1_pipeline_node"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PipelineNode</span></span></span><a class="headerlink" href="#_CPPv4N3avs12PipelineNodeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Abstract processing node.</p>
-<p>Processing nodes are fundamental building blocks of pipelines. Each node can have N input slots, and M output slots (N,M &gt;= 0), and can do some amount of work during pipeline processing.</p>
-<p>Nodes can be classified as “input-active” and/or “output-active”, or “passive”.<ul class="simple">
-<li><p>Input-Active nodes read data from their inputs during processing.</p></li>
-<li><p>Output-Active nodes write data to their outputs during processing.</p></li>
-<li><p>Passive nodes usually don’t do any processing and just act as data sources &amp; sinks to other, active, nodes.</p></li>
-</ul>
-</p>
-<p>Being aware of this classification is very important in correctly constructing pipelines. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_audio_decoder"><span class="std std-ref">avs::AudioDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_audio_encoder"><span class="std std-ref">avs::AudioEncoder</span></a>, avs::AudioTarget, <a class="reference internal" href="#classavs_1_1_buffer"><span class="std std-ref">avs::Buffer</span></a>, <a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">avs::Decoder</span></a>, <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">avs::Encoder</span></a>, <a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">avs::File</span></a>, <a class="reference internal" href="#classavs_1_1_forwarder"><span class="std std-ref">avs::Forwarder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_decoder"><span class="std std-ref">avs::GeometryDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_encoder"><span class="std std-ref">avs::GeometryEncoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">avs::GeometrySource</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_target"><span class="std std-ref">avs::GeometryTarget</span></a>, <a class="reference internal" href="#classavs_1_1_network_sink"><span class="std std-ref">avs::NetworkSink</span></a>, <a class="reference internal" href="#classavs_1_1_network_source"><span class="std std-ref">avs::NetworkSource</span></a>, <a class="reference internal" href="#classavs_1_1_null_sink"><span class="std std-ref">avs::NullSink</span></a>, <a class="reference internal" href="#classavs_1_1_packetizer"><span class="std std-ref">avs::Packetizer</span></a>, <a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">avs::Queue</span></a>, <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">avs::Surface</span></a>, <a class="reference internal" href="#classavs_1_1_tag_data_decoder"><span class="std std-ref">avs::TagDataDecoder</span></a></p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioDecoderE">
-<span id="_CPPv3N3avs12AudioDecoderE"></span><span id="_CPPv2N3avs12AudioDecoderE"></span><span id="avs::AudioDecoder"></span><span class="target" id="classavs_1_1_audio_decoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioDecoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs12AudioDecoderE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Audio decoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
-<p>Reads packets of encoded geometry and outputs decoded data to a Audio Target. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioEncoderE">
-<span id="_CPPv3N3avs12AudioEncoderE"></span><span id="_CPPv2N3avs12AudioEncoderE"></span><span id="avs::AudioEncoder"></span><span class="target" id="classavs_1_1_audio_encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs12AudioEncoderE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Audio encoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
-<p>Encodes audio<ul class="simple">
-<li><p>Compatible outputs: Any node implementing <a class="reference internal" href="#classavs_1_1_i_o_interface"><span class="std std-ref">IOInterface</span></a>. </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6BufferE">
-<span id="_CPPv3N3avs6BufferE"></span><span id="_CPPv2N3avs6BufferE"></span><span id="avs::Buffer"></span><span class="target" id="classavs_1_1_buffer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Buffer</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs11IOInterfaceE" title="avs::IOInterface"><span class="n"><span class="pre">IOInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs6BufferE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Ring buffer node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">1/1]</span></code></p>
-<p>A thread-safe, nonblocking, producer-consumer ring buffer with fixed capacity. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7DecoderE">
-<span id="_CPPv3N3avs7DecoderE"></span><span id="_CPPv2N3avs7DecoderE"></span><span id="avs::Decoder"></span><span class="target" id="classavs_1_1_decoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Decoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs7DecoderE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Video decoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
-<p>Reads packets of encoded video stream and outputs decoded frames to a surface.<ul class="simple">
-<li><p>Compatible inputs: Any node implementing <a class="reference internal" href="#classavs_1_1_packet_interface"><span class="std std-ref">PacketInterface</span></a>.</p></li>
-<li><p>Compatible outputs: Any node implementing <a class="reference internal" href="#classavs_1_1_surface_interface"><span class="std std-ref">SurfaceInterface</span></a>. </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7EncoderE">
-<span id="_CPPv3N3avs7EncoderE"></span><span id="_CPPv2N3avs7EncoderE"></span><span id="avs::Encoder"></span><span class="target" id="classavs_1_1_encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Encoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs7EncoderE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Video encoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
-<p>Encodes video frames from input surface and outputs compressed bitstream.<ul class="simple">
-<li><p>Compatible inputs : Any node implementing <a class="reference internal" href="#classavs_1_1_surface_interface"><span class="std std-ref">SurfaceInterface</span></a>.</p></li>
-<li><p>Compatible outputs: Any node implementing <a class="reference internal" href="#classavs_1_1_i_o_interface"><span class="std std-ref">IOInterface</span></a>. </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs4FileE">
-<span id="_CPPv3N3avs4FileE"></span><span id="_CPPv2N3avs4FileE"></span><span id="avs::File"></span><span class="target" id="classavs_1_1_file"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">File</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs11IOInterfaceE" title="avs::IOInterface"><span class="n"><span class="pre">IOInterface</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs15PacketInterfaceE" title="avs::PacketInterface"><span class="n"><span class="pre">PacketInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs4FileE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">File</span></a> node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">1/1]</span></code></p>
-<p><a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">File</span></a> node provides a way to read or write from binary files and thus can act either as a data sink or data source depending on configured FileAccess mode. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs9ForwarderE">
-<span id="_CPPv3N3avs9ForwarderE"></span><span id="_CPPv2N3avs9ForwarderE"></span><span id="avs::Forwarder"></span><span class="target" id="classavs_1_1_forwarder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Forwarder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs9ForwarderE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classavs_1_1_forwarder"><span class="std std-ref">Forwarder</span></a> node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">N/M]</span></code></p>
-<p><a class="reference internal" href="#classavs_1_1_forwarder"><span class="std std-ref">Forwarder</span></a> node reads data from its inputs and passes it to its outputs without modification. It is most useful as a proxy node if one wishes to link two passive nodes within a pipeline.<ul class="simple">
-<li><p>Compatible inputs: Any node implementing either <a class="reference internal" href="#classavs_1_1_packet_interface"><span class="std std-ref">PacketInterface</span></a> or <a class="reference internal" href="#classavs_1_1_i_o_interface"><span class="std std-ref">IOInterface</span></a>.</p></li>
-<li><p>Compatible outputs: Any node implementing either <a class="reference internal" href="#classavs_1_1_packet_interface"><span class="std std-ref">PacketInterface</span></a> or <a class="reference internal" href="#classavs_1_1_i_o_interface"><span class="std std-ref">IOInterface</span></a>.</p></li>
-</ul>
-</p>
-<p><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If an input or an output of a <a class="reference internal" href="#classavs_1_1_forwarder"><span class="std std-ref">Forwarder</span></a> node implements both <a class="reference internal" href="#classavs_1_1_packet_interface"><span class="std std-ref">PacketInterface</span></a> and <a class="reference internal" href="#classavs_1_1_i_o_interface"><span class="std std-ref">IOInterface</span></a> then <a class="reference internal" href="#classavs_1_1_packet_interface"><span class="std std-ref">PacketInterface</span></a> is used by the forwarder node to read or write data. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::PipelineNode” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-</p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs15GeometryDecoderE">
-<span id="_CPPv3N3avs15GeometryDecoderE"></span><span id="_CPPv2N3avs15GeometryDecoderE"></span><span id="avs::GeometryDecoder"></span><span class="target" id="classavs_1_1_geometry_decoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryDecoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs15GeometryDecoderE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Geometry decoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
-<p>Reads packets of encoded geometry and outputs decoded data to a Geometry Target. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs15GeometryEncoderE">
-<span id="_CPPv3N3avs15GeometryEncoderE"></span><span id="_CPPv2N3avs15GeometryEncoderE"></span><span id="avs::GeometryEncoder"></span><span class="target" id="classavs_1_1_geometry_encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryEncoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs15GeometryEncoderE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Video encoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
-<p>Encodes video frames from input surface and outputs compressed bitstream.<ul class="simple">
-<li><p>Compatible inputs : Any node implementing <a class="reference internal" href="#classavs_1_1_surface_interface"><span class="std std-ref">SurfaceInterface</span></a>.</p></li>
-<li><p>Compatible outputs: Any node implementing <a class="reference internal" href="#classavs_1_1_i_o_interface"><span class="std std-ref">IOInterface</span></a>. </p></li>
-</ul>
-</p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs14GeometrySourceE">
-<span id="_CPPv3N3avs14GeometrySourceE"></span><span id="_CPPv2N3avs14GeometrySourceE"></span><span id="avs::GeometrySource"></span><span class="target" id="classavs_1_1_geometry_source"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometrySource</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs23GeometrySourceInterfaceE" title="avs::GeometrySourceInterface"><span class="n"><span class="pre">GeometrySourceInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs14GeometrySourceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Mesh node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">1/1]</span></code></p>
-<p>Provides access to geometry source data for other nodes in the pipeline. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs14GeometryTargetE">
-<span id="_CPPv3N3avs14GeometryTargetE"></span><span id="_CPPv2N3avs14GeometryTargetE"></span><span id="avs::GeometryTarget"></span><span class="target" id="classavs_1_1_geometry_target"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryTarget</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs23GeometryTargetInterfaceE" title="avs::GeometryTargetInterface"><span class="n"><span class="pre">GeometryTargetInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs14GeometryTargetE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Mesh node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">1/1]</span></code></p>
-<p>Provides access to geometry source data for other nodes in the pipeline. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSinkE">
-<span id="_CPPv3N3avs11NetworkSinkE"></span><span id="_CPPv2N3avs11NetworkSinkE"></span><span id="avs::NetworkSink"></span><span class="target" id="classavs_1_1_network_sink"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSink</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs11NetworkSinkE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network sink node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">1/0]</span></code></p>
-<p>Sends video stream to a remote UDP endpoint. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs13NetworkSourceE">
-<span id="_CPPv3N3avs13NetworkSourceE"></span><span id="_CPPv2N3avs13NetworkSourceE"></span><span id="avs::NetworkSource"></span><span class="target" id="classavs_1_1_network_source"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSource</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs13NetworkSourceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network source node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">0/1]</span></code></p>
-<p>Receives video stream from a remote UDP endpoint. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs8NullSinkE">
-<span id="_CPPv3N3avs8NullSinkE"></span><span id="_CPPv2N3avs8NullSinkE"></span><span id="avs::NullSink"></span><span class="target" id="classavs_1_1_null_sink"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NullSink</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs11IOInterfaceE" title="avs::IOInterface"><span class="n"><span class="pre">IOInterface</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs15PacketInterfaceE" title="avs::PacketInterface"><span class="n"><span class="pre">PacketInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs8NullSinkE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Null sink node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">N/0]</span></code></p>
-<p>Silently discards all data written to it. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs10PacketizerE">
-<span id="_CPPv3N3avs10PacketizerE"></span><span id="_CPPv2N3avs10PacketizerE"></span><span id="avs::Packetizer"></span><span class="target" id="classavs_1_1_packetizer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Packetizer</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs11IOInterfaceE" title="avs::IOInterface"><span class="n"><span class="pre">IOInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs10PacketizerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Bitstream packetizer node <code class="docutils literal notranslate"><span class="pre">[output-active,</span> <span class="pre">1/M]</span></code></p>
-<p>Accepts bitstream as input and broadcasts discrete packets to all its outputs. Expected bitstream format and output packets payload is defined by the selected stream parser.</p>
-<p><ul class="simple">
-<li><p>Compatible outputs: Any node implementing <a class="reference internal" href="#classavs_1_1_packet_interface"><span class="std std-ref">PacketInterface</span></a>. </p></li>
-</ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When used with AVC_AnnexB parser it accepts AVC Annex B bitstream input and outputs individual NAL units.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::AudioDecoder” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-</p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs5QueueE">
-<span id="_CPPv3N3avs5QueueE"></span><span id="_CPPv2N3avs5QueueE"></span><span id="avs::Queue"></span><span class="target" id="classavs_1_1_queue"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Queue</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs11IOInterfaceE" title="avs::IOInterface"><span class="n"><span class="pre">IOInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs5QueueE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">Queue</span></a> node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">1/1]</span></code></p>
-<p>A thread-safe, nonblocking, producer-consumer queue of byte buffers.</p>
-<p><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Sharing an instance of this node is the recommended way to link two pipelines running on different threads. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::AudioEncoder” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-</p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7SurfaceE">
-<span id="_CPPv3N3avs7SurfaceE"></span><span id="_CPPv2N3avs7SurfaceE"></span><span id="avs::Surface"></span><span class="target" id="classavs_1_1_surface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Surface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs16SurfaceInterfaceE" title="avs::SurfaceInterface"><span class="n"><span class="pre">SurfaceInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs7SurfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">Surface</span></a> node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">1/1]</span></code></p>
-<p>Provides access to surface for other nodes in the pipeline. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs14TagDataDecoderE">
-<span id="_CPPv3N3avs14TagDataDecoderE"></span><span id="_CPPv2N3avs14TagDataDecoderE"></span><span id="avs::TagDataDecoder"></span><span class="target" id="classavs_1_1_tag_data_decoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TagDataDecoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs14TagDataDecoderE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Video tag data decoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">1/0]</span></code></p>
-<p>Reads packets of encoded video tag data and outputs result to the application.<ul class="simple">
-<li><p>Compatible inputs: A queue of taga data. </p></li>
-</ul>
-</p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Buffer” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Decoder” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Encoder” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::File” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Forwarder” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::GeometryDecoder” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::GeometryEncoder” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::GeometrySource” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::GeometryTarget” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::NetworkSink” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::NetworkSource” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::NullSink” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Packetizer” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Queue” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::Surface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “avs::TagDataDecoder” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">members</dt>
 <dd class="field-odd"><p></p></dd>
@@ -456,524 +311,38 @@
 </div>
 <div class="section" id="avs-structs">
 <h2>avs Structs<a class="headerlink" href="#avs-structs" title="Permalink to this headline">¶</a></h2>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs13ClientMessageE">
-<span id="_CPPv3N3avs13ClientMessageE"></span><span id="_CPPv2N3avs13ClientMessageE"></span><span id="avs::ClientMessage"></span><span class="target" id="structavs_1_1_client_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessage</span></span></span><a class="headerlink" href="#_CPPv4N3avs13ClientMessageE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A message from the client. </p>
-<p>Subclassed by avs::ControllerPosesMessage, avs::NodeStatusMessage, avs::OriginPoseMessage, avs::ReceivedResourcesMessage</p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCountersE">
-<span id="_CPPv3N3avs19NetworkSinkCountersE"></span><span id="_CPPv2N3avs19NetworkSinkCountersE"></span><span id="avs::NetworkSinkCounters"></span><span class="target" id="structavs_1_1_network_sink_counters"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSinkCounters</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCountersE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network sink counters. </p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkParamsE">
-<span id="_CPPv3N3avs17NetworkSinkParamsE"></span><span id="_CPPv2N3avs17NetworkSinkParamsE"></span><span id="avs::NetworkSinkParams"></span><span class="target" id="structavs_1_1_network_sink_params"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSinkParams</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkParamsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network sink parameters. </p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStreamE">
-<span id="_CPPv3N3avs17NetworkSinkStreamE"></span><span id="_CPPv2N3avs17NetworkSinkStreamE"></span><span id="avs::NetworkSinkStream"></span><span class="target" id="structavs_1_1_network_sink_stream"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSinkStream</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStreamE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network sink stream data. </p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCountersE">
-<span id="_CPPv3N3avs21NetworkSourceCountersE"></span><span id="_CPPv2N3avs21NetworkSourceCountersE"></span><span id="avs::NetworkSourceCounters"></span><span class="target" id="structavs_1_1_network_source_counters"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSourceCounters</span></span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCountersE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network source counters. </p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSourceParamsE">
-<span id="_CPPv3N3avs19NetworkSourceParamsE"></span><span id="_CPPv2N3avs19NetworkSourceParamsE"></span><span id="avs::NetworkSourceParams"></span><span class="target" id="structavs_1_1_network_source_params"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSourceParams</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSourceParamsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network source parameters. </p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSourceStreamE">
-<span id="_CPPv3N3avs19NetworkSourceStreamE"></span><span id="_CPPv2N3avs19NetworkSourceStreamE"></span><span id="avs::NetworkSourceStream"></span><span class="target" id="structavs_1_1_network_source_stream"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSourceStream</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSourceStreamE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network source stream data. </p>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6ResultE">
-<span id="_CPPv3N3avs6ResultE"></span><span id="_CPPv2N3avs6ResultE"></span><span id="avs::Result"></span><span class="target" id="structavs_1_1_result"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Result</span></span></span><a class="headerlink" href="#_CPPv4N3avs6ResultE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#structavs_1_1_result"><span class="std std-ref">Result</span></a> type. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
-<dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4CodeE">
-<span id="_CPPv3N3avs6Result4CodeE"></span><span id="_CPPv2N3avs6Result4CodeE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Code</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4CodeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="#structavs_1_1_result"><span class="std std-ref">Result</span></a> code enumeration. </p>
-<p><em>Values:</em></p>
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code2OKE">
-<span id="_CPPv3N3avs6Result4Code2OKE"></span><span id="_CPPv2N3avs6Result4Code2OKE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa6a2c732d14016295679571df7ce1370a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OK</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code2OKE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code16Node_InvalidSlotE">
-<span id="_CPPv3N3avs6Result4Code16Node_InvalidSlotE"></span><span id="_CPPv2N3avs6Result4Code16Node_InvalidSlotE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fab80caaf51e45d6a1b183873a1163bc48"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_InvalidSlot</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code16Node_InvalidSlotE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code16Node_InvalidLinkE">
-<span id="_CPPv3N3avs6Result4Code16Node_InvalidLinkE"></span><span id="_CPPv2N3avs6Result4Code16Node_InvalidLinkE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faa8ee8056521b1c8e5727895ca25d51f9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_InvalidLink</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code16Node_InvalidLinkE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code14Node_NotLinkedE">
-<span id="_CPPv3N3avs6Result4Code14Node_NotLinkedE"></span><span id="_CPPv2N3avs6Result4Code14Node_NotLinkedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa67d05a998d0584e9803a3a816c88fdd7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_NotLinked</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code14Node_NotLinkedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code17Node_IncompatibleE">
-<span id="_CPPv3N3avs6Result4Code17Node_IncompatibleE"></span><span id="_CPPv2N3avs6Result4Code17Node_IncompatibleE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa5bb95815f5670d859cfdf31ee3389462"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_Incompatible</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code17Node_IncompatibleE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code18Node_NotConfiguredE">
-<span id="_CPPv3N3avs6Result4Code18Node_NotConfiguredE"></span><span id="_CPPv2N3avs6Result4Code18Node_NotConfiguredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fae3f8efa0f709c977ecfbe2ed1ea289d5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_NotConfigured</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code18Node_NotConfiguredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code17Node_NotSupportedE">
-<span id="_CPPv3N3avs6Result4Code17Node_NotSupportedE"></span><span id="_CPPv2N3avs6Result4Code17Node_NotSupportedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa21b315f78be77013106077708502c61e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_NotSupported</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code17Node_NotSupportedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code22Node_AlreadyConfiguredE">
-<span id="_CPPv3N3avs6Result4Code22Node_AlreadyConfiguredE"></span><span id="_CPPv2N3avs6Result4Code22Node_AlreadyConfiguredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa10b49504ad2f55a000624908721cdb22"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_AlreadyConfigured</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code22Node_AlreadyConfiguredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code25Node_InvalidConfigurationE">
-<span id="_CPPv3N3avs6Result4Code25Node_InvalidConfigurationE"></span><span id="_CPPv2N3avs6Result4Code25Node_InvalidConfigurationE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa98235691102690fa83d00a106f368507"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_InvalidConfiguration</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code25Node_InvalidConfigurationE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code17Node_InvalidInputE">
-<span id="_CPPv3N3avs6Result4Code17Node_InvalidInputE"></span><span id="_CPPv2N3avs6Result4Code17Node_InvalidInputE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa2f3119bc2b8ed3226cd86835e15a5d5d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_InvalidInput</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code17Node_InvalidInputE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code18Node_InvalidOutputE">
-<span id="_CPPv3N3avs6Result4Code18Node_InvalidOutputE"></span><span id="_CPPv2N3avs6Result4Code18Node_InvalidOutputE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa0b7918cefe2ce3b3aa6b8902a327ceb8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_InvalidOutput</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code18Node_InvalidOutputE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code15Node_LinkFailedE">
-<span id="_CPPv3N3avs6Result4Code15Node_LinkFailedE"></span><span id="_CPPv2N3avs6Result4Code15Node_LinkFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa71807a046f6015f2f21a7272b34910b5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_LinkFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code15Node_LinkFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code9Node_NullE">
-<span id="_CPPv3N3avs6Result4Code9Node_NullE"></span><span id="_CPPv2N3avs6Result4Code9Node_NullE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa3790cd891ac85c3cf51247fd597f1823"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_Null</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code9Node_NullE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code30Decoder_NoSuitableBackendFoundE">
-<span id="_CPPv3N3avs6Result4Code30Decoder_NoSuitableBackendFoundE"></span><span id="_CPPv2N3avs6Result4Code30Decoder_NoSuitableBackendFoundE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa8e6d372d8a7d1915f1ff3535cfce7dd3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Decoder_NoSuitableBackendFound</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code30Decoder_NoSuitableBackendFoundE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code30Encoder_NoSuitableBackendFoundE">
-<span id="_CPPv3N3avs6Result4Code30Encoder_NoSuitableBackendFoundE"></span><span id="_CPPv2N3avs6Result4Code30Encoder_NoSuitableBackendFoundE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fafc25ec0c354228fdb86c579daf9edf3d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Encoder_NoSuitableBackendFound</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code30Encoder_NoSuitableBackendFoundE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code23Encoder_IncompleteFrameE">
-<span id="_CPPv3N3avs6Result4Code23Encoder_IncompleteFrameE"></span><span id="_CPPv2N3avs6Result4Code23Encoder_IncompleteFrameE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac07b8cbc8023ff4149f68c72c41af376"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Encoder_IncompleteFrame</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code23Encoder_IncompleteFrameE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code32Encoder_SurfaceAlreadyRegisteredE">
-<span id="_CPPv3N3avs6Result4Code32Encoder_SurfaceAlreadyRegisteredE"></span><span id="_CPPv2N3avs6Result4Code32Encoder_SurfaceAlreadyRegisteredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faf5a7147aefed53b5d454339d740ee768"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Encoder_SurfaceAlreadyRegistered</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code32Encoder_SurfaceAlreadyRegisteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code28Encoder_SurfaceNotRegisteredE">
-<span id="_CPPv3N3avs6Result4Code28Encoder_SurfaceNotRegisteredE"></span><span id="_CPPv2N3avs6Result4Code28Encoder_SurfaceNotRegisteredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa12b5b75c066d6ce3d43e471c38304210"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Encoder_SurfaceNotRegistered</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code28Encoder_SurfaceNotRegisteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code32Decoder_SurfaceAlreadyRegisteredE">
-<span id="_CPPv3N3avs6Result4Code32Decoder_SurfaceAlreadyRegisteredE"></span><span id="_CPPv2N3avs6Result4Code32Decoder_SurfaceAlreadyRegisteredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa5861d00a6bd88b3ad009f6981a68a915"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Decoder_SurfaceAlreadyRegistered</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code32Decoder_SurfaceAlreadyRegisteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code28Decoder_SurfaceNotRegisteredE">
-<span id="_CPPv3N3avs6Result4Code28Decoder_SurfaceNotRegisteredE"></span><span id="_CPPv2N3avs6Result4Code28Decoder_SurfaceNotRegisteredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fae46583bee02ae57537510b00e4b81950"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Decoder_SurfaceNotRegistered</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code28Decoder_SurfaceNotRegisteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code22Surface_InvalidBackendE">
-<span id="_CPPv3N3avs6Result4Code22Surface_InvalidBackendE"></span><span id="_CPPv2N3avs6Result4Code22Surface_InvalidBackendE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa271dbfd1ba92f3d8c21a3a9623bf626b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Surface_InvalidBackend</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code22Surface_InvalidBackendE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code8IO_RetryE">
-<span id="_CPPv3N3avs6Result4Code8IO_RetryE"></span><span id="_CPPv2N3avs6Result4Code8IO_RetryE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa38fcb900218d7b2bfe7ece7cb7452ff3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_Retry</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code8IO_RetryE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code8IO_EmptyE">
-<span id="_CPPv3N3avs6Result4Code8IO_EmptyE"></span><span id="_CPPv2N3avs6Result4Code8IO_EmptyE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa272dd0073bde7a30af444572789cb2d8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_Empty</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code8IO_EmptyE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code7IO_FullE">
-<span id="_CPPv3N3avs6Result4Code7IO_FullE"></span><span id="_CPPv2N3avs6Result4Code7IO_FullE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa014a19566e211b6658b4a0f998b24aa4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_Full</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code7IO_FullE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code14IO_OutOfMemoryE">
-<span id="_CPPv3N3avs6Result4Code14IO_OutOfMemoryE"></span><span id="_CPPv2N3avs6Result4Code14IO_OutOfMemoryE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faa241b52f78e3a6175e3526784eb24131"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_OutOfMemory</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code14IO_OutOfMemoryE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code18IO_InvalidArgumentE">
-<span id="_CPPv3N3avs6Result4Code18IO_InvalidArgumentE"></span><span id="_CPPv2N3avs6Result4Code18IO_InvalidArgumentE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa3cd9b4381cc5451644b95f12c48ca403"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IO_InvalidArgument</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code18IO_InvalidArgumentE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code15File_OpenFailedE">
-<span id="_CPPv3N3avs6Result4Code15File_OpenFailedE"></span><span id="_CPPv2N3avs6Result4Code15File_OpenFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fad5ef92a73fdf7c41f3029dd9930417a3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">File_OpenFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code15File_OpenFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code15File_ReadFailedE">
-<span id="_CPPv3N3avs6Result4Code15File_ReadFailedE"></span><span id="_CPPv2N3avs6Result4Code15File_ReadFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa45246b7e80f49b3863516d727310567e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">File_ReadFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code15File_ReadFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code16File_WriteFailedE">
-<span id="_CPPv3N3avs6Result4Code16File_WriteFailedE"></span><span id="_CPPv2N3avs6Result4Code16File_WriteFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa0618e32a664024e8f25c1a3ce05dcc9a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">File_WriteFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code16File_WriteFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code8File_EOFE">
-<span id="_CPPv3N3avs6Result4Code8File_EOFE"></span><span id="_CPPv2N3avs6Result4Code8File_EOFE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa5649cb9313f6774811370d428978355c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">File_EOF</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code8File_EOFE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code13Pipeline_StopE">
-<span id="_CPPv3N3avs6Result4Code13Pipeline_StopE"></span><span id="_CPPv2N3avs6Result4Code13Pipeline_StopE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac38c3c92b71e6ef9b67eb03461bf7fbf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pipeline_Stop</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code13Pipeline_StopE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code25Pipeline_AlreadyProfilingE">
-<span id="_CPPv3N3avs6Result4Code25Pipeline_AlreadyProfilingE"></span><span id="_CPPv2N3avs6Result4Code25Pipeline_AlreadyProfilingE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa7ed73db0503c2f37b466754437679f1c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pipeline_AlreadyProfiling</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code25Pipeline_AlreadyProfilingE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code21Pipeline_NotProfilingE">
-<span id="_CPPv3N3avs6Result4Code21Pipeline_NotProfilingE"></span><span id="_CPPv2N3avs6Result4Code21Pipeline_NotProfilingE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa3f90efc96fece4f701e020f0e14d9545"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pipeline_NotProfiling</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code21Pipeline_NotProfilingE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code18Network_BindFailedE">
-<span id="_CPPv3N3avs6Result4Code18Network_BindFailedE"></span><span id="_CPPv2N3avs6Result4Code18Network_BindFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa1c4c74ae697c448822a8f882920b86ea"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Network_BindFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code18Network_BindFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code21Network_ResolveFailedE">
-<span id="_CPPv3N3avs6Result4Code21Network_ResolveFailedE"></span><span id="_CPPv2N3avs6Result4Code21Network_ResolveFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa0097b78ba38e5950536223237cd588e9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Network_ResolveFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code21Network_ResolveFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code18Network_SendFailedE">
-<span id="_CPPv3N3avs6Result4Code18Network_SendFailedE"></span><span id="_CPPv2N3avs6Result4Code18Network_SendFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa4c2dcec0ea7f064fbac20e690155e24e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Network_SendFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code18Network_SendFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code18Network_RecvFailedE">
-<span id="_CPPv3N3avs6Result4Code18Network_RecvFailedE"></span><span id="_CPPv2N3avs6Result4Code18Network_RecvFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fad6b56a40d4bfd5403dbd729b8fd81a5b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Network_RecvFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code18Network_RecvFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code20Network_NoConnectionE">
-<span id="_CPPv3N3avs6Result4Code20Network_NoConnectionE"></span><span id="_CPPv2N3avs6Result4Code20Network_NoConnectionE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa68e1909a9ecb6b07cfffe48fdf02482c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Network_NoConnection</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code20Network_NoConnectionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code21Network_DisconnectionE">
-<span id="_CPPv3N3avs6Result4Code21Network_DisconnectionE"></span><span id="_CPPv2N3avs6Result4Code21Network_DisconnectionE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa46ac12dadb78d6b5cf06a29fe86ea526"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Network_Disconnection</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code21Network_DisconnectionE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code19Network_PollTimeoutE">
-<span id="_CPPv3N3avs6Result4Code19Network_PollTimeoutE"></span><span id="_CPPv2N3avs6Result4Code19Network_PollTimeoutE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faef7d4df911f5c847aff012af7874b7f3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Network_PollTimeout</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code19Network_PollTimeoutE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code35EncoderBackend_NoSuitableCodecFoundE">
-<span id="_CPPv3N3avs6Result4Code35EncoderBackend_NoSuitableCodecFoundE"></span><span id="_CPPv2N3avs6Result4Code35EncoderBackend_NoSuitableCodecFoundE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa2673e8e1a24ec23097c6d753139513de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_NoSuitableCodecFound</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code35EncoderBackend_NoSuitableCodecFoundE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code25EncoderBackend_InitFailedE">
-<span id="_CPPv3N3avs6Result4Code25EncoderBackend_InitFailedE"></span><span id="_CPPv2N3avs6Result4Code25EncoderBackend_InitFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa626233c233c5e166852ba081bdb96d97"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_InitFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code25EncoderBackend_InitFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29EncoderBackend_ReconfigFailedE">
-<span id="_CPPv3N3avs6Result4Code29EncoderBackend_ReconfigFailedE"></span><span id="_CPPv2N3avs6Result4Code29EncoderBackend_ReconfigFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa1cacf35bb4c969f100fa87b3564162e8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_ReconfigFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29EncoderBackend_ReconfigFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29EncoderBackend_ShutdownFailedE">
-<span id="_CPPv3N3avs6Result4Code29EncoderBackend_ShutdownFailedE"></span><span id="_CPPv2N3avs6Result4Code29EncoderBackend_ShutdownFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa25ccb055cf866faf038b01c3d0b42fd0"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_ShutdownFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29EncoderBackend_ShutdownFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29EncoderBackend_NotInitializedE">
-<span id="_CPPv3N3avs6Result4Code29EncoderBackend_NotInitializedE"></span><span id="_CPPv2N3avs6Result4Code29EncoderBackend_NotInitializedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa332984a092597ff1c43914428f32cc9b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_NotInitialized</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29EncoderBackend_NotInitializedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code28EncoderBackend_InvalidDeviceE">
-<span id="_CPPv3N3avs6Result4Code28EncoderBackend_InvalidDeviceE"></span><span id="_CPPv2N3avs6Result4Code28EncoderBackend_InvalidDeviceE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa467cb843d214b3fb0e85fbd9d3c63294"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_InvalidDevice</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code28EncoderBackend_InvalidDeviceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29EncoderBackend_InvalidSurfaceE">
-<span id="_CPPv3N3avs6Result4Code29EncoderBackend_InvalidSurfaceE"></span><span id="_CPPv2N3avs6Result4Code29EncoderBackend_InvalidSurfaceE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac31da4cc57f8c1cacaee1db7cac60e14"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_InvalidSurface</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29EncoderBackend_InvalidSurfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code35EncoderBackend_SurfaceNotRegisteredE">
-<span id="_CPPv3N3avs6Result4Code35EncoderBackend_SurfaceNotRegisteredE"></span><span id="_CPPv2N3avs6Result4Code35EncoderBackend_SurfaceNotRegisteredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa4bb04a8dacff48b834d72f4b6f6454c2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_SurfaceNotRegistered</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code35EncoderBackend_SurfaceNotRegisteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code39EncoderBackend_SurfaceAlreadyRegisteredE">
-<span id="_CPPv3N3avs6Result4Code39EncoderBackend_SurfaceAlreadyRegisteredE"></span><span id="_CPPv2N3avs6Result4Code39EncoderBackend_SurfaceAlreadyRegisteredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa6e5896524c7981e277f6f5bba23005da"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_SurfaceAlreadyRegistered</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code39EncoderBackend_SurfaceAlreadyRegisteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code26EncoderBackend_OutOfMemoryE">
-<span id="_CPPv3N3avs6Result4Code26EncoderBackend_OutOfMemoryE"></span><span id="_CPPv2N3avs6Result4Code26EncoderBackend_OutOfMemoryE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fad7534a7a60f285d89a8883ca5c575256"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_OutOfMemory</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code26EncoderBackend_OutOfMemoryE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code25EncoderBackend_FlushErrorE">
-<span id="_CPPv3N3avs6Result4Code25EncoderBackend_FlushErrorE"></span><span id="_CPPv2N3avs6Result4Code25EncoderBackend_FlushErrorE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa78cb04238b7dc7e7c99a7d6b877f4c68"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_FlushError</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code25EncoderBackend_FlushErrorE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code24EncoderBackend_MapFailedE">
-<span id="_CPPv3N3avs6Result4Code24EncoderBackend_MapFailedE"></span><span id="_CPPv2N3avs6Result4Code24EncoderBackend_MapFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa90dd33a8c986fc5801cb5ba9bd05ea06"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_MapFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code24EncoderBackend_MapFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code26EncoderBackend_UnmapFailedE">
-<span id="_CPPv3N3avs6Result4Code26EncoderBackend_UnmapFailedE"></span><span id="_CPPv2N3avs6Result4Code26EncoderBackend_UnmapFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa3d1bb23fb341e20fc99f5843b910952b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_UnmapFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code26EncoderBackend_UnmapFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code27EncoderBackend_EncodeFailedE">
-<span id="_CPPv3N3avs6Result4Code27EncoderBackend_EncodeFailedE"></span><span id="_CPPv2N3avs6Result4Code27EncoderBackend_EncodeFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa3f173ca3f7dad11d553dc55ebe23a9fb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_EncodeFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code27EncoderBackend_EncodeFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code36EncoderBackend_CapabilityCheckFailedE">
-<span id="_CPPv3N3avs6Result4Code36EncoderBackend_CapabilityCheckFailedE"></span><span id="_CPPv2N3avs6Result4Code36EncoderBackend_CapabilityCheckFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fab1dfc0605a86973c8de1b082a1d4c999"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackend_CapabilityCheckFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code36EncoderBackend_CapabilityCheckFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code25DecoderBackend_InitFailedE">
-<span id="_CPPv3N3avs6Result4Code25DecoderBackend_InitFailedE"></span><span id="_CPPv2N3avs6Result4Code25DecoderBackend_InitFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fad456a8898a24cd2effabc7d5d70a2909"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_InitFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code25DecoderBackend_InitFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29DecoderBackend_ReconfigFailedE">
-<span id="_CPPv3N3avs6Result4Code29DecoderBackend_ReconfigFailedE"></span><span id="_CPPv2N3avs6Result4Code29DecoderBackend_ReconfigFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fab094e5c3b14500ed4112001059dcd0a3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_ReconfigFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29DecoderBackend_ReconfigFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code28DecoderBackend_InvalidDeviceE">
-<span id="_CPPv3N3avs6Result4Code28DecoderBackend_InvalidDeviceE"></span><span id="_CPPv2N3avs6Result4Code28DecoderBackend_InvalidDeviceE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faf8edc5dbb28d1f97a1c062df6845b646"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_InvalidDevice</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code28DecoderBackend_InvalidDeviceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code27DecoderBackend_InvalidParamE">
-<span id="_CPPv3N3avs6Result4Code27DecoderBackend_InvalidParamE"></span><span id="_CPPv2N3avs6Result4Code27DecoderBackend_InvalidParamE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa7fe2078eec4ebeb96b6d66fbe42c0bac"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_InvalidParam</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code27DecoderBackend_InvalidParamE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code35DecoderBackend_InvalidConfigurationE">
-<span id="_CPPv3N3avs6Result4Code35DecoderBackend_InvalidConfigurationE"></span><span id="_CPPv2N3avs6Result4Code35DecoderBackend_InvalidConfigurationE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac76d462ee6d10c6c5f327fab65094b3e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_InvalidConfiguration</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code35DecoderBackend_InvalidConfigurationE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code32DecoderBackend_CodecNotSupportedE">
-<span id="_CPPv3N3avs6Result4Code32DecoderBackend_CodecNotSupportedE"></span><span id="_CPPv2N3avs6Result4Code32DecoderBackend_CodecNotSupportedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac6818e14c8de92c8567a70dd1f0b67d3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_CodecNotSupported</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code32DecoderBackend_CodecNotSupportedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29DecoderBackend_NotInitializedE">
-<span id="_CPPv3N3avs6Result4Code29DecoderBackend_NotInitializedE"></span><span id="_CPPv2N3avs6Result4Code29DecoderBackend_NotInitializedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac6cc6845333d0a901a8745357b971ba6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_NotInitialized</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29DecoderBackend_NotInitializedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29DecoderBackend_InvalidSurfaceE">
-<span id="_CPPv3N3avs6Result4Code29DecoderBackend_InvalidSurfaceE"></span><span id="_CPPv2N3avs6Result4Code29DecoderBackend_InvalidSurfaceE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fab118ab427e4d975df96c97e5eab55546"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_InvalidSurface</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29DecoderBackend_InvalidSurfaceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29DecoderBackend_InvalidPayloadE">
-<span id="_CPPv3N3avs6Result4Code29DecoderBackend_InvalidPayloadE"></span><span id="_CPPv2N3avs6Result4Code29DecoderBackend_InvalidPayloadE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa9e2eaf0e86f067b1531bcdca5f99edcd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_InvalidPayload</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29DecoderBackend_InvalidPayloadE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code35DecoderBackend_SurfaceNotRegisteredE">
-<span id="_CPPv3N3avs6Result4Code35DecoderBackend_SurfaceNotRegisteredE"></span><span id="_CPPv2N3avs6Result4Code35DecoderBackend_SurfaceNotRegisteredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa2d6079f6ad221eb28587568f3189f627"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_SurfaceNotRegistered</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code35DecoderBackend_SurfaceNotRegisteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code39DecoderBackend_SurfaceAlreadyRegisteredE">
-<span id="_CPPv3N3avs6Result4Code39DecoderBackend_SurfaceAlreadyRegisteredE"></span><span id="_CPPv2N3avs6Result4Code39DecoderBackend_SurfaceAlreadyRegisteredE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faf67a8093197bcf0c755ec2128c5f875b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_SurfaceAlreadyRegistered</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code39DecoderBackend_SurfaceAlreadyRegisteredE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code26DecoderBackend_ParseFailedE">
-<span id="_CPPv3N3avs6Result4Code26DecoderBackend_ParseFailedE"></span><span id="_CPPv2N3avs6Result4Code26DecoderBackend_ParseFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa3687c7f6ee9a019b6649f9fcf5620fae"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_ParseFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code26DecoderBackend_ParseFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code27DecoderBackend_DecodeFailedE">
-<span id="_CPPv3N3avs6Result4Code27DecoderBackend_DecodeFailedE"></span><span id="_CPPv2N3avs6Result4Code27DecoderBackend_DecodeFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac293b54e0e239a73ea49c551ea26227f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_DecodeFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code27DecoderBackend_DecodeFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code28DecoderBackend_DisplayFailedE">
-<span id="_CPPv3N3avs6Result4Code28DecoderBackend_DisplayFailedE"></span><span id="_CPPv2N3avs6Result4Code28DecoderBackend_DisplayFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa61c211b6d39ba4225e3de0bf23ece8fd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_DisplayFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code28DecoderBackend_DisplayFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29DecoderBackend_ShutdownFailedE">
-<span id="_CPPv3N3avs6Result4Code29DecoderBackend_ShutdownFailedE"></span><span id="_CPPv2N3avs6Result4Code29DecoderBackend_ShutdownFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70facfe1824bce515b473b0a874b1d8b98b2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_ShutdownFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29DecoderBackend_ShutdownFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29DecoderBackend_ReadyToDisplayE">
-<span id="_CPPv3N3avs6Result4Code29DecoderBackend_ReadyToDisplayE"></span><span id="_CPPv2N3avs6Result4Code29DecoderBackend_ReadyToDisplayE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa954cc757fb4d910dd109c04d1d5caddf"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_ReadyToDisplay</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29DecoderBackend_ReadyToDisplayE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code34DecoderBackend_InvalidOutoutFormatE">
-<span id="_CPPv3N3avs6Result4Code34DecoderBackend_InvalidOutoutFormatE"></span><span id="_CPPv2N3avs6Result4Code34DecoderBackend_InvalidOutoutFormatE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faddfb5a8c696ad5e6a25aca67b95fbce2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_InvalidOutoutFormat</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code34DecoderBackend_InvalidOutoutFormatE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code36DecoderBackend_CapabilityCheckFailedE">
-<span id="_CPPv3N3avs6Result4Code36DecoderBackend_CapabilityCheckFailedE"></span><span id="_CPPv2N3avs6Result4Code36DecoderBackend_CapabilityCheckFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa845ca76021bb5dcfb3c2f541573ddce4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackend_CapabilityCheckFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code36DecoderBackend_CapabilityCheckFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code26GeometryEncoder_IncompleteE">
-<span id="_CPPv3N3avs6Result4Code26GeometryEncoder_IncompleteE"></span><span id="_CPPv2N3avs6Result4Code26GeometryEncoder_IncompleteE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac70dd4c088433bad59add5eaf211403a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryEncoder_Incomplete</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code26GeometryEncoder_IncompleteE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code30GeometryEncoder_InvalidPayloadE">
-<span id="_CPPv3N3avs6Result4Code30GeometryEncoder_InvalidPayloadE"></span><span id="_CPPv2N3avs6Result4Code30GeometryEncoder_InvalidPayloadE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa11ca2293d9d8a8b96afdc45c54287f18"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryEncoder_InvalidPayload</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code30GeometryEncoder_InvalidPayloadE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code26GeometryDecoder_IncompleteE">
-<span id="_CPPv3N3avs6Result4Code26GeometryDecoder_IncompleteE"></span><span id="_CPPv2N3avs6Result4Code26GeometryDecoder_IncompleteE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa1ffe93a45f3c16599a2f4aa6173f05ba"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryDecoder_Incomplete</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code26GeometryDecoder_IncompleteE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code30GeometryDecoder_InvalidPayloadE">
-<span id="_CPPv3N3avs6Result4Code30GeometryDecoder_InvalidPayloadE"></span><span id="_CPPv2N3avs6Result4Code30GeometryDecoder_InvalidPayloadE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faa4fc16cd9c5fec9a48700cc73f038971"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryDecoder_InvalidPayload</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code30GeometryDecoder_InvalidPayloadE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code33GeometryDecoder_InvalidBufferSizeE">
-<span id="_CPPv3N3avs6Result4Code33GeometryDecoder_InvalidBufferSizeE"></span><span id="_CPPv2N3avs6Result4Code33GeometryDecoder_InvalidBufferSizeE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa495d63220b98966ad189676f1bdb8a5c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryDecoder_InvalidBufferSize</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code33GeometryDecoder_InvalidBufferSizeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code35GeometryDecoder_ClientRendererErrorE">
-<span id="_CPPv3N3avs6Result4Code35GeometryDecoder_ClientRendererErrorE"></span><span id="_CPPv2N3avs6Result4Code35GeometryDecoder_ClientRendererErrorE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa22616057e934e903a0f9e6fdfb3d65ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryDecoder_ClientRendererError</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code35GeometryDecoder_ClientRendererErrorE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code26AudioTarget_InvalidBackendE">
-<span id="_CPPv3N3avs6Result4Code26AudioTarget_InvalidBackendE"></span><span id="_CPPv2N3avs6Result4Code26AudioTarget_InvalidBackendE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fac0e3f22ec09e310018711416fd3497b5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTarget_InvalidBackend</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code26AudioTarget_InvalidBackendE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code39AudioTargetBackend_AudioProcessingErrorE">
-<span id="_CPPv3N3avs6Result4Code39AudioTargetBackend_AudioProcessingErrorE"></span><span id="_CPPv2N3avs6Result4Code39AudioTargetBackend_AudioProcessingErrorE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa21dcd20bad136846a8a0166e97e23b84"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTargetBackend_AudioProcessingError</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code39AudioTargetBackend_AudioProcessingErrorE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code34AudioTargetBackend_NullAudioPlayerE">
-<span id="_CPPv3N3avs6Result4Code34AudioTargetBackend_NullAudioPlayerE"></span><span id="_CPPv2N3avs6Result4Code34AudioTargetBackend_NullAudioPlayerE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fab7092be70acfdacd221e4cb9e5479d8a"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTargetBackend_NullAudioPlayer</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code34AudioTargetBackend_NullAudioPlayerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code45AudioTargetBackend_PlayerDeconfigurationErrorE">
-<span id="_CPPv3N3avs6Result4Code45AudioTargetBackend_PlayerDeconfigurationErrorE"></span><span id="_CPPv2N3avs6Result4Code45AudioTargetBackend_PlayerDeconfigurationErrorE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fab1fea417abb59b9b86361ac4f0a0d591"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTargetBackend_PlayerDeconfigurationError</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code45AudioTargetBackend_PlayerDeconfigurationErrorE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code13Node_NotReadyE">
-<span id="_CPPv3N3avs6Result4Code13Node_NotReadyE"></span><span id="_CPPv2N3avs6Result4Code13Node_NotReadyE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa26b436078f2f02df392d92e32cd0c2ff"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Node_NotReady</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code13Node_NotReadyE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code12UnknownErrorE">
-<span id="_CPPv3N3avs6Result4Code12UnknownErrorE"></span><span id="_CPPv2N3avs6Result4Code12UnknownErrorE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa4190e5d7e2660905bd90979a9419efb5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnknownError</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code12UnknownErrorE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29NetworkSink_SendingDataFailedE">
-<span id="_CPPv3N3avs6Result4Code29NetworkSink_SendingDataFailedE"></span><span id="_CPPv2N3avs6Result4Code29NetworkSink_SendingDataFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa29ee6234cf6341b910e9eab6bd79361e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSink_SendingDataFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29NetworkSink_SendingDataFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code29NetworkSink_PackingDataFailedE">
-<span id="_CPPv3N3avs6Result4Code29NetworkSink_PackingDataFailedE"></span><span id="_CPPv2N3avs6Result4Code29NetworkSink_PackingDataFailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faaa95ca0c64ab573cf6da369fbfae762d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSink_PackingDataFailed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code29NetworkSink_PackingDataFailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code33NetworkSink_InvalidStreamDataTypeE">
-<span id="_CPPv3N3avs6Result4Code33NetworkSink_InvalidStreamDataTypeE"></span><span id="_CPPv2N3avs6Result4Code33NetworkSink_InvalidStreamDataTypeE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa95451490616647d110ef16bd3dcaa34e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSink_InvalidStreamDataType</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code33NetworkSink_InvalidStreamDataTypeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code6FailedE">
-<span id="_CPPv3N3avs6Result4Code6FailedE"></span><span id="_CPPv2N3avs6Result4Code6FailedE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70fa19787c2259a0df49bfc4439ae19f0dc2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Failed</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code6FailedE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs6Result4Code14Num_ResultCodeE">
-<span id="_CPPv3N3avs6Result4Code14Num_ResultCodeE"></span><span id="_CPPv2N3avs6Result4Code14Num_ResultCodeE"></span><span class="target" id="structavs_1_1_result_1a3a9d8f73bd1f23dc214d0c82d0b3f70faf0450f718233e1ca335bb5f0e8e7c4ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Num_ResultCode</span></span></span><a class="headerlink" href="#_CPPv4N3avs6Result4Code14Num_ResultCodeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::ClientMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK3avs6ResultcvbEv">
-<span id="_CPPv3NK3avs6ResultcvbEv"></span><span id="_CPPv2NK3avs6ResultcvbEv"></span><span id="avs::Result::castto-b-operatorC"></span><span class="target" id="structavs_1_1_result_1a9137ba829cf45a5f57d263b091844a2e"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK3avs6ResultcvbEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>if(Result) returns true only if m_code == OK i.e. is ZERO. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::NetworkSinkCounters” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::NetworkSinkParams” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::NetworkSinkStream” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::NetworkSourceCounters” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::NetworkSourceParams” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::NetworkSourceStream” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::Result” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
 </div>
 </div>
 
@@ -984,7 +353,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="teleportclient.html" class="btn btn-neutral float-right" title="The TeleportClient library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="protocol.html" class="btn btn-neutral float-left" title="The Teleport VR Protocol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -1,11 +1,21 @@
 Changelist 
 ========= 
+| **Mon 08 Nov** : Refactoring: ResourceManagers is now GeometryCache. Get head pose from UseOpenXR if active.
+| **Sun 07 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Sat 06 Nov** : Updating openssl static libs
+| **Fri 05 Nov** : fixing compile errors in clientrenderer
+| **Fri 05 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Fri 05 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Fri 05 Nov** : Added protocol.rst
 | **Fri 05 Nov** : using snprintf to avoid warning
 | **Fri 05 Nov** : Fixed Android shaders.
 | **Fri 05 Nov** : Adding fix for http port being 0
+| **Fri 05 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Fri 05 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Thu 04 Nov** : Merge pull request #100 from simul/openssl_update
 | **Thu 04 Nov** : Adding OpenSSL version 1.1.1 binaries
 | **Thu 04 Nov** : Add initial pc_client GUI.
+| **Wed 03 Nov** : Add UseOpenXR
 | **Tue 02 Nov** : Adding cpp-http lib
 | **Wed 27 Oct** : Adding libcurl submodue and fixing clientrenderer compile errors
 | **Tue 26 Oct** : Add some cleanup to decoder
@@ -90,13 +100,3 @@ Changelist
 | **Wed 28 Jul** : Merge branch 'master' of github.com:simul/RemotePlay into master
 | **Wed 28 Jul** : Include folder for stb_image.h
 | **Wed 28 Jul** : fixing cras when deleting mips
-| **Tue 27 Jul** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Tue 27 Jul** : Now png-format textures can be sent.
-| **Mon 26 Jul** : Adding stats to pc client and android to display video frames, received, decoded and displayed per sec
-| **Sat 24 Jul** : Adding connection time and decoder packets per second stats to networksource
-| **Tue 20 Jul** : Fixing error causes by null session component when receiving input messages
-| **Tue 20 Jul** : Making video texture size part of client settings
-| **Fri 16 Jul** : Fixing issues with alpha decoidng on android
-| **Tue 13 Jul** : Fixing crash with alpha decoding when using cubemap on pc and android
-| **Fri 09 Jul** : removing unused class member
-| **Fri 09 Jul** : Adding second decoder to android for alpha. Only decodes alpha part after first frame. Fixing a few decoding bugs with releasing outputbuffer
