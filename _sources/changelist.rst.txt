@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Wed 10 Nov** : Refactoring for multiple servers.
+| **Tue 09 Nov** : Virtual keyboard - layout correct.
+| **Tue 09 Nov** : Implementing virtual keyboard for PC.
 | **Mon 08 Nov** : Refactoring: ResourceManagers is now GeometryCache. Get head pose from UseOpenXR if active.
 | **Sun 07 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Sat 06 Nov** : Updating openssl static libs
@@ -97,6 +100,3 @@ Changelist
 | **Sat 31 Jul** : Adding timer to libavstream for getting connection time
 | **Thu 29 Jul** : Fixing frames displayed stat
 | **Wed 28 Jul** : Chaning texture create info to have each mip as vector of char
-| **Wed 28 Jul** : Merge branch 'master' of github.com:simul/RemotePlay into master
-| **Wed 28 Jul** : Include folder for stb_image.h
-| **Wed 28 Jul** : fixing cras when deleting mips
