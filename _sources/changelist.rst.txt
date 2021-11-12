@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 11 Nov** : Add TeleportCore library for shared client/server code.
 | **Wed 10 Nov** : Refactoring for multiple servers.
 | **Tue 09 Nov** : Virtual keyboard - layout correct.
 | **Tue 09 Nov** : Implementing virtual keyboard for PC.
@@ -99,4 +100,3 @@ Changelist
 | **Sun 01 Aug** : lightmap support work.
 | **Sat 31 Jul** : Adding timer to libavstream for getting connection time
 | **Thu 29 Jul** : Fixing frames displayed stat
-| **Wed 28 Jul** : Chaning texture create info to have each mip as vector of char
