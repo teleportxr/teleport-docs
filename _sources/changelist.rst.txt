@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Mon 15 Nov** : Added IconsForkAwesome.h
+| **Mon 15 Nov** : 3d object caching clientside.
 | **Thu 11 Nov** : Add TeleportCore library for shared client/server code.
 | **Wed 10 Nov** : Refactoring for multiple servers.
 | **Tue 09 Nov** : Virtual keyboard - layout correct.
@@ -98,5 +100,3 @@ Changelist
 | **Mon 02 Aug** : Make encoder use ultra low latency tuning preset
 | **Sun 01 Aug** : Merge branch 'master' of github.com:simul/RemotePlay into master
 | **Sun 01 Aug** : lightmap support work.
-| **Sat 31 Jul** : Adding timer to libavstream for getting connection time
-| **Thu 29 Jul** : Fixing frames displayed stat
