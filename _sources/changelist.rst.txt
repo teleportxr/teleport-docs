@@ -1,5 +1,11 @@
 Changelist 
 ========= 
+| **Fri 19 Nov** : Fixing small bug
+| **Fri 19 Nov** : Merge pull request #101 from simul/add_https_support
+| **Fri 19 Nov** : Changing http service to use https
+| **Thu 18 Nov** : Fixed exe icons. Added tree gui for nodes.
+| **Thu 18 Nov** : PC client local hand object rendering from OpenXR controller poses.
+| **Thu 18 Nov** : Add Wand and teleportvr.ico
 | **Tue 16 Nov** : Add Inter-SemiBold.otf
 | **Tue 16 Nov** : Rendering locally-owned objects now.
 | **Mon 15 Nov** : Added IconsForkAwesome.h
@@ -94,9 +100,3 @@ Changelist
 | **Wed 04 Aug** : Report error if shader resource is mismatched in OVRNode SurfaceDef setup.
 | **Wed 04 Aug** : Merge branch 'master' of github.com:simul/RemotePlay into master
 | **Wed 04 Aug** : fix shader inputs
-| **Wed 04 Aug** : Fix miss named colour and alpha kernels in libavstream/src/decoders/dec_nvidia.cpp.
-| **Tue 03 Aug** : Compile fix
-| **Tue 03 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Tue 03 Aug** : Added nomipsampler for unmipped 2d textures. Now each OvrNode has its own PerMeshInstanceData.
-| **Tue 03 Aug** : fixing pc client compile error and video decoder proxy shutdown issue
-| **Mon 02 Aug** : Make encoder use ultra low latency tuning preset
