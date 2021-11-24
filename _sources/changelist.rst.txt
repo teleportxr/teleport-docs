@@ -1,5 +1,9 @@
 Changelist 
 ========= 
+| **Tue 23 Nov** : NodeManager compile fix. VR headset can be disabled with ENABLE_VR=0 in client.ini
+| **Mon 22 Nov** : OpenXR menu button function.
+| **Mon 22 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Mon 22 Nov** : Adding grabbable capability to nodes.
 | **Fri 19 Nov** : Fixing small bug
 | **Fri 19 Nov** : Merge pull request #101 from simul/add_https_support
 | **Fri 19 Nov** : Changing http service to use https
@@ -96,7 +100,3 @@ Changelist
 | **Thu 05 Aug** : Merge pull request #97 from simul/add_async_encoding
 | **Thu 05 Aug** : Merge branch 'master' into add_async_encoding
 | **Thu 05 Aug** : Making encoder asynchronous
-| **Wed 04 Aug** : Fix effect-switching and enable dynamic diffuse ambient.
-| **Wed 04 Aug** : Report error if shader resource is mismatched in OVRNode SurfaceDef setup.
-| **Wed 04 Aug** : Merge branch 'master' of github.com:simul/RemotePlay into master
-| **Wed 04 Aug** : fix shader inputs
