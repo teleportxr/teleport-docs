@@ -1,5 +1,10 @@
 Changelist 
 ========= 
+| **Mon 29 Nov** : reverting back to using xyz
+| **Mon 29 Nov** : Fixing client compile error
+| **Mon 29 Nov** : Fix server compile.
+| **Sun 28 Nov** : Add Input.cpp. Rename InputList to InputId. Correct misnamed binaryEventAmount to numBinaryEvents and so on.
+| **Fri 26 Nov** : ErrorHandling.h to TeleportCore. client LOG macros renamed TELEPORT_CLIENT_LOG etc.
 | **Wed 24 Nov** : relativePose in UpdateNodeStructureCommand. ReceiveUpdateNodeStructureCommand implemented for PC.
 | **Wed 24 Nov** : Reparenting nodes - message from server to client.
 | **Tue 23 Nov** : NodeManager compile fix. VR headset can be disabled with ENABLE_VR=0 in client.ini
@@ -95,8 +100,3 @@ Changelist
 | **Thu 19 Aug** : Initial draco implementation for geometry compression - doesn't work properly for multiple sub-objects in a mesh.
 | **Thu 12 Aug** : fixing incorrect stream numbers
 | **Thu 12 Aug** : Adding separate network stream for video tag data
-| **Mon 09 Aug** : fixing android compile error
-| **Mon 09 Aug** : Adding multiple input and output buffers to nvidia encoder
-| **Fri 06 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Fri 06 Aug** : Fixup PC client shaders for lightmapped objects.
-| **Thu 05 Aug** : Merge pull request #97 from simul/add_async_encoding
