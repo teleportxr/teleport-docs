@@ -1,5 +1,9 @@
 Changelist 
 ========= 
+| **Tue 30 Nov** : Making server use http if cert and key not provided
+| **Mon 29 Nov** : Remove duplicate cpp in cmake
+| **Mon 29 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Mon 29 Nov** : Add Input.cpp in CMakeLists.txt
 | **Mon 29 Nov** : reverting back to using xyz
 | **Mon 29 Nov** : Fixing client compile error
 | **Mon 29 Nov** : Fix server compile.
@@ -96,7 +100,3 @@ Changelist
 | **Wed 25 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Tue 24 Aug** : Added vulkan_wrapper.h/.cpp and removed vulkan test code.
 | **Tue 24 Aug** : Initial commit for a VisualStudio version TeleportVRQuestClient. Android - NDK C++17 - Gradle.
-| **Fri 20 Aug** : Could not get the Draco subobject system to work, therefore, we compress each subMesh individually, this seems to work ok.
-| **Thu 19 Aug** : Initial draco implementation for geometry compression - doesn't work properly for multiple sub-objects in a mesh.
-| **Thu 12 Aug** : fixing incorrect stream numbers
-| **Thu 12 Aug** : Adding separate network stream for video tag data
