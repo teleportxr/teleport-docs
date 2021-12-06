@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Sun 05 Dec** : openxr dependencies.
+| **Sun 05 Dec** : Submodule pointers.
+| **Sun 05 Dec** : Update default CUDA version to 11.5.
 | **Tue 30 Nov** : Making server use http if cert and key not provided
 | **Mon 29 Nov** : Remove duplicate cpp in cmake
 | **Mon 29 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
@@ -97,6 +100,3 @@ Changelist
 | **Fri 27 Aug** : Changed OVRFW::GlGeometry::IndexType from a static to a nonstatic member. This resolves the disappearing video bug. Filled in libavstream.rst documentation.
 | **Thu 26 Aug** : Accessor::DataType now maps directly to uint8_t e.g. SCALAR is 1, VEC3 is 3 etc.
 | **Wed 25 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Wed 25 Aug** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Tue 24 Aug** : Added vulkan_wrapper.h/.cpp and removed vulkan test code.
-| **Tue 24 Aug** : Initial commit for a VisualStudio version TeleportVRQuestClient. Android - NDK C++17 - Gradle.
