@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Wed 08 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Wed 08 Dec** : Renaming REMOTEPLAY_ CMake variables to TELEPORT_ - check your builds!
 | **Wed 08 Dec** : Removing lib folder from thridparty
 | **Wed 08 Dec** : Adding openxr folder to thirdparty for prebuilt lib and include
 | **Wed 08 Dec** : Update docs. teleport-unity as a submodule for docs builds.
@@ -98,5 +100,3 @@ Changelist
 | **Mon 06 Sep** : Add draco manually to .gitmodules.
 | **Mon 06 Sep** : Update client renderer render function signature
 | **Thu 02 Sep** : Merge branch 'master' of github.com:simul/RemotePlay into master
-| **Thu 02 Sep** : Update Visual Studio project and build scripts for debugging C++ on Android.
-| **Thu 02 Sep** : Multipler lightmaps supported now, each node has its own lightmap uid. Resources are stored with their names in the filename for clarity.
