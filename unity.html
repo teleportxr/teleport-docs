@@ -89,10 +89,18 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teleportclient.html">The TeleportClient library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="clientrenderer.html">Client Renderer Library</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Unity Plugin</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unity Plugin</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Usage</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -162,20 +170,47 @@
             
   <div class="section" id="unity-plugin">
 <h1>Unity Plugin<a class="headerlink" href="#unity-plugin" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Get the Teleport Unity plugin from its Git repo at <a class="reference external" href="https://github.com/simul/teleport-unity">git&#64;github.com:simul/teleport-unity.git</a>.
+Email <a class="reference external" href="mailto:contact&#37;&#52;&#48;teleportvr&#46;io">contact<span>&#64;</span>teleportvr<span>&#46;</span>io</a> to get free access to the repo.</p>
+<p>You can install it as a Git submodule or just copy the code directly, it should go in a subfolder of your Unity project’s Assets folder, e.g. Assets/Teleport.</p>
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>If you’ve installed the Teleport Unity SDK as a prebuilt package, you’re ready to go. But if you’re building the Teleport C++ Server SDK from source, you’ll need to follow the instructions in the Server section of this documentation.
+You will want to use CMake to set:</p>
+<ul class="simple">
+<li><p>TELEPORT_SERVER to true</p></li>
+<li><p>TELEPORT_UNITY to true</p></li>
+<li><p>TELEPORT_UNITY_EDITOR_DIR to the folder where Unity.exe resides.</p></li>
+<li><p>TELEPORT_UNITY_PLUGINS_DIR to the folder Plugins/x86_64 in the Teleport Unity assets folder, so that the C++ SDK will build TeleportServer.dll to that directory.</p></li>
+<li><p>TELEPORT_UNITY_PROJECT_DIR to the root folder of your Unity project.</p></li>
+</ul>
+<p>Then build the Teleport_Server_Unity.sln solution. You can run Unity as normal, or debug the C++ code by setting TeleportServer as the active C++ project in the solution, and launching it for debugging.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>The global settings for the plugin are found in the <em>Edit</em> menu, under <em>Project Settings…</em>. In the Project Settings panel, select <em>Teleport VR</em>.</p>
+<a class="reference internal image-reference" href="_images/ProjectSettings.png"><img alt="Alternative text" src="_images/ProjectSettings.png" style="width: 400px;" /></a>
+</div>
+<div class="section" id="id1">
+<h2>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>You can create a GameObject in Unity that has the Monitor component. If not, one will be created when you run the project.</p>
+<p>When running, the server awaits connections via the Teleport protocol. When a client connects, the server creates a player instance.</p>
 <dl class="csharp">
-<dt class="sig sig-object sphinxsharp" id="type-teleport.StreamedNode">
-<span class="pre">public</span>  <span class="pre">class</span> <span class="sig-name descname"><span class="pre">teleport.StreamedNode</span></span><a class="headerlink" href="#type-teleport.StreamedNode" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object sphinxsharp" id="type-teleport.Monitor">
+<span class="pre">public</span>  <span class="pre">class</span> <span class="sig-name descname"><span class="pre">teleport.Monitor</span></span><a class="headerlink" href="#type-teleport.Monitor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="cpp class">
-<dt class="sig sig-object cpp">
-<span class="target" id="classteleport_1_1_streamed_node"></span><span class="sig-name descname"><span class="pre">teleport.StreamedNode</span></span></dt>
-<dd><p>Class for storing state and cached components of a node that is streamed in a Teleport_Streamable’s hierarchy. </p>
-</dd></dl>
+<dl class="csharp">
+<dt class="sig sig-object sphinxsharp" id="type-Example">
+<span class="pre">public</span>  <span class="pre">class</span> <span class="sig-name descname"><span class="pre">Example</span></span><a class="headerlink" href="#type-Example" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::PipelineNode” in doxygen xml output for project “TeleportUnity” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen_unity/xml</p>
 </div>
 </div>
 
