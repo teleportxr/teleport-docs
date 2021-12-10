@@ -1,5 +1,20 @@
 Changelist 
 ========= 
+| **Fri 10 Dec** : Fixinf Android compile errors
+| **Thu 09 Dec** : Node reparenting orientation is now used correctly. Fixed geometry streaming Payloadtype bug.
+| **Thu 09 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Thu 09 Dec** : RemotePlayServer.dll renamed to TeleportServer.dll
+| **Thu 09 Dec** : Chaning curl location to be in libavstream thirdparty and fixing server compile error
+| **Thu 09 Dec** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Thu 09 Dec** : Builds and Runs on Win x64.
+| **Thu 09 Dec** : Builds, compiles and runs on Android Phone.
+| **Thu 09 Dec** : Initial commit of TeleportVRQuestClientAGDE with PlatformBuild .vcxproj files. WIP
+| **Thu 09 Dec** : comment out test code
+| **Thu 09 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Thu 09 Dec** : Using guids for resources instead of storing temporary uids in the files. TELEPORT_CLIENT_LOG etc - better naming convention for log macros.
+| **Thu 09 Dec** : Merge pull request #102 from simul/libcurl_changes
+| **Thu 09 Dec** : Adding http util functionality to client
+| **Wed 08 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Wed 08 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Wed 08 Dec** : Renaming REMOTEPLAY_ CMake variables to TELEPORT_ - check your builds!
 | **Wed 08 Dec** : Removing lib folder from thridparty
@@ -9,6 +24,9 @@ Changelist
 | **Sun 05 Dec** : openxr dependencies.
 | **Sun 05 Dec** : Submodule pointers.
 | **Sun 05 Dec** : Update default CUDA version to 11.5.
+| **Tue 30 Nov** : Merge commit '3c50cf358a3d341aeb8c07764ebc44af3d96ce31'
+| **Tue 30 Nov** : On (no branch): AAA
+| **Tue 30 Nov** : index on (no branch): a5b82a7e Remove duplicate cpp in cmake
 | **Tue 30 Nov** : Making server use http if cert and key not provided
 | **Mon 29 Nov** : Remove duplicate cpp in cmake
 | **Mon 29 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
@@ -82,21 +100,3 @@ Changelist
 | **Fri 17 Sep** : Fixing android and windows timer discrepancy. Both now return in milliseconds
 | **Mon 13 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Mon 13 Sep** : Readme updates, doc build fixes.
-| **Mon 13 Sep** : adding stat for counting submitted encoder frames per sec
-| **Fri 10 Sep** : Record number of encoded video frames per sec and print in Unity
-| **Thu 09 Sep** : Only stream global illumination textures required by currently streamed nodes.
-| **Thu 09 Sep** : Renamed avs::Node to avs::PipelineNode to resolve confusion in naming. Texture overlay for debugging. Rearranged buttons in Quest.
-| **Wed 08 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Wed 08 Sep** : Added OpenVR. Rename SCServer to teleport namespace.
-| **Tue 07 Sep** : Geometry still waiting for materials now renders
-| **Tue 07 Sep** : Android Client: move mScene.Frame() to after sessionClient.Frame(), so that remote updates of origin transform are applied to both hands and camera in the same frame.
-| **Mon 06 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Mon 06 Sep** : Now cachePath is set from engine, shared across any instances.
-| **Mon 06 Sep** : Merge branch 'master' of github.com:simul/RemotePlay into master
-| **Mon 06 Sep** : Added missing files for client/VisualStudio/TeleportVRQuestClient/TeleportVRQuestClient
-| **Mon 06 Sep** : Added manually copied draco_features.h to Android project.
-| **Mon 06 Sep** : Re-added draco as first time didn't work correctly.
-| **Mon 06 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Mon 06 Sep** : Add draco manually to .gitmodules.
-| **Mon 06 Sep** : Update client renderer render function signature
-| **Thu 02 Sep** : Merge branch 'master' of github.com:simul/RemotePlay into master
