@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Sun 12 Dec** : Asynchronous enet_address_set_host
+| **Sat 11 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Sat 11 Dec** : mesh guids are 48 chards not 32 now.
 | **Fri 10 Dec** : Fixinf Android compile errors
 | **Thu 09 Dec** : Node reparenting orientation is now used correctly. Fixed geometry streaming Payloadtype bug.
 | **Thu 09 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
@@ -97,6 +100,3 @@ Changelist
 | **Fri 17 Sep** : Fix some controller state bugs. Fix bug in node hierarchies where if child nodes arrive first their positions will be wrong. Better PC geometry OSD information.
 | **Fri 17 Sep** : Merge branch 'master' of github.com:simul/RemotePlay into master
 | **Fri 17 Sep** : Added TeleportVRQuestClientLib.vcxproj and moved the C++ files over and modified them. Compiling and debugging with IntelliSense on Samsung Galaxy S8 with Vulkan. Removed externalNativeBuild and CMakeLists.txt from Gradle and used Visual Studio's reference to link in the built .so. Update TeleportVRQuestClient.androidproj.user AdditionalSymbolSearchPaths. Added some basic errors messaging to vulkan_wrapper.h. Added android_native_app_glue_build.c to compile android_native_app_glue directly into out main library binary.
-| **Fri 17 Sep** : Fixing android and windows timer discrepancy. Both now return in milliseconds
-| **Mon 13 Sep** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Mon 13 Sep** : Readme updates, doc build fixes.
