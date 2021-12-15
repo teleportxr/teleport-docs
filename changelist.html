@@ -163,6 +163,10 @@
   <div class="section" id="changelist">
 <h1>Changelist<a class="headerlink" href="#changelist" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
+<div class="line"><strong>Tue 14 Dec</strong> : Separate command to set body and hands - not a node property.</div>
+<div class="line"><strong>Tue 14 Dec</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
+<div class="line"><strong>Tue 14 Dec</strong> : ControllerState from OpenXR where appropriate. Don’t render geometry from disconnected servers by default: override with RENDER_LOCAL_OFFLINE=1 in client.ini.</div>
+<div class="line"><strong>Tue 14 Dec</strong> : Fix discovery service connection issue for remote clients</div>
 <div class="line"><strong>Sun 12 Dec</strong> : Asynchronous enet_address_set_host</div>
 <div class="line"><strong>Sat 11 Dec</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
 <div class="line"><strong>Sat 11 Dec</strong> : mesh guids are 48 chards not 32 now.</div>
@@ -259,10 +263,6 @@
 <div class="line"><strong>Wed 22 Sep</strong> : Fix d3d12 constant buffer exceeding max decsriptors</div>
 <div class="line"><strong>Wed 22 Sep</strong> : Add cmake option to allowusing D3D12 or 11. 12 has issues currently and 11 is default</div>
 <div class="line"><strong>Mon 20 Sep</strong> : Add doc rst files.</div>
-<div class="line"><strong>Fri 17 Sep</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
-<div class="line"><strong>Fri 17 Sep</strong> : Fix some controller state bugs. Fix bug in node hierarchies where if child nodes arrive first their positions will be wrong. Better PC geometry OSD information.</div>
-<div class="line"><strong>Fri 17 Sep</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay into master</div>
-<div class="line"><strong>Fri 17 Sep</strong> : Added TeleportVRQuestClientLib.vcxproj and moved the C++ files over and modified them. Compiling and debugging with IntelliSense on Samsung Galaxy S8 with Vulkan. Removed externalNativeBuild and CMakeLists.txt from Gradle and used Visual Studio’s reference to link in the built .so. Update TeleportVRQuestClient.androidproj.user AdditionalSymbolSearchPaths. Added some basic errors messaging to vulkan_wrapper.h. Added android_native_app_glue_build.c to compile android_native_app_glue directly into out main library binary.</div>
 </div>
 </div>
 
