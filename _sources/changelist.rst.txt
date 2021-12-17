@@ -1,5 +1,10 @@
 Changelist 
 ========= 
+| **Fri 17 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Fri 17 Dec** : No more text pointers in MissingResource. Click in node tree to select and see more info.
+| **Thu 16 Dec** : Merge pull request #103 from simul/spawn_callback
+| **Thu 16 Dec** : maing small change to cloent messaging
+| **Wed 15 Dec** : Fixed uid/guid cross referencing in teleport cache.
 | **Tue 14 Dec** : Separate command to set body and hands - not a node property.
 | **Tue 14 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Tue 14 Dec** : ControllerState from OpenXR where appropriate. Don't render geometry from disconnected servers by default: override with RENDER_LOCAL_OFFLINE=1 in client.ini.
@@ -95,8 +100,3 @@ Changelist
 | **Mon 11 Oct** : Changing to use same command list for creating buffers and redering commands on d3d12
 | **Fri 08 Oct** : Node priority system added. Quest 1 won't stream meshes on nodes priority<0.
 | **Fri 08 Oct** : Add client UI for Android
-| **Sun 26 Sep** : Geometry now renders with D3D12
-| **Thu 23 Sep** : Add specific shader vertex for animation to prevent pipeline state creation failure on d3d12 when mesh doesn't have joints or weights
-| **Wed 22 Sep** : Fix d3d12 constant buffer exceeding max decsriptors
-| **Wed 22 Sep** : Add cmake option to allowusing D3D12 or 11. 12 has issues currently and 11 is default
-| **Mon 20 Sep** : Add doc rst files.
