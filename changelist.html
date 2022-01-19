@@ -89,10 +89,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
-<li class="toctree-l1"><a class="reference internal" href="teleportclient.html">The TeleportClient library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clientrenderer.html">Client Renderer Library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unity.html">Unity Plugin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unity.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -163,6 +161,40 @@
   <div class="section" id="changelist">
 <h1>Changelist<a class="headerlink" href="#changelist" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
+<div class="line"><strong>Tue 18 Jan</strong> : fixing android compile errors</div>
+<div class="line"><strong>Tue 18 Jan</strong> : Changing audio to stream for multiple clients</div>
+<div class="line"><strong>Mon 17 Jan</strong> : fixig compile errors</div>
+<div class="line"><strong>Mon 17 Jan</strong> : Merge pull request #106 from simul/multi_client</div>
+<div class="line"><strong>Mon 17 Jan</strong> : Merge branch ‘master’ into multi_client</div>
+<div class="line"><strong>Mon 17 Jan</strong> : Adding support for multiple clients</div>
+<div class="line"><strong>Thu 13 Jan</strong> : Replace namespace “scr” with clientrender.</div>
+<div class="line"><strong>Thu 13 Jan</strong> : In ClientRender, cpp and h files are moved to a flat structure.</div>
+<div class="line"><strong>Wed 12 Jan</strong> : Added backgroundMode to ClientSettings and SetupCommand.</div>
+<div class="line"><strong>Wed 12 Jan</strong> : Fixed Quest version.</div>
+<div class="line"><strong>Tue 11 Jan</strong> : Relative paths and missing files for Android Visual Studio code.</div>
+<div class="line"><strong>Tue 11 Jan</strong> : Android version builds again.</div>
+<div class="line"><strong>Mon 10 Jan</strong> : Merge pull request #105 from simul/ipcheck</div>
+<div class="line"><strong>Mon 10 Jan</strong> : Checking client ip isn’t already trying to connect</div>
+<div class="line"><strong>Sat 08 Jan</strong> : Documentation work.</div>
+<div class="line"><strong>Sat 08 Jan</strong> : CasterSettings renamed to ServerSettings. Now includes backgroundMode and backgroundColour.</div>
+<div class="line"><strong>Thu 06 Jan</strong> : Merging to master</div>
+<div class="line"><strong>Thu 06 Jan</strong> : Moving client id generation to server</div>
+<div class="line"><strong>Thu 06 Jan</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
+<div class="line"><strong>Thu 06 Jan</strong> : Node “subtype” behaviour improved - sent after SetupCommand.</div>
+<div class="line"><strong>Thu 06 Jan</strong> : Moved SessionClient and Log from ClientRender to TeleportClient. Body parts are kept as uid’s instead of shared_ptr’s. Protocol documentation.</div>
+<div class="line"><strong>Sun 02 Jan</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Sun 02 Jan</strong> : Update protocol description.</div>
+<div class="line"><strong>Sun 02 Jan</strong> : Update README.md</div>
+<div class="line"><strong>Sun 02 Jan</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Sun 02 Jan</strong> : SimulCasterRenderer moved to TeleportRender.</div>
+<div class="line"><strong>Sat 01 Jan</strong> : Update README.md</div>
+<div class="line"><strong>Thu 23 Dec</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
+<div class="line"><strong>Thu 23 Dec</strong> : For nodes, store both local and global transform. With stationary objects, global will be used clientside by default. Only need local for animated/moving objects.</div>
+<div class="line"><strong>Mon 20 Dec</strong> : Updating MD openssl libs</div>
+<div class="line"><strong>Mon 20 Dec</strong> : Separating MD and MT openssl libs</div>
+<div class="line"><strong>Mon 20 Dec</strong> : Adding ssl support to curl</div>
+<div class="line"><strong>Fri 17 Dec</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay into master</div>
+<div class="line"><strong>Fri 17 Dec</strong> : Updated .vcxproj.</div>
 <div class="line"><strong>Fri 17 Dec</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
 <div class="line"><strong>Fri 17 Dec</strong> : No more text pointers in MissingResource. Click in node tree to select and see more info.</div>
 <div class="line"><strong>Thu 16 Dec</strong> : Merge pull request #103 from simul/spawn_callback</div>
@@ -229,40 +261,6 @@
 <div class="line"><strong>Mon 15 Nov</strong> : 3d object caching clientside.</div>
 <div class="line"><strong>Thu 11 Nov</strong> : Add TeleportCore library for shared client/server code.</div>
 <div class="line"><strong>Wed 10 Nov</strong> : Refactoring for multiple servers.</div>
-<div class="line"><strong>Tue 09 Nov</strong> : Virtual keyboard - layout correct.</div>
-<div class="line"><strong>Tue 09 Nov</strong> : Implementing virtual keyboard for PC.</div>
-<div class="line"><strong>Mon 08 Nov</strong> : Refactoring: ResourceManagers is now GeometryCache. Get head pose from UseOpenXR if active.</div>
-<div class="line"><strong>Sun 07 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
-<div class="line"><strong>Sat 06 Nov</strong> : Updating openssl static libs</div>
-<div class="line"><strong>Fri 05 Nov</strong> : fixing compile errors in clientrenderer</div>
-<div class="line"><strong>Fri 05 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
-<div class="line"><strong>Fri 05 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
-<div class="line"><strong>Fri 05 Nov</strong> : Added protocol.rst</div>
-<div class="line"><strong>Fri 05 Nov</strong> : using snprintf to avoid warning</div>
-<div class="line"><strong>Fri 05 Nov</strong> : Fixed Android shaders.</div>
-<div class="line"><strong>Fri 05 Nov</strong> : Adding fix for http port being 0</div>
-<div class="line"><strong>Fri 05 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
-<div class="line"><strong>Fri 05 Nov</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
-<div class="line"><strong>Thu 04 Nov</strong> : Merge pull request #100 from simul/openssl_update</div>
-<div class="line"><strong>Thu 04 Nov</strong> : Adding OpenSSL version 1.1.1 binaries</div>
-<div class="line"><strong>Thu 04 Nov</strong> : Add initial pc_client GUI.</div>
-<div class="line"><strong>Wed 03 Nov</strong> : Add UseOpenXR</div>
-<div class="line"><strong>Tue 02 Nov</strong> : Adding cpp-http lib</div>
-<div class="line"><strong>Wed 27 Oct</strong> : Adding libcurl submodue and fixing clientrenderer compile errors</div>
-<div class="line"><strong>Tue 26 Oct</strong> : Add some cleanup to decoder</div>
-<div class="line"><strong>Fri 22 Oct</strong> : fixing CUDT spamming on server</div>
-<div class="line"><strong>Thu 21 Oct</strong> : Making changes to client to stop CUDT exception spamming</div>
-<div class="line"><strong>Wed 20 Oct</strong> : fix compile error</div>
-<div class="line"><strong>Tue 19 Oct</strong> : Fix d3d12 decoder incorrect frame size</div>
-<div class="line"><strong>Thu 14 Oct</strong> : Merge pull request #99 from simul/packet_receive_change</div>
-<div class="line"><strong>Thu 14 Oct</strong> : making async process packets configurable</div>
-<div class="line"><strong>Thu 14 Oct</strong> : Adding ringbuffer back to networksource</div>
-<div class="line"><strong>Wed 13 Oct</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay</div>
-<div class="line"><strong>Wed 13 Oct</strong> : Android UI functional. Note: format of client.ini changed for Android e.g. SERVER_IP=test.teleportvr.io:10600,drwho.teleportvr.io:10800 comma-separated list of url:port combinations.</div>
-<div class="line"><strong>Mon 11 Oct</strong> : Merge pull request #98 from simul/fix_memory_leak</div>
-<div class="line"><strong>Mon 11 Oct</strong> : Changing to use same command list for creating buffers and redering commands on d3d12</div>
-<div class="line"><strong>Fri 08 Oct</strong> : Node priority system added. Quest 1 won’t stream meshes on nodes priority&lt;0.</div>
-<div class="line"><strong>Fri 08 Oct</strong> : Add client UI for Android</div>
 </div>
 </div>
 
@@ -276,7 +274,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Simul Software Ltd.
+        &#169; Copyright 2018-2022, Simul Software Ltd.
 
     </p>
   </div>

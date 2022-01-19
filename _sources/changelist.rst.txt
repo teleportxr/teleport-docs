@@ -1,5 +1,39 @@
 Changelist 
 ========= 
+| **Tue 18 Jan** : fixing android compile errors
+| **Tue 18 Jan** : Changing audio to stream for multiple clients
+| **Mon 17 Jan** : fixig compile errors
+| **Mon 17 Jan** : Merge pull request #106 from simul/multi_client
+| **Mon 17 Jan** : Merge branch 'master' into multi_client
+| **Mon 17 Jan** : Adding support for multiple clients
+| **Thu 13 Jan** : Replace namespace "scr" with clientrender.
+| **Thu 13 Jan** : In ClientRender, cpp and h files are moved to a flat structure.
+| **Wed 12 Jan** : Added backgroundMode to ClientSettings and SetupCommand.
+| **Wed 12 Jan** : Fixed Quest version.
+| **Tue 11 Jan** : Relative paths and missing files for Android Visual Studio code.
+| **Tue 11 Jan** : Android version builds again.
+| **Mon 10 Jan** : Merge pull request #105 from simul/ipcheck
+| **Mon 10 Jan** : Checking client ip isn't already trying to connect
+| **Sat 08 Jan** : Documentation work.
+| **Sat 08 Jan** : CasterSettings renamed to ServerSettings. Now includes backgroundMode and backgroundColour.
+| **Thu 06 Jan** : Merging to master
+| **Thu 06 Jan** : Moving client id generation to server
+| **Thu 06 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Thu 06 Jan** : Node "subtype" behaviour improved - sent after SetupCommand.
+| **Thu 06 Jan** : Moved SessionClient and Log from ClientRender to TeleportClient. Body parts are kept as uid's instead of shared_ptr's. Protocol documentation.
+| **Sun 02 Jan** : Merge branch 'master' of github.com:simul/Teleport
+| **Sun 02 Jan** : Update protocol description.
+| **Sun 02 Jan** : Update README.md
+| **Sun 02 Jan** : Merge branch 'master' of github.com:simul/Teleport
+| **Sun 02 Jan** : SimulCasterRenderer moved to TeleportRender.
+| **Sat 01 Jan** : Update README.md
+| **Thu 23 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Thu 23 Dec** : For nodes, store both local and global transform. With stationary objects, global will be used clientside by default. Only need local for animated/moving objects.
+| **Mon 20 Dec** : Updating MD openssl libs
+| **Mon 20 Dec** : Separating MD and MT openssl libs
+| **Mon 20 Dec** : Adding ssl support to curl
+| **Fri 17 Dec** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Fri 17 Dec** : Updated .vcxproj.
 | **Fri 17 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Fri 17 Dec** : No more text pointers in MissingResource. Click in node tree to select and see more info.
 | **Thu 16 Dec** : Merge pull request #103 from simul/spawn_callback
@@ -66,37 +100,3 @@ Changelist
 | **Mon 15 Nov** : 3d object caching clientside.
 | **Thu 11 Nov** : Add TeleportCore library for shared client/server code.
 | **Wed 10 Nov** : Refactoring for multiple servers.
-| **Tue 09 Nov** : Virtual keyboard - layout correct.
-| **Tue 09 Nov** : Implementing virtual keyboard for PC.
-| **Mon 08 Nov** : Refactoring: ResourceManagers is now GeometryCache. Get head pose from UseOpenXR if active.
-| **Sun 07 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Sat 06 Nov** : Updating openssl static libs
-| **Fri 05 Nov** : fixing compile errors in clientrenderer
-| **Fri 05 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Fri 05 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Fri 05 Nov** : Added protocol.rst
-| **Fri 05 Nov** : using snprintf to avoid warning
-| **Fri 05 Nov** : Fixed Android shaders.
-| **Fri 05 Nov** : Adding fix for http port being 0
-| **Fri 05 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Fri 05 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Thu 04 Nov** : Merge pull request #100 from simul/openssl_update
-| **Thu 04 Nov** : Adding OpenSSL version 1.1.1 binaries
-| **Thu 04 Nov** : Add initial pc_client GUI.
-| **Wed 03 Nov** : Add UseOpenXR
-| **Tue 02 Nov** : Adding cpp-http lib
-| **Wed 27 Oct** : Adding libcurl submodue and fixing clientrenderer compile errors
-| **Tue 26 Oct** : Add some cleanup to decoder
-| **Fri 22 Oct** : fixing CUDT spamming on server
-| **Thu 21 Oct** : Making changes to client to stop CUDT exception spamming
-| **Wed 20 Oct** : fix compile error
-| **Tue 19 Oct** : Fix d3d12 decoder incorrect frame size
-| **Thu 14 Oct** : Merge pull request #99 from simul/packet_receive_change
-| **Thu 14 Oct** : making async process packets configurable
-| **Thu 14 Oct** : Adding ringbuffer back to networksource
-| **Wed 13 Oct** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Wed 13 Oct** : Android UI functional. Note: format of client.ini changed for Android e.g. SERVER_IP=test.teleportvr.io:10600,drwho.teleportvr.io:10800 comma-separated list of url:port combinations.
-| **Mon 11 Oct** : Merge pull request #98 from simul/fix_memory_leak
-| **Mon 11 Oct** : Changing to use same command list for creating buffers and redering commands on d3d12
-| **Fri 08 Oct** : Node priority system added. Quest 1 won't stream meshes on nodes priority<0.
-| **Fri 08 Oct** : Add client UI for Android
