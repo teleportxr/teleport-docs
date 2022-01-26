@@ -1,5 +1,10 @@
 Changelist 
 ========= 
+| **Wed 26 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
+| **Wed 26 Jan** : Refactoring for shared code. libavstream docs.
+| **Wed 26 Jan** : Changing TeleportAudio to use TeleportCore error defines
+| **Mon 24 Jan** : changing SimulCasterAudio to TeleportAudio and changing refs to SimulCasterServer to TeleportServer
+| **Sat 22 Jan** : Adding ability to check video encoder capabilities before initialization of a video encoder.
 | **Wed 19 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Tue 18 Jan** : fixing android compile errors
 | **Tue 18 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
@@ -95,8 +100,3 @@ Changelist
 | **Fri 19 Nov** : Fixing small bug
 | **Fri 19 Nov** : Merge pull request #101 from simul/add_https_support
 | **Fri 19 Nov** : Changing http service to use https
-| **Thu 18 Nov** : Fixed exe icons. Added tree gui for nodes.
-| **Thu 18 Nov** : PC client local hand object rendering from OpenXR controller poses.
-| **Thu 18 Nov** : Add Wand and teleportvr.ico
-| **Tue 16 Nov** : Add Inter-SemiBold.otf
-| **Tue 16 Nov** : Rendering locally-owned objects now.
