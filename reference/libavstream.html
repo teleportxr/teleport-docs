@@ -186,19 +186,50 @@
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7ContextE">
-<span id="_CPPv3N3avs7ContextE"></span><span id="_CPPv2N3avs7ContextE"></span><span id="avs::Context"></span><span class="target" id="classavs_1_1_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#_CPPv4N3avs7ContextE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs7ContextE"></span><span id="_CPPv2N3avs7ContextE"></span><span id="avs::Context"></span><span class="target" id="classavs_1_1_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#_CPPv4N3avs7ContextE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Global library context.</p>
 <p><a class="reference internal" href="teleportclient.html#classavs_1_1_context"><span class="std std-ref">Context</span></a> object managing application-global state. <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A single instance of this class must be instantiated by the application before accessing any other library functionality. </p>
 </div>
 </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv">
+<span id="_CPPv3N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv"></span><span id="_CPPv2N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv"></span><span id="avs::Context::setMessageHandler__MessageHandlerFunc.voidP"></span><span class="target" id="classavs_1_1_context_1a7184df4a87fde39b27916935c966f594"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setMessageHandler</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">MessageHandlerFunc</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handler</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">userData</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set custom message handler. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default (library provided) message handler prints to standard output. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> – Message handler function; if nullptr, default message handler is restored. </p></li>
+<li><p><strong>userData</strong> – Pointer to user supplied data passed to message handler function (never dereferenced, may be nullptr). </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="field-list simple">
-<dt class="field-odd">members</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context8instanceEv">
+<span id="_CPPv3N3avs7Context8instanceEv"></span><span id="_CPPv2N3avs7Context8instanceEv"></span><span id="avs::Context::instance"></span><span class="target" id="classavs_1_1_context_1ab80b3288a5b3ebefd4b5a150467aa1e9"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs7ContextE" title="avs::Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">instance</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Context8instanceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get instance of the global context object. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context7PrivateE">
+<span id="_CPPv3N3avs7Context7PrivateE"></span><span id="_CPPv2N3avs7Context7PrivateE"></span><span id="avs::Context::Private"></span><span class="target" id="structavs_1_1_context_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><a class="headerlink" href="#_CPPv4N3avs7Context7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs8PipelineE">
 <span id="_CPPv3N3avs8PipelineE"></span><span id="_CPPv2N3avs8PipelineE"></span><span id="avs::Pipeline"></span><span class="target" id="classavs_1_1_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Pipeline</span></span></span><a class="headerlink" href="#_CPPv4N3avs8PipelineE" title="Permalink to this definition">¶</a><br /></dt>
@@ -300,7 +331,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioDecoderE">
 <span id="_CPPv3N3avs12AudioDecoderE"></span><span id="_CPPv2N3avs12AudioDecoderE"></span><span id="avs::AudioDecoder"></span><span class="target" id="classavs_1_1_audio_decoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioDecoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs12AudioDecoderE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Audio decoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
-<p>Reads packets of encoded geometry and outputs decoded data to a Audio Target. </p>
+<p>Reads packets of encoded audio and outputs decoded data to an Audio Target. </p>
 </dd></dl>
 
 <dl class="cpp class">
@@ -399,9 +430,98 @@
 
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSinkE">
-<span id="_CPPv3N3avs11NetworkSinkE"></span><span id="_CPPv2N3avs11NetworkSinkE"></span><span id="avs::NetworkSink"></span><span class="target" id="classavs_1_1_network_sink"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSink</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs11NetworkSinkE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Network sink node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">1/0]</span></code></p>
-<p>Sends video stream to a remote UDP endpoint. </p>
+<span id="_CPPv3N3avs11NetworkSinkE"></span><span id="_CPPv2N3avs11NetworkSinkE"></span><span id="avs::NetworkSink"></span><span class="target" id="classavs_1_1_network_sink"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSink</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs11NetworkSinkE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network sink node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">0/1]</span></code></p>
+<p>Reads data for each stream from a corresponding <a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">avs::Queue</span></a> input node , assembles the data into payloads of network packets and sends the data to the client.</p>
+<p>If data throttling is enabled for a stream, the seding of data may be spread over time to reduce network congestion. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSink9configureERRNSt6vectorI17NetworkSinkStreamEEPKc8uint16_tPKc8uint16_tRK17NetworkSinkParams">
+<span id="_CPPv3N3avs11NetworkSink9configureERRNSt6vectorI17NetworkSinkStreamEEPKc8uint16_tPKc8uint16_tRK17NetworkSinkParams"></span><span id="_CPPv2N3avs11NetworkSink9configureERRNSt6vectorI17NetworkSinkStreamEEPKc8uint16_tPKc8uint16_tRK17NetworkSinkParams"></span><span id="avs::NetworkSink::configure__std::vector:NetworkSinkStream:RR.cCP.uint16_t.cCP.uint16_t.NetworkSinkParamsCR"></span><span class="target" id="classavs_1_1_network_sink_1a616fda3fe7cf6ef476f1141bb1f348bf"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="#_CPPv4N3avs17NetworkSinkStreamE" title="avs::NetworkSinkStream"><span class="n"><span class="pre">NetworkSinkStream</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">streams</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">local_bind_addr</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">localPort</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">remote</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">remotePort</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs17NetworkSinkParamsE" title="avs::NetworkSinkParams"><span class="n"><span class="pre">NetworkSinkParams</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">params</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">}</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs11NetworkSink9configureERRNSt6vectorI17NetworkSinkStreamEEPKc8uint16_tPKc8uint16_tRK17NetworkSinkParams" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Configure network sink and bind to local UDP endpoint. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>streams</strong> – Collection of configurations for each stream. </p></li>
+<li><p><strong>localPort</strong> – Local UDP endpoint port number. </p></li>
+<li><p><strong>remote</strong> – Remote UDP endpoint name or IP address. </p></li>
+<li><p><strong>remotePort</strong> – Remote UDP endpoint port number. </p></li>
+<li><p><strong>params</strong> – Additional network sink parameters. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::Node_InvalidConfiguration if numInputs, localPort, or remotePort is zero, or if remote is either nullptr or empty string.</p></li>
+<li><p>Result::Network_BindFailed if failed to bind to local UDP socket. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSink11deconfigureEv">
+<span id="_CPPv3N3avs11NetworkSink11deconfigureEv"></span><span id="_CPPv2N3avs11NetworkSink11deconfigureEv"></span><span id="avs::NetworkSink::deconfigure"></span><span class="target" id="classavs_1_1_network_sink_1a34790c2a8a77417257f66d25d332f6c2"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deconfigure</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs11NetworkSink11deconfigureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deconfigure network sink and release all associated resources. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Always returns Result::OK. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSink7processE8uint64_t8uint64_t">
+<span id="_CPPv3N3avs11NetworkSink7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs11NetworkSink7processE8uint64_t8uint64_t"></span><span id="avs::NetworkSink::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_network_sink_1a7de73bd14ace312e4e05d6f5edb2b14d"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs11NetworkSink7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Send data for all streams to remote UDP endpoint. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::Node_NotConfigured if network sink has not been configured.</p></li>
+<li><p>Result::Network_ResolveFailed if failed to resolve the name of remote UDP endpoint.</p></li>
+<li><p>Result::Network_SendFailed on general network send failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs11NetworkSink14getDisplayNameEv">
+<span id="_CPPv3NK3avs11NetworkSink14getDisplayNameEv"></span><span id="_CPPv2NK3avs11NetworkSink14getDisplayNameEv"></span><span id="avs::NetworkSink::getDisplayNameC"></span><span class="target" id="classavs_1_1_network_sink_1a86e0ebfc1bf6a929a7ddc25edc8df92e"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getDisplayName</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs11NetworkSink14getDisplayNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get node display name (for reporting &amp; profiling). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs11NetworkSink11getCountersEv">
+<span id="_CPPv3NK3avs11NetworkSink11getCountersEv"></span><span id="_CPPv2NK3avs11NetworkSink11getCountersEv"></span><span id="avs::NetworkSink::getCountersC"></span><span class="target" id="classavs_1_1_network_sink_1aef70e6dbb92f44056800f2f382a00ed9"></span><a class="reference internal" href="#_CPPv4N3avs19NetworkSinkCountersE" title="avs::NetworkSinkCounters"><span class="n"><span class="pre">NetworkSinkCounters</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getCounters</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK3avs11NetworkSink11getCountersEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get current counter values. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSink14setDebugStreamE8uint32_t">
+<span id="_CPPv3N3avs11NetworkSink14setDebugStreamE8uint32_t"></span><span id="_CPPv2N3avs11NetworkSink14setDebugStreamE8uint32_t"></span><span id="avs::NetworkSink::setDebugStream__uint32_t"></span><span class="target" id="classavs_1_1_network_sink_1a3da543b18e29a1aac03b42bc469f8cf9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setDebugStream</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs11NetworkSink14setDebugStreamE8uint32_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Debug a particular stream. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSink7PrivateE">
+<span id="_CPPv3N3avs11NetworkSink7PrivateE"></span><span id="_CPPv2N3avs11NetworkSink7PrivateE"></span><span id="avs::NetworkSink::Private"></span><span class="target" id="structavs_1_1_network_sink_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Private</span></span><a class="headerlink" href="#_CPPv4N3avs11NetworkSink7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSink7Private13m_packetsSentE">
+<span id="_CPPv3N3avs11NetworkSink7Private13m_packetsSentE"></span><span id="_CPPv2N3avs11NetworkSink7Private13m_packetsSentE"></span><span id="avs::NetworkSink::Private::m_packetsSent__uint32_t"></span><span class="target" id="structavs_1_1_network_sink_1_1_private_1a02f5d55404fc83ca65c5a50c83755c54"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_packetsSent</span></span></span><a class="headerlink" href="#_CPPv4N3avs11NetworkSink7Private13m_packetsSentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Packets sent this frame </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="cpp class">

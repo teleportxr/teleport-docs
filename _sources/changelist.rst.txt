@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 27 Jan** : Updating networksink docs
 | **Wed 26 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Wed 26 Jan** : Refactoring for shared code. libavstream docs.
 | **Wed 26 Jan** : Changing TeleportAudio to use TeleportCore error defines
@@ -99,4 +100,3 @@ Changelist
 | **Mon 22 Nov** : Adding grabbable capability to nodes.
 | **Fri 19 Nov** : Fixing small bug
 | **Fri 19 Nov** : Merge pull request #101 from simul/add_https_support
-| **Fri 19 Nov** : Changing http service to use https
