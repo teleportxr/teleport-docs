@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Fri 28 Jan** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Fri 28 Jan** : Using CPack for installer-generation.
 | **Thu 27 Jan** : Updating networksink docs
 | **Wed 26 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Wed 26 Jan** : Refactoring for shared code. libavstream docs.
@@ -98,5 +100,3 @@ Changelist
 | **Mon 22 Nov** : OpenXR menu button function.
 | **Mon 22 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Mon 22 Nov** : Adding grabbable capability to nodes.
-| **Fri 19 Nov** : Fixing small bug
-| **Fri 19 Nov** : Merge pull request #101 from simul/add_https_support
