@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>LibAVStream Example &mdash; TeleportVR  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TeleportVR
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity.html">Teleport Unity SDK</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TeleportVR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>LibAVStream Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/reference/libavstream_example.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="libavstream-example">
+<h1>LibAVStream Example<a class="headerlink" href="#libavstream-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Here we present an example of how to use libavstream to send and receive audio video.
+LibAVStream has a default video encoder and decoder class that uses NVENC but for this example, we will assume a custom
+video encoder and decoder needs to be used.</p>
+</div>
+<div class="section" id="video-stream-example">
+<h2>Video Stream Example<a class="headerlink" href="#video-stream-example" title="Permalink to this headline">¶</a></h2>
+<p>avs::NetworkSink is an avs::PipelineNode that handles the packing and sending of data for each stream.
+An avs::NetworkSink instance must be created and configured. Each stream is configured by passing an instance of
+an avs::NetworkStream struct to the avs::NetworkSink configure function.
+An avs::Pipeline is used to send data between multiple linked avs::PipelineNode instances.
+It is useful to create two avs::Pipeline instances. One that processes the encoding and queueing of data
+on one thread and another that processes the dequeueing and sending of data on another thread.
+The encoder will write data to the avs::IOInterface(s) and the network sink will read data from the avs::IOInterface(s).
+There must be a separate avs::IOInterface instance for each stream. The avs::Queue class derives avs::IOInterface and
+avs::PipelineNode and is useful for the asynchronous writing and reading of data. The queue must be linked to the video
+encoder as an output node and to the network sink as an input node. The node implementing the avs::IOInterface is therefore
+the only node that will be used on the encoder and network transfer pipelines.</p>
+<p>This example will assume the video texture to ben encoded was rendered to using the D3D12 API. Currently LibAVStream supports
+D3D11 abd D3D12 but this can easily be extended.</p>
+<p>The example below shows how to create and configure an avs::Queue.
+‘
+avs::Queue* createVideoQueue()
+{</p>
+<blockquote>
+<div><p>avs::Queue* videoQueue = new avs::Queue();
+size_t maxBufferSize = 200000;
+size_t maxBuffers = 16;
+videoQueue-&gt;configure(maxBufferSize, maxBuffers,”VideoQueue”);
+return videoQueue;</p>
+</div></blockquote>
+<div class="section" id="id1">
+<h3>}<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The example below demonstrates how to create the video encoding pipeline in a wrapper class:</p>
+<p>‘
+class VideoEncodingPipeline
+{
+public:</p>
+<blockquote>
+<div><p>void Initialize(ID3D12Device* device, ID3D12Resource* videoTexture, avs::EncoderBackendInterface* customVideoEncoder, avs::Queue&amp; videoQueue)
+{</p>
+<blockquote>
+<div><p>avs::SurfaceBackendInterface* avsSurfaceBackend = new avs::SurfaceDX12(videoTexture);</p>
+<p>if (!mInputSurface.configure(avsSurfaceBackend))
+{</p>
+<blockquote>
+<div><p>// handle error
+return;</p>
+</div></blockquote>
+<p>}</p>
+<p>avs::DeviceHandle deviceHandle;
+deviceHandle.type = avs::DeviceType::Direct3D12;
+deviceHandle.handle = device;</p>
+<p>D3D12_RESOURCE_DESC desc = videoTexture-&gt;GetDesc();</p>
+<p>avs::EncoderPrams encoderParams;
+encoderParams.codec = avs::VideoCodec::HEVC;
+encoderParams.preset = avs::VideoPreset::HighPerformance;
+encoderParams.targetFrameRate = 60;
+encoderParams.idrInterval = 60;
+encoderParams.rateControlMode = avs::RateControlMode::RC_CBR;
+encoderParams.averageBitrate = 40000000;
+encoderParams.maxBitrate = 80000000;
+encoderParams.autoBitRate = false;
+encoderParams.vbvBufferSizeInFrames = 3;
+encoderParams.deferOutput = false;
+encoderParams.useAsyncEncoding = true;
+encoderParams.use10BitEncoding = false;
+encoderParams.useAlphaLayerEncoding = false;
+encoderParams.inputFormat = avs::SurfaceFormat::ARGB;</p>
+<p>// The custom encoder backend must be set before configure is called.
+// If not set, the avs::EncoderNV backend will be used instead.
+mEncoder.setBackend(customVideoEncoder);</p>
+<p>if (!mEncoder.configure(deviceHandle, desc.Width, desc.Height, encoderParams))
+{</p>
+<blockquote>
+<div><p>// handle error
+return;</p>
+</div></blockquote>
+<p>}</p>
+<p>if (!mPipeline.link({ &amp;mInputSurface, &amp;mEncoder, &amp;videoQueue }))
+{</p>
+<blockquote>
+<div><p>// handle error
+return;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>// Call on render thread.
+void process()
+{</p>
+<blockquote>
+<div><p>// Read the data from the queue and send it to the client.
+if(!mPipeline.process())
+{</p>
+<blockquote>
+<div><p>// handle error</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>void shutdown()
+{</p>
+<blockquote>
+<div><p>// Calls deconfigure on all nodes.
+if(!mPipeline.deconfigure())
+{</p>
+<blockquote>
+<div><p>// handle error</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<dl class="simple">
+<dt>private:</dt><dd><p>// Class members
+avs::Pipeline mPipeline;
+avs::Encoder mEncoder;
+avs::Surface mInputSurface;</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h3>}<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>The example below illustrates how to create a network transfer pipeline in a wrapper class:</p>
+<p>‘
+class NetworkPipeline
+{
+public:</p>
+<blockquote>
+<div><p>void Initialize(avs::Queue&amp; videoQueue, const char* remoteIP, uint16_t remotePort)
+{</p>
+<blockquote>
+<div><p>avs::NetworkSinkParams sinkParams;
+params.connectionTimeout = 5000.</p>
+<p>std::vector&lt;avs::NetworkSinkStream&gt; streams;</p>
+<p>avs::NetworkSinkStream stream;
+stream.parserType = avs::StreamParserType::AVC_AnnexB;
+stream.useParser = false;
+stream.isDataLimitPerFrame = false;
+stream.counter = 0;
+stream.chunkSize = 64 * 1024;
+stream.id = 20;
+stream.dataType = avs::NetworkDataType::HEVC;
+streams.emplace_back(std::move(stream));</p>
+<p>if (!mNetworkSink.configure(std::move(streams), nullptr, 0, remoteIP, remotePort, sinkParams))
+{</p>
+<blockquote>
+<div><p>// handle error
+return;</p>
+</div></blockquote>
+<p>}</p>
+<p>// Link video queue as input node for the network sink.
+if (!mPipeline.link({ &amp;videoQueue, &amp;mNetworkSink }))
+{</p>
+<blockquote>
+<div><p>// handle error
+return;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>// Call on network thread.
+void process()
+{</p>
+<blockquote>
+<div><p>// Read the data from the queue and send it to the client.
+if(!mPipeline.process())
+{</p>
+<blockquote>
+<div><p>// handle error</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>void shutdown()
+{</p>
+<blockquote>
+<div><p>// Calls deconfigure on all nodes.
+if(!mPipeline.deconfigure())
+{</p>
+<blockquote>
+<div><p>// handle error</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<dl class="simple">
+<dt>private:</dt><dd><p>// Class members
+avs::Pipeline mPipeline;
+avs::NetworkSink mNetworkSink;</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h3>}<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2018-2022, Simul Software Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

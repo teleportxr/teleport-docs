@@ -1,6 +1,13 @@
 Changelist 
 ========= 
+| **Fri 04 Feb** : Added TELEPORT_CLIENT_USE_D3D12_VIDEO - separate rendering from video option. D3D12 video not yet functional in either case.
+| **Fri 04 Feb** : Remove teleport_commit.properties - generated file should not be in the repo.
+| **Fri 04 Feb** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Fri 04 Feb** : Remove unnecessary D3D12 calls.
+| **Fri 04 Feb** : Adding libavstream example to docs
+| **Wed 02 Feb** : Merge branch 'master' of github.com:simul/Teleport
 | **Wed 02 Feb** : Adding updates to libavstream docs
+| **Sun 30 Jan** : Initial OpenXR D3D12 support. Using dev branch of Platform while refactoring deviceContext, RenderPlatform and immediate context behaviour.
 | **Fri 28 Jan** : Merge branch 'master' of github.com:simul/RemotePlay into master
 | **Fri 28 Jan** : Using CPack for installer-generation.
 | **Thu 27 Jan** : Updating networksink docs
@@ -93,10 +100,3 @@ Changelist
 | **Mon 29 Nov** : reverting back to using xyz
 | **Mon 29 Nov** : Fixing client compile error
 | **Mon 29 Nov** : Fix server compile.
-| **Sun 28 Nov** : Add Input.cpp. Rename InputList to InputId. Correct misnamed binaryEventAmount to numBinaryEvents and so on.
-| **Fri 26 Nov** : ErrorHandling.h to TeleportCore. client LOG macros renamed TELEPORT_CLIENT_LOG etc.
-| **Wed 24 Nov** : relativePose in UpdateNodeStructureCommand. ReceiveUpdateNodeStructureCommand implemented for PC.
-| **Wed 24 Nov** : Reparenting nodes - message from server to client.
-| **Tue 23 Nov** : NodeManager compile fix. VR headset can be disabled with ENABLE_VR=0 in client.ini
-| **Mon 22 Nov** : OpenXR menu button function.
-| **Mon 22 Nov** : Merge branch 'master' of github.com:simul/RemotePlay

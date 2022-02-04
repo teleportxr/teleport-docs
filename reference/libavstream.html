@@ -385,6 +385,7 @@
 <span id="_CPPv3N3avs20UseInternalAllocatorE"></span><span id="_CPPv2N3avs20UseInternalAllocatorE"></span><span id="avs::UseInternalAllocator"></span><span class="target" id="classavs_1_1_use_internal_allocator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UseInternalAllocator</span></span></span><a class="headerlink" href="#_CPPv4N3avs20UseInternalAllocatorE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper class for enforcing the use of memory allocator defined within libavstream library module.</p>
 <p>This is used to prevent memory allocation/deallocation across DLL boundary even when operator new or operator delete are called from client code. </p>
+<p>Subclassed by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface"><span class="std std-ref">avs::DecoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_encoder_backend_interface"><span class="std std-ref">avs::EncoderBackendInterface</span></a></p>
 </dd></dl>
 
 </div>
@@ -581,6 +582,376 @@
 <dt class="sig sig-object cpp" id="_CPPv4NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv">
 <span id="_CPPv3NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv"></span><span id="_CPPv2NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv"></span><span id="avs::AudioTargetInterface::getAudioTargetBackendInterfaceC"></span><span class="target" id="classavs_1_1_audio_target_interface_1aa0d11f12d3c8785caf152175dca001ed"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">AudioTargetBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getAudioTargetBackendInterface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get audio backend associated with this node. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterfaceE">
+<span id="_CPPv3N3avs23EncoderBackendInterfaceE"></span><span id="_CPPv2N3avs23EncoderBackendInterfaceE"></span><span id="avs::EncoderBackendInterface"></span><span class="target" id="classavs_1_1_encoder_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Common encoder backend interface.</p>
+<p><a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">Encoder</span></a> backend is responsible for encoding pictures using a particular hardware encoder. </p>
+<p>Subclassed by avs::EncoderNV</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface10initializeERK12DeviceHandleiiRK13EncoderParams">
+<span id="_CPPv3N3avs23EncoderBackendInterface10initializeERK12DeviceHandleiiRK13EncoderParams"></span><span id="_CPPv2N3avs23EncoderBackendInterface10initializeERK12DeviceHandleiiRK13EncoderParams"></span><span id="avs::EncoderBackendInterface::initialize__DeviceHandleCR.i.i.EncoderParamsCR"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a705bf2c38751537bf13dfd8c154d5414"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">DeviceHandle</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">device</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameWidth</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameHeight</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">EncoderParams</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">params</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface10initializeERK12DeviceHandleiiRK13EncoderParams" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize hardware encoder. <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">Encoder</span></a> backend must be succesfully initialized before it’s ready to encode pictures. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> – Graphics API device handle (DirectX or OpenGL). </p></li>
+<li><p><strong>frameWidth</strong> – Expected video frame width in pixels. </p></li>
+<li><p><strong>frameHeight</strong> – Expected video frame height in pixels. </p></li>
+<li><p><strong>params</strong> – Additional encoder parameters. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_InvalidDevice if passed device handle is invalid or otherwise unsuitable for this particular encoder.</p></li>
+<li><p>Result::EncoderBackend_NoSuitableCodecFound if the hardware encoder does not support encoding with chosen video codec or parameters.</p></li>
+<li><p>Result::EncoderBackend_OutOfMemory if the encoder failed to allocate internal resources.</p></li>
+<li><p>Result::EncoderBackend_InitFailed on general initialization failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface11reconfigureEiiRK13EncoderParams">
+<span id="_CPPv3N3avs23EncoderBackendInterface11reconfigureEiiRK13EncoderParams"></span><span id="_CPPv2N3avs23EncoderBackendInterface11reconfigureEiiRK13EncoderParams"></span><span id="avs::EncoderBackendInterface::reconfigure__i.i.EncoderParamsCR"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a00d958b0e11d00abbb75f1b6cd275b94"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reconfigure</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameWidth</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameHeight</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">EncoderParams</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">params</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface11reconfigureEiiRK13EncoderParams" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reconfigure hardware encoder. <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">Encoder</span></a> backend must be succesfully initialized before this function can be called. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frameWidth</strong> – Expected video frame width in pixels. </p></li>
+<li><p><strong>frameHeight</strong> – Expected video frame height in pixels. </p></li>
+<li><p><strong>params</strong> – Additional encoder parameters. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_NotInitialized if the encoder is not initialized</p></li>
+<li><p>Result::EncoderBackend_NoSuitableCodecFound if the hardware encoder does not support encoding with chosen video codec or parameters.</p></li>
+<li><p>Result::EncoderBackend_OutOfMemory if the encoder failed to allocate internal resources.</p></li>
+<li><p>Result::EncoderBackend_ReconfigFailed on general initialization failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface8shutdownEv">
+<span id="_CPPv3N3avs23EncoderBackendInterface8shutdownEv"></span><span id="_CPPv2N3avs23EncoderBackendInterface8shutdownEv"></span><span id="avs::EncoderBackendInterface::shutdown"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a972715b02b729a122f9e0b68ad5d7063"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shutdown</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface8shutdownEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Shutdown hardware encoder and release all associated resources. After encoder backend is shutdown it must be initialized again to be ready to encode pictures. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_FlushError if failed to flush hardware encoder before shutting down.</p></li>
+<li><p>Result::EncoderBackend_ShutdownFailed on general failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface15registerSurfaceEPK23SurfaceBackendInterface">
+<span id="_CPPv3N3avs23EncoderBackendInterface15registerSurfaceEPK23SurfaceBackendInterface"></span><span id="_CPPv2N3avs23EncoderBackendInterface15registerSurfaceEPK23SurfaceBackendInterface"></span><span id="avs::EncoderBackendInterface::registerSurface__SurfaceBackendInterfaceCP"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a4fe2c07ff01b569980947fd8f990ffff"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">registerSurface</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">SurfaceBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">surface</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface15registerSurfaceEPK23SurfaceBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register surface as source for pictures (video frames) to encode. The surface must be compatible with the graphics API device handle passed to <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a705bf2c38751537bf13dfd8c154d5414"><span class="std std-ref">initialize()</span></a>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">Encoder</span></a> backend does not take ownership of the registered surface. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>surface</strong> – <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">Surface</span></a> backend to register as input. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_NotInitialized if encoder backend has not yet been initialized.</p></li>
+<li><p>Result::EnocderBackend_SurfaceAlreadyRegistered if surface backend has already been registered with this encoder backend.</p></li>
+<li><p>Result::EncoderBackend_InvalidSurface if passed surface backend is invalid or otherwise unsuitable for this encoder.</p></li>
+<li><p>Result::EncoderBackend_InvalidDevice if the device this encoder backend has been initialized with is unsuitable for registering surfaces. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface17unregisterSurfaceEv">
+<span id="_CPPv3N3avs23EncoderBackendInterface17unregisterSurfaceEv"></span><span id="_CPPv2N3avs23EncoderBackendInterface17unregisterSurfaceEv"></span><span id="avs::EncoderBackendInterface::unregisterSurface"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a882090115521d511b882f03cd0ebafd1"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unregisterSurface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface17unregisterSurfaceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unregister surface as source for pictures (video frames) to encode. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_NotInitialized if encoder backend has not yet been initialized.</p></li>
+<li><p>Result::EncoderBackend_SurfaceNotRegistered if no surface backend has been registered with this encoder backend.</p></li>
+<li><p>Result::EncoderBackend_InvalidSurface if passed surface backend is invalid. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface11encodeFrameE8uint64_tb">
+<span id="_CPPv3N3avs23EncoderBackendInterface11encodeFrameE8uint64_tb"></span><span id="_CPPv2N3avs23EncoderBackendInterface11encodeFrameE8uint64_tb"></span><span id="avs::EncoderBackendInterface::encodeFrame__uint64_t.b"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a46136eed3bf3ea4faf8dba72773c9763"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">encodeFrame</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">forceIDR</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface11encodeFrameE8uint64_tb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Encode single picture (video frame). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timestamp</strong> – Abstract timestamp value to associate with encoded picture. </p></li>
+<li><p><strong>forceIDR</strong> – Tells the encoder encode thje next frame as an IDR frame. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_NotInitialized if encoder backend has not yet been initialized.</p></li>
+<li><p>Result::EncoderBackend_SurfaceNotRegistered if no surface backend has been registered with this encoder backend.</p></li>
+<li><p>Result::EncoderBackend_MapFailed if failed to map input surface prior to encoding.</p></li>
+<li><p>Result::EncoderBackend_UnmapFailed if failed to unmap input surface after encoding.</p></li>
+<li><p>Result::EncoderBackend_EncodeFailed on general encode failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface15mapOutputBufferERPvR6size_t">
+<span id="_CPPv3N3avs23EncoderBackendInterface15mapOutputBufferERPvR6size_t"></span><span id="_CPPv2N3avs23EncoderBackendInterface15mapOutputBufferERPvR6size_t"></span><span id="avs::EncoderBackendInterface::mapOutputBuffer__voidPR.sR"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a042a548646420926e4d86b8ba822d1ad"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mapOutputBuffer</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bufferPtr</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bufferSizeInBytes</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface15mapOutputBufferERPvR6size_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Map output buffer to the host address space (for access by CPU). </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bufferPtr</strong> – <strong>[out]</strong> Pointer to the compressed video bitstream of previously encoded frame. </p></li>
+<li><p><strong>bufferSizeInBytes</strong> – <strong>[out]</strong> Number of bytes in the output buffer. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_NotInitialized if encoder backend has not yet been initialized.</p></li>
+<li><p>Result::EncoderBackend_MapFailed if failed to map output buffer. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface17unmapOutputBufferEv">
+<span id="_CPPv3N3avs23EncoderBackendInterface17unmapOutputBufferEv"></span><span id="_CPPv2N3avs23EncoderBackendInterface17unmapOutputBufferEv"></span><span id="avs::EncoderBackendInterface::unmapOutputBuffer"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1ad33a7766c75a76592e3331e64cc3b2e0"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unmapOutputBuffer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface17unmapOutputBufferEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unmap previously mapped output buffer. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_NotInitialized if encoder backend has not yet been initialized.</p></li>
+<li><p>Result::EncoderBackend_UnmapFailed if failed to unmap output buffer. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23EncoderBackendInterface25waitForEncodingCompletionEv">
+<span id="_CPPv3N3avs23EncoderBackendInterface25waitForEncodingCompletionEv"></span><span id="_CPPv2N3avs23EncoderBackendInterface25waitForEncodingCompletionEv"></span><span id="avs::EncoderBackendInterface::waitForEncodingCompletion"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a404ad46152e6310a39b9e8976aa34e1e"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">waitForEncodingCompletion</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterface25waitForEncodingCompletionEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wait for encoding to finish. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::EncoderBackend_EncodeFailed if timeout occurs during encoding. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs23EncoderBackendInterface14getInputFormatEv">
+<span id="_CPPv3NK3avs23EncoderBackendInterface14getInputFormatEv"></span><span id="_CPPv2NK3avs23EncoderBackendInterface14getInputFormatEv"></span><span id="avs::EncoderBackendInterface::getInputFormatC"></span><span class="target" id="classavs_1_1_encoder_backend_interface_1a74b4c7fdc0365cdb7ce6908a08409023"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">SurfaceFormat</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getInputFormat</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK3avs23EncoderBackendInterface14getInputFormatEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get registered input surface format. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23DecoderBackendInterfaceE">
+<span id="_CPPv3N3avs23DecoderBackendInterfaceE"></span><span id="_CPPv2N3avs23DecoderBackendInterfaceE"></span><span id="avs::DecoderBackendInterface"></span><span class="target" id="classavs_1_1_decoder_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Common decoder backend interface.</p>
+<p><a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">Decoder</span></a> backend is responsible for decoding compressed video data using a particular hardware decoder. Decoded video frames are outputted to a registered surface. </p>
+<p>Subclassed by VideoDecoder, avs::DecoderNV</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23DecoderBackendInterface10initializeERK12DeviceHandleiiRK13DecoderParams">
+<span id="_CPPv3N3avs23DecoderBackendInterface10initializeERK12DeviceHandleiiRK13DecoderParams"></span><span id="_CPPv2N3avs23DecoderBackendInterface10initializeERK12DeviceHandleiiRK13DecoderParams"></span><span id="avs::DecoderBackendInterface::initialize__DeviceHandleCR.i.i.DecoderParamsCR"></span><span class="target" id="classavs_1_1_decoder_backend_interface_1acb08109d80390aed2eb0a75fd480b522"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">initialize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">DeviceHandle</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">device</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameWidth</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameHeight</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">DecoderParams</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">params</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterface10initializeERK12DeviceHandleiiRK13DecoderParams" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Initialize hardware decoder. <a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">Decoder</span></a> backend must be succcesfully initialized before it’s ready to accept input. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> – Graphics API device handle (DirectX or OpenGL). </p></li>
+<li><p><strong>frameWidth</strong> – Expected video frame width in pixels. </p></li>
+<li><p><strong>frameHeight</strong> – Expected video frame height in pixels. </p></li>
+<li><p><strong>params</strong> – Additional decoder configuration settings. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::DecoderBackend_InvalidDevice if passed device handle is invalid or otherwise unsuitable for this particular decoder.</p></li>
+<li><p>Result::DecoderBackend_InvalidParam if one or more parameters were invalid.</p></li>
+<li><p>Result::DecoderBackend_CodecNotSupported if the selected video codec is not supported by this decoder.</p></li>
+<li><p>Result::DecoderBackend_InitFailed on general initialization failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23DecoderBackendInterface11reconfigureEiiRK13DecoderParams">
+<span id="_CPPv3N3avs23DecoderBackendInterface11reconfigureEiiRK13DecoderParams"></span><span id="_CPPv2N3avs23DecoderBackendInterface11reconfigureEiiRK13DecoderParams"></span><span id="avs::DecoderBackendInterface::reconfigure__i.i.DecoderParamsCR"></span><span class="target" id="classavs_1_1_decoder_backend_interface_1a6a6eba603728c8ff4a6cccce4ef880b1"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reconfigure</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameWidth</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">frameHeight</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">DecoderParams</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">params</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterface11reconfigureEiiRK13DecoderParams" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Reconfigure hardware decoder with new initialization settings. <a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">Decoder</span></a> backend must be succcesfully initialized before this function can be called. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frameWidth</strong> – Expected video frame width in pixels. </p></li>
+<li><p><strong>frameHeight</strong> – Expected video frame height in pixels. </p></li>
+<li><p><strong>params</strong> – Additional decoder configuration settings. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::DecoderBackend_NotInitialized if decoder backend has not yet been initialized.</p></li>
+<li><p>Result::DecoderBackend_ReconfigFailed on general initialization failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23DecoderBackendInterface8shutdownEv">
+<span id="_CPPv3N3avs23DecoderBackendInterface8shutdownEv"></span><span id="_CPPv2N3avs23DecoderBackendInterface8shutdownEv"></span><span id="avs::DecoderBackendInterface::shutdown"></span><span class="target" id="classavs_1_1_decoder_backend_interface_1aa3defbdc17842ee9df73a52f26a9e8fe"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">shutdown</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterface8shutdownEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Shutdown hardware decoder and release all associated resources. After decoder backend is shutdown it must be initialized again to accept input. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::DecoderBackend_ShutdownFailed on general failure. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23DecoderBackendInterface15registerSurfaceEPK23SurfaceBackendInterfacePK23SurfaceBackendInterface">
+<span id="_CPPv3N3avs23DecoderBackendInterface15registerSurfaceEPK23SurfaceBackendInterfacePK23SurfaceBackendInterface"></span><span id="_CPPv2N3avs23DecoderBackendInterface15registerSurfaceEPK23SurfaceBackendInterfacePK23SurfaceBackendInterface"></span><span id="avs::DecoderBackendInterface::registerSurface__SurfaceBackendInterfaceCP.SurfaceBackendInterfaceCP"></span><span class="target" id="classavs_1_1_decoder_backend_interface_1a3db204348421c7bd915dd3d52b42b55c"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">registerSurface</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">SurfaceBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">surface</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">SurfaceBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">alphaSurface</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterface15registerSurfaceEPK23SurfaceBackendInterfacePK23SurfaceBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Register surface as destination for decoded video frames. The surface must be compatible with the graphics API device handle passed to <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1acb08109d80390aed2eb0a75fd480b522"><span class="std std-ref">initialize()</span></a>. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">Decoder</span></a> backend does not take ownership of the registered surface. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface</strong> – <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">Surface</span></a> backend to register as output. </p></li>
+<li><p><strong>alphaSurface</strong> – Separate surface backend to register as output for alpha only. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::DecoderBackend_NotInitialized if decoder backend has not yet been initialized.</p></li>
+<li><p>Result::DeocderBackend_SurfaceAlreadyRegistered if surface backend has already been registered with this decoder backend.</p></li>
+<li><p>Result::DecoderBackend_InvalidSurface if passed surface backend is invalid or otherwise unsuitable for this decoder. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23DecoderBackendInterface17unregisterSurfaceEv">
+<span id="_CPPv3N3avs23DecoderBackendInterface17unregisterSurfaceEv"></span><span id="_CPPv2N3avs23DecoderBackendInterface17unregisterSurfaceEv"></span><span id="avs::DecoderBackendInterface::unregisterSurface"></span><span class="target" id="classavs_1_1_decoder_backend_interface_1a5f9e0b81019af3a686d9f749e5c9f34b"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">unregisterSurface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterface17unregisterSurfaceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Unregister surface as destination for decoded video frames. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::DecoderBackend_NotInitialized if decoder backend has not yet been initialized.</p></li>
+<li><p>Result::DecoderBackend_SurfaceNotRegistered if no surface backend has been registered with this decoder backend.</p></li>
+<li><p>Result::DecoderBackend_InvalidSurface if passed surface backend is invalid. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23DecoderBackendInterface6decodeEPKv6size_tPKv6size_t16VideoPayloadTypeb">
+<span id="_CPPv3N3avs23DecoderBackendInterface6decodeEPKv6size_tPKv6size_t16VideoPayloadTypeb"></span><span id="_CPPv2N3avs23DecoderBackendInterface6decodeEPKv6size_tPKv6size_t16VideoPayloadTypeb"></span><span id="avs::DecoderBackendInterface::decode__voidCP.s.voidCP.s.VideoPayloadType.b"></span><span class="target" id="classavs_1_1_decoder_backend_interface_1ae4f5f3853fdbecc84b8ecfdfc6e924ea"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decode</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufferSizeInBytes</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">alphaBuffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">alphaBufferSizeInBytes</span></span>, <span class="n"><span class="pre">VideoPayloadType</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">payloadType</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">lastPayload</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterface6decodeEPKv6size_tPKv6size_t16VideoPayloadTypeb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Decode compressed video payload. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – Pointer to the beginning of compressed color video data. </p></li>
+<li><p><strong>bufferSizeInBytes</strong> – Size in bytes of compressed color video data. </p></li>
+<li><p><strong>alphaBuffer</strong> – Pointer to the beginning of compressed alpha video data. </p></li>
+<li><p><strong>alphaBufferSizeInBytes</strong> – Size in bytes of compressed alpha video data. </p></li>
+<li><p><strong>payloadType</strong> – Video payload type in buffer. </p></li>
+<li><p><strong>lastPayload</strong> – Signifies whether the buffer contains the last segment of the video frame. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::DecoderBackend_ReadyToDisplay on success and decoder is ready to display output.</p></li>
+<li><p>Result::DecoderBackend_NotInitialized if decoder backend has not yet been initialized.</p></li>
+<li><p>Result::DecoderBackend_InvalidParam if either buffer is nullptr or bufferSizeInBytes is zero.</p></li>
+<li><p>Result::DecoderBackend_InvalidPayload if the specified payloadType is not suitable for this decoder.</p></li>
+<li><p>Result::DecoderBackend_ParseFailed if decoder failed to parse video data. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs23DecoderBackendInterface7displayEb">
+<span id="_CPPv3N3avs23DecoderBackendInterface7displayEb"></span><span id="_CPPv2N3avs23DecoderBackendInterface7displayEb"></span><span id="avs::DecoderBackendInterface::display__b"></span><span class="target" id="classavs_1_1_decoder_backend_interface_1ab3a709c673a7120c211ed34a34698194"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">display</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">showAlphaAsColor</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterface7displayEb" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Display decoded frame on destination surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>showAlphaAsColor</strong> – Determines whether to render the alpha channel to the output surface as color for debugging purposes. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on succes.</p></li>
+<li><p>Result::DecoderBackend_DisplayFailed on failure, or if decoder was not yet ready to display. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -872,7 +1243,7 @@
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if decoder was not in configured state.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::shutdown(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1aa3defbdc17842ee9df73a52f26a9e8fe"><span class="std std-ref">DecoderBackendInterface::shutdown()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -896,7 +1267,7 @@
 <li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
 <li><p>Result::IO_Empty if no input data is available for decoding.</p></li>
 <li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_packet_interface_1abd73d374f2c918dce815673df0bef0e3"><span class="std std-ref">PacketInterface::readPacket()</span></a>.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::decode(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1ae4f5f3853fdbecc84b8ecfdfc6e924ea"><span class="std std-ref">DecoderBackendInterface::decode()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -966,7 +1337,7 @@
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_AlreadyConfigured if encoder was already in configured state.</p></li>
 <li><p>Result::Encoder_NoSuitableBackendFound if there’s no usable encoder backend on the system.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::initialize(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a705bf2c38751537bf13dfd8c154d5414"><span class="std std-ref">EncoderBackendInterface::initialize()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -982,7 +1353,7 @@
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::shutdown(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a972715b02b729a122f9e0b68ad5d7063"><span class="std std-ref">EncoderBackendInterface::shutdown()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1002,7 +1373,7 @@
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::encodeFrame(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a46136eed3bf3ea4faf8dba72773c9763"><span class="std std-ref">EncoderBackendInterface::encodeFrame()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1030,7 +1401,7 @@
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
 <li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
 <li><p>Result::Encoder_IncompleteFrame if encoded bitstream was only partially written to output node.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::mapOutputBuffer(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a042a548646420926e4d86b8ba822d1ad"><span class="std std-ref">EncoderBackendInterface::mapOutputBuffer()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1047,7 +1418,7 @@
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
 <li><p>Result::Encoder_SurfaceNotRegistered if no input surface is registered.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::unregisterSurface(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a882090115521d511b882f03cd0ebafd1"><span class="std std-ref">EncoderBackendInterface::unregisterSurface()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1121,7 +1492,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7Decoder7DecoderEP23DecoderBackendInterface">
-<span id="_CPPv3N3avs7Decoder7DecoderEP23DecoderBackendInterface"></span><span id="_CPPv2N3avs7Decoder7DecoderEP23DecoderBackendInterface"></span><span id="avs::Decoder::Decoder__DecoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_decoder_1aa9427d2c3dd86ee991480d7e815aa1ef"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Decoder</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">DecoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Decoder7DecoderEP23DecoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs7Decoder7DecoderEP23DecoderBackendInterface"></span><span id="_CPPv2N3avs7Decoder7DecoderEP23DecoderBackendInterface"></span><span id="avs::Decoder::Decoder__DecoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_decoder_1aa9427d2c3dd86ee991480d7e815aa1ef"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Decoder</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N3avs23DecoderBackendInterfaceE" title="avs::DecoderBackendInterface"><span class="n"><span class="pre">DecoderBackendInterface</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Decoder7DecoderEP23DecoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructor. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1153,7 +1524,7 @@
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_AlreadyConfigured if decoder was already in configured state.</p></li>
 <li><p>Result::Decoder_NoSuitableBackendFound if there’s no usable decoder backend on the system.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::initialize(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1acb08109d80390aed2eb0a75fd480b522"><span class="std std-ref">DecoderBackendInterface::initialize()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1176,7 +1547,7 @@
 <dd class="field-even"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if decoder is not in configured state.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::reconfigure(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1a6a6eba603728c8ff4a6cccce4ef880b1"><span class="std std-ref">DecoderBackendInterface::reconfigure()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1192,7 +1563,7 @@
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if decoder was not in configured state.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::shutdown(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1aa3defbdc17842ee9df73a52f26a9e8fe"><span class="std std-ref">DecoderBackendInterface::shutdown()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1209,7 +1580,7 @@
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if decoder was not in configured state.</p></li>
 <li><p>Result::Decoder_SurfaceNotRegistered if an input surface is not registered.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::unregisterSurface(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1a5f9e0b81019af3a686d9f749e5c9f34b"><span class="std std-ref">DecoderBackendInterface::unregisterSurface()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1233,7 +1604,7 @@
 <li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
 <li><p>Result::IO_Empty if no input data is available for decoding.</p></li>
 <li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_packet_interface_1abd73d374f2c918dce815673df0bef0e3"><span class="std std-ref">PacketInterface::readPacket()</span></a>.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::decode(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1ae4f5f3853fdbecc84b8ecfdfc6e924ea"><span class="std std-ref">DecoderBackendInterface::decode()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1242,7 +1613,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7Decoder10setBackendEP23DecoderBackendInterface">
-<span id="_CPPv3N3avs7Decoder10setBackendEP23DecoderBackendInterface"></span><span id="_CPPv2N3avs7Decoder10setBackendEP23DecoderBackendInterface"></span><span id="avs::Decoder::setBackend__DecoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_decoder_1a9f93ae40a3e6a09fdcdb1e2469f28ba2"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBackend</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">DecoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Decoder10setBackendEP23DecoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs7Decoder10setBackendEP23DecoderBackendInterface"></span><span id="_CPPv2N3avs7Decoder10setBackendEP23DecoderBackendInterface"></span><span id="avs::Decoder::setBackend__DecoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_decoder_1a9f93ae40a3e6a09fdcdb1e2469f28ba2"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBackend</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N3avs23DecoderBackendInterfaceE" title="avs::DecoderBackendInterface"><span class="n"><span class="pre">DecoderBackendInterface</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Decoder10setBackendEP23DecoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set custom decoder backend. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1306,7 +1677,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7Encoder7EncoderEP23EncoderBackendInterface">
-<span id="_CPPv3N3avs7Encoder7EncoderEP23EncoderBackendInterface"></span><span id="_CPPv2N3avs7Encoder7EncoderEP23EncoderBackendInterface"></span><span id="avs::Encoder::Encoder__EncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_encoder_1a981b75a67f7d4ecc34517b5e22f25c88"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Encoder</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EncoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Encoder7EncoderEP23EncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs7Encoder7EncoderEP23EncoderBackendInterface"></span><span id="_CPPv2N3avs7Encoder7EncoderEP23EncoderBackendInterface"></span><span id="avs::Encoder::Encoder__EncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_encoder_1a981b75a67f7d4ecc34517b5e22f25c88"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Encoder</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N3avs23EncoderBackendInterfaceE" title="avs::EncoderBackendInterface"><span class="n"><span class="pre">EncoderBackendInterface</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Encoder7EncoderEP23EncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructor. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1337,7 +1708,7 @@
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_AlreadyConfigured if encoder was already in configured state.</p></li>
 <li><p>Result::Encoder_NoSuitableBackendFound if there’s no usable encoder backend on the system.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::initialize(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a705bf2c38751537bf13dfd8c154d5414"><span class="std std-ref">EncoderBackendInterface::initialize()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1360,7 +1731,7 @@
 <dd class="field-even"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::reconfigure(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a00d958b0e11d00abbb75f1b6cd275b94"><span class="std std-ref">EncoderBackendInterface::reconfigure()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1376,7 +1747,7 @@
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::shutdown(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a972715b02b729a122f9e0b68ad5d7063"><span class="std std-ref">EncoderBackendInterface::shutdown()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1396,7 +1767,7 @@
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::encodeFrame(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a46136eed3bf3ea4faf8dba72773c9763"><span class="std std-ref">EncoderBackendInterface::encodeFrame()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1420,7 +1791,7 @@
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
 <li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
 <li><p>Result::Encoder_IncompleteFrame if encoded bitstream was only partially written to output node.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::mapOutputBuffer(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a042a548646420926e4d86b8ba822d1ad"><span class="std std-ref">EncoderBackendInterface::mapOutputBuffer()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1437,7 +1808,7 @@
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
 <li><p>Result::Encoder_SurfaceNotRegistered if no input surface is registered.</p></li>
-<li><p>Any error result returned by EncoderBackendInterface::unregisterSurface(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_encoder_backend_interface_1a882090115521d511b882f03cd0ebafd1"><span class="std std-ref">EncoderBackendInterface::unregisterSurface()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1446,7 +1817,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7Encoder10setBackendEP23EncoderBackendInterface">
-<span id="_CPPv3N3avs7Encoder10setBackendEP23EncoderBackendInterface"></span><span id="_CPPv2N3avs7Encoder10setBackendEP23EncoderBackendInterface"></span><span id="avs::Encoder::setBackend__EncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_encoder_1aaf785c5ae27980fa68eccab85c4f7973"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBackend</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">EncoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Encoder10setBackendEP23EncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs7Encoder10setBackendEP23EncoderBackendInterface"></span><span id="_CPPv2N3avs7Encoder10setBackendEP23EncoderBackendInterface"></span><span id="avs::Encoder::setBackend__EncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_encoder_1aaf785c5ae27980fa68eccab85c4f7973"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBackend</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N3avs23EncoderBackendInterfaceE" title="avs::EncoderBackendInterface"><span class="n"><span class="pre">EncoderBackendInterface</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Encoder10setBackendEP23EncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set custom encoder backend. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1581,7 +1952,7 @@
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_AlreadyConfigured if decoder was already in configured state.</p></li>
 <li><p>Result::Decoder_NoSuitableBackendFound if there’s no usable decoder backend on the system.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::initialize(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1acb08109d80390aed2eb0a75fd480b522"><span class="std std-ref">DecoderBackendInterface::initialize()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1597,7 +1968,7 @@
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if decoder was not in configured state.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::shutdown(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1aa3defbdc17842ee9df73a52f26a9e8fe"><span class="std std-ref">DecoderBackendInterface::shutdown()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -1621,7 +1992,7 @@
 <li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
 <li><p>Result::IO_Empty if no input data is available for decoding.</p></li>
 <li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_packet_interface_1abd73d374f2c918dce815673df0bef0e3"><span class="std std-ref">PacketInterface::readPacket()</span></a>.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::decode(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1ae4f5f3853fdbecc84b8ecfdfc6e924ea"><span class="std std-ref">DecoderBackendInterface::decode()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
@@ -2281,7 +2652,7 @@
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if decoder was not in configured state.</p></li>
-<li><p>Any error result returned by DecoderBackendInterface::shutdown(). </p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1aa3defbdc17842ee9df73a52f26a9e8fe"><span class="std std-ref">DecoderBackendInterface::shutdown()</span></a>. </p></li>
 </ul>
 </p>
 </dd>
