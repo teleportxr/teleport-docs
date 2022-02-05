@@ -95,12 +95,7 @@
 <li class="toctree-l2"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">LibAVStream Example</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#video-stream-example">Video Stream Example</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id1">}</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">}</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">}</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#video-stream-example">Video Stream Example</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">Client Render Library</a></li>
@@ -200,183 +195,163 @@ encoder as an output node and to the network sink as an input node. The node imp
 the only node that will be used on the encoder and network transfer pipelines.</p>
 <p>This example will assume the video texture to be encoded was created using the D3D12 API. Currently LibAVStream supports
 D3D11 abd D3D12 but this can easily be extended.</p>
-<p>The example below shows how to create and configure an avs::Queue.
-``
-avs::Queue* createVideoQueue()
-{</p>
-<blockquote>
-<div><p>avs::Queue* videoQueue = new avs::Queue();
-size_t maxBufferSize = 200000;
-size_t maxBuffers = 16;
-videoQueue-&gt;configure(maxBufferSize, maxBuffers,”VideoQueue”);
-return videoQueue;</p>
-</div></blockquote>
-<div class="section" id="id1">
-<h3>}<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>The example below demonstrates how to create the video encoding pipeline in a wrapper class:</p>
-<p>``
-class VideoEncodingPipeline
-{
-public:</p>
-<blockquote>
-<div><p>void Initialize(ID3D12Device* device, ID3D12Resource* videoTexture, avs::EncoderBackendInterface* customVideoEncoder, avs::Queue&amp; videoQueue)
-{</p>
-<blockquote>
-<div><p>avs::SurfaceBackendInterface* avsSurfaceBackend = new avs::SurfaceDX12(videoTexture);</p>
-<p>if (!mInputSurface.configure(avsSurfaceBackend))
-{</p>
-<blockquote>
-<div><p>// handle error
-return;</p>
-</div></blockquote>
-<p>}</p>
-<p>avs::DeviceHandle deviceHandle;
-deviceHandle.type = avs::DeviceType::Direct3D12;
-deviceHandle.handle = device;</p>
-<p>D3D12_RESOURCE_DESC desc = videoTexture-&gt;GetDesc();</p>
-<p>avs::EncoderPrams encoderParams;
-encoderParams.codec = avs::VideoCodec::HEVC;
-encoderParams.preset = avs::VideoPreset::HighPerformance;
-encoderParams.targetFrameRate = 60;
-encoderParams.idrInterval = 60;
-encoderParams.rateControlMode = avs::RateControlMode::RC_CBR;
-encoderParams.averageBitrate = 40000000;
-encoderParams.maxBitrate = 80000000;
-encoderParams.autoBitRate = false;
-encoderParams.vbvBufferSizeInFrames = 3;
-encoderParams.deferOutput = false;
-encoderParams.useAsyncEncoding = true;
-encoderParams.use10BitEncoding = false;
-encoderParams.useAlphaLayerEncoding = false;
-encoderParams.inputFormat = avs::SurfaceFormat::ARGB;</p>
-<p>// The custom encoder backend must be set before configure is called.
-// If not set, the avs::EncoderNV backend will be used instead.
-mEncoder.setBackend(customVideoEncoder);</p>
-<p>if (!mEncoder.configure(deviceHandle, desc.Width, desc.Height, encoderParams))
-{</p>
-<blockquote>
-<div><p>// handle error
-return;</p>
-</div></blockquote>
-<p>}</p>
-<p>if (!mPipeline.link({ &amp;mInputSurface, &amp;mEncoder, &amp;videoQueue }))
-{</p>
-<blockquote>
-<div><p>// handle error
-return;</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-<p>// Call on render thread.
-void process()
-{</p>
-<blockquote>
-<div><p>// Read the data from the queue and send it to the client.
-if(!mPipeline.process())
-{</p>
-<blockquote>
-<div><p>// handle error</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-<p>void shutdown()
-{</p>
-<blockquote>
-<div><p>// Calls deconfigure on all nodes.
-if(!mPipeline.deconfigure())
-{</p>
-<blockquote>
-<div><p>// handle error</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<dl class="simple">
-<dt>private:</dt><dd><p>// Class members
-avs::Pipeline mPipeline;
-avs::Encoder mEncoder;
-avs::Surface mInputSurface;</p>
-</dd>
-</dl>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">How to create and configure an avs::Queue.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="n">avs</span><span class="o">::</span><span class="n">Queue</span><span class="o">*</span><span class="w"> </span><span class="nf">createVideoQueue</span><span class="p">()</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">             </span><span class="n">avs</span><span class="o">::</span><span class="n">Queue</span><span class="o">*</span><span class="w"> </span><span class="n">videoQueue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">Queue</span><span class="p">();</span><span class="w"></span>
+<span class="w">             </span><span class="kt">size_t</span><span class="w"> </span><span class="n">maxBufferSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200000</span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="kt">size_t</span><span class="w"> </span><span class="n">maxBuffers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">16</span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="n">videoQueue</span><span class="o">-&gt;</span><span class="n">configure</span><span class="p">(</span><span class="n">maxBufferSize</span><span class="p">,</span><span class="w"> </span><span class="n">maxBuffers</span><span class="p">,</span><span class="s">&quot;VideoQueue&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">             </span><span class="k">return</span><span class="w"> </span><span class="n">videoQueue</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</pre></div>
 </div>
-<div class="section" id="id2">
-<h3>}<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>The example below illustrates how to create a network transfer pipeline in a wrapper class:</p>
-<p>``
-class NetworkPipeline
-{
-public:</p>
-<blockquote>
-<div><p>void Initialize(avs::Queue&amp; videoQueue, const char* remoteIP, uint16_t remotePort)
-{</p>
-<blockquote>
-<div><p>avs::NetworkSinkParams sinkParams;
-params.connectionTimeout = 5000.</p>
-<p>std::vector&lt;avs::NetworkSinkStream&gt; streams;</p>
-<p>avs::NetworkSinkStream stream;
-stream.parserType = avs::StreamParserType::AVC_AnnexB;
-stream.useParser = false;
-stream.isDataLimitPerFrame = false;
-stream.counter = 0;
-stream.chunkSize = 64 * 1024;
-stream.id = 20;
-stream.dataType = avs::NetworkDataType::HEVC;
-streams.emplace_back(std::move(stream));</p>
-<p>if (!mNetworkSink.configure(std::move(streams), nullptr, 0, remoteIP, remotePort, sinkParams))
-{</p>
-<blockquote>
-<div><p>// handle error
-return;</p>
-</div></blockquote>
-<p>}</p>
-<p>// Link video queue as input node for the network sink.
-if (!mPipeline.link({ &amp;videoQueue, &amp;mNetworkSink }))
-{</p>
-<blockquote>
-<div><p>// handle error
-return;</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-<p>// Call on network thread.
-void process()
-{</p>
-<blockquote>
-<div><p>// Read the data from the queue and send it to the client.
-if(!mPipeline.process())
-{</p>
-<blockquote>
-<div><p>// handle error</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-<p>void shutdown()
-{</p>
-<blockquote>
-<div><p>// Calls deconfigure on all nodes.
-if(!mPipeline.deconfigure())
-{</p>
-<blockquote>
-<div><p>// handle error</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<p>}</p>
-</div></blockquote>
-<dl class="simple">
-<dt>private:</dt><dd><p>// Class members
-avs::Pipeline mPipeline;
-avs::NetworkSink mNetworkSink;</p>
-</dd>
-</dl>
 </div>
-<div class="section" id="id3">
-<h3>}<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">How to create a video encoding pipeline in a wrapper class.</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="k">class</span> <span class="nc">VideoEncodingPipeline</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">             </span><span class="kt">void</span><span class="w"> </span><span class="n">Initialize</span><span class="p">(</span><span class="n">ID3D12Device</span><span class="o">*</span><span class="w"> </span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">ID3D12Resource</span><span class="o">*</span><span class="w"> </span><span class="n">videoTexture</span><span class="p">,</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">EncoderBackendInterface</span><span class="o">*</span><span class="w"> </span><span class="n">customVideoEncoder</span><span class="p">,</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">Queue</span><span class="o">&amp;</span><span class="w"> </span><span class="n">videoQueue</span><span class="p">)</span><span class="w"></span>
+<span class="w">             </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="n">avs</span><span class="o">::</span><span class="n">SurfaceBackendInterface</span><span class="o">*</span><span class="w"> </span><span class="n">avsSurfaceBackend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">SurfaceDX12</span><span class="p">(</span><span class="n">videoTexture</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mInputSurface</span><span class="p">.</span><span class="n">configure</span><span class="p">(</span><span class="n">avsSurfaceBackend</span><span class="p">))</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                             </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">                     </span><span class="n">avs</span><span class="o">::</span><span class="n">DeviceHandle</span><span class="w"> </span><span class="n">deviceHandle</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">deviceHandle</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">DeviceType</span><span class="o">::</span><span class="n">Direct3D12</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">deviceHandle</span><span class="p">.</span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">device</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">                     </span><span class="n">D3D12_RESOURCE_DESC</span><span class="w"> </span><span class="n">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">videoTexture</span><span class="o">-&gt;</span><span class="n">GetDesc</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">                     </span><span class="n">avs</span><span class="o">::</span><span class="n">EncoderPrams</span><span class="w"> </span><span class="n">encoderParams</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">codec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">VideoCodec</span><span class="o">::</span><span class="n">HEVC</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">preset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">VideoPreset</span><span class="o">::</span><span class="n">HighPerformance</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">targetFrameRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">idrInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">rateControlMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">RateControlMode</span><span class="o">::</span><span class="n">RC_CBR</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">averageBitrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40000000</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">maxBitrate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80000000</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">autoBitRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">vbvBufferSizeInFrames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">deferOutput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">useAsyncEncoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">use10BitEncoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">useAlphaLayerEncoding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">encoderParams</span><span class="p">.</span><span class="n">inputFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">SurfaceFormat</span><span class="o">::</span><span class="n">ARGB</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">                     </span><span class="c1">// The custom encoder backend must be set before configure is called.</span>
+<span class="w">                     </span><span class="c1">// If not set, the avs::EncoderNV backend will be used instead.</span>
+<span class="w">                     </span><span class="n">mEncoder</span><span class="p">.</span><span class="n">setBackend</span><span class="p">(</span><span class="n">customVideoEncoder</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mEncoder</span><span class="p">.</span><span class="n">configure</span><span class="p">(</span><span class="n">deviceHandle</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">.</span><span class="n">Width</span><span class="p">,</span><span class="w"> </span><span class="n">desc</span><span class="p">.</span><span class="n">Height</span><span class="p">,</span><span class="w"> </span><span class="n">encoderParams</span><span class="p">))</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                             </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mPipeline</span><span class="p">.</span><span class="n">link</span><span class="p">({</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mInputSurface</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mEncoder</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">videoQueue</span><span class="w"> </span><span class="p">}))</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                             </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+<span class="w">             </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">             </span><span class="c1">// Call on render thread.</span>
+<span class="w">             </span><span class="kt">void</span><span class="w"> </span><span class="n">process</span><span class="p">()</span><span class="w"></span>
+<span class="w">             </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="c1">// Read the data from the queue and send it to the client.</span>
+<span class="w">                     </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mPipeline</span><span class="p">.</span><span class="n">process</span><span class="p">())</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+<span class="w">             </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">             </span><span class="kt">void</span><span class="w"> </span><span class="n">shutdown</span><span class="p">()</span><span class="w"></span>
+<span class="w">             </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="c1">// Calls deconfigure on all nodes.</span>
+<span class="w">                     </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mPipeline</span><span class="p">.</span><span class="n">deconfigure</span><span class="p">())</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+<span class="w">             </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">     </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">             </span><span class="c1">// Class members</span>
+<span class="w">             </span><span class="n">avs</span><span class="o">::</span><span class="n">Pipeline</span><span class="w"> </span><span class="n">mPipeline</span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="n">avs</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">mEncoder</span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="n">avs</span><span class="o">::</span><span class="n">Surface</span><span class="w"> </span><span class="n">mInputSurface</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">How to create a network transfer pipeline in a wrapper class.</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="k">class</span> <span class="nc">NetworkPipeline</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">             </span><span class="kt">void</span><span class="w"> </span><span class="n">Initialize</span><span class="p">(</span><span class="n">avs</span><span class="o">::</span><span class="n">Queue</span><span class="o">&amp;</span><span class="w"> </span><span class="n">videoQueue</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">remoteIP</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">remotePort</span><span class="p">)</span><span class="w"></span>
+<span class="w">             </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="n">avs</span><span class="o">::</span><span class="n">NetworkSinkParams</span><span class="w"> </span><span class="n">sinkParams</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">params</span><span class="p">.</span><span class="n">connectionTimeout</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5000.</span><span class="w"></span>
+
+<span class="w">                     </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">avs</span><span class="o">::</span><span class="n">NetworkSinkStream</span><span class="o">&gt;</span><span class="w"> </span><span class="n">streams</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">                     </span><span class="n">avs</span><span class="o">::</span><span class="n">NetworkSinkStream</span><span class="w"> </span><span class="n">stream</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">stream</span><span class="p">.</span><span class="n">parserType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">StreamParserType</span><span class="o">::</span><span class="n">AVC_AnnexB</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">stream</span><span class="p">.</span><span class="n">useParser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">stream</span><span class="p">.</span><span class="n">isDataLimitPerFrame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">stream</span><span class="p">.</span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">stream</span><span class="p">.</span><span class="n">chunkSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">stream</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">stream</span><span class="p">.</span><span class="n">dataType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">avs</span><span class="o">::</span><span class="n">NetworkDataType</span><span class="o">::</span><span class="n">HEVC</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="n">streams</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">stream</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mNetworkSink</span><span class="p">.</span><span class="n">configure</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">streams</span><span class="p">),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">remoteIP</span><span class="p">,</span><span class="w"> </span><span class="n">remotePort</span><span class="p">,</span><span class="w"> </span><span class="n">sinkParams</span><span class="p">))</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                             </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">                     </span><span class="c1">// Link video queue as input node for the network sink.</span>
+<span class="w">                     </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">mPipeline</span><span class="p">.</span><span class="n">link</span><span class="p">({</span><span class="w"> </span><span class="o">&amp;</span><span class="n">videoQueue</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mNetworkSink</span><span class="w"> </span><span class="p">}))</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                             </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+<span class="w">             </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">             </span><span class="c1">// Call on network thread.</span>
+<span class="w">             </span><span class="kt">void</span><span class="w"> </span><span class="n">process</span><span class="p">()</span><span class="w"></span>
+<span class="w">             </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="c1">// Read the data from the queue and send it to the client.</span>
+<span class="w">                     </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mPipeline</span><span class="p">.</span><span class="n">process</span><span class="p">())</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+<span class="w">             </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">             </span><span class="kt">void</span><span class="w"> </span><span class="n">shutdown</span><span class="p">()</span><span class="w"></span>
+<span class="w">             </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="c1">// Calls deconfigure on all nodes.</span>
+<span class="w">                     </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">mPipeline</span><span class="p">.</span><span class="n">deconfigure</span><span class="p">())</span><span class="w"></span>
+<span class="w">                     </span><span class="p">{</span><span class="w"></span>
+<span class="w">                             </span><span class="c1">// handle error</span>
+<span class="w">                     </span><span class="p">}</span><span class="w"></span>
+<span class="w">             </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">     </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">             </span><span class="c1">// Class members</span>
+<span class="w">             </span><span class="n">avs</span><span class="o">::</span><span class="n">Pipeline</span><span class="w"> </span><span class="n">mPipeline</span><span class="p">;</span><span class="w"></span>
+<span class="w">             </span><span class="n">avs</span><span class="o">::</span><span class="n">NetworkSink</span><span class="w"> </span><span class="n">mNetworkSink</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

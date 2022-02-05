@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sat 05 Feb** : Experimenting with code-block directive
 | **Sat 05 Feb** : Adding code snippet quotes fix to docs
 | **Sat 05 Feb** : Fixing docs rst typo
 | **Fri 04 Feb** : Adding D3D12 support to NVidia decoder
@@ -99,4 +100,3 @@ Changelist
 | **Tue 30 Nov** : index on (no branch): a5b82a7e Remove duplicate cpp in cmake
 | **Tue 30 Nov** : Making server use http if cert and key not provided
 | **Mon 29 Nov** : Remove duplicate cpp in cmake
-| **Mon 29 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
