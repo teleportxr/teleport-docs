@@ -40,7 +40,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Client Render Library" href="clientrenderer.html" />
+    <link rel="prev" title="LibAVStream" href="libavstream.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,10 +88,25 @@
             
             
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html">Reference Implementation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference Implementation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LibAVStream Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-stream-example">Video Stream Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">}</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">}</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">}</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The TeleportClient library</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../unity.html">Teleport Unity SDK</a></li>
 </ul>
 
@@ -139,6 +156,8 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="index.html">Reference Implementation</a> &raquo;</li>
+        
       <li>LibAVStream Example</li>
     
     
@@ -162,9 +181,9 @@
 <h1>LibAVStream Example<a class="headerlink" href="#libavstream-example" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Here we present an example of how to use libavstream to send and receive audio video.
+<p>Here we present an example of how to use libavstream to stream video.
 LibAVStream has a default video encoder and decoder class that uses NVENC but for this example, we will assume a custom
-video encoder and decoder needs to be used.</p>
+video encoder needs to be used.</p>
 </div>
 <div class="section" id="video-stream-example">
 <h2>Video Stream Example<a class="headerlink" href="#video-stream-example" title="Permalink to this headline">¶</a></h2>
@@ -179,10 +198,10 @@ There must be a separate avs::IOInterface instance for each stream. The avs::Que
 avs::PipelineNode and is useful for the asynchronous writing and reading of data. The queue must be linked to the video
 encoder as an output node and to the network sink as an input node. The node implementing the avs::IOInterface is therefore
 the only node that will be used on the encoder and network transfer pipelines.</p>
-<p>This example will assume the video texture to ben encoded was rendered to using the D3D12 API. Currently LibAVStream supports
+<p>This example will assume the video texture to be encoded was created using the D3D12 API. Currently LibAVStream supports
 D3D11 abd D3D12 but this can easily be extended.</p>
 <p>The example below shows how to create and configure an avs::Queue.
-‘
+``
 avs::Queue* createVideoQueue()
 {</p>
 <blockquote>
@@ -195,7 +214,7 @@ return videoQueue;</p>
 <div class="section" id="id1">
 <h3>}<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>The example below demonstrates how to create the video encoding pipeline in a wrapper class:</p>
-<p>‘
+<p>``
 class VideoEncodingPipeline
 {
 public:</p>
@@ -286,7 +305,7 @@ avs::Surface mInputSurface;</p>
 <div class="section" id="id2">
 <h3>}<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>The example below illustrates how to create a network transfer pipeline in a wrapper class:</p>
-<p>‘
+<p>``
 class NetworkPipeline
 {
 public:</p>
@@ -367,6 +386,10 @@ avs::NetworkSink mNetworkSink;</p>
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="clientrenderer.html" class="btn btn-neutral float-right" title="Client Render Library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="libavstream.html" class="btn btn-neutral float-left" title="LibAVStream" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
