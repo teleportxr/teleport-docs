@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Sat 05 Feb** : Fixing docs rst typo
+| **Fri 04 Feb** : Adding D3D12 support to NVidia decoder
+| **Fri 04 Feb** : Moving linking to cudart to libavstream
 | **Fri 04 Feb** : Added TELEPORT_CLIENT_USE_D3D12_VIDEO - separate rendering from video option. D3D12 video not yet functional in either case.
 | **Fri 04 Feb** : Remove teleport_commit.properties - generated file should not be in the repo.
 | **Fri 04 Feb** : Merge branch 'master' of github.com:simul/RemotePlay into master
@@ -97,6 +100,3 @@ Changelist
 | **Mon 29 Nov** : Remove duplicate cpp in cmake
 | **Mon 29 Nov** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Mon 29 Nov** : Add Input.cpp in CMakeLists.txt
-| **Mon 29 Nov** : reverting back to using xyz
-| **Mon 29 Nov** : Fixing client compile error
-| **Mon 29 Nov** : Fix server compile.
