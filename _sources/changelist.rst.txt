@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Sun 20 Feb** : Merge branch 'master' of github.com:simul/Teleport
+| **Sun 20 Feb** : Separate "bones" and "joints" in animation. There can be more bones than joints, and joints must be a subset of bones. This allows Unity human animation to work correctly, because the skeleton seems generally to have fewer members, with some gameObjects of the human hierarchy not present in the skeleton avatar.
 | **Sat 05 Feb** : Finish fixing cosmetics of libavstream example
 | **Sat 05 Feb** : Experimenting with code-block directive
 | **Sat 05 Feb** : Adding code snippet quotes fix to docs
@@ -98,5 +100,3 @@ Changelist
 | **Sun 05 Dec** : Update default CUDA version to 11.5.
 | **Tue 30 Nov** : Merge commit '3c50cf358a3d341aeb8c07764ebc44af3d96ce31'
 | **Tue 30 Nov** : On (no branch): AAA
-| **Tue 30 Nov** : index on (no branch): a5b82a7e Remove duplicate cpp in cmake
-| **Tue 30 Nov** : Making server use http if cert and key not provided
