@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Wed 23 Feb** : Fix Android highkight shader
+| **Tue 22 Feb** : Fix node reparenting for PC+Android.
 | **Sun 20 Feb** : Merge branch 'master' of github.com:simul/Teleport
 | **Sun 20 Feb** : Separate "bones" and "joints" in animation. There can be more bones than joints, and joints must be a subset of bones. This allows Unity human animation to work correctly, because the skeleton seems generally to have fewer members, with some gameObjects of the human hierarchy not present in the skeleton avatar.
 | **Sat 05 Feb** : Finish fixing cosmetics of libavstream example
@@ -98,5 +100,3 @@ Changelist
 | **Sun 05 Dec** : openxr dependencies.
 | **Sun 05 Dec** : Submodule pointers.
 | **Sun 05 Dec** : Update default CUDA version to 11.5.
-| **Tue 30 Nov** : Merge commit '3c50cf358a3d341aeb8c07764ebc44af3d96ce31'
-| **Tue 30 Nov** : On (no branch): AAA
