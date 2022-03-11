@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Fri 11 Mar** : Merge pull request #107 from simul/audio_hevc
+| **Fri 11 Mar** : Merge branch 'master' into audio_hevc
+| **Fri 11 Mar** : Add audio capture for PC and video decoder parser changes
 | **Wed 23 Feb** : Fix Android highkight shader
 | **Tue 22 Feb** : Fix node reparenting for PC+Android.
 | **Sun 20 Feb** : Merge branch 'master' of github.com:simul/Teleport
@@ -97,6 +100,3 @@ Changelist
 | **Wed 08 Dec** : Adding openxr folder to thirdparty for prebuilt lib and include
 | **Wed 08 Dec** : Update docs. teleport-unity as a submodule for docs builds.
 | **Mon 06 Dec** : Prebuild openxr_loader libs - to get the correct runtime.
-| **Sun 05 Dec** : openxr dependencies.
-| **Sun 05 Dec** : Submodule pointers.
-| **Sun 05 Dec** : Update default CUDA version to 11.5.
