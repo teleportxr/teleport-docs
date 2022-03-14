@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Fri 11 Mar** : Add audio recording code to client renderer
+| **Fri 11 Mar** : Updating android audio classes to have new interface function
 | **Fri 11 Mar** : Merge pull request #107 from simul/audio_hevc
 | **Fri 11 Mar** : Merge branch 'master' into audio_hevc
 | **Fri 11 Mar** : Add audio capture for PC and video decoder parser changes
@@ -98,5 +100,3 @@ Changelist
 | **Wed 08 Dec** : Renaming REMOTEPLAY_ CMake variables to TELEPORT_ - check your builds!
 | **Wed 08 Dec** : Removing lib folder from thridparty
 | **Wed 08 Dec** : Adding openxr folder to thirdparty for prebuilt lib and include
-| **Wed 08 Dec** : Update docs. teleport-unity as a submodule for docs builds.
-| **Mon 06 Dec** : Prebuild openxr_loader libs - to get the correct runtime.
