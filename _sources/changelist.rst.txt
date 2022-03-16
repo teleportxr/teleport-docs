@@ -1,5 +1,9 @@
 Changelist 
 ========= 
+| **Wed 16 Mar** : Merge pull request #108 from simul/add-license-1
+| **Wed 16 Mar** : Create Licence.md
+| **Wed 16 Mar** : Update README.md
+| **Wed 16 Mar** : Update README.md
 | **Fri 11 Mar** : Add audio recording code to client renderer
 | **Fri 11 Mar** : Updating android audio classes to have new interface function
 | **Fri 11 Mar** : Merge pull request #107 from simul/audio_hevc
@@ -96,7 +100,3 @@ Changelist
 | **Thu 09 Dec** : Merge pull request #102 from simul/libcurl_changes
 | **Thu 09 Dec** : Adding http util functionality to client
 | **Wed 08 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Wed 08 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Wed 08 Dec** : Renaming REMOTEPLAY_ CMake variables to TELEPORT_ - check your builds!
-| **Wed 08 Dec** : Removing lib folder from thridparty
-| **Wed 08 Dec** : Adding openxr folder to thirdparty for prebuilt lib and include
