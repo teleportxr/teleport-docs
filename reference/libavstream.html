@@ -187,50 +187,19 @@
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7ContextE">
-<span id="_CPPv3N3avs7ContextE"></span><span id="_CPPv2N3avs7ContextE"></span><span id="avs::Context"></span><span class="target" id="classavs_1_1_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#_CPPv4N3avs7ContextE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs7ContextE"></span><span id="_CPPv2N3avs7ContextE"></span><span id="avs::Context"></span><span class="target" id="classavs_1_1_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#_CPPv4N3avs7ContextE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Global library context.</p>
-<p><a class="reference internal" href="teleportclient.html#classavs_1_1_context"><span class="std std-ref">Context</span></a> object managing application-global state. <div class="admonition note">
+<p><a class="reference internal" href="#classavs_1_1_context"><span class="std std-ref">Context</span></a> object managing application-global state. <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A single instance of this class must be instantiated by the application before accessing any other library functionality. </p>
 </div>
 </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv">
-<span id="_CPPv3N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv"></span><span id="_CPPv2N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv"></span><span id="avs::Context::setMessageHandler__MessageHandlerFunc.voidP"></span><span class="target" id="classavs_1_1_context_1a7184df4a87fde39b27916935c966f594"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setMessageHandler</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">MessageHandlerFunc</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handler</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">userData</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set custom message handler. </p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Default (library provided) message handler prints to standard output. </p>
-</div>
+</dd></dl>
+
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>handler</strong> – Message handler function; if nullptr, default message handler is restored. </p></li>
-<li><p><strong>userData</strong> – Pointer to user supplied data passed to message handler function (never dereferenced, may be nullptr). </p></li>
-</ul>
-</dd>
+<dt class="field-odd">members</dt>
+<dd class="field-odd"><p></p></dd>
 </dl>
-</dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context8instanceEv">
-<span id="_CPPv3N3avs7Context8instanceEv"></span><span id="_CPPv2N3avs7Context8instanceEv"></span><span id="avs::Context::instance"></span><span class="target" id="classavs_1_1_context_1ab80b3288a5b3ebefd4b5a150467aa1e9"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs7ContextE" title="avs::Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">instance</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Context8instanceEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get instance of the global context object. </p>
-</dd></dl>
-
-</div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context7PrivateE">
-<span id="_CPPv3N3avs7Context7PrivateE"></span><span id="_CPPv2N3avs7Context7PrivateE"></span><span id="avs::Context::Private"></span><span class="target" id="structavs_1_1_context_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><a class="headerlink" href="#_CPPv4N3avs7Context7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs8PipelineE">
 <span id="_CPPv3N3avs8PipelineE"></span><span id="_CPPv2N3avs8PipelineE"></span><span id="avs::Pipeline"></span><span class="target" id="classavs_1_1_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Pipeline</span></span></span><a class="headerlink" href="#_CPPv4N3avs8PipelineE" title="Permalink to this definition">¶</a><br /></dt>
@@ -302,7 +271,7 @@
 <dd><p>Process pipeline. Calls <a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> on each node in pipeline order providing consistent timestamp to each invocation. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><a class="reference internal" href="teleportclient.html#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> time starts when <a class="reference internal" href="#classavs_1_1_pipeline_1ae25451242f736d850b5fa6f1de22993a"><span class="std std-ref">process()</span></a> is called first and is backed up by platform’s high resolution monotonic clock. </p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> time starts when <a class="reference internal" href="#classavs_1_1_pipeline_1ae25451242f736d850b5fa6f1de22993a"><span class="std std-ref">process()</span></a> is called first and is backed up by platform’s high resolution monotonic clock. </p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -330,7 +299,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs8Pipeline7restartEv">
 <span id="_CPPv3N3avs8Pipeline7restartEv"></span><span id="_CPPv2N3avs8Pipeline7restartEv"></span><span id="avs::Pipeline::restart"></span><span class="target" id="classavs_1_1_pipeline_1a21e69b7653fea6c1e64d66abe1471fd8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">restart</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs8Pipeline7restartEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Restart pipeline. <a class="reference internal" href="teleportclient.html#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> time counter will be reinitialized at next call to <a class="reference internal" href="#classavs_1_1_pipeline_1ae25451242f736d850b5fa6f1de22993a"><span class="std std-ref">Pipeline::process()</span></a>. </p>
+<dd><p>Restart pipeline. <a class="reference internal" href="#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> time counter will be reinitialized at next call to <a class="reference internal" href="#classavs_1_1_pipeline_1ae25451242f736d850b5fa6f1de22993a"><span class="std std-ref">Pipeline::process()</span></a>. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -378,7 +347,7 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs5TimerE">
 <span id="_CPPv3N3avs5TimerE"></span><span id="_CPPv2N3avs5TimerE"></span><span id="avs::Timer"></span><span class="target" id="classavs_1_1_timer"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Timer</span></span></span><a class="headerlink" href="#_CPPv4N3avs5TimerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p><a class="reference internal" href="teleportclient.html#classavs_1_1_timer"><span class="std std-ref">Timer</span></a> for getting the elapsed between the start time and the current time. </p>
+<dd><p><a class="reference internal" href="#classavs_1_1_timer"><span class="std std-ref">Timer</span></a> for getting the elapsed between the start time and the current time. </p>
 </dd></dl>
 
 <dl class="cpp class">
@@ -1090,8 +1059,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>timestamp</strong> – <a class="reference internal" href="teleportclient.html#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> timestamp. </p></li>
-<li><p><strong>deltaTime</strong> – <a class="reference internal" href="teleportclient.html#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> timestamp. </p></li>
+<li><p><strong>timestamp</strong> – <a class="reference internal" href="#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> timestamp. </p></li>
+<li><p><strong>deltaTime</strong> – <a class="reference internal" href="#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> timestamp. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

@@ -1,0 +1,816 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Service &mdash; TeleportVR  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reference Implementation" href="../reference/index.html" />
+    <link rel="prev" title="Discovery" href="discovery.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TeleportVR
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="discovery.html">Discovery</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update">Update</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#displayinfo">DisplayInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controllerposes">ControllerPoses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resourcerequests">ResourceRequests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#receivedresources">ReceivedResources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nodeupdates">NodeUpdates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video-keyframe-request">Video Keyframe Request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity.html">Teleport Unity SDK</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TeleportVR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../protocol.html">The Teleport VR Protocol</a> &raquo;</li>
+        
+      <li>Service</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/protocol/service.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="service">
+<h1>Service<a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>After a <strong>Connecting Client</strong> is discovered and accepted, the Server creates the Service Connection, a nonblocking connection bound to the <strong>Server Service Port</strong>. The <strong>Service Connection</strong> uses enet ([<a class="reference external" href="http://enet.bespin.org/](http://enet.bespin.org/">http://enet.bespin.org/](http://enet.bespin.org/</a>)), a thin UDP manager, to ensure packet reliability and in-order delivery. The connection has eight channels: <em>Handshake, Control, DisplayInfo, HeadPose, ResourceRequest, KeyframeRequest, ClientMessage</em> and <em>Origin</em>.</p>
+<p>The <strong>Connecting Client</strong> on receiving its <strong>Service Discovery Response</strong> opens the enet connection on its <strong>Client Service Socket</strong> as nonblocking, bound to the <strong>Client Service Port</strong>. This connects to the <strong>Server</strong> on the <strong>Server Service Port</strong>.</p>
+<p>When the Server receives the <strong>Enet Connection Request</strong>, it considers <strong>Discovery</strong> to be complete for this <strong>Client</strong>. The <strong>Server</strong> sends the <strong>Setup Command</strong> to the <strong>Client</strong> on the <strong>Service Connection</strong>’s <strong>Control</strong> channel.</p>
+<p><em>Definitions</em></p>
+<p>A <strong>server session</strong> starts when a server first initializes into its running state, and continues until the <strong>Server</strong> stops it.
+A <strong>client-server session</strong> starts when a client first connects to a specific server address, and continues until either the Client or the Server decides it is finished. This may include multiple <strong>network sessions</strong>, for example in the case of network outages or connection being paused by either party. The lifetime of a <strong>client-server session</strong> is a subset of the <strong>server session</strong>.
+A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a specific Server Session</em>. <strong>uid</strong>’s are shared between the server and all of its clients. A <strong>uid</strong> need not be unique for different servers connected to the same client.</p>
+<p>All packets on the <strong>Control</strong> channel are of the form:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>member</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>commandPayloadType</p></td>
+</tr>
+<tr class="row-odd"><td><p>1+</p></td>
+<td><p>command</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Setup Command</strong> is</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 28%" />
+<col style="width: 39%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CommandPayloadType</p></td>
+<td><p>Setup=2</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p>server streaming port</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p>server http port</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>debug_stream</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>do_checksums</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>debug_network_packets</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p>requiredLatencyMs</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>idle_connection_timeout</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uid</p></td>
+<td><p>server ID</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>ControlModel</p></td>
+<td><p>control_model</p></td>
+</tr>
+<tr class="row-even"><td><p>137</p></td>
+<td><p>VideoConfig</p></td>
+<td><p>video stream configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p>12 (3 floats)</p></td>
+<td></td>
+<td><p>bodyOffsetFromHead</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>AxesStandard</p></td>
+<td><p>axes standard</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>uint8_t</p></td>
+<td><p>audio input enabled, 1 or 0</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>uint8_t</p></td>
+<td><p>SSL enabled, 1 or 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>int64</p></td>
+<td><p>starting timestamp</p></td>
+</tr>
+</tbody>
+</table>
+<p>where</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">VideoConfig</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>video_width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>video_height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>depth_width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>depth_height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>perspective_width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>perspective_height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>perspective_fov</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>nearClipPlane</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>webcam_width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>webcam_height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>webcam_offset_x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>webcam_offset_y</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>use_10_bit_decoding</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>use_yuv_444_decoding</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>use_alpha_layer_decoding</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>colour_cubemap_size</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>compose_cube</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>use_cubemap</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>stream_webcam</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>avs::VideoCodec</p></td>
+<td><p>videoCodec</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>specular_x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>specular_y</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>specular_cubemap_size</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>specular_mips</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>diffuse_x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>diffuse_y</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>diffuse_cubemap_size</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>light_x</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>light_y</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>light_cubemap_size</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>shadowmap_x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>shadowmap_y</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>shadowmap_size</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>draw_distance</p></td>
+</tr>
+</tbody>
+</table>
+<p>The  <strong>Client</strong> then initiates its streaming connection with the given <strong>Server Streaming Port</strong> from the <strong>**Setup Command**</strong>. The Client sends a <strong>Handshake</strong> on the Handshake channel of the Service Connection.</p>
+<p>The <strong>Handshake</strong> is</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 28%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>unsigned</p></td>
+<td><p>DisplayInfo width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>unsigned</p></td>
+<td><p>DisplayInfo height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>metres per unit</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>field of view (degrees)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>unsigned</p></td>
+<td><p>udp buffer size</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>unsigned</p></td>
+<td><p>max bandwidth, kb/s</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>AxesStandard</p></td>
+<td><p>Axes standard</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>uint8_t</p></td>
+<td><p>framerate, Hz</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>bool</p></td>
+<td><p>using hands</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bool</p></td>
+<td><p>is VR</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>resource count = N</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>max lights supported</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>client Streaming Port</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>minimum Priority</p></td>
+</tr>
+<tr class="row-even"><td><p>8 * N</p></td>
+<td><p>uid</p></td>
+<td><p>resources already present</p></td>
+</tr>
+</tbody>
+</table>
+<p>When the <strong>Server</strong> receives the <strong>Handshake</strong>, it starts streaming proper. The <strong>Streaming Connection</strong> is created on the <strong>Server Streaming Port</strong>, which is by default (<strong>Server Service Port</strong> + 1). The Handshake is of variable size, as it contains a list of the resource uid’s that it already has cached.</p>
+<p>The server then sends the AcknowledgeHandshake command on the <em>Control</em> channel:</p>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">AcknowledgeHandshake</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CommandPayloadType</p></td>
+<td><p>AcknowledgeHandshake=3</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>visibleNodeCount=N</p></td>
+</tr>
+<tr class="row-even"><td><p>8*N</p></td>
+<td><p>uid</p></td>
+<td><p>node uid’s to be streamed</p></td>
+</tr>
+</tbody>
+</table>
+<p>Once the <strong>Client</strong> has received the AcknowledgeHandshake, Initialization is complete and the client enters the main continuous Update mode.</p>
+</div>
+<div class="section" id="update">
+<h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<p>A client may send any of the following one or more times per frame:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>DisplayInfo</p></li>
+<li><p>ControllerPoses</p></li>
+<li><p>OriginPose</p></li>
+<li><p>Inputs</p></li>
+<li><p>ResourceRequests</p></li>
+<li><p>ResourceAcknowledgements</p></li>
+<li><p>NodeUpdates</p></li>
+</ul>
+</div></blockquote>
+<p>The <strong>Client</strong> sends all of its messages in its local units and Axes Standard. For example, if the <strong>Client</strong> works in metres and has Y vertical, positions and rotations sent to the server will be in this format.</p>
+<p>The <strong>Server</strong> sends all of its commands to the <strong>Client</strong> in the <strong>Client’s</strong> local units and standard.</p>
+<div class="section" id="displayinfo">
+<h3>DisplayInfo<a class="headerlink" href="#displayinfo" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">DisplayInfo</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>height</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="controllerposes">
+<h3>ControllerPoses<a class="headerlink" href="#controllerposes" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id4">
+<caption><span class="caption-text">ControllerPoses</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>28</p></td>
+<td><p>Pose</p></td>
+<td><p>head pose</p></td>
+</tr>
+<tr class="row-odd"><td><p>28</p></td>
+<td><p>Pose</p></td>
+<td><p>left controller pose</p></td>
+</tr>
+<tr class="row-even"><td><p>28</p></td>
+<td><p>Pose</p></td>
+<td><p>right controller pose</p></td>
+</tr>
+</tbody>
+</table>
+<p>where Pose is:</p>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">Pose</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>4-vector of floats</p></td>
+<td><p>orientation (quaternion)</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>3-vector of floats</p></td>
+<td><p>position</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="resourcerequests">
+<h3>ResourceRequests<a class="headerlink" href="#resourcerequests" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">ResourceRequests</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>number of resources requested = N</p></td>
+</tr>
+<tr class="row-odd"><td><p>8*N</p></td>
+<td><p>uid</p></td>
+<td><p>resource uid’s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="receivedresources">
+<h3>ReceivedResources<a class="headerlink" href="#receivedresources" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">ReceivedResources</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>number of resources acknowledged = N</p></td>
+</tr>
+<tr class="row-odd"><td><p>8*N</p></td>
+<td><p>uid</p></td>
+<td><p>resource uid’s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="nodeupdates">
+<h3>NodeUpdates<a class="headerlink" href="#nodeupdates" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">NodeUpdates</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>number of received nodes to report = N</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>number of lost nodes to report = M</p></td>
+</tr>
+<tr class="row-even"><td><p>8*N</p></td>
+<td><p>uid</p></td>
+<td><p>received node uid’s</p></td>
+</tr>
+<tr class="row-odd"><td><p>8*M</p></td>
+<td><p>uid</p></td>
+<td><p>lost node uid’s</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="video-keyframe-request">
+<h3>Video Keyframe Request<a class="headerlink" href="#video-keyframe-request" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-text">Video Keyframe Request</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 22%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>number of received nodes to report = N</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../reference/index.html" class="btn btn-neutral float-right" title="Reference Implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="discovery.html" class="btn btn-neutral float-left" title="Discovery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2018-2022, Simul Software Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
