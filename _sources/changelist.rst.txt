@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Fri 18 Mar** : Update yuv to rgb conversion shader
 | **Thu 17 Mar** : Merge branch 'master' of github.com:simul/Teleport
 | **Wed 16 Mar** : Merge pull request #108 from simul/add-license-1
 | **Wed 16 Mar** : Create Licence.md
@@ -99,4 +100,3 @@ Changelist
 | **Thu 09 Dec** : comment out test code
 | **Thu 09 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Thu 09 Dec** : Using guids for resources instead of storing temporary uids in the files. TELEPORT_CLIENT_LOG etc - better naming convention for log macros.
-| **Thu 09 Dec** : Merge pull request #102 from simul/libcurl_changes
