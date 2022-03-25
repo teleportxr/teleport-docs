@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Data Transfer &mdash; TeleportVR  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reference Implementation" href="../reference/index.html" />
+    <link rel="prev" title="Service" href="service.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TeleportVR
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="discovery.html">Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">Service</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Data Transfer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reliability">Reliability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#secure-reliable-transfer-protocol">Secure Reliable Transfer Protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elastic-frame-protocol">Elastic Frame Protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#efp-frame-types-and-superframes">EFP Frame Types and SuperFrames</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sending-data-from-the-server">Sending Data from the Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-transfer-process">Data Transfer Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#receiving-data-on-the-client">Receiving Data on the Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-receiving-process">Data Receiving Process</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity.html">Teleport Unity SDK</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TeleportVR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../protocol.html">The Teleport VR Protocol</a> &raquo;</li>
+        
+      <li>Data Transfer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/protocol/data_transfer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-transfer">
+<h1>Data Transfer<a class="headerlink" href="#data-transfer" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="reliability">
+<h2>Reliability<a class="headerlink" href="#reliability" title="Permalink to this headline">¶</a></h2>
+<p>To ensure the reliable streaming of content, the protocol requires four important features:</p>
+<ol class="arabic simple">
+<li><p>Lost network packets are resent within a certain time window.</p></li>
+<li><p>The client can handle network packets received out of order.</p></li>
+<li><p>The client can determine when a payload is corrupted.</p></li>
+<li><p>The client/server can recover from a corrupted payload.</p></li>
+</ol>
+</div>
+<div class="section" id="secure-reliable-transfer-protocol">
+<h2>Secure Reliable Transfer Protocol<a class="headerlink" href="#secure-reliable-transfer-protocol" title="Permalink to this headline">¶</a></h2>
+<p>The Secure Reliable Transfer (SRT) protocol is used for sending network packets.
+This is an open source protocol that provides a wrapper around UDP and allows for the retransmission of lost packets.
+It has low overhead compared with TCP and deals with point 1 above.
+For more information on SRT, see here: <a class="reference external" href="https://www.haivision.com/resources/streaming-video-definitions/srt/">https://www.haivision.com/resources/streaming-video-definitions/srt/</a></p>
+</div>
+<div class="section" id="elastic-frame-protocol">
+<h2>Elastic Frame Protocol<a class="headerlink" href="#elastic-frame-protocol" title="Permalink to this headline">¶</a></h2>
+<p>The Teleport Protocol uses the Elastic Frame Protocol (EFP) to maximize streaming reliability.
+This is an open source protocol that is independent of the underlying transport protocol.
+It groups network packets together into large chunks of data called superframes.
+The EFP library provides functionality for sending and receiving superframes.
+EFP adds its own header to each network packet.
+The header contains information such as the superframe ID and the transmission timestamp.
+This information allows the EFP receiver to reassemble the superframe on the client and deal with points 2 and 3.
+When a payload is deemed to be corrupted, it is discarded and the client may request it to be sent again.
+How the client does this is dependant on the type of stream. See the documentation on each stream type for more information on this.
+For EFP documentation, code examples and the source, see the Simul fork here: <a class="reference external" href="https://github.com/simul/efp">https://github.com/simul/efp</a>.
+Note: Teleport is currently using the master branch of the Simul fork of EFP and SRT.</p>
+</div>
+<div class="section" id="efp-frame-types-and-superframes">
+<h2>EFP Frame Types and SuperFrames<a class="headerlink" href="#efp-frame-types-and-superframes" title="Permalink to this headline">¶</a></h2>
+<p>EFP adds four different types of headers of varying size to each network packet. The types used depend on the total size of the payload and the <strong>MTU</strong> size.
+Each payload will have either have one packet with a <strong>ElasticFrameType1</strong> header or multiple packets with <strong>ElasticFrameType2</strong> headers.
+Both of these headers contain a uint64 member called hPTS (Presentation timestamp). This is unused by EFP but used by Teleport to store the <strong>stream-payload-id</strong>, a unique identifier for a payload.
+All <strong>ElasticFrameType</strong> headers contain a uint8 member named hStreamID. This uniquely identifies the stream the packet belongs to.
+This allows for payloads from different streams to be sent to a client in parallel.
+EFP header types 1, 2 and 3 are currently only used but types 0 and 4 may be used in future versions.
+For a detailed breakdown and explanation about the different kinds of <strong>ElasticFrameType</strong> headers, see here: <a class="reference external" href="https://edgeware-my.sharepoint.com/:p:/g/personal/anders_cedronius_edgeware_tv/ERnSit7j6udBsZOqkQcMLrQBpKmnfdApG3lehRk4zE-qgQ?rtime=swkDU08M2kg">https://edgeware-my.sharepoint.com/:p:/g/personal/anders_cedronius_edgeware_tv/ERnSit7j6udBsZOqkQcMLrQBpKmnfdApG3lehRk4zE-qgQ?rtime=swkDU08M2kg</a></p>
+<p><strong>ElasticFrameType1</strong>
++———————–+——————-+—————————+
+|          bytes        |        type       |    description            |
+|                       |                   |                           |
++=======================+===================+===========================+
+|      1                |    uint8          |    hFrameType=1           |
++———————–+——————-+—————————+
+|      1                |    uint8          |    hStreamID              |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hSuperFrameNo          |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hFragmentNo            |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hOfFragmentNo          |
++———————–+——————-+—————————+</p>
+<p><strong>ElasticFrameType2</strong>
++———————–+——————-+—————————+
+|          bytes        |        type       |    description            |
+|                       |                   |                           |
++=======================+===================+===========================+
+|      1                |    uint8          |    hFrameType=2           |
++———————–+——————-+—————————+
+|      1                |    uint8          |    hStreamID              |
++———————–+——————-+—————————+
+|      1                <a href="#id2"><span class="problematic" id="id3">|ElasticFrameContent|</span></a>    hDataContent           |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hSizeOfData            |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hSuperFrameNo          |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hOfFragmentNo          |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hType1PacketSize       |
++———————–+——————-+—————————+
+|      8                |    uint64         |    hPts                   |
++———————–+——————-+—————————+
+|      4                |    uint32         |    hDtsPtsDiff            |
++———————–+——————-+—————————+
+|      4                |    uint32         |    hCode                  |
++———————–+——————-+—————————+</p>
+<p><strong>ElasticFrameType3</strong>
++———————–+——————-+—————————+
+|          bytes        |        type       |    description            |
+|                       |                   |                           |
++=======================+===================+===========================+
+|      1                |    uint8          |    hFrameType=3           |
++———————–+——————-+—————————+
+|      1                |    uint8          |    hStreamID              |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hSuperFrameNo          |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hType1PacketSize       |
++———————–+——————-+—————————+
+|      2                |    uint16         |    hOfFragmentNo          |
++———————–+——————-+—————————+</p>
+<p>The hDataContent member of a <strong>ElasticFrameType2</strong> is a <strong>ElasticFrameContent</strong> enum that refers to the type of data in the stream.
+<strong>ElasticFrameContent</strong> enum includes common codecs such as HEVC and H264 for video and a privatedata value to specify a custom content type.
+The <strong>stream-data-type</strong> is a <strong>ElasticFrameContent</strong> enum and is passed to the <strong>EFP Sender</strong> by the server.</p>
+<p>EFP <strong>SuperFrames</strong> are an EFP class that are only used on the client by the <strong>ElasticFrameProtocolReceiver</strong> class which will be referred to as the <strong>EFP Recevier</strong> .
+<strong>SuperFrames</strong> store all the data for a payload as well as some metadata. <strong>SuperFrames</strong> are created by the <strong>EFP Recevier</strong> when the first fragment or packet of
+a payload is received and updated as new packets belonging to the same payload are received.
+When all packets have been received, the <strong>SuperFrame</strong> is complete and passed to the <strong>receiveCallback</strong>.
+The mBroken member flag of the <strong>SuperFrame</strong> is set to true by the <strong>EFP Recevier</strong> when the <strong>SuperFrame</strong> is corrupted.
+The <strong>SuperFrame</strong> is corrupted if not all frame fragments or packets are received before the user specified timeout or if some data received is invalid.
+A corrupted <strong>SuperFrame</strong> will still be passed to the <strong>receiveCallback</strong> to inform the client application of the corruption.
+It is then up to the client application to recover from the corruption such as by requesting the same payload again.
+The hSuperFrameNo field in the <strong>ElasticFrameType</strong> header is used by EFP to determine what <strong>SuperFrame</strong> a packet belongs to.
+The <strong>EFP Sender</strong> on the server maintains this value.</p>
+<p><strong>SuperFrame</strong>
++———————–+——————-+———————————————+
+|          bytes        |        type       |                  description                |
+|                       |                   |                                             |
++=======================+===================+=============================================+
+|      8                |    uint64         |   mFrameSize   - content size in bytes      |
++———————–+——————-+———————————————+
+|      1                |    uint8*         |   pFrameData   - pointer to content         |
++———————–+——————-+———————————————+
+|      1                <a href="#id4"><span class="problematic" id="id5">|ElasticFrameContent|</span></a>   mDataContent - format of content          |
++———————–+——————-+———————————————+
+|      1                |    bool           |   mBroken      - corrupted data flag        |
++———————–+——————-+———————————————+
+|      8                |    uint64         |   mPts         - presentation timestamp     |
++———————–+——————-+———————————————+
+|      4                |    uint64         |   mDts         - decode timestamp           |
++———————–+——————-+———————————————+
+|      4                |    uint32         |   mCode        - data format code           |
++———————–+——————-+———————————————+
+|      1                |    uint8          |   mStreamID    - stream id                  |
++———————–+——————-+———————————————+
+|      1                |    uint8          |   mSource      - index of EFP Sender        |
++———————–+——————-+———————————————+
+|      1                |    uint8          |   mFlags       - superFrame slags (Unusued) |
++———————–+——————-+———————————————+</p>
+<p>The network packet structure.
++———————–+
+|    Network Packet     |
+|                       |
++=======================+
+|         UDP           |
++———————–+
+|         SRT           |
++———————–+
+|         EFP           |
++———————–+
+|       Content         |
++———————–+</p>
+</div>
+<div class="section" id="sending-data-from-the-server">
+<h2>Sending Data from the Server<a class="headerlink" href="#sending-data-from-the-server" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>On the start of a <strong>client-server session</strong>, the server initializes SRT and starts listening for messages on a user specified socket.
+An instance of an <strong>ElasticFrameProtocolSender</strong> class is created and the Maximum Transmission Unit (MTU) is passed to the constructor
+This is 1450 for UDP which is the protocol SRT is built on.
+One EFP sender is used for each client and only one sender is needed for all data streams.
+After construction, the <strong>sendCallback</strong> member of the <strong>ElasticFrameProtocolSender</strong> instance is set to a user defined callback.
+This callback is called in the sender’s <strong>packAndSendFromPtr</strong> function for each EFP packet created.
+The callback’s job is to actually send the data to the client.
+Any network transfer protocol can be used in the callback to send the data but Teleport exclusively uses SRT.</p>
+</div>
+<div class="section" id="data-transfer-process">
+<h2>Data Transfer Process<a class="headerlink" href="#data-transfer-process" title="Permalink to this headline">¶</a></h2>
+<p>On each frame or application update, the server will poll SRT to check the status of the connection for each client.
+If the server and client are connected, the server will do the following to transfer data to the client for each stream:</p>
+<ol class="arabic simple">
+<li><p>The stream’s data source is checked for any available data.</p></li>
+<li><p>The available data buffer, buffer size, <strong>stream-data-type</strong>, <strong>stream-payload-id</strong>, and <strong>stream-id</strong> are passed to the EFP sender’s <strong>packAndSendFromPtr</strong> function.</p></li>
+<li><p>The <strong>stream-payload-id</strong> is increented.</p></li>
+<li><p>EFP <strong>packAndSendFromPtr</strong> function assembles the data into multiple network packets with <strong>ElasticFrameType</strong> headers as described previously.</p></li>
+<li><p>The <strong>sendCallback</strong> is called for each packet.</p></li>
+<li><p>The <strong>sendCallback</strong> calls the SRT API’s <strong>srt_sendmsg2</strong> function, passing the remote socket identifier, the network packet and packet size.</p></li>
+<li><p>This function will add the SRT and UDP headers to the network packet and send the packet to the client.</p></li>
+</ol>
+</div>
+<div class="section" id="receiving-data-on-the-client">
+<h2>Receiving Data on the Client<a class="headerlink" href="#receiving-data-on-the-client" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id1">
+<h2>Initialization<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>On receiving the <strong>SetupCommand</strong>, the client will initialize SRT and create and configure an SRT socket for receiving network packets from the server.
+Subsequently, the client will create an instance of an <strong>ElasticFrameProtocolReceiver</strong> or <strong>EFP Receiver</strong> and this will remain in use until the end of the
+<strong>server-client-session</strong>. A <strong>SuperFrame</strong> timeout and <strong>EFPReceiverMode</strong> are passed to the <strong>EFP Receiver</strong> constructor.
+The <strong>SuperFrame</strong> timeout specifies the length of time EFP will wait between receiving the first and last packet of a payload before marking the <strong>SuperFrame</strong> as broken.
+This timeout could vary depending on the application. Teleport sets the timeout to 100ms.
+There are two types of <strong>EFPReceiverMode</strong>, <strong>run-to-completion</strong> and <strong>threaded</strong>.
+When receiving a network packet in <strong>run-to-completion</strong> mode, EFP will update the <strong>SuperFrame</strong> and call the <strong>receiveCallback</strong> on the same thread that calls the receiver’s <strong>receiveFragmentFromPtr</strong> function.
+When receiving a network packet in <strong>theaded</strong> mode, EFP will update the <strong>SuperFrame</strong> and call the <strong>receiveCallback</strong> on a separate worker thread.
+If the <strong>receiveCallback</strong> is low overhead and the target device has 4 or more cpu cores, then <strong>run-to-completion</strong> mode is the best option. Otherwise <strong>threaded</strong> mode is recommended.
+The receiver’s <strong>receiveCallback</strong> is then assigned to a function that accepts a <strong>SuperFrame</strong> in its signature.
+This function will receive a completed <strong>SuperFrame</strong> containing the server’s payload for the application to process.</p>
+</div>
+<div class="section" id="data-receiving-process">
+<h2>Data Receiving Process<a class="headerlink" href="#data-receiving-process" title="Permalink to this headline">¶</a></h2>
+<p>On each frame or application update, the client will use <strong>srt_connect</strong> to try make a connection to the server using the server ip and <strong>server streaming port</strong>
+provided in the <strong>Setup Command</strong>. If a connection has been attempted, the client will poll SRT to check the status of the connection.
+If the server and client are connected, the client will do the following to process incoming packets from the server:</p>
+<ol class="arabic simple">
+<li><p>On a separate thread, obtain network packets from the socket using SRT API <strong>srt_recvmsg</strong> function until there are no packets available.
+A pointer to the buffer the packet is written to is passed to the function.
+The function returns 1 if there is a packet available, 0 if there’s no packet available and -1 if the connection to the server has been lost.
+The <strong>srt_recvmsg</strong> function reverses what <strong>srt_sendmsg2</strong> does on the server, removing the UDP and SRT headers from the network packet.</p></li>
+<li><p>Pass each packet to the <strong>receiveFragmentFromPtr</strong> function of the <strong>EFP Receiver</strong>.
+This function also requires a parameter for the <strong>MTU</strong> and the <strong>EFP Receiver</strong> index which can be set to 0.</p></li>
+<li><p>EFP will process each packet to assemble a <strong>SuperFrame</strong> and pass each completed <strong>SuperFrame</strong> to the <strong>readCallback</strong>.</p></li>
+<li><p>The callback creates a <strong>Payload Info</strong> structure from the mPTS, pFrameSize, pFrameData (payload) and mBroken members of the <strong>SuperFrame</strong>.</p></li>
+<li><p>The payload’s stream is identified by the mStreamID member of the <strong>SuperFrame</strong> and the <strong>Payload Info</strong> structure is written to a designated queue for the stream.</p></li>
+<li><p>The main thread will read the <strong>Payload Info</strong> structure from the queue. If the value of mBroken is true, the application may request a new payload.
+If the data is not corrupted, the payload will be passed to the corresponding decoder for the stream.
+.</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../reference/index.html" class="btn btn-neutral float-right" title="Reference Implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="service.html" class="btn btn-neutral float-left" title="Service" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2018-2022, Simul Software Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
