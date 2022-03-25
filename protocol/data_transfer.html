@@ -194,32 +194,34 @@
 <p>The Secure Reliable Transfer (SRT) protocol is used for sending network packets.
 This is an open source protocol that provides a wrapper around UDP and allows for the retransmission of lost packets.
 It has low overhead compared with TCP and deals with point 1 above.
-For more information on SRT, see here: <a class="reference external" href="https://www.haivision.com/resources/streaming-video-definitions/srt/">https://www.haivision.com/resources/streaming-video-definitions/srt/</a></p>
+For the Simul fork of SRT, see here: <a class="reference external" href="https://github.com/simul/srt">https://github.com/simul/srt</a>.
+For more information on SRT, see here: <a class="reference external" href="https://www.haivision.com/resources/streaming-video-definitions/srt/">https://www.haivision.com/resources/streaming-video-definitions/srt/</a>.
+Note: Teleport is currently using the master branch of the SRT fork.</p>
 </div>
 <div class="section" id="elastic-frame-protocol">
 <h2>Elastic Frame Protocol<a class="headerlink" href="#elastic-frame-protocol" title="Permalink to this headline">¶</a></h2>
 <p>The Teleport Protocol uses the Elastic Frame Protocol (EFP) to maximize streaming reliability.
 This is an open source protocol that is independent of the underlying transport protocol.
-It groups network packets together into large chunks of data called superframes.
-The EFP library provides functionality for sending and receiving superframes.
+It groups network packets together into large chunks of data called <strong>SuperFrames</strong>.
+The EFP library provides functionality for sending and receiving <strong>SuperFrames</strong>.
 EFP adds its own header to each network packet.
-The header contains information such as the superframe ID and the transmission timestamp.
-This information allows the EFP receiver to reassemble the superframe on the client and deal with points 2 and 3.
+The header contains information such as the <strong>SuperFrame</strong> ID and the transmission timestamp.
+This information allows the <strong>EFP Receiver</strong> to reassemble the <strong>SuperFrame</strong> on the client and deal with points 2 and 3.
 When a payload is deemed to be corrupted, it is discarded and the client may request it to be sent again.
 How the client does this is dependant on the type of stream. See the documentation on each stream type for more information on this.
 For EFP documentation, code examples and the source, see the Simul fork here: <a class="reference external" href="https://github.com/simul/efp">https://github.com/simul/efp</a>.
-Note: Teleport is currently using the master branch of the Simul fork of EFP and SRT.</p>
+Note: Teleport is currently using the master branch of the EFP fork.</p>
 </div>
 <div class="section" id="efp-frame-types-and-superframes">
 <h2>EFP Frame Types and SuperFrames<a class="headerlink" href="#efp-frame-types-and-superframes" title="Permalink to this headline">¶</a></h2>
-<p>EFP adds four different types of headers of varying size to each network packet. The types used depend on the total size of the payload and the <strong>MTU</strong> size.
-Each payload will have either have one packet with a <strong>ElasticFrameType1</strong> header or multiple packets with <strong>ElasticFrameType2</strong> headers.
-Both of these headers contain a uint64 member called hPTS (Presentation timestamp). This is unused by EFP but used by Teleport to store the <strong>stream-payload-id</strong>, a unique identifier for a payload.
+<p>EFP adds four different types of headers of varying size to each network packet. The types used depend on the total size of the payload and the <strong>Maximum Transmission Unit</strong> (<strong>MTU</strong>) size.
+Each payload will either have one packet with a <strong>ElasticFrameType1</strong> header or multiple packets with <strong>ElasticFrameType2</strong> headers.
+Both of these headers contain a uint64 member called hPTS (Presentation Timestamp). This is unused by EFP but used by Teleport to store the <strong>stream-payload-id</strong>, a unique identifier for a payload.
 All <strong>ElasticFrameType</strong> headers contain a uint8 member named hStreamID. This uniquely identifies the stream the packet belongs to.
 This allows for payloads from different streams to be sent to a client in parallel.
 EFP header types 1, 2 and 3 are currently only used but types 0 and 4 may be used in future versions.
-For a detailed breakdown and explanation about the different kinds of <strong>ElasticFrameType</strong> headers, see here: <a class="reference external" href="https://edgeware-my.sharepoint.com/:p:/g/personal/anders_cedronius_edgeware_tv/ERnSit7j6udBsZOqkQcMLrQBpKmnfdApG3lehRk4zE-qgQ?rtime=swkDU08M2kg">https://edgeware-my.sharepoint.com/:p:/g/personal/anders_cedronius_edgeware_tv/ERnSit7j6udBsZOqkQcMLrQBpKmnfdApG3lehRk4zE-qgQ?rtime=swkDU08M2kg</a></p>
-<p><strong>ElasticFrameType1</strong></p>
+For a detailed breakdown and explanation about the different kinds of <strong>ElasticFrameType</strong> headers, see here: <a class="reference external" href="https://edgeware-my.sharepoint.com/:p:/g/personal/anders_cedronius_edgeware_tv/ERnSit7j6udBsZOqkQcMLrQBpKmnfdApG3lehRk4zE-qgQ?rtime=swkDU08M2kg">https://edgeware-my.sharepoint.com/:p:/g/personal/anders_cedronius_edgeware_tv/ERnSit7j6udBsZOqkQcMLrQBpKmnfdApG3lehRk4zE-qgQ?rtime=swkDU08M2kg</a>.</p>
+<p>An <strong>ElasticFrameType1</strong> is of the form:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -255,7 +257,7 @@ For a detailed breakdown and explanation about the different kinds of <strong>El
 </tr>
 </tbody>
 </table>
-<p><strong>ElasticFrameType2</strong></p>
+<p>An <strong>ElasticFrameType2</strong> is of the form:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -311,7 +313,7 @@ For a detailed breakdown and explanation about the different kinds of <strong>El
 </tr>
 </tbody>
 </table>
-<p><strong>ElasticFrameType3</strong></p>
+<p>An <strong>ElasticFrameType3</strong> is of the form:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -348,7 +350,7 @@ For a detailed breakdown and explanation about the different kinds of <strong>El
 </tbody>
 </table>
 <p>The hDataContent member of a <strong>ElasticFrameType2</strong> is a <strong>ElasticFrameContent</strong> enum that refers to the type of data in the stream.
-<strong>ElasticFrameContent</strong> enum includes common codecs such as HEVC and H264 for video and a privatedata value to specify a custom content type.
+The <strong>ElasticFrameContent</strong> enum includes common codecs such as HEVC and H264 for video and and also allows for the content type to specified as private or custom data.
 The <strong>stream-data-type</strong> is a <strong>ElasticFrameContent</strong> enum and is passed to the <strong>EFP Sender</strong> by the server.</p>
 <p>EFP <strong>SuperFrames</strong> are an EFP class that are only used on the client by the <strong>ElasticFrameProtocolReceiver</strong> class which will be referred to as the <strong>EFP Recevier</strong> .
 <strong>SuperFrames</strong> store all the data for a payload as well as some metadata. <strong>SuperFrames</strong> are created by the <strong>EFP Recevier</strong> when the first fragment or packet of
@@ -360,7 +362,7 @@ A corrupted <strong>SuperFrame</strong> will still be passed to the <strong>rece
 It is then up to the client application to recover from the corruption such as by requesting the same payload again.
 The hSuperFrameNo field in the <strong>ElasticFrameType</strong> header is used by EFP to determine what <strong>SuperFrame</strong> a packet belongs to.
 The <strong>EFP Sender</strong> on the server maintains this value.</p>
-<p><strong>SuperFrame</strong></p>
+<p>A <strong>SuperFrame</strong> is of the form:</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 26%" />
@@ -440,13 +442,16 @@ The <strong>EFP Sender</strong> on the server maintains this value.</p>
 <div class="section" id="initialization-of-efp-on-the-server">
 <h2>Initialization of EFP on the Server<a class="headerlink" href="#initialization-of-efp-on-the-server" title="Permalink to this headline">¶</a></h2>
 <p>On the start of a <strong>client-server session</strong>, the server initializes SRT and starts listening for messages on a user specified socket.
-An instance of an <strong>ElasticFrameProtocolSender</strong> class is created and the Maximum Transmission Unit (MTU) is passed to the constructor
+An instance of an <strong>ElasticFrameProtocolSender</strong> class is created and the <strong>MTU</strong> size is passed to the constructor
 This is 1450 for UDP which is the protocol SRT is built on.
 One EFP sender is used for each client and only one sender is needed for all data streams.
 After construction, the <strong>sendCallback</strong> member of the <strong>ElasticFrameProtocolSender</strong> instance is set to a user defined callback.
 This callback is called in the sender’s <strong>packAndSendFromPtr</strong> function for each EFP packet created.
 The callback’s job is to actually send the data to the client.
-Any network transfer protocol can be used in the callback to send the data but Teleport exclusively uses SRT.</p>
+Any network transfer protocol can be used in the callback to send the data but Teleport exclusively uses SRT.
+Each payload sent to the client will have a unique identifier (<strong>stream-payload-id</strong>) for each stream.
+This is a uint64 value that is initialized to 0 on the start of the <strong>client-server session</strong> and incremented for each stream when a new payload is sent to the client.
+The <strong>stream-payload-id</strong> value is written to <strong>PTS</strong> of each EFP packet header.</p>
 </div>
 <div class="section" id="sending-data-from-the-server">
 <h2>Sending Data from the Server<a class="headerlink" href="#sending-data-from-the-server" title="Permalink to this headline">¶</a></h2>
@@ -455,7 +460,7 @@ If the server and client are connected, the server will do the following to tran
 <ol class="arabic simple">
 <li><p>The stream’s data source is checked for any available data.</p></li>
 <li><p>The available data buffer, buffer size, <strong>stream-data-type</strong>, <strong>stream-payload-id</strong>, and <strong>stream-id</strong> are passed to the EFP sender’s <strong>packAndSendFromPtr</strong> function.</p></li>
-<li><p>The <strong>stream-payload-id</strong> is increented.</p></li>
+<li><p>The <strong>stream-payload-id</strong> is incremented.</p></li>
 <li><p>EFP <strong>packAndSendFromPtr</strong> function assembles the data into multiple network packets with <strong>ElasticFrameType</strong> headers as described previously.</p></li>
 <li><p>The <strong>sendCallback</strong> is called for each packet.</p></li>
 <li><p>The <strong>sendCallback</strong> calls the SRT API’s <strong>srt_sendmsg2</strong> function, passing the remote socket identifier, the network packet and packet size.</p></li>

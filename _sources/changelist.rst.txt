@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Fri 25 Mar** : Fixing typos in data transfer doc
 | **Fri 25 Mar** : Adding update to efp docs and dxva code
 | **Thu 24 Mar** : Add data transfer documentation first draft
 | **Tue 22 Mar** : Add some hevc parsing fixes
@@ -99,4 +100,3 @@ Changelist
 | **Thu 09 Dec** : Merge branch 'master' of github.com:simul/RemotePlay into master
 | **Thu 09 Dec** : Builds and Runs on Win x64.
 | **Thu 09 Dec** : Builds, compiles and runs on Android Phone.
-| **Thu 09 Dec** : Initial commit of TeleportVRQuestClientAGDE with PlatformBuild .vcxproj files. WIP
