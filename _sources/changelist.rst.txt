@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Wed 30 Mar** : Adding fix for d3d11 nvidia decoder compilation
 | **Mon 28 Mar** : Adding support for long term reference frames d3d12 decoder
 | **Fri 25 Mar** : Fixing typos in data transfer doc
 | **Fri 25 Mar** : Adding update to efp docs and dxva code
@@ -99,4 +100,3 @@ Changelist
 | **Thu 09 Dec** : RemotePlayServer.dll renamed to TeleportServer.dll
 | **Thu 09 Dec** : Chaning curl location to be in libavstream thirdparty and fixing server compile error
 | **Thu 09 Dec** : Merge branch 'master' of github.com:simul/RemotePlay into master
-| **Thu 09 Dec** : Builds and Runs on Win x64.
