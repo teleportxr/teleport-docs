@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Mon 04 Apr** : Addingfixes for d3d12 video decoder
+| **Sat 02 Apr** : Adding threading fix when handling events in client messaging
+| **Sat 02 Apr** : hevc parser improvements
 | **Thu 31 Mar** : Adding compile fix for skin.cpp
 | **Wed 30 Mar** : Adding fix for d3d11 nvidia decoder compilation
 | **Mon 28 Mar** : Adding support for long term reference frames d3d12 decoder
@@ -97,6 +100,3 @@ Changelist
 | **Sat 11 Dec** : mesh guids are 48 chards not 32 now.
 | **Fri 10 Dec** : Fixinf Android compile errors
 | **Thu 09 Dec** : Node reparenting orientation is now used correctly. Fixed geometry streaming Payloadtype bug.
-| **Thu 09 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Thu 09 Dec** : RemotePlayServer.dll renamed to TeleportServer.dll
-| **Thu 09 Dec** : Chaning curl location to be in libavstream thirdparty and fixing server compile error
