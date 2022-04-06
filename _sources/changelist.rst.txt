@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Wed 06 Apr** : Adding video metadata docs
 | **Tue 05 Apr** : Add video to protocol.rst
 | **Tue 05 Apr** : Adding docs for video. Metadata be added later
 | **Mon 04 Apr** : Addingfixes for d3d12 video decoder
@@ -99,4 +100,3 @@ Changelist
 | **Tue 14 Dec** : Fix discovery service connection issue for remote clients
 | **Sun 12 Dec** : Asynchronous enet_address_set_host
 | **Sat 11 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Sat 11 Dec** : mesh guids are 48 chards not 32 now.

@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reference Implementation" href="../reference/index.html" />
+    <link rel="next" title="Video Metadata" href="video_metadata.html" />
     <link rel="prev" title="Data Transfer" href="data_transfer.html" /> 
 </head>
 
@@ -102,6 +102,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#processing-of-video-frame-on-the-client">Processing of video Frame on the Client</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">Video Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
@@ -176,7 +177,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="video">
-<h1>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h1>
+<span id="video-reference"></span><h1>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h1>
 <p>The server must stream video to the client wth minimal latency.
 This section will describe the structure and content of the video frames, how low latency can be achieved and what the client must do to process the data.</p>
 <div class="section" id="video-texture-layout">
@@ -195,7 +196,7 @@ The depth cubemap should be rendered at half the resolution of the color cubemap
 The resolution of the video texture is configurable but must be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.
 A resolution of 1536x1536 pixels is recommended for the video texture with 512x512 for each face of the color cubemap and 256x256 for each face of the depth cubemap.</p>
 <p>A <strong>Tag ID</strong> should also be included in the video texture. This links the video frame with the associated video metadata.
-The metadata is sent in a separate stream. See <span class="xref std std-ref">video-metadata-reference</span>.
+The metadata is sent in a separate stream. See <a class="reference internal" href="video_metadata.html#video-metadata-reference"><span class="std std-ref">Video Metadata</span></a>.
 The <strong>Tag ID</strong> should be encoded as a sequence of 5 bits at the bottom right of the video texture.
 This allows 32 different IDs or a maximum delay of 31 frames between the transmission of the metadata and video texture before a <strong>Tag ID</strong> is reused.</p>
 <p>Teleport also supports the sending of lighting information in the video texture.
@@ -206,8 +207,8 @@ A cubemap containing the diffuse lighting of the scene should be rendered to the
 The resolution and offsets of the lighting cubemaps can be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.</p>
 <p>A webcam image may also be sent to the clien. The dimensions of the webcam image and offset may vary as long as they fit in the video texture.
 The width, height and offset can be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.</p>
-<p>The video texture should be in the following form:
-+———————————————————————-+
+<p>The video texture should be in the following form:</p>
+<p>+==========================+===================+=======================+
 |                       |                       |                      |
 |      Front Face       |      Back Face        |      Right Face      |
 |                       |                       |                      |
@@ -230,7 +231,7 @@ The video texture must therefore be converted to the the <strong>YUV 4:2:0</stro
 The server must send the video encoder output to the client each frame.
 The raw unmodified output must be sent as one large chunk or <strong>payload</strong> to the client.
 The structure of the output depends on the video codec used. The server and client must use the same video codec and a software or hardware video encoder and decoder that supports it.
-The server must tell the client what codec is being used in the <strong>handshake</strong>.
+The server must tell the client what codec is being used in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.
 For HEVC/H264, the output is made up of multiple <strong>NAL-units</strong> such as <strong>picture parameters</strong> (VPS, SPS, PPS etc.) and <strong>video coding layers</strong> (<strong>VCL</strong>) containing the compressed data of the video texture.
 Each frame has at least one <strong>VCL</strong> and may have <strong>picture parameters</strong> if the frame is an IDR frame or the video encoder is configured to send the <strong>picture parameters</strong> with every frame.
 The video data should be transferred in accordance with the section of the protocol outlined in <span class="xref std std-ref">data_transfer_reference</span>.</p>
@@ -252,7 +253,7 @@ The client needs to compare this count with the <strong>stream-payload-id</stron
 If there is a mismatch between both values and the current video frame is not an <strong>IDR frame</strong> or the video frame has been corrupted during the transfer, the client must send a HTTP message to the server requesting am <strong>IDR frame</strong>.
 On receiving the HTTP message, the server must tell the video encoder to force an <strong>IDR</strong> for the next frame.
 This allows the video stream to recover.
-To understand how the <strong>stream-payload-id</strong> is managed and how the client determines if a payload is corrupted, see <span class="xref std std-ref">data_transfer_reference</span>.</p>
+To understand how the <strong>stream-payload-id</strong> is managed and how the client determines if a payload is corrupted, see <span class="xref std std-ref">_data_transfer_reference</span>.</p>
 </div>
 <div class="section" id="minimizing-latency">
 <h2>Minimizing Latency<a class="headerlink" href="#minimizing-latency" title="Permalink to this headline">¶</a></h2>
@@ -290,7 +291,7 @@ The cubemap and assocated lighting information must then be extracted from this 
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../reference/index.html" class="btn btn-neutral float-right" title="Reference Implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="video_metadata.html" class="btn btn-neutral float-right" title="Video Metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="data_transfer.html" class="btn btn-neutral float-left" title="Data Transfer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
