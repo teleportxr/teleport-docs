@@ -175,7 +175,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="video-metadata">
-<span id="video-metadata-reference"></span><h1>Video Metadata<a class="headerlink" href="#video-metadata" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Video Metadata<a class="headerlink" href="#video-metadata" title="Permalink to this headline">¶</a></h1>
 <p>The Teleport protocol specifies that <strong>video metadata</strong> be sent in a separate stream to the video frame.
 This allows more modularity as changes in the structure or content of the metadata will not impact the video stream.</p>
 <div class="section" id="structure-of-metadata">
@@ -185,7 +185,7 @@ Teleport requires that the metadata contain a header consisting of useful inform
 The remaining content of the metadata may vary depending on the needs of the application.
 The header consists of a <strong>timestamp</strong> in milliseconds intended to inform the client of when the metadata was created by the server application.
 The metadata header must also have a <strong>Tag ID</strong> which is an unsigned integer in the range of 0 - 31 that uniquely identifies the video frame the metadata belongs to.
-A <strong>Tag ID* is written as 5 bits to the **video texture</strong> by the server and this should be used by the client to match the video frame with its associated metadata.</p>
+A <strong>Tag ID</strong> is written as 5 bits to the <strong>video texture</strong> by the server and this should be used by the client to match the video frame with its associated metadata.</p>
 <p>The metadata is of the form:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -227,8 +227,8 @@ A <strong>Tag ID* is written as 5 bits to the **video texture</strong> by the se
 </tbody>
 </table>
 <p>where</p>
-<table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text">Transform</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Transform</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 11%" />
 <col style="width: 22%" />
@@ -256,8 +256,8 @@ A <strong>Tag ID* is written as 5 bits to the **video texture</strong> by the se
 </tbody>
 </table>
 <p>and where</p>
-<table class="colwidths-given docutils align-default" id="id2">
-<caption><span class="caption-text">LightTagData</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">LightTagData</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 11%" />
 <col style="width: 22%" />
@@ -327,19 +327,21 @@ A <strong>Tag ID* is written as 5 bits to the **video texture</strong> by the se
 Every video frame payload needs to have one matching payload of metadata.
 The metadata must be received on the client before the associated video frame as it will be needed to render the contents of the video frame correctly.
 For each video frame, the server must write the same <strong>Tag ID</strong> to the video frame and associated metadata.
-The current time should be written to the unix timestamp of the metadata on its creation.
-The camera position and rotation at the time the <strong>cubemap</strong> was rendered on the server should be added to the <strong>cameraTransform</strong> member of the metadata.
-For more details on the structure of the <strong>cubemap</strong>, see <span class="xref std std-ref">_video_reference</span>.
+The current time should be written to the unix timestamp member of the metadata on its creation.
+The game or application camera position and rotation at the time of rendering should be added to the <strong>cameraTransform</strong> member of the metadata.
+For more details on the structure of the <strong>cubemap</strong>, see <a class="reference internal" href="video.html#video"><span class="std std-ref">Video</span></a>.
 The diffuse to ambient scale in the scene of the server applicatiion’s renderer should also be added to the metadata.
 For each light in the scene, an instance of <strong>avs::LightTagData</strong> should be created and populated with the light’s properties.
-Each payload of metadata should be sent to the client using the protocols and processes described in <span class="xref std std-ref">_data_transfer_reference</span>.</p>
+Each payload of metadata should be sent to the client using the protocols and processes described in <a class="reference internal" href="data_transfer.html#data-transfer"><span class="std std-ref">Data Transfer</span></a>.</p>
 </div>
 <div class="section" id="processing-metadata-on-the-client">
 <h2>Processing Metadata on the Client<a class="headerlink" href="#processing-metadata-on-the-client" title="Permalink to this headline">¶</a></h2>
 <p>The client should receive the payload of metadata before the related video frame.
 The metadata should be cached by the client’s application for use when the video frame is received.
+The client should maintain a cache of 32 metadata structures that are overwritten every 32 frames.
+This ensures delays between receiving of the video frame and metadata don’t cause metadata to be discarded before use.
 Metadata needed to render the content of the video frame should be uploaded to the GPU for shader accessibility.
-This includes the <strong>Tag ID*, **cameraTransform</strong>, <strong>diffuseAmbientScale</strong> and <strong>lights</strong>.
+This includes the <strong>Tag ID</strong>, <strong>cameraTransform</strong>, <strong>diffuseAmbientScale</strong> and <strong>lights</strong>.
 The <strong>Tag ID* must used by the shader to use the correct the metadata for a video frame.
 The position and rotation of the camera will be needed for the reprojection algorithm used to render the **cubemap</strong> contained in video frame correctly.
 The <strong>diffuseAmbientScale</strong> and <strong>lights</strong> should be used by the client application’s renderer to render local geometry.</p>

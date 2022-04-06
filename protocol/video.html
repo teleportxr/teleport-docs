@@ -177,7 +177,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="video">
-<span id="video-reference"></span><h1>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h1>
 <p>The server must stream video to the client wth minimal latency.
 This section will describe the structure and content of the video frames, how low latency can be achieved and what the client must do to process the data.</p>
 <div class="section" id="video-texture-layout">
@@ -196,7 +196,7 @@ The depth cubemap should be rendered at half the resolution of the color cubemap
 The resolution of the video texture is configurable but must be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.
 A resolution of 1536x1536 pixels is recommended for the video texture with 512x512 for each face of the color cubemap and 256x256 for each face of the depth cubemap.</p>
 <p>A <strong>Tag ID</strong> should also be included in the video texture. This links the video frame with the associated video metadata.
-The metadata is sent in a separate stream. See <a class="reference internal" href="video_metadata.html#video-metadata-reference"><span class="std std-ref">Video Metadata</span></a>.
+The metadata is sent in a separate stream. See <a class="reference internal" href="video_metadata.html#video-metadata"><span class="std std-ref">Video Metadata</span></a>.
 The <strong>Tag ID</strong> should be encoded as a sequence of 5 bits at the bottom right of the video texture.
 This allows 32 different IDs or a maximum delay of 31 frames between the transmission of the metadata and video texture before a <strong>Tag ID</strong> is reused.</p>
 <p>Teleport also supports the sending of lighting information in the video texture.
@@ -220,7 +220,7 @@ The width, height and offset can be communicated to the client in the <strong>Vi
 |                                   |                  |        |      |
 |           Depth Cubemap           | Lighting Cubemaps| webcam |      |
 +———————————————————————-+
-|                                   |                  |        <a href="#id1"><span class="problematic" id="id2">|Tag ID|</span></a>
+|                                   |                  |        <a href="#id2"><span class="problematic" id="id3">|Tag ID|</span></a>
 +———————————————————————-+</p>
 </div>
 <div class="section" id="video-frame-structure">
@@ -234,7 +234,7 @@ The structure of the output depends on the video codec used. The server and clie
 The server must tell the client what codec is being used in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.
 For HEVC/H264, the output is made up of multiple <strong>NAL-units</strong> such as <strong>picture parameters</strong> (VPS, SPS, PPS etc.) and <strong>video coding layers</strong> (<strong>VCL</strong>) containing the compressed data of the video texture.
 Each frame has at least one <strong>VCL</strong> and may have <strong>picture parameters</strong> if the frame is an IDR frame or the video encoder is configured to send the <strong>picture parameters</strong> with every frame.
-The video data should be transferred in accordance with the section of the protocol outlined in <span class="xref std std-ref">data_transfer_reference</span>.</p>
+The video data should be transferred in accordance with the section of the protocol outlined in <a class="reference internal" href="data_transfer.html#data-transfer"><span class="std std-ref">Data Transfer</span></a>.</p>
 </div>
 <div class="section" id="recovering-from-corruption">
 <h2>Recovering from Corruption<a class="headerlink" href="#recovering-from-corruption" title="Permalink to this headline">¶</a></h2>
@@ -253,7 +253,7 @@ The client needs to compare this count with the <strong>stream-payload-id</stron
 If there is a mismatch between both values and the current video frame is not an <strong>IDR frame</strong> or the video frame has been corrupted during the transfer, the client must send a HTTP message to the server requesting am <strong>IDR frame</strong>.
 On receiving the HTTP message, the server must tell the video encoder to force an <strong>IDR</strong> for the next frame.
 This allows the video stream to recover.
-To understand how the <strong>stream-payload-id</strong> is managed and how the client determines if a payload is corrupted, see <span class="xref std std-ref">_data_transfer_reference</span>.</p>
+To understand how the <strong>stream-payload-id</strong> is managed and how the client determines if a payload is corrupted, see <a class="reference internal" href="data_transfer.html#data-transfer"><span class="std std-ref">Data Transfer</span></a>.</p>
 </div>
 <div class="section" id="minimizing-latency">
 <h2>Minimizing Latency<a class="headerlink" href="#minimizing-latency" title="Permalink to this headline">¶</a></h2>
