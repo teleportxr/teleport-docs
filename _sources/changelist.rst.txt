@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Tue 05 Apr** : Add video to protocol.rst
+| **Tue 05 Apr** : Adding docs for video. Metadata be added later
 | **Mon 04 Apr** : Addingfixes for d3d12 video decoder
 | **Sat 02 Apr** : Adding threading fix when handling events in client messaging
 | **Sat 02 Apr** : hevc parser improvements
@@ -98,5 +100,3 @@ Changelist
 | **Sun 12 Dec** : Asynchronous enet_address_set_host
 | **Sat 11 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Sat 11 Dec** : mesh guids are 48 chards not 32 now.
-| **Fri 10 Dec** : Fixinf Android compile errors
-| **Thu 09 Dec** : Node reparenting orientation is now used correctly. Fixed geometry streaming Payloadtype bug.
