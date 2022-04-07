@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 07 Apr** : Fixing offsets in tabke
 | **Thu 07 Apr** : Update table in video docs
 | **Thu 07 Apr** : Adding layout of cubemap as a table in video docs
 | **Wed 06 Apr** : Fixing typo
@@ -99,4 +100,3 @@ Changelist
 | **Thu 16 Dec** : maing small change to cloent messaging
 | **Wed 15 Dec** : Fixed uid/guid cross referencing in teleport cache.
 | **Tue 14 Dec** : Separate command to set body and hands - not a node property.
-| **Tue 14 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
