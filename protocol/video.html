@@ -200,28 +200,49 @@ The metadata is sent in a separate stream. See <a class="reference internal" hre
 The <strong>Tag ID</strong> should be encoded as a sequence of 5 bits at the bottom right of the video texture.
 This allows 32 different IDs or a maximum delay of 31 frames between the transmission of the metadata and video texture before a <strong>Tag ID</strong> is reused.</p>
 <p>Teleport also supports the sending of lighting information in the video texture.
-Each frame, the cubemap can be used by the server application to generate a specular cubemap at lower mip levels for reflections and a diffuse cubemap fo global illumination.
+Each frame, the cubemap can be used by the server application to generate a specular cubemap at lower mip levels for reflections and a diffuse cubemap for global illumination.
 A cubemap containing the specular lighting of the scene should be written to the video texture at 6 different mip levels.
-Eah mip-level should be half the resolution of the previous mip, from 64x64 pixels down to 2x2.
+Each mip should be half the resolution of the previous mip, from 64x64 pixels down to 2x2.
 A cubemap containing the diffuse lighting of the scene should be rendered to the video texture at 64x64 resolution..
 The resolution and offsets of the lighting cubemaps can be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.</p>
-<p>A webcam image may also be sent to the clien. The dimensions of the webcam image and offset may vary as long as they fit in the video texture.
-The width, height and offset can be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.</p>
+<p>A webcam image may also be sent to the client. The dimensions of the webcam image and offset may vary as long as they fit in the video texture.
+A flag indicating if the webcam image is being streamed and the width, height and offset of the image can be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.</p>
 <p>The video texture should be in the following form:</p>
-<p>+==========================+===================+=======================+
-|                       |                       |                      |
-|      Front Face       |      Back Face        |      Right Face      |
-|                       |                       |                      |
-+———————————————————————-+
-|                       |                       |                      |
-|     Left Face         |      Top Face         |      Bottom Face     |
-|                       |                       |                      |
-+———————————————————————-+
-|                                   |                  |        |      |
-|           Depth Cubemap           | Lighting Cubemaps| webcam |      |
-+———————————————————————-+
-|                                   |                  |        <a href="#id2"><span class="problematic" id="id3">|Tag ID|</span></a>
-+———————————————————————-+</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 9%" />
+<col style="width: 12%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="6"><p>Video   Texture  Layout</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Front Face</p></td>
+<td colspan="2"><p>Back Face</p></td>
+<td colspan="3"><p>Right Face</p></td>
+</tr>
+<tr class="row-odd"><td><p>Left Face</p></td>
+<td colspan="2"><p>Top Face</p></td>
+<td colspan="3"><p>Bottom Face</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>Depth Cubemap</p></td>
+<td colspan="2"><p>Lighting Cubemaps</p></td>
+<td><p>webcam</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td colspan="2"></td>
+<td colspan="2"></td>
+<td></td>
+<td><p>Tag ID</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following is default texture layout Teleport uses:</p>
 </div>
 <div class="section" id="video-frame-structure">
 <h2>Video Frame Structure<a class="headerlink" href="#video-frame-structure" title="Permalink to this headline">¶</a></h2>
