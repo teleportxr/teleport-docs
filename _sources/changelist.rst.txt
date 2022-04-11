@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sun 10 Apr** : fixing offsets in table
 | **Thu 07 Apr** : Fixing offsets in tabke
 | **Thu 07 Apr** : Update table in video docs
 | **Thu 07 Apr** : Adding layout of cubemap as a table in video docs
@@ -99,4 +100,3 @@ Changelist
 | **Thu 16 Dec** : Merge pull request #103 from simul/spawn_callback
 | **Thu 16 Dec** : maing small change to cloent messaging
 | **Wed 15 Dec** : Fixed uid/guid cross referencing in teleport cache.
-| **Tue 14 Dec** : Separate command to set body and hands - not a node property.

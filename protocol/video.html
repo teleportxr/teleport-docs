@@ -232,10 +232,10 @@ A flag indicating if the webcam image is being streamed and the width, height an
 </tr>
 <tr class="row-even"><td colspan="2" rowspan="3"><p>Depth Cubemap</p></td>
 <td colspan="2"><p>Specular Cubemap</p></td>
-<td colspan="2"><p>Webcam</p></td>
+<td colspan="2"></td>
 </tr>
 <tr class="row-odd"><td colspan="2" rowspan="2"><p>Diffuse Cubemap</p></td>
-<td rowspan="2"></td>
+<td rowspan="2"><p>Webcam</p></td>
 <td rowspan="2"><p>Tag ID</p></td>
 </tr>
 <tr class="row-even"></tr>
@@ -377,7 +377,7 @@ The video data should be transferred in accordance with the section of the proto
 <h2>Recovering from Corruption<a class="headerlink" href="#recovering-from-corruption" title="Permalink to this headline">¶</a></h2>
 <p>An <strong>IDR frame</strong> is a special type of <strong>I-frame</strong> or keyframe in HEVC/H264.
 It does not rely on any prior frames for decoding and subsequent frames will reference it until the next <strong>I-frame</strong>.
-The <strong>IDR frame</strong> will also include metadata or <strong>picture parameters</strong> added by the encoder for the decoder to process.
+The <strong>IDR frame</strong> will also include <strong>picture parameters</strong> added by the encoder for the decoder to process.
 This includes information such as the bitrate of the encoder, the texture resolution and pixel format etc.
 The video encoder will output an <strong>IDR frame</strong> as the very first frame and at periodic intervals determined by the encoder settings.</p>
 <p>To reduce latency, the video encoder should be configured to only send the first frame as an <strong>IDR</strong>.
@@ -398,18 +398,20 @@ To understand how the <strong>stream-payload-id</strong> is managed and how the 
 Different encoders may support different settings and the capabilities of some hardware encoders will depend on the the GPU and driver installed.
 The server application must therefore query the capabilities of the encoder to determine the encoder settings supported.
 The video decoder on the client will be informed of these settings via the <strong>picture parameters</strong> received with each <strong>IDR frame</strong>.</p>
-<p>The following settings are recommended to minimize latency:
-1. Ultra-low latency or low latency Tuning Info
-2. Rate control mode of Constant Bit Rate (CBR)
-3. Multi Pass ? Quarter/Full (evaluate and decide)
-4. Very low VBV buffer size (e.g. single frame = bitrate/framerate)
-5. No B Frames - Just I and P frames
-6. Infinite GOP length
-7. Adaptive quantization (AQ) enabled
-8. Long term reference pictures enabled
-9. Intra refresh enabled
-10. Non-reference P frames
-11. IDR as the first frame only except when reccovering from a lost frame.</p>
+<p>The following settings are recommended to minimize latency:</p>
+<ol class="arabic simple">
+<li><p>Ultra-low latency or low latency Tuning Info</p></li>
+<li><p>Rate control mode of Constant Bit Rate (CBR)</p></li>
+<li><p>Multi Pass ? Quarter/Full (evaluate and decide)</p></li>
+<li><p>Very low VBV buffer size (e.g. single frame = bitrate/framerate)</p></li>
+<li><p>No B Frames - Just I and P frames</p></li>
+<li><p>Infinite GOP length</p></li>
+<li><p>Adaptive quantization (AQ) enabled</p></li>
+<li><p>Long term reference pictures enabled</p></li>
+<li><p>Intra refresh enabled</p></li>
+<li><p>Non-reference P frames</p></li>
+<li><p>The first frame should be the only <strong>IDR</strong> sent unless reccovering from a lost frame.</p></li>
+</ol>
 </div>
 <div class="section" id="processing-of-video-frame-on-the-client">
 <h2>Processing of video Frame on the Client<a class="headerlink" href="#processing-of-video-frame-on-the-client" title="Permalink to this headline">¶</a></h2>
