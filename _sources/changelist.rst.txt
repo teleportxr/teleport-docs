@@ -1,5 +1,18 @@
 Changelist 
 ========= 
+| **Fri 22 Apr** : Input mapping functional for PC. Android build fixed.
+| **Wed 20 Apr** : Documentation for Input panel.
+| **Tue 19 Apr** : Merge branch 'master' into Branch_b64cf8cb
+| **Tue 19 Apr** : Fixed OpenXR getting stuck issue.
+| **Tue 19 Apr** : .
+| **Tue 19 Apr** : Using pose regexes for controller mapping between server and client.
+| **Thu 14 Apr** : Merge branch 'control_mapping'
+| **Thu 14 Apr** : Merge branch 'master' of github.com:simul/Teleport
+| **Thu 14 Apr** : Working Regex matching of control definitions client-side (PC). ErrorHandling moved from TeleportServer to TeleportCore.
+| **Thu 14 Apr** : Updating to use new Platform namespaces. My last commit
+| **Thu 14 Apr** : D3D12 video decoder finally worksgit reset firstparty/Platform/ Use platform video cmake option to try
+| **Tue 12 Apr** : Update dev Platform branch - simul namespace removed mostly.
+| **Tue 12 Apr** : Merge branch 'master' of github.com:simul/Teleport into control_mapping
 | **Sun 10 Apr** : fixing offsets in table
 | **Thu 07 Apr** : Fixing offsets in tabke
 | **Thu 07 Apr** : Update table in video docs
@@ -14,12 +27,17 @@ Changelist
 | **Sat 02 Apr** : hevc parser improvements
 | **Thu 31 Mar** : Adding compile fix for skin.cpp
 | **Wed 30 Mar** : Adding fix for d3d11 nvidia decoder compilation
+| **Wed 30 Mar** : Merge remote-tracking branch 'remotes/origin/master' into control_mapping
+| **Wed 30 Mar** : Reorg of OpenXR mapping structures.
 | **Mon 28 Mar** : Adding support for long term reference frames d3d12 decoder
 | **Fri 25 Mar** : Fixing typos in data transfer doc
 | **Fri 25 Mar** : Adding update to efp docs and dxva code
 | **Thu 24 Mar** : Add data transfer documentation first draft
 | **Tue 22 Mar** : Add some hevc parsing fixes
+| **Mon 21 Mar** : Control mapping work.
+| **Fri 18 Mar** : Merge branch 'master' of github.com:simul/Teleport
 | **Fri 18 Mar** : Update yuv to rgb conversion shader
+| **Thu 17 Mar** : Merge branch 'master' of github.com:simul/Teleport
 | **Thu 17 Mar** : Merge branch 'master' of github.com:simul/Teleport
 | **Wed 16 Mar** : Merge pull request #108 from simul/add-license-1
 | **Wed 16 Mar** : Create Licence.md
@@ -27,9 +45,11 @@ Changelist
 | **Wed 16 Mar** : Update README.md
 | **Fri 11 Mar** : Add audio recording code to client renderer
 | **Fri 11 Mar** : Updating android audio classes to have new interface function
+| **Fri 11 Mar** : Merge branch 'master' of github.com:simul/Teleport
 | **Fri 11 Mar** : Merge pull request #107 from simul/audio_hevc
 | **Fri 11 Mar** : Merge branch 'master' into audio_hevc
 | **Fri 11 Mar** : Add audio capture for PC and video decoder parser changes
+| **Wed 09 Mar** : Partial implementation of control system mapping.
 | **Wed 23 Feb** : Fix Android highkight shader
 | **Tue 22 Feb** : Fix node reparenting for PC+Android.
 | **Sun 20 Feb** : Merge branch 'master' of github.com:simul/Teleport
@@ -80,23 +100,3 @@ Changelist
 | **Thu 06 Jan** : Merging to master
 | **Thu 06 Jan** : Moving client id generation to server
 | **Thu 06 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Thu 06 Jan** : Node "subtype" behaviour improved - sent after SetupCommand.
-| **Thu 06 Jan** : Moved SessionClient and Log from ClientRender to TeleportClient. Body parts are kept as uid's instead of shared_ptr's. Protocol documentation.
-| **Sun 02 Jan** : Merge branch 'master' of github.com:simul/Teleport
-| **Sun 02 Jan** : Update protocol description.
-| **Sun 02 Jan** : Update README.md
-| **Sun 02 Jan** : Merge branch 'master' of github.com:simul/Teleport
-| **Sun 02 Jan** : SimulCasterRenderer moved to TeleportRender.
-| **Sat 01 Jan** : Update README.md
-| **Thu 23 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Thu 23 Dec** : For nodes, store both local and global transform. With stationary objects, global will be used clientside by default. Only need local for animated/moving objects.
-| **Mon 20 Dec** : Updating MD openssl libs
-| **Mon 20 Dec** : Separating MD and MT openssl libs
-| **Mon 20 Dec** : Adding ssl support to curl
-| **Fri 17 Dec** : Merge branch 'master' of github.com:simul/RemotePlay into master
-| **Fri 17 Dec** : Updated .vcxproj.
-| **Fri 17 Dec** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Fri 17 Dec** : No more text pointers in MissingResource. Click in node tree to select and see more info.
-| **Thu 16 Dec** : Merge pull request #103 from simul/spawn_callback
-| **Thu 16 Dec** : maing small change to cloent messaging
-| **Wed 15 Dec** : Fixed uid/guid cross referencing in teleport cache.

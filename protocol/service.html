@@ -41,7 +41,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reference Implementation" href="../reference/index.html" />
+    <link rel="next" title="Commands from Server to Client" href="service/server_to_client.html" />
     <link rel="prev" title="Discovery" href="discovery.html" /> 
 </head>
 
@@ -95,16 +95,15 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Service</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#update">Update</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#displayinfo">DisplayInfo</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#controllerposes">ControllerPoses</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#resourcerequests">ResourceRequests</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#receivedresources">ReceivedResources</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nodeupdates">NodeUpdates</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#video-keyframe-request">Video Keyframe Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="service/server_to_client.html">Commands from Server to Client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="service/client_to_server.html">Requests from Client to Server</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">Video Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
@@ -549,218 +548,27 @@ A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a spe
 </tr>
 </tbody>
 </table>
+<p>See <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">AcknowledgeHandshakeCommand</span></code>.</p>
 <p>Once the <strong>Client</strong> has received the AcknowledgeHandshake, Initialization is complete and the client enters the main continuous Update mode.</p>
 </div>
 <div class="section" id="update">
 <h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
-<p>A client may send any of the following one or more times per frame:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>DisplayInfo</p></li>
-<li><p>ControllerPoses</p></li>
-<li><p>OriginPose</p></li>
-<li><p>Inputs</p></li>
-<li><p>ResourceRequests</p></li>
-<li><p>ResourceAcknowledgements</p></li>
-<li><p>NodeUpdates</p></li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="service/server_to_client.html">Commands from Server to Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/server_to_client.html#set-origin">Set Origin</a></li>
 </ul>
-</div></blockquote>
-<p>The <strong>Client</strong> sends all of its messages in its local units and Axes Standard. For example, if the <strong>Client</strong> works in metres and has Y vertical, positions and rotations sent to the server will be in this format.</p>
-<p>The <strong>Server</strong> sends all of its commands to the <strong>Client</strong> in the <strong>Client’s</strong> local units and standard.</p>
-<div class="section" id="displayinfo">
-<h3>DisplayInfo<a class="headerlink" href="#displayinfo" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id3">
-<caption><span class="caption-text">DisplayInfo</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 22%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bytes</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>4</p></td>
-<td><p>uint32_t</p></td>
-<td><p>width</p></td>
-</tr>
-<tr class="row-odd"><td><p>4</p></td>
-<td><p>uint32_t</p></td>
-<td><p>height</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="controllerposes">
-<h3>ControllerPoses<a class="headerlink" href="#controllerposes" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id4">
-<caption><span class="caption-text">ControllerPoses</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 22%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bytes</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>28</p></td>
-<td><p>Pose</p></td>
-<td><p>head pose</p></td>
-</tr>
-<tr class="row-odd"><td><p>28</p></td>
-<td><p>Pose</p></td>
-<td><p>left controller pose</p></td>
-</tr>
-<tr class="row-even"><td><p>28</p></td>
-<td><p>Pose</p></td>
-<td><p>right controller pose</p></td>
-</tr>
-</tbody>
-</table>
-<p>where Pose is:</p>
-<table class="colwidths-given docutils align-default" id="id5">
-<caption><span class="caption-text">Pose</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 22%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bytes</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>16</p></td>
-<td><p>4-vector of floats</p></td>
-<td><p>orientation (quaternion)</p></td>
-</tr>
-<tr class="row-odd"><td><p>12</p></td>
-<td><p>3-vector of floats</p></td>
-<td><p>position</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="resourcerequests">
-<h3>ResourceRequests<a class="headerlink" href="#resourcerequests" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id6">
-<caption><span class="caption-text">ResourceRequests</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 22%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bytes</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>uint64_t</p></td>
-<td><p>number of resources requested = N</p></td>
-</tr>
-<tr class="row-odd"><td><p>8*N</p></td>
-<td><p>uid</p></td>
-<td><p>resource uid’s</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="receivedresources">
-<h3>ReceivedResources<a class="headerlink" href="#receivedresources" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id7">
-<caption><span class="caption-text">ReceivedResources</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 22%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bytes</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>uint64_t</p></td>
-<td><p>number of resources acknowledged = N</p></td>
-</tr>
-<tr class="row-odd"><td><p>8*N</p></td>
-<td><p>uid</p></td>
-<td><p>resource uid’s</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="nodeupdates">
-<h3>NodeUpdates<a class="headerlink" href="#nodeupdates" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id8">
-<caption><span class="caption-text">NodeUpdates</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 22%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bytes</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>uint64_t</p></td>
-<td><p>number of received nodes to report = N</p></td>
-</tr>
-<tr class="row-odd"><td><p>8</p></td>
-<td><p>uint64_t</p></td>
-<td><p>number of lost nodes to report = M</p></td>
-</tr>
-<tr class="row-even"><td><p>8*N</p></td>
-<td><p>uid</p></td>
-<td><p>received node uid’s</p></td>
-</tr>
-<tr class="row-odd"><td><p>8*M</p></td>
-<td><p>uid</p></td>
-<td><p>lost node uid’s</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="video-keyframe-request">
-<h3>Video Keyframe Request<a class="headerlink" href="#video-keyframe-request" title="Permalink to this headline">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id9">
-<caption><span class="caption-text">Video Keyframe Request</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 22%" />
-<col style="width: 67%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Bytes</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Description</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>uint64_t</p></td>
-<td><p>number of received nodes to report = N</p></td>
-</tr>
-</tbody>
-</table>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service/client_to_server.html">Requests from Client to Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#displayinfo">DisplayInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#controllerposes">ControllerPoses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#resourcerequests">ResourceRequests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#receivedresources">ReceivedResources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#nodeupdates">NodeUpdates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#video-keyframe-request">Video Keyframe Request</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -771,7 +579,7 @@ A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a spe
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../reference/index.html" class="btn btn-neutral float-right" title="Reference Implementation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="service/server_to_client.html" class="btn btn-neutral float-right" title="Commands from Server to Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="discovery.html" class="btn btn-neutral float-left" title="Discovery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

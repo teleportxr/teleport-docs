@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#avs-interface-classes">avs Interface Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#avs-nodes">avs Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#avs-structs">avs Structs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#client-messages">Client Messages</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
@@ -181,25 +182,56 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>LibAVStream is a helper library for streaming video and geometry data between a server and client. A user of this library constructs an avs::Pipeline instance, and configures the pipeline with avs::PipelineNode subclass instances. Nodes can receive data from other nodes, process it, and pass the processed data on to other nodes.</p>
 <p>A pipeline operates on a single thread, while queues allow threads to exchange data. For example, the server’s Network pipeline connects several avs::Queue instances to a single avs::NetworkSink. For example, the video encoding pipeline links an avs::Surface that receives raw video frames, to an avs::Encoder, and finally to a queue. On another thread, the same queue in the network pipeline passes the data to the avs::NetworkSink.</p>
-<a class="reference internal image-reference" href="images/reference/ExamplePipeline.png"><img alt="Two pipelines operating on separate threads are connected using a avs::Queue." src="images/reference/ExamplePipeline.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/ExamplePipeline.png"><img alt="Two pipelines operating on separate threads are connected using a avs::Queue." src="../_images/ExamplePipeline.png" style="width: 800px;" /></a>
 </div>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7ContextE">
-<span id="_CPPv3N3avs7ContextE"></span><span id="_CPPv2N3avs7ContextE"></span><span id="avs::Context"></span><span class="target" id="classavs_1_1_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#_CPPv4N3avs7ContextE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs7ContextE"></span><span id="_CPPv2N3avs7ContextE"></span><span id="avs::Context"></span><span class="target" id="classavs_1_1_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#_CPPv4N3avs7ContextE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Global library context.</p>
 <p><a class="reference internal" href="#classavs_1_1_context"><span class="std std-ref">Context</span></a> object managing application-global state. <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A single instance of this class must be instantiated by the application before accessing any other library functionality. </p>
 </div>
 </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv">
+<span id="_CPPv3N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv"></span><span id="_CPPv2N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv"></span><span id="avs::Context::setMessageHandler__MessageHandlerFunc.voidP"></span><span class="target" id="classavs_1_1_context_1a7184df4a87fde39b27916935c966f594"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setMessageHandler</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">MessageHandlerFunc</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">handler</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">userData</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Context17setMessageHandlerE18MessageHandlerFuncPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Set custom message handler. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default (library provided) message handler prints to standard output. </p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> – Message handler function; if nullptr, default message handler is restored. </p></li>
+<li><p><strong>userData</strong> – Pointer to user supplied data passed to message handler function (never dereferenced, may be nullptr). </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="field-list simple">
-<dt class="field-odd">members</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context8instanceEv">
+<span id="_CPPv3N3avs7Context8instanceEv"></span><span id="_CPPv2N3avs7Context8instanceEv"></span><span id="avs::Context::instance"></span><span class="target" id="classavs_1_1_context_1ab80b3288a5b3ebefd4b5a150467aa1e9"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs7ContextE" title="avs::Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">instance</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs7Context8instanceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get instance of the global context object. </p>
+</dd></dl>
+
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context7PrivateE">
+<span id="_CPPv3N3avs7Context7PrivateE"></span><span id="_CPPv2N3avs7Context7PrivateE"></span><span id="avs::Context::Private"></span><span class="target" id="structavs_1_1_context_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><a class="headerlink" href="#_CPPv4N3avs7Context7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs8PipelineE">
 <span id="_CPPv3N3avs8PipelineE"></span><span id="_CPPv2N3avs8PipelineE"></span><span id="avs::Pipeline"></span><span class="target" id="classavs_1_1_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Pipeline</span></span></span><a class="headerlink" href="#_CPPv4N3avs8PipelineE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1910,12 +1942,7 @@
 <dd><p>Configure decoder. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>device</strong> – Graphics API device handle (DirectX or OpenGL). </p></li>
-<li><p><strong>frameWidth</strong> – Expected video frame width in pixels. </p></li>
-<li><p><strong>frameHeight</strong> – Expected video frame height in pixels. </p></li>
-<li><p><strong>params</strong> – Additional decoder parameters. </p></li>
-</ul>
+<dd class="field-odd"><p><strong>backend</strong> – The object that performas the actual decoding. </p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
@@ -2664,13 +2691,6 @@
 <div class="section" id="avs-structs">
 <h2>avs Structs<a class="headerlink" href="#avs-structs" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs13ClientMessageE">
-<span id="_CPPv3N3avs13ClientMessageE"></span><span id="_CPPv2N3avs13ClientMessageE"></span><span id="avs::ClientMessage"></span><span class="target" id="structavs_1_1_client_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessage</span></span></span><a class="headerlink" href="#_CPPv4N3avs13ClientMessageE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A message from the client. </p>
-<p>Subclassed by avs::ControllerPosesMessage, avs::NodeStatusMessage, avs::OriginPoseMessage, avs::ReceivedResourcesMessage</p>
-</dd></dl>
-
-<dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCountersE">
 <span id="_CPPv3N3avs19NetworkSinkCountersE"></span><span id="_CPPv2N3avs19NetworkSinkCountersE"></span><span id="avs::NetworkSinkCounters"></span><span class="target" id="structavs_1_1_network_sink_counters"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSinkCounters</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCountersE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Network sink counters. </p>
@@ -3372,6 +3392,153 @@
 <dt class="sig sig-object cpp" id="_CPPv4NK3avs6ResultcvbEv">
 <span id="_CPPv3NK3avs6ResultcvbEv"></span><span id="_CPPv2NK3avs6ResultcvbEv"></span><span id="avs::Result::castto-b-operatorC"></span><span class="target" id="structavs_1_1_result_1a9137ba829cf45a5f57d263b091844a2e"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="k"><span class="pre">operator</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK3avs6ResultcvbEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>if(Result) returns true only if m_code == OK i.e. is ZERO. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="client-messages">
+<h2>Client Messages<a class="headerlink" href="#client-messages" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs13ClientMessageE">
+<span id="_CPPv3N3avs13ClientMessageE"></span><span id="_CPPv2N3avs13ClientMessageE"></span><span id="avs::ClientMessage"></span><span class="target" id="structavs_1_1_client_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessage</span></span></span><a class="headerlink" href="#_CPPv4N3avs13ClientMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A message from a client to a server. </p>
+<p>Subclassed by <a class="reference internal" href="#structavs_1_1_controller_poses_message"><span class="std std-ref">avs::ControllerPosesMessage</span></a>, <a class="reference internal" href="#structavs_1_1_node_status_message"><span class="std std-ref">avs::NodeStatusMessage</span></a>, <a class="reference internal" href="#structavs_1_1_origin_pose_message"><span class="std std-ref">avs::OriginPoseMessage</span></a>, <a class="reference internal" href="#structavs_1_1_received_resources_message"><span class="std std-ref">avs::ReceivedResourcesMessage</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs13ClientMessage14getMessageSizeEv">
+<span id="_CPPv3NK3avs13ClientMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs13ClientMessage14getMessageSizeEv"></span><span id="avs::ClientMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_client_message_1a2ce3b0aa21c5f47ab2145c7119c39125"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK3avs13ClientMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns byte size of message. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs13ClientMessage24clientMessagePayloadTypeE">
+<span id="_CPPv3N3avs13ClientMessage24clientMessagePayloadTypeE"></span><span id="_CPPv2N3avs13ClientMessage24clientMessagePayloadTypeE"></span><span id="avs::ClientMessage::clientMessagePayloadType__ClientMessagePayloadType"></span><span class="target" id="structavs_1_1_client_message_1aafde42a51abcddf9172231fe86f104bc"></span><span class="n"><span class="pre">ClientMessagePayloadType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clientMessagePayloadType</span></span></span><a class="headerlink" href="#_CPPv4N3avs13ClientMessage24clientMessagePayloadTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specifies what type of client message this is. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfoE">
+<span id="_CPPv3N3avs11DisplayInfoE"></span><span id="_CPPv2N3avs11DisplayInfoE"></span><span id="avs::DisplayInfo"></span><span class="target" id="structavs_1_1_display_info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">DisplayInfo</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Information on the resolution of a client’s display. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo5widthE">
+<span id="_CPPv3N3avs11DisplayInfo5widthE"></span><span id="_CPPv2N3avs11DisplayInfo5widthE"></span><span id="avs::DisplayInfo::width__uint32_t"></span><span class="target" id="structavs_1_1_display_info_1add5215d132700cec9c8b883ab7d52a9e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">width</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo5widthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Width of the display. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo6heightE">
+<span id="_CPPv3N3avs11DisplayInfo6heightE"></span><span id="_CPPv2N3avs11DisplayInfo6heightE"></span><span id="avs::DisplayInfo::height__uint32_t"></span><span class="target" id="structavs_1_1_display_info_1a5546e31586c6a7373655df1aa08b5de6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">height</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo6heightE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Height of the display. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NodeStatusMessageE">
+<span id="_CPPv3N3avs17NodeStatusMessageE"></span><span id="_CPPv2N3avs17NodeStatusMessageE"></span><span id="avs::NodeStatusMessage"></span><span class="target" id="structavs_1_1_node_status_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">NodeStatusMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs13ClientMessageE" title="avs::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N3avs17NodeStatusMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing how many nodes have changed to what state; sent alongside two lists of node UIDs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs17NodeStatusMessage14getMessageSizeEv">
+<span id="_CPPv3NK3avs17NodeStatusMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs17NodeStatusMessage14getMessageSizeEv"></span><span id="avs::NodeStatusMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_node_status_message_1a4ad15b9b094cfd1237d058ca61aabaa1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs17NodeStatusMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns byte size of message. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NodeStatusMessage15nodesDrawnCountE">
+<span id="_CPPv3N3avs17NodeStatusMessage15nodesDrawnCountE"></span><span id="_CPPv2N3avs17NodeStatusMessage15nodesDrawnCountE"></span><span id="avs::NodeStatusMessage::nodesDrawnCount__s"></span><span class="target" id="structavs_1_1_node_status_message_1ab9479f72dd12438f2b81fcd4a3888a63"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodesDrawnCount</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NodeStatusMessage15nodesDrawnCountE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>How many nodes the client is drawing. The node uid’s will be appended first in the packet. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NodeStatusMessage23nodesWantToReleaseCountE">
+<span id="_CPPv3N3avs17NodeStatusMessage23nodesWantToReleaseCountE"></span><span id="_CPPv2N3avs17NodeStatusMessage23nodesWantToReleaseCountE"></span><span id="avs::NodeStatusMessage::nodesWantToReleaseCount__s"></span><span class="target" id="structavs_1_1_node_status_message_1a8d7a9f56f9937e678ef1ac61adfc31a9"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodesWantToReleaseCount</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NodeStatusMessage23nodesWantToReleaseCountE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>How many nodes the client has but is no longer drawing. The node uid’s will be appended second in the packet. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs24ReceivedResourcesMessageE">
+<span id="_CPPv3N3avs24ReceivedResourcesMessageE"></span><span id="_CPPv2N3avs24ReceivedResourcesMessageE"></span><span id="avs::ReceivedResourcesMessage"></span><span class="target" id="structavs_1_1_received_resources_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ReceivedResourcesMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs13ClientMessageE" title="avs::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N3avs24ReceivedResourcesMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing how many resources were received; sent alongside a list of UIDs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs24ReceivedResourcesMessage14getMessageSizeEv">
+<span id="_CPPv3NK3avs24ReceivedResourcesMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs24ReceivedResourcesMessage14getMessageSizeEv"></span><span id="avs::ReceivedResourcesMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_received_resources_message_1a7b548de0a97ad222836304771314c1fb"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs24ReceivedResourcesMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns byte size of message. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs24ReceivedResourcesMessage22receivedResourcesCountE">
+<span id="_CPPv3N3avs24ReceivedResourcesMessage22receivedResourcesCountE"></span><span id="_CPPv2N3avs24ReceivedResourcesMessage22receivedResourcesCountE"></span><span id="avs::ReceivedResourcesMessage::receivedResourcesCount__s"></span><span class="target" id="structavs_1_1_received_resources_message_1ad844986f6cb21c12f9311268e7f5fe01"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">receivedResourcesCount</span></span></span><a class="headerlink" href="#_CPPv4N3avs24ReceivedResourcesMessage22receivedResourcesCountE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>How many resources were received. The uid’s will be appended in the packet. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs22ControllerPosesMessageE">
+<span id="_CPPv3N3avs22ControllerPosesMessageE"></span><span id="_CPPv2N3avs22ControllerPosesMessageE"></span><span id="avs::ControllerPosesMessage"></span><span class="target" id="structavs_1_1_controller_poses_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ControllerPosesMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs13ClientMessageE" title="avs::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N3avs22ControllerPosesMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing how many resources were received; sent alongside a list of UIDs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs22ControllerPosesMessage14getMessageSizeEv">
+<span id="_CPPv3NK3avs22ControllerPosesMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs22ControllerPosesMessage14getMessageSizeEv"></span><span id="avs::ControllerPosesMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_controller_poses_message_1a61be9c531b4cf816b1c8e6d4ba99fefd"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs22ControllerPosesMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns byte size of message. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs22ControllerPosesMessage8headPoseE">
+<span id="_CPPv3N3avs22ControllerPosesMessage8headPoseE"></span><span id="_CPPv2N3avs22ControllerPosesMessage8headPoseE"></span><span id="avs::ControllerPosesMessage::headPose__Pose"></span><span class="target" id="structavs_1_1_controller_poses_message_1a7024975a1e6aed45e9c3d8d50a93dda8"></span><span class="n"><span class="pre">Pose</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">headPose</span></span></span><a class="headerlink" href="#_CPPv4N3avs22ControllerPosesMessage8headPoseE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The headset’s pose. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs22ControllerPosesMessage15controllerPosesE">
+<span id="_CPPv3N3avs22ControllerPosesMessage15controllerPosesE"></span><span id="_CPPv2N3avs22ControllerPosesMessage15controllerPosesE"></span><span id="avs::ControllerPosesMessage::controllerPoses__PoseA"></span><span class="target" id="structavs_1_1_controller_poses_message_1a3d3f10632d2046e5f1d692eaf2cb0ff7"></span><span class="n"><span class="pre">Pose</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">controllerPoses</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N3avs22ControllerPosesMessage15controllerPosesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Poses of the two controllers. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17OriginPoseMessageE">
+<span id="_CPPv3N3avs17OriginPoseMessageE"></span><span id="_CPPv2N3avs17OriginPoseMessageE"></span><span id="avs::OriginPoseMessage"></span><span class="target" id="structavs_1_1_origin_pose_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">OriginPoseMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs13ClientMessageE" title="avs::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N3avs17OriginPoseMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs17OriginPoseMessage14getMessageSizeEv">
+<span id="_CPPv3NK3avs17OriginPoseMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs17OriginPoseMessage14getMessageSizeEv"></span><span id="avs::OriginPoseMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_origin_pose_message_1a34763e34182003be2ae854d7cbdce114"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs17OriginPoseMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns byte size of message. </p>
 </dd></dl>
 
 </div>
