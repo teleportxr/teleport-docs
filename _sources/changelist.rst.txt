@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sun 24 Apr** : Include OpenXR from Oculus openxr SDK 38 in TeleportVRQuestClientAGDE.
 | **Fri 22 Apr** : Input mapping functional for PC. Android build fixed.
 | **Wed 20 Apr** : Documentation for Input panel.
 | **Tue 19 Apr** : Merge branch 'master' into Branch_b64cf8cb
@@ -99,4 +100,3 @@ Changelist
 | **Sat 08 Jan** : CasterSettings renamed to ServerSettings. Now includes backgroundMode and backgroundColour.
 | **Thu 06 Jan** : Merging to master
 | **Thu 06 Jan** : Moving client id generation to server
-| **Thu 06 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
