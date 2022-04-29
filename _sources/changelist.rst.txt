@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Fri 29 Apr** : Add TeleportCore linkage to pc_client. Platform ptr to latest dev.
+| **Fri 29 Apr** : can't use near and far as variable names.
 | **Sun 24 Apr** : Include OpenXR from Oculus openxr SDK 38 in TeleportVRQuestClientAGDE.
 | **Fri 22 Apr** : Input mapping functional for PC. Android build fixed.
 | **Wed 20 Apr** : Documentation for Input panel.
@@ -98,5 +100,3 @@ Changelist
 | **Sun 09 Jan** : Commence protocol docs.
 | **Sat 08 Jan** : Documentation work.
 | **Sat 08 Jan** : CasterSettings renamed to ServerSettings. Now includes backgroundMode and backgroundColour.
-| **Thu 06 Jan** : Merging to master
-| **Thu 06 Jan** : Moving client id generation to server
