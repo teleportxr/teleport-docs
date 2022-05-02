@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Fri 29 Apr** : Platform ptr.
+| **Fri 29 Apr** : Merge branch 'master' of github.com:simul/Teleport
+| **Fri 29 Apr** : Adding build_android_vs files to build for Android in Visual Studio.
 | **Fri 29 Apr** : Add TeleportCore linkage to pc_client. Platform ptr to latest dev.
 | **Fri 29 Apr** : can't use near and far as variable names.
 | **Sun 24 Apr** : Include OpenXR from Oculus openxr SDK 38 in TeleportVRQuestClientAGDE.
@@ -97,6 +100,3 @@ Changelist
 | **Tue 11 Jan** : Android version builds again.
 | **Mon 10 Jan** : Merge pull request #105 from simul/ipcheck
 | **Mon 10 Jan** : Checking client ip isn't already trying to connect
-| **Sun 09 Jan** : Commence protocol docs.
-| **Sat 08 Jan** : Documentation work.
-| **Sat 08 Jan** : CasterSettings renamed to ServerSettings. Now includes backgroundMode and backgroundColour.
