@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Tue 03 May** : Working pc client installer from CPack.
 | **Fri 29 Apr** : Platform ptr.
 | **Fri 29 Apr** : Merge branch 'master' of github.com:simul/Teleport
 | **Fri 29 Apr** : Adding build_android_vs files to build for Android in Visual Studio.
@@ -99,4 +100,3 @@ Changelist
 | **Tue 11 Jan** : Relative paths and missing files for Android Visual Studio code.
 | **Tue 11 Jan** : Android version builds again.
 | **Mon 10 Jan** : Merge pull request #105 from simul/ipcheck
-| **Mon 10 Jan** : Checking client ip isn't already trying to connect
