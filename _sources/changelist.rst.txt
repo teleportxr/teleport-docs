@@ -1,5 +1,9 @@
 Changelist 
 ========= 
+| **Wed 04 May** : Write logfile in client.
+| **Wed 04 May** : set TELEPORT_CLIENT_INSTALLER_FILENAME variable in installer_filename.properties.
+| **Wed 04 May** : Write installer_filename.properties to build_client when creating installer.
+| **Wed 04 May** : Add client_default.ini, installed as client.ini.
 | **Tue 03 May** : Working pc client installer from CPack.
 | **Fri 29 Apr** : Platform ptr.
 | **Fri 29 Apr** : Merge branch 'master' of github.com:simul/Teleport
@@ -96,7 +100,3 @@ Changelist
 | **Thu 13 Jan** : Replace namespace "scr" with clientrender.
 | **Thu 13 Jan** : In ClientRender, cpp and h files are moved to a flat structure.
 | **Wed 12 Jan** : Added backgroundMode to ClientSettings and SetupCommand.
-| **Wed 12 Jan** : Fixed Quest version.
-| **Tue 11 Jan** : Relative paths and missing files for Android Visual Studio code.
-| **Tue 11 Jan** : Android version builds again.
-| **Mon 10 Jan** : Merge pull request #105 from simul/ipcheck
