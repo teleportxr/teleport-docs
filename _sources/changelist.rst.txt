@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Thu 12 May** : Merge branch 'master' of github.com:simul/Teleport
+| **Thu 12 May** : Add main.cpp for AGDE client.
 | **Wed 04 May** : Write logfile in client.
 | **Wed 04 May** : set TELEPORT_CLIENT_INSTALLER_FILENAME variable in installer_filename.properties.
 | **Wed 04 May** : Write installer_filename.properties to build_client when creating installer.
@@ -98,5 +100,3 @@ Changelist
 | **Mon 17 Jan** : Adding support for multiple clients
 | **Fri 14 Jan** : Replace avs::NetworkSource instance in pc ClientRenderer.
 | **Thu 13 Jan** : Replace namespace "scr" with clientrender.
-| **Thu 13 Jan** : In ClientRender, cpp and h files are moved to a flat structure.
-| **Wed 12 Jan** : Added backgroundMode to ClientSettings and SetupCommand.
