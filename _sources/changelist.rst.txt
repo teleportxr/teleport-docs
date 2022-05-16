@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sat 14 May** : Move TeleportVRQuestClientAGDE.sln to build_android_vs. Fixed AndroidManifest.xml for AGDE client: intent filter with com.oculus.intent.category.VR allows OpenXR to progress to focused state.
 | **Thu 12 May** : Merge branch 'master' of github.com:simul/Teleport
 | **Thu 12 May** : Add main.cpp for AGDE client.
 | **Wed 04 May** : Write logfile in client.
@@ -99,4 +100,3 @@ Changelist
 | **Mon 17 Jan** : Merge branch 'master' into multi_client
 | **Mon 17 Jan** : Adding support for multiple clients
 | **Fri 14 Jan** : Replace avs::NetworkSource instance in pc ClientRenderer.
-| **Thu 13 Jan** : Replace namespace "scr" with clientrender.
