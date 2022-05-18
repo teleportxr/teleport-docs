@@ -1,5 +1,11 @@
 Changelist 
 ========= 
+| **Wed 18 May** : Add build_android_vs fmt.vcxproj and enet.vcxproj
+| **Wed 18 May** : Add libVkLayer_khronos_validation.so
+| **Wed 18 May** : Add Oculus OpenXR headers/libs.
+| **Wed 18 May** : Add CmdBuffer for Vulkan.
+| **Tue 17 May** : Add ClientRender/ClientRender_Android.vcxproj
+| **Mon 16 May** : Fix XR state tracking. depth_view is null for now - do we need depth in the main swapchain?
 | **Sat 14 May** : Move TeleportVRQuestClientAGDE.sln to build_android_vs. Fixed AndroidManifest.xml for AGDE client: intent filter with com.oculus.intent.category.VR allows OpenXR to progress to focused state.
 | **Thu 12 May** : Merge branch 'master' of github.com:simul/Teleport
 | **Thu 12 May** : Add main.cpp for AGDE client.
@@ -94,9 +100,3 @@ Changelist
 | **Tue 18 Jan** : fixing android compile errors
 | **Tue 18 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
 | **Tue 18 Jan** : Refactoring avs streaming class instances into shared clientPipeline.
-| **Tue 18 Jan** : Changing audio to stream for multiple clients
-| **Mon 17 Jan** : fixig compile errors
-| **Mon 17 Jan** : Merge pull request #106 from simul/multi_client
-| **Mon 17 Jan** : Merge branch 'master' into multi_client
-| **Mon 17 Jan** : Adding support for multiple clients
-| **Fri 14 Jan** : Replace avs::NetworkSource instance in pc ClientRenderer.
