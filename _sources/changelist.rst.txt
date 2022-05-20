@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Fri 20 May** : Update README.md
+| **Fri 20 May** : Add libxrspacewarp.so
+| **Thu 19 May** : Working initial Vulkan Android render.
 | **Wed 18 May** : Add build_android_vs fmt.vcxproj and enet.vcxproj
 | **Wed 18 May** : Add libVkLayer_khronos_validation.so
 | **Wed 18 May** : Add Oculus OpenXR headers/libs.
@@ -97,6 +100,3 @@ Changelist
 | **Mon 24 Jan** : changing SimulCasterAudio to TeleportAudio and changing refs to SimulCasterServer to TeleportServer
 | **Sat 22 Jan** : Adding ability to check video encoder capabilities before initialization of a video encoder.
 | **Wed 19 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Tue 18 Jan** : fixing android compile errors
-| **Tue 18 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Tue 18 Jan** : Refactoring avs streaming class instances into shared clientPipeline.
