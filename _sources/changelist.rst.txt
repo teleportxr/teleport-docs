@@ -1,5 +1,12 @@
 Changelist 
 ========= 
+| **Sat 21 May** : Moving ClientRenderer code to ClientRender/Renderer.
+| **Sat 21 May** : Small fixes.
+| **Fri 20 May** : Corrected Vulkan shader build paths for Android.
+| **Fri 20 May** : Add gradle-wrapper.
+| **Fri 20 May** : Add build_android_vs/thirdparty/draco/draco.vcxproj
+| **Fri 20 May** : Merge branch 'master' of github.com:simul/Teleport
+| **Fri 20 May** : Move the AGDE client project to build_android_vs/AndroidClient.
 | **Fri 20 May** : Update README.md
 | **Fri 20 May** : Add libxrspacewarp.so
 | **Thu 19 May** : Working initial Vulkan Android render.
@@ -93,10 +100,3 @@ Changelist
 | **Sun 30 Jan** : Initial OpenXR D3D12 support. Using dev branch of Platform while refactoring deviceContext, RenderPlatform and immediate context behaviour.
 | **Fri 28 Jan** : Merge branch 'master' of github.com:simul/RemotePlay into master
 | **Fri 28 Jan** : Using CPack for installer-generation.
-| **Thu 27 Jan** : Updating networksink docs
-| **Wed 26 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
-| **Wed 26 Jan** : Refactoring for shared code. libavstream docs.
-| **Wed 26 Jan** : Changing TeleportAudio to use TeleportCore error defines
-| **Mon 24 Jan** : changing SimulCasterAudio to TeleportAudio and changing refs to SimulCasterServer to TeleportServer
-| **Sat 22 Jan** : Adding ability to check video encoder capabilities before initialization of a video encoder.
-| **Wed 19 Jan** : Merge branch 'master' of github.com:simul/RemotePlay
