@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Tue 24 May** : Merge branch 'master' of github.com:simul/RemotePlay into master
+| **Tue 24 May** : Add release.properties
+| **Tue 24 May** : Update README.md
 | **Sat 21 May** : Moving ClientRenderer code to ClientRender/Renderer.
 | **Sat 21 May** : Small fixes.
 | **Fri 20 May** : Corrected Vulkan shader build paths for Android.
@@ -97,6 +100,3 @@ Changelist
 | **Fri 04 Feb** : Adding libavstream example to docs
 | **Wed 02 Feb** : Merge branch 'master' of github.com:simul/Teleport
 | **Wed 02 Feb** : Adding updates to libavstream docs
-| **Sun 30 Jan** : Initial OpenXR D3D12 support. Using dev branch of Platform while refactoring deviceContext, RenderPlatform and immediate context behaviour.
-| **Fri 28 Jan** : Merge branch 'master' of github.com:simul/RemotePlay into master
-| **Fri 28 Jan** : Using CPack for installer-generation.
