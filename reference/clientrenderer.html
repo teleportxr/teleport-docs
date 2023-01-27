@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
 
   
   
@@ -35,6 +36,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -100,9 +103,12 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The TeleportClient library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../unity.html">Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -177,14 +183,54 @@
 <p>The client renderer library provides generic rendering functions for Teleport clients.</p>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “clientrender::NodeManager” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N12clientrender11NodeManagerE">
+<span id="_CPPv3N12clientrender11NodeManagerE"></span><span id="_CPPv2N12clientrender11NodeManagerE"></span><span id="clientrender::NodeManager"></span><span class="target" id="classclientrender_1_1_node_manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">clientrender</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">NodeManager</span></span></span><a class="headerlink" href="#_CPPv4N12clientrender11NodeManagerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Manages nodes for a specific server context. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12clientrender11NodeManager12ReparentNodeERKN8teleport4core26UpdateNodeStructureCommandE">
+<span id="_CPPv3N12clientrender11NodeManager12ReparentNodeERKN8teleport4core26UpdateNodeStructureCommandE"></span><span id="_CPPv2N12clientrender11NodeManager12ReparentNodeERKN8teleport4core26UpdateNodeStructureCommandE"></span><span id="clientrender::NodeManager::ReparentNode__teleport::core::UpdateNodeStructureCommandCR"></span><span class="target" id="classclientrender_1_1_node_manager_1a3d16b382a98d46ccc1c5dcb145daebbd"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ReparentNode</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">UpdateNodeStructureCommand</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">updateNodeStructureCommand</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12clientrender11NodeManager12ReparentNodeERKN8teleport4core26UpdateNodeStructureCommandE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns true if successful, or false if not e.g. if either the node or the parent is not present. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK12clientrender11NodeManager18GetRemovedNodeUidsEv">
+<span id="_CPPv3NK12clientrender11NodeManager18GetRemovedNodeUidsEv"></span><span id="_CPPv2NK12clientrender11NodeManager18GetRemovedNodeUidsEv"></span><span id="clientrender::NodeManager::GetRemovedNodeUidsC"></span><span class="target" id="classclientrender_1_1_node_manager_1a1ce38c2a8c40f065b1d2abd8bde38255"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetRemovedNodeUids</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK12clientrender11NodeManager18GetRemovedNodeUidsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the nodes that have been removed since the last update. </p>
+</dd></dl>
+
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “clientrender::GeometryCache” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N12clientrender13GeometryCacheE">
+<span id="_CPPv3N12clientrender13GeometryCacheE"></span><span id="_CPPv2N12clientrender13GeometryCacheE"></span><span id="clientrender::GeometryCache"></span><span class="target" id="classclientrender_1_1_geometry_cache"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">clientrender</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GeometryCache</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">GeometryCacheBackendInterface</span></span><a class="headerlink" href="#_CPPv4N12clientrender13GeometryCacheE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A container for geometry sent from servers and cached locally. There is one instance of <a class="reference internal" href="#classclientrender_1_1_geometry_cache"><span class="std std-ref">GeometryCache</span></a> for each connected server, and a local <a class="reference internal" href="#classclientrender_1_1_geometry_cache"><span class="std std-ref">GeometryCache</span></a> for the client’s own objects. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12clientrender13GeometryCache11GenerateUidEv">
+<span id="_CPPv3N12clientrender13GeometryCache11GenerateUidEv"></span><span id="_CPPv2N12clientrender13GeometryCache11GenerateUidEv"></span><span id="clientrender::GeometryCache::GenerateUid"></span><span class="target" id="classclientrender_1_1_geometry_cache_1a8ac1810e07319e278e13ca955236e26c"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">geometry_cache_uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenerateUid</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12clientrender13GeometryCache11GenerateUidEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Generate a new uid unique in this cache (not globally unique). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12clientrender13GeometryCache11GenerateUidE8uint64_t">
+<span id="_CPPv3N12clientrender13GeometryCache11GenerateUidE8uint64_t"></span><span id="_CPPv2N12clientrender13GeometryCache11GenerateUidE8uint64_t"></span><span id="clientrender::GeometryCache::GenerateUid__uint64_t"></span><span class="target" id="classclientrender_1_1_geometry_cache_1ab87abbeeacbec7c6398a177270bfdf63"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">geometry_cache_uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenerateUid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">from</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12clientrender13GeometryCache11GenerateUidE8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Generate a new uid unique in this cache and store a mapping from the given input number. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N12clientrender13GeometryCache19GetCorrespondingUidE8uint64_t">
+<span id="_CPPv3N12clientrender13GeometryCache19GetCorrespondingUidE8uint64_t"></span><span id="_CPPv2N12clientrender13GeometryCache19GetCorrespondingUidE8uint64_t"></span><span id="clientrender::GeometryCache::GetCorrespondingUid__uint64_t"></span><span class="target" id="classclientrender_1_1_geometry_cache_1a4f58080fde5ed017b579bec7452c7e03"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">geometry_cache_uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetCorrespondingUid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">from</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N12clientrender13GeometryCache19GetCorrespondingUidE8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the locally unique id that the specified number maps to. </p>
+</dd></dl>
+
 </div>
+</dd></dl>
+
 </div>
 <div class="section" id="structs">
 <h2>Structs<a class="headerlink" href="#structs" title="Permalink to this headline">¶</a></h2>

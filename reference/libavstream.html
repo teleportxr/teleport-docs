@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
 
   
   
@@ -35,6 +36,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -104,9 +107,12 @@
 <li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">Client Render Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The TeleportClient library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../unity.html">Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -182,6 +188,7 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>LibAVStream is a helper library for streaming video and geometry data between a server and client. A user of this library constructs an avs::Pipeline instance, and configures the pipeline with avs::PipelineNode subclass instances. Nodes can receive data from other nodes, process it, and pass the processed data on to other nodes.</p>
 <p>A pipeline operates on a single thread, while queues allow threads to exchange data. For example, the server’s Network pipeline connects several avs::Queue instances to a single avs::NetworkSink. For example, the video encoding pipeline links an avs::Surface that receives raw video frames, to an avs::Encoder, and finally to a queue. On another thread, the same queue in the network pipeline passes the data to the avs::NetworkSink.</p>
+<p>LibAVStream uses Enet for UDP datagram control. It uses SRT and EFP over UDP for data stream reliability and deliverability.</p>
 <a class="reference internal image-reference" href="../_images/ExamplePipeline.png"><img alt="Two pipelines operating on separate threads are connected using a avs::Queue." src="../_images/ExamplePipeline.png" style="width: 800px;" /></a>
 </div>
 <div class="section" id="classes">
@@ -387,7 +394,7 @@
 <span id="_CPPv3N3avs20UseInternalAllocatorE"></span><span id="_CPPv2N3avs20UseInternalAllocatorE"></span><span id="avs::UseInternalAllocator"></span><span class="target" id="classavs_1_1_use_internal_allocator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UseInternalAllocator</span></span></span><a class="headerlink" href="#_CPPv4N3avs20UseInternalAllocatorE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper class for enforcing the use of memory allocator defined within libavstream library module.</p>
 <p>This is used to prevent memory allocation/deallocation across DLL boundary even when operator new or operator delete are called from client code. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface"><span class="std std-ref">avs::DecoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_encoder_backend_interface"><span class="std std-ref">avs::EncoderBackendInterface</span></a></p>
+<p>Subclassed by <a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#classavs_1_1_decoder_backend_interface"><span class="std std-ref">avs::DecoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_encoder_backend_interface"><span class="std std-ref">avs::EncoderBackendInterface</span></a></p>
 </dd></dl>
 
 </div>
@@ -548,9 +555,9 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK3avs23GeometrySourceInterface33getGeometrySourceBackendInterfaceEv">
-<span id="_CPPv3NK3avs23GeometrySourceInterface33getGeometrySourceBackendInterfaceEv"></span><span id="_CPPv2NK3avs23GeometrySourceInterface33getGeometrySourceBackendInterfaceEv"></span><span id="avs::GeometrySourceInterface::getGeometrySourceBackendInterfaceC"></span><span class="target" id="classavs_1_1_geometry_source_interface_1a2919f32db7adff37d97625774e17f60c"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">GeometrySourceBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getGeometrySourceBackendInterface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK3avs23GeometrySourceInterface33getGeometrySourceBackendInterfaceEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get surface backend associated with this node. </p>
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs23GeometrySourceInterface36getGeometryRequesterBackendInterfaceEv">
+<span id="_CPPv3NK3avs23GeometrySourceInterface36getGeometryRequesterBackendInterfaceEv"></span><span id="_CPPv2NK3avs23GeometrySourceInterface36getGeometryRequesterBackendInterfaceEv"></span><span id="avs::GeometrySourceInterface::getGeometryRequesterBackendInterfaceC"></span><span class="target" id="classavs_1_1_geometry_source_interface_1aa3a5223ae31e5e753bd1f40bd62d28c4"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">GeometryRequesterBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getGeometryRequesterBackendInterface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK3avs23GeometrySourceInterface36getGeometryRequesterBackendInterfaceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get backend associated with this node. </p>
 </dd></dl>
 
 </div>
@@ -798,7 +805,7 @@
 <span id="_CPPv3N3avs23DecoderBackendInterfaceE"></span><span id="_CPPv2N3avs23DecoderBackendInterfaceE"></span><span id="avs::DecoderBackendInterface"></span><span class="target" id="classavs_1_1_decoder_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Common decoder backend interface.</p>
 <p><a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">Decoder</span></a> backend is responsible for decoding compressed video data using a particular hardware decoder. Decoded video frames are outputted to a registered surface. </p>
-<p>Subclassed by VideoDecoder, avs::DecoderNV</p>
+<p>Subclassed by avs::DecoderNV, clientrender::VideoDecoderBackend</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -2095,8 +2102,8 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs14GeometrySource9configureEP30GeometrySourceBackendInterfaceP33GeometryRequesterBackendInterface">
-<span id="_CPPv3N3avs14GeometrySource9configureEP30GeometrySourceBackendInterfaceP33GeometryRequesterBackendInterface"></span><span id="_CPPv2N3avs14GeometrySource9configureEP30GeometrySourceBackendInterfaceP33GeometryRequesterBackendInterface"></span><span id="avs::GeometrySource::configure__GeometrySourceBackendInterfaceP.GeometryRequesterBackendInterfaceP"></span><span class="target" id="classavs_1_1_geometry_source_1a5966fe528ffec298d3ebe0f35398a595"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GeometrySourceBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">sourceBackend</span></span>, <span class="n"><span class="pre">GeometryRequesterBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">req</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs14GeometrySource9configureEP30GeometrySourceBackendInterfaceP33GeometryRequesterBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GeometrySource9configureEP33GeometryRequesterBackendInterface">
+<span id="_CPPv3N3avs14GeometrySource9configureEP33GeometryRequesterBackendInterface"></span><span id="_CPPv2N3avs14GeometrySource9configureEP33GeometryRequesterBackendInterface"></span><span id="avs::GeometrySource::configure__GeometryRequesterBackendInterfaceP"></span><span class="target" id="classavs_1_1_geometry_source_1a825e1b6afe177e08a1d4a831e636a8e6"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GeometryRequesterBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">req</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs14GeometrySource9configureEP33GeometryRequesterBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Configure <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">GeometrySource</span></a> node. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2114,9 +2121,9 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK3avs14GeometrySource33getGeometrySourceBackendInterfaceEv">
-<span id="_CPPv3NK3avs14GeometrySource33getGeometrySourceBackendInterfaceEv"></span><span id="_CPPv2NK3avs14GeometrySource33getGeometrySourceBackendInterfaceEv"></span><span id="avs::GeometrySource::getGeometrySourceBackendInterfaceC"></span><span class="target" id="classavs_1_1_geometry_source_1ae559b28bfd3977e079a1008b24d3adf9"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">GeometrySourceBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getGeometrySourceBackendInterface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs14GeometrySource33getGeometrySourceBackendInterfaceEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get surface backend associated with this node. </p>
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs14GeometrySource36getGeometryRequesterBackendInterfaceEv">
+<span id="_CPPv3NK3avs14GeometrySource36getGeometryRequesterBackendInterfaceEv"></span><span id="_CPPv2NK3avs14GeometrySource36getGeometryRequesterBackendInterfaceEv"></span><span id="avs::GeometrySource::getGeometryRequesterBackendInterfaceC"></span><span class="target" id="classavs_1_1_geometry_source_1ae775980ee908e9e5ffef0144ead14b84"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">GeometryRequesterBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getGeometryRequesterBackendInterface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs14GeometrySource36getGeometryRequesterBackendInterfaceEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get backend associated with this node. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -2511,22 +2518,7 @@
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs5Queue7PrivateE">
 <span id="_CPPv3N3avs5Queue7PrivateE"></span><span id="_CPPv2N3avs5Queue7PrivateE"></span><span id="avs::Queue::Private"></span><span class="target" id="structavs_1_1_queue_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><a class="headerlink" href="#_CPPv4N3avs5Queue7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs5Queue7Private5m_memE">
-<span id="_CPPv3N3avs5Queue7Private5m_memE"></span><span id="_CPPv2N3avs5Queue7Private5m_memE"></span><span id="avs::Queue::Private::m_mem__cP"></span><span class="target" id="structavs_1_1_queue_1_1_private_1ab3ba56d05c735a7b4429b6bc8ecc7841"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">m_mem</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N3avs5Queue7Private5m_memE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Contiguous memory that contains buffers of equal size </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs5Queue7Private11m_dataSizesE">
-<span id="_CPPv3N3avs5Queue7Private11m_dataSizesE"></span><span id="_CPPv2N3avs5Queue7Private11m_dataSizesE"></span><span id="avs::Queue::Private::m_dataSizes__sP"></span><span class="target" id="structavs_1_1_queue_1_1_private_1a5f537849d7b3d7e522e3ab5acdcc2aff"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">m_dataSizes</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span><a class="headerlink" href="#_CPPv4N3avs5Queue7Private11m_dataSizesE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Contains sizes of data in each buffer </p>
-</dd></dl>
-
-</div>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -3400,31 +3392,10 @@
 </div>
 <div class="section" id="client-messages">
 <h2>Client Messages<a class="headerlink" href="#client-messages" title="Permalink to this headline">¶</a></h2>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs13ClientMessageE">
-<span id="_CPPv3N3avs13ClientMessageE"></span><span id="_CPPv2N3avs13ClientMessageE"></span><span id="avs::ClientMessage"></span><span class="target" id="structavs_1_1_client_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessage</span></span></span><a class="headerlink" href="#_CPPv4N3avs13ClientMessageE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A message from a client to a server. </p>
-<p>Subclassed by <a class="reference internal" href="#structavs_1_1_controller_poses_message"><span class="std std-ref">avs::ControllerPosesMessage</span></a>, <a class="reference internal" href="#structavs_1_1_node_status_message"><span class="std std-ref">avs::NodeStatusMessage</span></a>, <a class="reference internal" href="#structavs_1_1_origin_pose_message"><span class="std std-ref">avs::OriginPoseMessage</span></a>, <a class="reference internal" href="#structavs_1_1_received_resources_message"><span class="std std-ref">avs::ReceivedResourcesMessage</span></a></p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK3avs13ClientMessage14getMessageSizeEv">
-<span id="_CPPv3NK3avs13ClientMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs13ClientMessage14getMessageSizeEv"></span><span id="avs::ClientMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_client_message_1a2ce3b0aa21c5f47ab2145c7119c39125"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK3avs13ClientMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns byte size of message. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::ClientMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs13ClientMessage24clientMessagePayloadTypeE">
-<span id="_CPPv3N3avs13ClientMessage24clientMessagePayloadTypeE"></span><span id="_CPPv2N3avs13ClientMessage24clientMessagePayloadTypeE"></span><span id="avs::ClientMessage::clientMessagePayloadType__ClientMessagePayloadType"></span><span class="target" id="structavs_1_1_client_message_1aafde42a51abcddf9172231fe86f104bc"></span><span class="n"><span class="pre">ClientMessagePayloadType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clientMessagePayloadType</span></span></span><a class="headerlink" href="#_CPPv4N3avs13ClientMessage24clientMessagePayloadTypeE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Specifies what type of client message this is. </p>
-</dd></dl>
-
-</div>
-</dd></dl>
-
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfoE">
 <span id="_CPPv3N3avs11DisplayInfoE"></span><span id="_CPPv2N3avs11DisplayInfoE"></span><span id="avs::DisplayInfo"></span><span class="target" id="structavs_1_1_display_info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">DisplayInfo</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfoE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3446,104 +3417,22 @@
 </div>
 </dd></dl>
 
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs17NodeStatusMessageE">
-<span id="_CPPv3N3avs17NodeStatusMessageE"></span><span id="_CPPv2N3avs17NodeStatusMessageE"></span><span id="avs::NodeStatusMessage"></span><span class="target" id="structavs_1_1_node_status_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">NodeStatusMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs13ClientMessageE" title="avs::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N3avs17NodeStatusMessageE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Message info struct containing how many nodes have changed to what state; sent alongside two lists of node UIDs. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK3avs17NodeStatusMessage14getMessageSizeEv">
-<span id="_CPPv3NK3avs17NodeStatusMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs17NodeStatusMessage14getMessageSizeEv"></span><span id="avs::NodeStatusMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_node_status_message_1a4ad15b9b094cfd1237d058ca61aabaa1"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs17NodeStatusMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns byte size of message. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::NodeStatusMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs17NodeStatusMessage15nodesDrawnCountE">
-<span id="_CPPv3N3avs17NodeStatusMessage15nodesDrawnCountE"></span><span id="_CPPv2N3avs17NodeStatusMessage15nodesDrawnCountE"></span><span id="avs::NodeStatusMessage::nodesDrawnCount__s"></span><span class="target" id="structavs_1_1_node_status_message_1ab9479f72dd12438f2b81fcd4a3888a63"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodesDrawnCount</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NodeStatusMessage15nodesDrawnCountE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>How many nodes the client is drawing. The node uid’s will be appended first in the packet. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs17NodeStatusMessage23nodesWantToReleaseCountE">
-<span id="_CPPv3N3avs17NodeStatusMessage23nodesWantToReleaseCountE"></span><span id="_CPPv2N3avs17NodeStatusMessage23nodesWantToReleaseCountE"></span><span id="avs::NodeStatusMessage::nodesWantToReleaseCount__s"></span><span class="target" id="structavs_1_1_node_status_message_1a8d7a9f56f9937e678ef1ac61adfc31a9"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodesWantToReleaseCount</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NodeStatusMessage23nodesWantToReleaseCountE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>How many nodes the client has but is no longer drawing. The node uid’s will be appended second in the packet. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::ReceivedResourcesMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs24ReceivedResourcesMessageE">
-<span id="_CPPv3N3avs24ReceivedResourcesMessageE"></span><span id="_CPPv2N3avs24ReceivedResourcesMessageE"></span><span id="avs::ReceivedResourcesMessage"></span><span class="target" id="structavs_1_1_received_resources_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ReceivedResourcesMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs13ClientMessageE" title="avs::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N3avs24ReceivedResourcesMessageE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Message info struct containing how many resources were received; sent alongside a list of UIDs. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK3avs24ReceivedResourcesMessage14getMessageSizeEv">
-<span id="_CPPv3NK3avs24ReceivedResourcesMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs24ReceivedResourcesMessage14getMessageSizeEv"></span><span id="avs::ReceivedResourcesMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_received_resources_message_1a7b548de0a97ad222836304771314c1fb"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs24ReceivedResourcesMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns byte size of message. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::ControllerPosesMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs24ReceivedResourcesMessage22receivedResourcesCountE">
-<span id="_CPPv3N3avs24ReceivedResourcesMessage22receivedResourcesCountE"></span><span id="_CPPv2N3avs24ReceivedResourcesMessage22receivedResourcesCountE"></span><span id="avs::ReceivedResourcesMessage::receivedResourcesCount__s"></span><span class="target" id="structavs_1_1_received_resources_message_1ad844986f6cb21c12f9311268e7f5fe01"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">receivedResourcesCount</span></span></span><a class="headerlink" href="#_CPPv4N3avs24ReceivedResourcesMessage22receivedResourcesCountE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>How many resources were received. The uid’s will be appended in the packet. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “avs::OriginPoseMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
 </div>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs22ControllerPosesMessageE">
-<span id="_CPPv3N3avs22ControllerPosesMessageE"></span><span id="_CPPv2N3avs22ControllerPosesMessageE"></span><span id="avs::ControllerPosesMessage"></span><span class="target" id="structavs_1_1_controller_poses_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ControllerPosesMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs13ClientMessageE" title="avs::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N3avs22ControllerPosesMessageE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Message info struct containing how many resources were received; sent alongside a list of UIDs. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK3avs22ControllerPosesMessage14getMessageSizeEv">
-<span id="_CPPv3NK3avs22ControllerPosesMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs22ControllerPosesMessage14getMessageSizeEv"></span><span id="avs::ControllerPosesMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_controller_poses_message_1a61be9c531b4cf816b1c8e6d4ba99fefd"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs22ControllerPosesMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns byte size of message. </p>
-</dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs22ControllerPosesMessage8headPoseE">
-<span id="_CPPv3N3avs22ControllerPosesMessage8headPoseE"></span><span id="_CPPv2N3avs22ControllerPosesMessage8headPoseE"></span><span id="avs::ControllerPosesMessage::headPose__Pose"></span><span class="target" id="structavs_1_1_controller_poses_message_1a7024975a1e6aed45e9c3d8d50a93dda8"></span><span class="n"><span class="pre">Pose</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">headPose</span></span></span><a class="headerlink" href="#_CPPv4N3avs22ControllerPosesMessage8headPoseE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The headset’s pose. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs22ControllerPosesMessage15controllerPosesE">
-<span id="_CPPv3N3avs22ControllerPosesMessage15controllerPosesE"></span><span id="_CPPv2N3avs22ControllerPosesMessage15controllerPosesE"></span><span id="avs::ControllerPosesMessage::controllerPoses__PoseA"></span><span class="target" id="structavs_1_1_controller_poses_message_1a3d3f10632d2046e5f1d692eaf2cb0ff7"></span><span class="n"><span class="pre">Pose</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">controllerPoses</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N3avs22ControllerPosesMessage15controllerPosesE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Poses of the two controllers. </p>
-</dd></dl>
-
-</div>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs17OriginPoseMessageE">
-<span id="_CPPv3N3avs17OriginPoseMessageE"></span><span id="_CPPv2N3avs17OriginPoseMessageE"></span><span id="avs::OriginPoseMessage"></span><span class="target" id="structavs_1_1_origin_pose_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">OriginPoseMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs13ClientMessageE" title="avs::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N3avs17OriginPoseMessageE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK3avs17OriginPoseMessage14getMessageSizeEv">
-<span id="_CPPv3NK3avs17OriginPoseMessage14getMessageSizeEv"></span><span id="_CPPv2NK3avs17OriginPoseMessage14getMessageSizeEv"></span><span id="avs::OriginPoseMessage::getMessageSizeC"></span><span class="target" id="structavs_1_1_origin_pose_message_1a34763e34182003be2ae854d7cbdce114"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMessageSize</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs17OriginPoseMessage14getMessageSizeEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns byte size of message. </p>
-</dd></dl>
-
-</div>
-</dd></dl>
-
 </div>
 </div>
 

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
 
   
   
@@ -35,6 +36,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -99,7 +102,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unity.html">Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -169,26 +172,45 @@
             
   <div class="section" id="the-teleport-vr-protocol">
 <h1>The Teleport VR Protocol<a class="headerlink" href="#the-teleport-vr-protocol" title="Permalink to this headline">¶</a></h1>
-<p>The Teleport VR Protocol is an application-layer network protocol for client-server immersive applications.
+<p>The Teleport VR Protocol is a network protocol for client-server immersive applications.
 Essentially this means that applications can be used remotely without downloading or installing them.
-The protocol is open, meaning that anyone can use it, either by writing a client program or by developing a server that uses the protocol.
-Simul Software provides reference implementations of both client and server.
+The protocol is open, meaning that anyone can use it, either by writing a client program or by developing a server that uses the protocol.</p>
+<p>Teleport is a top-level application-layer protocol. It can use various means of transport, usually based on the UDP protocol - for example, WebRTC, or the open-source libavstream software.</p>
+<table class="colwidths-given docutils align-default" id="id1">
+<caption><span class="caption-text">Network Layers</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 86%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Teleport VR</p></td>
+<td><p>Real-time client-server interface of a virtual world.</p></td>
+</tr>
+<tr class="row-even"><td><p>WebRTC/libavstream/UDP-based transport</p></td>
+<td><p>Any protocol that supports streams and datagrams</p></td>
+</tr>
+<tr class="row-odd"><td><p>Network, Data Link, Physical Layer</p></td>
+<td><p>Standard network layers</p></td>
+</tr>
+</tbody>
+</table>
+<p>Simul provides reference implementations of both client and server.
 The protocol and software should be considered pre-alpha, suitable for testing, evaluation and experimentation.</p>
 <p>The protocol operates four main connections between a client and server:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
+<col style="width: 29%" />
+<col style="width: 71%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p>Service Connection:</p></td>
-<td><p>Two-way communication between client and server, uses Enet over UDP.</p></td>
+<tr class="row-odd"><td><p>Service Connection</p></td>
+<td><p>Two-way communication between client and server.</p></td>
 </tr>
-<tr class="row-even"><td><p>Video Stream:</p></td>
-<td><p>A one-way stream of video from server to client, uses SRT and EFP over UDP.</p></td>
+<tr class="row-even"><td><p>Video Stream</p></td>
+<td><p>A one-way stream of video from server to client.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Geometry Stream:</p></td>
-<td><p>A one-way stream of geometry data from server to client, uses SRT and EFP over UDP.</p></td>
+<tr class="row-odd"><td><p>Geometry Stream</p></td>
+<td><p>A one-way stream of geometry data from server to client.</p></td>
 </tr>
 <tr class="row-even"><td><p>Static data connection</p></td>
 <td><p>An http/s connection for data files.</p></td>

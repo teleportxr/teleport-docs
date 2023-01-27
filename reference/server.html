@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Server &mdash; TeleportVR  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Video Decoding with Android NDK" href="video_ndk_decoding.html" />
+    <link rel="prev" title="The TeleportClient library" href="teleportclient.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TeleportVR
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference Implementation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The TeleportClient library</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TeleportVR</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Reference Implementation</a> &raquo;</li>
+        
+      <li>Server</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/reference/server.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="server">
+<h1>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>TeleportServer is a library that provides server functionality in conjunction with a real-time game or simulation engine.</p>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport19AudioEncodePipelineE">
+<span id="_CPPv3N8teleport19AudioEncodePipelineE"></span><span id="_CPPv2N8teleport19AudioEncodePipelineE"></span><span id="teleport::AudioEncodePipeline"></span><span class="target" id="classteleport_1_1_audio_encode_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncodePipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport19AudioEncodePipelineE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A wrapper for an <a class="reference internal" href="libavstream.html#classavs_1_1_audio_encoder"><span class="std std-ref">avs::AudioEncoder</span></a> and an <a class="reference internal" href="libavstream.html#classavs_1_1_pipeline"><span class="std std-ref">avs::Pipeline</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport12AudioEncoderE">
+<span id="_CPPv3N8teleport12AudioEncoderE"></span><span id="_CPPv2N8teleport12AudioEncoderE"></span><span id="teleport::AudioEncoder"></span><span class="target" id="classteleport_1_1_audio_encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">AudioEncoderBackendInterface</span></span><a class="headerlink" href="#_CPPv4N8teleport12AudioEncoderE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Implementation of the default audio encoding. </p>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “teleport::CaptureDelegates” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “teleport::CasterContext” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “teleport::Result” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “teleport::ClientData” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport13ClientManagerE">
+<span id="_CPPv3N8teleport13ClientManagerE"></span><span id="_CPPv2N8teleport13ClientManagerE"></span><span id="teleport::ClientManager"></span><span class="target" id="classteleport_1_1_client_manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientManager</span></span></span><a class="headerlink" href="#_CPPv4N8teleport13ClientManagerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Container for the client-specific data objects. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport15ClientMessagingE">
+<span id="_CPPv3N8teleport15ClientMessagingE"></span><span id="_CPPv2N8teleport15ClientMessagingE"></span><span id="teleport::ClientMessaging"></span><span class="target" id="classteleport_1_1_client_messaging"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessaging</span></span></span><a class="headerlink" href="#_CPPv4N8teleport15ClientMessagingE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Per-client messaging handler. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport23DefaultDiscoveryServiceE">
+<span id="_CPPv3N8teleport23DefaultDiscoveryServiceE"></span><span id="_CPPv2N8teleport23DefaultDiscoveryServiceE"></span><span id="teleport::DefaultDiscoveryService"></span><span class="target" id="classteleport_1_1_default_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DefaultDiscoveryService</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport16DiscoveryServiceE" title="teleport::DiscoveryService"><span class="n"><span class="pre">DiscoveryService</span></span></a><a class="headerlink" href="#_CPPv4N8teleport23DefaultDiscoveryServiceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Discover service for establishing connections with clients. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport18DefaultHTTPServiceE">
+<span id="_CPPv3N8teleport18DefaultHTTPServiceE"></span><span id="_CPPv2N8teleport18DefaultHTTPServiceE"></span><span id="teleport::DefaultHTTPService"></span><span class="target" id="classteleport_1_1_default_h_t_t_p_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DefaultHTTPService</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport11HTTPServiceE" title="teleport::HTTPService"><span class="n"><span class="pre">HTTPService</span></span></a><a class="headerlink" href="#_CPPv4N8teleport18DefaultHTTPServiceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Default service for HTTP download of resources from the Teleport server. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport16DiscoveryServiceE">
+<span id="_CPPv3N8teleport16DiscoveryServiceE"></span><span id="_CPPv2N8teleport16DiscoveryServiceE"></span><span id="teleport::DiscoveryService"></span><span class="target" id="classteleport_1_1_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiscoveryService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport16DiscoveryServiceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Generic discover interface. </p>
+<p>Subclassed by <a class="reference internal" href="#classteleport_1_1_default_discovery_service"><span class="std std-ref">teleport::DefaultDiscoveryService</span></a></p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport15GeometryEncoderE">
+<span id="_CPPv3N8teleport15GeometryEncoderE"></span><span id="_CPPv2N8teleport15GeometryEncoderE"></span><span id="teleport::GeometryEncoder"></span><span class="target" id="classteleport_1_1_geometry_encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryEncoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">GeometryEncoderBackendInterface</span></span><a class="headerlink" href="#_CPPv4N8teleport15GeometryEncoderE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Backend implementation of the geometry encoder. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport13GeometryStoreE">
+<span id="_CPPv3N8teleport13GeometryStoreE"></span><span id="_CPPv2N8teleport13GeometryStoreE"></span><span id="teleport::GeometryStore"></span><span class="target" id="classteleport_1_1_geometry_store"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GeometryStore</span></span></span><a class="headerlink" href="#_CPPv4N8teleport13GeometryStoreE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Singleton for storing geometry data and managing the geometry file cache. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport13GeometryStore15GetClashingUidsEv">
+<span id="_CPPv3NK8teleport13GeometryStore15GetClashingUidsEv"></span><span id="_CPPv2NK8teleport13GeometryStore15GetClashingUidsEv"></span><span id="teleport::GeometryStore::GetClashingUidsC"></span><span class="target" id="classteleport_1_1_geometry_store_1a68818df4db3e57948b7a1b8d0a1ebc32"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetClashingUids</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport13GeometryStore15GetClashingUidsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Debug: check for clashing uid’s: this should never return a non-empty set. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport13GeometryStore14CheckForErrorsEv">
+<span id="_CPPv3NK8teleport13GeometryStore14CheckForErrorsEv"></span><span id="_CPPv2NK8teleport13GeometryStore14CheckForErrorsEv"></span><span id="teleport::GeometryStore::CheckForErrorsC"></span><span class="target" id="classteleport_1_1_geometry_store_1afc085a4001a3424de18315e9e7ca273d"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CheckForErrors</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport13GeometryStore14CheckForErrorsEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Check for errors - these should be resolved before using this store in a server. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport13GeometryStore16GetOrGenerateUidERKNSt6stringE">
+<span id="_CPPv3N8teleport13GeometryStore16GetOrGenerateUidERKNSt6stringE"></span><span id="_CPPv2N8teleport13GeometryStore16GetOrGenerateUidERKNSt6stringE"></span><span id="teleport::GeometryStore::GetOrGenerateUid__ssCR"></span><span class="target" id="classteleport_1_1_geometry_store_1aa81d8a4e44469eb21a5dc7c21e730455"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetOrGenerateUid</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport13GeometryStore16GetOrGenerateUidERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get or generate a uid. If the path already corresponds to an id, that will be returned. Otherwise a new one will be added. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport24GeometryStreamingServiceE">
+<span id="_CPPv3N8teleport24GeometryStreamingServiceE"></span><span id="_CPPv2N8teleport24GeometryStreamingServiceE"></span><span id="teleport::GeometryStreamingService"></span><span class="target" id="classteleport_1_1_geometry_streaming_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryStreamingService</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">GeometryRequesterBackendInterface</span></span><a class="headerlink" href="#_CPPv4N8teleport24GeometryStreamingServiceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>This per-client class tracks the resources and nodes that the client needs, and returns them via GeometryRequesterBackendInterface to the encoder. </p>
+<p>Subclassed by teleport::PluginGeometryStreamingService</p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport11HTTPServiceE">
+<span id="_CPPv3N8teleport11HTTPServiceE"></span><span id="_CPPv2N8teleport11HTTPServiceE"></span><span id="teleport::HTTPService"></span><span class="target" id="classteleport_1_1_h_t_t_p_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HTTPService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport11HTTPServiceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Interface for http services. </p>
+<p>Subclassed by <a class="reference internal" href="#classteleport_1_1_default_h_t_t_p_service"><span class="std std-ref">teleport::DefaultHTTPService</span></a></p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport15NetworkPipelineE">
+<span id="_CPPv3N8teleport15NetworkPipelineE"></span><span id="_CPPv2N8teleport15NetworkPipelineE"></span><span id="teleport::NetworkPipeline"></span><span class="target" id="classteleport_1_1_network_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkPipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport15NetworkPipelineE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network pipeline. </p>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “teleport::ServerSettings” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport21SourceNetworkPipelineE">
+<span id="_CPPv3N8teleport21SourceNetworkPipelineE"></span><span id="_CPPv2N8teleport21SourceNetworkPipelineE"></span><span id="teleport::SourceNetworkPipeline"></span><span class="target" id="classteleport_1_1_source_network_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SourceNetworkPipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport21SourceNetworkPipelineE" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport19VideoEncodePipelineE">
+<span id="_CPPv3N8teleport19VideoEncodePipelineE"></span><span id="_CPPv2N8teleport19VideoEncodePipelineE"></span><span id="teleport::VideoEncodePipeline"></span><span class="target" id="classteleport_1_1_video_encode_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VideoEncodePipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport19VideoEncodePipelineE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Wrapper for the video encoding pipeline objects. </p>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “teleport::VisualStudioDebugOutput” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="video_ndk_decoding.html" class="btn btn-neutral float-right" title="Video Decoding with Android NDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="teleportclient.html" class="btn btn-neutral float-left" title="The TeleportClient library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2018-2022, Simul Software Ltd.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

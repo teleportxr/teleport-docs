@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
 
   
   
@@ -35,6 +36,8 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -106,7 +109,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity.html">Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -191,10 +194,10 @@ It may contain one or more sub-textures as required by the client.</p>
 The server application should render an axis-aligned cubemap each frame and send the cubemap as part of the video texture to the client.
 <strong>YUV</strong> formats are commonly used with video encoders and therefore the alpha channel must be stored in an extra pixel.
 The alpha channel will store the depth of the rendered scene on the server.
-The RGB and alpha channels of the cubemap should therefore be rendered separately to the video texture as a color and depth cubemap.
-The depth cubemap should be rendered at half the resolution of the color cubemap.
+The RGB and alpha channels of the cubemap should therefore be rendered separately to the video texture as a colour and depth cubemap.
+The depth cubemap should be rendered at half the resolution of the colour cubemap.
 The resolution of the video texture is configurable but must be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.
-A resolution of 1536x1536 pixels is recommended for the video texture with 512x512 for each face of the color cubemap and 256x256 for each face of the depth cubemap.</p>
+A resolution of 1536x1536 pixels is recommended for the video texture with 512x512 for each face of the colour cubemap and 256x256 for each face of the depth cubemap.</p>
 <p>A <strong>Tag ID</strong> should also be included in the video texture. This links the video frame with the associated video metadata.
 The metadata is sent in a separate stream. See <a class="reference internal" href="video_metadata.html#video-metadata"><span class="std std-ref">Video Metadata</span></a>.
 The <strong>Tag ID</strong> should be encoded as a sequence of 5 bits at the bottom right of the video texture.
@@ -210,35 +213,78 @@ A flag indicating if the webcam image is being streamed and the width, height an
 <p>The video texture should be in the following form:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 35%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 9%" />
+<col style="width: 51%" />
+<col style="width: 26%" />
 <col style="width: 12%" />
-<col style="width: 9%" />
+<col style="width: 10%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head" colspan="6"><p>Video   Texture  Layout</p></th>
-</tr>
-</thead>
 <tbody>
-<tr class="row-even"><td><p>Front Face</p></td>
-<td colspan="2"><p>Back Face</p></td>
-<td colspan="3"><p>Right Face</p></td>
+<tr class="row-odd"><td colspan="4"><p>Colour Cubemap</p></td>
 </tr>
-<tr class="row-odd"><td><p>Left Face</p></td>
-<td colspan="2"><p>Top Face</p></td>
-<td colspan="3"><p>Bottom Face</p></td>
-</tr>
-<tr class="row-even"><td colspan="2" rowspan="3"><p>Depth Cubemap</p></td>
-<td colspan="2"><p>Specular Cubemap</p></td>
+<tr class="row-even"><td rowspan="3"><p>Depth Cubemap</p></td>
+<td><p>Specular Cubemap</p></td>
 <td colspan="2"></td>
 </tr>
-<tr class="row-odd"><td colspan="2" rowspan="2"><p>Diffuse Cubemap</p></td>
-<td rowspan="2"><p>Webcam</p></td>
-<td rowspan="2"><p>Tag ID</p></td>
+<tr class="row-odd"><td rowspan="2"><p>Diffuse Cubemap</p></td>
+<td><p>Webcam</p></td>
+<td></td>
 </tr>
-<tr class="row-even"></tr>
+<tr class="row-even"><td></td>
+<td><p>Tag ID</p></td>
+</tr>
+</tbody>
+</table>
+<style> .red {color:#FF0000} </style>
+<style> .grn {color:#00CC00} </style>
+<style> .blu {color:#0000FF} </style>
+<style> .cyn {color:#00CCFF} </style>
+<style> .mag {color:#FF33FF} </style>
+<style> .yel {color:#FFCC00} </style><p>The cubemap sub-layout should be in the following form:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><blockquote>
+<div><p>Front Face
+<span class="red">+X</span></p>
+</div></blockquote>
+<p>+Z <span class="raw-html">&larr;</span></p>
+</td>
+<td><blockquote>
+<div><p>Back Face
+<span class="cyn">-X</span></p>
+</div></blockquote>
+<p>+Z <span class="raw-html">&rarr;</span></p>
+</td>
+<td><blockquote>
+<div><p>Right Face
+<span class="grn">+Y</span></p>
+</div></blockquote>
+<p>+Z <span class="raw-html">&darr;</span></p>
+</td>
+</tr>
+<tr class="row-even"><td><blockquote>
+<div><p>Left Face
+<span class="mag">-Y</span></p>
+</div></blockquote>
+<p>+Z <span class="raw-html">&uarr;</span></p>
+</td>
+<td><blockquote>
+<div><p>Top Face
+<span class="blu">+Z</span></p>
+</div></blockquote>
+<p>+Z <span class="raw-html">&rarr;</span></p>
+</td>
+<td><blockquote>
+<div><p>Bottom Face
+<span class="yel">-Z</span></p>
+</div></blockquote>
+<p>+X <span class="raw-html">&larr;</span></p>
+</td>
+</tr>
 </tbody>
 </table>
 <p>where</p>
@@ -264,37 +310,37 @@ A flag indicating if the webcam image is being streamed and the width, height an
 <td><p>0</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
-<td><p>Color Cubemap Front Face</p></td>
+<td><p>Colour Cubemap Front Face</p></td>
 </tr>
 <tr class="row-odd"><td><p>512</p></td>
 <td><p>0</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
-<td><p>Color Cubemap Back Face</p></td>
+<td><p>Colour Cubemap Back Face</p></td>
 </tr>
 <tr class="row-even"><td><p>1024</p></td>
 <td><p>0</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
-<td><p>Color Cubemap Right Face</p></td>
+<td><p>Colour Cubemap Right Face</p></td>
 </tr>
 <tr class="row-odd"><td><p>0</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
-<td><p>Color Cubemap Left Face</p></td>
+<td><p>Colour Cubemap Left Face</p></td>
 </tr>
 <tr class="row-even"><td><p>512</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
-<td><p>Color Cubemap Top Face</p></td>
+<td><p>Colour Cubemap Top Face</p></td>
 </tr>
 <tr class="row-odd"><td><p>1024</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
 <td><p>512</p></td>
-<td><p>Color Cubemap Bottom Face</p></td>
+<td><p>Colour Cubemap Bottom Face</p></td>
 </tr>
 <tr class="row-even"><td><p>0</p></td>
 <td><p>1024</p></td>
@@ -402,7 +448,7 @@ The video decoder on the client will be informed of these settings via the <stro
 <ol class="arabic simple">
 <li><p>Ultra-low latency or low latency Tuning Info</p></li>
 <li><p>Rate control mode of Constant Bit Rate (CBR)</p></li>
-<li><p>Multi Pass ? Quarter/Full (evaluate and decide)</p></li>
+<li><p>Multi Pass - Quarter/Full (evaluate and decide)</p></li>
 <li><p>Very low VBV buffer size (e.g. single frame = bitrate/framerate)</p></li>
 <li><p>No B Frames - Just I and P frames</p></li>
 <li><p>Infinite GOP length</p></li>

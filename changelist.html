@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
 
   
   
@@ -35,6 +36,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -90,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unity.html">Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -161,106 +164,106 @@
   <div class="section" id="changelist">
 <h1>Changelist<a class="headerlink" href="#changelist" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
-<div class="line"><strong>Tue 24 May</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay into master</div>
-<div class="line"><strong>Tue 24 May</strong> : Add release.properties</div>
-<div class="line"><strong>Tue 24 May</strong> : Update README.md</div>
-<div class="line"><strong>Sat 21 May</strong> : Moving ClientRenderer code to ClientRender/Renderer.</div>
-<div class="line"><strong>Sat 21 May</strong> : Small fixes.</div>
-<div class="line"><strong>Fri 20 May</strong> : Corrected Vulkan shader build paths for Android.</div>
-<div class="line"><strong>Fri 20 May</strong> : Add gradle-wrapper.</div>
-<div class="line"><strong>Fri 20 May</strong> : Add build_android_vs/thirdparty/draco/draco.vcxproj</div>
-<div class="line"><strong>Fri 20 May</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Fri 20 May</strong> : Move the AGDE client project to build_android_vs/AndroidClient.</div>
-<div class="line"><strong>Fri 20 May</strong> : Update README.md</div>
-<div class="line"><strong>Fri 20 May</strong> : Add libxrspacewarp.so</div>
-<div class="line"><strong>Thu 19 May</strong> : Working initial Vulkan Android render.</div>
-<div class="line"><strong>Wed 18 May</strong> : Add build_android_vs fmt.vcxproj and enet.vcxproj</div>
-<div class="line"><strong>Wed 18 May</strong> : Add libVkLayer_khronos_validation.so</div>
-<div class="line"><strong>Wed 18 May</strong> : Add Oculus OpenXR headers/libs.</div>
-<div class="line"><strong>Wed 18 May</strong> : Add CmdBuffer for Vulkan.</div>
-<div class="line"><strong>Tue 17 May</strong> : Add ClientRender/ClientRender_Android.vcxproj</div>
-<div class="line"><strong>Mon 16 May</strong> : Fix XR state tracking. depth_view is null for now - do we need depth in the main swapchain?</div>
-<div class="line"><strong>Sat 14 May</strong> : Move TeleportVRQuestClientAGDE.sln to build_android_vs. Fixed AndroidManifest.xml for AGDE client: intent filter with com.oculus.intent.category.VR allows OpenXR to progress to focused state.</div>
-<div class="line"><strong>Thu 12 May</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Thu 12 May</strong> : Add main.cpp for AGDE client.</div>
-<div class="line"><strong>Wed 04 May</strong> : Write logfile in client.</div>
-<div class="line"><strong>Wed 04 May</strong> : set TELEPORT_CLIENT_INSTALLER_FILENAME variable in installer_filename.properties.</div>
-<div class="line"><strong>Wed 04 May</strong> : Write installer_filename.properties to build_client when creating installer.</div>
-<div class="line"><strong>Wed 04 May</strong> : Add client_default.ini, installed as client.ini.</div>
-<div class="line"><strong>Tue 03 May</strong> : Working pc client installer from CPack.</div>
-<div class="line"><strong>Fri 29 Apr</strong> : Platform ptr.</div>
-<div class="line"><strong>Fri 29 Apr</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Fri 29 Apr</strong> : Adding build_android_vs files to build for Android in Visual Studio.</div>
-<div class="line"><strong>Fri 29 Apr</strong> : Add TeleportCore linkage to pc_client. Platform ptr to latest dev.</div>
-<div class="line"><strong>Fri 29 Apr</strong> : can’t use near and far as variable names.</div>
-<div class="line"><strong>Sun 24 Apr</strong> : Include OpenXR from Oculus openxr SDK 38 in TeleportVRQuestClientAGDE.</div>
-<div class="line"><strong>Fri 22 Apr</strong> : Input mapping functional for PC. Android build fixed.</div>
-<div class="line"><strong>Wed 20 Apr</strong> : Documentation for Input panel.</div>
-<div class="line"><strong>Tue 19 Apr</strong> : Merge branch ‘master’ into Branch_b64cf8cb</div>
-<div class="line"><strong>Tue 19 Apr</strong> : Fixed OpenXR getting stuck issue.</div>
-<div class="line"><strong>Tue 19 Apr</strong> : .</div>
-<div class="line"><strong>Tue 19 Apr</strong> : Using pose regexes for controller mapping between server and client.</div>
-<div class="line"><strong>Thu 14 Apr</strong> : Merge branch ‘control_mapping’</div>
-<div class="line"><strong>Thu 14 Apr</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Thu 14 Apr</strong> : Working Regex matching of control definitions client-side (PC). ErrorHandling moved from TeleportServer to TeleportCore.</div>
-<div class="line"><strong>Thu 14 Apr</strong> : Updating to use new Platform namespaces. My last commit</div>
-<div class="line"><strong>Thu 14 Apr</strong> : D3D12 video decoder finally worksgit reset firstparty/Platform/ Use platform video cmake option to try</div>
-<div class="line"><strong>Tue 12 Apr</strong> : Update dev Platform branch - simul namespace removed mostly.</div>
-<div class="line"><strong>Tue 12 Apr</strong> : Merge branch ‘master’ of github.com:simul/Teleport into control_mapping</div>
-<div class="line"><strong>Sun 10 Apr</strong> : fixing offsets in table</div>
-<div class="line"><strong>Thu 07 Apr</strong> : Fixing offsets in tabke</div>
-<div class="line"><strong>Thu 07 Apr</strong> : Update table in video docs</div>
-<div class="line"><strong>Thu 07 Apr</strong> : Adding layout of cubemap as a table in video docs</div>
-<div class="line"><strong>Wed 06 Apr</strong> : Fixing typo</div>
-<div class="line"><strong>Wed 06 Apr</strong> : Add link fixes to docs</div>
-<div class="line"><strong>Wed 06 Apr</strong> : Adding video metadata docs</div>
-<div class="line"><strong>Tue 05 Apr</strong> : Add video to protocol.rst</div>
-<div class="line"><strong>Tue 05 Apr</strong> : Adding docs for video. Metadata be added later</div>
-<div class="line"><strong>Mon 04 Apr</strong> : Addingfixes for d3d12 video decoder</div>
-<div class="line"><strong>Sat 02 Apr</strong> : Adding threading fix when handling events in client messaging</div>
-<div class="line"><strong>Sat 02 Apr</strong> : hevc parser improvements</div>
-<div class="line"><strong>Thu 31 Mar</strong> : Adding compile fix for skin.cpp</div>
-<div class="line"><strong>Wed 30 Mar</strong> : Adding fix for d3d11 nvidia decoder compilation</div>
-<div class="line"><strong>Wed 30 Mar</strong> : Merge remote-tracking branch ‘remotes/origin/master’ into control_mapping</div>
-<div class="line"><strong>Wed 30 Mar</strong> : Reorg of OpenXR mapping structures.</div>
-<div class="line"><strong>Mon 28 Mar</strong> : Adding support for long term reference frames d3d12 decoder</div>
-<div class="line"><strong>Fri 25 Mar</strong> : Fixing typos in data transfer doc</div>
-<div class="line"><strong>Fri 25 Mar</strong> : Adding update to efp docs and dxva code</div>
-<div class="line"><strong>Thu 24 Mar</strong> : Add data transfer documentation first draft</div>
-<div class="line"><strong>Tue 22 Mar</strong> : Add some hevc parsing fixes</div>
-<div class="line"><strong>Mon 21 Mar</strong> : Control mapping work.</div>
-<div class="line"><strong>Fri 18 Mar</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Fri 18 Mar</strong> : Update yuv to rgb conversion shader</div>
-<div class="line"><strong>Thu 17 Mar</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Thu 17 Mar</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Wed 16 Mar</strong> : Merge pull request #108 from simul/add-license-1</div>
-<div class="line"><strong>Wed 16 Mar</strong> : Create Licence.md</div>
-<div class="line"><strong>Wed 16 Mar</strong> : Update README.md</div>
-<div class="line"><strong>Wed 16 Mar</strong> : Update README.md</div>
-<div class="line"><strong>Fri 11 Mar</strong> : Add audio recording code to client renderer</div>
-<div class="line"><strong>Fri 11 Mar</strong> : Updating android audio classes to have new interface function</div>
-<div class="line"><strong>Fri 11 Mar</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Fri 11 Mar</strong> : Merge pull request #107 from simul/audio_hevc</div>
-<div class="line"><strong>Fri 11 Mar</strong> : Merge branch ‘master’ into audio_hevc</div>
-<div class="line"><strong>Fri 11 Mar</strong> : Add audio capture for PC and video decoder parser changes</div>
-<div class="line"><strong>Wed 09 Mar</strong> : Partial implementation of control system mapping.</div>
-<div class="line"><strong>Wed 23 Feb</strong> : Fix Android highkight shader</div>
-<div class="line"><strong>Tue 22 Feb</strong> : Fix node reparenting for PC+Android.</div>
-<div class="line"><strong>Sun 20 Feb</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Sun 20 Feb</strong> : Separate “bones” and “joints” in animation. There can be more bones than joints, and joints must be a subset of bones. This allows Unity human animation to work correctly, because the skeleton seems generally to have fewer members, with some gameObjects of the human hierarchy not present in the skeleton avatar.</div>
-<div class="line"><strong>Sat 05 Feb</strong> : Finish fixing cosmetics of libavstream example</div>
-<div class="line"><strong>Sat 05 Feb</strong> : Experimenting with code-block directive</div>
-<div class="line"><strong>Sat 05 Feb</strong> : Adding code snippet quotes fix to docs</div>
-<div class="line"><strong>Sat 05 Feb</strong> : Fixing docs rst typo</div>
-<div class="line"><strong>Fri 04 Feb</strong> : Adding D3D12 support to NVidia decoder</div>
-<div class="line"><strong>Fri 04 Feb</strong> : Moving linking to cudart to libavstream</div>
-<div class="line"><strong>Fri 04 Feb</strong> : Added TELEPORT_CLIENT_USE_D3D12_VIDEO - separate rendering from video option. D3D12 video not yet functional in either case.</div>
-<div class="line"><strong>Fri 04 Feb</strong> : Remove teleport_commit.properties - generated file should not be in the repo.</div>
-<div class="line"><strong>Fri 04 Feb</strong> : Merge branch ‘master’ of github.com:simul/RemotePlay into master</div>
-<div class="line"><strong>Fri 04 Feb</strong> : Remove unnecessary D3D12 calls.</div>
-<div class="line"><strong>Fri 04 Feb</strong> : Adding libavstream example to docs</div>
-<div class="line"><strong>Wed 02 Feb</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
-<div class="line"><strong>Wed 02 Feb</strong> : Adding updates to libavstream docs</div>
+<div class="line"><strong>Fri 27 Jan</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Fri 27 Jan</strong> : Added TELEPORT_GEOMETRY_DECODER_ASYNC define to toggle async decoding of geometry. Platform ptr.</div>
+<div class="line"><strong>Fri 27 Jan</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Fri 27 Jan</strong> : Remove buildToolsVersion.</div>
+<div class="line"><strong>Fri 27 Jan</strong> : Remove     buildToolsVersion “29.0.1”</div>
+<div class="line"><strong>Fri 27 Jan</strong> : Fix NDK version settings in android vs projects.</div>
+<div class="line"><strong>Fri 27 Jan</strong> : Removed unnecessary Android header.</div>
+<div class="line"><strong>Fri 27 Jan</strong> : Fixes to pc client installer.</div>
+<div class="line"><strong>Thu 26 Jan</strong> : srt ptr.</div>
+<div class="line"><strong>Thu 26 Jan</strong> : README.md and Platform ptr.</div>
+<div class="line"><strong>Thu 26 Jan</strong> : Update refactoring for Android build.</div>
+<div class="line"><strong>Thu 26 Jan</strong> : Platform ptr.</div>
+<div class="line"><strong>Thu 26 Jan</strong> : Refactoring: move more classes into singleton patterns. Eliminate clientrender::RenderPlatform, this is not necessary. Improve NodeManager threading locks.</div>
+<div class="line"><strong>Tue 24 Jan</strong> : Refactoring: Removed GeometrySourceBackendInterface. GeometrySource is a singleton. Client origin is sent as a node id, not a Pose: removing duplication of data. Mutex in NodeManager for creation/deletion vs updating. May be used elsewhere…</div>
+<div class="line"><strong>Mon 23 Jan</strong> : InstanceRenderer::RenderNode() checks that node is valid. Fixed method name in GeometryDecoder. Platform ptr.</div>
+<div class="line"><strong>Fri 20 Jan</strong> : GeometryDecoder is now on a separate thread. GeometryDecoder::WaitFromDecodeThread() added to ‘sync’ thread if resources are required immediately. Other minor improvement.</div>
+<div class="line"><strong>Fri 20 Jan</strong> : Updated layout of GeometryDecoder.</div>
+<div class="line"><strong>Fri 20 Jan</strong> : UPdated namespaces in ClientRender/NodeManager.cpp. Fixed constructor initialiser in InstanceRenderer. Minor clean up.</div>
+<div class="line"><strong>Wed 18 Jan</strong> : Minor clean up in mesh_interface.hpp</div>
+<div class="line"><strong>Wed 18 Jan</strong> : GeometryDecoder::saveBuffer moved to asynchronous thread.</div>
+<div class="line"><strong>Tue 17 Jan</strong> : Refactoring from Renderer into InstanceRenderer.</div>
+<div class="line"><strong>Mon 16 Jan</strong> : Merge branch ‘main’ of github.com:simul/Teleport into main</div>
+<div class="line"><strong>Mon 16 Jan</strong> : Refactored BasisThread_TranscodeTextures thread to not stall the main thread due to mutexes whrn accesses for ResourceCreator::texturesToTranscode.</div>
+<div class="line"><strong>Mon 16 Jan</strong> : OpenXR::GetDeviceContext() and OpenXR::FinishDeviceContext() now use a command buffer per image within the swapchains. CmdBuffer::Wait() moved to OpenXR::GetDeviceContext().</div>
+<div class="line"><strong>Mon 16 Jan</strong> : Updated GetCurrentDateTimeStrings() to correctly add in leading zeros.</div>
+<div class="line"><strong>Fri 13 Jan</strong> : Refactoring into InstanceRenderer. ClientDeviceState replaced by ClientServerState - global poses should be per-server.</div>
+<div class="line"><strong>Wed 11 Jan</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Wed 11 Jan</strong> : Created InstanceRenderer for server instance-specific rendering, refactored some of Renderer into this.</div>
+<div class="line"><strong>Wed 11 Jan</strong> : OpenXR::FinishDeviceContext() for Vulkan calls vulkan::RenderPlatform::EndRenderPass() to ensure the frame is complete before submission. Platform ptr.</div>
+<div class="line"><strong>Fri 16 Dec</strong> : Update ptrs.</div>
+<div class="line"><strong>Fri 16 Dec</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Fri 16 Dec</strong> : Do not throw if UidToPath or PathToUid fails.</div>
+<div class="line"><strong>Fri 16 Dec</strong> : New basis_universal ptr.</div>
+<div class="line"><strong>Fri 16 Dec</strong> : cpp-httplib ptr.</div>
+<div class="line"><strong>Fri 16 Dec</strong> : Update submodule pointers.</div>
+<div class="line"><strong>Fri 16 Dec</strong> : Update basis_universal ptr.</div>
+<div class="line"><strong>Fri 16 Dec</strong> : Rearrange submodules.</div>
+<div class="line"><strong>Fri 16 Dec</strong> : Merge branch ‘main’ of github.com:simul/RemotePlay into main</div>
+<div class="line"><strong>Thu 15 Dec</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Thu 15 Dec</strong> : PC client working directory handling.</div>
+<div class="line"><strong>Thu 15 Dec</strong> : PC Client generic path init.</div>
+<div class="line"><strong>Thu 15 Dec</strong> : Platform ptr.</div>
+<div class="line"><strong>Thu 15 Dec</strong> : Put UnrealDemo at end of gitmodules.</div>
+<div class="line"><strong>Thu 15 Dec</strong> : Better cleanup of removed nodes.</div>
+<div class="line"><strong>Thu 15 Dec</strong> : Relative paths in gitmodules.</div>
+<div class="line"><strong>Mon 12 Dec</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Mon 12 Dec</strong> : Specify submodules as https or relative paths, because GitHub requires authentication for ssh</div>
+<div class="line"><strong>Thu 24 Nov</strong> : Platform ptr.</div>
+<div class="line"><strong>Thu 24 Nov</strong> : clientrender::Renderer::RenderView() calls Effect::UnbindTextures() at the end to clear any vertex and index buffers.</div>
+<div class="line"><strong>Thu 24 Nov</strong> : Added avs::DecoderParams to the DECODER_OSD rendering.</div>
+<div class="line"><strong>Thu 24 Nov</strong> : Added date and time to the keyboard.</div>
+<div class="line"><strong>Wed 23 Nov</strong> : Platform ptr.</div>
+<div class="line"><strong>Tue 22 Nov</strong> : Fix bad overlay pose.</div>
+<div class="line"><strong>Mon 21 Nov</strong> : Reduce memory allocation/deallocation in texture creation.</div>
+<div class="line"><strong>Mon 21 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Mon 21 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport /Renderer.cpp</div>
+<div class="line"><strong>Mon 21 Nov</strong> : Move functions from NetworkSink::Private to NetworkSink.</div>
+<div class="line"><strong>Fri 18 Nov</strong> : Added keyboard support for PC. Added MaterialMode for transparent material support.</div>
+<div class="line"><strong>Thu 17 Nov</strong> : Temporary fix for OSD and Keyboard resource collision in Vulkan/ImGui.</div>
+<div class="line"><strong>Thu 17 Nov</strong> : #if around NDK_VIDEO_DECODER_LOG… macros to easily disable logging from NdkVideoDecoder. Platform ptr.</div>
+<div class="line"><strong>Thu 17 Nov</strong> : Undo multi command buffers to increase reliability.</div>
+<div class="line"><strong>Thu 17 Nov</strong> : Updated logging and moved AMediaCodec_setAsyncNotifyCallback() to before AMediaCodec_configure().</div>
+<div class="line"><strong>Tue 15 Nov</strong> : Updated avs::DecoderStatus to be packed type of eight 4-bit unsigned integers, where each nibble represent the frequency of calls to that stage. 15 means the stage was just called, and 0 means that that stage is exhausted. WIP. NdkVideoDecoder updated logging. Platform ptr.</div>
+<div class="line"><strong>Mon 14 Nov</strong> : Fixed depth recompositing and lookup errors. Re-organised the techniques and passes in cubemap_clear.sfx.</div>
+<div class="line"><strong>Mon 14 Nov</strong> : Fix compile error in cubemap_clear.sfx.</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Fix for incorrect cubemap orientation.</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Cleaned up old comment/code in Renderer::SetRenderPose(). Re-enabled second SetERenderPose() in RenderView() with identity avs::Pose to ensure hand and keyboards are correctly located.</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport into main</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Fixed view matrices in SetRenderPose.</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport into main</div>
+<div class="line"><strong>Fri 11 Nov</strong> : basis_universal ptr.</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Platform ptr.</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport into main</div>
+<div class="line"><strong>Fri 11 Nov</strong> : SetRenderPose adjusted to transform by origin pose instead of generating view matrices wholesale.</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport into main</div>
+<div class="line"><strong>Fri 11 Nov</strong> : Changed comment in Renderer.cpp</div>
+<div class="line"><strong>Fri 11 Nov</strong> : To initialize viewStruct, use ConvertGLStageSpacePoseToLocalSpacePose - stage space not world space.</div>
+<div class="line"><strong>Thu 10 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Thu 10 Nov</strong> : Fix geometry creation access violation.</div>
+<div class="line"><strong>Thu 10 Nov</strong> : Fixed ContextState being copied each frame.</div>
+<div class="line"><strong>Thu 10 Nov</strong> : Updated shaders VS_Solid_MV() and VS_Animation_MV(), fix for Quest 2. Platform ptr.</div>
+<div class="line"><strong>Wed 09 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport into main</div>
+<div class="line"><strong>Wed 09 Nov</strong> : GetDeviceContext() and FinishDeviceContext() and the usage of CmdBuffer in android::OpenXR to allow a CommandBuffer for each image in every swapchain. CmdBuffer::Wait() has been moved to GetDeviceContext() so as to not stall the CPU thread. Fix for PrintAt3dPos().</div>
+<div class="line"><strong>Tue 08 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Tue 08 Nov</strong> : Added websocketpp submodule. Fixed resource path bug for spaces on serverside.</div>
+<div class="line"><strong>Tue 08 Nov</strong> : Merge branch ‘main’ into android_multiview</div>
+<div class="line"><strong>Tue 08 Nov</strong> : Minor update to documentation regarding cubemap layout in the streamed video texture.</div>
+<div class="line"><strong>Mon 07 Nov</strong> : Fixed teleport::android::OpenXR::FinishDeviceContext() to handle vulkan::RenderPlatform::EndRenderPass(). Fixed ImGui_ImplPlatform_SetMousePos() for Android. Fixed pbr.sfx technique solid_multiview passes not using vs_anim_mv. Render both on PC and Android!</div>
+<div class="line"><strong>Mon 07 Nov</strong> : Added sold_multiview technique to pbr.sfx, added singleview pass versions of unconnected and added to ClientRender/Renderer.cpp. Updated Renderer::SetRenderPose() for multiview and to use CreateViewStructFromXrCompositionLayerProjectionView and CreateViewMatrixFromPose from class OpenXR. General fixes for the pc_client.</div>
+<div class="line"><strong>Mon 07 Nov</strong> : Move GeometryParserInterface to its own header.</div>
+<div class="line"><strong>Thu 03 Nov</strong> : Renderer::RenderVideoTexture() removed redundant parameter and SetRenderPose() correctly update the MultiviewGraphicsDeviceContext’s viewStruct based on the provided pose. Added PS_UseCubemap_MV() and PS_UsePerspective_MV() still WIP.</div>
+<div class="line"><strong>Wed 02 Nov</strong> : Fix ImGui_ImplPlatform_SetMousePos() for Android.</div>
+<div class="line"><strong>Wed 02 Nov</strong> : Merge branch ‘main’ into android_multiview</div>
+<div class="line"><strong>Wed 02 Nov</strong> : Platform ptr.</div>
+<div class="line"><strong>Wed 02 Nov</strong> : PrintAt3dPos() supports MultiviewGraphicsDeviceContext.</div>
+<div class="line"><strong>Wed 02 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Wed 02 Nov</strong> : Refactoring: moved libavstream/common_networking.h to TeleportCore/CommonNetworking.h.</div>
+<div class="line"><strong>Wed 02 Nov</strong> : Refactoring: moved libavstream/common_networking.h to TeleportCore/CommonNetworking.h.</div>
+<div class="line"><strong>Tue 01 Nov</strong> : Platform ptr.</div>
+<div class="line"><strong>Tue 01 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 </div>
 </div>
 

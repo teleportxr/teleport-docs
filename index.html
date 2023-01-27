@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
 
   
   
@@ -35,6 +36,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -91,7 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unity.html">Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -164,7 +167,10 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#concepts">Concepts</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protocol/discovery.html">Discovery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="protocol/service.html">Service</a><ul>
@@ -241,20 +247,45 @@
 <li class="toctree-l3"><a class="reference internal" href="reference/teleportclient.html#id2">Classes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="reference/server.html">Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/server.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/server.html#classes">Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="unity.html">Teleport Unity SDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="unity.html#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unity.html#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unity.html#setup">Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unity.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unity.html#id1">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unity.html#inputs">Inputs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="unity.html#mapping-types">Mapping types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unity.html#pose-mapping">Pose Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/video_ndk_decoding.html">Video Decoding with Android NDK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/video_ndk_decoding.html#amediacodec-set-up">AMediaCodec Set Up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/video_ndk_decoding.html#running-the-decoder">Running the Decoder</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="unity.html#player-session-hierarchy">Player Session Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#importing-a-video-stream-into-vulkan">Importing a Video Stream into Vulkan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#vulkan-sampler-ycbcr-conversion">Vulkan Sampler YCbCr Conversion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#ycbcr-colour-space">YCbCr Colour Space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#chroma-subsampling">Chroma Subsampling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#interleaved-planar-and-semi-planar">Interleaved, Planar and Semi Planar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#itu-colour-spaces-and-encoding-ranges">ITU Colour Spaces and Encoding Ranges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#co-sited-vs-midpoint">Co-sited vs Midpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#simul-s-implementation">Simul’s Implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#ycbcr-in-compute-shaders-and-load-operations">YCbCr in Compute Shaders and Load Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#id1">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#inputs">Inputs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="unity/index.html#mapping-types">Mapping types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unity/index.html#pose-mapping">Pose Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#player-session-hierarchy">Player Session Hierarchy</a></li>
 </ul>
 </li>
 </ul>
