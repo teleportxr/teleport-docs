@@ -44,7 +44,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Video with Vulkan on Android" href="../reference/video_vulkan_android_import_and_ycbcr.html" /> 
+    <link rel="next" title="The Teleport VR Protocol" href="../protocol.html" />
+    <link rel="prev" title="Introduction" href="../introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,12 +93,13 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Teleport Unity SDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-example-project">Get the Example Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-plugin-to-an-existing-project">Install the plugin to an existing project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-from-source">Building from Source</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inputs">Inputs</a><ul>
@@ -108,6 +110,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#player-session-hierarchy">Player Session Hierarchy</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
 </ul>
 
             
@@ -181,15 +185,27 @@
 will be a standard Teleport client app such as the Teleport reference client.</p>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>You can:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Get the example project TeleportUnityExample, or</p></li>
+<li><p>Install the plugin to an existing project.</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="get-the-example-project">
+<h3>Get the Example Project<a class="headerlink" href="#get-the-example-project" title="Permalink to this headline">¶</a></h3>
+<p>You can download a minimal example Unity project for Teleport at <a class="reference external" href="https://github.com/simul/TeleportUnityExample">git&#64;github.com:simul/TeleportUnityExample.git</a>.
+Be sure to update the submodules: the actual Teleport plugin is a submodule at Assets/Teleport in the example repo.</p>
 </div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-the-plugin-to-an-existing-project">
+<h3>Install the plugin to an existing project<a class="headerlink" href="#install-the-plugin-to-an-existing-project" title="Permalink to this headline">¶</a></h3>
 <p>Get the Teleport Unity plugin from its Git repo at <a class="reference external" href="https://github.com/simul/teleport-unity">git&#64;github.com:simul/teleport-unity.git</a>.</p>
+<p>Or download it as a .unitypackage from <a class="reference external" href="https://teleportvr.io/downloads">https://teleportvr.io/downloads</a>.</p>
 <p>You can install it as a Git submodule or copy the code directly, it should go in a subfolder of your Unity project’s Assets folder, e.g. Assets/Teleport.</p>
 <p>From your unity project, launch the Package Manager, and install the Core RP Library.</p>
 </div>
-<div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="building-from-source">
+<h3>Building from Source<a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h3>
 <p>If you’ve installed the Teleport Unity SDK as a prebuilt package, you’re ready to go. But if you’re building the Teleport C++ Server SDK from source, you’ll need to follow the instructions in the Server section of this documentation.
 Use CMakeGui to set:</p>
 <ul class="simple">
@@ -201,11 +217,17 @@ Use CMakeGui to set:</p>
 </ul>
 <p>Then build the Teleport_Server_Unity.sln solution. You can run Unity as normal, or debug the C++ code by setting TeleportServer as the active C++ project in the solution, and launching it for debugging.</p>
 </div>
+</div>
 <div class="section" id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p>The global settings for the plugin are found in the <em>Edit</em> menu, under <em>Project Settings…</em>. In the Project Settings panel, select <em>Teleport VR</em>.</p>
+<p>First, select the Teleport render pipeline. This adds functionality for video streaming and lighting generation. In the <em>Edit</em> menu, under <em>Project Settings…</em>, select <em>Graphics</em>. Set the Scriptable Render Pipeline Settings
+object to point to the Default Teleport Render Pipeline, found in Teleport/Resources.</p>
+<a class="reference internal image-reference" href="../_images/RenderPipelineAsset.png"><img alt="Activate the Teleport render pipeline in the Project Settings/Graphics panel." src="../_images/RenderPipelineAsset.png" style="width: 600px;" /></a>
+<p><strong>Graphics Project Settings panel</strong></p>
+<p>You can also create a Teleport Render Pipeline asset in the Content window with Create/Rendering/Teleport Render Pipeline Asset.</p>
+<p>For global settings for the plugin, in the Project Settings panel, select <em>Teleport VR</em>.</p>
 <a class="reference internal image-reference" href="../_images/ProjectSettings.png"><img alt="Teleport has a page on the Project Settings panel." src="../_images/ProjectSettings.png" style="width: 600px;" /></a>
-<p><strong>Teleport Project Settings panel</strong></p>
+<p>==Teleport Project Settings panel==</p>
 </div>
 <div class="section" id="id1">
 <h2>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
@@ -217,9 +239,9 @@ Use CMakeGui to set:</p>
 <p>To show the Inputs Panel, select Inputs from the Teleport VR menu on the main menu bar.
 Here, you can specify the inputs you want to receive from connected clients.</p>
 <a class="reference internal image-reference" href="../_images/InputsPanel.png"><img alt="Teleport has a page on the Project Settings panel." src="../_images/InputsPanel.png" style="width: 600px;" /></a>
-<p><strong>Teleport Inputs Panel in Unity Editor</strong></p>
+<p>==Teleport Inputs Panel in Unity Editor==</p>
 <p>There are three elements to each input. The Name is arbitrary, but should be unique in the application. The Type specifies what kind of input this is. A Float input is floating-point, while a boolean is either on or off, true or false. A state input is updated continuously, whereas an Event input is only updated when it changes. Finally, the input’s <em>Path</em> is how the client knows what to map it to.</p>
-<p>Teleport VR clients use <a class="reference external" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles">OpenXR interaction profiles</a> to know what inputs the XR hardware provides. Each input (buttons, triggers, poses etc) has a <em>path</em>.
+<p>Teleport VR clients use <a class="reference external" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles">OpenXR interaction profiles</a> to know what inputs the XR hardware provides. Each input (buttons, triggers, poses etc) has a <em>path</em> that is mapped by the OpenXR runtime on the client device.
 When a Teleport client connects, it tries to match the path of each server-specified Teleport input to the OpenXR paths of its hardware. If any part of the OpenXR path matches the Teleport path, the mapping is made.
 One or more Teleport inputs can be mapped to a single OpenXR input if the paths match.
 Teleport input paths use <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">Regular Expression</a> syntax to match OpenXR paths.</p>
@@ -251,7 +273,7 @@ Teleport input paths use <a class="reference external" href="https://en.wikipedi
 </tr>
 </tbody>
 </table>
-<p>The syntax [a|x] means “either ‘a’ or ‘x’”, so the client will recognize this as a match, and map the “x” button on the client-side controller to the “Toggle Onscreen Display” boolean event that the server will receive.</p>
+<p>The regex syntax [a|x] means “either ‘a’ or ‘x’”, so the client will recognize this as a match, and map the “x” button on the client-side controller to the “Toggle Onscreen Display” boolean event that the server will receive.</p>
 <div class="section" id="mapping-types">
 <h3>Mapping types<a class="headerlink" href="#mapping-types" title="Permalink to this headline">¶</a></h3>
 <p>Different control types can be mapped to each other. If a path match is found, it is possible for a boolean (“click”) action, which is only on or off, to be mapped to an Analogue input.</p>
@@ -289,7 +311,7 @@ Teleport cannot map OpenXR Pose actions to inputs, these are handled differently
 <h3>Pose Mapping<a class="headerlink" href="#pose-mapping" title="Permalink to this headline">¶</a></h3>
 <p>XR devices such as headsets, handsets and trackers report their state as a “pose”, containing position and orientation in space. These poses can be mapped to spatial nodes using the Teleport Controller component in Unity.</p>
 <a class="reference internal image-reference" href="../_images/TeleportController.png"><img alt="../_images/TeleportController.png" src="../_images/TeleportController.png" style="width: 600px;" /></a>
-<p><strong>Teleport controller component in Unity Inspector</strong></p>
+<p>==Teleport controller component in Unity Inspector==</p>
 <p>The “Pose Regex Path” for a controller is matched client-side to an OpenXR path representing a pose state. When this mapping occurs, the object will be controlled directly by the tracked controller on the client. The Teleport_Controller component can be added to any child of a Teleport_SessionComponent Game Object.</p>
 </div>
 </div>
@@ -297,7 +319,7 @@ Teleport cannot map OpenXR Pose actions to inputs, these are handled differently
 <h2>Player Session Hierarchy<a class="headerlink" href="#player-session-hierarchy" title="Permalink to this headline">¶</a></h2>
 <p>Typically, the Unity Game Objects would be arranged as follows in Unity:</p>
 <a class="reference internal image-reference" href="../_images/PlayerHierarchy.png"><img alt="../_images/PlayerHierarchy.png" src="../_images/PlayerHierarchy.png" style="width: 400px;" /></a>
-<p><strong>Typical session and player hierarchy in Unity</strong></p>
+<p>==Typical session and player hierarchy in Unity==</p>
 <p>i.e. at the root, an object containing a Teleport_Session Component, which tracks client-specific session data. Below this, a Player object which may move in space. Below that, two controllers and a head tracking object.</p>
 <ul>
 <li><p>TeleportVR : Teleport_Session Component</p>
@@ -344,7 +366,8 @@ Teleport cannot map OpenXR Pose actions to inputs, these are handled differently
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../reference/video_vulkan_android_import_and_ycbcr.html" class="btn btn-neutral float-left" title="Video with Vulkan on Android" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../protocol.html" class="btn btn-neutral float-right" title="The Teleport VR Protocol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

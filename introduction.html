@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The Teleport VR Protocol" href="protocol.html" />
+    <link rel="next" title="Teleport Unity SDK" href="unity/index.html" />
     <link rel="prev" title="Teleport VR" href="index.html" /> 
 </head>
 
@@ -96,9 +96,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#concepts">Concepts</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -196,11 +196,14 @@ a view into that simulation of varying accuracy, depending on your latency, band
 <td><p>An object positioned in 3D Space. A node may have child nodes, forming a hierarchy.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Resource</p></td>
-<td><p>A read-only data object that is used for rendering: a mesh, texture, material, etc.</p></td>
+<td><p>A read-only, unchanging data object that is used for rendering: a mesh, texture, material, etc.</p></td>
+</tr>
+<tr class="row-even"><td><p>Mutable Asset</p></td>
+<td><p>A data object that may be expected to change during the simulation runtime: a Node is a Mutable Asset, for example.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The server tells the client which nodes it needs to keep track of, and which resources it needs. The server will send the client the node states and resource data.</p>
+<p>The server tells the client which nodes it needs to keep track of, and which assets and resources it needs. The server will send the client the asset states and resource data.</p>
 <p>Clients generally keep only a part of the world state at any time. Two clients connected to the same server could use completely different nodes and resources, or could share some. But the server should send
 only the data any client needs at a given time. In Teleport, “worlds” or “levels” are not downloaded wholesale to the client, so connection is instantaneous.</p>
 <p>The state of the simulation is considered to be <em>live</em> and <em>real-time</em> - unlike an HTML-based system where a text-file might contain the structure of the 3D world, there is no such file in Teleport, because it’s a real-time protocol that expects
@@ -217,7 +220,7 @@ of the simulation.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="protocol.html" class="btn btn-neutral float-right" title="The Teleport VR Protocol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="unity/index.html" class="btn btn-neutral float-right" title="Teleport Unity SDK" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="index.html" class="btn btn-neutral float-left" title="Teleport VR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

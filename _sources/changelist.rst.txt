@@ -1,11 +1,11 @@
 Changelist 
 ========= 
-| **Wed 01 Feb** : Merge branch 'main' of github.com:simul/Teleport
+| **Sun 05 Feb** : Added TextCanvas.
+| **Sat 04 Feb** : Merge branch 'main' of github.com:simul/Teleport
+| **Sat 04 Feb** : Added TextCanvas.
 | **Tue 31 Jan** : Minor update for Thread naming in NdkVideoDecoder. UntranscodedTexture updated constructor to allow easier creation with emplace_back().
 | **Mon 30 Jan** : Moved CmdBuffer::Wait() to be after the submission to flush the GPU. Not optimal, but temporarily resolves Vulkan crashes for Async Geometry Decode. Platform ptr.
-| **Fri 27 Jan** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 27 Jan** : Added TELEPORT_GEOMETRY_DECODER_ASYNC define to toggle async decoding of geometry. Platform ptr.
-| **Fri 27 Jan** : Merge branch 'master' of github.com:simul/Teleport
 | **Fri 27 Jan** : Remove buildToolsVersion.
 | **Fri 27 Jan** : Remove     buildToolsVersion "29.0.1"
 | **Fri 27 Jan** : Fix NDK version settings in android vs projects.

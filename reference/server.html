@@ -93,6 +93,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference Implementation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
@@ -108,7 +109,6 @@
 <li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
 </ul>
 
             
@@ -226,12 +226,10 @@
 <dd><p>Per-client messaging handler. </p>
 </dd></dl>
 
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport23DefaultDiscoveryServiceE">
-<span id="_CPPv3N8teleport23DefaultDiscoveryServiceE"></span><span id="_CPPv2N8teleport23DefaultDiscoveryServiceE"></span><span id="teleport::DefaultDiscoveryService"></span><span class="target" id="classteleport_1_1_default_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DefaultDiscoveryService</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport16DiscoveryServiceE" title="teleport::DiscoveryService"><span class="n"><span class="pre">DiscoveryService</span></span></a><a class="headerlink" href="#_CPPv4N8teleport23DefaultDiscoveryServiceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Discover service for establishing connections with clients. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find class “teleport::DefaultDiscoveryService” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport18DefaultHTTPServiceE">
 <span id="_CPPv3N8teleport18DefaultHTTPServiceE"></span><span id="_CPPv2N8teleport18DefaultHTTPServiceE"></span><span id="teleport::DefaultHTTPService"></span><span class="target" id="classteleport_1_1_default_h_t_t_p_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DefaultHTTPService</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport11HTTPServiceE" title="teleport::HTTPService"><span class="n"><span class="pre">HTTPService</span></span></a><a class="headerlink" href="#_CPPv4N8teleport18DefaultHTTPServiceE" title="Permalink to this definition">¶</a><br /></dt>
@@ -241,8 +239,7 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport16DiscoveryServiceE">
 <span id="_CPPv3N8teleport16DiscoveryServiceE"></span><span id="_CPPv2N8teleport16DiscoveryServiceE"></span><span id="teleport::DiscoveryService"></span><span class="target" id="classteleport_1_1_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiscoveryService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport16DiscoveryServiceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Generic discover interface. </p>
-<p>Subclassed by <a class="reference internal" href="#classteleport_1_1_default_discovery_service"><span class="std std-ref">teleport::DefaultDiscoveryService</span></a></p>
+<dd><p>Discover service for establishing connections with clients. </p>
 </dd></dl>
 
 <dl class="cpp class">
@@ -273,6 +270,18 @@
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport13GeometryStore16GetOrGenerateUidERKNSt6stringE">
 <span id="_CPPv3N8teleport13GeometryStore16GetOrGenerateUidERKNSt6stringE"></span><span id="_CPPv2N8teleport13GeometryStore16GetOrGenerateUidERKNSt6stringE"></span><span id="teleport::GeometryStore::GetOrGenerateUid__ssCR"></span><span class="target" id="classteleport_1_1_geometry_store_1aa81d8a4e44469eb21a5dc7c21e730455"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetOrGenerateUid</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport13GeometryStore16GetOrGenerateUidERKNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get or generate a uid. If the path already corresponds to an id, that will be returned. Otherwise a new one will be added. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport13GeometryStore9PathToUidENSt6stringE">
+<span id="_CPPv3NK8teleport13GeometryStore9PathToUidENSt6stringE"></span><span id="_CPPv2NK8teleport13GeometryStore9PathToUidENSt6stringE"></span><span id="teleport::GeometryStore::PathToUid__ssC"></span><span class="target" id="classteleport_1_1_geometry_store_1a65e2cb115e63cd0336015f2b76a6642b"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PathToUid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport13GeometryStore9PathToUidENSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the current session uid corresponding to the given resource/asset path. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport13GeometryStore9UidToPathEN3avs3uidE">
+<span id="_CPPv3NK8teleport13GeometryStore9UidToPathEN3avs3uidE"></span><span id="_CPPv2NK8teleport13GeometryStore9UidToPathEN3avs3uidE"></span><span id="teleport::GeometryStore::UidToPath__avs::uidC"></span><span class="target" id="classteleport_1_1_geometry_store_1af0db3c817dbb21341fe6cd7253fa2a66"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UidToPath</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport13GeometryStore9UidToPathEN3avs3uidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the resource/asset path corresponding to the current session uid. </p>
 </dd></dl>
 
 </div>
