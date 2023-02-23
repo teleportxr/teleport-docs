@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Thu 23 Feb** : Merge branch 'main' of github.com:simul/Teleport
+| **Thu 23 Feb** : Fix-up namespaces, more consistent use of teleport::core and teleport::server. The teleport:: ns on its own should not contain any declarations.
+| **Thu 23 Feb** : Eliminating _bstr_t as much as possible.
 | **Sat 11 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 10 Feb** : Added client icon. Renamed Quest sln.
 | **Wed 08 Feb** : Merge branch 'main' of github.com:simul/Teleport
@@ -97,6 +100,3 @@ Changelist
 | **Fri 11 Nov** : Merge branch 'main' of github.com:simul/Teleport into main
 | **Fri 11 Nov** : basis_universal ptr.
 | **Fri 11 Nov** : Platform ptr.
-| **Fri 11 Nov** : Merge branch 'main' of github.com:simul/Teleport into main
-| **Fri 11 Nov** : SetRenderPose adjusted to transform by origin pose instead of generating view matrices wholesale.
-| **Fri 11 Nov** : Merge branch 'main' of github.com:simul/Teleport into main
