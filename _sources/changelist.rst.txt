@@ -1,5 +1,11 @@
 Changelist 
 ========= 
+| **Tue 28 Feb** : Merge branch 'main' of github.com:simul/Teleport
+| **Tue 28 Feb** : Don't send clang options to ms compiler.
+| **Tue 28 Feb** : Merge branch 'main' of github.com:simul/Teleport
+| **Tue 28 Feb** : Windows compile fixes.
+| **Tue 28 Feb** : Compiles on Ubuntu 20 Linux.
+| **Tue 28 Feb** : Fixes to allow Linux compile.
 | **Thu 23 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 23 Feb** : Fix-up namespaces, more consistent use of teleport::core and teleport::server. The teleport:: ns on its own should not contain any declarations.
 | **Thu 23 Feb** : Eliminating _bstr_t as much as possible.
@@ -94,9 +100,3 @@ Changelist
 | **Mon 14 Nov** : Fixed depth recompositing and lookup errors. Re-organised the techniques and passes in cubemap_clear.sfx.
 | **Mon 14 Nov** : Fix compile error in cubemap_clear.sfx.
 | **Fri 11 Nov** : Fix for incorrect cubemap orientation.
-| **Fri 11 Nov** : Cleaned up old comment/code in Renderer::SetRenderPose(). Re-enabled second SetERenderPose() in RenderView() with identity avs::Pose to ensure hand and keyboards are correctly located.
-| **Fri 11 Nov** : Merge branch 'main' of github.com:simul/Teleport into main
-| **Fri 11 Nov** : Fixed view matrices in SetRenderPose.
-| **Fri 11 Nov** : Merge branch 'main' of github.com:simul/Teleport into main
-| **Fri 11 Nov** : basis_universal ptr.
-| **Fri 11 Nov** : Platform ptr.

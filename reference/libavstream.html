@@ -307,7 +307,7 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs8Pipeline7processEv">
 <span id="_CPPv3N3avs8Pipeline7processEv"></span><span id="_CPPv2N3avs8Pipeline7processEv"></span><span id="avs::Pipeline::process"></span><span class="target" id="classavs_1_1_pipeline_1ae25451242f736d850b5fa6f1de22993a"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs8Pipeline7processEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Process pipeline. Calls <a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> on each node in pipeline order providing consistent timestamp to each invocation. </p>
+<dd><p>Process pipeline. Calls <a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> on each node in pipeline order providing consistent timestamp to each invocation. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference internal" href="#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> time starts when <a class="reference internal" href="#classavs_1_1_pipeline_1ae25451242f736d850b5fa6f1de22993a"><span class="std std-ref">process()</span></a> is called first and is backed up by platform’s high resolution monotonic clock. </p>
@@ -316,7 +316,7 @@
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
-<li><p>An error result returned by a failing node (pipeline processing is immediately aborted on first <a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> failure).</p></li>
+<li><p>An error result returned by a failing node (pipeline processing is immediately aborted on first <a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> failure).</p></li>
 </ul>
 </p>
 </dd>
@@ -1093,7 +1093,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12PipelineNode7processE8uint64_t8uint64_t">
-<span id="_CPPv3N3avs12PipelineNode7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs12PipelineNode7processE8uint64_t8uint64_t"></span><span id="avs::PipelineNode::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12PipelineNode7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs12PipelineNode7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs12PipelineNode7processE8uint64_t8uint64_t"></span><span id="avs::PipelineNode::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12PipelineNode7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Perform any node specific work as part of a pipeline. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1263,7 +1263,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioDecoder7processE8uint64_t8uint64_t">
 <span id="_CPPv3N3avs12AudioDecoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs12AudioDecoder7processE8uint64_t8uint64_t"></span><span id="avs::AudioDecoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_audio_decoder_1a3cdf5b7002e191fdf6c1cc626662bf5c"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs12AudioDecoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process as much encoded video data as available on input and decode zero or more frames. <dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> </p>
 </dd>
 </dl>
 </p>
@@ -1373,7 +1373,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioEncoder7processE8uint64_t8uint64_t">
 <span id="_CPPv3N3avs12AudioEncoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs12AudioEncoder7processE8uint64_t8uint64_t"></span><span id="avs::AudioEncoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_audio_encoder_1ab4e9cb6b708e4de27bc52efa024a55e4"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Encode single video frame from input surface and write resulting bitstream to output. <dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> </p>
 </dd>
 </dl>
 </p>
@@ -1393,7 +1393,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioEncoder11writeOutputEPK7uint8_t6size_t">
 <span id="_CPPv3N3avs12AudioEncoder11writeOutputEPK7uint8_t6size_t"></span><span id="_CPPv2N3avs12AudioEncoder11writeOutputEPK7uint8_t6size_t"></span><span id="avs::AudioEncoder::writeOutput__uint8_tCP.s"></span><span class="target" id="classavs_1_1_audio_encoder_1ad2df59ad562c3aa0babc36c2f42e3d69"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">writeOutput</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">extraDataBuffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufferSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder11writeOutputEPK7uint8_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Write data to the output stream <dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> </p>
 </dd>
 </dl>
 </p>
@@ -1600,7 +1600,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7Decoder7processE8uint64_t8uint64_t">
 <span id="_CPPv3N3avs7Decoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs7Decoder7processE8uint64_t8uint64_t"></span><span id="avs::Decoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_decoder_1a9bf6436bcc50771a5d4c17c6d2557ba8"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs7Decoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process as much encoded video data as available on input and decode zero or more frames. <dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> </p>
 </dd>
 </dl>
 </p>
@@ -1767,7 +1767,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7Encoder7processE8uint64_t8uint64_t">
 <span id="_CPPv3N3avs7Encoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs7Encoder7processE8uint64_t8uint64_t"></span><span id="avs::Encoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_encoder_1a73f1e02f051d67b5737ada10467e8366"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs7Encoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Encode single video frame from input surface and write resulting bitstream to output. <dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> </p>
 </dd>
 </dl>
 </p>
@@ -1983,7 +1983,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs15GeometryDecoder7processE8uint64_t8uint64_t">
 <span id="_CPPv3N3avs15GeometryDecoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs15GeometryDecoder7processE8uint64_t8uint64_t"></span><span id="avs::GeometryDecoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_geometry_decoder_1a4fb4b13874a827f17becf28d957c4d1c"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs15GeometryDecoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process as much encoded video data as available on input and decode zero or more frames. <dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> </p>
 </dd>
 </dl>
 </p>
@@ -2067,7 +2067,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs15GeometryEncoder7processE8uint64_t8uint64_t">
 <span id="_CPPv3N3avs15GeometryEncoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs15GeometryEncoder7processE8uint64_t8uint64_t"></span><span id="avs::GeometryEncoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_geometry_encoder_1a5a39a9d5af734ccf5bbd403c83411c37"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs15GeometryEncoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Encode the current geometry stack. <dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> </p>
 </dd>
 </dl>
 </p>
@@ -2652,7 +2652,7 @@
 <dt class="sig sig-object cpp" id="_CPPv4N3avs14TagDataDecoder7processE8uint64_t8uint64_t">
 <span id="_CPPv3N3avs14TagDataDecoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs14TagDataDecoder7processE8uint64_t8uint64_t"></span><span id="avs::TagDataDecoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_tag_data_decoder_1a52548de6fa14092099e5137a63d56364"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs14TagDataDecoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process received video tag data <dl class="simple">
-<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> </p>
+<dt><strong>See</strong></dt><dd><p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> </p>
 </dd>
 </dl>
 </p>
