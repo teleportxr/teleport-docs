@@ -1,5 +1,13 @@
 Changelist 
 ========= 
+| **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Mon 06 Mar** : Merge Linux fixes.
+| **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Mon 06 Mar** : Textures saved/loaded as binary, eliminating the unfortunate wchar16_t text save/load.
+| **Mon 06 Mar** : Fixes for changes to ImGui_ImplPlatform_DrawTe() and added Float16.h/.cpp to SimulMath_MT.vcxproj. Platform ptr.
+| **Sun 05 Mar** : Fix some interop issues.
+| **Sun 05 Mar** : Linux compatibility and debug work. Passing C# strings as char*, not BSTR, due to compatibility.
+| **Sun 05 Mar** : Linux compatibility and debug work. Passing C# strings as char*, not BSTR, due to compatibility.
 | **Tue 28 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 28 Feb** : Don't send clang options to ms compiler.
 | **Tue 28 Feb** : Merge branch 'main' of github.com:simul/Teleport
@@ -92,11 +100,3 @@ Changelist
 | **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport /Renderer.cpp
 | **Mon 21 Nov** : Move functions from NetworkSink::Private to NetworkSink.
 | **Fri 18 Nov** : Added keyboard support for PC. Added MaterialMode for transparent material support.
-| **Thu 17 Nov** : Temporary fix for OSD and Keyboard resource collision in Vulkan/ImGui.
-| **Thu 17 Nov** : #if around NDK_VIDEO_DECODER_LOG... macros to easily disable logging from NdkVideoDecoder. Platform ptr.
-| **Thu 17 Nov** : Undo multi command buffers to increase reliability.
-| **Thu 17 Nov** : Updated logging and moved AMediaCodec_setAsyncNotifyCallback() to before AMediaCodec_configure().
-| **Tue 15 Nov** : Updated avs::DecoderStatus to be packed type of eight 4-bit unsigned integers, where each nibble represent the frequency of calls to that stage. 15 means the stage was just called, and 0 means that that stage is exhausted. WIP. NdkVideoDecoder updated logging. Platform ptr.
-| **Mon 14 Nov** : Fixed depth recompositing and lookup errors. Re-organised the techniques and passes in cubemap_clear.sfx.
-| **Mon 14 Nov** : Fix compile error in cubemap_clear.sfx.
-| **Fri 11 Nov** : Fix for incorrect cubemap orientation.
