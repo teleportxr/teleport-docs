@@ -1,5 +1,12 @@
 Changelist 
 ========= 
+| **Wed 08 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Tue 07 Mar** : Server works in Linux - at least for connection and motion updates. Data streams are not yet functional - should we simply move to WebRTC at this point?
+| **Tue 07 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Mon 06 Mar** : Rearrange Server dll-interface functions: now PluginClient contains the Client_ functions, and PluginMain contains the rest.
+| **Mon 06 Mar** : Fix serverside font storage. Fix packing of settings for Clang.
+| **Mon 06 Mar** : Remove last traces of the wchar_t text storage for the cache.
+| **Mon 06 Mar** : Materials saved/loaded in 8-bit binary form.
 | **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 06 Mar** : Merge Linux fixes.
 | **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
@@ -93,10 +100,3 @@ Changelist
 | **Thu 24 Nov** : clientrender::Renderer::RenderView() calls Effect::UnbindTextures() at the end to clear any vertex and index buffers.
 | **Thu 24 Nov** : Added avs::DecoderParams to the DECODER_OSD rendering.
 | **Thu 24 Nov** : Added date and time to the keyboard.
-| **Wed 23 Nov** : Platform ptr.
-| **Tue 22 Nov** : Fix bad overlay pose.
-| **Mon 21 Nov** : Reduce memory allocation/deallocation in texture creation.
-| **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport
-| **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport /Renderer.cpp
-| **Mon 21 Nov** : Move functions from NetworkSink::Private to NetworkSink.
-| **Fri 18 Nov** : Added keyboard support for PC. Added MaterialMode for transparent material support.
