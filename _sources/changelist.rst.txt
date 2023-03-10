@@ -1,5 +1,12 @@
 Changelist 
 ========= 
+| **Fri 10 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Fri 10 Mar** : Added webrtc network source files. Will most likely remove Google's webrtc implementation and replace with something more tractable.
+| **Fri 10 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Thu 09 Mar** : Add webrtc.lib for x64
+| **Thu 09 Mar** : Added webrtc headers. thirdparty/webrtc/third_party/abseil-cpp/absl/base/options.h has been changed  so that ABSL_OPTION_USE_STD_OPTIONAL=0, to prevent runtime crashes.
+| **Thu 09 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Thu 09 Mar** : Initial WebRTC support.
 | **Wed 08 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 07 Mar** : Server works in Linux - at least for connection and motion updates. Data streams are not yet functional - should we simply move to WebRTC at this point?
 | **Tue 07 Mar** : Merge branch 'main' of github.com:simul/Teleport
@@ -93,10 +100,3 @@ Changelist
 | **Thu 15 Dec** : Platform ptr.
 | **Thu 15 Dec** : Put UnrealDemo at end of gitmodules.
 | **Thu 15 Dec** : Better cleanup of removed nodes.
-| **Thu 15 Dec** : Relative paths in gitmodules.
-| **Mon 12 Dec** : Merge branch 'main' of github.com:simul/Teleport
-| **Mon 12 Dec** : Specify submodules as https or relative paths, because GitHub requires authentication for ssh
-| **Thu 24 Nov** : Platform ptr.
-| **Thu 24 Nov** : clientrender::Renderer::RenderView() calls Effect::UnbindTextures() at the end to clear any vertex and index buffers.
-| **Thu 24 Nov** : Added avs::DecoderParams to the DECODER_OSD rendering.
-| **Thu 24 Nov** : Added date and time to the keyboard.
