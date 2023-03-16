@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 16 Mar** : More contrast in docs theme.
 | **Thu 16 Mar** : Added openssl files - version 3.0.8.
 | **Thu 16 Mar** : Add teleport_sphinx_theme to ensure docs are accessible.
 | **Thu 16 Mar** : Added AndroidAudioPlayer and Google oboe library. Removed uid's from saved resource files. uid is now extracted along with GeometryPayloadType prior to sending to the geometry decode thread.
@@ -99,4 +100,3 @@ Changelist
 | **Mon 21 Nov** : Reduce memory allocation/deallocation in texture creation.
 | **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport /Renderer.cpp
-| **Mon 21 Nov** : Move functions from NetworkSink::Private to NetworkSink.
