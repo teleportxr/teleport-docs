@@ -1,20 +1,22 @@
 Changelist 
 ========= 
-| **Fri 10 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Thu 16 Mar** : Added openssl files - version 3.0.8.
+| **Thu 16 Mar** : Add teleport_sphinx_theme to ensure docs are accessible.
+| **Thu 16 Mar** : Added AndroidAudioPlayer and Google oboe library. Removed uid's from saved resource files. uid is now extracted along with GeometryPayloadType prior to sending to the geometry decode thread.
+| **Tue 14 Mar** : Added libdatachannel libraries prebuilt for Android.
+| **Tue 14 Mar** : WebRTC version builds with Android - but only after disabling SRT support. OpenSSL on Windows is now statically-linked, and separate platform-specific openssl directories are used.
+| **Sun 12 Mar** : libdatachannel used both ends for WebRTC. SSL issues on client.
+| **Sat 11 Mar** : WebRTC implementation - client and server, using different API's.
+| **Sat 11 Mar** : Added libdatachannel - alternative WebRTC implementation. WebRTC source and sink correctly exchange offer, answer and candidates.
 | **Fri 10 Mar** : Added webrtc network source files. Will most likely remove Google's webrtc implementation and replace with something more tractable.
-| **Fri 10 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 09 Mar** : Add webrtc.lib for x64
 | **Thu 09 Mar** : Added webrtc headers. thirdparty/webrtc/third_party/abseil-cpp/absl/base/options.h has been changed  so that ABSL_OPTION_USE_STD_OPTIONAL=0, to prevent runtime crashes.
-| **Thu 09 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 09 Mar** : Initial WebRTC support.
-| **Wed 08 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 07 Mar** : Server works in Linux - at least for connection and motion updates. Data streams are not yet functional - should we simply move to WebRTC at this point?
-| **Tue 07 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 06 Mar** : Rearrange Server dll-interface functions: now PluginClient contains the Client_ functions, and PluginMain contains the rest.
 | **Mon 06 Mar** : Fix serverside font storage. Fix packing of settings for Clang.
 | **Mon 06 Mar** : Remove last traces of the wchar_t text storage for the cache.
 | **Mon 06 Mar** : Materials saved/loaded in 8-bit binary form.
-| **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 06 Mar** : Merge Linux fixes.
 | **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 06 Mar** : Textures saved/loaded as binary, eliminating the unfortunate wchar16_t text save/load.
@@ -22,43 +24,28 @@ Changelist
 | **Sun 05 Mar** : Fix some interop issues.
 | **Sun 05 Mar** : Linux compatibility and debug work. Passing C# strings as char*, not BSTR, due to compatibility.
 | **Sun 05 Mar** : Linux compatibility and debug work. Passing C# strings as char*, not BSTR, due to compatibility.
-| **Tue 28 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 28 Feb** : Don't send clang options to ms compiler.
-| **Tue 28 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 28 Feb** : Windows compile fixes.
 | **Tue 28 Feb** : Compiles on Ubuntu 20 Linux.
 | **Tue 28 Feb** : Fixes to allow Linux compile.
-| **Thu 23 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 23 Feb** : Fix-up namespaces, more consistent use of teleport::core and teleport::server. The teleport:: ns on its own should not contain any declarations.
 | **Thu 23 Feb** : Eliminating _bstr_t as much as possible.
-| **Sat 11 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 10 Feb** : Added client icon. Renamed Quest sln.
-| **Wed 08 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Wed 08 Feb** : Can init mouse InteractionProfile without OpenXR being available.
-| **Tue 07 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 07 Feb** : Minor build fixes and shader binary path corrections.
-| **Tue 07 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 07 Feb** : PC Client installer shader deployment.
-| **Mon 06 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 06 Feb** : PAUSE option in ini file.
-| **Mon 06 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 06 Feb** : Platform ptr.
-| **Mon 06 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 06 Feb** : Fix installer. Working Text Canvas on Quest.
 | **Mon 06 Feb** : Add fmt as CMake subdirectory if building server.
 | **Mon 06 Feb** : Fix warning.
 | **Mon 06 Feb** : Default compile now has warnings as errors. Fixed some warnings.
-| **Sun 05 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Sun 05 Feb** : Added TextCanvas.
-| **Sun 05 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Sat 04 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Sat 04 Feb** : Added TextCanvas.
-| **Wed 01 Feb** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 31 Jan** : Minor update for Thread naming in NdkVideoDecoder. UntranscodedTexture updated constructor to allow easier creation with emplace_back().
 | **Mon 30 Jan** : Moved CmdBuffer::Wait() to be after the submission to flush the GPU. Not optimal, but temporarily resolves Vulkan crashes for Async Geometry Decode. Platform ptr.
-| **Fri 27 Jan** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 27 Jan** : Added TELEPORT_GEOMETRY_DECODER_ASYNC define to toggle async decoding of geometry. Platform ptr.
-| **Fri 27 Jan** : Merge branch 'master' of github.com:simul/Teleport
 | **Fri 27 Jan** : Remove buildToolsVersion.
 | **Fri 27 Jan** : Remove     buildToolsVersion "29.0.1"
 | **Fri 27 Jan** : Fix NDK version settings in android vs projects.
@@ -100,3 +87,16 @@ Changelist
 | **Thu 15 Dec** : Platform ptr.
 | **Thu 15 Dec** : Put UnrealDemo at end of gitmodules.
 | **Thu 15 Dec** : Better cleanup of removed nodes.
+| **Thu 15 Dec** : Relative paths in gitmodules.
+| **Mon 12 Dec** : Merge branch 'main' of github.com:simul/Teleport
+| **Mon 12 Dec** : Specify submodules as https or relative paths, because GitHub requires authentication for ssh
+| **Thu 24 Nov** : Platform ptr.
+| **Thu 24 Nov** : clientrender::Renderer::RenderView() calls Effect::UnbindTextures() at the end to clear any vertex and index buffers.
+| **Thu 24 Nov** : Added avs::DecoderParams to the DECODER_OSD rendering.
+| **Thu 24 Nov** : Added date and time to the keyboard.
+| **Wed 23 Nov** : Platform ptr.
+| **Tue 22 Nov** : Fix bad overlay pose.
+| **Mon 21 Nov** : Reduce memory allocation/deallocation in texture creation.
+| **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport
+| **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport /Renderer.cpp
+| **Mon 21 Nov** : Move functions from NetworkSink::Private to NetworkSink.

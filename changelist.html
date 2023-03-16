@@ -1,93 +1,47 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Changelist &mdash; TeleportVR  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="index.html" class="icon icon-home"> TeleportVR
           
-
-          
+          <a href="index.html" class="icon icon-home">
+            TeleportVR
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <label for="text">Text</label>
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
@@ -96,89 +50,50 @@
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">TeleportVR</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Changelist</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Changelist</li>
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/changelist.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="changelist">
 <h1>Changelist<a class="headerlink" href="#changelist" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
-<div class="line"><strong>Fri 10 Mar</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Thu 16 Mar</strong> : Added openssl files - version 3.0.8.</div>
+<div class="line"><strong>Thu 16 Mar</strong> : Add teleport_sphinx_theme to ensure docs are accessible.</div>
+<div class="line"><strong>Thu 16 Mar</strong> : Added AndroidAudioPlayer and Google oboe library. Removed uid’s from saved resource files. uid is now extracted along with GeometryPayloadType prior to sending to the geometry decode thread.</div>
+<div class="line"><strong>Tue 14 Mar</strong> : Added libdatachannel libraries prebuilt for Android.</div>
+<div class="line"><strong>Tue 14 Mar</strong> : WebRTC version builds with Android - but only after disabling SRT support. OpenSSL on Windows is now statically-linked, and separate platform-specific openssl directories are used.</div>
+<div class="line"><strong>Sun 12 Mar</strong> : libdatachannel used both ends for WebRTC. SSL issues on client.</div>
+<div class="line"><strong>Sat 11 Mar</strong> : WebRTC implementation - client and server, using different API’s.</div>
+<div class="line"><strong>Sat 11 Mar</strong> : Added libdatachannel - alternative WebRTC implementation. WebRTC source and sink correctly exchange offer, answer and candidates.</div>
 <div class="line"><strong>Fri 10 Mar</strong> : Added webrtc network source files. Will most likely remove Google’s webrtc implementation and replace with something more tractable.</div>
-<div class="line"><strong>Fri 10 Mar</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Thu 09 Mar</strong> : Add webrtc.lib for x64</div>
 <div class="line"><strong>Thu 09 Mar</strong> : Added webrtc headers. thirdparty/webrtc/third_party/abseil-cpp/absl/base/options.h has been changed  so that ABSL_OPTION_USE_STD_OPTIONAL=0, to prevent runtime crashes.</div>
-<div class="line"><strong>Thu 09 Mar</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Thu 09 Mar</strong> : Initial WebRTC support.</div>
-<div class="line"><strong>Wed 08 Mar</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Tue 07 Mar</strong> : Server works in Linux - at least for connection and motion updates. Data streams are not yet functional - should we simply move to WebRTC at this point?</div>
-<div class="line"><strong>Tue 07 Mar</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Mon 06 Mar</strong> : Rearrange Server dll-interface functions: now PluginClient contains the <a href="#id1"><span class="problematic" id="id2">Client_</span></a> functions, and PluginMain contains the rest.</div>
 <div class="line"><strong>Mon 06 Mar</strong> : Fix serverside font storage. Fix packing of settings for Clang.</div>
 <div class="line"><strong>Mon 06 Mar</strong> : Remove last traces of the wchar_t text storage for the cache.</div>
 <div class="line"><strong>Mon 06 Mar</strong> : Materials saved/loaded in 8-bit binary form.</div>
-<div class="line"><strong>Mon 06 Mar</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Mon 06 Mar</strong> : Merge Linux fixes.</div>
 <div class="line"><strong>Mon 06 Mar</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Mon 06 Mar</strong> : Textures saved/loaded as binary, eliminating the unfortunate wchar16_t text save/load.</div>
@@ -186,43 +101,28 @@
 <div class="line"><strong>Sun 05 Mar</strong> : Fix some interop issues.</div>
 <div class="line"><strong>Sun 05 Mar</strong> : Linux compatibility and debug work. Passing C# strings as char*, not BSTR, due to compatibility.</div>
 <div class="line"><strong>Sun 05 Mar</strong> : Linux compatibility and debug work. Passing C# strings as char*, not BSTR, due to compatibility.</div>
-<div class="line"><strong>Tue 28 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Tue 28 Feb</strong> : Don’t send clang options to ms compiler.</div>
-<div class="line"><strong>Tue 28 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Tue 28 Feb</strong> : Windows compile fixes.</div>
 <div class="line"><strong>Tue 28 Feb</strong> : Compiles on Ubuntu 20 Linux.</div>
 <div class="line"><strong>Tue 28 Feb</strong> : Fixes to allow Linux compile.</div>
-<div class="line"><strong>Thu 23 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Thu 23 Feb</strong> : Fix-up namespaces, more consistent use of teleport::core and teleport::server. The teleport:: ns on its own should not contain any declarations.</div>
 <div class="line"><strong>Thu 23 Feb</strong> : Eliminating _bstr_t as much as possible.</div>
-<div class="line"><strong>Sat 11 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Fri 10 Feb</strong> : Added client icon. Renamed Quest sln.</div>
-<div class="line"><strong>Wed 08 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Wed 08 Feb</strong> : Can init mouse InteractionProfile without OpenXR being available.</div>
-<div class="line"><strong>Tue 07 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Tue 07 Feb</strong> : Minor build fixes and shader binary path corrections.</div>
-<div class="line"><strong>Tue 07 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Tue 07 Feb</strong> : PC Client installer shader deployment.</div>
-<div class="line"><strong>Mon 06 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Mon 06 Feb</strong> : PAUSE option in ini file.</div>
-<div class="line"><strong>Mon 06 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Mon 06 Feb</strong> : Platform ptr.</div>
-<div class="line"><strong>Mon 06 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Mon 06 Feb</strong> : Fix installer. Working Text Canvas on Quest.</div>
 <div class="line"><strong>Mon 06 Feb</strong> : Add fmt as CMake subdirectory if building server.</div>
 <div class="line"><strong>Mon 06 Feb</strong> : Fix warning.</div>
 <div class="line"><strong>Mon 06 Feb</strong> : Default compile now has warnings as errors. Fixed some warnings.</div>
-<div class="line"><strong>Sun 05 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Sun 05 Feb</strong> : Added TextCanvas.</div>
-<div class="line"><strong>Sun 05 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Sat 04 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Sat 04 Feb</strong> : Added TextCanvas.</div>
-<div class="line"><strong>Wed 01 Feb</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Tue 31 Jan</strong> : Minor update for Thread naming in NdkVideoDecoder. UntranscodedTexture updated constructor to allow easier creation with emplace_back().</div>
 <div class="line"><strong>Mon 30 Jan</strong> : Moved CmdBuffer::Wait() to be after the submission to flush the GPU. Not optimal, but temporarily resolves Vulkan crashes for Async Geometry Decode. Platform ptr.</div>
-<div class="line"><strong>Fri 27 Jan</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Fri 27 Jan</strong> : Added TELEPORT_GEOMETRY_DECODER_ASYNC define to toggle async decoding of geometry. Platform ptr.</div>
-<div class="line"><strong>Fri 27 Jan</strong> : Merge branch ‘master’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Fri 27 Jan</strong> : Remove buildToolsVersion.</div>
 <div class="line"><strong>Fri 27 Jan</strong> : Remove     buildToolsVersion “29.0.1”</div>
 <div class="line"><strong>Fri 27 Jan</strong> : Fix NDK version settings in android vs projects.</div>
@@ -264,51 +164,43 @@
 <div class="line"><strong>Thu 15 Dec</strong> : Platform ptr.</div>
 <div class="line"><strong>Thu 15 Dec</strong> : Put UnrealDemo at end of gitmodules.</div>
 <div class="line"><strong>Thu 15 Dec</strong> : Better cleanup of removed nodes.</div>
+<div class="line"><strong>Thu 15 Dec</strong> : Relative paths in gitmodules.</div>
+<div class="line"><strong>Mon 12 Dec</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Mon 12 Dec</strong> : Specify submodules as https or relative paths, because GitHub requires authentication for ssh</div>
+<div class="line"><strong>Thu 24 Nov</strong> : Platform ptr.</div>
+<div class="line"><strong>Thu 24 Nov</strong> : clientrender::Renderer::RenderView() calls Effect::UnbindTextures() at the end to clear any vertex and index buffers.</div>
+<div class="line"><strong>Thu 24 Nov</strong> : Added avs::DecoderParams to the DECODER_OSD rendering.</div>
+<div class="line"><strong>Thu 24 Nov</strong> : Added date and time to the keyboard.</div>
+<div class="line"><strong>Wed 23 Nov</strong> : Platform ptr.</div>
+<div class="line"><strong>Tue 22 Nov</strong> : Fix bad overlay pose.</div>
+<div class="line"><strong>Mon 21 Nov</strong> : Reduce memory allocation/deallocation in texture creation.</div>
+<div class="line"><strong>Mon 21 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Mon 21 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport /Renderer.cpp</div>
+<div class="line"><strong>Mon 21 Nov</strong> : Move functions from NetworkSink::Private to NetworkSink.</div>
 </div>
 </div>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018-2022, Simul Software Ltd.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    <p>&#169; Copyright 2018-2023, Simul Software Ltd.</p>
+  </div> 
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
