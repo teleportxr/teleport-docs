@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 16 Mar** : Search label improved.
 | **Thu 16 Mar** : More contrast in docs theme.
 | **Thu 16 Mar** : Added openssl files - version 3.0.8.
 | **Thu 16 Mar** : Add teleport_sphinx_theme to ensure docs are accessible.
@@ -99,4 +100,3 @@ Changelist
 | **Tue 22 Nov** : Fix bad overlay pose.
 | **Mon 21 Nov** : Reduce memory allocation/deallocation in texture creation.
 | **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport
-| **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport /Renderer.cpp
