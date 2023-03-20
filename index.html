@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teleport VR &mdash; TeleportVR  documentation</title>
+  <title>Teleport VR &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -31,9 +31,14 @@
 
           
           
-          <a href="#" class="icon icon-home">
-            TeleportVR
-          </a>
+			<a href="#"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport VR
+					</span>
+				
+					<img src="_static/TeleportLogo-64.png" class="logo" alt="Logo" />
+			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
         <label class="search-label" for="text">Search the teleport documentation</label>
@@ -46,9 +51,10 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client/index.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 </ul>
 
         </div>
@@ -57,7 +63,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">TeleportVR</a>
+          <a href="#">Teleport VR</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -77,129 +83,47 @@
              
   <div class="section" id="teleport-vr">
 <h1>Teleport VR<a class="headerlink" href="#teleport-vr" title="Permalink to this headline">¶</a></h1>
+<p>These pages document Teleport VR: the Spatial Internet Protocol, its reference implementation,
+tools and SDK’s. The documentation is given in the likely order that
+most users will approach Teleport: firstly, an <a class="reference internal" href="introduction.html"><span class="doc">introduction</span></a> to the ideas and
+concepts behind the system. Secondly, a guide to the default Teleport <a class="reference internal" href="client/index.html"><span class="doc">Client</span></a> app.
+Thirdly, a guide on using the <a class="reference internal" href="unity/index.html"><span class="doc">Unity SDK</span></a> for setting
+up a virtual reality server. Fourthly, the documentation of the <a class="reference internal" href="reference/index.html"><span class="doc">Reference Implementation</span></a> ,
+which can be used to build Teleport clients or servers. And finally,
+the official <a class="reference internal" href="protocol.html"><span class="doc">specification</span></a> of the Teleport Protocol.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#concepts">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#comparison-to-the-world-wide-web">Comparison to the World Wide Web</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="client/index.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="unity/index.html#usage">Usage</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="unity/index.html#get-the-example-project">Get the Example Project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unity/index.html#install-the-plugin-to-an-existing-project">Install the plugin to an existing project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unity/index.html#building-from-source">Building from Source</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unity/index.html#configuration">Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="unity/index.html#id1">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="unity/index.html#inputs">Inputs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="unity/index.html#mapping-types">Mapping types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="unity/index.html#pose-mapping">Pose Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#inputs">Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html#player-session-hierarchy">Player Session Hierarchy</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="unity/index.html#player-session-hierarchy">Player Session Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reference/libavstream.html">LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/libavstream_example.html">LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/clientrenderer.html">Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/teleportclient.html">The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/server.html">Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/video_ndk_decoding.html">Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="protocol/discovery.html">Discovery</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/service.html">Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protocol/service.html#initialization">Initialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/service.html#update">Update</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="protocol/service/server_to_client.html">Commands from Server to Client</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="protocol/service/server_to_client.html#set-stagespace-origin-node">Set StageSpace Origin Node</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="protocol/service/client_to_server.html">Requests from Client to Server</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="protocol/service/client_to_server.html#displayinfo">DisplayInfo</a></li>
-<li class="toctree-l5"><a class="reference internal" href="protocol/service/client_to_server.html#controllerposes">ControllerPoses</a></li>
-<li class="toctree-l5"><a class="reference internal" href="protocol/service/client_to_server.html#resourcerequests">ResourceRequests</a></li>
-<li class="toctree-l5"><a class="reference internal" href="protocol/service/client_to_server.html#receivedresources">ReceivedResources</a></li>
-<li class="toctree-l5"><a class="reference internal" href="protocol/service/client_to_server.html#nodeupdates">NodeUpdates</a></li>
-<li class="toctree-l5"><a class="reference internal" href="protocol/service/client_to_server.html#video-keyframe-request">Video Keyframe Request</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html">Data Transfer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protocol/data_transfer.html#reliability">Reliability</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/data_transfer.html#secure-reliable-transfer-protocol">Secure Reliable Transfer Protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/data_transfer.html#elastic-frame-protocol">Elastic Frame Protocol</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/data_transfer.html#efp-frame-types-and-superframes">EFP Frame Types and SuperFrames</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/data_transfer.html#initialization-of-efp-on-the-server">Initialization of EFP on the Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/data_transfer.html#sending-data-from-the-server">Sending Data from the Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/data_transfer.html#initialization-of-efp-on-the-client">Initialization of EFP on the Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/data_transfer.html#receiving-data-on-the-client">Receiving Data on the Client</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video.html">Video</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protocol/video.html#video-texture-layout">Video Texture Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/video.html#video-frame-structure">Video Frame Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/video.html#recovering-from-corruption">Recovering from Corruption</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/video.html#minimizing-latency">Minimizing Latency</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/video.html#processing-of-video-frame-on-the-client">Processing of video Frame on the Client</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html">Video Metadata</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="protocol/video_metadata.html#structure-of-metadata">Structure of Metadata</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/video_metadata.html#sending-metadata-to-the-client">Sending Metadata to the Client</a></li>
-<li class="toctree-l3"><a class="reference internal" href="protocol/video_metadata.html#processing-metadata-on-the-client">Processing Metadata on the Client</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference/libavstream.html">LibAVStream</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/libavstream.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/libavstream.html#classes">Classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/libavstream.html#avs-interface-classes">avs Interface Classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/libavstream.html#avs-nodes">avs Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/libavstream.html#avs-structs">avs Structs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/libavstream.html#client-messages">Client Messages</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="reference/libavstream_example.html">LibAVStream Example</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/libavstream_example.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/libavstream_example.html#video-stream-example">Video Stream Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="reference/clientrenderer.html">Client Render Library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/clientrenderer.html#classes">Classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/clientrenderer.html#structs">Structs</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="reference/teleportclient.html">The Teleport Client library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/teleportclient.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/teleportclient.html#classes">Classes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="reference/server.html">Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/server.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/server.html#classes">Classes</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="reference/video_ndk_decoding.html">Video Decoding with Android NDK</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/video_ndk_decoding.html#amediacodec-set-up">AMediaCodec Set Up</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/video_ndk_decoding.html#running-the-decoder">Running the Decoder</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#importing-a-video-stream-into-vulkan">Importing a Video Stream into Vulkan</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#vulkan-sampler-ycbcr-conversion">Vulkan Sampler YCbCr Conversion</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#ycbcr-colour-space">YCbCr Colour Space</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#chroma-subsampling">Chroma Subsampling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#interleaved-planar-and-semi-planar">Interleaved, Planar and Semi Planar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#itu-colour-spaces-and-encoding-ranges">ITU Colour Spaces and Encoding Ranges</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#co-sited-vs-midpoint">Co-sited vs Midpoint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#simul-s-implementation">Simul’s Implementation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#ycbcr-in-compute-shaders-and-load-operations">YCbCr in Compute Shaders and Load Operations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="reference/video_vulkan_android_import_and_ycbcr.html#classes">Classes</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html">Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html">Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html">Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html">Video Metadata</a></li>
 </ul>
 </li>
 </ul>

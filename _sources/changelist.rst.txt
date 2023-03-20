@@ -1,5 +1,12 @@
 Changelist 
 ========= 
+| **Mon 20 Mar** : Fixed compilation error in Gui.cpp for Android.
+| **Mon 20 Mar** : Fixed compilation error usage with ImGui_ImplPlatform_DrawTexture() in Gui.cpp. Platform ptr.
+| **Mon 20 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Mon 20 Mar** : Removed Google webrtc includes. Updated openssl libraries to be static MT version.
+| **Mon 20 Mar** : Improved documentation.
+| **Mon 20 Mar** : Fix build errors from TELEPORT_INTERNAL_CHECKS and fmt.
+| **Fri 17 Mar** : 2D User interface for Desktop mode. Removed avs::vec3 etc - just use the Platform vector structs.
 | **Thu 16 Mar** : Search label improved.
 | **Thu 16 Mar** : More contrast in docs theme.
 | **Thu 16 Mar** : Added openssl files - version 3.0.8.
@@ -93,10 +100,3 @@ Changelist
 | **Mon 12 Dec** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 12 Dec** : Specify submodules as https or relative paths, because GitHub requires authentication for ssh
 | **Thu 24 Nov** : Platform ptr.
-| **Thu 24 Nov** : clientrender::Renderer::RenderView() calls Effect::UnbindTextures() at the end to clear any vertex and index buffers.
-| **Thu 24 Nov** : Added avs::DecoderParams to the DECODER_OSD rendering.
-| **Thu 24 Nov** : Added date and time to the keyboard.
-| **Wed 23 Nov** : Platform ptr.
-| **Tue 22 Nov** : Fix bad overlay pose.
-| **Mon 21 Nov** : Reduce memory allocation/deallocation in texture creation.
-| **Mon 21 Nov** : Merge branch 'main' of github.com:simul/Teleport

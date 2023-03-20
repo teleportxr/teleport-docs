@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Discovery &mdash; Teleport VR  documentation</title>
+  <title>Client &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Service" href="service.html" />
-    <link rel="prev" title="The Teleport VR Protocol" href="../protocol.html" /> 
+    <link rel="next" title="Teleport Unity SDK" href="../unity/index.html" />
+    <link rel="prev" title="Introduction" href="../introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,17 +52,10 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Discovery</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service.html">Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">Data Transfer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html">Video</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">Video Metadata</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
 </ul>
 
         </div>
@@ -79,10 +72,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../protocol.html">The Teleport VR Protocol</a></li>
-      <li class="breadcrumb-item active">Discovery</li>
+      <li class="breadcrumb-item active">Client</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/protocol/discovery.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/client/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -90,22 +82,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="discovery">
-<h1>Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h1>
-<p>A server usually remains in the <em>Discovery</em> state while running.</p>
-<p>The <strong>Discovery Socket</strong> is opened, as a nonblocking broadcast socket. It is bound to the server’s address with the <strong>Server Discovery Port</strong> (default 10600).</p>
-<p>A <strong>Client</strong> that wants to join (the <strong>Connecting Client</strong>) periodically sends to the server a four-byte <strong>Connection Request</strong> packet containing an unsigned 32-bit integer, the <strong>Client ID</strong>.</p>
-<p>The <strong>Discovery Service</strong> listens on the <strong>Discovery Socket</strong> for a <strong>Connection Request</strong> from a <strong>Connecting Client</strong>. When one is received, if the server is set to filter client addresses, the <strong>Connecting Client</strong>’s address is filtered, and the connection is discarded it does not match the filter.</p>
-<p>Otherwise, the server sends the <strong>Connecting Client</strong> on the <strong>Client Discovery Port</strong> a 6-byte <strong>Service Discovery Response</strong> consisting of the <strong>Client ID</strong> (4 bytes) and the <strong>Service Server Port</strong> (2 bytes as an unsigned 16-bit integer). The <strong>Server Service Port</strong> must be different for each <strong>Client</strong>.</p>
-<p>In between periodically sending its <strong>Connection Request</strong> packets, a <strong>Connecting Client</strong> listens on the <strong>Client Discovery Port</strong> for the <strong>Service Discovery Response</strong>. On receiving this, it destroys its <strong>Discovery Socket</strong> and starts its <strong>Service Connection</strong> bound to the <strong>Server Service Port</strong>.</p>
+  <div class="section" id="client">
+<h1>Client<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h1>
+<p>The “Reference” Teleport Client application is available for Windows PC (with optional XR support),
+and Meta Quest headsets. It’s available from <a class="reference external" href="https://teleportvr.io/downloads">https://teleportvr.io/downloads</a>.</p>
+<p>On launching the client, you will be presented with an address bar. In desktop mode, this will appear
+at the top of the window, just as in a web browser. In XR mode, it will float in front of you, atop a
+virtual keyboard for typing. You can connect to any Teleport server by entering its address here and clicking
+the connect button.</p>
+<p>In XR mode, the address bar disappears when the connection is accepted. You can recall the address bar
+by clicking the default “Menu” button for your XR device.</p>
+<p>Most XR devices have one or two buttons that are reserved for special functions, like the Menu button or the “Meta” button on the Quest controller.
+All other inputs, including headset and handset motion and other trackers, are mapped according to the Teleport
+server’s particular setup. Their functions will change, depending on the app you’re connected to.</p>
+<p>This is distinct from many other online XR systems. Two different Teleport servers are not two distinct
+“levels”, “worlds” or “locations” for a single application. They are two different apps.</p>
 </div>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../protocol.html" class="btn btn-neutral float-left" title="The Teleport VR Protocol" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="service.html" class="btn btn-neutral float-right" title="Service" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../introduction.html" class="btn btn-neutral float-left" title="Introduction" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../unity/index.html" class="btn btn-neutral float-right" title="Teleport Unity SDK" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

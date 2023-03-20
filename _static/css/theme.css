@@ -13,6 +13,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
     display: block
 }
 
+.sidebartitle
+{
+	font-size: 36px;
+}
+
 audio, canvas, video
 {
     display: inline-block;
@@ -6264,7 +6269,7 @@ html
 
 footer
 {
-    color: grey
+    color: #000
 }
 
 footer p

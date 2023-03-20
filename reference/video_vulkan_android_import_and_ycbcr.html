@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video with Vulkan on Android &mdash; TeleportVR  documentation</title>
+  <title>Video with Vulkan on Android &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -20,6 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Teleport VR Protocol" href="../protocol.html" />
     <link rel="prev" title="Video Decoding with Android NDK" href="video_ndk_decoding.html" /> 
 </head>
 
@@ -31,9 +32,14 @@
 
           
           
-          <a href="../index.html" class="icon icon-home">
-            TeleportVR
-          </a>
+			<a href="../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport VR
+					</span>
+				
+					<img src="../_static/TeleportLogo-64.png" class="logo" alt="Logo" />
+			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
         <label class="search-label" for="text">Search the teleport documentation</label>
@@ -46,8 +52,8 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference Implementation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
 <li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
@@ -72,6 +78,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
 </ul>
 
         </div>
@@ -80,7 +87,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">TeleportVR</a>
+          <a href="../index.html">Teleport VR</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -260,8 +267,8 @@ The following is brief description on how this is implemented:</p>
 </tr>
 </tbody>
 </table>
-<a class="reference internal image-reference" href="https://gist.githubusercontent.com/Jim-Bar/3cbba684a71d1a9d468a6711a6eddbeb/raw/656de03d44d16517f9067943111c0a30bfa8ae05/YUV_formats.png"><img alt="" src="https://gist.githubusercontent.com/Jim-Bar/3cbba684a71d1a9d468a6711a6eddbeb/raw/656de03d44d16517f9067943111c0a30bfa8ae05/YUV_formats.png" style="width: 800px;" /></a>
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Yuv420.svg/800px-Yuv420.svg.png"><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Yuv420.svg/800px-Yuv420.svg.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="https://gist.githubusercontent.com/Jim-Bar/3cbba684a71d1a9d468a6711a6eddbeb/raw/656de03d44d16517f9067943111c0a30bfa8ae05/YUV_formats.png"><img alt="Layouts of alternative colour formats." src="https://gist.githubusercontent.com/Jim-Bar/3cbba684a71d1a9d468a6711a6eddbeb/raw/656de03d44d16517f9067943111c0a30bfa8ae05/YUV_formats.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Yuv420.svg/800px-Yuv420.svg.png"><img alt="Layout of a YUV420 image." src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Yuv420.svg/800px-Yuv420.svg.png" style="width: 800px;" /></a>
 <p>Reference: <a class="reference external" href="https://wiki.videolan.org/YUV">Video LAN Wiki YUV</a></p>
 <p>Reference: <a class="reference external" href="https://gist.github.com/Jim-Bar/3cbba684a71d1a9d468a6711a6eddbeb">About YUV formats</a>.</p>
 <p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/YUV#Y%E2%80%B2UV420p_(and_Y%E2%80%B2V12_or_YV12)_to_RGB888_conversion">Wikipedia Y′UV420p (and Y′V12 or YV12) to RGB888 conversion</a>.</p>
@@ -467,6 +474,7 @@ On Meta Quest and Meta Quest 2, the <code class="docutils literal notranslate"><
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="video_ndk_decoding.html" class="btn btn-neutral float-left" title="Video Decoding with Android NDK" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../protocol.html" class="btn btn-neutral float-right" title="The Teleport VR Protocol" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelist &mdash; TeleportVR  documentation</title>
+  <title>Changelist &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -30,9 +30,14 @@
 
           
           
-          <a href="index.html" class="icon icon-home">
-            TeleportVR
-          </a>
+			<a href="index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport VR
+					</span>
+				
+					<img src="_static/TeleportLogo-64.png" class="logo" alt="Logo" />
+			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
         <label class="search-label" for="text">Search the teleport documentation</label>
@@ -45,9 +50,10 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client/index.html">Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="unity/index.html">Teleport Unity SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
 </ul>
 
         </div>
@@ -56,7 +62,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TeleportVR</a>
+          <a href="index.html">Teleport VR</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -77,6 +83,13 @@
   <div class="section" id="changelist">
 <h1>Changelist<a class="headerlink" href="#changelist" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
+<div class="line"><strong>Mon 20 Mar</strong> : Fixed compilation error in Gui.cpp for Android.</div>
+<div class="line"><strong>Mon 20 Mar</strong> : Fixed compilation error usage with ImGui_ImplPlatform_DrawTexture() in Gui.cpp. Platform ptr.</div>
+<div class="line"><strong>Mon 20 Mar</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
+<div class="line"><strong>Mon 20 Mar</strong> : Removed Google webrtc includes. Updated openssl libraries to be static MT version.</div>
+<div class="line"><strong>Mon 20 Mar</strong> : Improved documentation.</div>
+<div class="line"><strong>Mon 20 Mar</strong> : Fix build errors from TELEPORT_INTERNAL_CHECKS and fmt.</div>
+<div class="line"><strong>Fri 17 Mar</strong> : 2D User interface for Desktop mode. Removed avs::vec3 etc - just use the Platform vector structs.</div>
 <div class="line"><strong>Thu 16 Mar</strong> : Search label improved.</div>
 <div class="line"><strong>Thu 16 Mar</strong> : More contrast in docs theme.</div>
 <div class="line"><strong>Thu 16 Mar</strong> : Added openssl files - version 3.0.8.</div>
@@ -170,13 +183,6 @@
 <div class="line"><strong>Mon 12 Dec</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Mon 12 Dec</strong> : Specify submodules as https or relative paths, because GitHub requires authentication for ssh</div>
 <div class="line"><strong>Thu 24 Nov</strong> : Platform ptr.</div>
-<div class="line"><strong>Thu 24 Nov</strong> : clientrender::Renderer::RenderView() calls Effect::UnbindTextures() at the end to clear any vertex and index buffers.</div>
-<div class="line"><strong>Thu 24 Nov</strong> : Added avs::DecoderParams to the DECODER_OSD rendering.</div>
-<div class="line"><strong>Thu 24 Nov</strong> : Added date and time to the keyboard.</div>
-<div class="line"><strong>Wed 23 Nov</strong> : Platform ptr.</div>
-<div class="line"><strong>Tue 22 Nov</strong> : Fix bad overlay pose.</div>
-<div class="line"><strong>Mon 21 Nov</strong> : Reduce memory allocation/deallocation in texture creation.</div>
-<div class="line"><strong>Mon 21 Nov</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 </div>
 </div>
 
