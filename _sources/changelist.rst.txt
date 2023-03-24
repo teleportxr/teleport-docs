@@ -1,5 +1,15 @@
 Changelist 
 ========= 
+| **Fri 24 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Fri 24 Mar** : Using new Platform Buffer inialization API.
+| **Fri 24 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Fri 24 Mar** : Try to recreate a failed WebRTC peer connection.
+| **Fri 24 Mar** : Platform ptr.
+| **Fri 24 Mar** : Merge branch 'main' of github.com:simul/Teleport into main
+| **Fri 24 Mar** : pc_client/Main.cpp uses a MultiviewGraphicsDeviceContext. UseOpenXR.cpp changed to match the Android version where we create a single swapchain of layered image. Whitespace changes in shaders. Platform ptr.
+| **Thu 23 Mar** : Fixed transmission to Android - vec3 etc are not packed, so vec3_packed etc are used for network-transmitted structs. Fixed vr keyboard input.
+| **Wed 22 Mar** : Add build to .gitignore.
+| **Wed 22 Mar** : Added Threads.h in TeleportCore.
 | **Wed 22 Mar** : Merge remote-tracking branch 'origin/main' into main
 | **Wed 22 Mar** : Linux now streams geometry.
 | **Tue 21 Mar** : Merge branch 'main' of github.com:simul/Teleport
@@ -90,13 +100,3 @@ Changelist
 | **Mon 16 Jan** : OpenXR::GetDeviceContext() and OpenXR::FinishDeviceContext() now use a command buffer per image within the swapchains. CmdBuffer::Wait() moved to OpenXR::GetDeviceContext().
 | **Mon 16 Jan** : Updated GetCurrentDateTimeStrings() to correctly add in leading zeros.
 | **Fri 13 Jan** : Refactoring into InstanceRenderer. ClientDeviceState replaced by ClientServerState - global poses should be per-server.
-| **Wed 11 Jan** : Merge branch 'main' of github.com:simul/Teleport
-| **Wed 11 Jan** : Created InstanceRenderer for server instance-specific rendering, refactored some of Renderer into this.
-| **Wed 11 Jan** : OpenXR::FinishDeviceContext() for Vulkan calls vulkan::RenderPlatform::EndRenderPass() to ensure the frame is complete before submission. Platform ptr.
-| **Fri 16 Dec** : Update ptrs.
-| **Fri 16 Dec** : Merge branch 'main' of github.com:simul/Teleport
-| **Fri 16 Dec** : Do not throw if UidToPath or PathToUid fails.
-| **Fri 16 Dec** : New basis_universal ptr.
-| **Fri 16 Dec** : cpp-httplib ptr.
-| **Fri 16 Dec** : Update submodule pointers.
-| **Fri 16 Dec** : Update basis_universal ptr.
