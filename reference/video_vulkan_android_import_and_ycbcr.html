@@ -162,7 +162,8 @@ The following is brief description on how this is implemented:</p>
 <div class="section" id="ycbcr-colour-space">
 <h3>YCbCr Colour Space<a class="headerlink" href="#ycbcr-colour-space" title="Permalink to this headline">¶</a></h3>
 <p>YCbCr is favoured over RGB for video broadcssting and streaming as the format implicitly compresses the video data, saving on bandwidth. YCbCr is based on the YUV standard for broadcast television, wherein the video signal is split into a luma (Y) and two chroma (Cb/Cr) components. It is vital to remember that the chroma components are defined to be the difference between the original colour and the luma signal, and therefore the chroma components are signed values ranging from -0.5 to 0.5, whereas the luma component ranges from 0.0 to 1.0, in a signed normalised co-ordinate space.</p>
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/b/b8/YCbCr.GIF"><img alt="The YCbCr colour space." src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YCbCr.GIF" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/YCbCr.GIF"><img alt="The YCbCr colour space." src="../_images/YCbCr.GIF" style="width: 800px;" /></a>
+<p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/YCbCr">Wikipedia YCbCr</a>.</p>
 </div>
 <div class="section" id="chroma-subsampling">
 <h3>Chroma Subsampling<a class="headerlink" href="#chroma-subsampling" title="Permalink to this headline">¶</a></h3>
@@ -173,7 +174,7 @@ The following is brief description on how this is implemented:</p>
 <li><p>b: number of changes of chrominance samples (Cb, Cr) between first and second row of J pixels.</p></li>
 </ul>
 <a class="reference internal image-reference" href="../_images/ChromaSubsampling.png"><img alt="Chroma Subsampling types." src="../_images/ChromaSubsampling.png" style="width: 800px;" /></a>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Chroma_subsampling">Wikipedia Chroma subsampling</a></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Chroma_subsampling">Wikipedia Chroma subsampling</a>.</p>
 </div>
 <div class="section" id="interleaved-planar-and-semi-planar">
 <h3>Interleaved, Planar and Semi Planar<a class="headerlink" href="#interleaved-planar-and-semi-planar" title="Permalink to this headline">¶</a></h3>
@@ -267,9 +268,9 @@ The following is brief description on how this is implemented:</p>
 </tr>
 </tbody>
 </table>
-<a class="reference internal image-reference" href="https://gist.githubusercontent.com/Jim-Bar/3cbba684a71d1a9d468a6711a6eddbeb/raw/656de03d44d16517f9067943111c0a30bfa8ae05/YUV_formats.png"><img alt="Layouts of alternative colour formats." src="https://gist.githubusercontent.com/Jim-Bar/3cbba684a71d1a9d468a6711a6eddbeb/raw/656de03d44d16517f9067943111c0a30bfa8ae05/YUV_formats.png" style="width: 800px;" /></a>
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Yuv420.svg/800px-Yuv420.svg.png"><img alt="Layout of a YUV420 image." src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Yuv420.svg/800px-Yuv420.svg.png" style="width: 800px;" /></a>
-<p>Reference: <a class="reference external" href="https://wiki.videolan.org/YUV">Video LAN Wiki YUV</a></p>
+<a class="reference internal image-reference" href="../_images/YUV_formats.png"><img alt="Layouts of alternative colour formats." src="../_images/YUV_formats.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../_images/800px-Yuv420.svg.png"><img alt="Layout of a YUV420 image." src="../_images/800px-Yuv420.svg.png" style="width: 800px;" /></a>
+<p>Reference: <a class="reference external" href="https://wiki.videolan.org/YUV">Video LAN Wiki YUV</a>.</p>
 <p>Reference: <a class="reference external" href="https://gist.github.com/Jim-Bar/3cbba684a71d1a9d468a6711a6eddbeb">About YUV formats</a>.</p>
 <p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/YUV#Y%E2%80%B2UV420p_(and_Y%E2%80%B2V12_or_YV12)_to_RGB888_conversion">Wikipedia Y′UV420p (and Y′V12 or YV12) to RGB888 conversion</a>.</p>
 </div>
