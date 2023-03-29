@@ -61,6 +61,7 @@
 <li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The Teleport Client library</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Server</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#networking">Networking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
 </ul>
 </li>
@@ -102,6 +103,15 @@
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>TeleportServer is a library that provides server functionality in conjunction with a real-time game or simulation engine.</p>
 </div>
+<div class="section" id="networking">
+<h2>Networking<a class="headerlink" href="#networking" title="Permalink to this headline">¶</a></h2>
+flowchart LR
+        A(Video Queue) --&gt;|1| H(Network Sink)
+        B(Tag Queue) --&gt;|2| H
+        C(Audio Queue) --&gt;|3| H
+        D(Geometry Queue) --&gt;|4| H
+        E(Command Queue) --&gt;|5| H
+        F(Geometry Encoder) --&gt; D</div>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <dl class="cpp class">
@@ -119,7 +129,7 @@
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6server20ClientNetworkContextE">
 <span id="_CPPv3N8teleport6server20ClientNetworkContextE"></span><span id="_CPPv2N8teleport6server20ClientNetworkContextE"></span><span id="teleport::server::ClientNetworkContext"></span><span class="target" id="structteleport_1_1server_1_1_client_network_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientNetworkContext</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server20ClientNetworkContextE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Wrapper for the network pipeline objects for a given client. </p>
+<dd><p>Wrapper for the network pipeline objects for a given client. // </p>
 </dd></dl>
 
 <dl class="cpp class">

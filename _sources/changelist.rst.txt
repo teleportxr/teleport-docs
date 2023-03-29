@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Mon 27 Mar** : Merge branch 'main' of github.com:simul/Teleport
+| **Mon 27 Mar** : Fix some data streaming problems. Added Generic encoder/decoder for simple packets in WebRTC.
 | **Mon 27 Mar** : Fixed documentation with image to external sites for video_vulkan_android_import_and_ycbcr.rst.
 | **Fri 24 Mar** : Added Event to VR Rendering. Fixing Overlays and added Overlay swapchain.
 | **Fri 24 Mar** : Merge branch 'main' of github.com:simul/Teleport
@@ -98,5 +100,3 @@ Changelist
 | **Wed 18 Jan** : GeometryDecoder::saveBuffer moved to asynchronous thread.
 | **Tue 17 Jan** : Refactoring from Renderer into InstanceRenderer.
 | **Mon 16 Jan** : Merge branch 'main' of github.com:simul/Teleport into main
-| **Mon 16 Jan** : Refactored BasisThread_TranscodeTextures thread to not stall the main thread due to mutexes whrn accesses for ResourceCreator::texturesToTranscode.
-| **Mon 16 Jan** : OpenXR::GetDeviceContext() and OpenXR::FinishDeviceContext() now use a command buffer per image within the swapchains. CmdBuffer::Wait() moved to OpenXR::GetDeviceContext().
