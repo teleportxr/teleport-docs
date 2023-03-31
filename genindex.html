@@ -12,10 +12,9 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
@@ -40,8 +39,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -60,7 +59,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Teleport VR</a>
       </nav>
@@ -138,10 +138,10 @@
 </li>
       <li><a href="reference/server.html#_CPPv4N8teleport6server13GeometryStoreE">::GeometryStore (C++ class)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/server.html#_CPPv4NK8teleport6server13GeometryStore14CheckForErrorsEv">::GeometryStore::CheckForErrors (C++ function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="reference/server.html#_CPPv4NK8teleport6server13GeometryStore15GetClashingUidsEv">::GeometryStore::GetClashingUids (C++ function)</a>
 </li>
       <li><a href="reference/server.html#_CPPv4N8teleport6server13GeometryStore16GetOrGenerateUidERKNSt6stringE">::GeometryStore::GetOrGenerateUid (C++ function)</a>
@@ -160,7 +160,11 @@
 </li>
       <li><a href="reference/teleportclient.html#_CPPv4NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv">::OpenXR::GetHeadPose_StageSpace (C++ function)</a>
 </li>
+      <li><a href="reference/teleportclient.html#_CPPv4N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE">::OpenXR::GetServerInputMappings (C++ function)</a>
+</li>
       <li><a href="reference/teleportclient.html#_CPPv4N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi">::OpenXR::OnMouseButtonPressed (C++ function)</a>
+</li>
+      <li><a href="reference/teleportclient.html#_CPPv4N8teleport6client6OpenXR6OpenXR25GetServerNodePoseMappingsEN3avs3uidE">::OpenXR::OpenXR::GetServerNodePoseMappings (C++ function)</a>
 </li>
       <li><a href="reference/teleportclient.html#_CPPv4N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE">::OpenXR::RemoveNodePoseMapping (C++ function)</a>
 </li>
@@ -840,7 +844,7 @@
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

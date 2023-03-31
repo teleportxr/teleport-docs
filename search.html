@@ -13,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/searchtools.js"></script>
@@ -43,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="#" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -63,7 +62,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Teleport VR</a>
       </nav>
@@ -108,7 +108,7 @@
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

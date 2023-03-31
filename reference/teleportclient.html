@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Teleport Client library &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -12,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -42,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -75,7 +75,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Teleport VR</a>
       </nav>
@@ -96,17 +97,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="the-teleport-client-library">
-<h1>The Teleport Client library<a class="headerlink" href="#the-teleport-client-library" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+  <section id="the-teleport-client-library">
+<h1>The Teleport Client library<a class="headerlink" href="#the-teleport-client-library" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>TeleportClient is a library that provides client functionality, in particular client-specific networking and object management.</p>
-</div>
-<div class="section" id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client17ClientServerStateE">
-<span id="_CPPv3N8teleport6client17ClientServerStateE"></span><span id="_CPPv2N8teleport6client17ClientServerStateE"></span><span id="teleport::client::ClientServerState"></span><span class="target" id="classteleport_1_1client_1_1_client_server_state"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ClientServerState</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client17ClientServerStateE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport6client17ClientServerStateE"></span><span id="_CPPv2N8teleport6client17ClientServerStateE"></span><span id="teleport::client::ClientServerState"></span><span class="target" id="classteleport_1_1client_1_1_client_server_state"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientServerState</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client17ClientServerStateE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The generic state of the client hardware device e.g. headset, controllers etc. There exists one of these for each server, plus one for the null server (local state). </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
@@ -127,7 +128,7 @@
 
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6ConfigE">
-<span id="_CPPv3N8teleport6client6ConfigE"></span><span id="_CPPv2N8teleport6client6ConfigE"></span><span id="teleport::client::Config"></span><span class="target" id="classteleport_1_1client_1_1_config"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6ConfigE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport6client6ConfigE"></span><span id="_CPPv2N8teleport6client6ConfigE"></span><span id="teleport::client::Config"></span><span class="target" id="classteleport_1_1client_1_1_config"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6ConfigE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -147,7 +148,7 @@
 
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client16DiscoveryServiceE">
-<span id="_CPPv3N8teleport6client16DiscoveryServiceE"></span><span id="_CPPv2N8teleport6client16DiscoveryServiceE"></span><span id="teleport::client::DiscoveryService"></span><span class="target" id="classteleport_1_1client_1_1_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">DiscoveryService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client16DiscoveryServiceE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport6client16DiscoveryServiceE"></span><span id="_CPPv2N8teleport6client16DiscoveryServiceE"></span><span id="teleport::client::DiscoveryService"></span><span class="target" id="classteleport_1_1client_1_1_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiscoveryService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client16DiscoveryServiceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
@@ -161,7 +162,7 @@
 
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXRE">
-<span id="_CPPv3N8teleport6client6OpenXRE"></span><span id="_CPPv2N8teleport6client6OpenXRE"></span><span id="teleport::client::OpenXR"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">OpenXR</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXRE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport6client6OpenXRE"></span><span id="_CPPv2N8teleport6client6OpenXRE"></span><span id="teleport::client::OpenXR"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OpenXR</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXRE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Subclassed by teleport::UseOpenXR</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
@@ -184,6 +185,18 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE">
+<span id="_CPPv3N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE"></span><span id="_CPPv2N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE"></span><span id="teleport::client::OpenXR::GetServerInputMappings__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1ac6487be1c4940944fcccae644c5d5ea4"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">InputMapping</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetServerInputMappings</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the currently bound input mappings for the server. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR6OpenXR25GetServerNodePoseMappingsEN3avs3uidE">
+<span id="_CPPv3N8teleport6client6OpenXR6OpenXR25GetServerNodePoseMappingsEN3avs3uidE"></span><span id="_CPPv2N8teleport6client6OpenXR6OpenXR25GetServerNodePoseMappingsEN3avs3uidE"></span><span id="teleport::client::OpenXR::OpenXR::GetServerNodePoseMappings__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a910294d090f801d41555eeafb7fe8b55"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">NodePoseMapping</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetServerNodePoseMappings</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR6OpenXR25GetServerNodePoseMappingsEN3avs3uidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get the currently bound pose mappings for the server. </p>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv">
 <span id="_CPPv3NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv"></span><span id="_CPPv2NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv"></span><span id="teleport::client::OpenXR::GetHeadPose_StageSpaceC"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a63a24c51ca0aaa3558b98bd6e808890d"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Pose</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetHeadPose_StageSpace</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get the head pose in the device’s stage space (axes adapted to the Engineering standard, Z=up). </p>
@@ -203,8 +216,8 @@
 <span id="_CPPv3N8teleport6client13SessionClientE"></span><span id="_CPPv2N8teleport6client13SessionClientE"></span><span id="teleport::client::SessionClient"></span><span class="target" id="classteleport_1_1client_1_1_session_client"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SessionClient</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">GenericTargetInterface</span></span><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClientE" title="Permalink to this definition">¶</a><br /></dt>
 <dd></dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -223,7 +236,7 @@
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

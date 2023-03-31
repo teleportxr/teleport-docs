@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Video Decoding with Android NDK &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -12,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -42,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -75,7 +75,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Teleport VR</a>
       </nav>
@@ -96,10 +97,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="video-decoding-with-android-ndk">
-<span id="video-ndk-decoding"></span><h1>Video Decoding with Android NDK<a class="headerlink" href="#video-decoding-with-android-ndk" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="amediacodec-set-up">
-<h2>AMediaCodec Set Up<a class="headerlink" href="#amediacodec-set-up" title="Permalink to this headline">¶</a></h2>
+  <section id="video-decoding-with-android-ndk">
+<span id="video-ndk-decoding"></span><h1>Video Decoding with Android NDK<a class="headerlink" href="#video-decoding-with-android-ndk" title="Permalink to this heading">¶</a></h1>
+<section id="amediacodec-set-up">
+<h2>AMediaCodec Set Up<a class="headerlink" href="#amediacodec-set-up" title="Permalink to this heading">¶</a></h2>
 <p>We use Android NDK’s AMedia library to decode the incoming video stream from the server.
 Firstly, we create an <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code> by calling <code class="docutils literal notranslate"><span class="pre">AMediaCodec_createDecoderByType()</span></code> supplying a MIME type such as “video/avc” for H.264 or video/hevc” for HEVC.
 Next, we config the <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code> by calling <code class="docutils literal notranslate"><span class="pre">AMediaCodec_configure()</span></code> supplying both an <code class="docutils literal notranslate"><span class="pre">AMediaFormat</span></code> and an <code class="docutils literal notranslate"><span class="pre">ANativeWindow</span></code>.
@@ -126,16 +127,16 @@ An <code class="docutils literal notranslate"><span class="pre">AMediaFormat</sp
 <p>Finally, we start are own thread, calling <code class="docutils literal notranslate"><span class="pre">processBuffersOnThread()</span></code>, to process the incoming data stream from <code class="docutils literal notranslate"><span class="pre">LibAVStream</span></code> and passing the data into the <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code>.</p>
 <p>Below is a flow chart showing the creation of the AMediaCodec.</p>
 <a class="reference internal image-reference" href="../_images/AMediaCodecSetUp.png"><img alt="AMediaCodec Set Up." src="../_images/AMediaCodecSetUp.png" style="width: 800px;" /></a>
-</div>
-<div class="section" id="running-the-decoder">
-<h2>Running the Decoder<a class="headerlink" href="#running-the-decoder" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="running-the-decoder">
+<h2>Running the Decoder<a class="headerlink" href="#running-the-decoder" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">LibAVStream</span></code> will call <code class="docutils literal notranslate"><span class="pre">Docode</span></code> taking the video stream data, type and last packet information; combining all that with start codes and storing the data in the <code class="docutils literal notranslate"><span class="pre">DataBuffer</span></code> s.
 Of primary interest from the <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code> perspective is the functions <code class="docutils literal notranslate"><span class="pre">onAsyncInputAvailable()</span></code> and <code class="docutils literal notranslate"><span class="pre">onAsyncOutputAvailable()</span></code>, which supply the input and output buffer IDs along with other metadata to the <code class="docutils literal notranslate"><span class="pre">InputBuffer</span></code> s and <code class="docutils literal notranslate"><span class="pre">OutputBuffer</span></code> s respectively. Later <code class="docutils literal notranslate"><span class="pre">processBuffersOnThread()</span></code> will to assemble enough data from the <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code> decoder to process a frame.</p>
 <p><code class="docutils literal notranslate"><span class="pre">processBuffersOnThread()</span></code> is looped, sequentially calling <code class="docutils literal notranslate"><span class="pre">processInputBuffers()</span></code> and <code class="docutils literal notranslate"><span class="pre">processOutputBuffers()</span></code> over and over. <code class="docutils literal notranslate"><span class="pre">processInputBuffers()</span></code> accumulates enough data from the <code class="docutils literal notranslate"><span class="pre">DataBuffer</span></code> s to assemble a frame of data, before calling <code class="docutils literal notranslate"><span class="pre">AMediaCodec_queueInputBuffer()</span></code> to the send the <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code>’s InputBuffer off to be decoded. <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code>’s InputBuffers are acquired from <code class="docutils literal notranslate"><span class="pre">AMediaCodec_getInputBuffer</span></code> via the input buffer IDs from the <code class="docutils literal notranslate"><span class="pre">InputBuffer</span></code> s. Once the <code class="docutils literal notranslate"><span class="pre">AMediaCodec``is</span> <span class="pre">finished</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">buffer,</span> <span class="pre">``onAsyncOutputAvailable()</span></code> is called, and it is stored in the <code class="docutils literal notranslate"><span class="pre">OutputBuffer</span></code> s, where <code class="docutils literal notranslate"><span class="pre">processOutputBuffers()</span></code> will call <code class="docutils literal notranslate"><span class="pre">AMediaCodec_releaseOutputBuffer()</span></code> freeing the buffer for reuse.</p>
 <p>The final step happens in <code class="docutils literal notranslate"><span class="pre">onAsyncImageAvailable()</span></code>, where the decoded image from the <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code> is passed to the <code class="docutils literal notranslate"><span class="pre">AImageReader</span></code> for us to process into a <code class="docutils literal notranslate"><span class="pre">VkImage</span></code>. See <a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#video-vulkan-android-import-and-ycbcr"><span class="std std-ref">Video with Vulkan on Android</span></a>.</p>
 <a class="reference internal image-reference" href="../_images/AMediaCodecAndAImageReaderVideoDecoding.png"><img alt="AMediaCodec and AImageReader Video Decoding." src="../_images/AMediaCodecAndAImageReaderVideoDecoding.png" style="width: 800px;" /></a>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -154,7 +155,7 @@ Of primary interest from the <code class="docutils literal notranslate"><span cl
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

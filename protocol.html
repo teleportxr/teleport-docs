@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Teleport VR Protocol &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -12,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -42,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -69,7 +69,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Teleport VR</a>
       </nav>
@@ -89,17 +90,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="the-teleport-vr-protocol">
-<h1>The Teleport VR Protocol<a class="headerlink" href="#the-teleport-vr-protocol" title="Permalink to this headline">¶</a></h1>
+  <section id="the-teleport-vr-protocol">
+<h1>The Teleport VR Protocol<a class="headerlink" href="#the-teleport-vr-protocol" title="Permalink to this heading">¶</a></h1>
 <p>The Teleport VR Protocol is a network protocol for client-server immersive applications.
 Essentially this means that applications can be used remotely without downloading or installing them.
 The protocol is open, meaning that anyone can use it, either by writing a client program or by developing a server that uses the protocol.</p>
 <p>Teleport is a top-level application-layer protocol. It can use various means of transport, usually based on the UDP protocol - for example, WebRTC, or the open-source libavstream software.</p>
-<table class="colwidths-given docutils align-default" id="id1">
+<table class="docutils align-default" id="id1">
 <caption><span class="caption-text">Network Layers</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 14%" />
-<col style="width: 86%" />
+<col style="width: 14.3%" />
+<col style="width: 85.7%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Teleport VR</p></td>
@@ -117,10 +118,6 @@ The protocol is open, meaning that anyone can use it, either by writing a client
 The protocol and software should be considered pre-alpha, suitable for testing, evaluation and experimentation.</p>
 <p>The protocol operates four main connections between a client and server:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 71%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Service Connection</p></td>
 <td><p>Two-way communication between client and server.</p></td>
@@ -189,7 +186,7 @@ The Service Connection controls the others and is the main line of information b
 </li>
 </ul>
 </div>
-</div>
+</section>
 
 
            </div>
@@ -208,7 +205,7 @@ The Service Connection controls the others and is the main line of information b
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

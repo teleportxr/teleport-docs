@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Server &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -12,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -42,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -76,7 +76,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Teleport VR</a>
       </nav>
@@ -97,23 +98,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="server">
-<h1>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+  <section id="server">
+<h1>Server<a class="headerlink" href="#server" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>TeleportServer is a library that provides server functionality in conjunction with a real-time game or simulation engine.</p>
-</div>
-<div class="section" id="networking">
-<h2>Networking<a class="headerlink" href="#networking" title="Permalink to this headline">¶</a></h2>
-flowchart LR
+</section>
+<section id="networking">
+<h2>Networking<a class="headerlink" href="#networking" title="Permalink to this heading">¶</a></h2>
+<img src="../_images/mermaid-0af64e99b09ec8e98796b69215611490b98764a4.png" alt="flowchart LR
         A(Video Queue) --&gt;|1| H(Network Sink)
         B(Tag Queue) --&gt;|2| H
         C(Audio Queue) --&gt;|3| H
         D(Geometry Queue) --&gt;|4| H
         E(Command Queue) --&gt;|5| H
-        F(Geometry Encoder) --&gt; D</div>
-<div class="section" id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+        F(Geometry Encoder) --&gt; D" />
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6server19AudioEncodePipelineE">
 <span id="_CPPv3N8teleport6server19AudioEncodePipelineE"></span><span id="_CPPv2N8teleport6server19AudioEncodePipelineE"></span><span id="teleport::server::AudioEncodePipeline"></span><span class="target" id="classteleport_1_1server_1_1_audio_encode_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncodePipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server19AudioEncodePipelineE" title="Permalink to this definition">¶</a><br /></dt>
@@ -146,7 +148,7 @@ flowchart LR
 
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6server15ClientMessagingE">
-<span id="_CPPv3N8teleport6server15ClientMessagingE"></span><span id="_CPPv2N8teleport6server15ClientMessagingE"></span><span id="teleport::server::ClientMessaging"></span><span class="target" id="classteleport_1_1server_1_1_client_messaging"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessaging</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server15ClientMessagingE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport6server15ClientMessagingE"></span><span id="_CPPv2N8teleport6server15ClientMessagingE"></span><span id="teleport::server::ClientMessaging"></span><span class="target" id="classteleport_1_1server_1_1_client_messaging"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessaging</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">GenericTargetInterface</span></span><a class="headerlink" href="#_CPPv4N8teleport6server15ClientMessagingE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Per-client messaging handler. </p>
 </dd></dl>
 
@@ -164,7 +166,7 @@ flowchart LR
 
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStoreE">
-<span id="_CPPv3N8teleport6server13GeometryStoreE"></span><span id="_CPPv2N8teleport6server13GeometryStoreE"></span><span id="teleport::server::GeometryStore"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GeometryStore</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStoreE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport6server13GeometryStoreE"></span><span id="_CPPv2N8teleport6server13GeometryStoreE"></span><span id="teleport::server::GeometryStore"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryStore</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStoreE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Singleton for storing geometry data and managing the geometry file cache. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
@@ -242,8 +244,8 @@ flowchart LR
 <dd><p>Wrapper for the video encoding pipeline objects. </p>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -262,7 +264,7 @@ flowchart LR
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

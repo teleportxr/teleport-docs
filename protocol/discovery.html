@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Discovery &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -12,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -42,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -69,7 +69,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Teleport VR</a>
       </nav>
@@ -90,15 +91,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="discovery">
-<h1>Discovery<a class="headerlink" href="#discovery" title="Permalink to this headline">¶</a></h1>
+  <section id="discovery">
+<h1>Discovery<a class="headerlink" href="#discovery" title="Permalink to this heading">¶</a></h1>
 <p>A server usually remains in the <em>Discovery</em> state while running.</p>
 <p>The <strong>Discovery Socket</strong> is opened, as a nonblocking broadcast socket. It is bound to the server’s address with the <strong>Server Discovery Port</strong> (default 10600).</p>
 <p>A <strong>Client</strong> that wants to join (the <strong>Connecting Client</strong>) periodically sends to the server a four-byte <strong>Connection Request</strong> packet containing an unsigned 32-bit integer, the <strong>Client ID</strong>.</p>
 <p>The <strong>Discovery Service</strong> listens on the <strong>Discovery Socket</strong> for a <strong>Connection Request</strong> from a <strong>Connecting Client</strong>. When one is received, if the server is set to filter client addresses, the <strong>Connecting Client</strong>’s address is filtered, and the connection is discarded it does not match the filter.</p>
 <p>Otherwise, the server sends the <strong>Connecting Client</strong> on the <strong>Client Discovery Port</strong> a 6-byte <strong>Service Discovery Response</strong> consisting of the <strong>Client ID</strong> (4 bytes) and the <strong>Service Server Port</strong> (2 bytes as an unsigned 16-bit integer). The <strong>Server Service Port</strong> must be different for each <strong>Client</strong>.</p>
 <p>In between periodically sending its <strong>Connection Request</strong> packets, a <strong>Connecting Client</strong> listens on the <strong>Client Discovery Port</strong> for the <strong>Service Discovery Response</strong>. On receiving this, it destroys its <strong>Discovery Socket</strong> and starts its <strong>Service Connection</strong> bound to the <strong>Server Service Port</strong>.</p>
-</div>
+</section>
 
 
            </div>
@@ -117,7 +118,7 @@
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

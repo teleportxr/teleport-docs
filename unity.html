@@ -1,385 +1,455 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Teleport Unity SDK &mdash; TeleportVR  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Windows version 5.8.0">
+<meta charset="utf-8">
+<meta name="viewport" content=
+"width=device-width, initial-scale=1.0">
+<title>Teleport Unity SDK — TeleportVR documentation</title>
+<link rel="stylesheet" href="_static/css/theme.css" type=
+"text/css">
+<link rel="stylesheet" href="_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="_static/pygments.css" type="text/css">
+<link rel="stylesheet" href="_static/css/theme.css" type=
+"text/css"><!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-    
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="The TeleportClient library" href="reference/teleportclient.html" /> 
+<script type="text/javascript" id="documentation_options"
+data-url_root="./" src="_static/documentation_options.js"></script>
+<script data-url_root="./" id="documentation_options" src=
+"_static/documentation_options.js"></script>
+<script src="_static/jquery.js"></script>
+<script src="_static/underscore.js"></script>
+<script src="_static/doctools.js"></script>
+<script type="text/javascript" src="_static/js/theme.js"></script>
+<link rel="index" title="Index" href="genindex.html">
+<link rel="search" title="Search" href="search.html">
+<link rel="prev" title="The TeleportClient library" href=
+"reference/teleportclient.html">
 </head>
-
 <body class="wy-body-for-nav">
-
-   
-  <div class="wy-grid-for-nav">
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home"> TeleportVR
-          
-
-          
-          </a>
-
-          
-            
-            
-          
-
-          
+<div class="wy-grid-for-nav">
+<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search"><a href="index.html" class=
+"icon icon-home">TeleportVR</a>
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+<form id="rtd-search-form" class="wy-form" action="search.html"
+method="get" name="rtd-search-form"><input type="text" name="q"
+placeholder="Search docs"> <input type="hidden" name=
+"check_keywords" value="yes"> <input type="hidden" name="area"
+value="default"></form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+</div>
+<div class="wy-menu wy-menu-vertical" data-spy="affix" role=
+"navigation" aria-label="main navigation">
+<p class="caption" role="heading"><span class=
+"caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protocol.html">The Teleport VR Protocol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference Implementation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Teleport Unity SDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inputs">Inputs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#mapping-types">Mapping types</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#pose-mapping">Pose Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href=
+"introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href=
+"protocol.html">The Teleport VR Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href=
+"reference/index.html">Reference Implementation</a></li>
+<li class="toctree-l1 current"><a class=
+"current reference internal" href="#">Teleport Unity SDK</a>
+<ul>
+<li class="toctree-l2"><a class="reference internal" href=
+"#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href=
+"#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href=
+"#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href=
+"#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href=
+"#id1">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href=
+"#inputs">Inputs</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href=
+"#mapping-types">Mapping types</a></li>
+<li class="toctree-l3"><a class="reference internal" href=
+"#pose-mapping">Pose Mapping</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#player-session-hierarchy">Player Session Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href=
+"#player-session-hierarchy">Player Session Hierarchy</a></li>
 </ul>
 </li>
 </ul>
-
-            
-          
-        </div>
-        
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TeleportVR</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>Teleport Unity SDK</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-          
-            <a href="_sources/unity.rst.txt" rel="nofollow"> View page source</a>
-          
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="teleport-unity-sdk">
-<h1>Teleport Unity SDK<a class="headerlink" href="#teleport-unity-sdk" title="Permalink to this headline">¶</a></h1>
-<p>The Teleport Unity SDK provides everything necessary to run a Teleport server as a Unity application. In typical usage, only the server need run Unity - the client
-will be a standard Teleport client app such as the Teleport reference client.</p>
+</div>
+</nav>
+<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+<nav class="wy-nav-top" aria-label="top navigation"><a href=
+"index.html">TeleportVR</a></nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div role="navigation" aria-label="breadcrumbs navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="index.html" class="icon icon-home"></a> »</li>
+<li>Teleport Unity SDK</li>
+<li class="wy-breadcrumbs-aside"><a href="_sources/unity.rst.txt"
+rel="nofollow">View page source</a></li>
+</ul>
+<hr></div>
+<div role="main" class="document" itemscope="itemscope" itemtype=
+"http://schema.org/Article">
+<div itemprop="articleBody">
+<div class="section" id="teleport-unity-sdk">
+<h1>Teleport Unity SDK<a class="headerlink" href=
+"#teleport-unity-sdk" title="Permalink to this headline">¶</a></h1>
+<p>The Teleport Unity SDK provides everything necessary to run a
+Teleport server as a Unity application. In typical usage, only the
+server need run Unity - the client will be a standard Teleport
+client app such as the Teleport reference client.</p>
 <div class="section" id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title=
+"Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>Get the Teleport Unity plugin from its Git repo at <a class="reference external" href="https://github.com/simul/teleport-unity">git&#64;github.com:simul/teleport-unity.git</a>.</p>
-<p>You can install it as a Git submodule or copy the code directly, it should go in a subfolder of your Unity project’s Assets folder, e.g. Assets/Teleport.</p>
-<p>From your unity project, launch the Package Manager, and install the Core RP Library.</p>
+<h2>Installation<a class="headerlink" href="#installation" title=
+"Permalink to this headline">¶</a></h2>
+<p>Get the Teleport Unity plugin from its Git repo at <a class=
+"reference external" href=
+"https://github.com/simul/teleport-unity">git@github.com:simul/teleport-unity.git</a>.</p>
+<p>You can install it as a Git submodule or copy the code directly,
+it should go in a subfolder of your Unity project’s Assets folder,
+e.g. Assets/Teleport.</p>
+<p>From your unity project, launch the Package Manager, and install
+the Core RP Library.</p>
 </div>
 <div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
-<p>If you’ve installed the Teleport Unity SDK as a prebuilt package, you’re ready to go. But if you’re building the Teleport C++ Server SDK from source, you’ll need to follow the instructions in the Server section of this documentation.
-Use CMakeGui to set:</p>
+<h2>Setup<a class="headerlink" href="#setup" title=
+"Permalink to this headline">¶</a></h2>
+<p>If you’ve installed the Teleport Unity SDK as a prebuilt
+package, you’re ready to go. But if you’re building the Teleport
+C++ Server SDK from source, you’ll need to follow the instructions
+in the Server section of this documentation. Use CMakeGui to
+set:</p>
 <ul class="simple">
-<li><p>TELEPORT_SERVER to true</p></li>
-<li><p>TELEPORT_UNITY to true</p></li>
-<li><p>TELEPORT_UNITY_EDITOR_DIR to the folder where Unity.exe resides.</p></li>
-<li><p>TELEPORT_UNITY_PLUGINS_DIR to the folder Plugins/x86_64 in the Teleport Unity assets folder, so that the C++ SDK will build TeleportServer.dll to that directory.</p></li>
-<li><p>TELEPORT_UNITY_PROJECT_DIR to the root folder of your Unity project.</p></li>
+<li>
+<p>TELEPORT_SERVER to true</p>
+</li>
+<li>
+<p>TELEPORT_UNITY to true</p>
+</li>
+<li>
+<p>TELEPORT_UNITY_EDITOR_DIR to the folder where Unity.exe
+resides.</p>
+</li>
+<li>
+<p>TELEPORT_UNITY_PLUGINS_DIR to the folder Plugins/x86_64 in the
+Teleport Unity assets folder, so that the C++ SDK will build
+TeleportServer.dll to that directory.</p>
+</li>
+<li>
+<p>TELEPORT_UNITY_PROJECT_DIR to the root folder of your Unity
+project.</p>
+</li>
 </ul>
-<p>Then build the Teleport_Server_Unity.sln solution. You can run Unity as normal, or debug the C++ code by setting TeleportServer as the active C++ project in the solution, and launching it for debugging.</p>
+<p>Then build the Teleport_Server_Unity.sln solution. You can run
+Unity as normal, or debug the C++ code by setting TeleportServer as
+the active C++ project in the solution, and launching it for
+debugging.</p>
 </div>
 <div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
-<p>The global settings for the plugin are found in the <em>Edit</em> menu, under <em>Project Settings…</em>. In the Project Settings panel, select <em>Teleport VR</em>.</p>
-<a class="reference internal image-reference" href="_images/ProjectSettings.png"><img alt="Teleport has a page on the Project Settings panel." src="_images/ProjectSettings.png" style="width: 600px;" /></a>
+<h2>Configuration<a class="headerlink" href="#configuration" title=
+"Permalink to this headline">¶</a></h2>
+<p>The global settings for the plugin are found in the
+<em>Edit</em> menu, under <em>Project Settings…</em>. In the
+Project Settings panel, select <em>Teleport VR</em>.</p>
+<a class="reference internal image-reference" href=
+"_images/ProjectSettings.png"><img alt=
+"Teleport has a page on the Project Settings panel." src=
+"_images/ProjectSettings.png" style="width: 600px;"></a>
 <p><strong>Teleport Project Settings panel</strong></p>
 </div>
 <div class="section" id="id1">
-<h2>Usage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>You can create a GameObject in Unity that has the Monitor component. If not, one will be created when you run the project.</p>
-<p>When running, the server awaits connections via the Teleport protocol. When a client connects, the server creates a player instance.</p>
+<h2>Usage<a class="headerlink" href="#id1" title=
+"Permalink to this headline">¶</a></h2>
+<p>You can create a GameObject in Unity that has the Monitor
+component. If not, one will be created when you run the
+project.</p>
+<p>When running, the server awaits connections via the Teleport
+protocol. When a client connects, the server creates a player
+instance.</p>
 </div>
 <div class="section" id="inputs">
-<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">¶</a></h2>
-<p>To show the Inputs Panel, select Inputs from the Teleport VR menu on the main menu bar.
-Here, you can specify the inputs you want to receive from connected clients.</p>
-<a class="reference internal image-reference" href="_images/InputsPanel.png"><img alt="Teleport has a page on the Project Settings panel." src="_images/InputsPanel.png" style="width: 600px;" /></a>
+<h2>Inputs<a class="headerlink" href="#inputs" title=
+"Permalink to this headline">¶</a></h2>
+<p>To show the Inputs Panel, select Inputs from the Teleport VR
+menu on the main menu bar. Here, you can specify the inputs you
+want to receive from connected clients.</p>
+<a class="reference internal image-reference" href=
+"_images/InputsPanel.png"><img alt=
+"Teleport has a page on the Project Settings panel." src=
+"_images/InputsPanel.png" style="width: 600px;"></a>
 <p><strong>Teleport Inputs Panel in Unity Editor</strong></p>
-<p>There are three elements to each input. The Name is arbitrary, but should be unique in the application. The Type specifies what kind of input this is. A Float input is floating-point, while a boolean is either on or off, true or false. A state input is updated continuously, whereas an Event input is only updated when it changes. Finally, the input’s <em>Path</em> is how the client knows what to map it to.</p>
-<p>Teleport VR clients use <a class="reference external" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles">OpenXR interaction profiles</a> to know what inputs the XR hardware provides. Each input (buttons, triggers, poses etc) has a <em>path</em>.
-When a Teleport client connects, it tries to match the path of each server-specified Teleport input to the OpenXR paths of its hardware. If any part of the OpenXR path matches the Teleport path, the mapping is made.
-One or more Teleport inputs can be mapped to a single OpenXR input if the paths match.
-Teleport input paths use <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">Regular Expression</a> syntax to match OpenXR paths.</p>
-<p>For example, if the client recognizes your hardware as supporting the <a class="reference external" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#_oculus_touch_controller_profile">Oculus Touch Controller Profile</a>:</p>
+<p>There are three elements to each input. The Name is arbitrary,
+but should be unique in the application. The Type specifies what
+kind of input this is. A Float input is floating-point, while a
+boolean is either on or off, true or false. A state input is
+updated continuously, whereas an Event input is only updated when
+it changes. Finally, the input’s <em>Path</em> is how the client
+knows what to map it to.</p>
+<p>Teleport VR clients use <a class="reference external" href=
+"https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles">
+OpenXR interaction profiles</a> to know what inputs the XR hardware
+provides. Each input (buttons, triggers, poses etc) has a
+<em>path</em>. When a Teleport client connects, it tries to match
+the path of each server-specified Teleport input to the OpenXR
+paths of its hardware. If any part of the OpenXR path matches the
+Teleport path, the mapping is made. One or more Teleport inputs can
+be mapped to a single OpenXR input if the paths match. Teleport
+input paths use <a class="reference external" href=
+"https://en.wikipedia.org/wiki/Regular_expression">Regular
+Expression</a> syntax to match OpenXR paths.</p>
+<p>For example, if the client recognizes your hardware as
+supporting the <a class="reference external" href=
+"https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#_oculus_touch_controller_profile">
+Oculus Touch Controller Profile</a>:</p>
 <blockquote>
-<div><p>/interaction_profiles/oculus/touch_controller</p>
-</div></blockquote>
+<div>
+<p>/interaction_profiles/oculus/touch_controller</p>
+</div>
+</blockquote>
 <p>It will have the path:</p>
 <blockquote>
-<div><p>user/hand/left/input/x/click</p>
-</div></blockquote>
-<p>to represent the “x” button on the left-hand controller. We might specify a control:</p>
+<div>
+<p>user/hand/left/input/x/click</p>
+</div>
+</blockquote>
+<p>to represent the “x” button on the left-hand controller. We
+might specify a control:</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 35%" />
-<col style="width: 27%" />
-<col style="width: 38%" />
-</colgroup>
+<col style="width: 35%">
+<col style="width: 27%">
+<col style="width: 38%"></colgroup>
 <thead>
-<tr class="row-odd"><th class="head"><p>Name</p></th>
-<th class="head"><p>Type</p></th>
-<th class="head"><p>Path</p></th>
+<tr class="row-odd">
+<th class="head">
+<p>Name</p>
+</th>
+<th class="head">
+<p>Type</p>
+</th>
+<th class="head">
+<p>Path</p>
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Toggle Onscreen Display</p></td>
-<td><p>Boolean Event</p></td>
-<td><p>left/input/[a|x]/click</p></td>
+<tr class="row-even">
+<td>
+<p>Toggle Onscreen Display</p>
+</td>
+<td>
+<p>Boolean Event</p>
+</td>
+<td>
+<p>left/input/[a|x]/click</p>
+</td>
 </tr>
 </tbody>
 </table>
-<p>The syntax [a|x] means “either ‘a’ or ‘x’”, so the client will recognize this as a match, and map the “x” button on the client-side controller to the “Toggle Onscreen Display” boolean event that the server will receive.</p>
+<p>The syntax [a|x] means “either ‘a’ or ‘x’”, so the client will
+recognize this as a match, and map the “x” button on the
+client-side controller to the “Toggle Onscreen Display” boolean
+event that the server will receive.</p>
 <div class="section" id="mapping-types">
-<h3>Mapping types<a class="headerlink" href="#mapping-types" title="Permalink to this headline">¶</a></h3>
-<p>Different control types can be mapped to each other. If a path match is found, it is possible for a boolean (“click”) action, which is only on or off, to be mapped to an Analogue input.</p>
+<h3>Mapping types<a class="headerlink" href="#mapping-types" title=
+"Permalink to this headline">¶</a></h3>
+<p>Different control types can be mapped to each other. If a path
+match is found, it is possible for a boolean (“click”) action,
+which is only on or off, to be mapped to an Analogue input.</p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 28%" />
-<col style="width: 29%" />
-<col style="width: 24%" />
-<col style="width: 19%" />
-</colgroup>
+<col style="width: 28%">
+<col style="width: 29%">
+<col style="width: 24%">
+<col style="width: 19%"></colgroup>
 <thead>
-<tr class="row-odd"><th class="head"></th>
-<th class="head"><p>OpenXR Boolean</p></th>
-<th class="head"><p>OpenXR float</p></th>
-<th class="head"><p>OpenXR pose</p></th>
+<tr class="row-odd">
+<th class="head"></th>
+<th class="head">
+<p>OpenXR Boolean</p>
+</th>
+<th class="head">
+<p>OpenXR float</p>
+</th>
+<th class="head">
+<p>OpenXR pose</p>
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Teleport Boolean</p></td>
-<td><p>Yes</p></td>
-<td><p>Yes, client decides</p></td>
-<td><p>No</p></td>
+<tr class="row-even">
+<td>
+<p>Teleport Boolean</p>
+</td>
+<td>
+<p>Yes</p>
+</td>
+<td>
+<p>Yes, client decides</p>
+</td>
+<td>
+<p>No</p>
+</td>
 </tr>
-<tr class="row-odd"><td><p>Teleport Analogue</p></td>
-<td><p>Yes: false=0.0, true=1.0</p></td>
-<td><p>Yes</p></td>
-<td><p>No</p></td>
+<tr class="row-odd">
+<td>
+<p>Teleport Analogue</p>
+</td>
+<td>
+<p>Yes: false=0.0, true=1.0</p>
+</td>
+<td>
+<p>Yes</p>
+</td>
+<td>
+<p>No</p>
+</td>
 </tr>
 </tbody>
 </table>
-<p>The mapping of an OpenXR floating-point input to a Teleport Boolean input is determined by the client application. The usual method is by hysteresis, so when the control goes above a certain threshold, it will be considered to be “true”, and when it goes below a lower threshold, it will revert to “false”.
-Teleport cannot map OpenXR Pose actions to inputs, these are handled differently.</p>
+<p>The mapping of an OpenXR floating-point input to a Teleport
+Boolean input is determined by the client application. The usual
+method is by hysteresis, so when the control goes above a certain
+threshold, it will be considered to be “true”, and when it goes
+below a lower threshold, it will revert to “false”. Teleport cannot
+map OpenXR Pose actions to inputs, these are handled
+differently.</p>
 </div>
 <div class="section" id="pose-mapping">
-<h3>Pose Mapping<a class="headerlink" href="#pose-mapping" title="Permalink to this headline">¶</a></h3>
-<p>XR devices such as headsets, handsets and trackers report their state as a “pose”, containing position and orientation in space. These poses can be mapped to spatial nodes using the Teleport Controller component in Unity.</p>
-<a class="reference internal image-reference" href="_images/TeleportController.png"><img alt="_images/TeleportController.png" src="_images/TeleportController.png" style="width: 600px;" /></a>
-<p><strong>Teleport controller component in Unity Inspector</strong></p>
-<p>The “Pose Regex Path” for a controller is matched client-side to an OpenXR path representing a pose state. When this mapping occurs, the object will be controlled directly by the tracked controller on the client. The Teleport_Controller component can be added to any child of a Teleport_SessionComponent Game Object.</p>
+<h3>Pose Mapping<a class="headerlink" href="#pose-mapping" title=
+"Permalink to this headline">¶</a></h3>
+<p>XR devices such as headsets, handsets and trackers report their
+state as a “pose”, containing position and orientation in space.
+These poses can be mapped to spatial nodes using the Teleport
+Controller component in Unity.</p>
+<a class="reference internal image-reference" href=
+"_images/TeleportController.png"><img alt=
+"_images/TeleportController.png" src=
+"_images/TeleportController.png" style="width: 600px;"></a>
+<p><strong>Teleport controller component in Unity
+Inspector</strong></p>
+<p>The “Pose Regex Path” for a controller is matched client-side to
+an OpenXR path representing a pose state. When this mapping occurs,
+the object will be controlled directly by the tracked controller on
+the client. The Teleport_Controller component can be added to any
+child of a Teleport_SessionComponent Game Object.</p>
 </div>
 </div>
 <div class="section" id="player-session-hierarchy">
-<h2>Player Session Hierarchy<a class="headerlink" href="#player-session-hierarchy" title="Permalink to this headline">¶</a></h2>
-<p>Typically, the Unity Game Objects would be arranged as follows in Unity:</p>
-<a class="reference internal image-reference" href="_images/PlayerHierarchy.png"><img alt="_images/PlayerHierarchy.png" src="_images/PlayerHierarchy.png" style="width: 400px;" /></a>
-<p><strong>Typical session and player hierarchy in Unity</strong></p>
-<p>i.e. at the root, an object containing a Teleport_Session Component, which tracks client-specific session data. Below this, a Player object which may move in space. Below that, two controllers and a head tracking object.</p>
+<h2>Player Session Hierarchy<a class="headerlink" href=
+"#player-session-hierarchy" title=
+"Permalink to this headline">¶</a></h2>
+<p>Typically, the Unity Game Objects would be arranged as follows
+in Unity:</p>
+<a class="reference internal image-reference" href=
+"_images/PlayerHierarchy.png"><img alt=
+"_images/PlayerHierarchy.png" src="_images/PlayerHierarchy.png"
+style="width: 400px;"></a>
+<p><strong>Typical session and player hierarchy in
+Unity</strong></p>
+<p>i.e. at the root, an object containing a Teleport_Session
+Component, which tracks client-specific session data. Below this, a
+Player object which may move in space. Below that, two controllers
+and a head tracking object.</p>
 <ul>
-<li><p>TeleportVR : Teleport_Session Component</p>
+<li>
+<p>TeleportVR : Teleport_Session Component</p>
 <ul>
-<li><p>Player</p>
+<li>
+<p>Player</p>
 <blockquote>
-<div><ul class="simple">
-<li><p>Left Hand Controller : Teleport_Controller Component</p></li>
-<li><p>Right Hand Controller: Teleport_Controller Component</p></li>
-<li><p>Head: Teleport_Head Component</p></li>
+<div>
+<ul class="simple">
+<li>
+<p>Left Hand Controller : Teleport_Controller Component</p>
+</li>
+<li>
+<p>Right Hand Controller: Teleport_Controller Component</p>
+</li>
+<li>
+<p>Head: Teleport_Head Component</p>
+</li>
 </ul>
-</div></blockquote>
+</div>
+</blockquote>
 </li>
 </ul>
 </li>
 </ul>
 <dl class="cpp class">
-<dt class="sig sig-object cpp">
-<span class="target" id="classteleport_1_1_monitor"></span><span class="sig-name descname"><span class="pre">teleport.Monitor</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">MonoBehaviour</span></span></dt>
-<dd><p>A singleton component which stores per-server-session state. </p>
+<dt class="sig sig-object cpp"><span class="target" id=
+"classteleport_1_1_monitor"></span><span class=
+"sig-name descname"><span class="pre">teleport.Monitor</span>
+<span class="pre">:</span> <span class="pre">public</span>
+<span class="pre">MonoBehaviour</span></span></dt>
+<dd>
+<p>A singleton component which stores per-server-session state.</p>
 <div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<p class="breathe-sectiondef-title rubric" id=
+"breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="classteleport_1_1_monitor_1a6ea49d2bf135c268eb6c7c045b42ec7e"></span><span class="sig-name descname"><span class="pre">delegate</span> <span class="pre">Teleport_SessionComponent</span> <span class="pre">CreateSession</span> <span class="pre">()</span></span></dt>
-<dd><p>Create a new session, e.g. when a client connects. </p>
-</dd></dl>
-
+<dt class="sig sig-object cpp"><span class="target" id=
+"classteleport_1_1_monitor_1a6ea49d2bf135c268eb6c7c045b42ec7e"></span><span class="sig-name descname"><span class="pre">delegate</span>
+<span class="pre">Teleport_SessionComponent</span> <span class=
+"pre">CreateSession</span> <span class="pre">()</span></span></dt>
+<dd>
+<p>Create a new session, e.g. when a client connects.</p>
+</dd>
+</dl>
 </div>
-</dd></dl>
-
+</dd>
+</dl>
 <dl class="cpp class">
-<dt class="sig sig-object cpp">
-<span class="target" id="classteleport_1_1_teleport___session_component"></span><span class="sig-name descname"><span class="pre">teleport.Teleport_SessionComponent</span> <span class="pre">:</span> <span class="pre">public</span> <span class="pre">MonoBehaviour</span></span></dt>
-<dd><p>This component manages a client session, so there is one <a class="reference internal" href="#classteleport_1_1_teleport___session_component"><span class="std std-ref">Teleport_SessionComponent</span></a> per session, and this typically is attached to the root GameObject of each client. </p>
-</dd></dl>
-
+<dt class="sig sig-object cpp"><span class="target" id=
+"classteleport_1_1_teleport___session_component"></span><span class="sig-name descname"><span class="pre">teleport.Teleport_SessionComponent</span>
+<span class="pre">:</span> <span class="pre">public</span>
+<span class="pre">MonoBehaviour</span></span></dt>
+<dd>
+<p>This component manages a client session, so there is one
+<a class="reference internal" href=
+"#classteleport_1_1_teleport___session_component"><span class=
+"std std-ref">Teleport_SessionComponent</span></a> per session, and
+this typically is attached to the root GameObject of each
+client.</p>
+</dd>
+</dl>
 </div>
 </div>
-
-
-           </div>
-           
-          </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="reference/teleportclient.html" class="btn btn-neutral float-left" title="The TeleportClient library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &#169; Copyright 2018-2022, Simul Software Ltd.
-
-    </p>
-  </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
-
-</footer>
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-  
-
-  <script type="text/javascript">
+</div>
+</div>
+<footer>
+<div class="rst-footer-buttons" role="navigation" aria-label=
+"footer navigation"><a href="reference/teleportclient.html" class=
+"btn btn-neutral float-left" title="The TeleportClient library"
+accesskey="p" rel="prev">Previous</a></div>
+<hr>
+<div role="contentinfo">
+<p>© Copyright 2018-2022, Simul Software Ltd.</p>
+</div>
+Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+<a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+provided by <a href="https://readthedocs.org">Read the
+Docs</a>.</footer>
+</div>
+</div>
+</section>
+</div>
+<script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
-
+</script>
 </body>
 </html>

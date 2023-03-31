@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Transfer &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -12,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -42,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -79,7 +79,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Teleport VR</a>
       </nav>
@@ -100,10 +101,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="data-transfer">
-<span id="id1"></span><h1>Data Transfer<a class="headerlink" href="#data-transfer" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="reliability">
-<h2>Reliability<a class="headerlink" href="#reliability" title="Permalink to this headline">¶</a></h2>
+  <section id="data-transfer">
+<span id="id1"></span><h1>Data Transfer<a class="headerlink" href="#data-transfer" title="Permalink to this heading">¶</a></h1>
+<section id="reliability">
+<h2>Reliability<a class="headerlink" href="#reliability" title="Permalink to this heading">¶</a></h2>
 <p>To ensure the reliable streaming of content, the protocol requires four important features:</p>
 <ol class="arabic simple">
 <li><p>Lost network packets are resent within a certain time window.</p></li>
@@ -111,18 +112,18 @@
 <li><p>The client can determine when a payload is corrupted.</p></li>
 <li><p>The client/server can recover from a corrupted payload.</p></li>
 </ol>
-</div>
-<div class="section" id="secure-reliable-transfer-protocol">
-<h2>Secure Reliable Transfer Protocol<a class="headerlink" href="#secure-reliable-transfer-protocol" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="secure-reliable-transfer-protocol">
+<h2>Secure Reliable Transfer Protocol<a class="headerlink" href="#secure-reliable-transfer-protocol" title="Permalink to this heading">¶</a></h2>
 <p>The Secure Reliable Transfer (SRT) protocol is used for sending network packets.
 This is an open source protocol that provides a wrapper around UDP and allows for the retransmission of lost packets.
 It has low overhead compared with TCP and deals with point 1 above.
 For the Simul fork of SRT, see here: <a class="reference external" href="https://github.com/simul/srt">https://github.com/simul/srt</a>.
 For more information on SRT, see here: <a class="reference external" href="https://www.haivision.com/resources/streaming-video-definitions/srt/">https://www.haivision.com/resources/streaming-video-definitions/srt/</a>.
 Note: Teleport is currently using the master branch of the SRT fork.</p>
-</div>
-<div class="section" id="elastic-frame-protocol">
-<h2>Elastic Frame Protocol<a class="headerlink" href="#elastic-frame-protocol" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="elastic-frame-protocol">
+<h2>Elastic Frame Protocol<a class="headerlink" href="#elastic-frame-protocol" title="Permalink to this heading">¶</a></h2>
 <p>The Teleport Protocol uses the Elastic Frame Protocol (EFP) to maximize streaming reliability.
 This is an open source protocol that is independent of the underlying transport protocol.
 It groups network packets together into large chunks of data called <strong>SuperFrames</strong>.
@@ -134,9 +135,9 @@ When a payload is deemed to be corrupted, it is discarded and the client may req
 How the client does this is dependant on the type of stream. See the documentation on each stream type for more information on this.
 For EFP documentation, code examples and the source, see the Simul fork here: <a class="reference external" href="https://github.com/simul/efp">https://github.com/simul/efp</a>.
 Note: Teleport is currently using the master branch of the EFP fork.</p>
-</div>
-<div class="section" id="efp-frame-types-and-superframes">
-<h2>EFP Frame Types and SuperFrames<a class="headerlink" href="#efp-frame-types-and-superframes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="efp-frame-types-and-superframes">
+<h2>EFP Frame Types and SuperFrames<a class="headerlink" href="#efp-frame-types-and-superframes" title="Permalink to this heading">¶</a></h2>
 <p>EFP adds four different types of headers of varying size to each network packet. The types used depend on the total size of the payload and the <strong>Maximum Transmission Unit</strong> (<strong>MTU</strong>) size.
 Each payload will either have one packet with a <strong>ElasticFrameType1</strong> header or multiple packets with <strong>ElasticFrameType2</strong> headers.
 Both of these headers contain a uint64 member called hPTS (Presentation Timestamp). This is unused by EFP but used by Teleport to store the <strong>stream-payload-id</strong>, a unique identifier for a payload.
@@ -146,11 +147,6 @@ EFP header types 1, 2 and 3 are currently only used but types 0 and 4 may be use
 For a detailed breakdown and explanation about the different kinds of <strong>ElasticFrameType</strong> headers, see here: <a class="reference external" href="https://edgeware-my.sharepoint.com/:p:/g/personal/anders_cedronius_edgeware_tv/ERnSit7j6udBsZOqkQcMLrQBpKmnfdApG3lehRk4zE-qgQ?rtime=swkDU08M2kg">https://edgeware-my.sharepoint.com/:p:/g/personal/anders_cedronius_edgeware_tv/ERnSit7j6udBsZOqkQcMLrQBpKmnfdApG3lehRk4zE-qgQ?rtime=swkDU08M2kg</a>.</p>
 <p>An <strong>ElasticFrameType1</strong> is of the form:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 28%" />
-<col style="width: 39%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>bytes</p></th>
 <th class="head"><p>type</p></th>
@@ -182,11 +178,6 @@ For a detailed breakdown and explanation about the different kinds of <strong>El
 </table>
 <p>An <strong>ElasticFrameType2</strong> is of the form:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 28%" />
-<col style="width: 39%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>bytes</p></th>
 <th class="head"><p>type</p></th>
@@ -238,11 +229,6 @@ For a detailed breakdown and explanation about the different kinds of <strong>El
 </table>
 <p>An <strong>ElasticFrameType3</strong> is of the form:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 28%" />
-<col style="width: 39%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>bytes</p></th>
 <th class="head"><p>type</p></th>
@@ -287,11 +273,6 @@ The hSuperFrameNo field in the <strong>ElasticFrameType</strong> header is used 
 The <strong>EFP Sender</strong> on the server maintains this value.</p>
 <p>A <strong>SuperFrame</strong> is of the form:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 22%" />
-<col style="width: 52%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>bytes</p></th>
 <th class="head"><p>type</p></th>
@@ -343,9 +324,6 @@ The <strong>EFP Sender</strong> on the server maintains this value.</p>
 </table>
 <p>The network packet structure is of the form:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Network Packet</p></th>
 </tr>
@@ -361,9 +339,9 @@ The <strong>EFP Sender</strong> on the server maintains this value.</p>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="initialization-of-efp-on-the-server">
-<h2>Initialization of EFP on the Server<a class="headerlink" href="#initialization-of-efp-on-the-server" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="initialization-of-efp-on-the-server">
+<h2>Initialization of EFP on the Server<a class="headerlink" href="#initialization-of-efp-on-the-server" title="Permalink to this heading">¶</a></h2>
 <p>On the start of a <strong>client-server session</strong>, the server initializes SRT and starts listening for messages on a user specified socket.
 An instance of an <strong>ElasticFrameProtocolSender</strong> class is created and the <strong>MTU</strong> size is passed to the constructor
 This is 1450 for UDP which is the protocol SRT is built on.
@@ -375,9 +353,9 @@ Any network transfer protocol can be used in the callback to send the data but T
 Each payload sent to the client will have a unique identifier (<strong>stream-payload-id</strong>) for each stream.
 This is a uint64 value that is initialized to 0 on the start of the <strong>client-server session</strong> and incremented for each stream when a new payload is sent to the client.
 The <strong>stream-payload-id</strong> value is written to <strong>PTS</strong> of each EFP packet header.</p>
-</div>
-<div class="section" id="sending-data-from-the-server">
-<h2>Sending Data from the Server<a class="headerlink" href="#sending-data-from-the-server" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="sending-data-from-the-server">
+<h2>Sending Data from the Server<a class="headerlink" href="#sending-data-from-the-server" title="Permalink to this heading">¶</a></h2>
 <p>On each frame or application update, the server will poll SRT to check the status of the connection for each client.
 If the server and client are connected, the server will do the following to transfer data to the client for each stream:</p>
 <ol class="arabic simple">
@@ -389,9 +367,9 @@ If the server and client are connected, the server will do the following to tran
 <li><p>The <strong>sendCallback</strong> calls the SRT API’s <strong>srt_sendmsg2</strong> function, passing the remote socket identifier, the network packet and packet size.</p></li>
 <li><p>This function will add the SRT and UDP headers to the network packet and send the packet to the client.</p></li>
 </ol>
-</div>
-<div class="section" id="initialization-of-efp-on-the-client">
-<h2>Initialization of EFP on the Client<a class="headerlink" href="#initialization-of-efp-on-the-client" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="initialization-of-efp-on-the-client">
+<h2>Initialization of EFP on the Client<a class="headerlink" href="#initialization-of-efp-on-the-client" title="Permalink to this heading">¶</a></h2>
 <p>On receiving the <strong>SetupCommand</strong>, the client will initialize SRT and create and configure an SRT socket for receiving network packets from the server.
 Subsequently, the client will create an instance of an <strong>ElasticFrameProtocolReceiver</strong> or <strong>EFP Receiver</strong> and this will remain in use until the end of the
 <strong>server-client-session</strong>. A <strong>SuperFrame</strong> timeout and <strong>EFPReceiverMode</strong> are passed to the <strong>EFP Receiver</strong> constructor.
@@ -403,9 +381,9 @@ When receiving a network packet in <strong>theaded</strong> mode, EFP will updat
 If the <strong>receiveCallback</strong> is low overhead and the target device has 4 or more cpu cores, then <strong>run-to-completion</strong> mode is the best option. Otherwise <strong>threaded</strong> mode is recommended.
 The receiver’s <strong>receiveCallback</strong> is then assigned to a function that accepts a <strong>SuperFrame</strong> in its signature.
 This function will receive a completed <strong>SuperFrame</strong> containing the server’s payload for the application to process.</p>
-</div>
-<div class="section" id="receiving-data-on-the-client">
-<h2>Receiving Data on the Client<a class="headerlink" href="#receiving-data-on-the-client" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="receiving-data-on-the-client">
+<h2>Receiving Data on the Client<a class="headerlink" href="#receiving-data-on-the-client" title="Permalink to this heading">¶</a></h2>
 <p>On each frame or application update, the client will use <strong>srt_connect</strong> to try make a connection to the server using the server ip and <strong>server streaming port</strong>
 provided in the <strong>Setup Command</strong>. If a connection has been attempted, the client will poll SRT to check the status of the connection.
 If the server and client are connected, the client will do the following to process incoming packets from the server:</p>
@@ -423,8 +401,8 @@ This function also requires a parameter for the <strong>MTU</strong> and the <st
 If the data is not corrupted, the payload will be passed to the corresponding decoder for the stream.
 .</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -443,7 +421,7 @@ If the data is not corrupted, the payload will be passed to the corresponding de
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

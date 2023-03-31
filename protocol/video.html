@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Video &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -12,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -42,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -76,7 +76,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Teleport VR</a>
       </nav>
@@ -97,12 +98,12 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="video">
-<span id="id1"></span><h1>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h1>
+  <section id="video">
+<span id="id1"></span><h1>Video<a class="headerlink" href="#video" title="Permalink to this heading">¶</a></h1>
 <p>The server must stream video to the client wth minimal latency.
 This section will describe the structure and content of the video frames, how low latency can be achieved and what the client must do to process the data.</p>
-<div class="section" id="video-texture-layout">
-<h2>Video Texture Layout<a class="headerlink" href="#video-texture-layout" title="Permalink to this headline">¶</a></h2>
+<section id="video-texture-layout">
+<h2>Video Texture Layout<a class="headerlink" href="#video-texture-layout" title="Permalink to this heading">¶</a></h2>
 <p>The server should use a video encoder to compress the video stream.
 The rendering output of the server application should be written to a video texture and this should be provided as an input surface to the video encoder.
 The protocol is flexible regarding the layout of the video texture. It is up to the client and server to support the same layout.
@@ -130,12 +131,6 @@ The resolution and offsets of the lighting cubemaps can be communicated to the c
 A flag indicating if the webcam image is being streamed and the width, height and offset of the image can be communicated to the client in the <strong>VideoConfig</strong> structure of the <strong>SetupCommand</strong>.</p>
 <p>The video texture should be in the following form:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 51%" />
-<col style="width: 26%" />
-<col style="width: 12%" />
-<col style="width: 10%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td colspan="4"><p>Colour Cubemap</p></td>
 </tr>
@@ -152,18 +147,8 @@ A flag indicating if the webcam image is being streamed and the width, height an
 </tr>
 </tbody>
 </table>
-<style> .red {color:#FF0000} </style>
-<style> .grn {color:#00CC00} </style>
-<style> .blu {color:#0000FF} </style>
-<style> .cyn {color:#00CCFF} </style>
-<style> .mag {color:#FF33FF} </style>
-<style> .yel {color:#FFCC00} </style><p>The cubemap sub-layout should be in the following form:</p>
+<p>The cubemap sub-layout should be in the following form:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><blockquote>
 <div><p>Front Face
@@ -206,14 +191,14 @@ A flag indicating if the webcam image is being streamed and the width, height an
 </tbody>
 </table>
 <p>where</p>
-<table class="colwidths-given docutils align-default" id="id2">
+<table class="docutils align-default" id="id2">
 <caption><span class="caption-text">Video Texture Layout</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 17%" />
-<col style="width: 17%" />
-<col style="width: 50%" />
+<col style="width: 8.3%" />
+<col style="width: 8.3%" />
+<col style="width: 16.7%" />
+<col style="width: 16.7%" />
+<col style="width: 50.0%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Offset X</p></th>
@@ -323,9 +308,9 @@ A flag indicating if the webcam image is being streamed and the width, height an
 </tbody>
 </table>
 <p>Note: In the offsets above, higher X values go from left to right and higher Y values go from top to bottom..</p>
-</div>
-<div class="section" id="video-frame-structure">
-<h2>Video Frame Structure<a class="headerlink" href="#video-frame-structure" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="video-frame-structure">
+<h2>Video Frame Structure<a class="headerlink" href="#video-frame-structure" title="Permalink to this heading">¶</a></h2>
 <p>The video encoder should be configured to accept the <strong>YUV 4:2:0</strong> 12-bit pixel format as input for the video frame.
 16-bit formats such as <strong>YUV 4:4:4</strong> are available but <strong>YUV 4:2:0</strong> minimizes decoding time and latency.
 The video texture must therefore be converted to the the <strong>YUV 4:2:0</strong> format for processing by the video encoder.
@@ -336,9 +321,9 @@ The server must tell the client what codec is being used in the <strong>VideoCon
 For HEVC/H264, the output is made up of multiple <strong>NAL-units</strong> such as <strong>picture parameters</strong> (VPS, SPS, PPS etc.) and <strong>video coding layers</strong> (<strong>VCL</strong>) containing the compressed data of the video texture.
 Each frame has at least one <strong>VCL</strong> and may have <strong>picture parameters</strong> if the frame is an IDR frame or the video encoder is configured to send the <strong>picture parameters</strong> with every frame.
 The video data should be transferred in accordance with the section of the protocol outlined in <a class="reference internal" href="data_transfer.html#data-transfer"><span class="std std-ref">Data Transfer</span></a>.</p>
-</div>
-<div class="section" id="recovering-from-corruption">
-<h2>Recovering from Corruption<a class="headerlink" href="#recovering-from-corruption" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="recovering-from-corruption">
+<h2>Recovering from Corruption<a class="headerlink" href="#recovering-from-corruption" title="Permalink to this heading">¶</a></h2>
 <p>An <strong>IDR frame</strong> is a special type of <strong>I-frame</strong> or keyframe in HEVC/H264.
 It does not rely on any prior frames for decoding and subsequent frames will reference it until the next <strong>I-frame</strong>.
 The <strong>IDR frame</strong> will also include <strong>picture parameters</strong> added by the encoder for the decoder to process.
@@ -355,9 +340,9 @@ If there is a mismatch between both values and the current video frame is not an
 On receiving the HTTP message, the server must tell the video encoder to force an <strong>IDR</strong> for the next frame.
 This allows the video stream to recover.
 To understand how the <strong>stream-payload-id</strong> is managed and how the client determines if a payload is corrupted, see <a class="reference internal" href="data_transfer.html#data-transfer"><span class="std std-ref">Data Transfer</span></a>.</p>
-</div>
-<div class="section" id="minimizing-latency">
-<h2>Minimizing Latency<a class="headerlink" href="#minimizing-latency" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="minimizing-latency">
+<h2>Minimizing Latency<a class="headerlink" href="#minimizing-latency" title="Permalink to this heading">¶</a></h2>
 <p>The server must configure the video encoder to minimize latency.
 Different encoders may support different settings and the capabilities of some hardware encoders will depend on the the GPU and driver installed.
 The server application must therefore query the capabilities of the encoder to determine the encoder settings supported.
@@ -376,17 +361,17 @@ The video decoder on the client will be informed of these settings via the <stro
 <li><p>Non-reference P frames</p></li>
 <li><p>The first frame should be the only <strong>IDR</strong> sent unless recovering from a lost frame.</p></li>
 </ol>
-</div>
-<div class="section" id="processing-of-video-frame-on-the-client">
-<h2>Processing of video Frame on the Client<a class="headerlink" href="#processing-of-video-frame-on-the-client" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="processing-of-video-frame-on-the-client">
+<h2>Processing of video Frame on the Client<a class="headerlink" href="#processing-of-video-frame-on-the-client" title="Permalink to this heading">¶</a></h2>
 <p>On receiving a non-corrupted video frame, the client must parse each individual NAL-unit for the video decoder to process.
 For HEVC and H264 codecs, each NAL-unit is separated by a 3-byte ALU code with bytes 1 and 2 having a value of 0 and bytes 3 having a value of 1 (001).
 The client must implement a parser to avail of this to split up the NAL-units.
 Video decoders usually output the decoded video data in the same <strong>YUV</strong> format used as input to the video encoder.
 When the decoder has finished decoding a frame, the client must convert the <strong>YUV</strong> texture to an <strong>RGBA</strong> texture.
 The cubemap and assocated lighting information must then be extracted from this texture for rendering.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -405,7 +390,7 @@ The cubemap and assocated lighting information must then be extracted from this 
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {

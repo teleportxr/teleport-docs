@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Client Render Library &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -12,10 +13,9 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
         <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -42,8 +42,8 @@
 			</a>
 <div role="search">
     <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-        <label class="search-label" for="text">Search the teleport documentation</label>
-        <input type="text" name="q" placeholder="Search..." aria-label="Search docs" />
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
         <input type="hidden" name="check_keywords" value="yes" />
         <input type="hidden" name="area" value="default" />
     </form>
@@ -75,7 +75,8 @@
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">Teleport VR</a>
       </nav>
@@ -96,14 +97,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="client-render-library">
-<h1>Client Render Library<a class="headerlink" href="#client-render-library" title="Permalink to this headline">¶</a></h1>
+  <section id="client-render-library">
+<h1>Client Render Library<a class="headerlink" href="#client-render-library" title="Permalink to this heading">¶</a></h1>
 <p>The client renderer library provides generic rendering functions for Teleport clients.</p>
-<div class="section" id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N12clientrender11NodeManagerE">
-<span id="_CPPv3N12clientrender11NodeManagerE"></span><span id="_CPPv2N12clientrender11NodeManagerE"></span><span id="clientrender::NodeManager"></span><span class="target" id="classclientrender_1_1_node_manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">clientrender</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">NodeManager</span></span></span><a class="headerlink" href="#_CPPv4N12clientrender11NodeManagerE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12clientrender11NodeManagerE"></span><span id="_CPPv2N12clientrender11NodeManagerE"></span><span id="clientrender::NodeManager"></span><span class="target" id="classclientrender_1_1_node_manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NodeManager</span></span></span><a class="headerlink" href="#_CPPv4N12clientrender11NodeManagerE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Manages nodes for a specific server context. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
@@ -124,7 +125,7 @@
 
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N12clientrender13GeometryCacheE">
-<span id="_CPPv3N12clientrender13GeometryCacheE"></span><span id="_CPPv2N12clientrender13GeometryCacheE"></span><span id="clientrender::GeometryCache"></span><span class="target" id="classclientrender_1_1_geometry_cache"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-prename descclassname"><span class="n"><span class="pre">clientrender</span></span><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GeometryCache</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">GeometryCacheBackendInterface</span></span><a class="headerlink" href="#_CPPv4N12clientrender13GeometryCacheE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N12clientrender13GeometryCacheE"></span><span id="_CPPv2N12clientrender13GeometryCacheE"></span><span id="clientrender::GeometryCache"></span><span class="target" id="classclientrender_1_1_geometry_cache"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryCache</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">GeometryCacheBackendInterface</span></span><a class="headerlink" href="#_CPPv4N12clientrender13GeometryCacheE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A container for geometry sent from servers and cached locally. There is one instance of <a class="reference internal" href="#classclientrender_1_1_geometry_cache"><span class="std std-ref">GeometryCache</span></a> for each connected server, and a local <a class="reference internal" href="#classclientrender_1_1_geometry_cache"><span class="std std-ref">GeometryCache</span></a> for the client’s own objects. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
@@ -149,11 +150,11 @@
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="structs">
-<h2>Structs<a class="headerlink" href="#structs" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+<section id="structs">
+<h2>Structs<a class="headerlink" href="#structs" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
 
 
            </div>
@@ -172,7 +173,7 @@
 </footer>
         </div>
       </div>
-    </section>
+    </div>
   </div>
   <script>
       jQuery(function () {
