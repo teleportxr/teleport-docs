@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Sat 01 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Sat 01 Apr** : Adding sphinxcontrib.jquery in conf.py.
 | **Fri 31 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 31 Mar** : mmdc in conf.py
 | **Fri 31 Mar** : Added ClientNetworkContext.cpp
@@ -98,5 +100,3 @@ Changelist
 | **Thu 26 Jan** : Refactoring: move more classes into singleton patterns. Eliminate clientrender::RenderPlatform, this is not necessary. Improve NodeManager threading locks.
 | **Tue 24 Jan** : Refactoring: Removed GeometrySourceBackendInterface. GeometrySource is a singleton. Client origin is sent as a node id, not a Pose: removing duplication of data. Mutex in NodeManager for creation/deletion vs updating. May be used elsewhere...
 | **Mon 23 Jan** : InstanceRenderer::RenderNode() checks that node is valid. Fixed method name in GeometryDecoder. Platform ptr.
-| **Fri 20 Jan** : GeometryDecoder is now on a separate thread. GeometryDecoder::WaitFromDecodeThread() added to 'sync' thread if resources are required immediately. Other minor improvement.
-| **Fri 20 Jan** : Updated layout of GeometryDecoder.
