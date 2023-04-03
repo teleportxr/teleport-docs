@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sat 01 Apr** : Platform ptr.
 | **Sat 01 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Sat 01 Apr** : Adding sphinxcontrib.jquery in conf.py.
 | **Fri 31 Mar** : Merge branch 'main' of github.com:simul/Teleport
@@ -99,4 +100,3 @@ Changelist
 | **Thu 26 Jan** : Platform ptr.
 | **Thu 26 Jan** : Refactoring: move more classes into singleton patterns. Eliminate clientrender::RenderPlatform, this is not necessary. Improve NodeManager threading locks.
 | **Tue 24 Jan** : Refactoring: Removed GeometrySourceBackendInterface. GeometrySource is a singleton. Client origin is sent as a node id, not a Pose: removing duplication of data. Mutex in NodeManager for creation/deletion vs updating. May be used elsewhere...
-| **Mon 23 Jan** : InstanceRenderer::RenderNode() checks that node is valid. Fixed method name in GeometryDecoder. Platform ptr.
