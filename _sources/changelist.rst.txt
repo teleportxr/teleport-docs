@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Thu 06 Apr** : Quest build fixes.
+| **Thu 06 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Thu 06 Apr** : Using SingleQueue for time-sensitive client messages - any message on the queue and not yet sent is replaced with a newer one.
 | **Sat 01 Apr** : Platform ptr.
 | **Sat 01 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Sat 01 Apr** : Adding sphinxcontrib.jquery in conf.py.
@@ -97,6 +100,3 @@ Changelist
 | **Thu 26 Jan** : srt ptr.
 | **Thu 26 Jan** : README.md and Platform ptr.
 | **Thu 26 Jan** : Update refactoring for Android build.
-| **Thu 26 Jan** : Platform ptr.
-| **Thu 26 Jan** : Refactoring: move more classes into singleton patterns. Eliminate clientrender::RenderPlatform, this is not necessary. Improve NodeManager threading locks.
-| **Tue 24 Jan** : Refactoring: Removed GeometrySourceBackendInterface. GeometrySource is a singleton. Client origin is sent as a node id, not a Pose: removing duplication of data. Mutex in NodeManager for creation/deletion vs updating. May be used elsewhere...
