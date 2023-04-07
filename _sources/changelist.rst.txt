@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Fri 07 Apr** : Modified agde.gradle generated.
+| **Fri 07 Apr** : Fixed some errors in docs/reference/video_vulkan_android_import_and_ycbcr.rst.
 | **Thu 06 Apr** : Quest build fixes.
 | **Thu 06 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 06 Apr** : Using SingleQueue for time-sensitive client messages - any message on the queue and not yet sent is replaced with a newer one.
@@ -97,6 +100,3 @@ Changelist
 | **Fri 27 Jan** : Fix NDK version settings in android vs projects.
 | **Fri 27 Jan** : Removed unnecessary Android header.
 | **Fri 27 Jan** : Fixes to pc client installer.
-| **Thu 26 Jan** : srt ptr.
-| **Thu 26 Jan** : README.md and Platform ptr.
-| **Thu 26 Jan** : Update refactoring for Android build.
