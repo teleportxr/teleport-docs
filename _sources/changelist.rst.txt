@@ -1,7 +1,10 @@
 Changelist 
 ========= 
 | **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 07 Apr** : Modified agde.gradle generated.
+| **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Fri 07 Apr** : Added VRClient.png image. Disabled overlay for now.
 | **Fri 07 Apr** : Fixed some errors in docs/reference/video_vulkan_android_import_and_ycbcr.rst.
 | **Thu 06 Apr** : Quest build fixes.
 | **Thu 06 Apr** : Merge branch 'main' of github.com:simul/Teleport
@@ -97,6 +100,3 @@ Changelist
 | **Fri 27 Jan** : Added TELEPORT_GEOMETRY_DECODER_ASYNC define to toggle async decoding of geometry. Platform ptr.
 | **Fri 27 Jan** : Remove buildToolsVersion.
 | **Fri 27 Jan** : Remove     buildToolsVersion "29.0.1"
-| **Fri 27 Jan** : Fix NDK version settings in android vs projects.
-| **Fri 27 Jan** : Removed unnecessary Android header.
-| **Fri 27 Jan** : Fixes to pc client installer.
