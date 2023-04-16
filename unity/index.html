@@ -149,7 +149,7 @@ object to point to the Default Teleport Render Pipeline, found in Teleport/Resou
 <p>You can also create a Teleport Render Pipeline asset in the Content window with Create/Rendering/Teleport Render Pipeline Asset.</p>
 <p>For global settings for the plugin, in the Project Settings panel, select <em>Teleport VR</em>.</p>
 <a class="reference internal image-reference" href="../_images/ProjectSettings.png"><img alt="Teleport has a page on the Project Settings panel." src="../_images/ProjectSettings.png" style="width: 600px;" /></a>
-<p>==Teleport Project Settings panel==</p>
+<p><strong>Teleport Project Settings panel</strong></p>
 </section>
 <section id="id1">
 <h2>Usage<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
@@ -161,7 +161,7 @@ object to point to the Default Teleport Render Pipeline, found in Teleport/Resou
 <p>To show the Inputs Panel, select Inputs from the Teleport VR menu on the main menu bar.
 Here, you can specify the inputs you want to receive from connected clients.</p>
 <a class="reference internal image-reference" href="../_images/InputsPanel.png"><img alt="Teleport has a page on the Project Settings panel." src="../_images/InputsPanel.png" style="width: 600px;" /></a>
-<p>==Teleport Inputs Panel in Unity Editor==</p>
+<p><strong>Teleport Inputs Panel in Unity Editor</strong></p>
 <p>There are three elements to each input. The Name is arbitrary, but should be unique in the application. The Type specifies what kind of input this is. A Float input is floating-point, while a boolean is either on or off, true or false. A state input is updated continuously, whereas an Event input is only updated when it changes. Finally, the input’s <em>Path</em> is how the client knows what to map it to.</p>
 <p>Teleport VR clients use <a class="reference external" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles">OpenXR interaction profiles</a> to know what inputs the XR hardware provides. Each input (buttons, triggers, poses etc) has a <em>path</em> that is mapped by the OpenXR runtime on the client device.
 When a Teleport client connects, it tries to match the path of each server-specified Teleport input to the OpenXR paths of its hardware. If any part of the OpenXR path matches the Teleport path, the mapping is made.

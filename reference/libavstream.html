@@ -110,6 +110,12 @@
 <p>LibAVStream is a helper library for streaming video and geometry data between a server and client. A user of this library constructs an avs::Pipeline instance, and configures the pipeline with avs::PipelineNode subclass instances. Nodes can receive data from other nodes, process it, and pass the processed data on to other nodes.</p>
 <p>A pipeline operates on a single thread, while queues allow threads to exchange data. For example, the server’s Network pipeline connects several avs::Queue instances to a single avs::NetworkSink. For example, the video encoding pipeline links an avs::Surface that receives raw video frames, to an avs::Encoder, and finally to a queue. On another thread, the same queue in the network pipeline passes the data to the avs::NetworkSink.</p>
 <p>LibAVStream uses Enet for UDP datagram control. It uses SRT and EFP over UDP for data stream reliability and deliverability.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/ExamplePipeline.png"><img alt="Two pipelines operating on separate threads are connected using an avs::Queue." src="../_images/ExamplePipeline.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-text">Two pipelines operating on separate threads are connected using an avs::Queue.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
@@ -144,11 +150,6 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7Context7PrivateE">
-<span id="_CPPv3N3avs7Context7PrivateE"></span><span id="_CPPv2N3avs7Context7PrivateE"></span><span id="avs::Context::Private"></span><span class="target" id="structavs_1_1_context_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><a class="headerlink" href="#_CPPv4N3avs7Context7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="cpp class">
@@ -260,11 +261,6 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs8Pipeline7PrivateE">
-<span id="_CPPv3N3avs8Pipeline7PrivateE"></span><span id="_CPPv2N3avs8Pipeline7PrivateE"></span><span id="avs::Pipeline::Private"></span><span class="target" id="structavs_1_1_pipeline_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><a class="headerlink" href="#_CPPv4N3avs8Pipeline7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="cpp class">
@@ -278,20 +274,25 @@
 <span id="_CPPv3N3avs20UseInternalAllocatorE"></span><span id="_CPPv2N3avs20UseInternalAllocatorE"></span><span id="avs::UseInternalAllocator"></span><span class="target" id="classavs_1_1_use_internal_allocator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UseInternalAllocator</span></span></span><a class="headerlink" href="#_CPPv4N3avs20UseInternalAllocatorE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper class for enforcing the use of memory allocator defined within libavstream library module.</p>
 <p>This is used to prevent memory allocation/deallocation across DLL boundary even when operator new or operator delete are called from client code. </p>
-<p>Subclassed by <a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#classavs_1_1_decoder_backend_interface"><span class="std std-ref">avs::DecoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_encoder_backend_interface"><span class="std std-ref">avs::EncoderBackendInterface</span></a></p>
+<p>Subclassed by <a class="reference internal" href="#classavs_1_1_audio_encoder_backend_interface"><span class="std std-ref">avs::AudioEncoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_audio_target_backend_interface"><span class="std std-ref">avs::AudioTargetBackendInterface</span></a>, <a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#classavs_1_1_decoder_backend_interface"><span class="std std-ref">avs::DecoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_encoder_backend_interface"><span class="std std-ref">avs::EncoderBackendInterface</span></a>, avs::GeometryCacheBackendInterface, avs::GeometryDecoderBackendInterface, avs::GeometryEncoderBackendInterface, avs::GeometryRequesterBackendInterface, avs::GeometryTargetBackendInterface, avs::StreamParserInterface, avs::SurfaceBackendInterface</p>
 </dd></dl>
 
 </section>
 <section id="avs-interface-classes">
 <h2>avs Interface Classes<a class="headerlink" href="#avs-interface-classes" title="Permalink to this heading">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “avs::AudioTargetBackendInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “avs::AudioEncoderBackendInterface” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs27AudioTargetBackendInterfaceE">
+<span id="_CPPv3N3avs27AudioTargetBackendInterfaceE"></span><span id="_CPPv2N3avs27AudioTargetBackendInterfaceE"></span><span id="avs::AudioTargetBackendInterface"></span><span class="target" id="classavs_1_1_audio_target_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTargetBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs27AudioTargetBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Audio target backend interface. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs28AudioEncoderBackendInterfaceE">
+<span id="_CPPv3N3avs28AudioEncoderBackendInterfaceE"></span><span id="_CPPv2N3avs28AudioEncoderBackendInterfaceE"></span><span id="avs::AudioEncoderBackendInterface"></span><span class="target" id="classavs_1_1_audio_encoder_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncoderBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs28AudioEncoderBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Audio encoder backend interface. </p>
+<p>Subclassed by <a class="reference internal" href="server.html#classteleport_1_1server_1_1_audio_encoder"><span class="std std-ref">teleport::server::AudioEncoder</span></a></p>
+</dd></dl>
+
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs11IOInterfaceE">
 <span id="_CPPv3N3avs11IOInterfaceE"></span><span id="_CPPv2N3avs11IOInterfaceE"></span><span id="avs::IOInterface"></span><span class="target" id="classavs_1_1_i_o_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IOInterface</span></span></span><a class="headerlink" href="#_CPPv4N3avs11IOInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
@@ -469,11 +470,12 @@
 <span id="_CPPv3N3avs20AudioTargetInterfaceE"></span><span id="_CPPv2N3avs20AudioTargetInterfaceE"></span><span id="avs::AudioTargetInterface"></span><span class="target" id="classavs_1_1_audio_target_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTargetInterface</span></span></span><a class="headerlink" href="#_CPPv4N3avs20AudioTargetInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Audio target interface.</p>
 <p>Nodes implementing this interface can act as data sinks for the purpose of decoding and playing audio. </p>
+<p>Subclassed by avs::AudioTarget</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv">
-<span id="_CPPv3NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv"></span><span id="_CPPv2NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv"></span><span id="avs::AudioTargetInterface::getAudioTargetBackendInterfaceC"></span><span class="target" id="classavs_1_1_audio_target_interface_1aa0d11f12d3c8785caf152175dca001ed"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="n"><span class="pre">AudioTargetBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getAudioTargetBackendInterface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv"></span><span id="_CPPv2NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv"></span><span id="avs::AudioTargetInterface::getAudioTargetBackendInterfaceC"></span><span class="target" id="classavs_1_1_audio_target_interface_1aa0d11f12d3c8785caf152175dca001ed"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs27AudioTargetBackendInterfaceE" title="avs::AudioTargetBackendInterface"><span class="n"><span class="pre">AudioTargetBackendInterface</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getAudioTargetBackendInterface</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4NK3avs20AudioTargetInterface30getAudioTargetBackendInterfaceEv" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Get audio backend associated with this node. </p>
 </dd></dl>
 
@@ -485,7 +487,6 @@
 <span id="_CPPv3N3avs23EncoderBackendInterfaceE"></span><span id="_CPPv2N3avs23EncoderBackendInterfaceE"></span><span id="avs::EncoderBackendInterface"></span><span class="target" id="classavs_1_1_encoder_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EncoderBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs23EncoderBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Common encoder backend interface.</p>
 <p><a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">Encoder</span></a> backend is responsible for encoding pictures using a particular hardware encoder. </p>
-<p>Subclassed by avs::EncoderNV</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
@@ -685,7 +686,7 @@
 <span id="_CPPv3N3avs23DecoderBackendInterfaceE"></span><span id="_CPPv2N3avs23DecoderBackendInterfaceE"></span><span id="avs::DecoderBackendInterface"></span><span class="target" id="classavs_1_1_decoder_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Common decoder backend interface.</p>
 <p><a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">Decoder</span></a> backend is responsible for decoding compressed video data using a particular hardware decoder. Decoded video frames are outputted to a registered surface. </p>
-<p>Subclassed by avs::DecoderNV, clientrender::VideoDecoderBackend</p>
+<p>Subclassed by clientrender::VideoDecoderBackend</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
@@ -857,7 +858,7 @@
 </ul>
 </p>
 <p>Being aware of this classification is very important in correctly constructing pipelines. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_audio_decoder"><span class="std std-ref">avs::AudioDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_audio_encoder"><span class="std std-ref">avs::AudioEncoder</span></a>, <a class="reference internal" href="#classavs_1_1_buffer"><span class="std std-ref">avs::Buffer</span></a>, <a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">avs::Decoder</span></a>, <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">avs::Encoder</span></a>, <a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">avs::File</span></a>, <a class="reference internal" href="#classavs_1_1_forwarder"><span class="std std-ref">avs::Forwarder</span></a>, avs::GenericDecoder, avs::GenericEncoder, <a class="reference internal" href="#classavs_1_1_geometry_decoder"><span class="std std-ref">avs::GeometryDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_encoder"><span class="std std-ref">avs::GeometryEncoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">avs::GeometrySource</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_target"><span class="std std-ref">avs::GeometryTarget</span></a>, <a class="reference internal" href="#classavs_1_1_null_sink"><span class="std std-ref">avs::NullSink</span></a>, <a class="reference internal" href="#classavs_1_1_packetizer"><span class="std std-ref">avs::Packetizer</span></a>, <a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">avs::Queue</span></a>, avs::SingleQueue, <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">avs::Surface</span></a>, <a class="reference internal" href="#classavs_1_1_tag_data_decoder"><span class="std std-ref">avs::TagDataDecoder</span></a></p>
+<p>Subclassed by <a class="reference internal" href="#classavs_1_1_audio_decoder"><span class="std std-ref">avs::AudioDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_audio_encoder"><span class="std std-ref">avs::AudioEncoder</span></a>, avs::AudioTarget, <a class="reference internal" href="#classavs_1_1_buffer"><span class="std std-ref">avs::Buffer</span></a>, <a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">avs::Decoder</span></a>, <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">avs::Encoder</span></a>, <a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">avs::File</span></a>, <a class="reference internal" href="#classavs_1_1_forwarder"><span class="std std-ref">avs::Forwarder</span></a>, avs::GenericDecoder, avs::GenericEncoder, <a class="reference internal" href="#classavs_1_1_geometry_decoder"><span class="std std-ref">avs::GeometryDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_encoder"><span class="std std-ref">avs::GeometryEncoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">avs::GeometrySource</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_target"><span class="std std-ref">avs::GeometryTarget</span></a>, <a class="reference internal" href="#classavs_1_1_network_sink"><span class="std std-ref">avs::NetworkSink</span></a>, <a class="reference internal" href="#classavs_1_1_network_source"><span class="std std-ref">avs::NetworkSource</span></a>, <a class="reference internal" href="#classavs_1_1_null_sink"><span class="std std-ref">avs::NullSink</span></a>, <a class="reference internal" href="#classavs_1_1_packetizer"><span class="std std-ref">avs::Packetizer</span></a>, <a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">avs::Queue</span></a>, avs::SingleQueue, <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">avs::Surface</span></a>, <a class="reference internal" href="#classavs_1_1_tag_data_decoder"><span class="std std-ref">avs::TagDataDecoder</span></a></p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
@@ -1075,8 +1076,7 @@
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12PipelineNode7PrivateE">
 <span id="_CPPv3N3avs12PipelineNode7PrivateE"></span><span id="_CPPv2N3avs12PipelineNode7PrivateE"></span><span id="avs::PipelineNode::Private"></span><span class="target" id="structavs_1_1_pipeline_node_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><a class="headerlink" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Subclassed by <a class="reference internal" href="#structavs_1_1_audio_encoder_1_1_private"><span class="std std-ref">avs::AudioEncoder::Private</span></a>, avs::Buffer::Private, <a class="reference internal" href="#structavs_1_1_decoder_1_1_private"><span class="std std-ref">avs::Decoder::Private</span></a>, <a class="reference internal" href="#structavs_1_1_decoder_1_1_private"><span class="std std-ref">avs::Decoder::Private</span></a>, <a class="reference internal" href="#structavs_1_1_encoder_1_1_private"><span class="std std-ref">avs::Encoder::Private</span></a>, avs::File::Private, avs::Forwarder::Private, <a class="reference internal" href="#structavs_1_1_geometry_source_1_1_private"><span class="std std-ref">avs::GeometrySource::Private</span></a>, <a class="reference internal" href="#structavs_1_1_geometry_target_1_1_private"><span class="std std-ref">avs::GeometryTarget::Private</span></a>, avs::Packetizer::Private, <a class="reference internal" href="#structavs_1_1_queue_1_1_private"><span class="std std-ref">avs::Queue::Private</span></a>, <a class="reference internal" href="#structavs_1_1_surface_1_1_private"><span class="std std-ref">avs::Surface::Private</span></a></p>
-</dd></dl>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -1191,7 +1191,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioEncoder12AudioEncoderEP28AudioEncoderBackendInterface">
-<span id="_CPPv3N3avs12AudioEncoder12AudioEncoderEP28AudioEncoderBackendInterface"></span><span id="_CPPv2N3avs12AudioEncoder12AudioEncoderEP28AudioEncoderBackendInterface"></span><span id="avs::AudioEncoder::AudioEncoder__AudioEncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_audio_encoder_1a35ccd7d8554035321fc3e209d1a067ef"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncoder</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">AudioEncoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder12AudioEncoderEP28AudioEncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs12AudioEncoder12AudioEncoderEP28AudioEncoderBackendInterface"></span><span id="_CPPv2N3avs12AudioEncoder12AudioEncoderEP28AudioEncoderBackendInterface"></span><span id="avs::AudioEncoder::AudioEncoder__AudioEncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_audio_encoder_1a35ccd7d8554035321fc3e209d1a067ef"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncoder</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N3avs28AudioEncoderBackendInterfaceE" title="avs::AudioEncoderBackendInterface"><span class="n"><span class="pre">AudioEncoderBackendInterface</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder12AudioEncoderEP28AudioEncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Constructor. <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">Encoder</span></a> node takes ownership of the backend instance. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1308,7 +1308,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioEncoder10setBackendEP28AudioEncoderBackendInterface">
-<span id="_CPPv3N3avs12AudioEncoder10setBackendEP28AudioEncoderBackendInterface"></span><span id="_CPPv2N3avs12AudioEncoder10setBackendEP28AudioEncoderBackendInterface"></span><span id="avs::AudioEncoder::setBackend__AudioEncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_audio_encoder_1a508ca45b7970bc629d916e0e17bb9d45"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBackend</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">AudioEncoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder10setBackendEP28AudioEncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs12AudioEncoder10setBackendEP28AudioEncoderBackendInterface"></span><span id="_CPPv2N3avs12AudioEncoder10setBackendEP28AudioEncoderBackendInterface"></span><span id="avs::AudioEncoder::setBackend__AudioEncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_audio_encoder_1a508ca45b7970bc629d916e0e17bb9d45"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBackend</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N3avs28AudioEncoderBackendInterfaceE" title="avs::AudioEncoderBackendInterface"><span class="n"><span class="pre">AudioEncoderBackendInterface</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder10setBackendEP28AudioEncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Set custom encoder backend. <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">Encoder</span></a> node takes ownership of the backend instance. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1331,11 +1331,6 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs12AudioEncoder7PrivateE">
-<span id="_CPPv3N3avs12AudioEncoder7PrivateE"></span><span id="_CPPv2N3avs12AudioEncoder7PrivateE"></span><span id="avs::AudioEncoder::Private"></span><span class="target" id="structavs_1_1_audio_encoder_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="cpp class">
@@ -1515,11 +1510,6 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7Decoder7PrivateE">
-<span id="_CPPv3N3avs7Decoder7PrivateE"></span><span id="_CPPv2N3avs7Decoder7PrivateE"></span><span id="avs::Decoder::Private"></span><span class="target" id="structavs_1_1_decoder_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><a class="headerlink" href="#_CPPv4N3avs7Decoder7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="cpp class">
@@ -1747,11 +1737,6 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7Encoder7PrivateE">
-<span id="_CPPv3N3avs7Encoder7PrivateE"></span><span id="_CPPv2N3avs7Encoder7PrivateE"></span><span id="avs::Encoder::Private"></span><span class="target" id="structavs_1_1_encoder_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><a class="headerlink" href="#_CPPv4N3avs7Encoder7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="cpp class">
@@ -1992,11 +1977,6 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs14GeometrySource7PrivateE">
-<span id="_CPPv3N3avs14GeometrySource7PrivateE"></span><span id="_CPPv2N3avs14GeometrySource7PrivateE"></span><span id="avs::GeometrySource::Private"></span><span class="target" id="structavs_1_1_geometry_source_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><a class="headerlink" href="#_CPPv4N3avs14GeometrySource7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="cpp class">
@@ -2053,21 +2033,22 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs14GeometryTarget7PrivateE">
-<span id="_CPPv3N3avs14GeometryTarget7PrivateE"></span><span id="_CPPv2N3avs14GeometryTarget7PrivateE"></span><span id="avs::GeometryTarget::Private"></span><span class="target" id="structavs_1_1_geometry_target_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><a class="headerlink" href="#_CPPv4N3avs14GeometryTarget7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “avs::NetworkSink” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “avs::NetworkSource” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSinkE">
+<span id="_CPPv3N3avs11NetworkSinkE"></span><span id="_CPPv2N3avs11NetworkSinkE"></span><span id="avs::NetworkSink"></span><span class="target" id="classavs_1_1_network_sink"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSink</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs11NetworkSinkE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Subclassed by avs::NullNetworkSink, avs::SrtEfpNetworkSink, avs::WebRtcNetworkSink</p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs13NetworkSourceE">
+<span id="_CPPv3N3avs13NetworkSourceE"></span><span id="_CPPv2N3avs13NetworkSourceE"></span><span id="avs::NetworkSource"></span><span class="target" id="classavs_1_1_network_source"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSource</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs13NetworkSourceE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network source node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">0/1]</span></code></p>
+<p>Receives video stream from a remote UDP endpoint. </p>
+<p>Subclassed by avs::SrtEfpNetworkSource, avs::WebRtcNetworkSource</p>
+</dd></dl>
+
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs8NullSinkE">
 <span id="_CPPv3N3avs8NullSinkE"></span><span id="_CPPv2N3avs8NullSinkE"></span><span id="avs::NullSink"></span><span class="target" id="classavs_1_1_null_sink"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NullSink</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs11IOInterfaceE" title="avs::IOInterface"><span class="n"><span class="pre">IOInterface</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs15PacketInterfaceE" title="avs::PacketInterface"><span class="n"><span class="pre">PacketInterface</span></span></a><a class="headerlink" href="#_CPPv4N3avs8NullSinkE" title="Permalink to this definition">¶</a><br /></dt>
@@ -2184,11 +2165,6 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs5Queue7PrivateE">
-<span id="_CPPv3N3avs5Queue7PrivateE"></span><span id="_CPPv2N3avs5Queue7PrivateE"></span><span id="avs::Queue::Private"></span><span class="target" id="structavs_1_1_queue_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><a class="headerlink" href="#_CPPv4N3avs5Queue7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="cpp class">
@@ -2251,11 +2227,6 @@
 </dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs7Surface7PrivateE">
-<span id="_CPPv3N3avs7Surface7PrivateE"></span><span id="_CPPv2N3avs7Surface7PrivateE"></span><span id="avs::Surface::Private"></span><span class="target" id="structavs_1_1_surface_1_1_private"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Private</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNode7PrivateE" title="avs::PipelineNode::Private"><span class="n"><span class="pre">Private</span></span></a><a class="headerlink" href="#_CPPv4N3avs7Surface7PrivateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="cpp class">
@@ -2347,30 +2318,243 @@
 </section>
 <section id="avs-structs">
 <h2>avs Structs<a class="headerlink" href="#avs-structs" title="Permalink to this heading">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::NetworkSinkCounters” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCountersE">
+<span id="_CPPv3N3avs19NetworkSinkCountersE"></span><span id="_CPPv2N3avs19NetworkSinkCountersE"></span><span id="avs::NetworkSinkCounters"></span><span class="target" id="structavs_1_1_network_sink_counters"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSinkCounters</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCountersE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network sink counters. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCounters9bytesSentE">
+<span id="_CPPv3N3avs19NetworkSinkCounters9bytesSentE"></span><span id="_CPPv2N3avs19NetworkSinkCounters9bytesSentE"></span><span id="avs::NetworkSinkCounters::bytesSent__uint64_t"></span><span class="target" id="structavs_1_1_network_sink_counters_1a5b77322a7ac07098adb772bb7e3d32bc"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bytesSent</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCounters9bytesSentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Total bytes sent. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCounters18networkPacketsSentE">
+<span id="_CPPv3N3avs19NetworkSinkCounters18networkPacketsSentE"></span><span id="_CPPv2N3avs19NetworkSinkCounters18networkPacketsSentE"></span><span id="avs::NetworkSinkCounters::networkPacketsSent__uint64_t"></span><span class="target" id="structavs_1_1_network_sink_counters_1a52413afee49bd14a0fe5fb4cd110734f"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">networkPacketsSent</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCounters18networkPacketsSentE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of sent network packets. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCounters9bandwidthE">
+<span id="_CPPv3N3avs19NetworkSinkCounters9bandwidthE"></span><span id="_CPPv2N3avs19NetworkSinkCounters9bandwidthE"></span><span id="avs::NetworkSinkCounters::bandwidth__double"></span><span class="target" id="structavs_1_1_network_sink_counters_1a2ac7befb932c0ae39ac8aa4eaaafbbfb"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bandwidth</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCounters9bandwidthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Available bandwidth </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCounters16avgBandwidthUsedE">
+<span id="_CPPv3N3avs19NetworkSinkCounters16avgBandwidthUsedE"></span><span id="_CPPv2N3avs19NetworkSinkCounters16avgBandwidthUsedE"></span><span id="avs::NetworkSinkCounters::avgBandwidthUsed__double"></span><span class="target" id="structavs_1_1_network_sink_counters_1aa0f3349535459b02a394c0e4818f649d"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avgBandwidthUsed</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCounters16avgBandwidthUsedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Average bandwidth used </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCounters16minBandwidthUsedE">
+<span id="_CPPv3N3avs19NetworkSinkCounters16minBandwidthUsedE"></span><span id="_CPPv2N3avs19NetworkSinkCounters16minBandwidthUsedE"></span><span id="avs::NetworkSinkCounters::minBandwidthUsed__double"></span><span class="target" id="structavs_1_1_network_sink_counters_1ae0b1ce03c0ad113b3b5f29243a7f61f7"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">minBandwidthUsed</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCounters16minBandwidthUsedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Minimum bandwidth used </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCounters16maxBandwidthUsedE">
+<span id="_CPPv3N3avs19NetworkSinkCounters16maxBandwidthUsedE"></span><span id="_CPPv2N3avs19NetworkSinkCounters16maxBandwidthUsedE"></span><span id="avs::NetworkSinkCounters::maxBandwidthUsed__double"></span><span class="target" id="structavs_1_1_network_sink_counters_1af90537da5451df6671fc3f85701f862e"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maxBandwidthUsed</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCounters16maxBandwidthUsedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Maximum bandwidth used </p>
+</dd></dl>
+
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::NetworkSinkParams” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkParamsE">
+<span id="_CPPv3N3avs17NetworkSinkParamsE"></span><span id="_CPPv2N3avs17NetworkSinkParamsE"></span><span id="avs::NetworkSinkParams"></span><span class="target" id="structavs_1_1_network_sink_params"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSinkParams</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkParamsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network sink parameters. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkParams16socketBufferSizeE">
+<span id="_CPPv3N3avs17NetworkSinkParams16socketBufferSizeE"></span><span id="_CPPv2N3avs17NetworkSinkParams16socketBufferSizeE"></span><span id="avs::NetworkSinkParams::socketBufferSize__i"></span><span class="target" id="structavs_1_1_network_sink_params_1a882f2b9b47481375d967961589e3c461"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socketBufferSize</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1024</span></span><span class="w"> </span><span class="o"><span class="pre">*</span></span><span class="w"> </span><span class="m"><span class="pre">1024</span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkParams16socketBufferSizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Operating system socket send buffer size. </p>
+</dd></dl>
+
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::NetworkSinkStream” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStreamE">
+<span id="_CPPv3N3avs17NetworkSinkStreamE"></span><span id="_CPPv2N3avs17NetworkSinkStreamE"></span><span id="avs::NetworkSinkStream"></span><span class="target" id="structavs_1_1_network_sink_stream"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSinkStream</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStreamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network sink stream data. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream7counterE">
+<span id="_CPPv3N3avs17NetworkSinkStream7counterE"></span><span id="_CPPv2N3avs17NetworkSinkStream7counterE"></span><span id="avs::NetworkSinkStream::counter__uint64_t"></span><span class="target" id="structavs_1_1_network_sink_stream_1a0cec38449e86ddc98b1d4718a049c5db"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">counter</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream7counterE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Stream index </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream9chunkSizeE">
+<span id="_CPPv3N3avs17NetworkSinkStream9chunkSizeE"></span><span id="_CPPv2N3avs17NetworkSinkStream9chunkSizeE"></span><span id="avs::NetworkSinkStream::chunkSize__s"></span><span class="target" id="structavs_1_1_network_sink_stream_1a1079c1bdd597eb9d197ba083cc1917fa"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">chunkSize</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream9chunkSizeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Max size of the buffer </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream2idE">
+<span id="_CPPv3N3avs17NetworkSinkStream2idE"></span><span id="_CPPv2N3avs17NetworkSinkStream2idE"></span><span id="avs::NetworkSinkStream::id__uint32_t"></span><span class="target" id="structavs_1_1_network_sink_stream_1a592b83da717d6d2a872775262db81f7b"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">id</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream2idE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>id </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream10parserTypeE">
+<span id="_CPPv3N3avs17NetworkSinkStream10parserTypeE"></span><span id="_CPPv2N3avs17NetworkSinkStream10parserTypeE"></span><span id="avs::NetworkSinkStream::parserType__StreamParserType"></span><span class="target" id="structavs_1_1_network_sink_stream_1a45849672c6af7a05f6685d34b9837f90"></span><span class="n"><span class="pre">StreamParserType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">parserType</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream10parserTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Stream parser type </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream8dataTypeE">
+<span id="_CPPv3N3avs17NetworkSinkStream8dataTypeE"></span><span id="_CPPv2N3avs17NetworkSinkStream8dataTypeE"></span><span id="avs::NetworkSinkStream::dataType__NetworkDataType"></span><span class="target" id="structavs_1_1_network_sink_stream_1a0d3c3c778b93f6876de2b9a77991ee59"></span><span class="n"><span class="pre">NetworkDataType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NetworkDataType</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">HEVC</span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream8dataTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Data type </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream19isDataLimitPerFrameE">
+<span id="_CPPv3N3avs17NetworkSinkStream19isDataLimitPerFrameE"></span><span id="_CPPv2N3avs17NetworkSinkStream19isDataLimitPerFrameE"></span><span id="avs::NetworkSinkStream::isDataLimitPerFrame__b"></span><span class="target" id="structavs_1_1_network_sink_stream_1a4b364b3f61aa19c6eb86a2016d7c523a"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">isDataLimitPerFrame</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream19isDataLimitPerFrameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whether there is a data limit per frame on this stream </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream5labelE">
+<span id="_CPPv3N3avs17NetworkSinkStream5labelE"></span><span id="_CPPv2N3avs17NetworkSinkStream5labelE"></span><span id="avs::NetworkSinkStream::label__ss"></span><span class="target" id="structavs_1_1_network_sink_stream_1a0cbf20f60691cb3cdd2317bd984181e1"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">label</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream5labelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The unique text label, used to identify streams across the network. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream9inputNameE">
+<span id="_CPPv3N3avs17NetworkSinkStream9inputNameE"></span><span id="_CPPv2N3avs17NetworkSinkStream9inputNameE"></span><span id="avs::NetworkSinkStream::inputName__ss"></span><span class="target" id="structavs_1_1_network_sink_stream_1ad1b29149941ca33c79077d456fda7e4f"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inputName</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream9inputNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The name of the queue that the stream’s inputs will come from. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream10outputNameE">
+<span id="_CPPv3N3avs17NetworkSinkStream10outputNameE"></span><span id="_CPPv2N3avs17NetworkSinkStream10outputNameE"></span><span id="avs::NetworkSinkStream::outputName__ss"></span><span class="target" id="structavs_1_1_network_sink_stream_1a40813e20c4d4af85b69d9b22fcbdaec4"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">outputName</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream10outputNameE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The name of the queue that the stream’s outputs will go to, if this stream has any. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream6framedE">
+<span id="_CPPv3N3avs17NetworkSinkStream6framedE"></span><span id="_CPPv2N3avs17NetworkSinkStream6framedE"></span><span id="avs::NetworkSinkStream::framed__b"></span><span class="target" id="structavs_1_1_network_sink_stream_1aa337da5195ed6a8f3cc10b199e40c018"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">framed</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream6framedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Whether the stream should be assembled into frames with EFP. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs17NetworkSinkStream6bufferE">
+<span id="_CPPv3N3avs17NetworkSinkStream6bufferE"></span><span id="_CPPv2N3avs17NetworkSinkStream6bufferE"></span><span id="avs::NetworkSinkStream::buffer__std::vector:uint8_t:"></span><span class="target" id="structavs_1_1_network_sink_stream_1a92bda939a0dce69714e4f6b837b3f285"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">buffer</span></span></span><a class="headerlink" href="#_CPPv4N3avs17NetworkSinkStream6bufferE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#classavs_1_1_buffer"><span class="std std-ref">Buffer</span></a> of data to be sent </p>
+</dd></dl>
+
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::NetworkSourceCounters” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCountersE">
+<span id="_CPPv3N3avs21NetworkSourceCountersE"></span><span id="_CPPv2N3avs21NetworkSourceCountersE"></span><span id="avs::NetworkSourceCounters"></span><span class="target" id="structavs_1_1_network_source_counters"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSourceCounters</span></span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCountersE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network source counters. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters13bytesReceivedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters13bytesReceivedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters13bytesReceivedE"></span><span id="avs::NetworkSourceCounters::bytesReceived__uint64_t"></span><span class="target" id="structavs_1_1_network_source_counters_1a5e1199fa78ff2e5557d38ff271b0fb28"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bytesReceived</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters13bytesReceivedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Total bytes received. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters22networkPacketsReceivedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters22networkPacketsReceivedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters22networkPacketsReceivedE"></span><span id="avs::NetworkSourceCounters::networkPacketsReceived__uint64_t"></span><span class="target" id="structavs_1_1_network_source_counters_1ac6980c7aeac01fa56048e2f0385177a4"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">networkPacketsReceived</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters22networkPacketsReceivedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of received network packets. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters22decoderPacketsReceivedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters22decoderPacketsReceivedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters22decoderPacketsReceivedE"></span><span id="avs::NetworkSourceCounters::decoderPacketsReceived__uint64_t"></span><span class="target" id="structavs_1_1_network_source_counters_1a8ffb7c4c1653cfbdd7178f4a7d30d17c"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decoderPacketsReceived</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters22decoderPacketsReceivedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of successfully assembled decoder packets. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters17httpFilesReceivedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters17httpFilesReceivedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters17httpFilesReceivedE"></span><span id="avs::NetworkSourceCounters::httpFilesReceived__uint64_t"></span><span class="target" id="structavs_1_1_network_source_counters_1a5d7bde14405de86aeaf51d85da541d77"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">httpFilesReceived</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters17httpFilesReceivedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of HTTP files received. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters21networkPacketsDroppedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters21networkPacketsDroppedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters21networkPacketsDroppedE"></span><span id="avs::NetworkSourceCounters::networkPacketsDropped__uint64_t"></span><span class="target" id="structavs_1_1_network_source_counters_1a3996491249acafe1d7c2fdc795d3da2b"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">networkPacketsDropped</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters21networkPacketsDroppedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of network packets dropped due to GC timeout. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters21decoderPacketsDroppedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters21decoderPacketsDroppedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters21decoderPacketsDroppedE"></span><span id="avs::NetworkSourceCounters::decoderPacketsDropped__uint64_t"></span><span class="target" id="structavs_1_1_network_source_counters_1ae1ab0f5815cfee42f5cbbfbdb56a6a9a"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decoderPacketsDropped</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters21decoderPacketsDroppedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of decoder packets dropped due to GC timeout. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters32incompleteDecoderPacketsReceivedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters32incompleteDecoderPacketsReceivedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters32incompleteDecoderPacketsReceivedE"></span><span id="avs::NetworkSourceCounters::incompleteDecoderPacketsReceived__uint64_t"></span><span class="target" id="structavs_1_1_network_source_counters_1afdcfafa5614b3f7771accce2e2f6b88c"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">incompleteDecoderPacketsReceived</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters32incompleteDecoderPacketsReceivedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of incomplete decoder packets received. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters14decoderDroppedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters14decoderDroppedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters14decoderDroppedE"></span><span id="avs::NetworkSourceCounters::decoderDropped__float"></span><span class="target" id="structavs_1_1_network_source_counters_1a4fc8e97f24df25bc6d104f1fcad1c156"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decoderDropped</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0.0f</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters14decoderDroppedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fraction of decoder packets dropped. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters14networkDroppedE">
+<span id="_CPPv3N3avs21NetworkSourceCounters14networkDroppedE"></span><span id="_CPPv2N3avs21NetworkSourceCounters14networkDroppedE"></span><span id="avs::NetworkSourceCounters::networkDropped__float"></span><span class="target" id="structavs_1_1_network_source_counters_1a0a3b0f223485327298d31f5c029930da"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">networkDropped</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0.0f</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters14networkDroppedE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Fraction of network packets dropped. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters12bandwidthKPSE">
+<span id="_CPPv3N3avs21NetworkSourceCounters12bandwidthKPSE"></span><span id="_CPPv2N3avs21NetworkSourceCounters12bandwidthKPSE"></span><span id="avs::NetworkSourceCounters::bandwidthKPS__float"></span><span class="target" id="structavs_1_1_network_source_counters_1a9fff03a4d0e80ebaed92b7844c38a7f7"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bandwidthKPS</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0.0f</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters12bandwidthKPSE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Bandwidth in kilobytes. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs21NetworkSourceCounters28decoderPacketsReceivedPerSecE">
+<span id="_CPPv3N3avs21NetworkSourceCounters28decoderPacketsReceivedPerSecE"></span><span id="_CPPv2N3avs21NetworkSourceCounters28decoderPacketsReceivedPerSecE"></span><span id="avs::NetworkSourceCounters::decoderPacketsReceivedPerSec__double"></span><span class="target" id="structavs_1_1_network_source_counters_1a3df38777a86ecaf9f1a5ba1555cb5127"></span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">decoderPacketsReceivedPerSec</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0.0</span></span><a class="headerlink" href="#_CPPv4N3avs21NetworkSourceCounters28decoderPacketsReceivedPerSecE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Number of successfully assembled decoder packets received per second. </p>
+</dd></dl>
+
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::NetworkSourceParams” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSourceParamsE">
+<span id="_CPPv3N3avs19NetworkSourceParamsE"></span><span id="_CPPv2N3avs19NetworkSourceParamsE"></span><span id="avs::NetworkSourceParams"></span><span class="target" id="structavs_1_1_network_source_params"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSourceParams</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSourceParamsE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network source parameters. </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSourceStreamE">
+<span id="_CPPv3N3avs19NetworkSourceStreamE"></span><span id="_CPPv2N3avs19NetworkSourceStreamE"></span><span id="avs::NetworkSourceStream"></span><span class="target" id="structavs_1_1_network_source_stream"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSourceStream</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSourceStreamE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Network source stream data. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSourceStream2idE">
+<span id="_CPPv3N3avs19NetworkSourceStream2idE"></span><span id="_CPPv2N3avs19NetworkSourceStream2idE"></span><span id="avs::NetworkSourceStream::id__uint32_t"></span><span class="target" id="structavs_1_1_network_source_stream_1abd40fc5534515a749c40a885654ebe77"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">id</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">UINT32_MAX</span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSourceStream2idE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>id to match with incoming channels. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSourceStream5labelE">
+<span id="_CPPv3N3avs19NetworkSourceStream5labelE"></span><span id="_CPPv2N3avs19NetworkSourceStream5labelE"></span><span id="avs::NetworkSourceStream::label__ss"></span><span class="target" id="structavs_1_1_network_source_stream_1a83436ca33cd70d9e3da8c7f5ddb4f3a5"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">label</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSourceStream5labelE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Name for debugging. </p>
+</dd></dl>
+
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::NetworkSourceStream” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
+</dd></dl>
+
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs6ResultE">
 <span id="_CPPv3N3avs6ResultE"></span><span id="_CPPv2N3avs6ResultE"></span><span id="avs::Result"></span><span class="target" id="structavs_1_1_result"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Result</span></span></span><a class="headerlink" href="#_CPPv4N3avs6ResultE" title="Permalink to this definition">¶</a><br /></dt>

@@ -1,5 +1,32 @@
 Changelist 
 ========= 
+| **Sun 16 Apr** : Revert nodeLookup changes in ClientRender/NodeManager.cpp. Minor whitespace corrections. Platform ptr.
+| **Sat 15 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Sat 15 Apr** : Fixed incorrect teleport_commit filepath for installer.
+| **Sat 15 Apr** : Platform ptr. Documentation fixes.
+| **Fri 14 Apr** : Fixed overlay for Windows and Android - WIP. Platform ptr.
+| **Thu 13 Apr** : Add 3DUI back to Android client.
+| **Thu 13 Apr** : Android compilation fixes for Platform.
+| **Thu 13 Apr** : Revert previous commit for agde.gradle and pc_client/Main.cpp
+| **Thu 13 Apr** : Updated SessionClient::CancelConnectButtonHandler() to disconnect from the server.
+| **Thu 13 Apr** : Merge branch 'main' of github.com:simul/Teleport into main
+| **Thu 13 Apr** : Fix for typing URLs in the text input where 'O' would still trigger the OSD.
+| **Thu 13 Apr** : Added a large number of public STUN/TURN servers to try in WebRTC.
+| **Thu 13 Apr** : Fix for PCVR transitioning in and out of VR. Platform ptr.
+| **Wed 12 Apr** : Fix unjoined thread in OpenXR.cpp on shutdown.
+| **Wed 12 Apr** : Platform ptr.
+| **Wed 12 Apr** : Some geometry stream debugging.
+| **Wed 12 Apr** : Merge branch 'main' of github.com:simul/Teleport into main
+| **Wed 12 Apr** : Minor changes and checks.
+| **Wed 12 Apr** : Platform ptr.
+| **Wed 12 Apr** : Platform ptr.
+| **Wed 12 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Wed 12 Apr** : Texture creation uses transferable buffers.
+| **Tue 11 Apr** : Differentiate DataChannel in source/sink.
+| **Tue 11 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Tue 11 Apr** : Improve OpenXR startup/shutdown.
+| **Sun 09 Apr** : Fix TextCanvas shutdown.
+| **Sun 09 Apr** : Activate/deactivate VR from within PC client.
 | **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 07 Apr** : Modified agde.gradle generated.
@@ -73,30 +100,3 @@ Changelist
 | **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 06 Mar** : Textures saved/loaded as binary, eliminating the unfortunate wchar16_t text save/load.
 | **Mon 06 Mar** : Fixes for changes to ImGui_ImplPlatform_DrawTe() and added Float16.h/.cpp to SimulMath_MT.vcxproj. Platform ptr.
-| **Sun 05 Mar** : Fix some interop issues.
-| **Sun 05 Mar** : Linux compatibility and debug work. Passing C# strings as char*, not BSTR, due to compatibility.
-| **Sun 05 Mar** : Linux compatibility and debug work. Passing C# strings as char*, not BSTR, due to compatibility.
-| **Tue 28 Feb** : Don't send clang options to ms compiler.
-| **Tue 28 Feb** : Windows compile fixes.
-| **Tue 28 Feb** : Compiles on Ubuntu 20 Linux.
-| **Tue 28 Feb** : Fixes to allow Linux compile.
-| **Thu 23 Feb** : Fix-up namespaces, more consistent use of teleport::core and teleport::server. The teleport:: ns on its own should not contain any declarations.
-| **Thu 23 Feb** : Eliminating _bstr_t as much as possible.
-| **Fri 10 Feb** : Added client icon. Renamed Quest sln.
-| **Wed 08 Feb** : Can init mouse InteractionProfile without OpenXR being available.
-| **Tue 07 Feb** : Minor build fixes and shader binary path corrections.
-| **Tue 07 Feb** : PC Client installer shader deployment.
-| **Mon 06 Feb** : PAUSE option in ini file.
-| **Mon 06 Feb** : Platform ptr.
-| **Mon 06 Feb** : Fix installer. Working Text Canvas on Quest.
-| **Mon 06 Feb** : Add fmt as CMake subdirectory if building server.
-| **Mon 06 Feb** : Fix warning.
-| **Mon 06 Feb** : Default compile now has warnings as errors. Fixed some warnings.
-| **Sun 05 Feb** : Added TextCanvas.
-| **Sat 04 Feb** : Merge branch 'main' of github.com:simul/Teleport
-| **Sat 04 Feb** : Added TextCanvas.
-| **Tue 31 Jan** : Minor update for Thread naming in NdkVideoDecoder. UntranscodedTexture updated constructor to allow easier creation with emplace_back().
-| **Mon 30 Jan** : Moved CmdBuffer::Wait() to be after the submission to flush the GPU. Not optimal, but temporarily resolves Vulkan crashes for Async Geometry Decode. Platform ptr.
-| **Fri 27 Jan** : Added TELEPORT_GEOMETRY_DECODER_ASYNC define to toggle async decoding of geometry. Platform ptr.
-| **Fri 27 Jan** : Remove buildToolsVersion.
-| **Fri 27 Jan** : Remove     buildToolsVersion "29.0.1"
