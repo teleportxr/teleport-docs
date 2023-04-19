@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Mon 17 Apr** : Disabled Text Rendering on Android.
+| **Sun 16 Apr** : Using CPackOptions for pack-time installer filename selection.
 | **Sun 16 Apr** : Revert nodeLookup changes in ClientRender/NodeManager.cpp. Minor whitespace corrections. Platform ptr.
 | **Sat 15 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Sat 15 Apr** : Fixed incorrect teleport_commit filepath for installer.
@@ -98,5 +100,3 @@ Changelist
 | **Mon 06 Mar** : Materials saved/loaded in 8-bit binary form.
 | **Mon 06 Mar** : Merge Linux fixes.
 | **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
-| **Mon 06 Mar** : Textures saved/loaded as binary, eliminating the unfortunate wchar16_t text save/load.
-| **Mon 06 Mar** : Fixes for changes to ImGui_ImplPlatform_DrawTe() and added Float16.h/.cpp to SimulMath_MT.vcxproj. Platform ptr.
