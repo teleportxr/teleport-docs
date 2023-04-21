@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Wed 19 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Wed 19 Apr** : Update openxr version to support passThrough.
 | **Mon 17 Apr** : Disabled Text Rendering on Android.
 | **Sun 16 Apr** : Using CPackOptions for pack-time installer filename selection.
 | **Sun 16 Apr** : Revert nodeLookup changes in ClientRender/NodeManager.cpp. Minor whitespace corrections. Platform ptr.
@@ -98,5 +100,3 @@ Changelist
 | **Mon 06 Mar** : Fix serverside font storage. Fix packing of settings for Clang.
 | **Mon 06 Mar** : Remove last traces of the wchar_t text storage for the cache.
 | **Mon 06 Mar** : Materials saved/loaded in 8-bit binary form.
-| **Mon 06 Mar** : Merge Linux fixes.
-| **Mon 06 Mar** : Merge branch 'main' of github.com:simul/Teleport
