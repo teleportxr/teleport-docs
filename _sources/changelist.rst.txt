@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sat 22 Apr** : PThreads built with CMake instead of standalone (Windows only)
 | **Wed 19 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Wed 19 Apr** : Update openxr version to support passThrough.
 | **Mon 17 Apr** : Disabled Text Rendering on Android.
@@ -99,4 +100,3 @@ Changelist
 | **Mon 06 Mar** : Rearrange Server dll-interface functions: now PluginClient contains the Client_ functions, and PluginMain contains the rest.
 | **Mon 06 Mar** : Fix serverside font storage. Fix packing of settings for Clang.
 | **Mon 06 Mar** : Remove last traces of the wchar_t text storage for the cache.
-| **Mon 06 Mar** : Materials saved/loaded in 8-bit binary form.
