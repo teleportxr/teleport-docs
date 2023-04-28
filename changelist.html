@@ -86,6 +86,13 @@
   <section id="changelist">
 <h1>Changelist<a class="headerlink" href="#changelist" title="Permalink to this heading">¶</a></h1>
 <div class="line-block">
+<div class="line"><strong>Thu 27 Apr</strong> : Fix and simplify signaling and structure.</div>
+<div class="line"><strong>Thu 27 Apr</strong> : No longer using enet messages.</div>
+<div class="line"><strong>Thu 27 Apr</strong> : Handshake uses Websockets signaling.</div>
+<div class="line"><strong>Thu 27 Apr</strong> : Improved signaling with Websockets.</div>
+<div class="line"><strong>Wed 26 Apr</strong> : Restored WebSockets signaling, still using Enet for follow-up.</div>
+<div class="line"><strong>Wed 26 Apr</strong> : Prior to reintroducting ws signaling.</div>
+<div class="line"><strong>Tue 25 Apr</strong> : temporary intermediate commit.</div>
 <div class="line"><strong>Sat 22 Apr</strong> : PThreads built with CMake instead of standalone (Windows only)</div>
 <div class="line"><strong>Wed 19 Apr</strong> : Merge branch ‘main’ of github.com:simul/Teleport</div>
 <div class="line"><strong>Wed 19 Apr</strong> : Update openxr version to support passThrough.</div>
@@ -179,13 +186,6 @@
 <div class="line"><strong>Sat 11 Mar</strong> : WebRTC implementation - client and server, using different API’s.</div>
 <div class="line"><strong>Sat 11 Mar</strong> : Added libdatachannel - alternative WebRTC implementation. WebRTC source and sink correctly exchange offer, answer and candidates.</div>
 <div class="line"><strong>Fri 10 Mar</strong> : Added webrtc network source files. Will most likely remove Google’s webrtc implementation and replace with something more tractable.</div>
-<div class="line"><strong>Thu 09 Mar</strong> : Add webrtc.lib for x64</div>
-<div class="line"><strong>Thu 09 Mar</strong> : Added webrtc headers. thirdparty/webrtc/third_party/abseil-cpp/absl/base/options.h has been changed  so that ABSL_OPTION_USE_STD_OPTIONAL=0, to prevent runtime crashes.</div>
-<div class="line"><strong>Thu 09 Mar</strong> : Initial WebRTC support.</div>
-<div class="line"><strong>Tue 07 Mar</strong> : Server works in Linux - at least for connection and motion updates. Data streams are not yet functional - should we simply move to WebRTC at this point?</div>
-<div class="line"><strong>Mon 06 Mar</strong> : Rearrange Server dll-interface functions: now PluginClient contains the <a href="#id1"><span class="problematic" id="id2">Client_</span></a> functions, and PluginMain contains the rest.</div>
-<div class="line"><strong>Mon 06 Mar</strong> : Fix serverside font storage. Fix packing of settings for Clang.</div>
-<div class="line"><strong>Mon 06 Mar</strong> : Remove last traces of the wchar_t text storage for the cache.</div>
 </div>
 </section>
 

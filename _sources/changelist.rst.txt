@@ -1,5 +1,12 @@
 Changelist 
 ========= 
+| **Thu 27 Apr** : Fix and simplify signaling and structure.
+| **Thu 27 Apr** : No longer using enet messages.
+| **Thu 27 Apr** : Handshake uses Websockets signaling.
+| **Thu 27 Apr** : Improved signaling with Websockets.
+| **Wed 26 Apr** : Restored WebSockets signaling, still using Enet for follow-up.
+| **Wed 26 Apr** : Prior to reintroducting ws signaling.
+| **Tue 25 Apr** : temporary intermediate commit.
 | **Sat 22 Apr** : PThreads built with CMake instead of standalone (Windows only)
 | **Wed 19 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Wed 19 Apr** : Update openxr version to support passThrough.
@@ -93,10 +100,3 @@ Changelist
 | **Sat 11 Mar** : WebRTC implementation - client and server, using different API's.
 | **Sat 11 Mar** : Added libdatachannel - alternative WebRTC implementation. WebRTC source and sink correctly exchange offer, answer and candidates.
 | **Fri 10 Mar** : Added webrtc network source files. Will most likely remove Google's webrtc implementation and replace with something more tractable.
-| **Thu 09 Mar** : Add webrtc.lib for x64
-| **Thu 09 Mar** : Added webrtc headers. thirdparty/webrtc/third_party/abseil-cpp/absl/base/options.h has been changed  so that ABSL_OPTION_USE_STD_OPTIONAL=0, to prevent runtime crashes.
-| **Thu 09 Mar** : Initial WebRTC support.
-| **Tue 07 Mar** : Server works in Linux - at least for connection and motion updates. Data streams are not yet functional - should we simply move to WebRTC at this point?
-| **Mon 06 Mar** : Rearrange Server dll-interface functions: now PluginClient contains the Client_ functions, and PluginMain contains the rest.
-| **Mon 06 Mar** : Fix serverside font storage. Fix packing of settings for Clang.
-| **Mon 06 Mar** : Remove last traces of the wchar_t text storage for the cache.
