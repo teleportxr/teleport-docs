@@ -1,13 +1,25 @@
 Changelist 
 ========= 
+| **Mon 01 May** : Added missing header for DiscoveryService.
+| **Mon 01 May** : Client CMake fixes.
+| **Mon 01 May** : Merge branch 'main' of github.com:simul/Teleport
+| **Fri 28 Apr** : Platform ptr with D3D12 texture upload fix.
+| **Fri 28 Apr** : Merge branch 'main' of github.com:simul/Teleport into old_main
+| **Fri 28 Apr** : Remove legacy enet code.
+| **Fri 28 Apr** : Removed a lot of enet code, simplified server-side.
 | **Thu 27 Apr** : Fix and simplify signaling and structure.
 | **Thu 27 Apr** : No longer using enet messages.
 | **Thu 27 Apr** : Handshake uses Websockets signaling.
+| **Thu 27 Apr** : Merge branch 'main' of github.com:simul/Teleport into old_main
+| **Thu 27 Apr** : Merge branch 'old_main' of github.com:simul/Teleport into old_main
 | **Thu 27 Apr** : Improved signaling with Websockets.
+| **Wed 26 Apr** : Restored client-side of WebSockets signaling, still using Enet for follow-up.
 | **Wed 26 Apr** : Restored WebSockets signaling, still using Enet for follow-up.
 | **Wed 26 Apr** : Prior to reintroducting ws signaling.
+| **Wed 26 Apr** : Prior to re-introducing ws signaling.
 | **Tue 25 Apr** : temporary intermediate commit.
 | **Sat 22 Apr** : PThreads built with CMake instead of standalone (Windows only)
+| **Thu 20 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Wed 19 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Wed 19 Apr** : Update openxr version to support passThrough.
 | **Mon 17 Apr** : Disabled Text Rendering on Android.
@@ -17,6 +29,8 @@ Changelist
 | **Sat 15 Apr** : Fixed incorrect teleport_commit filepath for installer.
 | **Sat 15 Apr** : Platform ptr. Documentation fixes.
 | **Fri 14 Apr** : Fixed overlay for Windows and Android - WIP. Platform ptr.
+| **Fri 14 Apr** : Merge branch 'main' of github.com:simul/Teleport
+| **Fri 14 Apr** : Addded teleportcore.rst
 | **Thu 13 Apr** : Add 3DUI back to Android client.
 | **Thu 13 Apr** : Android compilation fixes for Platform.
 | **Thu 13 Apr** : Revert previous commit for agde.gradle and pc_client/Main.cpp
@@ -86,17 +100,3 @@ Changelist
 | **Mon 20 Mar** : Removed Google webrtc includes. Updated openssl libraries to be static MT version.
 | **Mon 20 Mar** : Improved documentation.
 | **Mon 20 Mar** : Fix build errors from TELEPORT_INTERNAL_CHECKS and fmt.
-| **Fri 17 Mar** : Merge remote-tracking branch 'origin/main' into main
-| **Fri 17 Mar** : 2D User interface for Desktop mode. Removed avs::vec3 etc - just use the Platform vector structs.
-| **Fri 17 Mar** : Linux compile fixes.
-| **Thu 16 Mar** : Search label improved.
-| **Thu 16 Mar** : More contrast in docs theme.
-| **Thu 16 Mar** : Added openssl files - version 3.0.8.
-| **Thu 16 Mar** : Add teleport_sphinx_theme to ensure docs are accessible.
-| **Thu 16 Mar** : Added AndroidAudioPlayer and Google oboe library. Removed uid's from saved resource files. uid is now extracted along with GeometryPayloadType prior to sending to the geometry decode thread.
-| **Tue 14 Mar** : Added libdatachannel libraries prebuilt for Android.
-| **Tue 14 Mar** : WebRTC version builds with Android - but only after disabling SRT support. OpenSSL on Windows is now statically-linked, and separate platform-specific openssl directories are used.
-| **Sun 12 Mar** : libdatachannel used both ends for WebRTC. SSL issues on client.
-| **Sat 11 Mar** : WebRTC implementation - client and server, using different API's.
-| **Sat 11 Mar** : Added libdatachannel - alternative WebRTC implementation. WebRTC source and sink correctly exchange offer, answer and candidates.
-| **Fri 10 Mar** : Added webrtc network source files. Will most likely remove Google's webrtc implementation and replace with something more tractable.
