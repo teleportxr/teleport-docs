@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Thu 04 May** : Merge branch 'main' of github.com:simul/Teleport
+| **Thu 04 May** : Fix various connection snags.
 | **Mon 01 May** : Added missing header for DiscoveryService.
 | **Mon 01 May** : Client CMake fixes.
 | **Mon 01 May** : Merge branch 'main' of github.com:simul/Teleport
@@ -98,5 +100,3 @@ Changelist
 | **Mon 20 Mar** : Fixed compilation error usage with ImGui_ImplPlatform_DrawTexture() in Gui.cpp. Platform ptr.
 | **Mon 20 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 20 Mar** : Removed Google webrtc includes. Updated openssl libraries to be static MT version.
-| **Mon 20 Mar** : Improved documentation.
-| **Mon 20 Mar** : Fix build errors from TELEPORT_INTERNAL_CHECKS and fmt.
