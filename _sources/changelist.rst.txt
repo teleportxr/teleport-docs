@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sat 06 May** : Fix Node mutex double-lock and websocket crash from shared_ptr&
 | **Thu 04 May** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 04 May** : Fix various connection snags.
 | **Mon 01 May** : Added missing header for DiscoveryService.
@@ -99,4 +100,3 @@ Changelist
 | **Mon 20 Mar** : Fixed compilation error in Gui.cpp for Android.
 | **Mon 20 Mar** : Fixed compilation error usage with ImGui_ImplPlatform_DrawTexture() in Gui.cpp. Platform ptr.
 | **Mon 20 Mar** : Merge branch 'main' of github.com:simul/Teleport
-| **Mon 20 Mar** : Removed Google webrtc includes. Updated openssl libraries to be static MT version.
