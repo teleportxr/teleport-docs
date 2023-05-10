@@ -1,5 +1,9 @@
 Changelist 
 ========= 
+| **Wed 10 May** : Motion smoothing for externally updated objects.
+| **Tue 09 May** : Added ClientTime. Timings in nanoseconds now, should be synchronized against Unix time.
+| **Tue 09 May** : Proper random session id.
+| **Mon 08 May** : Some thread clash fixes for nodes.
 | **Sat 06 May** : Fix Node mutex double-lock and websocket crash from shared_ptr&
 | **Thu 04 May** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 04 May** : Fix various connection snags.
@@ -96,7 +100,3 @@ Changelist
 | **Tue 21 Mar** : Fixed Renderer::UpdateShaderPasses() introducing nullptrs to EffectPasses via EffectTechnique::GetPass(). Added digitizing passes to pbr.sfx.
 | **Tue 21 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 21 Mar** : Update localGeometryCache in Android to match PC: saved assets do not store their uid's!
-| **Mon 20 Mar** : Merge branch 'main' of github.com:simul/Teleport into main
-| **Mon 20 Mar** : Fixed compilation error in Gui.cpp for Android.
-| **Mon 20 Mar** : Fixed compilation error usage with ImGui_ImplPlatform_DrawTexture() in Gui.cpp. Platform ptr.
-| **Mon 20 Mar** : Merge branch 'main' of github.com:simul/Teleport
