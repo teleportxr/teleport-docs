@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Wed 10 May** : Merge branch 'main' of github.com:simul/Teleport
+| **Wed 10 May** : Check handshake size.
+| **Wed 10 May** : DisplayInfo now contains framerate.
 | **Wed 10 May** : Motion smoothing for externally updated objects.
 | **Tue 09 May** : Added ClientTime. Timings in nanoseconds now, should be synchronized against Unix time.
 | **Tue 09 May** : Proper random session id.
@@ -97,6 +100,3 @@ Changelist
 | **Tue 21 Mar** : Added openssl cnf files.
 | **Tue 21 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 21 Mar** : D3D12 OpenXR needs a Queue.
-| **Tue 21 Mar** : Fixed Renderer::UpdateShaderPasses() introducing nullptrs to EffectPasses via EffectTechnique::GetPass(). Added digitizing passes to pbr.sfx.
-| **Tue 21 Mar** : Merge branch 'main' of github.com:simul/Teleport
-| **Tue 21 Mar** : Update localGeometryCache in Android to match PC: saved assets do not store their uid's!
