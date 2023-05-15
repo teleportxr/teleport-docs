@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Mon 15 May** : Correctly randomize session id.
+| **Sat 13 May** : Better error checking in webrtc.
+| **Fri 12 May** : We now measure latency about once every 100 frames between server and client.
 | **Wed 10 May** : Merge branch 'main' of github.com:simul/Teleport
 | **Wed 10 May** : Check handshake size.
 | **Wed 10 May** : DisplayInfo now contains framerate.
@@ -97,6 +100,3 @@ Changelist
 | **Wed 22 Mar** : Merge remote-tracking branch 'origin/main' into main
 | **Wed 22 Mar** : Linux now streams geometry.
 | **Tue 21 Mar** : Merge branch 'main' of github.com:simul/Teleport
-| **Tue 21 Mar** : Added openssl cnf files.
-| **Tue 21 Mar** : Merge branch 'main' of github.com:simul/Teleport
-| **Tue 21 Mar** : D3D12 OpenXR needs a Queue.
