@@ -1,5 +1,9 @@
 Changelist 
 ========= 
+| **Wed 17 May** : Docs work.
+| **Wed 17 May** : Better thread-safety in SignalingService.
+| **Tue 16 May** : Fixes to network behaviour. Orthogonal property confirmation, first implementation.
+| **Mon 15 May** : Improved multithreading in DiscoveryService.
 | **Mon 15 May** : Correctly randomize session id.
 | **Sat 13 May** : Better error checking in webrtc.
 | **Fri 12 May** : We now measure latency about once every 100 frames between server and client.
@@ -96,7 +100,3 @@ Changelist
 | **Fri 24 Mar** : pc_client/Main.cpp uses a MultiviewGraphicsDeviceContext. UseOpenXR.cpp changed to match the Android version where we create a single swapchain of layered image. Whitespace changes in shaders. Platform ptr.
 | **Thu 23 Mar** : Fixed transmission to Android - vec3 etc are not packed, so vec3_packed etc are used for network-transmitted structs. Fixed vr keyboard input.
 | **Wed 22 Mar** : Add build to .gitignore.
-| **Wed 22 Mar** : Added Threads.h in TeleportCore.
-| **Wed 22 Mar** : Merge remote-tracking branch 'origin/main' into main
-| **Wed 22 Mar** : Linux now streams geometry.
-| **Tue 21 Mar** : Merge branch 'main' of github.com:simul/Teleport
