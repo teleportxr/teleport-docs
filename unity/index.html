@@ -59,7 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#get-the-example-project">Get the Example Project</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#install-the-plugin-to-an-existing-project">Install the plugin to an existing project</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#building-from-source">Building from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-unity-server-from-source">Building the Unity Server from Source</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
@@ -126,12 +126,11 @@ Be sure to update the submodules: the actual Teleport plugin is a submodule at A
 <p>You can install it as a Git submodule or copy the code directly, it should go in a subfolder of your Unity project’s Assets folder, e.g. Assets/Teleport.</p>
 <p>From your unity project, launch the Package Manager, and install the Core RP Library.</p>
 </section>
-<section id="building-from-source">
-<h3>Building from Source<a class="headerlink" href="#building-from-source" title="Permalink to this heading">¶</a></h3>
+<section id="building-the-unity-server-from-source">
+<h3>Building the Unity Server from Source<a class="headerlink" href="#building-the-unity-server-from-source" title="Permalink to this heading">¶</a></h3>
 <p>If you’ve installed the Teleport Unity SDK as a prebuilt package, you’re ready to go. But if you’re building the Teleport C++ Server SDK from source, you’ll need to follow the instructions in the Server section of this documentation.
 Use CMakeGui to set:</p>
 <ul class="simple">
-<li><p>TELEPORT_SERVER to true</p></li>
 <li><p>TELEPORT_UNITY to true</p></li>
 <li><p>TELEPORT_UNITY_EDITOR_DIR to the folder where Unity.exe resides.</p></li>
 <li><p>TELEPORT_UNITY_PLUGINS_DIR to the folder Plugins/x86_64 in the Teleport Unity assets folder, so that the C++ SDK will build TeleportServer.dll to that directory.</p></li>
@@ -142,7 +141,7 @@ Use CMakeGui to set:</p>
 </section>
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
-<p>First, select the Teleport render pipeline. This adds functionality for video streaming and lighting generation. In the <em>Edit</em> menu, under <em>Project Settings…</em>, select <em>Graphics</em>. Set the Scriptable Render Pipeline Settings
+<p>First, activate the Teleport render pipeline. This adds functionality for video streaming and lighting generation. In the <em>Edit</em> menu, under <em>Project Settings…</em>, select <em>Graphics</em>. Set the Scriptable Render Pipeline Settings
 object to point to the Default Teleport Render Pipeline, found in Teleport/Resources.</p>
 <a class="reference internal image-reference" href="../_images/RenderPipelineAsset.png"><img alt="Activate the Teleport render pipeline in the Project Settings/Graphics panel." src="../_images/RenderPipelineAsset.png" style="width: 600px;" /></a>
 <p><strong>Graphics Project Settings panel</strong></p>

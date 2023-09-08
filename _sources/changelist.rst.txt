@@ -1,5 +1,15 @@
 Changelist 
 ========= 
+| **Wed 06 Sep** : Platform ptr.
+| **Wed 06 Sep** : Draco ptr to rvkennedy branch with text file loading from memory.
+| **Wed 06 Sep** : Merge branch 'main' of github.com:simul/Teleport
+| **Wed 06 Sep** : Added .clang-format.
+| **Wed 06 Sep** : Added SubSceneComponent
+| **Mon 04 Sep** : .
+| **Mon 04 Sep** : Skin is now Skeleton. Skinned mesh bindings are stored with nodes, not in the Skeleton. Multiple meshes can be driven by a single Skeleton.
+| **Thu 10 Aug** : No curl.h in httputil.hpp.
+| **Thu 10 Aug** : Added OpenXRRenderModel. Fixed numerous GLTF import issues.
+| **Fri 04 Aug** : Using Platform's new shader variant system.
 | **Wed 17 May** : Docs work.
 | **Wed 17 May** : Better thread-safety in SignalingService.
 | **Tue 16 May** : Fixes to network behaviour. Orthogonal property confirmation, first implementation.
@@ -90,13 +100,3 @@ Changelist
 | **Mon 27 Mar** : Merge branch 'main' of github.com:simul/Teleport
 | **Mon 27 Mar** : Fix some data streaming problems. Added Generic encoder/decoder for simple packets in WebRTC.
 | **Mon 27 Mar** : Fixed documentation with image to external sites for video_vulkan_android_import_and_ycbcr.rst.
-| **Fri 24 Mar** : Added Event to VR Rendering. Fixing Overlays and added Overlay swapchain.
-| **Fri 24 Mar** : Merge branch 'main' of github.com:simul/Teleport
-| **Fri 24 Mar** : Using new Platform Buffer inialization API.
-| **Fri 24 Mar** : Merge branch 'main' of github.com:simul/Teleport
-| **Fri 24 Mar** : Try to recreate a failed WebRTC peer connection.
-| **Fri 24 Mar** : Platform ptr.
-| **Fri 24 Mar** : Merge branch 'main' of github.com:simul/Teleport into main
-| **Fri 24 Mar** : pc_client/Main.cpp uses a MultiviewGraphicsDeviceContext. UseOpenXR.cpp changed to match the Android version where we create a single swapchain of layered image. Whitespace changes in shaders. Platform ptr.
-| **Thu 23 Mar** : Fixed transmission to Android - vec3 etc are not packed, so vec3_packed etc are used for network-transmitted structs. Fixed vr keyboard input.
-| **Wed 22 Mar** : Add build to .gitignore.
