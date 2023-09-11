@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Sun 10 Sep** : Checking for texture errors.
+| **Sat 09 Sep** : Added submodule flecs.
+| **Fri 08 Sep** : Added Resource.h and cpp.
 | **Wed 06 Sep** : Platform ptr.
 | **Wed 06 Sep** : Draco ptr to rvkennedy branch with text file loading from memory.
 | **Wed 06 Sep** : Merge branch 'main' of github.com:simul/Teleport
@@ -97,6 +100,3 @@ Changelist
 | **Fri 31 Mar** : Added ClientNetworkContext.cpp
 | **Thu 30 Mar** : Added tidy_files.bat
 | **Thu 30 Mar** : Docs: added Tidy and Validator projects to first clean, and then validate the generated html.
-| **Mon 27 Mar** : Merge branch 'main' of github.com:simul/Teleport
-| **Mon 27 Mar** : Fix some data streaming problems. Added Generic encoder/decoder for simple packets in WebRTC.
-| **Mon 27 Mar** : Fixed documentation with image to external sites for video_vulkan_android_import_and_ycbcr.rst.
