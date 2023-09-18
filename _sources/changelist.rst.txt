@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Sat 16 Sep** : When a new version of a resource is loaded, it replaces the old one instead of failing to update.
 | **Sun 10 Sep** : Checking for texture errors.
 | **Sat 09 Sep** : Added submodule flecs.
 | **Fri 08 Sep** : Added Resource.h and cpp.
@@ -99,4 +100,3 @@ Changelist
 | **Fri 31 Mar** : mmdc in conf.py
 | **Fri 31 Mar** : Added ClientNetworkContext.cpp
 | **Thu 30 Mar** : Added tidy_files.bat
-| **Thu 30 Mar** : Docs: added Tidy and Validator projects to first clean, and then validate the generated html.
