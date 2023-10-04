@@ -63,7 +63,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#avs-interface-classes">avs Interface Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#avs-nodes">avs Nodes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#avs-structs">avs Structs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#client-messages">Client Messages</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
@@ -201,9 +200,9 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs8Pipeline7processEv">
 <span id="_CPPv3N3avs8Pipeline7processEv"></span><span id="_CPPv2N3avs8Pipeline7processEv"></span><span id="avs::Pipeline::process"></span><span class="target" id="classavs_1_1_pipeline_1ae25451242f736d850b5fa6f1de22993a"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs8Pipeline7processEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Process pipeline. Calls <a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> on each node in pipeline order providing consistent timestamp to each invocation. Returns:<ul class="simple">
+<dd><p>Process pipeline. Calls <a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> on each node in pipeline order providing consistent timestamp to each invocation. Returns:<ul class="simple">
 <li><p>Result::OK on success.</p></li>
-<li><p>An error result returned by a failing node (pipeline processing is immediately aborted on first <a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a> failure).</p></li>
+<li><p>An error result returned by a failing node (pipeline processing is immediately aborted on first <a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a> failure).</p></li>
 </ul>
 </p>
 <p><a class="reference internal" href="#classavs_1_1_pipeline"><span class="std std-ref">Pipeline</span></a> time starts when <a class="reference internal" href="#classavs_1_1_pipeline_1ae25451242f736d850b5fa6f1de22993a"><span class="std std-ref">process()</span></a> is called first and is backed up by platform’s high resolution monotonic clock. </p>
@@ -275,7 +274,7 @@
 <span id="_CPPv3N3avs20UseInternalAllocatorE"></span><span id="_CPPv2N3avs20UseInternalAllocatorE"></span><span id="avs::UseInternalAllocator"></span><span class="target" id="classavs_1_1_use_internal_allocator"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UseInternalAllocator</span></span></span><a class="headerlink" href="#_CPPv4N3avs20UseInternalAllocatorE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Helper class for enforcing the use of memory allocator defined within libavstream library module.</p>
 <p>This is used to prevent memory allocation/deallocation across DLL boundary even when operator new or operator delete are called from client code. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_audio_encoder_backend_interface"><span class="std std-ref">avs::AudioEncoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_audio_target_backend_interface"><span class="std std-ref">avs::AudioTargetBackendInterface</span></a>, <a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#classavs_1_1_decoder_backend_interface"><span class="std std-ref">avs::DecoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_encoder_backend_interface"><span class="std std-ref">avs::EncoderBackendInterface</span></a>, avs::GeometryCacheBackendInterface, avs::GeometryDecoderBackendInterface, avs::GeometryEncoderBackendInterface, avs::GeometryRequesterBackendInterface, avs::GeometryTargetBackendInterface, avs::StreamParserInterface, avs::SurfaceBackendInterface</p>
+<p>Subclassed by <a class="reference internal" href="#classavs_1_1_audio_encoder_backend_interface"><span class="std std-ref">avs::AudioEncoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_audio_target_backend_interface"><span class="std std-ref">avs::AudioTargetBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_decoder_backend_interface"><span class="std std-ref">avs::DecoderBackendInterface</span></a>, <a class="reference internal" href="#classavs_1_1_encoder_backend_interface"><span class="std std-ref">avs::EncoderBackendInterface</span></a>, avs::GeometryCacheBackendInterface, avs::GeometryDecoderBackendInterface, avs::GeometryEncoderBackendInterface, avs::GeometryRequesterBackendInterface, avs::GeometryTargetBackendInterface, avs::StreamParserInterface, avs::SurfaceBackendInterface</p>
 </dd></dl>
 
 </section>
@@ -358,55 +357,6 @@
 <dd><p>Packet I/O node interface.</p>
 <p>Nodes implementing this interface can act as data sources and/or sinks for the purpose of packet reads and/or writes. Packet reads (writes) operate on atomic chunks of data - packets cannot be partially read or written. </p>
 <p>Subclassed by <a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">avs::File</span></a>, <a class="reference internal" href="#classavs_1_1_null_sink"><span class="std std-ref">avs::NullSink</span></a></p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs15PacketInterface10readPacketEP12PipelineNodePvR6size_ti">
-<span id="_CPPv3N3avs15PacketInterface10readPacketEP12PipelineNodePvR6size_ti"></span><span id="_CPPv2N3avs15PacketInterface10readPacketEP12PipelineNodePvR6size_ti"></span><span id="avs::PacketInterface::readPacket__PipelineNodeP.voidP.sR.i"></span><span class="target" id="classavs_1_1_packet_interface_1abd73d374f2c918dce815673df0bef0e3"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">readPacket</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">reader</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bufferSize</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs15PacketInterface10readPacketEP12PipelineNodePvR6size_ti" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Read packet. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>reader</strong> – <a class="reference internal" href="#classavs_1_1_pipeline_node"><span class="std std-ref">PipelineNode</span></a> which performs the read operation. </p></li>
-<li><p><strong>buffer</strong> – Pointer to destination buffer (may be nullptr to query for buffer size). </p></li>
-<li><p><strong>bufferSize</strong> – Size of destination buffer in bytes. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>Result::OK on success.</p></li>
-<li><p>Result::IO_Retry if either buffer is nullptr or bufferSize is too small. Correct buffer size is written back to bufferSize and the read should be retried.</p></li>
-<li><p><a class="reference internal" href="#classavs_1_1_pipeline_node"><span class="std std-ref">PipelineNode</span></a> specific error result. </p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs15PacketInterface11writePacketEP12PipelineNodePKv6size_tKi">
-<span id="_CPPv3N3avs15PacketInterface11writePacketEP12PipelineNodePKv6size_tKi"></span><span id="_CPPv2N3avs15PacketInterface11writePacketEP12PipelineNodePKv6size_tKi"></span><span id="avs::PacketInterface::writePacket__PipelineNodeP.voidCP.s.iC"></span><span class="target" id="classavs_1_1_packet_interface_1ad313e08cda78b4d4c994c1c08fb82e28"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">writePacket</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">writer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufferSize</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">index</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs15PacketInterface11writePacketEP12PipelineNodePKv6size_tKi" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Write packet. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>writer</strong> – <a class="reference internal" href="#classavs_1_1_pipeline_node"><span class="std std-ref">PipelineNode</span></a> which performs the write operation. </p></li>
-<li><p><strong>buffer</strong> – Pointer to source buffer. </p></li>
-<li><p><strong>bufferSize</strong> – Size of source buffer in bytes. </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p>Result::OK on success.</p></li>
-<li><p>Result::IO_InvalidArgument if either buffer is nullptr or bufferSize is zero.</p></li>
-<li><p><a class="reference internal" href="#classavs_1_1_pipeline_node"><span class="std std-ref">PipelineNode</span></a> specific error result. </p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
 </dd></dl>
 
 <dl class="cpp class">
@@ -687,7 +637,7 @@
 <span id="_CPPv3N3avs23DecoderBackendInterfaceE"></span><span id="_CPPv2N3avs23DecoderBackendInterfaceE"></span><span id="avs::DecoderBackendInterface"></span><span class="target" id="classavs_1_1_decoder_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DecoderBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs23DecoderBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Common decoder backend interface.</p>
 <p><a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">Decoder</span></a> backend is responsible for decoding compressed video data using a particular hardware decoder. Decoded video frames are outputted to a registered surface. </p>
-<p>Subclassed by clientrender::VideoDecoderBackend</p>
+<p>Subclassed by clientrender::VideoDecoderBackend, teleport::android::VideoDecoderBackend</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
@@ -859,7 +809,7 @@
 </ul>
 </p>
 <p>Being aware of this classification is very important in correctly constructing pipelines. </p>
-<p>Subclassed by <a class="reference internal" href="#classavs_1_1_audio_decoder"><span class="std std-ref">avs::AudioDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_audio_encoder"><span class="std std-ref">avs::AudioEncoder</span></a>, avs::AudioTarget, <a class="reference internal" href="#classavs_1_1_buffer"><span class="std std-ref">avs::Buffer</span></a>, <a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">avs::Decoder</span></a>, <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">avs::Encoder</span></a>, <a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">avs::File</span></a>, <a class="reference internal" href="#classavs_1_1_forwarder"><span class="std std-ref">avs::Forwarder</span></a>, avs::GenericDecoder, avs::GenericEncoder, <a class="reference internal" href="#classavs_1_1_geometry_decoder"><span class="std std-ref">avs::GeometryDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_encoder"><span class="std std-ref">avs::GeometryEncoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">avs::GeometrySource</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_target"><span class="std std-ref">avs::GeometryTarget</span></a>, <a class="reference internal" href="#classavs_1_1_network_sink"><span class="std std-ref">avs::NetworkSink</span></a>, <a class="reference internal" href="#classavs_1_1_network_source"><span class="std std-ref">avs::NetworkSource</span></a>, <a class="reference internal" href="#classavs_1_1_null_sink"><span class="std std-ref">avs::NullSink</span></a>, <a class="reference internal" href="#classavs_1_1_packetizer"><span class="std std-ref">avs::Packetizer</span></a>, <a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">avs::Queue</span></a>, avs::SingleQueue, <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">avs::Surface</span></a>, <a class="reference internal" href="#classavs_1_1_tag_data_decoder"><span class="std std-ref">avs::TagDataDecoder</span></a></p>
+<p>Subclassed by <a class="reference internal" href="#classavs_1_1_audio_decoder"><span class="std std-ref">avs::AudioDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_audio_encoder"><span class="std std-ref">avs::AudioEncoder</span></a>, avs::AudioTarget, <a class="reference internal" href="#classavs_1_1_buffer"><span class="std std-ref">avs::Buffer</span></a>, <a class="reference internal" href="#classavs_1_1_decoder"><span class="std std-ref">avs::Decoder</span></a>, <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">avs::Encoder</span></a>, <a class="reference internal" href="#classavs_1_1_file"><span class="std std-ref">avs::File</span></a>, <a class="reference internal" href="#classavs_1_1_forwarder"><span class="std std-ref">avs::Forwarder</span></a>, <a class="reference internal" href="#classavs_1_1_generic_decoder"><span class="std std-ref">avs::GenericDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_generic_encoder"><span class="std std-ref">avs::GenericEncoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_decoder"><span class="std std-ref">avs::GeometryDecoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_encoder"><span class="std std-ref">avs::GeometryEncoder</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">avs::GeometrySource</span></a>, <a class="reference internal" href="#classavs_1_1_geometry_target"><span class="std std-ref">avs::GeometryTarget</span></a>, <a class="reference internal" href="#classavs_1_1_network_sink"><span class="std std-ref">avs::NetworkSink</span></a>, <a class="reference internal" href="#classavs_1_1_network_source"><span class="std std-ref">avs::NetworkSource</span></a>, <a class="reference internal" href="#classavs_1_1_null_sink"><span class="std std-ref">avs::NullSink</span></a>, <a class="reference internal" href="#classavs_1_1_packetizer"><span class="std std-ref">avs::Packetizer</span></a>, <a class="reference internal" href="#classavs_1_1_queue"><span class="std std-ref">avs::Queue</span></a>, avs::SingleQueue, <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">avs::Surface</span></a>, <a class="reference internal" href="#classavs_1_1_tag_data_decoder"><span class="std std-ref">avs::TagDataDecoder</span></a></p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
@@ -971,7 +921,7 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12PipelineNode7processE8uint64_t8uint64_t">
-<span id="_CPPv3N3avs12PipelineNode7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs12PipelineNode7processE8uint64_t8uint64_t"></span><span id="avs::PipelineNode::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12PipelineNode7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs12PipelineNode7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs12PipelineNode7processE8uint64_t8uint64_t"></span><span id="avs::PipelineNode::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12PipelineNode7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Perform any node specific work as part of a pipeline. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1105,10 +1055,7 @@
 <dd><p>Configure decoder. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>streamId</strong> – - id for network stream </p></li>
-<li><p><strong>params</strong> – backend for decoding audio </p></li>
-</ul>
+<dd class="field-odd"><p><strong>streamId</strong> – - id for network stream </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -1141,7 +1088,7 @@
 <span id="_CPPv3N3avs12AudioDecoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs12AudioDecoder7processE8uint64_t8uint64_t"></span><span id="avs::AudioDecoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_audio_decoder_1a3cdf5b7002e191fdf6c1cc626662bf5c"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs12AudioDecoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process as much encoded video data as available on input and decode zero or more frames. <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a></p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1152,7 +1099,7 @@
 <li><p>Result::Node_InvalidInput if no compatible input node is linked to input slot 0 or most recently read input packet is invalid.</p></li>
 <li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
 <li><p>Result::IO_Empty if no input data is available for decoding.</p></li>
-<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_packet_interface_1abd73d374f2c918dce815673df0bef0e3"><span class="std std-ref">PacketInterface::readPacket()</span></a>.</p></li>
+<li><p>Any error result returned by PacketInterface::readPacket().</p></li>
 <li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1ae4f5f3853fdbecc84b8ecfdfc6e924ea"><span class="std std-ref">DecoderBackendInterface::decode()</span></a>. </p></li>
 </ul>
 </p>
@@ -1207,12 +1154,7 @@
 <dd><p>Configure audio encoder. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>device</strong> – Graphics API device handle (DirectX or OpenGL). </p></li>
-<li><p><strong>frameWidth</strong> – Expected video frame width in pixels. </p></li>
-<li><p><strong>frameHeight</strong> – Expected video frame height in pixels. </p></li>
-<li><p><strong>params</strong> – Additional encoder parameters. </p></li>
-</ul>
+<dd class="field-odd"><p><strong>params</strong> – <a class="reference internal" href="#classavs_1_1_encoder"><span class="std std-ref">Encoder</span></a> parameters. </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -1247,7 +1189,7 @@
 <span id="_CPPv3N3avs12AudioEncoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs12AudioEncoder7processE8uint64_t8uint64_t"></span><span id="avs::AudioEncoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_audio_encoder_1ab4e9cb6b708e4de27bc52efa024a55e4"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Encode single video frame from input surface and write resulting bitstream to output. <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a></p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1267,14 +1209,14 @@
 <span id="_CPPv3N3avs12AudioEncoder11writeOutputEPK7uint8_t6size_t"></span><span id="_CPPv2N3avs12AudioEncoder11writeOutputEPK7uint8_t6size_t"></span><span id="avs::AudioEncoder::writeOutput__uint8_tCP.s"></span><span class="target" id="classavs_1_1_audio_encoder_1ad2df59ad562c3aa0babc36c2f42e3d69"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">writeOutput</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">extraDataBuffer</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bufferSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs12AudioEncoder11writeOutputEPK7uint8_t6size_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Write data to the output stream <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a></p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
 </div>
 </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>extra</strong> – data buffer </p></li>
-<li><p><strong>extra</strong> – data buffer size </p></li>
+<li><p><strong>extraDataBuffer</strong> – </p></li>
+<li><p><strong>bufferSize</strong> – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1385,7 +1327,7 @@
 <li><p><strong>frameWidth</strong> – Expected video frame width in pixels. </p></li>
 <li><p><strong>frameHeight</strong> – Expected video frame height in pixels. </p></li>
 <li><p><strong>params</strong> – Additional decoder parameters. </p></li>
-<li><p><strong>params</strong> – callback for extracting extra video data </p></li>
+<li><p><strong>streamId</strong> – The stream identifier. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1461,7 +1403,7 @@
 <span id="_CPPv3N3avs7Decoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs7Decoder7processE8uint64_t8uint64_t"></span><span id="avs::Decoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_decoder_1a9bf6436bcc50771a5d4c17c6d2557ba8"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs7Decoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process as much encoded video data as available on input and decode zero or more frames. <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a></p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1472,7 +1414,7 @@
 <li><p>Result::Node_InvalidInput if no compatible input node is linked to input slot 0 or most recently read input packet is invalid.</p></li>
 <li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
 <li><p>Result::IO_Empty if no input data is available for decoding.</p></li>
-<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_packet_interface_1abd73d374f2c918dce815673df0bef0e3"><span class="std std-ref">PacketInterface::readPacket()</span></a>.</p></li>
+<li><p>Any error result returned by PacketInterface::readPacket().</p></li>
 <li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1ae4f5f3853fdbecc84b8ecfdfc6e924ea"><span class="std std-ref">DecoderBackendInterface::decode()</span></a>. </p></li>
 </ul>
 </p>
@@ -1615,7 +1557,7 @@
 <span id="_CPPv3N3avs7Encoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs7Encoder7processE8uint64_t8uint64_t"></span><span id="avs::Encoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_encoder_1a73f1e02f051d67b5737ada10467e8366"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs7Encoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Encode single video frame from input surface and write resulting bitstream to output. <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a></p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1760,6 +1702,141 @@
 </dd></dl>
 
 <dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericDecoderE">
+<span id="_CPPv3N3avs14GenericDecoderE"></span><span id="_CPPv2N3avs14GenericDecoderE"></span><span id="avs::GenericDecoder"></span><span class="target" id="classavs_1_1_generic_decoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenericDecoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs14GenericDecoderE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Generic decoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
+<p>Reads generic packets outputs to a Generic Target. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericDecoder9configureEP22GenericTargetInterface">
+<span id="_CPPv3N3avs14GenericDecoder9configureEP22GenericTargetInterface"></span><span id="_CPPv2N3avs14GenericDecoder9configureEP22GenericTargetInterface"></span><span id="avs::GenericDecoder::configure__GenericTargetInterfaceP"></span><span class="target" id="classavs_1_1_generic_decoder_1aa721a29e52afaf79984a0303eb611891"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GenericTargetInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">target</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs14GenericDecoder9configureEP22GenericTargetInterface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Configure decoder. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>target</strong> – The object that performas the actual decoding. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::Node_AlreadyConfigured if decoder was already in configured state.</p></li>
+<li><p>Result::Decoder_NoSuitableBackendFound if there’s no usable decoder backend on the system.</p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1acb08109d80390aed2eb0a75fd480b522"><span class="std std-ref">DecoderBackendInterface::initialize()</span></a>. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericDecoder11deconfigureEv">
+<span id="_CPPv3N3avs14GenericDecoder11deconfigureEv"></span><span id="_CPPv2N3avs14GenericDecoder11deconfigureEv"></span><span id="avs::GenericDecoder::deconfigure"></span><span class="target" id="classavs_1_1_generic_decoder_1ae5390e1c4f1f1d4dc13f3d3cb62fd533"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deconfigure</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs14GenericDecoder11deconfigureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deconfigure decoder and release all associated resources. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::Node_NotConfigured if decoder was not in configured state.</p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1aa3defbdc17842ee9df73a52f26a9e8fe"><span class="std std-ref">DecoderBackendInterface::shutdown()</span></a>. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericDecoder7processE8uint64_t8uint64_t">
+<span id="_CPPv3N3avs14GenericDecoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs14GenericDecoder7processE8uint64_t8uint64_t"></span><span id="avs::GenericDecoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_generic_decoder_1a05c91aa42e50f07809d9cb85ab53fbbd"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs14GenericDecoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Perform per-frame processing. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timestamp</strong> – System time when the processing takes place. </p></li>
+<li><p><strong>deltaTime</strong> – Time step in seconds since the previous frame. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::Node_AlreadyConfigured if decoder was already in configured state.</p></li>
+<li><p>Result::Decoder_NoSuitableBackendFound if there’s no usable decoder backend on the system.</p></li>
+<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1acb08109d80390aed2eb0a75fd480b522"><span class="std std-ref">DecoderBackendInterface::initialize()</span></a>. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs14GenericDecoder14getDisplayNameEv">
+<span id="_CPPv3NK3avs14GenericDecoder14getDisplayNameEv"></span><span id="_CPPv2NK3avs14GenericDecoder14getDisplayNameEv"></span><span id="avs::GenericDecoder::getDisplayNameC"></span><span class="target" id="classavs_1_1_generic_decoder_1a85e4362b92b01a9fe2ae4139b3638f78"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getDisplayName</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs14GenericDecoder14getDisplayNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get node display name (for reporting &amp; profiling). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericEncoderE">
+<span id="_CPPv3N3avs14GenericEncoderE"></span><span id="_CPPv2N3avs14GenericEncoderE"></span><span id="avs::GenericEncoder"></span><span class="target" id="classavs_1_1_generic_encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenericEncoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs14GenericEncoderE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Video encoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
+<p>Encodes video frames from input surface and outputs compressed bitstream.<ul class="simple">
+<li><p>Compatible inputs : Any node implementing <a class="reference internal" href="#classavs_1_1_surface_interface"><span class="std std-ref">SurfaceInterface</span></a>.</p></li>
+<li><p>Compatible outputs: Any node implementing <a class="reference internal" href="#classavs_1_1_i_o_interface"><span class="std std-ref">IOInterface</span></a>. </p></li>
+</ul>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericEncoder14GenericEncoderEv">
+<span id="_CPPv3N3avs14GenericEncoder14GenericEncoderEv"></span><span id="_CPPv2N3avs14GenericEncoder14GenericEncoderEv"></span><span id="avs::GenericEncoder::GenericEncoder"></span><span class="target" id="classavs_1_1_generic_encoder_1addefb3a61f5496e210501a6022622bfa"></span><span class="k"><span class="pre">explicit</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenericEncoder</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs14GenericEncoder14GenericEncoderEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Constructor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericEncoder9configureEP30GenericEncoderBackendInterface">
+<span id="_CPPv3N3avs14GenericEncoder9configureEP30GenericEncoderBackendInterface"></span><span id="_CPPv2N3avs14GenericEncoder9configureEP30GenericEncoderBackendInterface"></span><span id="avs::GenericEncoder::configure__GenericEncoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_generic_encoder_1ab14f3ffee7956912d4561bac366b9392"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GenericEncoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs14GenericEncoder9configureEP30GenericEncoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Configure encoder. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericEncoder11deconfigureEv">
+<span id="_CPPv3N3avs14GenericEncoder11deconfigureEv"></span><span id="_CPPv2N3avs14GenericEncoder11deconfigureEv"></span><span id="avs::GenericEncoder::deconfigure"></span><span class="target" id="classavs_1_1_generic_encoder_1a30cd19c3379dfba5c6bf7f9eb2c97d65"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">deconfigure</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs14GenericEncoder11deconfigureEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Deconfigure encoder and release all associated resources. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs14GenericEncoder7processE8uint64_t8uint64_t">
+<span id="_CPPv3N3avs14GenericEncoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs14GenericEncoder7processE8uint64_t8uint64_t"></span><span id="avs::GenericEncoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_generic_encoder_1aee7cfb800e078975335015f076184309"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs14GenericEncoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Encode the current generic stack. <div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>Result::OK on success.</p></li>
+<li><p>Result::Node_NotConfigured if encoder was not in configured state.</p></li>
+<li><p>Result::Node_InvalidInput if no compatible input node is linked to input slot 0.</p></li>
+<li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
+<li><p>Result::Encoder_IncompleteFrame if encoded bitstream was only partially written to output node. </p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK3avs14GenericEncoder14getDisplayNameEv">
+<span id="_CPPv3NK3avs14GenericEncoder14getDisplayNameEv"></span><span id="_CPPv2NK3avs14GenericEncoder14getDisplayNameEv"></span><span id="avs::GenericEncoder::getDisplayNameC"></span><span class="target" id="classavs_1_1_generic_encoder_1a412779184fe69a0699f2841e8b228783"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">getDisplayName</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK3avs14GenericEncoder14getDisplayNameEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Get node display name (for reporting &amp; profiling). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs15GeometryDecoderE">
 <span id="_CPPv3N3avs15GeometryDecoderE"></span><span id="_CPPv2N3avs15GeometryDecoderE"></span><span id="avs::GeometryDecoder"></span><span class="target" id="classavs_1_1_geometry_decoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryDecoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs15GeometryDecoderE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Geometry decoder node <code class="docutils literal notranslate"><span class="pre">[input-active,</span> <span class="pre">output-active,</span> <span class="pre">1/1]</span></code></p>
@@ -1783,7 +1860,10 @@
 <dd><p>Configure decoder. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>backend</strong> – The object that performas the actual decoding. </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>streamId</strong> – which stream to configure. </p></li>
+<li><p><strong>backend</strong> – The object that performas the actual decoding. </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -1818,7 +1898,7 @@
 <span id="_CPPv3N3avs15GeometryDecoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs15GeometryDecoder7processE8uint64_t8uint64_t"></span><span id="avs::GeometryDecoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_geometry_decoder_1a4fb4b13874a827f17becf28d957c4d1c"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs15GeometryDecoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process as much encoded video data as available on input and decode zero or more frames. <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a></p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1829,7 +1909,7 @@
 <li><p>Result::Node_InvalidInput if no compatible input node is linked to input slot 0 or most recently read input packet is invalid.</p></li>
 <li><p>Result::Node_InvalidOutput if no compatible output node is linked to output slot 0.</p></li>
 <li><p>Result::IO_Empty if no input data is available for decoding.</p></li>
-<li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_packet_interface_1abd73d374f2c918dce815673df0bef0e3"><span class="std std-ref">PacketInterface::readPacket()</span></a>.</p></li>
+<li><p>Any error result returned by PacketInterface::readPacket().</p></li>
 <li><p>Any error result returned by <a class="reference internal" href="#classavs_1_1_decoder_backend_interface_1ae4f5f3853fdbecc84b8ecfdfc6e924ea"><span class="std std-ref">DecoderBackendInterface::decode()</span></a>. </p></li>
 </ul>
 </p>
@@ -1898,7 +1978,7 @@
 <span id="_CPPv3N3avs15GeometryEncoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs15GeometryEncoder7processE8uint64_t8uint64_t"></span><span id="avs::GeometryEncoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_geometry_encoder_1a5a39a9d5af734ccf5bbd403c83411c37"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs15GeometryEncoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Encode the current geometry stack. <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a></p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
 </div>
 </p>
 <dl class="field-list simple">
@@ -1937,7 +2017,7 @@
 <dd><p>Configure <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">GeometrySource</span></a> node. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>backend</strong> – backend associated with this node. </p>
+<dd class="field-odd"><p><strong>req</strong> – What requests the geometry. </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -1989,11 +2069,11 @@
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs14GeometryTarget9configureEP30GeometryTargetBackendInterface">
-<span id="_CPPv3N3avs14GeometryTarget9configureEP30GeometryTargetBackendInterface"></span><span id="_CPPv2N3avs14GeometryTarget9configureEP30GeometryTargetBackendInterface"></span><span id="avs::GeometryTarget::configure__GeometryTargetBackendInterfaceP"></span><span class="target" id="classavs_1_1_geometry_target_1a31bc197c95625f797a4229349ad256fd"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GeometryTargetBackendInterface</span></span><span class="p"><span class="pre">*</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs14GeometryTarget9configureEP30GeometryTargetBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N3avs14GeometryTarget9configureEP30GeometryTargetBackendInterface"></span><span id="_CPPv2N3avs14GeometryTarget9configureEP30GeometryTargetBackendInterface"></span><span id="avs::GeometryTarget::configure__GeometryTargetBackendInterfaceP"></span><span class="target" id="classavs_1_1_geometry_target_1a87804aedf89d639c9c033f1548c63aa5"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GeometryTargetBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">target</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs14GeometryTarget9configureEP30GeometryTargetBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Configure <a class="reference internal" href="#classavs_1_1_geometry_source"><span class="std std-ref">GeometrySource</span></a> node. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>backend</strong> – backend associated with this node. </p>
+<dd class="field-odd"><p><strong>target</strong> – backend associated with this target node. </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -2090,6 +2170,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>maxBufferSize</strong> – Maximum size of a buffer in the queue. </p></li>
 <li><p><strong>maxBuffers</strong> – Maximum number of buffers in the queue. </p></li>
+<li><p><strong>name</strong> – Name of the node. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -2181,7 +2262,10 @@
 <dd><p>Configure surface node. <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">Surface</span></a> node takes ownership of its backend. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>surfaceBackend</strong> – <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">Surface</span></a> backend associated with this node. </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surfaceBackend</strong> – <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">Surface</span></a> backend associated with this node. </p></li>
+<li><p><strong>alphaSurfaceBackend</strong> – <a class="reference internal" href="#classavs_1_1_surface"><span class="std std-ref">Surface</span></a> backend for the alpha surface. </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -2257,7 +2341,10 @@
 <dd><p>Configure decoder. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>params</strong> – callback for extracting extra video data </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>streamId</strong> – Which stream. </p></li>
+<li><p><strong>onReceiveDataCallback</strong> – callback for extracting extra video data </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -2290,12 +2377,18 @@
 <span id="_CPPv3N3avs14TagDataDecoder7processE8uint64_t8uint64_t"></span><span id="_CPPv2N3avs14TagDataDecoder7processE8uint64_t8uint64_t"></span><span id="avs::TagDataDecoder::process__uint64_t.uint64_t"></span><span class="target" id="classavs_1_1_tag_data_decoder_1a52548de6fa14092099e5137a63d56364"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">process</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timestamp</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTime</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N3avs14TagDataDecoder7processE8uint64_t8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Process received video tag data <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1ace7f0cda99da89d7d058855814a4bb0f"><span class="std std-ref">PipelineNode::process()</span></a></p>
+<p><a class="reference internal" href="#classavs_1_1_pipeline_node_1a43ad5d1953c96dfb4aded3426b0c04f4"><span class="std std-ref">PipelineNode::process()</span></a></p>
 </div>
 </p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p><ul class="simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timestamp</strong> – When this is happening. </p></li>
+<li><p><strong>deltaTime</strong> – Time since the last call. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
 <li><p>Result::OK on success.</p></li>
 <li><p>Result::Node_NotConfigured if decoder was not in configured state.</p></li>
 <li><p>Result::Node_InvalidInput if no compatible input node is linked to input slot 0 or most recently read input packet is invalid.</p></li>
@@ -3056,56 +3149,6 @@
 </div>
 </dd></dl>
 
-</section>
-<section id="client-messages">
-<h2>Client Messages<a class="headerlink" href="#client-messages" title="Permalink to this heading">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::ClientMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfoE">
-<span id="_CPPv3N3avs11DisplayInfoE"></span><span id="_CPPv2N3avs11DisplayInfoE"></span><span id="avs::DisplayInfo"></span><span class="target" id="structavs_1_1_display_info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DisplayInfo</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfoE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Information on the resolution of a client’s display. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo5widthE">
-<span id="_CPPv3N3avs11DisplayInfo5widthE"></span><span id="_CPPv2N3avs11DisplayInfo5widthE"></span><span id="avs::DisplayInfo::width__uint32_t"></span><span class="target" id="structavs_1_1_display_info_1add5215d132700cec9c8b883ab7d52a9e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">width</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo5widthE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Width of the display. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo6heightE">
-<span id="_CPPv3N3avs11DisplayInfo6heightE"></span><span id="_CPPv2N3avs11DisplayInfo6heightE"></span><span id="avs::DisplayInfo::height__uint32_t"></span><span class="target" id="structavs_1_1_display_info_1a5546e31586c6a7373655df1aa08b5de6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">height</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo6heightE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Height of the display. </p>
-</dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo9framerateE">
-<span id="_CPPv3N3avs11DisplayInfo9framerateE"></span><span id="_CPPv2N3avs11DisplayInfo9framerateE"></span><span id="avs::DisplayInfo::framerate__float"></span><span class="target" id="structavs_1_1_display_info_1ac3e803d37f3588265cda693b3b8a373b"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">framerate</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo9framerateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Measured recent framerate. </p>
-</dd></dl>
-
-</div>
-</dd></dl>
-
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::NodeStatusMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::ReceivedResourcesMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::ControllerPosesMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenstruct: Cannot find class “avs::OriginPoseMessage” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
 </section>
 </section>
 

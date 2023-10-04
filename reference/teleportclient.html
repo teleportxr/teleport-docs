@@ -108,10 +108,12 @@
 </section>
 <section id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenclass: Cannot find class “teleport::client::ClientServerState” in doxygen xml output for project “TeleportVR” from directory: G:/Jarvis/workspace/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
-</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client17ClientServerStateE">
+<span id="_CPPv3N8teleport6client17ClientServerStateE"></span><span id="_CPPv2N8teleport6client17ClientServerStateE"></span><span id="teleport::client::ClientServerState"></span><span class="target" id="structteleport_1_1client_1_1_client_server_state"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientServerState</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client17ClientServerStateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The generic state of the client hardware device e.g. headset, controllers etc. There exists one of these for each server, plus one for the null server (local state). </p>
+</dd></dl>
+
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client14ClientPipelineE">
 <span id="_CPPv3N8teleport6client14ClientPipelineE"></span><span id="_CPPv2N8teleport6client14ClientPipelineE"></span><span id="teleport::client::ClientPipeline"></span><span class="target" id="classteleport_1_1client_1_1_client_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientPipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client14ClientPipelineE" title="Permalink to this definition">¶</a><br /></dt>
@@ -141,7 +143,8 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client16DiscoveryServiceE">
 <span id="_CPPv3N8teleport6client16DiscoveryServiceE"></span><span id="_CPPv2N8teleport6client16DiscoveryServiceE"></span><span id="teleport::client::DiscoveryService"></span><span class="target" id="classteleport_1_1client_1_1_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiscoveryService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client16DiscoveryServiceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dd><p>Abstract discovery service for clients to connect to the server. </p>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t">
@@ -155,7 +158,7 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXRE">
 <span id="_CPPv3N8teleport6client6OpenXRE"></span><span id="_CPPv2N8teleport6client6OpenXRE"></span><span id="teleport::client::OpenXR"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OpenXR</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXRE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Subclassed by teleport::UseOpenXR</p>
+<dd><p>Subclassed by teleport::UseOpenXR, teleport::android::OpenXR</p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Functions</p>
 <dl class="cpp function">
@@ -215,6 +218,12 @@
 </dd></dl>
 
 </div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client15SignalingServerE">
+<span id="_CPPv3N8teleport6client15SignalingServerE"></span><span id="_CPPv2N8teleport6client15SignalingServerE"></span><span id="teleport::client::SignalingServer"></span><span class="target" id="structteleport_1_1client_1_1_signaling_server"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SignalingServer</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client15SignalingServerE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Identifies a remote server as seen by the <a class="reference internal" href="#classteleport_1_1client_1_1_discovery_service"><span class="std std-ref">DiscoveryService</span></a>. </p>
 </dd></dl>
 
 </section>

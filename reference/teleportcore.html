@@ -62,6 +62,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">The Teleport Core library</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#client-messages">Client Messages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#animation">Animation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#input-and-control">Input and control</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#text-and-fonts">Text and Fonts</a></li>
@@ -406,6 +407,109 @@
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core25AssignNodePosePathCommand10pathLengthE">
 <span id="_CPPv3N8teleport4core25AssignNodePosePathCommand10pathLengthE"></span><span id="_CPPv2N8teleport4core25AssignNodePosePathCommand10pathLengthE"></span><span id="teleport::core::AssignNodePosePathCommand::pathLength__uint16_t"></span><span class="target" id="structteleport_1_1core_1_1_assign_node_pose_path_command_1ae3e46391818c8a6f93e5d31560a7d78e"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pathLength</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core25AssignNodePosePathCommand10pathLengthE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>A regular expression that will be used to match the full component path of a client-side pose. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="client-messages">
+<h2>Client Messages<a class="headerlink" href="#client-messages" title="Permalink to this heading">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core13ClientMessageE">
+<span id="_CPPv3N8teleport4core13ClientMessageE"></span><span id="_CPPv2N8teleport4core13ClientMessageE"></span><span id="teleport::core::ClientMessage"></span><span class="target" id="structteleport_1_1core_1_1_client_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessage</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core13ClientMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A message from a client to a server. </p>
+<p>Subclassed by <a class="reference internal" href="#structteleport_1_1core_1_1_controller_poses_message"><span class="std std-ref">teleport::core::ControllerPosesMessage</span></a>, teleport::core::DisplayInfoMessage, teleport::core::InputEventsMessage, teleport::core::InputStatesMessage, teleport::core::KeyframeRequestMessage, <a class="reference internal" href="#structteleport_1_1core_1_1_node_status_message"><span class="std std-ref">teleport::core::NodeStatusMessage</span></a>, teleport::core::OrthogonalAcknowledgementMessage, teleport::core::PongForLatencyMessage, <a class="reference internal" href="#structteleport_1_1core_1_1_received_resources_message"><span class="std std-ref">teleport::core::ReceivedResourcesMessage</span></a>, teleport::core::ResourceRequestMessage</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core13ClientMessage24clientMessagePayloadTypeE">
+<span id="_CPPv3N8teleport4core13ClientMessage24clientMessagePayloadTypeE"></span><span id="_CPPv2N8teleport4core13ClientMessage24clientMessagePayloadTypeE"></span><span id="teleport::core::ClientMessage::clientMessagePayloadType__ClientMessagePayloadType"></span><span class="target" id="structteleport_1_1core_1_1_client_message_1a596ae365a57d532f495c79b0822a482c"></span><span class="n"><span class="pre">ClientMessagePayloadType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clientMessagePayloadType</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core13ClientMessage24clientMessagePayloadTypeE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Specifies what type of client message this is. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfoE">
+<span id="_CPPv3N3avs11DisplayInfoE"></span><span id="_CPPv2N3avs11DisplayInfoE"></span><span id="avs::DisplayInfo"></span><span class="target" id="structavs_1_1_display_info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DisplayInfo</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfoE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Information on the resolution of a client’s display. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo5widthE">
+<span id="_CPPv3N3avs11DisplayInfo5widthE"></span><span id="_CPPv2N3avs11DisplayInfo5widthE"></span><span id="avs::DisplayInfo::width__uint32_t"></span><span class="target" id="structavs_1_1_display_info_1add5215d132700cec9c8b883ab7d52a9e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">width</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo5widthE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Width of the display. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo6heightE">
+<span id="_CPPv3N3avs11DisplayInfo6heightE"></span><span id="_CPPv2N3avs11DisplayInfo6heightE"></span><span id="avs::DisplayInfo::height__uint32_t"></span><span class="target" id="structavs_1_1_display_info_1a5546e31586c6a7373655df1aa08b5de6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">height</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo6heightE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Height of the display. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo9framerateE">
+<span id="_CPPv3N3avs11DisplayInfo9framerateE"></span><span id="_CPPv2N3avs11DisplayInfo9framerateE"></span><span id="avs::DisplayInfo::framerate__float"></span><span class="target" id="structavs_1_1_display_info_1ac3e803d37f3588265cda693b3b8a373b"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">framerate</span></span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo9framerateE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Measured recent framerate. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core17NodeStatusMessageE">
+<span id="_CPPv3N8teleport4core17NodeStatusMessageE"></span><span id="_CPPv2N8teleport4core17NodeStatusMessageE"></span><span id="teleport::core::NodeStatusMessage"></span><span class="target" id="structteleport_1_1core_1_1_node_status_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NodeStatusMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core13ClientMessageE" title="teleport::core::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core17NodeStatusMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing how many nodes have changed to what state; sent alongside two lists of node UIDs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core17NodeStatusMessage15nodesDrawnCountE">
+<span id="_CPPv3N8teleport4core17NodeStatusMessage15nodesDrawnCountE"></span><span id="_CPPv2N8teleport4core17NodeStatusMessage15nodesDrawnCountE"></span><span id="teleport::core::NodeStatusMessage::nodesDrawnCount__s"></span><span class="target" id="structteleport_1_1core_1_1_node_status_message_1ae7052738a3410e4462abbc93a527491a"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodesDrawnCount</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core17NodeStatusMessage15nodesDrawnCountE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>How many nodes the client is drawing. The node uid’s will be appended first in the packet. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core17NodeStatusMessage23nodesWantToReleaseCountE">
+<span id="_CPPv3N8teleport4core17NodeStatusMessage23nodesWantToReleaseCountE"></span><span id="_CPPv2N8teleport4core17NodeStatusMessage23nodesWantToReleaseCountE"></span><span id="teleport::core::NodeStatusMessage::nodesWantToReleaseCount__s"></span><span class="target" id="structteleport_1_1core_1_1_node_status_message_1ab4dbe669a57fbe333499f8106c8ab944"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodesWantToReleaseCount</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core17NodeStatusMessage23nodesWantToReleaseCountE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>How many nodes the client has but is no longer drawing. The node uid’s will be appended second in the packet. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core24ReceivedResourcesMessageE">
+<span id="_CPPv3N8teleport4core24ReceivedResourcesMessageE"></span><span id="_CPPv2N8teleport4core24ReceivedResourcesMessageE"></span><span id="teleport::core::ReceivedResourcesMessage"></span><span class="target" id="structteleport_1_1core_1_1_received_resources_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ReceivedResourcesMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core13ClientMessageE" title="teleport::core::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core24ReceivedResourcesMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing how many resources were received; sent alongside a list of UIDs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core24ReceivedResourcesMessage22receivedResourcesCountE">
+<span id="_CPPv3N8teleport4core24ReceivedResourcesMessage22receivedResourcesCountE"></span><span id="_CPPv2N8teleport4core24ReceivedResourcesMessage22receivedResourcesCountE"></span><span id="teleport::core::ReceivedResourcesMessage::receivedResourcesCount__s"></span><span class="target" id="structteleport_1_1core_1_1_received_resources_message_1a5879694e06deb58dbc82aa35b5375f24"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">receivedResourcesCount</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core24ReceivedResourcesMessage22receivedResourcesCountE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>How many resources were received. The uid’s will be appended in the packet. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core22ControllerPosesMessageE">
+<span id="_CPPv3N8teleport4core22ControllerPosesMessageE"></span><span id="_CPPv2N8teleport4core22ControllerPosesMessageE"></span><span id="teleport::core::ControllerPosesMessage"></span><span class="target" id="structteleport_1_1core_1_1_controller_poses_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ControllerPosesMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core13ClientMessageE" title="teleport::core::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core22ControllerPosesMessageE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing head and other node poses. followed by numPoses NodePose structs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core22ControllerPosesMessage8headPoseE">
+<span id="_CPPv3N8teleport4core22ControllerPosesMessage8headPoseE"></span><span id="_CPPv2N8teleport4core22ControllerPosesMessage8headPoseE"></span><span id="teleport::core::ControllerPosesMessage::headPose__Pose_packed"></span><span class="target" id="structteleport_1_1core_1_1_controller_poses_message_1aff61bfe97e3f623cef4097393d2300be"></span><span class="n"><span class="pre">Pose_packed</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">headPose</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core22ControllerPosesMessage8headPoseE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>The headset’s pose. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core22ControllerPosesMessage8numPosesE">
+<span id="_CPPv3N8teleport4core22ControllerPosesMessage8numPosesE"></span><span id="_CPPv2N8teleport4core22ControllerPosesMessage8numPosesE"></span><span id="teleport::core::ControllerPosesMessage::numPoses__uint16_t"></span><span class="target" id="structteleport_1_1core_1_1_controller_poses_message_1aee8277b59eea3d1658f55466b3ecaa78"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numPoses</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core22ControllerPosesMessage8numPosesE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Poses of the controllers. </p>
 </dd></dl>
 
 </div>

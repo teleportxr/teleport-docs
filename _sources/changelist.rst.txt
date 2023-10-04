@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Mon 02 Oct** : Fixups for documentation.
 | **Thu 28 Sep** : Added external libs for Android. Introduced TabContext for client connection management.
 | **Fri 22 Sep** : HTTPUtil saves downloaded files in a cache.
 | **Wed 20 Sep** : Using vertex shader variants in client.
@@ -99,4 +100,3 @@ Changelist
 | **Sat 01 Apr** : Platform ptr.
 | **Sat 01 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Sat 01 Apr** : Adding sphinxcontrib.jquery in conf.py.
-| **Fri 31 Mar** : Merge branch 'main' of github.com:simul/Teleport

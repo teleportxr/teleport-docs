@@ -124,8 +124,12 @@ At any time, each connected client has partial information on the simulation sta
 <tr class="row-even"><td><p>Mutable Asset</p></td>
 <td><p>A data object that may be expected to change during the simulation runtime: a Node is a Mutable Asset, for example.</p></td>
 </tr>
+<tr class="row-odd"><td><p>Component</p></td>
+<td><p>An instance that provides functionality to a specific node. Each node can have zero or more components, and components are of different types depending on their purpose.</p></td>
+</tr>
 </tbody>
 </table>
+<p>Table :numref:Definitions defines some key terms.</p>
 <p>The server tells the client which nodes it needs to keep track of, and which assets and resources it needs.
 The server will send the client the asset states and resource data.</p>
 <p>Clients generally keep only a part of the world state at any time. Two clients connected to the same server could use completely different nodes and resources, or could share some. But the server should send
