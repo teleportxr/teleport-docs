@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video with Vulkan on Android &mdash; Teleport VR  documentation</title>
+  <title>5.8. Video with Vulkan on Android &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The Teleport VR Protocol" href="../protocol.html" />
-    <link rel="prev" title="Video Decoding with Android NDK" href="video_ndk_decoding.html" /> 
+    <link rel="prev" title="5.7. Video Decoding with Android NDK" href="video_ndk_decoding.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,35 +52,35 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference Implementation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">The Teleport Core library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">Client Render Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The Teleport Client library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="server.html">Server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">Video Decoding with Android NDK</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Video with Vulkan on Android</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#importing-a-video-stream-into-vulkan">Importing a Video Stream into Vulkan</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vulkan-sampler-ycbcr-conversion">Vulkan Sampler YCbCr Conversion</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ycbcr-colour-space">YCbCr Colour Space</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#chroma-subsampling">Chroma Subsampling</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#interleaved-planar-and-semi-planar">Interleaved, Planar and Semi Planar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#itu-colour-spaces-and-encoding-ranges">ITU Colour Spaces and Encoding Ranges</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#co-sited-vs-midpoint">Co-sited vs Midpoint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#simul-s-implementation">Simul’s Implementation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ycbcr-in-compute-shaders-and-load-operations">YCbCr in Compute Shaders and Load Operations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#classes">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Reference Implementation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">5.1. LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">5.2. LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">5.3. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">5.4. Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">5.5. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">5.6. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">5.7. Video Decoding with Android NDK</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.8. Video with Vulkan on Android</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#importing-a-video-stream-into-vulkan">5.8.1. Importing a Video Stream into Vulkan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vulkan-sampler-ycbcr-conversion">5.8.2. Vulkan Sampler YCbCr Conversion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ycbcr-colour-space">5.8.2.1. YCbCr Colour Space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chroma-subsampling">5.8.2.2. Chroma Subsampling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interleaved-planar-and-semi-planar">5.8.2.3. Interleaved, Planar and Semi Planar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#itu-colour-spaces-and-encoding-ranges">5.8.2.4. ITU Colour Spaces and Encoding Ranges</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#co-sited-vs-midpoint">5.8.2.5. Co-sited vs Midpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#simul-s-implementation">5.8.2.6. Simul’s Implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ycbcr-in-compute-shaders-and-load-operations">5.8.2.7. YCbCr in Compute Shaders and Load Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classes">5.8.2.8. Classes</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
 </ul>
 
         </div>
@@ -99,8 +98,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Reference Implementation</a></li>
-      <li class="breadcrumb-item active">Video with Vulkan on Android</li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">5. </span>Reference Implementation</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5.8. </span>Video with Vulkan on Android</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/video_vulkan_android_import_and_ycbcr.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -111,7 +110,7 @@
            <div itemprop="articleBody">
              
   <section id="video-with-vulkan-on-android">
-<span id="video-vulkan-android-import-and-ycbcr"></span><h1>Video with Vulkan on Android<a class="headerlink" href="#video-with-vulkan-on-android" title="Permalink to this heading">¶</a></h1>
+<span id="video-vulkan-android-import-and-ycbcr"></span><h1><span class="section-number">5.8. </span>Video with Vulkan on Android<a class="headerlink" href="#video-with-vulkan-on-android" title="Permalink to this heading">¶</a></h1>
 <p>Simul’s Android client supports the decoding of video streams through the use of the Android NDK AMedia and AImage libraries. See <a class="reference internal" href="video_ndk_decoding.html#video-ndk-decoding"><span class="std std-ref">Video Decoding with Android NDK</span></a>. We currently require the support of these two Vulkan device extensions:</p>
 <ul class="simple">
 <li><p>VK_KHR_sampler_ycbcr_conversion (<a class="reference external" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_sampler_ycbcr_conversion.html">https://registry.khronos.org/vulkan/specs/1.3-extensions/man/html/VK_KHR_sampler_ycbcr_conversion.html</a>).</p></li>
@@ -125,7 +124,7 @@
 <li><p>VK_KHR_video_decode_h265 (<a class="reference external" href="https://registry.khronos.org/vulkan/specs/1.3-extensions/html/chap50.html#VK_EXT_video_encode_h265">https://registry.khronos.org/vulkan/specs/1.3-extensions/html/chap50.html#VK_EXT_video_encode_h265</a>)</p></li>
 </ul>
 <section id="importing-a-video-stream-into-vulkan">
-<h2>Importing a Video Stream into Vulkan<a class="headerlink" href="#importing-a-video-stream-into-vulkan" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.8.1. </span>Importing a Video Stream into Vulkan<a class="headerlink" href="#importing-a-video-stream-into-vulkan" title="Permalink to this heading">¶</a></h2>
 <p>Simul’s Android client has <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">teleport::android::NdkVideoDecoder</span></code> that interfaces with <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">teleport::android::VideoDecoderBackend</span></code>, which extends <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">avs::DecoderBackendInterface</span></code>. The NdkVideoDecoder sets up a <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code> Decoder and <code class="docutils literal notranslate"><span class="pre">AImageListener</span></code>, from which an <code class="docutils literal notranslate"><span class="pre">AImage</span></code> and its <code class="docutils literal notranslate"><span class="pre">AHardwareBuffer</span></code> can be obtained. The <code class="docutils literal notranslate"><span class="pre">AHardwareBuffer</span></code> is obtained from the <code class="docutils literal notranslate"><span class="pre">AImage</span></code> by calling <code class="docutils literal notranslate"><span class="pre">AImage_getHardwareBuffer()</span></code>; and a <code class="docutils literal notranslate"><span class="pre">AHardwareBuffer_Desc</span></code> can also be obtained by calling <code class="docutils literal notranslate"><span class="pre">AHardwareBuffer_describe()</span></code>. From this point the <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">NdkVideoDecoder</span></code> uses the VK_ANDROID_external_memory_android_hardware_buffer extension to import the memory held by the <code class="docutils literal notranslate"><span class="pre">AHardwareBuffer</span></code> into Vulkan.
 The following is brief description on how this is implemented:</p>
 <ul class="simple">
@@ -161,16 +160,16 @@ The following is brief description on how this is implemented:</p>
 <a class="reference internal image-reference" href="../_images/AMediaCodecToVkImageAndVkDeviceMemory.png"><img alt="AMediaCodec to VkImage and VkDeviceMemory." src="../_images/AMediaCodecToVkImageAndVkDeviceMemory.png" style="width: 800px;" /></a>
 </section>
 <section id="vulkan-sampler-ycbcr-conversion">
-<h2>Vulkan Sampler YCbCr Conversion<a class="headerlink" href="#vulkan-sampler-ycbcr-conversion" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.8.2. </span>Vulkan Sampler YCbCr Conversion<a class="headerlink" href="#vulkan-sampler-ycbcr-conversion" title="Permalink to this heading">¶</a></h2>
 <p>Simul’s Rendering library <em>Platform</em> (<a class="reference external" href="https://github.com/simul/Platform/tree/dev">https://github.com/simul/Platform/tree/dev</a>) supports the use of YCbCr samplers for Vulkan.</p>
 <section id="ycbcr-colour-space">
-<h3>YCbCr Colour Space<a class="headerlink" href="#ycbcr-colour-space" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.8.2.1. </span>YCbCr Colour Space<a class="headerlink" href="#ycbcr-colour-space" title="Permalink to this heading">¶</a></h3>
 <p>YCbCr is favoured over RGB for video broadcssting and streaming as the format implicitly compresses the video data, saving on bandwidth. YCbCr is based on the YUV standard for broadcast television, wherein the video signal is split into a luma (Y) and two chroma (Cb/Cr) components. It is vital to remember that the chroma components are defined to be the difference between the original colour and the luma signal, and therefore the chroma components are signed values ranging from -0.5 to 0.5, whereas the luma component ranges from 0.0 to 1.0, in a signed normalised co-ordinate space.</p>
 <a class="reference internal image-reference" href="../_images/YCbCr.GIF"><img alt="The YCbCr colour space." src="../_images/YCbCr.GIF" style="width: 800px;" /></a>
 <p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/YCbCr">Wikipedia YCbCr</a>.</p>
 </section>
 <section id="chroma-subsampling">
-<h3>Chroma Subsampling<a class="headerlink" href="#chroma-subsampling" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.8.2.2. </span>Chroma Subsampling<a class="headerlink" href="#chroma-subsampling" title="Permalink to this heading">¶</a></h3>
 <p>Further compression of the video data can be achieved by downsampling the chroma components without affecting the colour perspection. This is because the human eye is less sensitive to high frequency changes in colour data. Chroma Subsampling is expressed by three-part ratio J:a:b, such as 4:2:2.</p>
 <ul class="simple">
 <li><p>J: horizontal sampling reference (width of the conceptual region). Usually, 4.</p></li>
@@ -181,7 +180,7 @@ The following is brief description on how this is implemented:</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Chroma_subsampling">Wikipedia Chroma subsampling</a>.</p>
 </section>
 <section id="interleaved-planar-and-semi-planar">
-<h3>Interleaved, Planar and Semi Planar<a class="headerlink" href="#interleaved-planar-and-semi-planar" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.8.2.3. </span>Interleaved, Planar and Semi Planar<a class="headerlink" href="#interleaved-planar-and-semi-planar" title="Permalink to this heading">¶</a></h3>
 <p>This qualifier refers to the how the data is organised in memory.</p>
 <ul class="simple">
 <li><p>An Interleaved layout means that the luma and chroma components are interleaved onto a single plane.</p></li>
@@ -263,7 +262,7 @@ The following is brief description on how this is implemented:</p>
 <p>Reference: <a class="reference external" href="https://en.wikipedia.org/wiki/YUV#Y%E2%80%B2UV420p_(and_Y%E2%80%B2V12_or_YV12)_to_RGB888_conversion">Wikipedia Y′UV420p (and Y′V12 or YV12) to RGB888 conversion</a>.</p>
 </section>
 <section id="itu-colour-spaces-and-encoding-ranges">
-<h3>ITU Colour Spaces and Encoding Ranges<a class="headerlink" href="#itu-colour-spaces-and-encoding-ranges" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.8.2.4. </span>ITU Colour Spaces and Encoding Ranges<a class="headerlink" href="#itu-colour-spaces-and-encoding-ranges" title="Permalink to this heading">¶</a></h3>
 <p>As YCbCr is the digital version of the analogue television standard YUV, the ITU (International Telecommunication Union) has defined both the colour spaces and the quantisations the three colour space standards.</p>
 <p>The primaries below can be used to create a 3 x 3 matrix that can convert to and from RGB to YCbCr colour spaces. The primaries in the table below are just the luma (Y) component of these colour standards based in the CIE xyY colour space. See reference: <a class="reference external" href="https://en.wikipedia.org/wiki/CIE_1931_color_space#CIE_xy_chromaticity_diagram_and_the_CIE_xyY_color_space">Wikipedia CIE 1931 color space: CIE xy chromaticity diagram and the CIE xyY color space</a>.</p>
 <p>In terms of the encoding range, the ITU reserved regions at the beginning and end of each ‘representable integer range for rounding errors and for signal control data’. These reversed regions mean that the video data has a <em>narrow range</em> encoding, and their absence means that the video source has <em>full range</em> encoding. Currently, only BT.2100 requires full range encoding: All others use the narrow range encoding.</p>
@@ -296,7 +295,7 @@ The following is brief description on how this is implemented:</p>
 </tbody>
 </table>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">How to create a 3 x 3 matrix that can convert to and from RGB to YCbCr colour spaces.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 5.4 </span><span class="caption-text">How to create a 3 x 3 matrix that can convert to and from RGB to YCbCr colour spaces.</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="n">float3x3</span><span class="w"> </span><span class="nf">YCbCrToRGB_ConversionMatrix</span><span class="p">(</span><span class="n">uint</span><span class="w"> </span><span class="n">type</span><span class="p">)</span>
 <span class="w">      </span><span class="p">{</span>
 <span class="w">              </span><span class="kt">float</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
@@ -346,13 +345,13 @@ The following is brief description on how this is implemented:</p>
 <p>Reference: <a class="reference external" href="https://registry.khronos.org/DataFormat/specs/1.3/dataformat.1.3.html#CONVERSION_QUANTIZATION">Khronos Colour Space Quantisation</a></p>
 </section>
 <section id="co-sited-vs-midpoint">
-<h3>Co-sited vs Midpoint<a class="headerlink" href="#co-sited-vs-midpoint" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.8.2.5. </span>Co-sited vs Midpoint<a class="headerlink" href="#co-sited-vs-midpoint" title="Permalink to this heading">¶</a></h3>
 <p>Due to the downsampling of the chroma components, when loading a YCbCr image for use in a shader, it is required that the full chroma samples are reconstructed from the lower spatial resolution of the chrominance planes. The two offset methods are <em>Co-sited</em> and <em>Midpoint</em>. Figures 5 - 10 in Section 16.3.8. of the Vulkan Specification show how the rescaled chroma plane(s) are overlayed on top of the luma plane for 4:2:2 and 4:2:0 in all varying combinations of Co-sited and Midpoint for X and Y.
 The downsampling method used on the server must match the upsampling method used on the Android client for the chrominance data to be reconstructed accurately.</p>
 <p>Reference: <a class="reference external" href="https://registry.khronos.org/vulkan/specs/1.3/html/chap16.html#textures-chroma-reconstruction">Khronos Chroma Reconstruction</a></p>
 </section>
 <section id="simul-s-implementation">
-<h3>Simul’s Implementation<a class="headerlink" href="#simul-s-implementation" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.8.2.6. </span>Simul’s Implementation<a class="headerlink" href="#simul-s-implementation" title="Permalink to this heading">¶</a></h3>
 <p>Simul’s Implementation uses 4:2:0 NV12 Semi Planar, BT.709.
 On Meta Quest and Meta Quest 2, the <code class="docutils literal notranslate"><span class="pre">AMediaCodec</span></code> selects a vendor specific format <code class="docutils literal notranslate"><span class="pre">OMX_QCOM_COLOR_FormatYUV420PackedSemiPlanar32m</span></code>. This is <a class="reference external" href="https://www.khronos.org/openmax/">Khronos OpenMax</a> <a class="reference external" href="https://www.qualcomm.com/home">Qualcomm</a> extension that is specific to Qualcomm SoCs (System On Chip) such as the Snapdragon 835/Adreno 540 (Meta Quest) and the Qualcomm Snapdragon XR2/Adreno 650 (Meta Quest 2).</p>
 <p>We create a <code class="docutils literal notranslate"><span class="pre">VKSamplerYcbcrConversionKHR</span></code> from a <code class="docutils literal notranslate"><span class="pre">VkSamplerYcbcrConversionCreateInfoKHR</span></code>. The majority of the memebers of the structure can filled out using the <code class="docutils literal notranslate"><span class="pre">VkAndroidHardwareBufferFormatPropertiesANDROID</span></code> structure acquired earlier. Here again <code class="docutils literal notranslate"><span class="pre">VkSamplerYcbcrConversionCreateInfoKHR::format</span></code> is set to <code class="docutils literal notranslate"><span class="pre">VK_FORMAT_UNDEFINED</span></code> as the format is defined in the chained <code class="docutils literal notranslate"><span class="pre">VkExternalFormatANDROID</span></code> structure. <code class="docutils literal notranslate"><span class="pre">VkComponentMapping</span></code> is set to <code class="docutils literal notranslate"><span class="pre">VK_COMPONENT_SWIZZLE_IDENTITY</span></code> for the R, G, B and A values. The component remapping is useful for when the Cb and Cr components are swapped such as the NV21 memory layout for 4:2:0. For <code class="docutils literal notranslate"><span class="pre">VkSamplerYcbcrConversionCreateInfoKHR::chromaFilter</span></code> we use <code class="docutils literal notranslate"><span class="pre">VK_FILTER_NEAREST</span></code> so as not to ‘blend’ between the chrominance pixels, and we disable <code class="docutils literal notranslate"><span class="pre">VkSamplerYcbcrConversionCreateInfoKHR::forceExplicitReconstruction</span></code>.</p>
@@ -360,7 +359,7 @@ On Meta Quest and Meta Quest 2, the <code class="docutils literal notranslate"><
 <a class="reference internal image-reference" href="../_images/VKSamplerYcbcrConversionKHRCreationAndSetUpForVkImageViewAndVkSampler.png"><img alt="VKSamplerYcbcrConversionKHR creation and set up for VkImageView and VkSampler." src="../_images/VKSamplerYcbcrConversionKHRCreationAndSetUpForVkImageViewAndVkSampler.png" style="width: 800px;" /></a>
 </section>
 <section id="ycbcr-in-compute-shaders-and-load-operations">
-<h3>YCbCr in Compute Shaders and Load Operations<a class="headerlink" href="#ycbcr-in-compute-shaders-and-load-operations" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.8.2.7. </span>YCbCr in Compute Shaders and Load Operations<a class="headerlink" href="#ycbcr-in-compute-shaders-and-load-operations" title="Permalink to this heading">¶</a></h3>
 <p>Presently, the video sampler is unused, as we do a HLSL: <code class="docutils literal notranslate"><span class="pre">Texture2D.Load()</span></code> / GLSL: <code class="docutils literal notranslate"><span class="pre">texelFetch()</span></code> operation in a compute shader. The previous information used to create <code class="docutils literal notranslate"><span class="pre">VKSamplerYcbcrConversionKHR</span></code>, and that was ultimately passed to the <code class="docutils literal notranslate"><span class="pre">VkImageView</span></code>, is still used to reconstruct the chrominance data, returning the separated <span class="grn">Y</span>, <span class="blu">U</span> and <span class="red">V</span> components as if it were a 4:4:4 Planar YCbCr image. The load operation converts the 8-bit unsigned integer (0 - 255) to a normalised floating point 32-bit value (0.0 - 1.0). This works fine for the luma component, but the chroma need to offset by -0.5, putting them in the range (-0.5 - 0.5) to match the YCbCr colour space. The load operation assigns the Y, Cb and Cb channels to the RGB channels as follows:</p>
 <ul class="simple">
 <li><p><span class="grn">Y =&gt; G</span>.</p></li>
@@ -368,7 +367,7 @@ On Meta Quest and Meta Quest 2, the <code class="docutils literal notranslate"><
 <li><p><span class="red">V =&gt; R</span>.</p></li>
 </ul>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Loading a YCbCr texture in a compute shader.</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 5.5 </span><span class="caption-text">Loading a YCbCr texture in a compute shader.</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="n">Texture2D</span><span class="o">&lt;</span><span class="n">float4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ycbcrTexture</span><span class="p">;</span>
 <span class="w">      </span><span class="n">RWTexture2D</span><span class="o">&lt;</span><span class="n">float4</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rgbTexture</span><span class="p">;</span>
 
@@ -430,7 +429,7 @@ On Meta Quest and Meta Quest 2, the <code class="docutils literal notranslate"><
 </div>
 </section>
 <section id="classes">
-<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.8.2.8. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h3>
 <p>teleport::android::NdkVideoDecoder
 teleport::android::VideoDecoderBackend</p>
 <p>See also avs::DecoderBackendInterface.</p>
@@ -442,8 +441,7 @@ teleport::android::VideoDecoderBackend</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="video_ndk_decoding.html" class="btn btn-neutral float-left" title="Video Decoding with Android NDK" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../protocol.html" class="btn btn-neutral float-right" title="The Teleport VR Protocol" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="video_ndk_decoding.html" class="btn btn-neutral float-left" title="5.7. Video Decoding with Android NDK" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

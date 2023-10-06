@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Server &mdash; Teleport VR  documentation</title>
+  <title>5.6. Server &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Video Decoding with Android NDK" href="video_ndk_decoding.html" />
-    <link rel="prev" title="The Teleport Client library" href="teleportclient.html" /> 
+    <link rel="next" title="5.7. Video Decoding with Android NDK" href="video_ndk_decoding.html" />
+    <link rel="prev" title="5.5. The Teleport Client library" href="teleportclient.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,26 +53,26 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference Implementation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">The Teleport Core library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">Client Render Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The Teleport Client library</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Server</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#networking">Networking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Reference Implementation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">5.1. LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">5.2. LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">5.3. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">5.4. Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">5.5. The Teleport Client library</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.6. Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">5.6.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#networking">5.6.2. Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">5.6.3. Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">Video Decoding with Android NDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">5.7. Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">5.8. Video with Vulkan on Android</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
 </ul>
 
         </div>
@@ -90,8 +90,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Reference Implementation</a></li>
-      <li class="breadcrumb-item active">Server</li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">5. </span>Reference Implementation</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5.6. </span>Server</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/server.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -102,13 +102,13 @@
            <div itemprop="articleBody">
              
   <section id="server">
-<h1>Server<a class="headerlink" href="#server" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">5.6. </span>Server<a class="headerlink" href="#server" title="Permalink to this heading">¶</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.6.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>TeleportServer is a library that provides server functionality in conjunction with a real-time game or simulation engine.</p>
 </section>
 <section id="networking">
-<h2>Networking<a class="headerlink" href="#networking" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.6.2. </span>Networking<a class="headerlink" href="#networking" title="Permalink to this heading">¶</a></h2>
 <img src="../_images/mermaid-0af64e99b09ec8e98796b69215611490b98764a4.png" alt="flowchart LR
         A(Video Queue) --&gt;|1| H(Network Sink)
         B(Tag Queue) --&gt;|2| H
@@ -118,7 +118,7 @@
         F(Geometry Encoder) --&gt; D" />
 </section>
 <section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.6.3. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6server19AudioEncodePipelineE">
 <span id="_CPPv3N8teleport6server19AudioEncodePipelineE"></span><span id="_CPPv2N8teleport6server19AudioEncodePipelineE"></span><span id="teleport::server::AudioEncodePipeline"></span><span class="target" id="classteleport_1_1server_1_1_audio_encode_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncodePipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server19AudioEncodePipelineE" title="Permalink to this definition">¶</a><br /></dt>
@@ -268,8 +268,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="teleportclient.html" class="btn btn-neutral float-left" title="The Teleport Client library" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="video_ndk_decoding.html" class="btn btn-neutral float-right" title="Video Decoding with Android NDK" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="teleportclient.html" class="btn btn-neutral float-left" title="5.5. The Teleport Client library" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="video_ndk_decoding.html" class="btn btn-neutral float-right" title="5.7. Video Decoding with Android NDK" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

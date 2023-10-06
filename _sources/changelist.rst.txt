@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 05 Oct** : Removed deprecated members from setup command, handshake and network settings. Updated docs to cover Websockets-style signaling.
 | **Mon 02 Oct** : Fixups for documentation.
 | **Thu 28 Sep** : Added external libs for Android. Introduced TabContext for client connection management.
 | **Fri 22 Sep** : HTTPUtil saves downloaded files in a cache.
@@ -99,4 +100,3 @@ Changelist
 | **Thu 06 Apr** : Using SingleQueue for time-sensitive client messages - any message on the queue and not yet sent is replaced with a newer one.
 | **Sat 01 Apr** : Platform ptr.
 | **Sat 01 Apr** : Merge branch 'main' of github.com:simul/Teleport
-| **Sat 01 Apr** : Adding sphinxcontrib.jquery in conf.py.

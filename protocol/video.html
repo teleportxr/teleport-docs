@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Video &mdash; Teleport VR  documentation</title>
+  <title>4.3. Video &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Video Metadata" href="video_metadata.html" />
-    <link rel="prev" title="Data Transfer" href="data_transfer.html" /> 
+    <link rel="next" title="4.4. Video Metadata" href="video_metadata.html" />
+    <link rel="prev" title="4.2. Data Transfer" href="data_transfer.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,25 +53,24 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference Implementation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="discovery.html">Discovery</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service.html">Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">Data Transfer</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Video</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#video-texture-layout">Video Texture Layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#video-frame-structure">Video Frame Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#recovering-from-corruption">Recovering from Corruption</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#minimizing-latency">Minimizing Latency</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#processing-of-video-frame-on-the-client">Processing of video Frame on the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="service.html">4.1. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">4.2. Data Transfer</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.3. Video</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#video-texture-layout">4.3.1. Video Texture Layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-frame-structure">4.3.2. Video Frame Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovering-from-corruption">4.3.3. Recovering from Corruption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimizing-latency">4.3.4. Minimizing Latency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processing-of-video-frame-on-the-client">4.3.5. Processing of video Frame on the Client</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">4.4. Video Metadata</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">5. Reference Implementation</a></li>
 </ul>
 
         </div>
@@ -89,8 +88,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../protocol.html">The Teleport VR Protocol</a></li>
-      <li class="breadcrumb-item active">Video</li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">4. </span>The Teleport VR Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.3. </span>Video</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/protocol/video.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -101,11 +100,11 @@
            <div itemprop="articleBody">
              
   <section id="video">
-<span id="id1"></span><h1>Video<a class="headerlink" href="#video" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">4.3. </span>Video<a class="headerlink" href="#video" title="Permalink to this heading">¶</a></h1>
 <p>The server must stream video to the client wth minimal latency.
 This section will describe the structure and content of the video frames, how low latency can be achieved and what the client must do to process the data.</p>
 <section id="video-texture-layout">
-<h2>Video Texture Layout<a class="headerlink" href="#video-texture-layout" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.3.1. </span>Video Texture Layout<a class="headerlink" href="#video-texture-layout" title="Permalink to this heading">¶</a></h2>
 <p>The server should use a video encoder to compress the video stream.
 The rendering output of the server application should be written to a video texture and this should be provided as an input surface to the video encoder.
 The protocol is flexible regarding the layout of the video texture. It is up to the client and server to support the same layout.
@@ -185,7 +184,7 @@ A flag indicating if the webcam image is being streamed and the width, height an
 </table>
 <p>where</p>
 <table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Video Texture Layout</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 4.14 </span><span class="caption-text">Video Texture Layout</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 8.3%" />
 <col style="width: 8.3%" />
@@ -303,7 +302,7 @@ A flag indicating if the webcam image is being streamed and the width, height an
 <p>Note: In the offsets above, higher X values go from left to right and higher Y values go from top to bottom..</p>
 </section>
 <section id="video-frame-structure">
-<h2>Video Frame Structure<a class="headerlink" href="#video-frame-structure" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.3.2. </span>Video Frame Structure<a class="headerlink" href="#video-frame-structure" title="Permalink to this heading">¶</a></h2>
 <p>The video encoder should be configured to accept the <strong>YUV 4:2:0</strong> 12-bit pixel format as input for the video frame.
 16-bit formats such as <strong>YUV 4:4:4</strong> are available but <strong>YUV 4:2:0</strong> minimizes decoding time and latency.
 The video texture must therefore be converted to the the <strong>YUV 4:2:0</strong> format for processing by the video encoder.
@@ -316,7 +315,7 @@ Each frame has at least one <strong>VCL</strong> and may have <strong>picture pa
 The video data should be transferred in accordance with the section of the protocol outlined in <a class="reference internal" href="data_transfer.html#data-transfer"><span class="std std-ref">Data Transfer</span></a>.</p>
 </section>
 <section id="recovering-from-corruption">
-<h2>Recovering from Corruption<a class="headerlink" href="#recovering-from-corruption" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.3.3. </span>Recovering from Corruption<a class="headerlink" href="#recovering-from-corruption" title="Permalink to this heading">¶</a></h2>
 <p>An <strong>IDR frame</strong> is a special type of <strong>I-frame</strong> or keyframe in HEVC/H264.
 It does not rely on any prior frames for decoding and subsequent frames will reference it until the next <strong>I-frame</strong>.
 The <strong>IDR frame</strong> will also include <strong>picture parameters</strong> added by the encoder for the decoder to process.
@@ -335,7 +334,7 @@ This allows the video stream to recover.
 To understand how the <strong>stream-payload-id</strong> is managed and how the client determines if a payload is corrupted, see <a class="reference internal" href="data_transfer.html#data-transfer"><span class="std std-ref">Data Transfer</span></a>.</p>
 </section>
 <section id="minimizing-latency">
-<h2>Minimizing Latency<a class="headerlink" href="#minimizing-latency" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.3.4. </span>Minimizing Latency<a class="headerlink" href="#minimizing-latency" title="Permalink to this heading">¶</a></h2>
 <p>The server must configure the video encoder to minimize latency.
 Different encoders may support different settings and the capabilities of some hardware encoders will depend on the the GPU and driver installed.
 The server application must therefore query the capabilities of the encoder to determine the encoder settings supported.
@@ -356,7 +355,7 @@ The video decoder on the client will be informed of these settings via the <stro
 </ol>
 </section>
 <section id="processing-of-video-frame-on-the-client">
-<h2>Processing of video Frame on the Client<a class="headerlink" href="#processing-of-video-frame-on-the-client" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.3.5. </span>Processing of video Frame on the Client<a class="headerlink" href="#processing-of-video-frame-on-the-client" title="Permalink to this heading">¶</a></h2>
 <p>On receiving a non-corrupted video frame, the client must parse each individual NAL-unit for the video decoder to process.
 For HEVC and H264 codecs, each NAL-unit is separated by a 3-byte ALU code with bytes 1 and 2 having a value of 0 and bytes 3 having a value of 1 (001).
 The client must implement a parser to avail of this to split up the NAL-units.
@@ -370,8 +369,8 @@ The cubemap and assocated lighting information must then be extracted from this 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="data_transfer.html" class="btn btn-neutral float-left" title="Data Transfer" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="video_metadata.html" class="btn btn-neutral float-right" title="Video Metadata" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="data_transfer.html" class="btn btn-neutral float-left" title="4.2. Data Transfer" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="video_metadata.html" class="btn btn-neutral float-right" title="4.4. Video Metadata" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LibAVStream &mdash; Teleport VR  documentation</title>
+  <title>5.1. LibAVStream &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="LibAVStream Example" href="libavstream_example.html" />
-    <link rel="prev" title="Reference Implementation" href="index.html" /> 
+    <link rel="next" title="5.2. LibAVStream Example" href="libavstream_example.html" />
+    <link rel="prev" title="5. Reference Implementation" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,28 +53,28 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Reference Implementation</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">LibAVStream</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#avs-interface-classes">avs Interface Classes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#avs-nodes">avs Nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#avs-structs">avs Structs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Reference Implementation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. LibAVStream</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">5.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">5.1.2. Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avs-interface-classes">5.1.3. avs Interface Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avs-nodes">5.1.4. avs Nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#avs-structs">5.1.5. avs Structs</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">The Teleport Core library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">Client Render Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The Teleport Client library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="server.html">Server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">Video Decoding with Android NDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">5.2. LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">5.3. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">5.4. Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">5.5. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">5.6. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">5.7. Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">5.8. Video with Vulkan on Android</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
 </ul>
 
         </div>
@@ -92,8 +92,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Reference Implementation</a></li>
-      <li class="breadcrumb-item active">LibAVStream</li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">5. </span>Reference Implementation</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5.1. </span>LibAVStream</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/libavstream.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -104,21 +104,21 @@
            <div itemprop="articleBody">
              
   <section id="libavstream">
-<h1>LibAVStream<a class="headerlink" href="#libavstream" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">5.1. </span>LibAVStream<a class="headerlink" href="#libavstream" title="Permalink to this heading">¶</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>LibAVStream is a helper library for streaming video and geometry data between a server and client. A user of this library constructs an avs::Pipeline instance, and configures the pipeline with avs::PipelineNode subclass instances. Nodes can receive data from other nodes, process it, and pass the processed data on to other nodes.</p>
 <p>A pipeline operates on a single thread, while queues allow threads to exchange data. For example, the server’s Network pipeline connects several avs::Queue instances to a single avs::NetworkSink. For example, the video encoding pipeline links an avs::Surface that receives raw video frames, to an avs::Encoder, and finally to a queue. On another thread, the same queue in the network pipeline passes the data to the avs::NetworkSink.</p>
 <p>LibAVStream uses Enet for UDP datagram control. It uses SRT and EFP over UDP for data stream reliability and deliverability.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/ExamplePipeline.png"><img alt="Two pipelines operating on separate threads are connected using an avs::Queue." src="../_images/ExamplePipeline.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-text">Two pipelines operating on separate threads are connected using an avs::Queue.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Two pipelines operating on separate threads are connected using an avs::Queue.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.2. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs7ContextE">
 <span id="_CPPv3N3avs7ContextE"></span><span id="_CPPv2N3avs7ContextE"></span><span id="avs::Context"></span><span class="target" id="classavs_1_1_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#_CPPv4N3avs7ContextE" title="Permalink to this definition">¶</a><br /></dt>
@@ -279,7 +279,7 @@
 
 </section>
 <section id="avs-interface-classes">
-<h2>avs Interface Classes<a class="headerlink" href="#avs-interface-classes" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.3. </span>avs Interface Classes<a class="headerlink" href="#avs-interface-classes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs27AudioTargetBackendInterfaceE">
 <span id="_CPPv3N3avs27AudioTargetBackendInterfaceE"></span><span id="_CPPv2N3avs27AudioTargetBackendInterfaceE"></span><span id="avs::AudioTargetBackendInterface"></span><span class="target" id="classavs_1_1_audio_target_backend_interface"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioTargetBackendInterface</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs20UseInternalAllocatorE" title="avs::UseInternalAllocator"><span class="n"><span class="pre">UseInternalAllocator</span></span></a><a class="headerlink" href="#_CPPv4N3avs27AudioTargetBackendInterfaceE" title="Permalink to this definition">¶</a><br /></dt>
@@ -796,7 +796,7 @@
 
 </section>
 <section id="avs-nodes">
-<h2>avs Nodes<a class="headerlink" href="#avs-nodes" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.4. </span>avs Nodes<a class="headerlink" href="#avs-nodes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs12PipelineNodeE">
 <span id="_CPPv3N3avs12PipelineNodeE"></span><span id="_CPPv2N3avs12PipelineNodeE"></span><span id="avs::PipelineNode"></span><span class="target" id="classavs_1_1_pipeline_node"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PipelineNode</span></span></span><a class="headerlink" href="#_CPPv4N3avs12PipelineNodeE" title="Permalink to this definition">¶</a><br /></dt>
@@ -1855,8 +1855,8 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N3avs15GeometryDecoder9configureE7uint8_tP31GeometryDecoderBackendInterface">
-<span id="_CPPv3N3avs15GeometryDecoder9configureE7uint8_tP31GeometryDecoderBackendInterface"></span><span id="_CPPv2N3avs15GeometryDecoder9configureE7uint8_tP31GeometryDecoderBackendInterface"></span><span id="avs::GeometryDecoder::configure__uint8_t.GeometryDecoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_geometry_decoder_1a7ddecdf592a1e590ee40fd6391e9b2aa"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">streamId</span></span>, <span class="n"><span class="pre">GeometryDecoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs15GeometryDecoder9configureE7uint8_tP31GeometryDecoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N3avs15GeometryDecoder9configureE7uint8_tN3avs3uidEP31GeometryDecoderBackendInterface">
+<span id="_CPPv3N3avs15GeometryDecoder9configureE7uint8_tN3avs3uidEP31GeometryDecoderBackendInterface"></span><span id="_CPPv2N3avs15GeometryDecoder9configureE7uint8_tN3avs3uidEP31GeometryDecoderBackendInterface"></span><span id="avs::GeometryDecoder::configure__uint8_t.avs::uid.GeometryDecoderBackendInterfaceP"></span><span class="target" id="classavs_1_1_geometry_decoder_1a2d4aee37ee54f6f745058d521f9c113d"></span><a class="reference internal" href="#_CPPv4N3avs6ResultE" title="avs::Result"><span class="n"><span class="pre">Result</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">configure</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">streamId</span></span>, <span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span>, <span class="n"><span class="pre">GeometryDecoderBackendInterface</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">backend</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N3avs15GeometryDecoder9configureE7uint8_tN3avs3uidEP31GeometryDecoderBackendInterface" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Configure decoder. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2119,7 +2119,7 @@
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs11NetworkSinkE">
 <span id="_CPPv3N3avs11NetworkSinkE"></span><span id="_CPPv2N3avs11NetworkSinkE"></span><span id="avs::NetworkSink"></span><span class="target" id="classavs_1_1_network_sink"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSink</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs11NetworkSinkE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Subclassed by avs::NullNetworkSink, avs::SrtEfpNetworkSink, avs::WebRtcNetworkSink</p>
+<dd><p>Subclassed by avs::NullNetworkSink, avs::WebRtcNetworkSink</p>
 </dd></dl>
 
 <dl class="cpp class">
@@ -2127,7 +2127,7 @@
 <span id="_CPPv3N3avs13NetworkSourceE"></span><span id="_CPPv2N3avs13NetworkSourceE"></span><span id="avs::NetworkSource"></span><span class="target" id="classavs_1_1_network_source"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSource</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N3avs12PipelineNodeE" title="avs::PipelineNode"><span class="n"><span class="pre">PipelineNode</span></span></a><a class="headerlink" href="#_CPPv4N3avs13NetworkSourceE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Network source node <code class="docutils literal notranslate"><span class="pre">[passive,</span> <span class="pre">0/1]</span></code></p>
 <p>Receives video stream from a remote UDP endpoint. </p>
-<p>Subclassed by avs::SrtEfpNetworkSource, avs::WebRtcNetworkSource</p>
+<p>Subclassed by avs::WebRtcNetworkSource</p>
 </dd></dl>
 
 <dl class="cpp class">
@@ -2411,7 +2411,7 @@
 
 </section>
 <section id="avs-structs">
-<h2>avs Structs<a class="headerlink" href="#avs-structs" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.5. </span>avs Structs<a class="headerlink" href="#avs-structs" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N3avs19NetworkSinkCountersE">
 <span id="_CPPv3N3avs19NetworkSinkCountersE"></span><span id="_CPPv2N3avs19NetworkSinkCountersE"></span><span id="avs::NetworkSinkCounters"></span><span class="target" id="structavs_1_1_network_sink_counters"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkSinkCounters</span></span></span><a class="headerlink" href="#_CPPv4N3avs19NetworkSinkCountersE" title="Permalink to this definition">¶</a><br /></dt>
@@ -3156,8 +3156,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Reference Implementation" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="libavstream_example.html" class="btn btn-neutral float-right" title="LibAVStream Example" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="5. Reference Implementation" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="libavstream_example.html" class="btn btn-neutral float-right" title="5.2. LibAVStream Example" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reference Implementation &mdash; Teleport VR  documentation</title>
+  <title>5. Reference Implementation &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="LibAVStream" href="libavstream.html" />
-    <link rel="prev" title="Teleport Unity SDK" href="../unity/index.html" /> 
+    <link rel="next" title="5.1. LibAVStream" href="libavstream.html" />
+    <link rel="prev" title="4.4. Video Metadata" href="../protocol/video_metadata.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,21 +53,21 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">Teleport Unity SDK</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference Implementation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html">LibAVStream</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">The Teleport Core library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">Client Render Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">The Teleport Client library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="server.html">Server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">Video Decoding with Android NDK</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Reference Implementation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">5.1. LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">5.2. LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">5.3. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">5.4. Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">5.5. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">5.6. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">5.7. Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">5.8. Video with Vulkan on Android</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol.html">The Teleport VR Protocol</a></li>
 </ul>
 
         </div>
@@ -85,7 +85,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Reference Implementation</li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>Reference Implementation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -96,65 +96,65 @@
            <div itemprop="articleBody">
              
   <section id="reference-implementation">
-<h1>Reference Implementation<a class="headerlink" href="#reference-implementation" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">5. </span>Reference Implementation<a class="headerlink" href="#reference-implementation" title="Permalink to this heading">¶</a></h1>
 <p>Simul provides reference code for the Teleport VR server and client in the Teleport repository at <a class="reference external" href="https://github.com/simul/Teleport">https://github.com/simul/Teleport</a>
 (<a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;com">git<span>&#64;</span>github<span>&#46;</span>com</a>:simul/Teleport.git)</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="libavstream.html">LibAVStream</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html#classes">Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html#avs-interface-classes">avs Interface Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html#avs-nodes">avs Nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html#avs-structs">avs Structs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libavstream.html">5.1. LibAVStream</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html#introduction">5.1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html#classes">5.1.2. Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html#avs-interface-classes">5.1.3. avs Interface Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html#avs-nodes">5.1.4. avs Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html#avs-structs">5.1.5. avs Structs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="libavstream_example.html">LibAVStream Example</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html#video-stream-example">Video Stream Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="libavstream_example.html">5.2. LibAVStream Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html#introduction">5.2.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html#video-stream-example">5.2.2. Video Stream Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="teleportcore.html">The Teleport Core library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#commands">Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#client-messages">Client Messages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#animation">Animation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#input-and-control">Input and control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#text-and-fonts">Text and Fonts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teleportcore.html">5.3. The Teleport Core library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#introduction">5.3.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#commands">5.3.2. Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#client-messages">5.3.3. Client Messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#animation">5.3.4. Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#input-and-control">5.3.5. Input and control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html#text-and-fonts">5.3.6. Text and Fonts</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="clientrenderer.html">Client Render Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html#classes">Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html#structs">Structs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clientrenderer.html">5.4. Client Render Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html#classes">5.4.1. Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html#structs">5.4.2. Structs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="teleportclient.html">The Teleport Client library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="teleportclient.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportclient.html#classes">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teleportclient.html">5.5. The Teleport Client library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html#introduction">5.5.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html#classes">5.5.2. Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="server.html">Server</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="server.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="server.html#networking">Networking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="server.html#classes">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="server.html">5.6. Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="server.html#introduction">5.6.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html#networking">5.6.2. Networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html#classes">5.6.3. Classes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="video_ndk_decoding.html">Video Decoding with Android NDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html#amediacodec-set-up">AMediaCodec Set Up</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html#running-the-decoder">Running the Decoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_ndk_decoding.html">5.7. Video Decoding with Android NDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html#amediacodec-set-up">5.7.1. AMediaCodec Set Up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html#running-the-decoder">5.7.2. Running the Decoder</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">Video with Vulkan on Android</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#importing-a-video-stream-into-vulkan">Importing a Video Stream into Vulkan</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#vulkan-sampler-ycbcr-conversion">Vulkan Sampler YCbCr Conversion</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#ycbcr-colour-space">YCbCr Colour Space</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#chroma-subsampling">Chroma Subsampling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#interleaved-planar-and-semi-planar">Interleaved, Planar and Semi Planar</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#itu-colour-spaces-and-encoding-ranges">ITU Colour Spaces and Encoding Ranges</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#co-sited-vs-midpoint">Co-sited vs Midpoint</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#simul-s-implementation">Simul’s Implementation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#ycbcr-in-compute-shaders-and-load-operations">YCbCr in Compute Shaders and Load Operations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#classes">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">5.8. Video with Vulkan on Android</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#importing-a-video-stream-into-vulkan">5.8.1. Importing a Video Stream into Vulkan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#vulkan-sampler-ycbcr-conversion">5.8.2. Vulkan Sampler YCbCr Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#ycbcr-colour-space">5.8.2.1. YCbCr Colour Space</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#chroma-subsampling">5.8.2.2. Chroma Subsampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#interleaved-planar-and-semi-planar">5.8.2.3. Interleaved, Planar and Semi Planar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#itu-colour-spaces-and-encoding-ranges">5.8.2.4. ITU Colour Spaces and Encoding Ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#co-sited-vs-midpoint">5.8.2.5. Co-sited vs Midpoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#simul-s-implementation">5.8.2.6. Simul’s Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#ycbcr-in-compute-shaders-and-load-operations">5.8.2.7. YCbCr in Compute Shaders and Load Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html#classes">5.8.2.8. Classes</a></li>
 </ul>
 </li>
 </ul>
@@ -167,8 +167,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../unity/index.html" class="btn btn-neutral float-left" title="Teleport Unity SDK" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="libavstream.html" class="btn btn-neutral float-right" title="LibAVStream" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../protocol/video_metadata.html" class="btn btn-neutral float-left" title="4.4. Video Metadata" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="libavstream.html" class="btn btn-neutral float-right" title="5.1. LibAVStream" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
