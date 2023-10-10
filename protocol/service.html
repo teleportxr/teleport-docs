@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4.1. Data Service &mdash; Teleport VR  documentation</title>
+  <title>4.2. Data Service &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.1.2.1. Commands from Server to Client" href="service/server_to_client.html" />
-    <link rel="prev" title="4. The Teleport VR Protocol" href="../protocol.html" /> 
+    <link rel="next" title="4.2.2.1. Commands from Server to Client" href="service/server_to_client.html" />
+    <link rel="prev" title="4.1. Signaling" href="signaling.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,18 +57,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. Data Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#initialization">4.1.1. Initialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#update">4.1.2. Update</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="service/server_to_client.html">4.1.2.1. Commands from Server to Client</a></li>
-<li class="toctree-l4"><a class="reference internal" href="service/client_to_server.html">4.1.2.2. Requests from Client to Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">4.1. Signaling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. Data Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialization">4.2.1. Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update">4.2.2. Update</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="service/server_to_client.html">4.2.2.1. Commands from Server to Client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="service/client_to_server.html">4.2.2.2. Requests from Client to Server</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">4.2. Data Transfer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html">4.3. Video</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">4.4. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">4.3. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">4.4. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">4.5. Video Metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">5. Reference Implementation</a></li>
@@ -90,7 +91,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">4. </span>The Teleport VR Protocol</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">4.1. </span>Data Service</li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2. </span>Data Service</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/protocol/service.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -101,9 +102,9 @@
            <div itemprop="articleBody">
              
   <section id="data-service">
-<h1><span class="section-number">4.1. </span>Data Service<a class="headerlink" href="#data-service" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">4.2. </span>Data Service<a class="headerlink" href="#data-service" title="Permalink to this heading">¶</a></h1>
 <section id="initialization">
-<h2><span class="section-number">4.1.1. </span>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.2.1. </span>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">¶</a></h2>
 <p>After a <strong>Connecting Client</strong> completes signaling, the Data Service has been created. This connection has six channels:</p>
 <table class="docutils align-default" id="id1">
 <caption><span class="caption-number">Table 4.2 </span><span class="caption-text">Data Service Channels</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
@@ -153,6 +154,7 @@
 </tr>
 </tbody>
 </table>
+<p>The video stream can be configured as h264 or HEVC. The data streams</p>
 <p>When initial signaling is complete for this <strong>Client</strong>, the <strong>Server</strong> sends the <strong>Setup Command</strong> to the <strong>Client</strong> on the <strong>Command</strong> channel.</p>
 <p><em>Definitions</em></p>
 <p>A <strong>server session</strong> starts when a server first initializes into its running state, and continues until the <strong>Server</strong> stops it.
@@ -508,20 +510,20 @@ A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a spe
 <p>Once the <strong>Client</strong> has received the <code class="docutils literal notranslate"><span class="pre">AcknowledgeHandshake</span></code>, initialization is complete and the client enters the main continuous Update mode.</p>
 </section>
 <section id="update">
-<h2><span class="section-number">4.1.2. </span>Update<a class="headerlink" href="#update" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">4.2.2. </span>Update<a class="headerlink" href="#update" title="Permalink to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="service/server_to_client.html">4.1.2.1. Commands from Server to Client</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="service/server_to_client.html#set-stagespace-origin-node">4.1.2.1.1. Set StageSpace Origin Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="service/server_to_client.html">4.2.2.1. Commands from Server to Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/server_to_client.html#set-stagespace-origin-node">4.2.2.1.1. Set StageSpace Origin Node</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="service/client_to_server.html">4.1.2.2. Requests from Client to Server</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#displayinfo">4.1.2.2.1. DisplayInfo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#controllerposes">4.1.2.2.2. ControllerPoses</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#resourcerequests">4.1.2.2.3. ResourceRequests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#receivedresources">4.1.2.2.4. ReceivedResources</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#nodeupdates">4.1.2.2.5. NodeUpdates</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#video-keyframe-request">4.1.2.2.6. Video Keyframe Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="service/client_to_server.html">4.2.2.2. Requests from Client to Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#displayinfo">4.2.2.2.1. DisplayInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#controllerposes">4.2.2.2.2. ControllerPoses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#resourcerequests">4.2.2.2.3. ResourceRequests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#receivedresources">4.2.2.2.4. ReceivedResources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#nodeupdates">4.2.2.2.5. NodeUpdates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#video-keyframe-request">4.2.2.2.6. Video Keyframe Request</a></li>
 </ul>
 </li>
 </ul>
@@ -533,8 +535,8 @@ A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a spe
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../protocol.html" class="btn btn-neutral float-left" title="4. The Teleport VR Protocol" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="service/server_to_client.html" class="btn btn-neutral float-right" title="4.1.2.1. Commands from Server to Client" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="signaling.html" class="btn btn-neutral float-left" title="4.1. Signaling" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="service/server_to_client.html" class="btn btn-neutral float-right" title="4.2.2.1. Commands from Server to Client" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
