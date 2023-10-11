@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Tue 10 Oct** : Overriding subdirectory variables with FORCE in CMakeLists.txt.
 | **Tue 10 Oct** : Added signaling.rst. Moved SignalingServer from TeleportClient/DiscoveryService into TeleportClient/SignalingServer.
 | **Thu 05 Oct** : Removed deprecated members from setup command, handshake and network settings. Updated docs to cover Websockets-style signaling.
 | **Mon 02 Oct** : Fixups for documentation.
@@ -99,4 +100,3 @@ Changelist
 | **Thu 06 Apr** : Quest build fixes.
 | **Thu 06 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 06 Apr** : Using SingleQueue for time-sensitive client messages - any message on the queue and not yet sent is replaced with a newer one.
-| **Sat 01 Apr** : Platform ptr.
