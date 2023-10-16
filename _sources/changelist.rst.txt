@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Sat 14 Oct** : Adding hand tracking via OpenXR. Updated PC to OpenXR release 1.0.30.
+| **Sat 14 Oct** : Removed Android assets folder from repo, it will be copied at build time from client/assets.
+| **Sat 14 Oct** : Assets (i.e. unmodifiable files available at runtime) are now kept in client/assets and deployed respectively to pc_client/assets and build_android_vs/AndroidClient/AndroidPackaging/app/src/main/assets at build time in a Visual Studio build step.
 | **Thu 12 Oct** : Merge branch 'main' of github.com:simul/Teleport
 | **Thu 12 Oct** : Using Android ndk version 25.2.9519653. Using Exo2 font instead of Exo. Added licensing information for files and projects using reuse.software. Enabled Vulkan support on PC for render debugging.
 | **Tue 10 Oct** : Overriding subdirectory variables with FORCE in CMakeLists.txt.
@@ -97,6 +100,3 @@ Changelist
 | **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Fri 07 Apr** : Modified agde.gradle generated.
 | **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
-| **Fri 07 Apr** : Added VRClient.png image. Disabled overlay for now.
-| **Fri 07 Apr** : Fixed some errors in docs/reference/video_vulkan_android_import_and_ycbcr.rst.
-| **Thu 06 Apr** : Quest build fixes.
