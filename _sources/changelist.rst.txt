@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Wed 18 Oct** : Small compile fix.
+| **Wed 18 Oct** : Removed enet.
 | **Sat 14 Oct** : Adding hand tracking via OpenXR. Updated PC to OpenXR release 1.0.30.
 | **Sat 14 Oct** : Removed Android assets folder from repo, it will be copied at build time from client/assets.
 | **Sat 14 Oct** : Assets (i.e. unmodifiable files available at runtime) are now kept in client/assets and deployed respectively to pc_client/assets and build_android_vs/AndroidClient/AndroidPackaging/app/src/main/assets at build time in a Visual Studio build step.
@@ -97,6 +99,4 @@ Changelist
 | **Sun 09 Apr** : Fix TextCanvas shutdown.
 | **Sun 09 Apr** : Activate/deactivate VR from within PC client.
 | **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
-| **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
-| **Fri 07 Apr** : Modified agde.gradle generated.
 | **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
