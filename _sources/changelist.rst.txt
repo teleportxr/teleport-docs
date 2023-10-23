@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Sun 22 Oct** : Latest updates pre-AWE.
+| **Sat 21 Oct** : Merge branch 'main' of github.com:simul/Teleport
+| **Sat 21 Oct** : Hand tracking can type. Skeleton poses can use external nodes.
 | **Wed 18 Oct** : Small compile fix.
 | **Wed 18 Oct** : Removed enet.
 | **Sat 14 Oct** : Adding hand tracking via OpenXR. Updated PC to OpenXR release 1.0.30.
@@ -97,6 +100,3 @@ Changelist
 | **Tue 11 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 11 Apr** : Improve OpenXR startup/shutdown.
 | **Sun 09 Apr** : Fix TextCanvas shutdown.
-| **Sun 09 Apr** : Activate/deactivate VR from within PC client.
-| **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
-| **Fri 07 Apr** : Merge branch 'main' of github.com:simul/Teleport
