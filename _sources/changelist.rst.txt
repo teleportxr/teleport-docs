@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Mon 23 Oct** : Platform pointer. Safety checks.
 | **Sun 22 Oct** : Latest updates pre-AWE.
 | **Sat 21 Oct** : Merge branch 'main' of github.com:simul/Teleport
 | **Sat 21 Oct** : Hand tracking can type. Skeleton poses can use external nodes.
@@ -99,4 +100,3 @@ Changelist
 | **Tue 11 Apr** : Differentiate DataChannel in source/sink.
 | **Tue 11 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Tue 11 Apr** : Improve OpenXR startup/shutdown.
-| **Sun 09 Apr** : Fix TextCanvas shutdown.
