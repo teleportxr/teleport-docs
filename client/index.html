@@ -54,7 +54,10 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#teleport-url-s">2.1. Teleport URL’s</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../reference/index.html">5. Reference Implementation</a></li>
@@ -113,6 +116,17 @@ All other inputs, including headset and handset motion and other trackers, are m
 server’s particular setup. Their functions will change, depending on the app you’re connected to.</p>
 <p>This is distinct from many other online XR systems. Two different Teleport servers are not two distinct
 “levels”, “worlds” or “locations” for a single application. They are two different apps.</p>
+<section id="teleport-url-s">
+<h2><span class="section-number">2.1. </span>Teleport URL’s<a class="headerlink" href="#teleport-url-s" title="Permalink to this heading">¶</a></h2>
+<p>A teleport URL is of the form:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[PROTOCOL]://[DOMAIN:PORT]/[PATH]/[PARAMETERS]</span></code></p>
+<p>This is similar to an HTTP request, except that a Teleport URL doesn’t refer to a “document” or “resource”. Instead, it’s a request for a real-time connection.
+The [PROTOCOL] would be ‘teleport’. [DOMAIN:PORT] would be a domain name of either two or three parts, or an IP address, optionally followed by a colon and a port number. The interpretation of the path and parameters are up to the server, but in general, the path should describe a location within the server’s application, while the parameters should represent any other information the URL encodes.</p>
+<p>Specifically, a Teleport URL would look like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">teleport://subdomain.domain.tld:port/path/?parameter=value</span></code></p>
+<p>For example:</p>
+<p><a class="reference external" href="teleport://home.teleportvr.io">teleport://home.teleportvr.io</a></p>
+</section>
 </section>
 
 

@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Tue 07 Nov** : PC Client can receive teleport:// links, and can follow any other type of link via Windows OS.
 | **Mon 23 Oct** : Platform pointer. Safety checks.
 | **Sun 22 Oct** : Latest updates pre-AWE.
 | **Sat 21 Oct** : Merge branch 'main' of github.com:simul/Teleport
@@ -99,4 +100,3 @@ Changelist
 | **Wed 12 Apr** : Texture creation uses transferable buffers.
 | **Tue 11 Apr** : Differentiate DataChannel in source/sink.
 | **Tue 11 Apr** : Merge branch 'main' of github.com:simul/Teleport
-| **Tue 11 Apr** : Improve OpenXR startup/shutdown.
