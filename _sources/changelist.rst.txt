@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Wed 13 Dec** : Fixed typo in docs.
 | **Thu 30 Nov** : Improved reconnections client and server behaviour.
 | **Tue 07 Nov** : PC Client can receive teleport:// links, and can follow any other type of link via Windows OS.
 | **Mon 23 Oct** : Platform pointer. Safety checks.
@@ -99,4 +100,3 @@ Changelist
 | **Wed 12 Apr** : Platform ptr.
 | **Wed 12 Apr** : Merge branch 'main' of github.com:simul/Teleport
 | **Wed 12 Apr** : Texture creation uses transferable buffers.
-| **Tue 11 Apr** : Differentiate DataChannel in source/sink.
