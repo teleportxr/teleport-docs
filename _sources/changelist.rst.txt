@@ -1,5 +1,15 @@
 Changelist 
 ========= 
+| **Fri 29 Dec** : Installer registry setup fixed.
+| **Thu 28 Dec** : Fixed NSIS installer.
+| **Thu 28 Dec** : Platform ptr.
+| **Thu 28 Dec** : Merge branch 'main' of github.com:simul/Teleport
+| **Thu 28 Dec** : Deploy cudart64_110.dll via installer.
+| **Thu 28 Dec** : Deploy cudart64_110.dll if necessary to binary directory.
+| **Thu 28 Dec** : Vulkan include only if needed.
+| **Thu 28 Dec** : Client rendering: grouped in RenderPass groups for more efficient API usage.
+| **Thu 14 Dec** : Merge branch 'main' of github.com:simul/Teleport
+| **Thu 14 Dec** : Added flecs.c and flecs.h to Android build. Debug options to disable geometry and texture transcoding from Gui.cpp. PbrMaterialConstants are stored as GPU objects for each material so no need to re-upload. SceneConstants and CameraConstants uploaded only once per view. Flat list iteration to render mesh nodes, improves profiling.
 | **Wed 13 Dec** : Fixed typo in docs.
 | **Thu 30 Nov** : Improved reconnections client and server behaviour.
 | **Tue 07 Nov** : PC Client can receive teleport:// links, and can follow any other type of link via Windows OS.
@@ -90,13 +100,3 @@ Changelist
 | **Thu 13 Apr** : Merge branch 'main' of github.com:simul/Teleport into main
 | **Thu 13 Apr** : Fix for typing URLs in the text input where 'O' would still trigger the OSD.
 | **Thu 13 Apr** : Added a large number of public STUN/TURN servers to try in WebRTC.
-| **Thu 13 Apr** : Fix for PCVR transitioning in and out of VR. Platform ptr.
-| **Wed 12 Apr** : Fix unjoined thread in OpenXR.cpp on shutdown.
-| **Wed 12 Apr** : Platform ptr.
-| **Wed 12 Apr** : Some geometry stream debugging.
-| **Wed 12 Apr** : Merge branch 'main' of github.com:simul/Teleport into main
-| **Wed 12 Apr** : Minor changes and checks.
-| **Wed 12 Apr** : Platform ptr.
-| **Wed 12 Apr** : Platform ptr.
-| **Wed 12 Apr** : Merge branch 'main' of github.com:simul/Teleport
-| **Wed 12 Apr** : Texture creation uses transferable buffers.
