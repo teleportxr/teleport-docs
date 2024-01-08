@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Fri 05 Jan** : Corrected rendering of skinned meshes in client. Not sending bones as separate objects - these are just nodes.
 | **Sun 31 Dec** : Using AddNodeToRender and RemoveNodeFromRender to update passRender lists.
 | **Fri 29 Dec** : Installer registry setup fixed.
 | **Thu 28 Dec** : Fixed NSIS installer.
@@ -99,4 +100,3 @@ Changelist
 | **Thu 13 Apr** : Revert previous commit for agde.gradle and pc_client/Main.cpp
 | **Thu 13 Apr** : Updated SessionClient::CancelConnectButtonHandler() to disconnect from the server.
 | **Thu 13 Apr** : Merge branch 'main' of github.com:simul/Teleport into main
-| **Thu 13 Apr** : Fix for typing URLs in the text input where 'O' would still trigger the OSD.
