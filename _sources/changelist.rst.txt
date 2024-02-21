@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Wed 21 Feb** : Documentation improvements; CPU rendering speed optimizations.
+| **Wed 07 Feb** : Server DLL-exported functions are now all prefixed either with Server_ for global functions, or Client_ for client-specific functions taking a ClientID.
+| **Tue 06 Feb** : Improved animation handling.
 | **Fri 05 Jan** : Corrected rendering of skinned meshes in client. Not sending bones as separate objects - these are just nodes.
 | **Sun 31 Dec** : Using AddNodeToRender and RemoveNodeFromRender to update passRender lists.
 | **Fri 29 Dec** : Installer registry setup fixed.
@@ -97,6 +100,3 @@ Changelist
 | **Fri 14 Apr** : Addded teleportcore.rst
 | **Thu 13 Apr** : Add 3DUI back to Android client.
 | **Thu 13 Apr** : Android compilation fixes for Platform.
-| **Thu 13 Apr** : Revert previous commit for agde.gradle and pc_client/Main.cpp
-| **Thu 13 Apr** : Updated SessionClient::CancelConnectButtonHandler() to disconnect from the server.
-| **Thu 13 Apr** : Merge branch 'main' of github.com:simul/Teleport into main

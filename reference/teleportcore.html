@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5.3. The Teleport Core library &mdash; Teleport VR  documentation</title>
+  <title>5.5. The Teleport Core library &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.4. Client Render Library" href="clientrenderer.html" />
-    <link rel="prev" title="5.2. LibAVStream Example" href="libavstream_example.html" /> 
+    <link rel="next" title="5.6. Client Render Library" href="clientrenderer.html" />
+    <link rel="prev" title="5.4. LibAVStream Example" href="libavstream_example.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,20 +58,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Reference Implementation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html">5.1. LibAVStream</a></li>
-<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">5.2. LibAVStream Example</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. The Teleport Core library</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">5.3.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#commands">5.3.2. Commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#client-messages">5.3.3. Client Messages</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#animation">5.3.4. Animation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#input-and-control">5.3.5. Input and control</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#text-and-fonts">5.3.6. Text and Fonts</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">5.4. Client Render Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">5.5. The Teleport Client library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="server.html">5.6. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">5.2. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">5.3. LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">5.4. LibAVStream Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.5. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">5.6. Client Render Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">5.7. Video Decoding with Android NDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">5.8. Video with Vulkan on Android</a></li>
 </ul>
@@ -94,7 +86,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html"><span class="section-number">5. </span>Reference Implementation</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5.3. </span>The Teleport Core library</li>
+      <li class="breadcrumb-item active"><span class="section-number">5.5. </span>The Teleport Core library</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/teleportcore.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -105,19 +97,18 @@
            <div itemprop="articleBody">
              
   <section id="the-teleport-core-library">
-<h1><span class="section-number">5.3. </span>The Teleport Core library<a class="headerlink" href="#the-teleport-core-library" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">5.5. </span>The Teleport Core library<a class="headerlink" href="#the-teleport-core-library" title="Permalink to this heading">¶</a></h1>
 <section id="introduction">
-<h2><span class="section-number">5.3.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.5.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Teleport Core is a library of fundamental classes shared by clients and servers.</p>
 </section>
 <section id="commands">
-<h2><span class="section-number">5.3.2. </span>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.5.2. </span>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
 <p>Commands are sent from the server to the client on a reliable data channel. All commands derive from teleport::core::Command.</p>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core7CommandE">
 <span id="_CPPv3N8teleport4core7CommandE"></span><span id="_CPPv2N8teleport4core7CommandE"></span><span id="teleport::core::Command"></span><span class="target" id="structteleport_1_1core_1_1_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Command</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core7CommandE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Controls what is used as the current time of the animation. </p>
-<p>A message from a server to a client. The commandPayloadType specifies the size and interpretation of the packet. </p>
+<dd><p>A message from a server to a client. The commandPayloadType specifies the size and interpretation of the packet. </p>
 <p>Subclassed by <a class="reference internal" href="#structteleport_1_1core_1_1_acknowledge_handshake_command"><span class="std std-ref">teleport::core::AcknowledgeHandshakeCommand</span></a>, teleport::core::ApplyAnimationCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_assign_node_pose_path_command"><span class="std std-ref">teleport::core::AssignNodePosePathCommand</span></a>, teleport::core::NodeStateCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_node_visibility_command"><span class="std std-ref">teleport::core::NodeVisibilityCommand</span></a>, teleport::core::PingForLatencyCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_reconfigure_video_command"><span class="std std-ref">teleport::core::ReconfigureVideoCommand</span></a>, teleport::core::SetNodeAnimationSpeedCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_set_node_highlighted_command"><span class="std std-ref">teleport::core::SetNodeHighlightedCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_set_stage_space_origin_node_command"><span class="std std-ref">teleport::core::SetStageSpaceOriginNodeCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_setup_command"><span class="std std-ref">teleport::core::SetupCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_setup_inputs_command"><span class="std std-ref">teleport::core::SetupInputsCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_setup_lighting_command"><span class="std std-ref">teleport::core::SetupLightingCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_shutdown_command"><span class="std std-ref">teleport::core::ShutdownCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_update_node_enabled_state_command"><span class="std std-ref">teleport::core::UpdateNodeEnabledStateCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_update_node_movement_command"><span class="std std-ref">teleport::core::UpdateNodeMovementCommand</span></a></p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Public Members</p>
@@ -138,7 +129,7 @@
 <p class="breathe-sectiondef-title rubric">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core30SetStageSpaceOriginNodeCommand11origin_nodeE">
-<span id="_CPPv3N8teleport4core30SetStageSpaceOriginNodeCommand11origin_nodeE"></span><span id="_CPPv2N8teleport4core30SetStageSpaceOriginNodeCommand11origin_nodeE"></span><span id="teleport::core::SetStageSpaceOriginNodeCommand::origin_node__avs::uid"></span><span class="target" id="structteleport_1_1core_1_1_set_stage_space_origin_node_command_1ac387db548c3399cb80d43e6d724c9500"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">origin_node</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core30SetStageSpaceOriginNodeCommand11origin_nodeE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core30SetStageSpaceOriginNodeCommand11origin_nodeE"></span><span id="_CPPv2N8teleport4core30SetStageSpaceOriginNodeCommand11origin_nodeE"></span><span id="teleport::core::SetStageSpaceOriginNodeCommand::origin_node__avs::uid"></span><span class="target" id="structteleport_1_1core_1_1_set_stage_space_origin_node_command_1ac387db548c3399cb80d43e6d724c9500"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">origin_node</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core30SetStageSpaceOriginNodeCommand11origin_nodeE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The session uid of the node to use as the origin. </p>
 </dd></dl>
 
@@ -179,12 +170,6 @@
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand12do_checksumsE">
-<span id="_CPPv3N8teleport4core12SetupCommand12do_checksumsE"></span><span id="_CPPv2N8teleport4core12SetupCommand12do_checksumsE"></span><span id="teleport::core::SetupCommand::do_checksums__uint32_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a81762906a920892b1c88c3f40ff75231"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">do_checksums</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12do_checksumsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>17 </p>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand21debug_network_packetsE">
 <span id="_CPPv3N8teleport4core12SetupCommand21debug_network_packetsE"></span><span id="_CPPv2N8teleport4core12SetupCommand21debug_network_packetsE"></span><span id="teleport::core::SetupCommand::debug_network_packets__uint32_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a21cefaf10485a3e885484f520efc8d56"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">debug_network_packets</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand21debug_network_packetsE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>21 </p>
@@ -209,14 +194,8 @@
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand13control_modelE">
-<span id="_CPPv3N8teleport4core12SetupCommand13control_modelE"></span><span id="_CPPv2N8teleport4core12SetupCommand13control_modelE"></span><span id="teleport::core::SetupCommand::control_model__ControlModel"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1aec4161aa17c7dcbba40175fe08de03ff"></span><span class="n"><span class="pre">ControlModel</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">control_model</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">ControlModel</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NONE</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand13control_modelE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Not in use 41b to here. </p>
-</dd></dl>
-
-<dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand12video_configE">
-<span id="_CPPv3N8teleport4core12SetupCommand12video_configE"></span><span id="_CPPv2N8teleport4core12SetupCommand12video_configE"></span><span id="teleport::core::SetupCommand::video_config__avs::VideoConfig"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a960333e990324a5cf27722d34b09d8b8"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VideoConfig</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">video_config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12video_configE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core12SetupCommand12video_configE"></span><span id="_CPPv2N8teleport4core12SetupCommand12video_configE"></span><span id="teleport::core::SetupCommand::video_config__avs::VideoConfig"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a960333e990324a5cf27722d34b09d8b8"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs11VideoConfigE" title="avs::VideoConfig"><span class="n"><span class="pre">VideoConfig</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">video_config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12video_configE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Video setup structure. 41+89=130 bytes. </p>
 </dd></dl>
 
@@ -228,7 +207,7 @@
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand12axesStandardE">
-<span id="_CPPv3N8teleport4core12SetupCommand12axesStandardE"></span><span id="_CPPv2N8teleport4core12SetupCommand12axesStandardE"></span><span id="teleport::core::SetupCommand::axesStandard__avs::AxesStandard"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a3e5e3f1b3225ebcc2ffebedeb8599b17"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">AxesStandard</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">axesStandard</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">AxesStandard</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NotInitialized</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12axesStandardE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core12SetupCommand12axesStandardE"></span><span id="_CPPv2N8teleport4core12SetupCommand12axesStandardE"></span><span id="teleport::core::SetupCommand::axesStandard__avs::AxesStandard"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a3e5e3f1b3225ebcc2ffebedeb8599b17"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">axesStandard</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandard14NotInitializedE" title="avs::AxesStandard::NotInitialized"><span class="n"><span class="pre">NotInitialized</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12axesStandardE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The axis standard that the server uses, may be different from the client’s. 147. </p>
 </dd></dl>
 
@@ -245,9 +224,9 @@
 </dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand26startTimestamp_utc_unix_nsE">
-<span id="_CPPv3N8teleport4core12SetupCommand26startTimestamp_utc_unix_nsE"></span><span id="_CPPv2N8teleport4core12SetupCommand26startTimestamp_utc_unix_nsE"></span><span id="teleport::core::SetupCommand::startTimestamp_utc_unix_ns__int64_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a6002000023edb5f0b513eff00d895913"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startTimestamp_utc_unix_ns</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand26startTimestamp_utc_unix_nsE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>157 UTC Unix Timestamp in milliseconds of when the server started streaming to the client. </p>
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand26startTimestamp_utc_unix_usE">
+<span id="_CPPv3N8teleport4core12SetupCommand26startTimestamp_utc_unix_usE"></span><span id="_CPPv2N8teleport4core12SetupCommand26startTimestamp_utc_unix_usE"></span><span id="teleport::core::SetupCommand::startTimestamp_utc_unix_us__int64_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1ad7467e25378869bfc3b01594fd6010a1"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startTimestamp_utc_unix_us</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand26startTimestamp_utc_unix_usE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>157 UTC Unix Timestamp in microseconds when the server session began. </p>
 </dd></dl>
 
 <dl class="cpp var">
@@ -264,7 +243,7 @@
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand21clientDynamicLightingE">
-<span id="_CPPv3N8teleport4core12SetupCommand21clientDynamicLightingE"></span><span id="_CPPv2N8teleport4core12SetupCommand21clientDynamicLightingE"></span><span id="teleport::core::SetupCommand::clientDynamicLighting__avs::ClientDynamicLighting"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a21b53b1ff8974e195a3d812ac935ec1d"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ClientDynamicLighting</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clientDynamicLighting</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand21clientDynamicLightingE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core12SetupCommand21clientDynamicLightingE"></span><span id="_CPPv2N8teleport4core12SetupCommand21clientDynamicLightingE"></span><span id="teleport::core::SetupCommand::clientDynamicLighting__avs::ClientDynamicLighting"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a21b53b1ff8974e195a3d812ac935ec1d"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs21ClientDynamicLightingE" title="avs::ClientDynamicLighting"><span class="n"><span class="pre">ClientDynamicLighting</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clientDynamicLighting</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand21clientDynamicLightingE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Setup for dynamic object lighting. 174+57=231 bytes. </p>
 </dd></dl>
 
@@ -309,7 +288,7 @@
 <p class="breathe-sectiondef-title rubric">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core23ReconfigureVideoCommand12video_configE">
-<span id="_CPPv3N8teleport4core23ReconfigureVideoCommand12video_configE"></span><span id="_CPPv2N8teleport4core23ReconfigureVideoCommand12video_configE"></span><span id="teleport::core::ReconfigureVideoCommand::video_config__avs::VideoConfig"></span><span class="target" id="structteleport_1_1core_1_1_reconfigure_video_command_1acb5e3b8910b170df7cd2263499f5e4c2"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">VideoConfig</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">video_config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core23ReconfigureVideoCommand12video_configE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core23ReconfigureVideoCommand12video_configE"></span><span id="_CPPv2N8teleport4core23ReconfigureVideoCommand12video_configE"></span><span id="teleport::core::ReconfigureVideoCommand::video_config__avs::VideoConfig"></span><span class="target" id="structteleport_1_1core_1_1_reconfigure_video_command_1acb5e3b8910b170df7cd2263499f5e4c2"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs11VideoConfigE" title="avs::VideoConfig"><span class="n"><span class="pre">VideoConfig</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">video_config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core23ReconfigureVideoCommand12video_configE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The configuration to use. </p>
 </dd></dl>
 
@@ -372,7 +351,7 @@
 <p class="breathe-sectiondef-title rubric">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core26UpdateNodeStructureCommand8parentIDE">
-<span id="_CPPv3N8teleport4core26UpdateNodeStructureCommand8parentIDE"></span><span id="_CPPv2N8teleport4core26UpdateNodeStructureCommand8parentIDE"></span><span id="teleport::core::UpdateNodeStructureCommand::parentID__avs::uid"></span><span class="target" id="structteleport_1_1core_1_1_update_node_structure_command_1afb522d4807c012c2d5e687e24f557de5"></span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">parentID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core26UpdateNodeStructureCommand8parentIDE" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core26UpdateNodeStructureCommand8parentIDE"></span><span id="_CPPv2N8teleport4core26UpdateNodeStructureCommand8parentIDE"></span><span id="teleport::core::UpdateNodeStructureCommand::parentID__avs::uid"></span><span class="target" id="structteleport_1_1core_1_1_update_node_structure_command_1afb522d4807c012c2d5e687e24f557de5"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">parentID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core26UpdateNodeStructureCommand8parentIDE" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>The new parent uid. </p>
 </dd></dl>
 
@@ -402,7 +381,7 @@
 
 </section>
 <section id="client-messages">
-<h2><span class="section-number">5.3.3. </span>Client Messages<a class="headerlink" href="#client-messages" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.5.3. </span>Client Messages<a class="headerlink" href="#client-messages" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core13ClientMessageE">
 <span id="_CPPv3N8teleport4core13ClientMessageE"></span><span id="_CPPv2N8teleport4core13ClientMessageE"></span><span id="teleport::core::ClientMessage"></span><span class="target" id="structteleport_1_1core_1_1_client_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessage</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core13ClientMessageE" title="Permalink to this definition">¶</a><br /></dt>
@@ -505,7 +484,7 @@
 
 </section>
 <section id="animation">
-<h2><span class="section-number">5.3.4. </span>Animation<a class="headerlink" href="#animation" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.5.4. </span>Animation<a class="headerlink" href="#animation" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core9AnimationE">
 <span id="_CPPv3N8teleport4core9AnimationE"></span><span id="_CPPv2N8teleport4core9AnimationE"></span><span id="teleport::core::Animation"></span><span class="target" id="structteleport_1_1core_1_1_animation"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Animation</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core9AnimationE" title="Permalink to this definition">¶</a><br /></dt>
@@ -520,7 +499,7 @@
 
 </section>
 <section id="input-and-control">
-<h2><span class="section-number">5.3.5. </span>Input and control<a class="headerlink" href="#input-and-control" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.5.5. </span>Input and control<a class="headerlink" href="#input-and-control" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5InputE">
 <span id="_CPPv3N8teleport4core5InputE"></span><span id="_CPPv2N8teleport4core5InputE"></span><span id="teleport::core::Input"></span><span class="target" id="classteleport_1_1core_1_1_input"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Input</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core5InputE" title="Permalink to this definition">¶</a><br /></dt>
@@ -535,19 +514,19 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input14addBinaryEventEN3avs7InputIdEb">
-<span id="_CPPv3N8teleport4core5Input14addBinaryEventEN3avs7InputIdEb"></span><span id="_CPPv2N8teleport4core5Input14addBinaryEventEN3avs7InputIdEb"></span><span id="teleport::core::Input::addBinaryEvent__avs::InputId.b"></span><span class="target" id="classteleport_1_1core_1_1_input_1ac51c35bd99c86423fa05c83d73fad856"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addBinaryEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">InputId</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">activated</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input14addBinaryEventEN3avs7InputIdEb" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core5Input14addBinaryEventEN3avs7InputIdEb"></span><span id="_CPPv2N8teleport4core5Input14addBinaryEventEN3avs7InputIdEb"></span><span id="teleport::core::Input::addBinaryEvent__avs::InputId.b"></span><span class="target" id="classteleport_1_1core_1_1_input_1ac51c35bd99c86423fa05c83d73fad856"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addBinaryEvent</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs7InputIdE" title="avs::InputId"><span class="n"><span class="pre">InputId</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">activated</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input14addBinaryEventEN3avs7InputIdEb" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add a binary (on/off) event for the specified inputID. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input16addAnalogueEventEN3avs7InputIdEf">
-<span id="_CPPv3N8teleport4core5Input16addAnalogueEventEN3avs7InputIdEf"></span><span id="_CPPv2N8teleport4core5Input16addAnalogueEventEN3avs7InputIdEf"></span><span id="teleport::core::Input::addAnalogueEvent__avs::InputId.float"></span><span class="target" id="classteleport_1_1core_1_1_input_1abb31cada6c1802fd0470f3e2d3101567"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addAnalogueEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">InputId</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">strength</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input16addAnalogueEventEN3avs7InputIdEf" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core5Input16addAnalogueEventEN3avs7InputIdEf"></span><span id="_CPPv2N8teleport4core5Input16addAnalogueEventEN3avs7InputIdEf"></span><span id="teleport::core::Input::addAnalogueEvent__avs::InputId.float"></span><span class="target" id="classteleport_1_1core_1_1_input_1abb31cada6c1802fd0470f3e2d3101567"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addAnalogueEvent</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs7InputIdE" title="avs::InputId"><span class="n"><span class="pre">InputId</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">strength</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input16addAnalogueEventEN3avs7InputIdEf" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add an analogue [0,1.0] or [-1.0,1.0] event for the specified inputID. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input14addMotionEventEN3avs7InputIdE4vec2">
-<span id="_CPPv3N8teleport4core5Input14addMotionEventEN3avs7InputIdE4vec2"></span><span id="_CPPv2N8teleport4core5Input14addMotionEventEN3avs7InputIdE4vec2"></span><span id="teleport::core::Input::addMotionEvent__avs::InputId.vec2"></span><span class="target" id="classteleport_1_1core_1_1_input_1aaebb42eb2cb2f582329716ab2824269d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addMotionEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">InputId</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="n"><span class="pre">vec2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motion</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input14addMotionEventEN3avs7InputIdE4vec2" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3N8teleport4core5Input14addMotionEventEN3avs7InputIdE4vec2"></span><span id="_CPPv2N8teleport4core5Input14addMotionEventEN3avs7InputIdE4vec2"></span><span id="teleport::core::Input::addMotionEvent__avs::InputId.vec2"></span><span class="target" id="classteleport_1_1core_1_1_input_1aaebb42eb2cb2f582329716ab2824269d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addMotionEvent</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs7InputIdE" title="avs::InputId"><span class="n"><span class="pre">InputId</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="n"><span class="pre">vec2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motion</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input14addMotionEventEN3avs7InputIdE4vec2" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Add a notion (xy) event for the specified inputID. </p>
 </dd></dl>
 
@@ -565,13 +544,13 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK8teleport4core5Input20getLastAnalogueEventE8uint16_t">
-<span id="_CPPv3NK8teleport4core5Input20getLastAnalogueEventE8uint16_t"></span><span id="_CPPv2NK8teleport4core5Input20getLastAnalogueEventE8uint16_t"></span><span id="teleport::core::Input::getLastAnalogueEvent__uint16_tC"></span><span class="target" id="classteleport_1_1core_1_1_input_1a1de92368ae6f3580706b44ec9c4206b1"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">InputEventAnalogue</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastAnalogueEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport4core5Input20getLastAnalogueEventE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8teleport4core5Input20getLastAnalogueEventE8uint16_t"></span><span id="_CPPv2NK8teleport4core5Input20getLastAnalogueEventE8uint16_t"></span><span id="teleport::core::Input::getLastAnalogueEvent__uint16_tC"></span><span class="target" id="classteleport_1_1core_1_1_input_1a1de92368ae6f3580706b44ec9c4206b1"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs18InputEventAnalogueE" title="avs::InputEventAnalogue"><span class="n"><span class="pre">InputEventAnalogue</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastAnalogueEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport4core5Input20getLastAnalogueEventE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>For debugging only: get the last event at this id. </p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4NK8teleport4core5Input18getLastBinaryEventE8uint16_t">
-<span id="_CPPv3NK8teleport4core5Input18getLastBinaryEventE8uint16_t"></span><span id="_CPPv2NK8teleport4core5Input18getLastBinaryEventE8uint16_t"></span><span id="teleport::core::Input::getLastBinaryEvent__uint16_tC"></span><span class="target" id="classteleport_1_1core_1_1_input_1ad84ea550990c4b819f2dc849e15afea0"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">avs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">InputEventBinary</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastBinaryEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport4core5Input18getLastBinaryEventE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
+<span id="_CPPv3NK8teleport4core5Input18getLastBinaryEventE8uint16_t"></span><span id="_CPPv2NK8teleport4core5Input18getLastBinaryEventE8uint16_t"></span><span id="teleport::core::Input::getLastBinaryEvent__uint16_tC"></span><span class="target" id="classteleport_1_1core_1_1_input_1ad84ea550990c4b819f2dc849e15afea0"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs16InputEventBinaryE" title="avs::InputEventBinary"><span class="n"><span class="pre">InputEventBinary</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastBinaryEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport4core5Input18getLastBinaryEventE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>For debugging only: get the last event at this id. </p>
 </dd></dl>
 
@@ -580,7 +559,7 @@
 
 </section>
 <section id="text-and-fonts">
-<h2><span class="section-number">5.3.6. </span>Text and Fonts<a class="headerlink" href="#text-and-fonts" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.5.6. </span>Text and Fonts<a class="headerlink" href="#text-and-fonts" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport4core9FontAtlasE">
 <span id="_CPPv3N8teleport4core9FontAtlasE"></span><span id="_CPPv2N8teleport4core9FontAtlasE"></span><span id="teleport::core::FontAtlas"></span><span class="target" id="structteleport_1_1core_1_1_font_atlas"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FontAtlas</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core9FontAtlasE" title="Permalink to this definition">¶</a><br /></dt>
@@ -601,14 +580,14 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="libavstream_example.html" class="btn btn-neutral float-left" title="5.2. LibAVStream Example" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="clientrenderer.html" class="btn btn-neutral float-right" title="5.4. Client Render Library" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="libavstream_example.html" class="btn btn-neutral float-left" title="5.4. LibAVStream Example" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="clientrenderer.html" class="btn btn-neutral float-right" title="5.6. Client Render Library" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2023, Simul Software Ltd.</p>
+    <p>&#169; Copyright 2018-2024, Simul Software Ltd.</p>
   </div> 
 
 </footer>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5.2. LibAVStream Example &mdash; Teleport VR  documentation</title>
+  <title>5.4. LibAVStream Example &mdash; Teleport VR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.3. The Teleport Core library" href="teleportcore.html" />
-    <link rel="prev" title="5.1. LibAVStream" href="libavstream.html" /> 
+    <link rel="next" title="5.5. The Teleport Core library" href="teleportcore.html" />
+    <link rel="prev" title="5.3. LibAVStream" href="libavstream.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -58,16 +58,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">5. Reference Implementation</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="libavstream.html">5.1. LibAVStream</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.2. LibAVStream Example</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#introduction">5.2.1. Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#video-stream-example">5.2.2. Video Stream Example</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">5.3. The Teleport Core library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">5.4. Client Render Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">5.5. The Teleport Client library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="server.html">5.6. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">5.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">5.2. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">5.3. LibAVStream</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.4. LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">5.5. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">5.6. Client Render Library</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">5.7. Video Decoding with Android NDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">5.8. Video with Vulkan on Android</a></li>
 </ul>
@@ -90,7 +86,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html"><span class="section-number">5. </span>Reference Implementation</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5.2. </span>LibAVStream Example</li>
+      <li class="breadcrumb-item active"><span class="section-number">5.4. </span>LibAVStream Example</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/reference/libavstream_example.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -101,15 +97,15 @@
            <div itemprop="articleBody">
              
   <section id="libavstream-example">
-<h1><span class="section-number">5.2. </span>LibAVStream Example<a class="headerlink" href="#libavstream-example" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">5.4. </span>LibAVStream Example<a class="headerlink" href="#libavstream-example" title="Permalink to this heading">¶</a></h1>
 <section id="introduction">
-<h2><span class="section-number">5.2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.4.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>Here we present an example of how to use LibAVStream to stream video.
 LibAVStream has a default video encoder and decoder class that uses NVENC but for this example, we will assume a custom
 video encoder needs to be used.</p>
 </section>
 <section id="video-stream-example">
-<h2><span class="section-number">5.2.2. </span>Video Stream Example<a class="headerlink" href="#video-stream-example" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.4.2. </span>Video Stream Example<a class="headerlink" href="#video-stream-example" title="Permalink to this heading">¶</a></h2>
 <p>avs::NetworkSink is an avs::PipelineNode that handles the packing and sending of data for each stream.
 An avs::NetworkSink instance must be created and configured. Each stream is configured by passing an instance of
 an avs::NetworkStream struct to the avs::NetworkSink configure function.
@@ -288,14 +284,14 @@ D3D11 abd D3D12 but this can easily be extended.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="libavstream.html" class="btn btn-neutral float-left" title="5.1. LibAVStream" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="teleportcore.html" class="btn btn-neutral float-right" title="5.3. The Teleport Core library" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="libavstream.html" class="btn btn-neutral float-left" title="5.3. LibAVStream" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="teleportcore.html" class="btn btn-neutral float-right" title="5.5. The Teleport Core library" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2023, Simul Software Ltd.</p>
+    <p>&#169; Copyright 2018-2024, Simul Software Ltd.</p>
   </div> 
 
 </footer>

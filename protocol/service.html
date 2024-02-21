@@ -58,15 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">4. The Teleport VR Protocol</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="signaling.html">4.1. Signaling</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. Data Service</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#initialization">4.2.1. Initialization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#update">4.2.2. Update</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="service/server_to_client.html">4.2.2.1. Commands from Server to Client</a></li>
-<li class="toctree-l4"><a class="reference internal" href="service/client_to_server.html">4.2.2.2. Requests from Client to Server</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. Data Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_transfer.html">4.3. Data Transfer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video.html">4.4. Video</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video_metadata.html">4.5. Video Metadata</a></li>
@@ -190,56 +182,40 @@ A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a spe
 <td><p>Setup=2</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p>int32</p></td>
-<td><p>deprecated</p></td>
-</tr>
-<tr class="row-even"><td><p>4</p></td>
-<td><p>int32</p></td>
-<td><p>deprecated</p></td>
-</tr>
-<tr class="row-odd"><td><p>4</p></td>
 <td><p>uint32</p></td>
-<td><p>debug_stream</p></td>
+<td><p>Debug stream index</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
 <td><p>uint32</p></td>
-<td><p>do_checksums</p></td>
+<td><p>Debug network packets?</p></td>
 </tr>
 <tr class="row-odd"><td><p>4</p></td>
-<td><p>uint32</p></td>
-<td><p>debug_network_packets</p></td>
+<td><p>int32</p></td>
+<td><p>Required Latency Ms</p></td>
 </tr>
 <tr class="row-even"><td><p>4</p></td>
-<td><p>int32</p></td>
-<td><p>requiredLatencyMs</p></td>
-</tr>
-<tr class="row-odd"><td><p>4</p></td>
 <td><p>uint32</p></td>
-<td><p>idle_connection_timeout</p></td>
+<td><p>Idle Connection Timeout</p></td>
 </tr>
-<tr class="row-even"><td><p>8</p></td>
+<tr class="row-odd"><td><p>8</p></td>
 <td><p>uid</p></td>
-<td><p>server ID</p></td>
-</tr>
-<tr class="row-odd"><td><p>1</p></td>
-<td><p>ControlModel</p></td>
-<td><p>control_model</p></td>
+<td><p>Server Session ID</p></td>
 </tr>
 <tr class="row-even"><td><p>137</p></td>
 <td><p>VideoConfig</p></td>
-<td><p>video stream configuration</p></td>
+<td><p>video stream configuratn</p></td>
 </tr>
-<tr class="row-odd"><td><p>12 (3 floats)</p></td>
-<td></td>
-<td><p>bodyOffsetFromHead</p></td>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>Draw Distance (metres)</p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>AxesStandard</p></td>
-<td><p>axes standard</p></td>
+<td><p>Axes standard</p></td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
 <td><p>uint8_t</p></td>
-<td><p>audio input enabled, 1 or 0</p></td>
+<td><p>Audio input enabled 1 or 0</p></td>
 </tr>
 <tr class="row-even"><td><p>1</p></td>
 <td><p>uint8_t</p></td>
@@ -247,11 +223,13 @@ A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a spe
 </tr>
 <tr class="row-odd"><td><p>8</p></td>
 <td><p>int64</p></td>
-<td><p>starting timestamp</p></td>
+<td><p>starting timestamp, microseconds since Unix Epoch</p></td>
 </tr>
 </tbody>
 </table>
-<p>where</p>
+<ul class="simple">
+<li><p>see teleport::core::SetupCommand - where</p></li>
+</ul>
 <table class="docutils align-default" id="id2">
 <caption><span class="caption-number">Table 4.3 </span><span class="caption-text">VideoConfig</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -542,7 +520,7 @@ A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a spe
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2023, Simul Software Ltd.</p>
+    <p>&#169; Copyright 2018-2024, Simul Software Ltd.</p>
   </div> 
 
 </footer>
