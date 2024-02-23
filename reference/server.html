@@ -103,21 +103,11 @@
 <p>TeleportServer is a library that provides server functionality in conjunction with a real-time game or simulation engine. The library is usually dynamically-linked, and can be controlled from engine-side
 entirely by means of the functions that the dll exports. Therefore there is no need to include C++ headers from the server library engine-side, and indeed the engine need not be in C++.</p>
 </section>
-<section id="networking">
-<h2><span class="section-number">5.1.2. </span>Networking<a class="headerlink" href="#networking" title="Permalink to this heading">¶</a></h2>
-<img src="../_images/mermaid-0af64e99b09ec8e98796b69215611490b98764a4.png" alt="flowchart LR
-        A(Video Queue) --&gt;|1| H(Network Sink)
-        B(Tag Queue) --&gt;|2| H
-        C(Audio Queue) --&gt;|3| H
-        D(Geometry Queue) --&gt;|4| H
-        E(Command Queue) --&gt;|5| H
-        F(Geometry Encoder) --&gt; D" />
-</section>
 <section id="api">
-<h2><span class="section-number">5.1.3. </span>API<a class="headerlink" href="#api" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.2. </span>API<a class="headerlink" href="#api" title="Permalink to this heading">¶</a></h2>
 <p>The server library’s exported functions are described below. These global functions are declared as exports.</p>
 <section id="preparation">
-<h3><span class="section-number">5.1.3.1. </span>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.1. </span>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading">¶</a></h3>
 <p>In order to start a server session, it’s necessary to prepare the data - objects and resources - so it is ready to be streamed to connecting clients.
 On the engine side there will often be a user interface for this - see for example</p>
 <dl class="cpp function">
@@ -224,7 +214,7 @@ On the engine side there will often be a user interface for this - see for examp
 
 </section>
 <section id="lifecycle">
-<h3><span class="section-number">5.1.3.2. </span>Lifecycle<a class="headerlink" href="#lifecycle" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.2. </span>Lifecycle<a class="headerlink" href="#lifecycle" title="Permalink to this heading">¶</a></h3>
 <img src="../_images/mermaid-1a847606de9f551bd3ee91424104159dfd623376.png" alt="flowchart TD
         subgraph MainInitialization
                 A(Server_Teleport_Initialize)
@@ -316,7 +306,7 @@ On the engine side there will often be a user interface for this - see for examp
 
 </section>
 <section id="state-management">
-<h3><span class="section-number">5.1.3.3. </span>State Management<a class="headerlink" href="#state-management" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.3. </span>State Management<a class="headerlink" href="#state-management" title="Permalink to this heading">¶</a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv426Server_GetUnlinkedClientIDv">
 <span id="_CPPv326Server_GetUnlinkedClientIDv"></span><span id="_CPPv226Server_GetUnlinkedClientIDv"></span><span id="Server_GetUnlinkedClientID"></span><span class="target" id="_plugin_main_8cpp_1abd27aec75e6d93e6eb3d983a20553fbc"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GetUnlinkedClientID</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426Server_GetUnlinkedClientIDv" title="Permalink to this definition">¶</a><br /></dt>
@@ -421,7 +411,7 @@ On the engine side there will often be a user interface for this - see for examp
 
 </section>
 <section id="axis-conversions">
-<h3><span class="section-number">5.1.3.4. </span>Axis Conversions<a class="headerlink" href="#axis-conversions" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.4. </span>Axis Conversions<a class="headerlink" href="#axis-conversions" title="Permalink to this heading">¶</a></h3>
 <p>Various axis conventions are used in different applications, game engines and API’s. The reference API defines  <a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><code class="xref any cpp cpp-enum docutils literal notranslate"><span class="pre">avs::AxesStandard</span></code></a> to represent the possible standards that can be used.</p>
 <figure class="align-default">
 <img alt="reference/AxesStandards.png" src="reference/AxesStandards.png" />
@@ -454,7 +444,7 @@ On the engine side there will often be a user interface for this - see for examp
 
 </section>
 <section id="memory">
-<h3><span class="section-number">5.1.3.5. </span>Memory<a class="headerlink" href="#memory" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.5. </span>Memory<a class="headerlink" href="#memory" title="Permalink to this heading">¶</a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv427Server_DeleteUnmanagedArrayPPv">
 <span id="_CPPv327Server_DeleteUnmanagedArrayPPv"></span><span id="_CPPv227Server_DeleteUnmanagedArrayPPv"></span><span id="Server_DeleteUnmanagedArray__voidPP"></span><span class="target" id="_plugin_main_8cpp_1a638d537e790dc860f017fb7b9f824ce2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_DeleteUnmanagedArray</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">unmanagedArray</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Server_DeleteUnmanagedArrayPPv" title="Permalink to this definition">¶</a><br /></dt>
@@ -469,7 +459,7 @@ On the engine side there will often be a user interface for this - see for examp
 
 </section>
 <section id="setting-properties">
-<h3><span class="section-number">5.1.3.6. </span>Setting Properties<a class="headerlink" href="#setting-properties" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.6. </span>Setting Properties<a class="headerlink" href="#setting-properties" title="Permalink to this heading">¶</a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv427Server_UpdateServerSettingsK14ServerSettings">
 <span id="_CPPv327Server_UpdateServerSettingsK14ServerSettings"></span><span id="_CPPv227Server_UpdateServerSettingsK14ServerSettings"></span><span id="Server_UpdateServerSettings__ServerSettingsC"></span><span class="target" id="_plugin_main_8cpp_1a83956251dcd44e3b22f643c880daece1"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_UpdateServerSettings</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ServerSettings</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newSettings</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Server_UpdateServerSettingsK14ServerSettings" title="Permalink to this definition">¶</a><br /></dt>
@@ -490,7 +480,7 @@ On the engine side there will often be a user interface for this - see for examp
 
 </section>
 <section id="setting-delegates">
-<h3><span class="section-number">5.1.3.7. </span>Setting Delegates<a class="headerlink" href="#setting-delegates" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.7. </span>Setting Delegates<a class="headerlink" href="#setting-delegates" title="Permalink to this heading">¶</a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv444Server_SetClientStoppedRenderingNodeDelegate28ClientStoppedRenderingNodeFn">
 <span id="_CPPv344Server_SetClientStoppedRenderingNodeDelegate28ClientStoppedRenderingNodeFn"></span><span id="_CPPv244Server_SetClientStoppedRenderingNodeDelegate28ClientStoppedRenderingNodeFn"></span><span id="Server_SetClientStoppedRenderingNodeDelegate__ClientStoppedRenderingNodeFn"></span><span class="target" id="_plugin_main_8cpp_1ad783c6ffbffe41128fb950c7db833ff2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetClientStoppedRenderingNodeDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ClientStoppedRenderingNodeFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">clientStoppedRenderingNode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv444Server_SetClientStoppedRenderingNodeDelegate28ClientStoppedRenderingNodeFn" title="Permalink to this definition">¶</a><br /></dt>
@@ -547,7 +537,7 @@ On the engine side there will often be a user interface for this - see for examp
 
 </section>
 <section id="video">
-<h3><span class="section-number">5.1.3.8. </span>Video<a class="headerlink" href="#video" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.8. </span>Video<a class="headerlink" href="#video" title="Permalink to this heading">¶</a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv433Server_GetVideoEncodeCapabilitiesRN3avs18EncodeCapabilitiesE">
 <span id="_CPPv333Server_GetVideoEncodeCapabilitiesRN3avs18EncodeCapabilitiesE"></span><span id="_CPPv233Server_GetVideoEncodeCapabilitiesRN3avs18EncodeCapabilitiesE"></span><span id="Server_GetVideoEncodeCapabilities__avs::EncodeCapabilitiesR"></span><span class="target" id="_plugin_main_8cpp_1afd636518f636865d5686e46b5f42790c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GetVideoEncodeCapabilities</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs18EncodeCapabilitiesE" title="avs::EncodeCapabilities"><span class="n"><span class="pre">EncodeCapabilities</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">capabilities</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433Server_GetVideoEncodeCapabilitiesRN3avs18EncodeCapabilitiesE" title="Permalink to this definition">¶</a><br /></dt>
@@ -574,7 +564,7 @@ On the engine side there will often be a user interface for this - see for examp
 
 </section>
 <section id="audio">
-<h3><span class="section-number">5.1.3.9. </span>Audio<a class="headerlink" href="#audio" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">5.1.2.9. </span>Audio<a class="headerlink" href="#audio" title="Permalink to this heading">¶</a></h3>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv423Server_SetAudioSettingsRK13AudioSettings">
 <span id="_CPPv323Server_SetAudioSettingsRK13AudioSettings"></span><span id="_CPPv223Server_SetAudioSettingsRK13AudioSettings"></span><span id="Server_SetAudioSettings__AudioSettingsCR"></span><span class="target" id="_plugin_main_8cpp_1a08d561fc15bf0827ceb51fd71f37882f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetAudioSettings</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">AudioSettings</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newAudioSettings</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Server_SetAudioSettingsRK13AudioSettings" title="Permalink to this definition">¶</a><br /></dt>
@@ -590,7 +580,7 @@ On the engine side there will often be a user interface for this - see for examp
 </section>
 </section>
 <section id="classes">
-<h2><span class="section-number">5.1.4. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.1.3. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp class">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6server19AudioEncodePipelineE">
 <span id="_CPPv3N8teleport6server19AudioEncodePipelineE"></span><span id="_CPPv2N8teleport6server19AudioEncodePipelineE"></span><span id="teleport::server::AudioEncodePipeline"></span><span class="target" id="classteleport_1_1server_1_1_audio_encode_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncodePipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server19AudioEncodePipelineE" title="Permalink to this definition">¶</a><br /></dt>
@@ -754,6 +744,16 @@ On the engine side there will often be a user interface for this - see for examp
 <dd><p>Wrapper for the video encoding pipeline objects. </p>
 </dd></dl>
 
+</section>
+<section id="networking">
+<h2><span class="section-number">5.1.4. </span>Networking<a class="headerlink" href="#networking" title="Permalink to this heading">¶</a></h2>
+<img src="../_images/mermaid-0af64e99b09ec8e98796b69215611490b98764a4.png" alt="flowchart LR
+        A(Video Queue) --&gt;|1| H(Network Sink)
+        B(Tag Queue) --&gt;|2| H
+        C(Audio Queue) --&gt;|3| H
+        D(Geometry Queue) --&gt;|4| H
+        E(Command Queue) --&gt;|5| H
+        F(Geometry Encoder) --&gt; D" />
 </section>
 </section>
 

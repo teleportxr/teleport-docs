@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 22 Feb** : :samp:`Fix installer for PC client.`
 | **Wed 21 Feb** : :samp:`Documentation improvements; CPU rendering speed optimizations.`
 | **Wed 07 Feb** : :samp:`Server DLL-exported functions are now all prefixed either with Server_ for global functions, or Client_ for client-specific functions taking a ClientID.`
 | **Tue 06 Feb** : :samp:`Improved animation handling.`
@@ -99,4 +100,3 @@ Changelist
 | **Fri 14 Apr** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Fri 14 Apr** : :samp:`Addded teleportcore.rst`
 | **Thu 13 Apr** : :samp:`Add 3DUI back to Android client.`
-| **Thu 13 Apr** : :samp:`Android compilation fixes for Platform.`
