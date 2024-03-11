@@ -747,13 +747,35 @@ On the engine side there will often be a user interface for this - see for examp
 </section>
 <section id="networking">
 <h2><span class="section-number">5.1.4. </span>Networking<a class="headerlink" href="#networking" title="Permalink to this heading">¶</a></h2>
-<img src="../_images/mermaid-0af64e99b09ec8e98796b69215611490b98764a4.png" alt="flowchart LR
+<p>Each client connection contains a pipeline that gathers data for sending to the client, and distributes incoming data from the client.
+This pipeline is distributed over threads, which communicate using avs::Queue pipeline nodes.</p>
+<img src="../_images/mermaid-f45bc4cb11adddd042f553dbbbdabaf64faeb5b5.png" alt="flowchart LR
+        subgraph &quot;Network Thread&quot;
+                H(Network Sink)
+        end
         A(Video Queue) --&gt;|1| H(Network Sink)
         B(Tag Queue) --&gt;|2| H
         C(Audio Queue) --&gt;|3| H
         D(Geometry Queue) --&gt;|4| H
         E(Command Queue) --&gt;|5| H
-        F(Geometry Encoder) --&gt; D" />
+        subgraph &quot;Geometry Encoding Thread&quot;
+                F(Geometry Encoder)
+        end
+        F(Geometry Encoder) --&gt; D
+        H --&gt;I(Message Queue)
+        subgraph &quot;Main Thread 2&quot;
+                J(Message Decoder)
+        end
+        I --&gt; J(Message Decoder)
+        subgraph &quot;Render Thread&quot;
+                K(Video Encoder)
+        end
+        K --&gt; A
+        K --&gt; B
+        subgraph &quot;Main Thread 1&quot;
+                L(Command Encoder)
+        end
+        L --&gt; E" />
 </section>
 </section>
 
