@@ -1,5 +1,14 @@
 Changelist 
 ========= 
+| **Wed 27 Mar** : :samp:`Fix to libavstream/CMakeLists.txt`
+| **Wed 27 Mar** : :samp:`Links are clickable in desktop mode.`
+| **Tue 26 Mar** : :samp:`Using CanvasTextRenderer for links.`
+| **Tue 26 Mar** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
+| **Tue 26 Mar** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
+| **Tue 26 Mar** : :samp:`Added CanvasTextRender`
+| **Tue 26 Mar** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
+| **Tue 26 Mar** : :samp:`Link rendering`
+| **Tue 26 Mar** : :samp:`Merge branch 'main' of github.com:simul/RemotePlay into main`
 | **Fri 08 Mar** : :samp:`Init guid str to null in LoadedResource.`
 | **Fri 08 Mar** : :samp:`Added TeleportCore/Time.cpp.`
 | **Thu 22 Feb** : :samp:`Fix installer for PC client.`
@@ -22,6 +31,7 @@ Changelist
 | **Thu 30 Nov** : :samp:`Improved reconnections client and server behaviour.`
 | **Tue 07 Nov** : :samp:`PC Client can receive teleport:// links, and can follow any other type of link via Windows OS.`
 | **Mon 23 Oct** : :samp:`Platform pointer. Safety checks.`
+| **Mon 23 Oct** : :samp:`.`
 | **Sun 22 Oct** : :samp:`Latest updates pre-AWE.`
 | **Sat 21 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Sat 21 Oct** : :samp:`Hand tracking can type. Skeleton poses can use external nodes.`
@@ -90,13 +100,3 @@ Changelist
 | **Tue 25 Apr** : :samp:`temporary intermediate commit.`
 | **Sat 22 Apr** : :samp:`PThreads built with CMake instead of standalone (Windows only)`
 | **Thu 20 Apr** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Wed 19 Apr** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Wed 19 Apr** : :samp:`Update openxr version to support passThrough.`
-| **Mon 17 Apr** : :samp:`Disabled Text Rendering on Android.`
-| **Sun 16 Apr** : :samp:`Using CPackOptions for pack-time installer filename selection.`
-| **Sun 16 Apr** : :samp:`Revert nodeLookup changes in ClientRender/NodeManager.cpp. Minor whitespace corrections. Platform ptr.`
-| **Sat 15 Apr** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Sat 15 Apr** : :samp:`Fixed incorrect teleport_commit filepath for installer.`
-| **Sat 15 Apr** : :samp:`Platform ptr. Documentation fixes.`
-| **Fri 14 Apr** : :samp:`Fixed overlay for Windows and Android - WIP. Platform ptr.`
-| **Fri 14 Apr** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
