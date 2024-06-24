@@ -102,8 +102,84 @@
 <h2><span class="section-number">5.2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>TeleportClient is a library that provides client functionality, in particular client-specific networking and object management.</p>
 </section>
+<section id="tab-context">
+<h2><span class="section-number">5.2.2. </span>Tab Context<a class="headerlink" href="#tab-context" title="Permalink to this heading">¶</a></h2>
+<p>A TabContext is created for each connection. A TabContext is like a tab in a web browser, it can connect to a server, thus initializing a session. A TabContext can only be permanently maintain a single connection, but in transitioning it can have two connections: the existing connection that has already been established, and the new one that should replace it.</p>
+<img src="../_images/mermaid-91192ef87216865461e2e2c6c3c6237250322b7e.png" alt="flowchart TD
+        subgraph &quot;TabContext 1&quot;
+                A[Connection A] --&gt; B[Connection B]
+        end
+        subgraph &quot;TabContext 2&quot;
+                C[Connection C]
+        end
+        subgraph &quot;TabContext 3&quot;
+                D[Connection D] --&gt; E[Connection E]
+        end" />
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client10TabContextE">
+<span id="_CPPv3N8teleport6client10TabContextE"></span><span id="_CPPv2N8teleport6client10TabContextE"></span><span id="teleport::client::TabContext"></span><span class="target" id="classteleport_1_1client_1_1_tab_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TabContext</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client10TabContextE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>A “tab” in the Teleport client represents an ongoing connection to a single server The tab manages sessionClient creation/destruction. The tab may retain a temporary connection to an outgoing server while a new connection is established. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE">
+<span id="_CPPv3N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE"></span><span id="_CPPv2N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE"></span><span id="teleport::client::TabContext::ConnectionComplete__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_tab_context_1a0bc1bb536ac8a38a95df4b0fd9db7de3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ConnectionComplete</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Communication from <a class="reference internal" href="#classteleport_1_1client_1_1_session_client"><span class="std std-ref">SessionClient</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client10TabContext7IsInUseEv">
+<span id="_CPPv3NK8teleport6client10TabContext7IsInUseEv"></span><span id="_CPPv2NK8teleport6client10TabContext7IsInUseEv"></span><span id="teleport::client::TabContext::IsInUseC"></span><span class="target" id="classteleport_1_1client_1_1_tab_context_1a2827fdd792f888c4372b38e23cccaf87"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IsInUse</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client10TabContext7IsInUseEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is the tabContext connected or connecting? If not, it’s available for a connection. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="session-client">
+<h2><span class="section-number">5.2.3. </span>Session Client<a class="headerlink" href="#session-client" title="Permalink to this heading">¶</a></h2>
+<p>When a connection is made, a SessionClient is created to manage it. The SessionClient has a state that should progress as follows:</p>
+<img src="../_images/mermaid-e70eb3ac6465559878718f93d775110659766bbc.png" alt="flowchart TD
+        UNCONNECTED -- &quot;User initiates connection&quot; --&gt; OFFERING
+        OFFERING  -- &quot;User initiates connection&quot; --&gt; AWAITING_SETUP
+        AWAITING_SETUP --&gt; HANDSHAKING
+        HANDSHAKING --&gt; CONNECTED" />
+<p>The SessionClient class is:</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClientE">
+<span id="_CPPv3N8teleport6client13SessionClientE"></span><span id="_CPPv2N8teleport6client13SessionClientE"></span><span id="teleport::client::SessionClient"></span><span class="target" id="classteleport_1_1client_1_1_session_client"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SessionClient</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs22GenericTargetInterfaceE" title="avs::GenericTargetInterface"><span class="n"><span class="pre">GenericTargetInterface</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClientE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE">
+<span id="_CPPv3N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE"></span><span id="_CPPv2N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE"></span><span id="teleport::client::SessionClient::ApplySetup__teleport::core::SetupCommandCR"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a009d45f85a85a2ff5bb179be2b47402e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ApplySetup</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="teleportcore.html#_CPPv4N8teleport4core12SetupCommandE" title="teleport::core::SetupCommand"><span class="n"><span class="pre">SetupCommand</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>For use only internally or by Renderer for the local session. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client13SessionClient19GetConnectionStatusEv">
+<span id="_CPPv3NK8teleport6client13SessionClient19GetConnectionStatusEv"></span><span id="_CPPv2NK8teleport6client13SessionClient19GetConnectionStatusEv"></span><span id="teleport::client::SessionClient::GetConnectionStatusC"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1accc9775109fabfc7567e17702abec0c6"></span><span class="n"><span class="pre">ConnectionStatus</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetConnectionStatus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client13SessionClient19GetConnectionStatusEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Returns the current connection status as determined by the signaling. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client13SessionClient15IsReadyToRenderEv">
+<span id="_CPPv3NK8teleport6client13SessionClient15IsReadyToRenderEv"></span><span id="_CPPv2NK8teleport6client13SessionClient15IsReadyToRenderEv"></span><span id="teleport::client::SessionClient::IsReadyToRenderC"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a72e47cbef089d1c3db0794b0cb7ee670"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IsReadyToRender</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client13SessionClient15IsReadyToRenderEv" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Is this client ready to render, i.e. does it have the final setup from the server required to initialize rendering? return true if ready, false if not. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
 <section id="classes">
-<h2><span class="section-number">5.2.2. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">5.2.4. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv4N8teleport6client17ClientServerStateE">
 <span id="_CPPv3N8teleport6client17ClientServerStateE"></span><span id="_CPPv2N8teleport6client17ClientServerStateE"></span><span id="teleport::client::ClientServerState"></span><span class="target" id="structteleport_1_1client_1_1_client_server_state"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientServerState</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client17ClientServerStateE" title="Permalink to this definition">¶</a><br /></dt>
@@ -211,26 +287,6 @@
 <dd class="field-even"><p></p>
 </dd>
 </dl>
-</dd></dl>
-
-</div>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClientE">
-<span id="_CPPv3N8teleport6client13SessionClientE"></span><span id="_CPPv2N8teleport6client13SessionClientE"></span><span id="teleport::client::SessionClient"></span><span class="target" id="classteleport_1_1client_1_1_session_client"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SessionClient</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs22GenericTargetInterfaceE" title="avs::GenericTargetInterface"><span class="n"><span class="pre">GenericTargetInterface</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClientE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE">
-<span id="_CPPv3N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE"></span><span id="_CPPv2N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE"></span><span id="teleport::client::SessionClient::ApplySetup__teleport::core::SetupCommandCR"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a009d45f85a85a2ff5bb179be2b47402e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ApplySetup</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="teleportcore.html#_CPPv4N8teleport4core12SetupCommandE" title="teleport::core::SetupCommand"><span class="n"><span class="pre">SetupCommand</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>For use only internally or by Renderer for the local session. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client13SessionClient15IsReadyToRenderEv">
-<span id="_CPPv3NK8teleport6client13SessionClient15IsReadyToRenderEv"></span><span id="_CPPv2NK8teleport6client13SessionClient15IsReadyToRenderEv"></span><span id="teleport::client::SessionClient::IsReadyToRenderC"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a72e47cbef089d1c3db0794b0cb7ee670"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IsReadyToRender</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client13SessionClient15IsReadyToRenderEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Is this client ready to render, i.e. does it have the final setup from the server required to initialize rendering? return true if ready, false if not. </p>
 </dd></dl>
 
 </div>

@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Sat 22 Jun** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Sat 22 Jun** : :samp:`Separate decoding functions in DecodeMesh. avsTexture data separated into uncompressed(data) and compressedData. Textures are wrapped as .ktx2, not .basis.`
 | **Wed 15 May** : :samp:`README added instructions to build the documentation.`
 | **Wed 27 Mar** : :samp:`Fix to libavstream/CMakeLists.txt`
 | **Wed 27 Mar** : :samp:`Links are clickable in desktop mode.`
@@ -98,5 +100,3 @@ Changelist
 | **Wed 26 Apr** : :samp:`Restored WebSockets signaling, still using Enet for follow-up.`
 | **Wed 26 Apr** : :samp:`Prior to reintroducting ws signaling.`
 | **Wed 26 Apr** : :samp:`Prior to re-introducing ws signaling.`
-| **Tue 25 Apr** : :samp:`temporary intermediate commit.`
-| **Sat 22 Apr** : :samp:`PThreads built with CMake instead of standalone (Windows only)`
