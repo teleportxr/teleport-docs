@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Wed 03 Jul** : :samp:`Improve tracy profiling. Resources, if not found in memory, can be searched for by path on disk. Improved unconnected lobby view.`
 | **Sat 22 Jun** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Sat 22 Jun** : :samp:`Separate decoding functions in DecodeMesh. avsTexture data separated into uncompressed(data) and compressedData. Textures are wrapped as .ktx2, not .basis.`
 | **Wed 15 May** : :samp:`README added instructions to build the documentation.`
@@ -99,4 +100,3 @@ Changelist
 | **Wed 26 Apr** : :samp:`Restored client-side of WebSockets signaling, still using Enet for follow-up.`
 | **Wed 26 Apr** : :samp:`Restored WebSockets signaling, still using Enet for follow-up.`
 | **Wed 26 Apr** : :samp:`Prior to reintroducting ws signaling.`
-| **Wed 26 Apr** : :samp:`Prior to re-introducing ws signaling.`
