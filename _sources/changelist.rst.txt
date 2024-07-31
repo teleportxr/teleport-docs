@@ -1,5 +1,81 @@
 Changelist 
 ========= 
+| **Mon 29 Jul** : :samp:`Update build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`.`
+| **Sun 28 Jul** : :samp:`Show CMakeCache.`
+| **Sun 28 Jul** : :samp:`env var in build_pc_client.yml for Vulkan directory.`
+| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`Remove --remote from git submodule update in build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`.`
+| **Sun 28 Jul** : :samp:`Debug build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Sun 28 Jul** : :samp:`.`
+| **Sun 28 Jul** : :samp:`build_pc_client.yml updates.`
+| **Sun 28 Jul** : :samp:`Fix submodule call in build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`Github Actions`
+| **Sun 28 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Sun 28 Jul** : :samp:`Still trying to get rid of CMake variable STATIC.`
+| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`Build fixes.`
+| **Sun 28 Jul** : :samp:`Build fixes.`
+| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
+| **Sun 28 Jul** : :samp:`Correction`
+| **Sun 28 Jul** : :samp:`basisuniversal submodule.`
+| **Sun 28 Jul** : :samp:`Add basisu after draco.`
+| **Sun 28 Jul** : :samp:`Only necessary submoduiles.`
+| **Sat 27 Jul** : :samp:`Update msbuild.yml`
+| **Sat 27 Jul** : :samp:`Update msbuild.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`CMake tests.`
+| **Sat 27 Jul** : :samp:`Update msbuild.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update msbuild.yml`
+| **Sat 27 Jul** : :samp:`Create msbuild.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml for build_pc_client folder`
+| **Sat 27 Jul** : :samp:`Remove pthreads references in Windows. Unset variable STATIC - basisu wants this, but it breaks the draco build-generation.`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Install Vulkan in workflow`
+| **Fri 26 Jul** : :samp:`Remove thirdparty/srt`
+| **Fri 26 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Fri 26 Jul** : :samp:`Build fixes/improvements. Removing remains of SRT.`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`libdatachannel ptr.`
+| **Fri 26 Jul** : :samp:`flecs ptr.`
+| **Fri 26 Jul** : :samp:`libdatachannel ptr.`
+| **Fri 26 Jul** : :samp:`Draco ptr.`
+| **Fri 26 Jul** : :samp:`basis_universal ptr.`
+| **Fri 26 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Fri 26 Jul** : :samp:`Platform ptr.`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Platform ptr.`
+| **Fri 26 Jul** : :samp:`Using https for public submodules.`
+| **Fri 26 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Fri 26 Jul** : :samp:`Submodule ptrs.`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
+| **Fri 26 Jul** : :samp:`Create build_pc_client.yml`
+| **Thu 25 Jul** : :samp:`Don't add test subdirectory if not enabled.`
+| **Tue 23 Jul** : :samp:`Added test.cpp`
+| **Mon 22 Jul** : :samp:`Added LockFreeQueue, unit test.`
+| **Fri 12 Jul** : :samp:`Fixed texture extraction bug for arrays.`
 | **Wed 03 Jul** : :samp:`Improve tracy profiling. Resources, if not found in memory, can be searched for by path on disk. Improved unconnected lobby view.`
 | **Sat 22 Jun** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Sat 22 Jun** : :samp:`Separate decoding functions in DecodeMesh. avsTexture data separated into uncompressed(data) and compressedData. Textures are wrapped as .ktx2, not .basis.`
@@ -24,79 +100,3 @@ Changelist
 | **Fri 29 Dec** : :samp:`Installer registry setup fixed.`
 | **Thu 28 Dec** : :samp:`Fixed NSIS installer.`
 | **Thu 28 Dec** : :samp:`Platform ptr.`
-| **Thu 28 Dec** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Thu 28 Dec** : :samp:`Deploy cudart64_110.dll via installer.`
-| **Thu 28 Dec** : :samp:`Deploy cudart64_110.dll if necessary to binary directory.`
-| **Thu 28 Dec** : :samp:`Vulkan include only if needed.`
-| **Thu 28 Dec** : :samp:`Client rendering: grouped in RenderPass groups for more efficient API usage.`
-| **Thu 14 Dec** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Thu 14 Dec** : :samp:`Added flecs.c and flecs.h to Android build. Debug options to disable geometry and texture transcoding from Gui.cpp. PbrMaterialConstants are stored as GPU objects for each material so no need to re-upload. SceneConstants and CameraConstants uploaded only once per view. Flat list iteration to render mesh nodes, improves profiling.`
-| **Wed 13 Dec** : :samp:`Fixed typo in docs.`
-| **Thu 30 Nov** : :samp:`Improved reconnections client and server behaviour.`
-| **Tue 07 Nov** : :samp:`PC Client can receive teleport:// links, and can follow any other type of link via Windows OS.`
-| **Mon 23 Oct** : :samp:`Platform pointer. Safety checks.`
-| **Mon 23 Oct** : :samp:`.`
-| **Sun 22 Oct** : :samp:`Latest updates pre-AWE.`
-| **Sat 21 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Sat 21 Oct** : :samp:`Hand tracking can type. Skeleton poses can use external nodes.`
-| **Wed 18 Oct** : :samp:`Small compile fix.`
-| **Wed 18 Oct** : :samp:`Removed enet.`
-| **Sat 14 Oct** : :samp:`Adding hand tracking via OpenXR. Updated PC to OpenXR release 1.0.30.`
-| **Sat 14 Oct** : :samp:`Removed Android assets folder from repo, it will be copied at build time from client/assets.`
-| **Sat 14 Oct** : :samp:`Assets (i.e. unmodifiable files available at runtime) are now kept in client/assets and deployed respectively to pc_client/assets and build_android_vs/AndroidClient/AndroidPackaging/app/src/main/assets at build time in a Visual Studio build step.`
-| **Thu 12 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Thu 12 Oct** : :samp:`Using Android ndk version 25.2.9519653. Using Exo2 font instead of Exo. Added licensing information for files and projects using reuse.software. Enabled Vulkan support on PC for render debugging.`
-| **Tue 10 Oct** : :samp:`Overriding subdirectory variables with FORCE in CMakeLists.txt.`
-| **Tue 10 Oct** : :samp:`Added signaling.rst. Moved SignalingServer from TeleportClient/DiscoveryService into TeleportClient/SignalingServer.`
-| **Thu 05 Oct** : :samp:`Removed deprecated members from setup command, handshake and network settings. Updated docs to cover Websockets-style signaling.`
-| **Mon 02 Oct** : :samp:`Fixups for documentation.`
-| **Thu 28 Sep** : :samp:`Added external libs for Android. Introduced TabContext for client connection management.`
-| **Fri 22 Sep** : :samp:`HTTPUtil saves downloaded files in a cache.`
-| **Wed 20 Sep** : :samp:`Using vertex shader variants in client.`
-| **Sat 16 Sep** : :samp:`When a new version of a resource is loaded, it replaces the old one instead of failing to update.`
-| **Sun 10 Sep** : :samp:`Checking for texture errors.`
-| **Sat 09 Sep** : :samp:`Added submodule flecs.`
-| **Fri 08 Sep** : :samp:`Added Resource.h and cpp.`
-| **Wed 06 Sep** : :samp:`Platform ptr.`
-| **Wed 06 Sep** : :samp:`Draco ptr to rvkennedy branch with text file loading from memory.`
-| **Wed 06 Sep** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Wed 06 Sep** : :samp:`Added .clang-format.`
-| **Wed 06 Sep** : :samp:`Added SubSceneComponent`
-| **Mon 04 Sep** : :samp:`.`
-| **Mon 04 Sep** : :samp:`Skin is now Skeleton. Skinned mesh bindings are stored with nodes, not in the Skeleton. Multiple meshes can be driven by a single Skeleton.`
-| **Thu 10 Aug** : :samp:`No curl.h in httputil.hpp.`
-| **Thu 10 Aug** : :samp:`Added OpenXRRenderModel. Fixed numerous GLTF import issues.`
-| **Fri 04 Aug** : :samp:`Using Platform's new shader variant system.`
-| **Wed 17 May** : :samp:`Docs work.`
-| **Wed 17 May** : :samp:`Better thread-safety in SignalingService.`
-| **Tue 16 May** : :samp:`Fixes to network behaviour. Orthogonal property confirmation, first implementation.`
-| **Mon 15 May** : :samp:`Improved multithreading in DiscoveryService.`
-| **Mon 15 May** : :samp:`Correctly randomize session id.`
-| **Sat 13 May** : :samp:`Better error checking in webrtc.`
-| **Fri 12 May** : :samp:`We now measure latency about once every 100 frames between server and client.`
-| **Wed 10 May** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Wed 10 May** : :samp:`Check handshake size.`
-| **Wed 10 May** : :samp:`DisplayInfo now contains framerate.`
-| **Wed 10 May** : :samp:`Motion smoothing for externally updated objects.`
-| **Tue 09 May** : :samp:`Added ClientTime. Timings in nanoseconds now, should be synchronized against Unix time.`
-| **Tue 09 May** : :samp:`Proper random session id.`
-| **Mon 08 May** : :samp:`Some thread clash fixes for nodes.`
-| **Sat 06 May** : :samp:`Fix Node mutex double-lock and websocket crash from shared_ptr&`
-| **Thu 04 May** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Thu 04 May** : :samp:`Fix various connection snags.`
-| **Mon 01 May** : :samp:`Added missing header for DiscoveryService.`
-| **Mon 01 May** : :samp:`Client CMake fixes.`
-| **Mon 01 May** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Fri 28 Apr** : :samp:`Platform ptr with D3D12 texture upload fix.`
-| **Fri 28 Apr** : :samp:`Merge branch 'main' of github.com:simul/Teleport into old_main`
-| **Fri 28 Apr** : :samp:`Remove legacy enet code.`
-| **Fri 28 Apr** : :samp:`Removed a lot of enet code, simplified server-side.`
-| **Thu 27 Apr** : :samp:`Fix and simplify signaling and structure.`
-| **Thu 27 Apr** : :samp:`No longer using enet messages.`
-| **Thu 27 Apr** : :samp:`Handshake uses Websockets signaling.`
-| **Thu 27 Apr** : :samp:`Merge branch 'main' of github.com:simul/Teleport into old_main`
-| **Thu 27 Apr** : :samp:`Merge branch 'old_main' of github.com:simul/Teleport into old_main`
-| **Thu 27 Apr** : :samp:`Improved signaling with Websockets.`
-| **Wed 26 Apr** : :samp:`Restored client-side of WebSockets signaling, still using Enet for follow-up.`
-| **Wed 26 Apr** : :samp:`Restored WebSockets signaling, still using Enet for follow-up.`
-| **Wed 26 Apr** : :samp:`Prior to reintroducting ws signaling.`
