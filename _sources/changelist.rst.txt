@@ -1,5 +1,66 @@
 Changelist 
 ========= 
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sat 10 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Sat 10 Aug** : :samp:`Sfx dependency in ClientRender/CMakeLists.txt`
+| **Sat 10 Aug** : :samp:`Update build_pc_client.yml`
+| **Sat 10 Aug** : :samp:`Platform Ptr.`
+| **Fri 09 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 09 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 09 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Fri 09 Aug** : :samp:`.`
+| **Fri 09 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 09 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 09 Aug** : :samp:`.`
+| **Fri 09 Aug** : :samp:`Ptr`
+| **Fri 09 Aug** : :samp:`Ptr`
+| **Fri 09 Aug** : :samp:`Change options in Sfx for ClientRender/CMakeLists.txt`
+| **Fri 09 Aug** : :samp:`Platform ptr.`
+| **Fri 09 Aug** : :samp:`Ptr`
+| **Fri 09 Aug** : :samp:`Remove plugins folder and UnrealDemo submodule.`
+| **Thu 08 Aug** : :samp:`Ptr`
+| **Thu 08 Aug** : :samp:`Ptr.`
+| **Thu 08 Aug** : :samp:`Platform ptr`
+| **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Thu 08 Aug** : :samp:`Platform ptr.`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Thu 08 Aug** : :samp:`Ptr`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Thu 08 Aug** : :samp:`Force ASSIMP off for Platform. Allow compilation without CUDA.`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Platform ptr.`
+| **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Thu 08 Aug** : :samp:`Platform ptr.`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Wed 07 Aug** : :samp:`Platform ptr with fixed Vulkan environment variable.`
+| **Wed 07 Aug** : :samp:`Fix UE build issues.`
+| **Wed 07 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Wed 07 Aug** : :samp:`Platform ptr.`
+| **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
+| **Wed 07 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Wed 07 Aug** : :samp:`Platform ptr. Fix some server dll-interfaces.`
+| **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
+| **Wed 07 Aug** : :samp:`Platform ptr.`
+| **Wed 07 Aug** : :samp:`Fixed some Exports definitions.`
+| **Wed 07 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Wed 07 Aug** : :samp:`Added TeleporServer/Exports.h`
+| **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
+| **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
+| **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 02 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Fri 02 Aug** : :samp:`Added libavstream logger.cpp.`
 | **Mon 29 Jul** : :samp:`Update build_pc_client.yml`
 | **Sun 28 Jul** : :samp:`.`
 | **Sun 28 Jul** : :samp:`Show CMakeCache.`
@@ -39,64 +100,3 @@ Changelist
 | **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
 | **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
 | **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml for build_pc_client folder`
-| **Sat 27 Jul** : :samp:`Remove pthreads references in Windows. Unset variable STATIC - basisu wants this, but it breaks the draco build-generation.`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Install Vulkan in workflow`
-| **Fri 26 Jul** : :samp:`Remove thirdparty/srt`
-| **Fri 26 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Fri 26 Jul** : :samp:`Build fixes/improvements. Removing remains of SRT.`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`libdatachannel ptr.`
-| **Fri 26 Jul** : :samp:`flecs ptr.`
-| **Fri 26 Jul** : :samp:`libdatachannel ptr.`
-| **Fri 26 Jul** : :samp:`Draco ptr.`
-| **Fri 26 Jul** : :samp:`basis_universal ptr.`
-| **Fri 26 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Fri 26 Jul** : :samp:`Platform ptr.`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Platform ptr.`
-| **Fri 26 Jul** : :samp:`Using https for public submodules.`
-| **Fri 26 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Fri 26 Jul** : :samp:`Submodule ptrs.`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Update build_pc_client.yml`
-| **Fri 26 Jul** : :samp:`Create build_pc_client.yml`
-| **Thu 25 Jul** : :samp:`Don't add test subdirectory if not enabled.`
-| **Tue 23 Jul** : :samp:`Added test.cpp`
-| **Mon 22 Jul** : :samp:`Added LockFreeQueue, unit test.`
-| **Fri 12 Jul** : :samp:`Fixed texture extraction bug for arrays.`
-| **Wed 03 Jul** : :samp:`Improve tracy profiling. Resources, if not found in memory, can be searched for by path on disk. Improved unconnected lobby view.`
-| **Sat 22 Jun** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Sat 22 Jun** : :samp:`Separate decoding functions in DecodeMesh. avsTexture data separated into uncompressed(data) and compressedData. Textures are wrapped as .ktx2, not .basis.`
-| **Wed 15 May** : :samp:`README added instructions to build the documentation.`
-| **Wed 27 Mar** : :samp:`Fix to libavstream/CMakeLists.txt`
-| **Wed 27 Mar** : :samp:`Links are clickable in desktop mode.`
-| **Tue 26 Mar** : :samp:`Using CanvasTextRenderer for links.`
-| **Tue 26 Mar** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
-| **Tue 26 Mar** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
-| **Tue 26 Mar** : :samp:`Added CanvasTextRender`
-| **Tue 26 Mar** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
-| **Tue 26 Mar** : :samp:`Link rendering`
-| **Tue 26 Mar** : :samp:`Merge branch 'main' of github.com:simul/RemotePlay into main`
-| **Fri 08 Mar** : :samp:`Init guid str to null in LoadedResource.`
-| **Fri 08 Mar** : :samp:`Added TeleportCore/Time.cpp.`
-| **Thu 22 Feb** : :samp:`Fix installer for PC client.`
-| **Wed 21 Feb** : :samp:`Documentation improvements; CPU rendering speed optimizations.`
-| **Wed 07 Feb** : :samp:`Server DLL-exported functions are now all prefixed either with Server_ for global functions, or Client_ for client-specific functions taking a ClientID.`
-| **Tue 06 Feb** : :samp:`Improved animation handling.`
-| **Fri 05 Jan** : :samp:`Corrected rendering of skinned meshes in client. Not sending bones as separate objects - these are just nodes.`
-| **Sun 31 Dec** : :samp:`Using AddNodeToRender and RemoveNodeFromRender to update passRender lists.`
-| **Fri 29 Dec** : :samp:`Installer registry setup fixed.`
-| **Thu 28 Dec** : :samp:`Fixed NSIS installer.`
-| **Thu 28 Dec** : :samp:`Platform ptr.`
