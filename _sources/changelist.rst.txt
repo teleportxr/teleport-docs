@@ -1,5 +1,39 @@
 Changelist 
 ========= 
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Tue 13 Aug** : :samp:`Removed plugins/UnrealDemo`
+| **Tue 13 Aug** : :samp:`Created release.yml.`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update build_pc_client.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update build_pc_client.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update build_pc_client.yml`
+| **Tue 13 Aug** : :samp:`Update build_pc_client.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Create release.yml`
+| **Mon 12 Aug** : :samp:`Create installer in build`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Installer licence file.`
+| **Mon 12 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Mon 12 Aug** : :samp:`Installer adjustments.`
 | **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
 | **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
 | **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
@@ -66,37 +100,3 @@ Changelist
 | **Sun 28 Jul** : :samp:`Show CMakeCache.`
 | **Sun 28 Jul** : :samp:`env var in build_pc_client.yml for Vulkan directory.`
 | **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`Remove --remote from git submodule update in build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`.`
-| **Sun 28 Jul** : :samp:`Debug build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Sun 28 Jul** : :samp:`.`
-| **Sun 28 Jul** : :samp:`build_pc_client.yml updates.`
-| **Sun 28 Jul** : :samp:`Fix submodule call in build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`Github Actions`
-| **Sun 28 Jul** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Sun 28 Jul** : :samp:`Still trying to get rid of CMake variable STATIC.`
-| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`Build fixes.`
-| **Sun 28 Jul** : :samp:`Build fixes.`
-| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`Correction`
-| **Sun 28 Jul** : :samp:`basisuniversal submodule.`
-| **Sun 28 Jul** : :samp:`Add basisu after draco.`
-| **Sun 28 Jul** : :samp:`Only necessary submoduiles.`
-| **Sat 27 Jul** : :samp:`Update msbuild.yml`
-| **Sat 27 Jul** : :samp:`Update msbuild.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`CMake tests.`
-| **Sat 27 Jul** : :samp:`Update msbuild.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update msbuild.yml`
-| **Sat 27 Jul** : :samp:`Create msbuild.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
-| **Sat 27 Jul** : :samp:`Update build_pc_client.yml`
