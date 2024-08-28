@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5.6. Client Render Library &mdash; Teleport VR  documentation</title>
+  <title>5.6. Client Render Library &mdash; Teleport XR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -37,7 +37,7 @@
 			<a href="../index.html"  class="" >
 				
 					<span class="sidebartitle">
-						Teleport VR
+						Teleport XR
 					</span>
 				
 					<img src="../_static/TeleportLogo-64.png" class="logo" alt="Logo" />
@@ -77,7 +77,7 @@
     <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Teleport VR</a>
+          <a href="../index.html">Teleport XR</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -101,54 +101,14 @@
 <p>The client renderer library provides generic rendering functions for Teleport clients.</p>
 <section id="classes">
 <h2><span class="section-number">5.6.1. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport12clientrender11NodeManagerE">
-<span id="_CPPv3N8teleport12clientrender11NodeManagerE"></span><span id="_CPPv2N8teleport12clientrender11NodeManagerE"></span><span id="teleport::clientrender::NodeManager"></span><span class="target" id="classteleport_1_1clientrender_1_1_node_manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NodeManager</span></span></span><a class="headerlink" href="#_CPPv4N8teleport12clientrender11NodeManagerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Manages nodes for a specific server context. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport12clientrender11NodeManager12ReparentNodeERKN8teleport4core26UpdateNodeStructureCommandE">
-<span id="_CPPv3N8teleport12clientrender11NodeManager12ReparentNodeERKN8teleport4core26UpdateNodeStructureCommandE"></span><span id="_CPPv2N8teleport12clientrender11NodeManager12ReparentNodeERKN8teleport4core26UpdateNodeStructureCommandE"></span><span id="teleport::clientrender::NodeManager::ReparentNode__teleport::core::UpdateNodeStructureCommandCR"></span><span class="target" id="classteleport_1_1clientrender_1_1_node_manager_1af0f0f157fdccdf821cf7f9a7353f0cc1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ReparentNode</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="teleportcore.html#_CPPv4N8teleport4core26UpdateNodeStructureCommandE" title="teleport::core::UpdateNodeStructureCommand"><span class="n"><span class="pre">UpdateNodeStructureCommand</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">updateNodeStructureCommand</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport12clientrender11NodeManager12ReparentNodeERKN8teleport4core26UpdateNodeStructureCommandE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns true if successful, or false if not e.g. if either the node or the parent is not present. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK8teleport12clientrender11NodeManager18GetRemovedNodeUidsEv">
-<span id="_CPPv3NK8teleport12clientrender11NodeManager18GetRemovedNodeUidsEv"></span><span id="_CPPv2NK8teleport12clientrender11NodeManager18GetRemovedNodeUidsEv"></span><span id="teleport::clientrender::NodeManager::GetRemovedNodeUidsC"></span><span class="target" id="classteleport_1_1clientrender_1_1_node_manager_1a072d2f88bff85cd34f076d1a1e9e2189"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetRemovedNodeUids</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport12clientrender11NodeManager18GetRemovedNodeUidsEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the nodes that have been removed since the last update. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
 </div>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport12clientrender13GeometryCacheE">
-<span id="_CPPv3N8teleport12clientrender13GeometryCacheE"></span><span id="_CPPv2N8teleport12clientrender13GeometryCacheE"></span><span id="teleport::clientrender::GeometryCache"></span><span class="target" id="classteleport_1_1clientrender_1_1_geometry_cache"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryCache</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">client</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">GeometryCacheBackendInterface</span></span><a class="headerlink" href="#_CPPv4N8teleport12clientrender13GeometryCacheE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A container for geometry sent from servers and cached locally. There is one instance of <a class="reference internal" href="#classteleport_1_1clientrender_1_1_geometry_cache"><span class="std std-ref">GeometryCache</span></a> for each connected server, and a local <a class="reference internal" href="#classteleport_1_1clientrender_1_1_geometry_cache"><span class="std std-ref">GeometryCache</span></a> for the client’s own objects. There is also one <a class="reference internal" href="#classteleport_1_1clientrender_1_1_geometry_cache"><span class="std std-ref">GeometryCache</span></a> for each externally-provided sub-scene, for example a GLTF or GLB file. Each cache must have a unique identifier. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport12clientrender13GeometryCache11GenerateUidEv">
-<span id="_CPPv3N8teleport12clientrender13GeometryCache11GenerateUidEv"></span><span id="_CPPv2N8teleport12clientrender13GeometryCache11GenerateUidEv"></span><span id="teleport::clientrender::GeometryCache::GenerateUid"></span><span class="target" id="classteleport_1_1clientrender_1_1_geometry_cache_1a86ca6afa55fe95d56a46cd247b085d56"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">geometry_cache_uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenerateUid</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport12clientrender13GeometryCache11GenerateUidEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Generate a new uid unique in this cache (not globally unique). </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport12clientrender13GeometryCache11GenerateUidE8uint64_t">
-<span id="_CPPv3N8teleport12clientrender13GeometryCache11GenerateUidE8uint64_t"></span><span id="_CPPv2N8teleport12clientrender13GeometryCache11GenerateUidE8uint64_t"></span><span id="teleport::clientrender::GeometryCache::GenerateUid__uint64_t"></span><span class="target" id="classteleport_1_1clientrender_1_1_geometry_cache_1a36c2416f0700a360ed03813889e70bcd"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">geometry_cache_uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenerateUid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">from</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport12clientrender13GeometryCache11GenerateUidE8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Generate a new uid unique in this cache and store a mapping from the given input number. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport12clientrender13GeometryCache19GetCorrespondingUidE8uint64_t">
-<span id="_CPPv3N8teleport12clientrender13GeometryCache19GetCorrespondingUidE8uint64_t"></span><span id="_CPPv2N8teleport12clientrender13GeometryCache19GetCorrespondingUidE8uint64_t"></span><span id="teleport::clientrender::GeometryCache::GetCorrespondingUid__uint64_t"></span><span class="target" id="classteleport_1_1clientrender_1_1_geometry_cache_1aa545421336972f71ba462f64921f4ca2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">geometry_cache_uid</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetCorrespondingUid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">from</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport12clientrender13GeometryCache19GetCorrespondingUidE8uint64_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the locally unique id that the specified number maps to. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
 </div>
-</dd></dl>
-
 </section>
 <section id="structs">
 <h2><span class="section-number">5.6.2. </span>Structs<a class="headerlink" href="#structs" title="Permalink to this heading">¶</a></h2>
@@ -166,7 +126,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Simul Software Ltd.</p>
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
   </div> 
 
 </footer>

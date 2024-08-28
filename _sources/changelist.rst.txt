@@ -1,5 +1,9 @@
 Changelist 
 ========= 
+| **Mon 26 Aug** : :samp:`Added movement updates to UE plugin.`
+| **Mon 26 Aug** : :samp:`Platform ptr.`
+| **Fri 23 Aug** : :samp:`Added DoxyfileUnreal.in`
+| **Fri 23 Aug** : :samp:`Added Unreal and Node pages.`
 | **Tue 13 Aug** : :samp:`Update release.yml`
 | **Tue 13 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Tue 13 Aug** : :samp:`Removed plugins/UnrealDemo`
@@ -96,7 +100,3 @@ Changelist
 | **Fri 02 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Fri 02 Aug** : :samp:`Added libavstream logger.cpp.`
 | **Mon 29 Jul** : :samp:`Update build_pc_client.yml`
-| **Sun 28 Jul** : :samp:`.`
-| **Sun 28 Jul** : :samp:`Show CMakeCache.`
-| **Sun 28 Jul** : :samp:`env var in build_pc_client.yml for Vulkan directory.`
-| **Sun 28 Jul** : :samp:`Update build_pc_client.yml`

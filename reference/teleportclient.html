@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5.2. The Teleport Client library &mdash; Teleport VR  documentation</title>
+  <title>5.2. The Teleport Client library &mdash; Teleport XR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -37,7 +37,7 @@
 			<a href="../index.html"  class="" >
 				
 					<span class="sidebartitle">
-						Teleport VR
+						Teleport XR
 					</span>
 				
 					<img src="../_static/TeleportLogo-64.png" class="logo" alt="Logo" />
@@ -77,7 +77,7 @@
     <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">Teleport VR</a>
+          <a href="../index.html">Teleport XR</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -115,27 +115,10 @@
         subgraph &quot;TabContext 3&quot;
                 D[Connection D] --&gt; E[Connection E]
         end" />
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client10TabContextE">
-<span id="_CPPv3N8teleport6client10TabContextE"></span><span id="_CPPv2N8teleport6client10TabContextE"></span><span id="teleport::client::TabContext"></span><span class="target" id="classteleport_1_1client_1_1_tab_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TabContext</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client10TabContextE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>A “tab” in the Teleport client represents an ongoing connection to a single server The tab manages sessionClient creation/destruction. The tab may retain a temporary connection to an outgoing server while a new connection is established. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE">
-<span id="_CPPv3N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE"></span><span id="_CPPv2N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE"></span><span id="teleport::client::TabContext::ConnectionComplete__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_tab_context_1a0bc1bb536ac8a38a95df4b0fd9db7de3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ConnectionComplete</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Communication from <a class="reference internal" href="#classteleport_1_1client_1_1_session_client"><span class="std std-ref">SessionClient</span></a>. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client10TabContext7IsInUseEv">
-<span id="_CPPv3NK8teleport6client10TabContext7IsInUseEv"></span><span id="_CPPv2NK8teleport6client10TabContext7IsInUseEv"></span><span id="teleport::client::TabContext::IsInUseC"></span><span class="target" id="classteleport_1_1client_1_1_tab_context_1a2827fdd792f888c4372b38e23cccaf87"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IsInUse</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client10TabContext7IsInUseEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Is the tabContext connected or connecting? If not, it’s available for a connection. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
 </div>
-</dd></dl>
-
 </section>
 <section id="session-client">
 <h2><span class="section-number">5.2.3. </span>Session Client<a class="headerlink" href="#session-client" title="Permalink to this heading">¶</a></h2>
@@ -146,158 +129,37 @@
         AWAITING_SETUP --&gt; HANDSHAKING
         HANDSHAKING --&gt; CONNECTED" />
 <p>The SessionClient class is:</p>
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClientE">
-<span id="_CPPv3N8teleport6client13SessionClientE"></span><span id="_CPPv2N8teleport6client13SessionClientE"></span><span id="teleport::client::SessionClient"></span><span class="target" id="classteleport_1_1client_1_1_session_client"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SessionClient</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs22GenericTargetInterfaceE" title="avs::GenericTargetInterface"><span class="n"><span class="pre">GenericTargetInterface</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClientE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE">
-<span id="_CPPv3N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE"></span><span id="_CPPv2N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE"></span><span id="teleport::client::SessionClient::ApplySetup__teleport::core::SetupCommandCR"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a009d45f85a85a2ff5bb179be2b47402e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ApplySetup</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="teleportcore.html#_CPPv4N8teleport4core12SetupCommandE" title="teleport::core::SetupCommand"><span class="n"><span class="pre">SetupCommand</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>For use only internally or by Renderer for the local session. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client13SessionClient19GetConnectionStatusEv">
-<span id="_CPPv3NK8teleport6client13SessionClient19GetConnectionStatusEv"></span><span id="_CPPv2NK8teleport6client13SessionClient19GetConnectionStatusEv"></span><span id="teleport::client::SessionClient::GetConnectionStatusC"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1accc9775109fabfc7567e17702abec0c6"></span><span class="n"><span class="pre">ConnectionStatus</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetConnectionStatus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client13SessionClient19GetConnectionStatusEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns the current connection status as determined by the signaling. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client13SessionClient15IsReadyToRenderEv">
-<span id="_CPPv3NK8teleport6client13SessionClient15IsReadyToRenderEv"></span><span id="_CPPv2NK8teleport6client13SessionClient15IsReadyToRenderEv"></span><span id="teleport::client::SessionClient::IsReadyToRenderC"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a72e47cbef089d1c3db0794b0cb7ee670"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IsReadyToRender</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client13SessionClient15IsReadyToRenderEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Is this client ready to render, i.e. does it have the final setup from the server required to initialize rendering? return true if ready, false if not. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
 </div>
-</dd></dl>
-
 </section>
 <section id="classes">
 <h2><span class="section-number">5.2.4. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client17ClientServerStateE">
-<span id="_CPPv3N8teleport6client17ClientServerStateE"></span><span id="_CPPv2N8teleport6client17ClientServerStateE"></span><span id="teleport::client::ClientServerState"></span><span class="target" id="structteleport_1_1client_1_1_client_server_state"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientServerState</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client17ClientServerStateE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>The generic state of the client hardware device e.g. headset, controllers etc. There exists one of these for each server, plus one for the null server (local state). </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client14ClientPipelineE">
-<span id="_CPPv3N8teleport6client14ClientPipelineE"></span><span id="_CPPv2N8teleport6client14ClientPipelineE"></span><span id="teleport::client::ClientPipeline"></span><span class="target" id="classteleport_1_1client_1_1_client_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientPipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client14ClientPipelineE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Contains the full pipeline and member nodes for the client. </p>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6ConfigE">
-<span id="_CPPv3N8teleport6client6ConfigE"></span><span id="_CPPv2N8teleport6client6ConfigE"></span><span id="teleport::client::Config"></span><span class="target" id="classteleport_1_1client_1_1_config"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6ConfigE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6Config14StoreRecentURLEPKc">
-<span id="_CPPv3N8teleport6client6Config14StoreRecentURLEPKc"></span><span id="_CPPv2N8teleport6client6Config14StoreRecentURLEPKc"></span><span id="teleport::client::Config::StoreRecentURL__cCP"></span><span class="target" id="classteleport_1_1client_1_1_config_1aa3b510858d524f07be774b9ace9512f5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">StoreRecentURL</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">r</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6Config14StoreRecentURLEPKc" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>When we connect, store the URL. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6Config16SetStorageFolderEPKc">
-<span id="_CPPv3N8teleport6client6Config16SetStorageFolderEPKc"></span><span id="_CPPv2N8teleport6client6Config16SetStorageFolderEPKc"></span><span id="teleport::client::Config::SetStorageFolder__cCP"></span><span class="target" id="classteleport_1_1client_1_1_config_1a1f4d228d80b76797c35fabd626b68e92"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetStorageFolder</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">f</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6Config16SetStorageFolderEPKc" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Where do we store temp files? </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
 </div>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client16DiscoveryServiceE">
-<span id="_CPPv3N8teleport6client16DiscoveryServiceE"></span><span id="_CPPv2N8teleport6client16DiscoveryServiceE"></span><span id="teleport::client::DiscoveryService"></span><span class="target" id="classteleport_1_1client_1_1_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiscoveryService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client16DiscoveryServiceE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Abstract discovery service for clients to connect to the server. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t">
-<span id="_CPPv3N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t"></span><span id="_CPPv2N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t"></span><span id="teleport::client::DiscoveryService::Discover__uint64_t.ss.uint16_t"></span><span class="target" id="classteleport_1_1client_1_1_discovery_service_1a2e8ee15f356e2c841dbb4932d4f59894"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Discover</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">serverIP</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">serverDiscoveryPort</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Returns Client ID. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
 </div>
-</dd></dl>
-
-<dl class="cpp class">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXRE">
-<span id="_CPPv3N8teleport6client6OpenXRE"></span><span id="_CPPv2N8teleport6client6OpenXRE"></span><span id="teleport::client::OpenXR"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OpenXR</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXRE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Subclassed by teleport::UseOpenXR, teleport::android::OpenXR</p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric">Public Functions</p>
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR18SetFallbackBindingE8ActionIdNSt6stringE">
-<span id="_CPPv3N8teleport6client6OpenXR18SetFallbackBindingE8ActionIdNSt6stringE"></span><span id="_CPPv2N8teleport6client6OpenXR18SetFallbackBindingE8ActionIdNSt6stringE"></span><span id="teleport::client::OpenXR::SetFallbackBinding__ActionId.ss"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a70eefc1143e156a4bf68e5e1a28d65c0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetFallbackBinding</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ActionId</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">actionId</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR18SetFallbackBindingE8ActionIdNSt6stringE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Set a “virtual” pose binding - e.g. mouse emulation. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi">
-<span id="_CPPv3N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi"></span><span id="_CPPv2N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi"></span><span id="teleport::client::OpenXR::OnMouseButtonPressed__b.b.b.i"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1aa2da10b7c2560408722b4b1c838c67af"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OnMouseButtonPressed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bLeftButtonDown</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bRightButtonDown</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bMiddleButtonDown</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">nMouseWheelDelta</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Process mouse and keyboard. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE">
-<span id="_CPPv3N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE"></span><span id="_CPPv2N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE"></span><span id="teleport::client::OpenXR::RemoveNodePoseMapping__avs::uid.avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a74668cc4def51641c07f8a7171df70ca"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RemoveNodePoseMapping</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span>, <a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Remove the mapping of the specified node - it has perhaps been unmapped or destroyed. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE">
-<span id="_CPPv3N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE"></span><span id="_CPPv2N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE"></span><span id="teleport::client::OpenXR::GetServerInputMappings__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1ac6487be1c4940944fcccae644c5d5ea4"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">InputMapping</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetServerInputMappings</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the currently bound input mappings for the server. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR25GetServerNodePoseMappingsEN3avs3uidE">
-<span id="_CPPv3N8teleport6client6OpenXR25GetServerNodePoseMappingsEN3avs3uidE"></span><span id="_CPPv2N8teleport6client6OpenXR25GetServerNodePoseMappingsEN3avs3uidE"></span><span id="teleport::client::OpenXR::GetServerNodePoseMappings__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1ae6aa1ad7f867238bae7ca42dd2381543"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">NodePoseMapping</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetServerNodePoseMappings</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR25GetServerNodePoseMappingsEN3avs3uidE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the currently bound pose mappings for the server. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv">
-<span id="_CPPv3NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv"></span><span id="_CPPv2NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv"></span><span id="teleport::client::OpenXR::GetHeadPose_StageSpaceC"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a63a24c51ca0aaa3558b98bd6e808890d"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs4PoseE" title="avs::Pose"><span class="n"><span class="pre">Pose</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetHeadPose_StageSpace</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the head pose in the device’s stage space (axes adapted to the Engineering standard, Z=up). </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR24GetTrackedHandJointPosesEi">
-<span id="_CPPv3N8teleport6client6OpenXR24GetTrackedHandJointPosesEi"></span><span id="_CPPv2N8teleport6client6OpenXR24GetTrackedHandJointPosesEi"></span><span id="teleport::client::OpenXR::GetTrackedHandJointPoses__i"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1aac83fb6b8d04e7110f7442821ce4547f"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs4PoseE" title="avs::Pose"><span class="n"><span class="pre">Pose</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetTrackedHandJointPoses</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR24GetTrackedHandJointPosesEi" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the poses relative to the hand root. </p>
-</dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client6OpenXR22GetTrackedHandRootPoseEi">
-<span id="_CPPv3NK8teleport6client6OpenXR22GetTrackedHandRootPoseEi"></span><span id="_CPPv2NK8teleport6client6OpenXR22GetTrackedHandRootPoseEi"></span><span id="teleport::client::OpenXR::GetTrackedHandRootPose__iC"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a34a5ed9a8c8a628a49885d5b0ad759d4"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs4PoseE" title="avs::Pose"><span class="n"><span class="pre">Pose</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetTrackedHandRootPose</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client6OpenXR22GetTrackedHandRootPoseEi" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Get the hand root pose in local space. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>i</strong> – index of the hand. </p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p></p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
 </div>
-</dd></dl>
-
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client15SignalingServerE">
-<span id="_CPPv3N8teleport6client15SignalingServerE"></span><span id="_CPPv2N8teleport6client15SignalingServerE"></span><span id="teleport::client::SignalingServer"></span><span class="target" id="structteleport_1_1client_1_1_signaling_server"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SignalingServer</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client15SignalingServerE" title="Permalink to this definition">¶</a><br /></dt>
-<dd><p>Identifies a remote server as seen by the <a class="reference internal" href="#classteleport_1_1client_1_1_discovery_service"><span class="std std-ref">DiscoveryService</span></a>. </p>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
 </section>
 </section>
 
@@ -312,7 +174,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2018-2024, Simul Software Ltd.</p>
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
   </div> 
 
 </footer>
