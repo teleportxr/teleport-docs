@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Mon 09 Sep** : :samp:`Added AMD Compressonator. Incorporated direct headers and prebuilt libs due to the complex setup and build dependencies of this library. Android version will need to be built.`
+| **Mon 09 Sep** : :samp:`ktx support for BC6H float16 textures.`
 | **Mon 26 Aug** : :samp:`Added movement updates to UE plugin.`
 | **Mon 26 Aug** : :samp:`Platform ptr.`
 | **Fri 23 Aug** : :samp:`Added DoxyfileUnreal.in`
@@ -98,5 +100,3 @@ Changelist
 | **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
 | **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
 | **Fri 02 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Fri 02 Aug** : :samp:`Added libavstream logger.cpp.`
-| **Mon 29 Jul** : :samp:`Update build_pc_client.yml`
