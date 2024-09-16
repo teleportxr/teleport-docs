@@ -1,5 +1,6 @@
 Changelist 
 ========= 
+| **Thu 12 Sep** : :samp:`Shallow fetch in FetchContent.`
 | **Mon 09 Sep** : :samp:`Added AMD Compressonator. Incorporated direct headers and prebuilt libs due to the complex setup and build dependencies of this library. Android version will need to be built.`
 | **Mon 09 Sep** : :samp:`ktx support for BC6H float16 textures.`
 | **Mon 26 Aug** : :samp:`Added movement updates to UE plugin.`
@@ -99,4 +100,3 @@ Changelist
 | **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
 | **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
 | **Wed 07 Aug** : :samp:`Update build_pc_client.yml`
-| **Fri 02 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
