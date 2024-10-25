@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platform &mdash; Teleport XR  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport XR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/unreal/index.html">3. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/protocol.html">5. The Teleport VR Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/reference/index.html">6. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Teleport XR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Platform</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/firstparty/Platform/Docs/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="platform">
+<h1>Platform<a class="headerlink" href="#platform" title="Permalink to this heading">¶</a></h1>
+<p>Platform is a cross-platform rendering library and API.</p>
+<section id="about-platform">
+<h2>About Platform<a class="headerlink" href="#about-platform" title="Permalink to this heading">¶</a></h2>
+<p>The Platform library was developed by Simul for use in trueSKY (simul.co/trueSKY), and has seen use in many indie and triple-A game titles and professional simulations. It provides a cross-platform API for modern rendering, abstracting the backend while maintaining support for up-to-date features. With Platform, you can have multiple API’s working in a single process.</p>
+<p>Shaders in Platform are compiled either offline or on-the-fly from sfx source files. Similar to the old fx or cgfx effect files, these can contain multiple shaders of different types as well as render state setup.</p>
+<p>The intention with Platform is that it should take few lines of code to write real-time graphics applications, but that the final code should be well-optimized for rendering.</p>
+<p>At the moment, due to its origins in trueSKY, Platform is quite focused on Compute and has incomplete support for other shader types.</p>
+</section>
+<section id="supported-platforms">
+<h2>Supported Platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Windows 10</p></li>
+<li><p>Linux</p></li>
+<li><p>PS4</p></li>
+<li><p>Xbox One</p></li>
+<li><p>Others…</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="supported-rendering-api-s">
+<h2>Supported Rendering API’s<a class="headerlink" href="#supported-rendering-api-s" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Direct3D 11</p></li>
+<li><p>Direct3D 12</p></li>
+<li><p>PS4</p></li>
+<li><p>OpenGL</p></li>
+<li><p>Vulkan</p></li>
+</ul>
+<ul class="simple">
+<li><p>CMake</p></li>
+<li><p>Python 3</p></li>
+<li><p>Git</p></li>
+<li><p>GitPython</p></li>
+<li><p>Visual Studio 2017 or later (Windows)</p></li>
+<li><p>Clang 8+ (Linux)</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h2>
+<p>To run the Python setup script, ensure that the git Python module is installed.</p>
+<blockquote>
+<div><p>pip install GitPython</p>
+</div></blockquote>
+<p>Now run Setup.py to update the submodules and build Platform for Windows x64.</p>
+</section>
+<section id="configuring">
+<h2>Configuring<a class="headerlink" href="#configuring" title="Permalink to this heading">¶</a></h2>
+<p>With CMakeGui or a similar tool, you can configure Platform to your requirements. For example, individual API’s such as Vulkan or D3D12 can be enabled or disabled.</p>
+</section>
+<section id="compiling">
+<h2>Compiling<a class="headerlink" href="#compiling" title="Permalink to this heading">¶</a></h2>
+<p>By default for Windows, a Visual Studio solution Platform.sln will be created and built in Platform/build. To build for another platform:</p>
+<p>Use the CMake cross-compiling toolchain file in Platform/[PlatformName]/CMake.
+Ensure that the x64 version is built first. In particular, other platforms use the Sfx effect compiler which is created at Platform/build/bin/Release/Sfx.exe.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="../../../search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

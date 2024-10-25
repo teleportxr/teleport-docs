@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.2. Data Service &mdash; Teleport XR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.2.2.1. Commands from Server to Client" href="service/server_to_client.html" />
+    <link rel="prev" title="5.1. Signaling" href="signaling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport XR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">3. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">5. The Teleport VR Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">5.1. Signaling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.2. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">5.3. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">5.4. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">5.5. Video Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">6. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Teleport XR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">5. </span>The Teleport VR Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5.2. </span>Data Service</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/service.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-service">
+<h1><span class="section-number">5.2. </span>Data Service<a class="headerlink" href="#data-service" title="Permalink to this heading">¶</a></h1>
+<section id="initialization">
+<h2><span class="section-number">5.2.1. </span>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">¶</a></h2>
+<p>After a <strong>Connecting Client</strong> completes signaling, the Data Service has been created. This connection has six channels:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-number">Table 5.2 </span><span class="caption-text">Data Service Channels</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25.4%" />
+<col style="width: 11.9%" />
+<col style="width: 11.9%" />
+<col style="width: 50.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Reliable</p></th>
+<th class="head"><p>Two-way</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Video</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Video stream from server to client.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Video Tags</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Video per-frame metadata.</p></td>
+</tr>
+<tr class="row-even"><td><p>Audio</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Two-way audio channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Geometry</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Geometry streaming to client.</p></td>
+</tr>
+<tr class="row-even"><td><p>Message</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Unreliable, time-sensitive messages.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Command</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Reliable commands and responses.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The video stream can be configured as h264 or HEVC. The data streams</p>
+<p>When initial signaling is complete for this <strong>Client</strong>, the <strong>Server</strong> sends the <strong>Setup Command</strong> to the <strong>Client</strong> on the <strong>Command</strong> channel.</p>
+<p><em>Definitions</em></p>
+<p>A <strong>server session</strong> starts when a server first initializes into its running state, and continues until the <strong>Server</strong> stops it.
+A <strong>client-server session</strong> starts when a client first connects to a specific server address, and continues until either the Client or the Server decides it is finished. This may include multiple <strong>network sessions</strong>, for example in the case of network outages or connection being paused by either party. The lifetime of a <strong>client-server session</strong> is a subset of the <strong>server session</strong>.
+A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a specific Server Session</em>. <strong>uid</strong>’s are shared between the server and all of its clients. A <strong>uid</strong> need not be unique for different servers connected to the same client.</p>
+<p>All packets on the <strong>Control</strong> channel are of the form:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>member</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>commandPayloadType</p></td>
+</tr>
+<tr class="row-odd"><td><p>1+</p></td>
+<td><p>command</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>Setup Command</strong> is</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CommandPayloadType</p></td>
+<td><p>Setup=2</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>Debug stream index</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>Debug network packets?</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p>Required Latency Ms</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>Idle Connection Timeout</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>uid</p></td>
+<td><p>Server Session ID</p></td>
+</tr>
+<tr class="row-even"><td><p>137</p></td>
+<td><p>VideoConfig</p></td>
+<td><p>video stream configuratn</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>Draw Distance (metres)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>AxesStandard</p></td>
+<td><p>Axes standard</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>uint8_t</p></td>
+<td><p>Audio input enabled 1 or 0</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>uint8_t</p></td>
+<td><p>SSL enabled, 1 or 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>int64</p></td>
+<td><p>starting timestamp, microseconds since Unix Epoch</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>see teleport::core::SetupCommand - where</p></li>
+</ul>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 5.3 </span><span class="caption-text">VideoConfig</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11.1%" />
+<col style="width: 22.2%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>video_width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>video_height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>depth_width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>depth_height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>perspective_width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>perspective_height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>perspective_fov</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>nearClipPlane</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>webcam_width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>webcam_height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>webcam_offset_x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>webcam_offset_y</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>use_10_bit_decoding</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>use_yuv_444_decoding</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>use_alpha_layer_decoding</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>colour_cubemap_size</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>compose_cube</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>use_cubemap</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>stream_webcam</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>avs::VideoCodec</p></td>
+<td><p>videoCodec</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>specular_x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>specular_y</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>specular_cubemap_size</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>specular_mips</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>diffuse_x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>diffuse_y</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>diffuse_cubemap_size</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>light_x</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>light_y</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>light_cubemap_size</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>shadowmap_x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>shadowmap_y</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>shadowmap_size</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>draw_distance</p></td>
+</tr>
+</tbody>
+</table>
+<p>The Client sends a <strong>Handshake</strong> on the Handshake channel of the Data Service.</p>
+<p>The <strong>Handshake</strong> is</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>unsigned</p></td>
+<td><p>DisplayInfo width</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>unsigned</p></td>
+<td><p>DisplayInfo height</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>metres per unit</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>field of view (degrees)</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>unsigned</p></td>
+<td><p>udp buffer size</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>unsigned</p></td>
+<td><p>max bandwidth, kb/s</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>AxesStandard</p></td>
+<td><p>Axes standard</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>uint8_t</p></td>
+<td><p>framerate, Hz</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>bool</p></td>
+<td><p>using hands</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bool</p></td>
+<td><p>is VR</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>resource count = N</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>max lights supported</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32_t</p></td>
+<td><p>client Streaming Port</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32_t</p></td>
+<td><p>minimum Priority</p></td>
+</tr>
+<tr class="row-even"><td><p>8 * N</p></td>
+<td><p>uid</p></td>
+<td><p>resources already present</p></td>
+</tr>
+</tbody>
+</table>
+<p>When the <strong>Server</strong> receives the <strong>Handshake</strong>, it starts streaming data. The handshake is of variable size, as it contains a list of the resource uid’s that it already has cached.</p>
+<p>The server then sends the <code class="docutils literal notranslate"><span class="pre">AcknowledgeHandshake</span></code> command on the <strong>Command</strong> channel:</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 5.4 </span><span class="caption-text">AcknowledgeHandshake</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11.1%" />
+<col style="width: 22.2%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CommandPayloadType</p></td>
+<td><p>AcknowledgeHandshake=3</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>visibleNodeCount=N</p></td>
+</tr>
+<tr class="row-even"><td><p>8*N</p></td>
+<td><p>uid</p></td>
+<td><p>node uid’s to be streamed</p></td>
+</tr>
+</tbody>
+</table>
+<p>See <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">AcknowledgeHandshakeCommand</span></code>.</p>
+<p>Once the <strong>Client</strong> has received the <code class="docutils literal notranslate"><span class="pre">AcknowledgeHandshake</span></code>, initialization is complete and the client enters the main continuous Update mode.</p>
+</section>
+<section id="update">
+<h2><span class="section-number">5.2.2. </span>Update<a class="headerlink" href="#update" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="service/server_to_client.html">5.2.2.1. Commands from Server to Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/server_to_client.html#set-stagespace-origin-node">5.2.2.1.1. Set StageSpace Origin Node</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service/client_to_server.html">5.2.2.2. Requests from Client to Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#displayinfo">5.2.2.2.1. DisplayInfo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#controllerposes">5.2.2.2.2. ControllerPoses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#resourcerequests">5.2.2.2.3. ResourceRequests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#receivedresources">5.2.2.2.4. ReceivedResources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#nodeupdates">5.2.2.2.5. NodeUpdates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#video-keyframe-request">5.2.2.2.6. Video Keyframe Request</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="signaling.html" class="btn btn-neutral float-left" title="5.1. Signaling" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="service/server_to_client.html" class="btn btn-neutral float-right" title="5.2.2.1. Commands from Server to Client" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

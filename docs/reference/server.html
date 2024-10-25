@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.1. Server &mdash; Teleport XR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.2. The Teleport Client library" href="teleportclient.html" />
+    <link rel="prev" title="6. Reference Implementation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport XR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">3. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">5. The Teleport VR Protocol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">6. Reference Implementation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">6.2. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">6.3. LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">6.4. LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">6.5. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">6.6. Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">6.7. Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">6.8. Video with Vulkan on Android</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Teleport XR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">6. </span>Reference Implementation</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.1. </span>Server</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/reference/server.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="server">
+<span id="id1"></span><h1><span class="section-number">6.1. </span>Server<a class="headerlink" href="#server" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">6.1.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>TeleportServer is a library that provides server functionality in conjunction with a real-time game or simulation engine. The library is usually dynamically-linked, and can be controlled from engine-side
+entirely by means of the functions that the dll exports. Therefore there is no need to include C++ headers from the server library engine-side, and indeed the engine need not be in C++.</p>
+</section>
+<section id="api">
+<h2><span class="section-number">6.1.2. </span>API<a class="headerlink" href="#api" title="Permalink to this heading">¶</a></h2>
+<p>The server library’s exported functions are described below. These global functions are declared as exports.</p>
+<section id="structure">
+<h3><span class="section-number">6.1.2.1. </span>Structure<a class="headerlink" href="#structure" title="Permalink to this heading">¶</a></h3>
+</section>
+<section id="preparation">
+<h3><span class="section-number">6.1.2.2. </span>Preparation<a class="headerlink" href="#preparation" title="Permalink to this heading">¶</a></h3>
+<p>In order to start a server session, it’s necessary to prepare the data - objects and resources - so it is ready to be streamed to connecting clients.
+On the engine side there will often be a user interface for this - see for example</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="lifecycle">
+<h3><span class="section-number">6.1.2.3. </span>Lifecycle<a class="headerlink" href="#lifecycle" title="Permalink to this heading">¶</a></h3>
+<img src="../../_images/mermaid-1a847606de9f551bd3ee91424104159dfd623376.png" alt="flowchart TD
+        subgraph MainInitialization
+                A(Server_Teleport_Initialize)
+        end
+        subgraph MainLoop
+                B(Server_Tick)
+        end
+        subgraph EndSession
+                C(Server_Teleport_Shutdown)
+        end
+        MainInitialization --&gt; MainLoop(&quot;Main Loop&quot;)
+        MainLoop --&gt; EndSession
+        MainLoop ---&gt; MainLoop" />
+<p>The lifecycle of a server session is controlled by these functions:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="state-management">
+<h3><span class="section-number">6.1.2.4. </span>State Management<a class="headerlink" href="#state-management" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="axis-conversions">
+<h3><span class="section-number">6.1.2.5. </span>Axis Conversions<a class="headerlink" href="#axis-conversions" title="Permalink to this heading">¶</a></h3>
+<p>Various axis conventions are used in different applications, game engines and API’s. The reference API defines  <code class="xref any docutils literal notranslate"><span class="pre">avs::AxesStandard</span></code> to represent the possible standards that can be used.</p>
+<figure class="align-default">
+<img alt="../../_images/AxesStandards.png" src="../../_images/AxesStandards.png" />
+</figure>
+<p>The API provides conversion functions to transform between axis systems
+.. doxygenfunction:: Server_ConvertTransform</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="memory">
+<h3><span class="section-number">6.1.2.6. </span>Memory<a class="headerlink" href="#memory" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="setting-properties">
+<h3><span class="section-number">6.1.2.7. </span>Setting Properties<a class="headerlink" href="#setting-properties" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="setting-delegates">
+<h3><span class="section-number">6.1.2.8. </span>Setting Delegates<a class="headerlink" href="#setting-delegates" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="video">
+<h3><span class="section-number">6.1.2.9. </span>Video<a class="headerlink" href="#video" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="audio">
+<h3><span class="section-number">6.1.2.10. </span>Audio<a class="headerlink" href="#audio" title="Permalink to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+</section>
+<section id="classes">
+<h2><span class="section-number">6.1.3. </span>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: breathe_default_project value ‘TeleportXR’ does not seem to be a valid key for the breathe_projects dictionary</p>
+</div>
+</section>
+<section id="networking">
+<h2><span class="section-number">6.1.4. </span>Networking<a class="headerlink" href="#networking" title="Permalink to this heading">¶</a></h2>
+<p>Each client connection contains a pipeline that gathers data for sending to the client, and distributes incoming data from the client.
+This pipeline is distributed over threads, which communicate using avs::Queue pipeline nodes.</p>
+<img src="../../_images/mermaid-f45bc4cb11adddd042f553dbbbdabaf64faeb5b5.png" alt="flowchart LR
+        subgraph &quot;Network Thread&quot;
+                H(Network Sink)
+        end
+        A(Video Queue) --&gt;|1| H(Network Sink)
+        B(Tag Queue) --&gt;|2| H
+        C(Audio Queue) --&gt;|3| H
+        D(Geometry Queue) --&gt;|4| H
+        E(Command Queue) --&gt;|5| H
+        subgraph &quot;Geometry Encoding Thread&quot;
+                F(Geometry Encoder)
+        end
+        F(Geometry Encoder) --&gt; D
+        H --&gt;I(Message Queue)
+        subgraph &quot;Main Thread 2&quot;
+                J(Message Decoder)
+        end
+        I --&gt; J(Message Decoder)
+        subgraph &quot;Render Thread&quot;
+                K(Video Encoder)
+        end
+        K --&gt; A
+        K --&gt; B
+        subgraph &quot;Main Thread 1&quot;
+                L(Command Encoder)
+        end
+        L --&gt; E" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="6. Reference Implementation" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="teleportclient.html" class="btn btn-neutral float-right" title="6.2. The Teleport Client library" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

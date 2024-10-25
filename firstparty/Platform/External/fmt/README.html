@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features &mdash; Teleport XR  documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport XR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/unreal/index.html">3. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/protocol.html">5. The Teleport VR Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docs/reference/index.html">6. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Teleport XR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Features</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/firstparty/Platform/External/fmt/README.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <a class="reference internal image-reference" href="https://user-images.githubusercontent.com/576385/156254208-f5b743a9-88cf-439d-b0c0-923d53e8d551.png"><img alt="{fmt}" src="https://user-images.githubusercontent.com/576385/156254208-f5b743a9-88cf-439d-b0c0-923d53e8d551.png" style="width: 25%;" /></a>
+<a class="reference external image-reference" href="https://github.com/fmtlib/fmt/actions?query=workflow%3Alinux"><img alt="https://github.com/fmtlib/fmt/workflows/linux/badge.svg" src="https://github.com/fmtlib/fmt/workflows/linux/badge.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/fmtlib/fmt/actions?query=workflow%3Amacos"><img alt="https://github.com/fmtlib/fmt/workflows/macos/badge.svg" src="https://github.com/fmtlib/fmt/workflows/macos/badge.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/fmtlib/fmt/actions?query=workflow%3Awindows"><img alt="https://github.com/fmtlib/fmt/workflows/windows/badge.svg" src="https://github.com/fmtlib/fmt/workflows/windows/badge.svg" /></a>
+<a class="reference external image-reference" href="https://bugs.chromium.org/p/oss-fuzz/issues/list? colspec=ID%20Type%20Component%20Status%20Proj%20Reported%20Owner%20 Summary&amp;q=proj%3Dfmt&amp;can=1"><img alt="fmt is continuously fuzzed at oss-fuzz" src="https://oss-fuzz-build-logs.storage.googleapis.com/badges/fmt.svg" /></a>
+<a class="reference external image-reference" href="https://stackoverflow.com/questions/tagged/fmt"><img alt="Ask questions at StackOverflow with the tag fmt" src="https://img.shields.io/badge/stackoverflow-fmt-blue.svg" /></a>
+<p><strong>{fmt}</strong> is an open-source formatting library providing a fast and safe
+alternative to C stdio and C++ iostreams.</p>
+<p>If you like this project, please consider donating to one of the funds that
+help victims of the war in Ukraine: <a class="reference external" href="https://www.stopputin.net/">https://www.stopputin.net/</a>.</p>
+<p><a class="reference external" href="https://fmt.dev">Documentation</a></p>
+<p><a class="reference external" href="https://hackingcpp.com/cpp/libs/fmt.html">Cheat Sheets</a></p>
+<p>Q&amp;A: ask questions on <a class="reference external" href="https://stackoverflow.com/questions/tagged/fmt">StackOverflow with the tag fmt</a>.</p>
+<p>Try {fmt} in <a class="reference external" href="https://godbolt.org/z/Eq5763">Compiler Explorer</a>.</p>
+<section id="features">
+<h1>Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>Simple <a class="reference external" href="https://fmt.dev/latest/api.html">format API</a> with positional arguments
+for localization</p></li>
+<li><p>Implementation of <a class="reference external" href="https://en.cppreference.com/w/cpp/utility/format">C++20 std::format</a></p></li>
+<li><p><a class="reference external" href="https://fmt.dev/latest/syntax.html">Format string syntax</a> similar to Python’s
+<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.format">format</a></p></li>
+<li><p>Fast IEEE 754 floating-point formatter with correct rounding, shortness and
+round-trip guarantees using the <a class="reference external" href="https://github.com/jk-jeon/dragonbox">Dragonbox</a>
+algorithm</p></li>
+<li><p>Safe <a class="reference external" href="https://fmt.dev/latest/api.html#printf-formatting">printf implementation</a> including the POSIX
+extension for positional arguments</p></li>
+<li><p>Extensibility: <a class="reference external" href="https://fmt.dev/latest/api.html#formatting-user-defined-types">support for user-defined types</a></p></li>
+<li><p>High performance: faster than common standard library implementations of
+<code class="docutils literal notranslate"><span class="pre">(s)printf</span></code>, iostreams, <code class="docutils literal notranslate"><span class="pre">to_string</span></code> and <code class="docutils literal notranslate"><span class="pre">to_chars</span></code>, see <a class="reference internal" href="#speed-tests">Speed tests</a>
+and <a class="reference external" href="http://www.zverovich.net/2020/06/13/fast-int-to-string-revisited.html">Converting a hundred million integers to strings per second</a></p></li>
+<li><p>Small code size both in terms of source code with the minimum configuration
+consisting of just three files, <code class="docutils literal notranslate"><span class="pre">core.h</span></code>, <code class="docutils literal notranslate"><span class="pre">format.h</span></code> and <code class="docutils literal notranslate"><span class="pre">format-inl.h</span></code>,
+and compiled code; see <a class="reference internal" href="#compile-time-and-code-bloat">Compile time and code bloat</a></p></li>
+<li><p>Reliability: the library has an extensive set of <a class="reference external" href="https://github.com/fmtlib/fmt/tree/master/test">tests</a> and is <a class="reference external" href="https://bugs.chromium.org/p/oss-fuzz/issues/list?colspec=ID%20Type%20Component%20Status%20Proj%20Reported%20Owner%20Summary&amp;q=proj%3Dfmt&amp;can=1">continuously fuzzed</a></p></li>
+<li><p>Safety: the library is fully type safe, errors in format strings can be
+reported at compile time, automatic memory management prevents buffer overflow
+errors</p></li>
+<li><p>Ease of use: small self-contained code base, no external dependencies,
+permissive MIT <a class="reference external" href="https://github.com/fmtlib/fmt/blob/master/LICENSE.rst">license</a></p></li>
+<li><p><a class="reference external" href="https://fmt.dev/latest/index.html#portability">Portability</a> with
+consistent output across platforms and support for older compilers</p></li>
+<li><p>Clean warning-free codebase even on high warning levels such as
+<code class="docutils literal notranslate"><span class="pre">-Wall</span> <span class="pre">-Wextra</span> <span class="pre">-pedantic</span></code></p></li>
+<li><p>Locale-independence by default</p></li>
+<li><p>Optional header-only configuration enabled with the <code class="docutils literal notranslate"><span class="pre">FMT_HEADER_ONLY</span></code> macro</p></li>
+</ul>
+<p>See the <a class="reference external" href="https://fmt.dev">documentation</a> for more details.</p>
+</section>
+<section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h1>
+<p><strong>Print to stdout</strong> (<a class="reference external" href="https://godbolt.org/z/Tevcjh">run</a>)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fmt/core.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Hello, world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Format a string</strong> (<a class="reference external" href="https://godbolt.org/z/oK8h33">run</a>)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;The answer is {}.&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
+<span class="c1">// s == &quot;The answer is 42.&quot;</span>
+</pre></div>
+</div>
+<p><strong>Format a string using positional arguments</strong> (<a class="reference external" href="https://godbolt.org/z/Yn7Txe">run</a>)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;I&#39;d rather be {1} than {0}.&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;right&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;happy&quot;</span><span class="p">);</span>
+<span class="c1">// s == &quot;I&#39;d rather be happy than right.&quot;</span>
+</pre></div>
+</div>
+<p><strong>Print chrono durations</strong> (<a class="reference external" href="https://godbolt.org/z/K8s4Mc">run</a>)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fmt/chrono.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">literals</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span>
+<span class="w">  </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Default format: {} {}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="n">ms</span><span class="p">);</span>
+<span class="w">  </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;strftime-like format: {:%H:%M:%S}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="n">h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">15</span><span class="n">min</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">30</span><span class="n">s</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Default</span> <span class="nb">format</span><span class="p">:</span> <span class="mi">42</span><span class="n">s</span> <span class="mi">100</span><span class="n">ms</span>
+<span class="n">strftime</span><span class="o">-</span><span class="n">like</span> <span class="nb">format</span><span class="p">:</span> <span class="mi">03</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">30</span>
+</pre></div>
+</div>
+<p><strong>Print a container</strong> (<a class="reference external" href="https://godbolt.org/z/MxM1YqjE7">run</a>)</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fmt/ranges.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">};</span>
+<span class="w">  </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;{}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>Check a format string at compile time</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fmt</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{:d}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;I am not a number&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This gives a compile-time error in C++20 because <code class="docutils literal notranslate"><span class="pre">d</span></code> is an invalid format
+specifier for a string.</p>
+<p><strong>Write a file from a single thread</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fmt/os.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">auto</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fmt</span><span class="o">::</span><span class="n">output_file</span><span class="p">(</span><span class="s">&quot;guide.txt&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Don&#39;t {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Panic&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This can be <a class="reference external" href="http://www.zverovich.net/2020/08/04/optimal-file-buffer-size.html">5 to 9 times faster than fprintf</a>.</p>
+<p><strong>Print with colors and text styles</strong></p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fmt/color.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">fg</span><span class="p">(</span><span class="n">fmt</span><span class="o">::</span><span class="n">color</span><span class="o">::</span><span class="n">crimson</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">fmt</span><span class="o">::</span><span class="n">emphasis</span><span class="o">::</span><span class="n">bold</span><span class="p">,</span>
+<span class="w">             </span><span class="s">&quot;Hello, {}!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">fg</span><span class="p">(</span><span class="n">fmt</span><span class="o">::</span><span class="n">color</span><span class="o">::</span><span class="n">floral_white</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">bg</span><span class="p">(</span><span class="n">fmt</span><span class="o">::</span><span class="n">color</span><span class="o">::</span><span class="n">slate_gray</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="w">             </span><span class="n">fmt</span><span class="o">::</span><span class="n">emphasis</span><span class="o">::</span><span class="n">underline</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, {}!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;мир&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">fmt</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">fg</span><span class="p">(</span><span class="n">fmt</span><span class="o">::</span><span class="n">color</span><span class="o">::</span><span class="n">steel_blue</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">fmt</span><span class="o">::</span><span class="n">emphasis</span><span class="o">::</span><span class="n">italic</span><span class="p">,</span>
+<span class="w">             </span><span class="s">&quot;Hello, {}!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;世界&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Output on a modern terminal:</p>
+<img alt="https://user-images.githubusercontent.com/576385/88485597-d312f600-cf2b-11ea-9cbe-61f535a86e28.png" src="https://user-images.githubusercontent.com/576385/88485597-d312f600-cf2b-11ea-9cbe-61f535a86e28.png" />
+</section>
+<section id="benchmarks">
+<h1>Benchmarks<a class="headerlink" href="#benchmarks" title="Permalink to this heading">¶</a></h1>
+<section id="speed-tests">
+<h2>Speed tests<a class="headerlink" href="#speed-tests" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Method</p></th>
+<th class="head"><p>Run Time, s</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>libc</p></td>
+<td><p>printf</p></td>
+<td><p>0.91</p></td>
+</tr>
+<tr class="row-odd"><td><p>libc++</p></td>
+<td><p>std::ostream</p></td>
+<td><p>2.49</p></td>
+</tr>
+<tr class="row-even"><td><p>{fmt} 9.1</p></td>
+<td><p>fmt::print</p></td>
+<td><p>0.74</p></td>
+</tr>
+<tr class="row-odd"><td><p>Boost Format 1.80</p></td>
+<td><p>boost::format</p></td>
+<td><p>6.26</p></td>
+</tr>
+<tr class="row-even"><td><p>Folly Format</p></td>
+<td><p>folly::format</p></td>
+<td><p>1.87</p></td>
+</tr>
+</tbody>
+</table>
+<p>{fmt} is the fastest of the benchmarked methods, ~20% faster than <code class="docutils literal notranslate"><span class="pre">printf</span></code>.</p>
+<p>The above results were generated by building <code class="docutils literal notranslate"><span class="pre">tinyformat_test.cpp</span></code> on macOS
+12.6.1 with <code class="docutils literal notranslate"><span class="pre">clang++</span> <span class="pre">-O3</span> <span class="pre">-DNDEBUG</span> <span class="pre">-DSPEED_TEST</span> <span class="pre">-DHAVE_FORMAT</span></code>, and taking the
+best of three runs. In the test, the format string <code class="docutils literal notranslate"><span class="pre">&quot;%0.10f:%04d:%+g:%s:%p:%c:%%\n&quot;</span></code>
+or equivalent is filled 2,000,000 times with output sent to <code class="docutils literal notranslate"><span class="pre">/dev/null</span></code>; for
+further details refer to the <a class="reference external" href="https://github.com/fmtlib/format-benchmark/blob/master/src/tinyformat-test.cc">source</a>.</p>
+<p>{fmt} is up to 20-30x faster than <code class="docutils literal notranslate"><span class="pre">std::ostringstream</span></code> and <code class="docutils literal notranslate"><span class="pre">sprintf</span></code> on
+IEEE754 <code class="docutils literal notranslate"><span class="pre">float</span></code> and <code class="docutils literal notranslate"><span class="pre">double</span></code> formatting (<a class="reference external" href="https://github.com/fmtlib/dtoa-benchmark">dtoa-benchmark</a>)
+and faster than <a class="reference external" href="https://github.com/google/double-conversion">double-conversion</a> and
+<a class="reference external" href="https://github.com/ulfjack/ryu">ryu</a>:</p>
+<a class="reference external image-reference" href="https://fmt.dev/unknown_mac64_clang12.0.html"><img alt="https://user-images.githubusercontent.com/576385/95684665-11719600-0ba8-11eb-8e5b-972ff4e49428.png" src="https://user-images.githubusercontent.com/576385/95684665-11719600-0ba8-11eb-8e5b-972ff4e49428.png" /></a>
+</section>
+<section id="compile-time-and-code-bloat">
+<h2>Compile time and code bloat<a class="headerlink" href="#compile-time-and-code-bloat" title="Permalink to this heading">¶</a></h2>
+<p>The script <a class="reference external" href="https://github.com/fmtlib/format-benchmark/blob/master/bloat-test.py">bloat-test.py</a>
+from <a class="reference external" href="https://github.com/fmtlib/format-benchmark">format-benchmark</a>
+tests compile time and code bloat for nontrivial projects.
+It generates 100 translation units and uses <code class="docutils literal notranslate"><span class="pre">printf()</span></code> or its alternative
+five times in each to simulate a medium sized project.  The resulting
+executable size and compile time (Apple LLVM version 8.1.0 (clang-802.0.42),
+macOS Sierra, best of three) is shown in the following tables.</p>
+<p><strong>Optimized build (-O3)</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Compile Time, s</p></th>
+<th class="head"><p>Executable size, KiB</p></th>
+<th class="head"><p>Stripped size, KiB</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>printf</p></td>
+<td><p>2.6</p></td>
+<td><p>29</p></td>
+<td><p>26</p></td>
+</tr>
+<tr class="row-odd"><td><p>printf+string</p></td>
+<td><p>16.4</p></td>
+<td><p>29</p></td>
+<td><p>26</p></td>
+</tr>
+<tr class="row-even"><td><p>iostreams</p></td>
+<td><p>31.1</p></td>
+<td><p>59</p></td>
+<td><p>55</p></td>
+</tr>
+<tr class="row-odd"><td><p>{fmt}</p></td>
+<td><p>19.0</p></td>
+<td><p>37</p></td>
+<td><p>34</p></td>
+</tr>
+<tr class="row-even"><td><p>Boost Format</p></td>
+<td><p>91.9</p></td>
+<td><p>226</p></td>
+<td><p>203</p></td>
+</tr>
+<tr class="row-odd"><td><p>Folly Format</p></td>
+<td><p>115.7</p></td>
+<td><p>101</p></td>
+<td><p>88</p></td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, {fmt} has 60% less overhead in terms of resulting binary code
+size compared to iostreams and comes pretty close to <code class="docutils literal notranslate"><span class="pre">printf</span></code>. Boost Format
+and Folly Format have the largest overheads.</p>
+<p><code class="docutils literal notranslate"><span class="pre">printf+string</span></code> is the same as <code class="docutils literal notranslate"><span class="pre">printf</span></code> but with extra <code class="docutils literal notranslate"><span class="pre">&lt;string&gt;</span></code>
+include to measure the overhead of the latter.</p>
+<p><strong>Non-optimized build</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Compile Time, s</p></th>
+<th class="head"><p>Executable size, KiB</p></th>
+<th class="head"><p>Stripped size, KiB</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>printf</p></td>
+<td><p>2.2</p></td>
+<td><p>33</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-odd"><td><p>printf+string</p></td>
+<td><p>16.0</p></td>
+<td><p>33</p></td>
+<td><p>30</p></td>
+</tr>
+<tr class="row-even"><td><p>iostreams</p></td>
+<td><p>28.3</p></td>
+<td><p>56</p></td>
+<td><p>52</p></td>
+</tr>
+<tr class="row-odd"><td><p>{fmt}</p></td>
+<td><p>18.2</p></td>
+<td><p>59</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-even"><td><p>Boost Format</p></td>
+<td><p>54.1</p></td>
+<td><p>365</p></td>
+<td><p>303</p></td>
+</tr>
+<tr class="row-odd"><td><p>Folly Format</p></td>
+<td><p>79.9</p></td>
+<td><p>445</p></td>
+<td><p>430</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">libc</span></code>, <code class="docutils literal notranslate"><span class="pre">lib(std)c++</span></code> and <code class="docutils literal notranslate"><span class="pre">libfmt</span></code> are all linked as shared libraries to
+compare formatting function overhead only. Boost Format is a
+header-only library so it doesn’t provide any linkage options.</p>
+</section>
+<section id="running-the-tests">
+<h2>Running the tests<a class="headerlink" href="#running-the-tests" title="Permalink to this heading">¶</a></h2>
+<p>Please refer to <a class="reference external" href="https://fmt.dev/latest/usage.html#building-the-library">Building the library</a> for the instructions on how to build
+the library and run the unit tests.</p>
+<p>Benchmarks reside in a separate repository,
+<a class="reference external" href="https://github.com/fmtlib/format-benchmark">format-benchmarks</a>,
+so to run the benchmarks you first need to clone this repository and
+generate Makefiles with CMake:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone --recursive https://github.com/fmtlib/format-benchmark.git
+$ cd format-benchmark
+$ cmake .
+</pre></div>
+</div>
+<p>Then you can run the speed test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make speed-test
+</pre></div>
+</div>
+<p>or the bloat test:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ make bloat-test
+</pre></div>
+</div>
+</section>
+</section>
+<section id="migrating-code">
+<h1>Migrating code<a class="headerlink" href="#migrating-code" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://github.com/mikecrowe/clang-tidy-fmt">clang-tidy-fmt</a> provides clang
+tidy checks for converting occurrences of <code class="docutils literal notranslate"><span class="pre">printf</span></code> and <code class="docutils literal notranslate"><span class="pre">fprintf</span></code> to
+<code class="docutils literal notranslate"><span class="pre">fmt::print</span></code>.</p>
+</section>
+<section id="projects-using-this-library">
+<h1>Projects using this library<a class="headerlink" href="#projects-using-this-library" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://play0ad.com/">0 A.D.</a>: a free, open-source, cross-platform
+real-time strategy game</p></li>
+<li><p><a class="reference external" href="https://2gis.ru/">2GIS</a>: free business listings with a city map</p></li>
+<li><p><a class="reference external" href="https://github.com/ampl/mp">AMPL/MP</a>:
+an open-source library for mathematical programming</p></li>
+<li><p><a class="reference external" href="https://github.com/aseprite/aseprite">Aseprite</a>:
+animated sprite editor &amp; pixel art tool</p></li>
+<li><p><a class="reference external" href="https://www.aviobook.aero/en">AvioBook</a>: a comprehensive aircraft
+operations suite</p></li>
+<li><p><a class="reference external" href="https://battle.net/">Blizzard Battle.net</a>: an online gaming platform</p></li>
+<li><p><a class="reference external" href="https://celestia.space/">Celestia</a>: real-time 3D visualization of space</p></li>
+<li><p><a class="reference external" href="https://ceph.com/">Ceph</a>: a scalable distributed storage system</p></li>
+<li><p><a class="reference external" href="https://ccache.dev/">ccache</a>: a compiler cache</p></li>
+<li><p><a class="reference external" href="https://github.com/ClickHouse/ClickHouse">ClickHouse</a>: an analytical database
+management system</p></li>
+<li><p><a class="reference external" href="https://github.com/contour-terminal/contour/">Contour</a>: a modern terminal emulator</p></li>
+<li><p><a class="reference external" href="https://cuauv.org/">CUAUV</a>: Cornell University’s autonomous underwater
+vehicle</p></li>
+<li><p><a class="reference external" href="https://drake.mit.edu/">Drake</a>: a planning, control, and analysis toolbox
+for nonlinear dynamical systems (MIT)</p></li>
+<li><p><a class="reference external" href="https://lyft.github.io/envoy/">Envoy</a>: C++ L7 proxy and communication bus
+(Lyft)</p></li>
+<li><p><a class="reference external" href="https://fivem.net/">FiveM</a>: a modification framework for GTA V</p></li>
+<li><p><a class="reference external" href="https://github.com/MengRao/fmtlog">fmtlog</a>: a performant fmtlib-style
+logging library with latency in nanoseconds</p></li>
+<li><p><a class="reference external" href="https://github.com/facebook/folly">Folly</a>: Facebook open-source library</p></li>
+<li><p><a class="reference external" href="https://gemrb.org/">GemRB</a>: a portable open-source implementation of
+Bioware’s Infinity Engine</p></li>
+<li><p><a class="reference external" href="https://store.steampowered.com/app/1247360/Grand_Mountain_Adventure/">Grand Mountain Adventure</a>:
+a beautiful open-world ski &amp; snowboarding game</p></li>
+<li><p><a class="reference external" href="https://github.com/pvpgn/pvpgn-server">HarpyWar/pvpgn</a>:
+Player vs Player Gaming Network with tweaks</p></li>
+<li><p><a class="reference external" href="https://github.com/kbengine/kbengine">KBEngine</a>: an open-source MMOG server
+engine</p></li>
+<li><p><a class="reference external" href="https://keypirinha.com/">Keypirinha</a>: a semantic launcher for Windows</p></li>
+<li><p><a class="reference external" href="https://kodi.tv/">Kodi</a> (formerly xbmc): home theater software</p></li>
+<li><p><a class="reference external" href="https://kth.cash/">Knuth</a>: high-performance Bitcoin full-node</p></li>
+<li><p><a class="reference external" href="https://github.com/contour-terminal/libunicode/">libunicode</a>: a modern C++17 Unicode library</p></li>
+<li><p><a class="reference external" href="https://mariadb.org/">MariaDB</a>: relational database management system</p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/verona">Microsoft Verona</a>:
+research programming language for concurrent ownership</p></li>
+<li><p><a class="reference external" href="https://mongodb.com/">MongoDB</a>: distributed document database</p></li>
+<li><p><a class="reference external" href="https://github.com/duckie/mongo_smasher">MongoDB Smasher</a>: a small tool to
+generate randomized datasets</p></li>
+<li><p><a class="reference external" href="https://openspaceproject.com/">OpenSpace</a>: an open-source
+astrovisualization framework</p></li>
+<li><p><a class="reference external" href="https://www.polserver.com/">PenUltima Online (POL)</a>:
+an MMO server, compatible with most Ultima Online clients</p></li>
+<li><p><a class="reference external" href="https://github.com/pytorch/pytorch">PyTorch</a>: an open-source machine
+learning library</p></li>
+<li><p><a class="reference external" href="https://www.quasardb.net/">quasardb</a>: a distributed, high-performance,
+associative database</p></li>
+<li><p><a class="reference external" href="https://github.com/odygrd/quill">Quill</a>: asynchronous low-latency logging library</p></li>
+<li><p><a class="reference external" href="https://github.com/ravijanjam/qkw">QKW</a>: generalizing aliasing to simplify
+navigation, and executing complex multi-line terminal command sequences</p></li>
+<li><p><a class="reference external" href="https://github.com/HunanTV/redis-cerberus">redis-cerberus</a>: a Redis cluster
+proxy</p></li>
+<li><p><a class="reference external" href="https://vectorized.io/redpanda">redpanda</a>: a 10x faster Kafka® replacement
+for mission critical systems written in C++</p></li>
+<li><p><a class="reference external" href="http://rpclib.net/">rpclib</a>: a modern C++ msgpack-RPC server and client
+library</p></li>
+<li><p><a class="reference external" href="https://www.salesforce.com/analytics-cloud/overview/">Salesforce Analytics Cloud</a>:
+business intelligence software</p></li>
+<li><p><a class="reference external" href="https://www.scylladb.com/">Scylla</a>: a Cassandra-compatible NoSQL data store
+that can handle 1 million transactions per second on a single server</p></li>
+<li><p><a class="reference external" href="http://www.seastar-project.org/">Seastar</a>: an advanced, open-source C++
+framework for high-performance server applications on modern hardware</p></li>
+<li><p><a class="reference external" href="https://github.com/gabime/spdlog">spdlog</a>: super fast C++ logging library</p></li>
+<li><p><a class="reference external" href="https://www.stellar.org/">Stellar</a>: financial platform</p></li>
+<li><p><a class="reference external" href="https://www.touchsurgery.com/">Touch Surgery</a>: surgery simulator</p></li>
+<li><p><a class="reference external" href="https://github.com/TrinityCore/TrinityCore">TrinityCore</a>: open-source
+MMORPG framework</p></li>
+<li><p><a class="reference external" href="https://github.com/microsoft/terminal">Windows Terminal</a>: the new Windows
+terminal</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/search?q=fmtlib&amp;type=Code">More…</a></p>
+<p>If you are aware of other projects using this library, please let me know
+by <a class="reference external" href="mailto:victor&#46;zverovich&#37;&#52;&#48;gmail&#46;com">email</a> or by submitting an
+<a class="reference external" href="https://github.com/fmtlib/fmt/issues">issue</a>.</p>
+</section>
+<section id="motivation">
+<h1>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">¶</a></h1>
+<p>So why yet another formatting library?</p>
+<p>There are plenty of methods for doing this task, from standard ones like
+the printf family of function and iostreams to Boost Format and FastFormat
+libraries. The reason for creating a new library is that every existing
+solution that I found either had serious issues or didn’t provide
+all the features I needed.</p>
+<section id="printf">
+<h2>printf<a class="headerlink" href="#printf" title="Permalink to this heading">¶</a></h2>
+<p>The good thing about <code class="docutils literal notranslate"><span class="pre">printf</span></code> is that it is pretty fast and readily available
+being a part of the C standard library. The main drawback is that it
+doesn’t support user-defined types. <code class="docutils literal notranslate"><span class="pre">printf</span></code> also has safety issues although
+they are somewhat mitigated with <a class="reference external" href="https://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html">__attribute__ ((format (printf, …))</a> in GCC.
+There is a POSIX extension that adds positional arguments required for
+<a class="reference external" href="https://en.wikipedia.org/wiki/Internationalization_and_localization">i18n</a>
+to <code class="docutils literal notranslate"><span class="pre">printf</span></code> but it is not a part of C99 and may not be available on some
+platforms.</p>
+</section>
+<section id="iostreams">
+<h2>iostreams<a class="headerlink" href="#iostreams" title="Permalink to this heading">¶</a></h2>
+<p>The main issue with iostreams is best illustrated with an example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setprecision</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">fixed</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mf">1.23456</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>which is a lot of typing compared to printf:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.23456</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Matthew Wilson, the author of FastFormat, called this “chevron hell”. iostreams
+don’t support positional arguments by design.</p>
+<p>The good part is that iostreams support user-defined types and are safe although
+error handling is awkward.</p>
+</section>
+<section id="boost-format">
+<h2>Boost Format<a class="headerlink" href="#boost-format" title="Permalink to this heading">¶</a></h2>
+<p>This is a very powerful library which supports both <code class="docutils literal notranslate"><span class="pre">printf</span></code>-like format
+strings and positional arguments. Its main drawback is performance. According to
+various benchmarks, it is much slower than other methods considered here. Boost
+Format also has excessive build times and severe code bloat issues (see
+<a class="reference internal" href="#benchmarks">Benchmarks</a>).</p>
+</section>
+<section id="fastformat">
+<h2>FastFormat<a class="headerlink" href="#fastformat" title="Permalink to this heading">¶</a></h2>
+<p>This is an interesting library which is fast, safe and has positional arguments.
+However, it has significant limitations, citing its author:</p>
+<blockquote>
+<div><p>Three features that have no hope of being accommodated within the
+current design are:</p>
+<ul class="simple">
+<li><p>Leading zeros (or any other non-space padding)</p></li>
+<li><p>Octal/hexadecimal encoding</p></li>
+<li><p>Runtime width/alignment specification</p></li>
+</ul>
+</div></blockquote>
+<p>It is also quite big and has a heavy dependency, STLSoft, which might be too
+restrictive for using it in some projects.</p>
+</section>
+<section id="boost-spirit-karma">
+<h2>Boost Spirit.Karma<a class="headerlink" href="#boost-spirit-karma" title="Permalink to this heading">¶</a></h2>
+<p>This is not really a formatting library but I decided to include it here for
+completeness. As iostreams, it suffers from the problem of mixing verbatim text
+with arguments. The library is pretty fast, but slower on integer formatting
+than <code class="docutils literal notranslate"><span class="pre">fmt::format_to</span></code> with format string compilation on Karma’s own benchmark,
+see <a class="reference external" href="http://www.zverovich.net/2020/06/13/fast-int-to-string-revisited.html">Converting a hundred million integers to strings per second</a>.</p>
+</section>
+</section>
+<section id="id7">
+<h1>License<a class="headerlink" href="#id7" title="Permalink to this heading">¶</a></h1>
+<p>{fmt} is distributed under the MIT <a class="reference external" href="https://github.com/fmtlib/fmt/blob/master/LICENSE.rst">license</a>.</p>
+</section>
+<section id="documentation-license">
+<h1>Documentation License<a class="headerlink" href="#documentation-license" title="Permalink to this heading">¶</a></h1>
+<p>The <a class="reference external" href="https://fmt.dev/latest/syntax.html">Format String Syntax</a>
+section in the documentation is based on the one from Python <a class="reference external" href="https://docs.python.org/3/library/string.html#module-string">string module
+documentation</a>.
+For this reason the documentation is distributed under the Python Software
+Foundation license available in <a class="reference external" href="https://raw.github.com/fmtlib/fmt/master/doc/python-license.txt">doc/python-license.txt</a>.
+It only applies if you distribute the documentation of {fmt}.</p>
+</section>
+<section id="maintainers">
+<h1>Maintainers<a class="headerlink" href="#maintainers" title="Permalink to this heading">¶</a></h1>
+<p>The {fmt} library is maintained by Victor Zverovich (<a class="reference external" href="https://github.com/vitaut">vitaut</a>) and Jonathan Müller (<a class="reference external" href="https://github.com/foonathan">foonathan</a>) with contributions from many other people.
+See <a class="reference external" href="https://github.com/fmtlib/fmt/graphs/contributors">Contributors</a> and
+<a class="reference external" href="https://github.com/fmtlib/fmt/releases">Releases</a> for some of the names.
+Let us know if your contribution is not listed or mentioned incorrectly and
+we’ll make it right.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

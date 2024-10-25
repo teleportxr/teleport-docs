@@ -1,0 +1,102 @@
+Changelist 
+========= 
+| **Fri 25 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Tue 22 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
+| **Tue 22 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Mon 21 Oct** : :samp:`Update gitmodules.`
+| **Mon 21 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
+| **Mon 21 Oct** : :samp:`Added teleport-unreal submodule.`
+| **Mon 21 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
+| **Thu 17 Oct** : :samp:`Further rearrangement of export headers.`
+| **Tue 15 Oct** : :samp:`Fix docs build.`
+| **Tue 15 Oct** : :samp:`Improve layout of exported headers.`
+| **Tue 15 Oct** : :samp:`export_include folders: here we will put headers that use only plain-old-data (PoD) structures and C-style function calls, which can be used by external dll's.`
+| **Tue 15 Oct** : :samp:`New docs structure, with root at the repo root.`
+| **Thu 10 Oct** : :samp:`Fix missing headers from export_include.`
+| **Mon 07 Oct** : :samp:`Fix client compilation for new header structure.`
+| **Mon 07 Oct** : :samp:`export_include folders for dll-exported definitions.`
+| **Mon 23 Sep** : :samp:`BC6 Texture transmission.`
+| **Fri 20 Sep** : :samp:`Texture creation fixes for ktx2 format.`
+| **Thu 12 Sep** : :samp:`Shallow fetch in FetchContent.`
+| **Mon 09 Sep** : :samp:`Added AMD Compressonator. Incorporated direct headers and prebuilt libs due to the complex setup and build dependencies of this library. Android version will need to be built.`
+| **Mon 09 Sep** : :samp:`ktx support for BC6H float16 textures.`
+| **Mon 26 Aug** : :samp:`Added movement updates to UE plugin.`
+| **Mon 26 Aug** : :samp:`Platform ptr.`
+| **Fri 23 Aug** : :samp:`Added DoxyfileUnreal.in`
+| **Fri 23 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Fri 23 Aug** : :samp:`Remove srt.`
+| **Fri 23 Aug** : :samp:`Added Unreal and Node pages.`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Tue 13 Aug** : :samp:`Removed plugins/UnrealDemo`
+| **Tue 13 Aug** : :samp:`Created release.yml.`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update build_pc_client.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update build_pc_client.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update build_pc_client.yml`
+| **Tue 13 Aug** : :samp:`Update build_pc_client.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Tue 13 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Update release.yml`
+| **Mon 12 Aug** : :samp:`Create release.yml`
+| **Mon 12 Aug** : :samp:`Create installer in build`
+| **Mon 12 Aug** : :samp:`Update build_pc_client.yml`
+| **Mon 12 Aug** : :samp:`Installer licence file.`
+| **Mon 12 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Mon 12 Aug** : :samp:`Installer adjustments.`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sun 11 Aug** : :samp:`Update build_pc_client.yml`
+| **Sat 10 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Sat 10 Aug** : :samp:`Sfx dependency in ClientRender/CMakeLists.txt`
+| **Sat 10 Aug** : :samp:`Update build_pc_client.yml`
+| **Sat 10 Aug** : :samp:`Platform Ptr.`
+| **Fri 09 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 09 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 09 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Fri 09 Aug** : :samp:`.`
+| **Fri 09 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 09 Aug** : :samp:`Update build_pc_client.yml`
+| **Fri 09 Aug** : :samp:`.`
+| **Fri 09 Aug** : :samp:`Ptr`
+| **Fri 09 Aug** : :samp:`Ptr`
+| **Fri 09 Aug** : :samp:`Change options in Sfx for ClientRender/CMakeLists.txt`
+| **Fri 09 Aug** : :samp:`Platform ptr.`
+| **Fri 09 Aug** : :samp:`Ptr`
+| **Fri 09 Aug** : :samp:`Remove plugins folder and UnrealDemo submodule.`
+| **Thu 08 Aug** : :samp:`Ptr`
+| **Thu 08 Aug** : :samp:`Ptr.`
+| **Thu 08 Aug** : :samp:`Platform ptr`
+| **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Thu 08 Aug** : :samp:`Platform ptr.`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Thu 08 Aug** : :samp:`Ptr`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Thu 08 Aug** : :samp:`Force ASSIMP off for Platform. Allow compilation without CUDA.`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
+| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`

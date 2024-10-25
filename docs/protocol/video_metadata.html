@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.5. Video Metadata &mdash; Teleport XR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Reference Implementation" href="../reference/index.html" />
+    <link rel="prev" title="5.4. Video" href="video.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport XR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">3. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">5. The Teleport VR Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">5.1. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">5.2. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">5.3. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">5.4. Video</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.5. Video Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">6. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Teleport XR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">5. </span>The Teleport VR Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5.5. </span>Video Metadata</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/video_metadata.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="video-metadata">
+<span id="id1"></span><h1><span class="section-number">5.5. </span>Video Metadata<a class="headerlink" href="#video-metadata" title="Permalink to this heading">¶</a></h1>
+<p>The Teleport protocol specifies that <strong>video metadata</strong> be sent in a separate stream to the video frame.
+This allows more modularity as changes in the structure or content of the metadata will not impact the video stream.</p>
+<section id="structure-of-metadata">
+<h2><span class="section-number">5.5.1. </span>Structure of Metadata<a class="headerlink" href="#structure-of-metadata" title="Permalink to this heading">¶</a></h2>
+<p>Teleport defines a structure suitable for hybrid rendering between the client and the server.
+Teleport requires that the metadata contain a header consisting of useful information for the client application.
+The remaining content of the metadata may vary depending on the needs of the application.
+The header consists of a <strong>timestamp</strong> in milliseconds intended to inform the client of when the metadata was created by the server application.
+The metadata header must also have a <strong>Tag ID</strong> which is an unsigned integer in the range of 0 - 31 that uniquely identifies the video frame the metadata belongs to.
+A <strong>Tag ID</strong> is written as 5 bits to the <strong>video texture</strong> by the server and this should be used by the client to match the video frame with its associated metadata.</p>
+<p>The metadata is of the form:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uint64</p></td>
+<td><p>timestamp_unix_ms</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>tag id</p></td>
+</tr>
+<tr class="row-even"><td><p>40</p></td>
+<td><p>Transform</p></td>
+<td><p>cameraTransform</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p>lightCount</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>diffuseAmbientScale</p></td>
+</tr>
+<tr class="row-odd"><td><p>LightTagData * lightCount</p></td>
+<td><p>LightTagData</p></td>
+<td><p>lights</p></td>
+</tr>
+</tbody>
+</table>
+<p>where</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 5.15 </span><span class="caption-text">Transform</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11.1%" />
+<col style="width: 22.2%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>avs::vec3</p></td>
+<td><p>position</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>avs::vec4</p></td>
+<td><p>rotation</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>avs::vec3</p></td>
+<td><p>scale</p></td>
+</tr>
+</tbody>
+</table>
+<p>and where</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 5.16 </span><span class="caption-text">LightTagData</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11.1%" />
+<col style="width: 22.2%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>40</p></td>
+<td><p>avs::Transform</p></td>
+<td><p>worldTransform</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>avs::vec4</p></td>
+<td><p>color</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>range</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p>spotAngle</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>avs::LightType</p></td>
+<td><p>lightType</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+<td><p>avs::vec3</p></td>
+<td><p>position</p></td>
+</tr>
+<tr class="row-even"><td><p>16</p></td>
+<td><p>avs::vec4</p></td>
+<td><p>orientation</p></td>
+</tr>
+<tr class="row-odd"><td><p>64</p></td>
+<td><p>float[4][4]</p></td>
+<td><p>shadowProjectionMatrix</p></td>
+</tr>
+<tr class="row-even"><td><p>64</p></td>
+<td><p>float[4][4]</p></td>
+<td><p>worldToShadowMatrix</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>int[2]</p></td>
+<td><p>texturePosition</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int</p></td>
+<td><p>textureSize</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>uint64_t</p></td>
+<td><p>uid</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sending-metadata-to-the-client">
+<h2><span class="section-number">5.5.2. </span>Sending Metadata to the Client<a class="headerlink" href="#sending-metadata-to-the-client" title="Permalink to this heading">¶</a></h2>
+<p>Each instance of metadata should be sent by the server as an individual <strong>payload</strong>.
+Every video frame payload needs to have one matching payload of metadata.
+The metadata must be received on the client before the associated video frame as it will be needed to render the contents of the video frame correctly.
+For each video frame, the server must write the same <strong>Tag ID</strong> to the video frame and associated metadata.
+The current time should be written to the unix timestamp member of the metadata on its creation.
+The game or application camera position and rotation at the time of rendering should be added to the <strong>cameraTransform</strong> member of the metadata.
+For more details on the structure of the <strong>cubemap</strong>, see <a class="reference internal" href="video.html#video"><span class="std std-ref">Video</span></a>.
+The diffuse to ambient scale in the scene of the server applicatiion’s renderer should also be added to the metadata.
+For each light in the scene, an instance of <strong>avs::LightTagData</strong> should be created and populated with the light’s properties.
+Each payload of metadata should be sent to the client using the protocols and processes described in <a class="reference internal" href="data_transfer.html#data-transfer"><span class="std std-ref">Data Transfer</span></a>.</p>
+</section>
+<section id="processing-metadata-on-the-client">
+<h2><span class="section-number">5.5.3. </span>Processing Metadata on the Client<a class="headerlink" href="#processing-metadata-on-the-client" title="Permalink to this heading">¶</a></h2>
+<p>The client should receive the payload of metadata before the related video frame.
+The metadata should be cached by the client’s application for use when the video frame is received.
+The client should maintain a cache of 32 metadata structures that are overwritten every 32 frames.
+This ensures delays between receiving the video frame and metadata don’t cause metadata to be discarded before use.
+Metadata needed to render the content of the video frame should be uploaded to the GPU for shader accessibility.
+This includes the <strong>Tag ID</strong>, <strong>cameraTransform</strong>, <strong>diffuseAmbientScale</strong> and <strong>lights</strong>.
+The <strong>Tag ID</strong> must be used by the shader to use the correct the metadata for a video frame.
+The rotation of the client’s camera should be used to determine what pixels of the cubemap are visible to the client.
+The offset between the client’s camera position and the position in the <strong>cameraTransform</strong> of the metadata must be used to perform reprojection on the visible pixels of the cubemap.
+This accounts for any camera movemment that occurred on the client since the video frame was rendered on the server.
+The <strong>diffuseAmbientScale</strong> and <strong>lights</strong> should be used by the client application’s renderer to render local geometry.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="video.html" class="btn btn-neutral float-left" title="5.4. Video" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../reference/index.html" class="btn btn-neutral float-right" title="6. Reference Implementation" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

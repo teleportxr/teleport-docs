@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PyAssimp: Python bindings for libassimp &mdash; Teleport XR  documentation</title>
+      <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../../../../_static/jquery.js"></script>
+        <script src="../../../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../../_static/doctools.js"></script>
+        <script src="../../../../../../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../../../../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport XR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../docs/introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../docs/client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../docs/unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../docs/unreal/index.html">3. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../docs/nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../docs/protocol.html">5. The Teleport VR Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../docs/reference/index.html">6. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../../index.html">Teleport XR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PyAssimp: Python bindings for libassimp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../../_sources/firstparty/Platform/External/assimp/port/PyAssimp/README.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pyassimp-python-bindings-for-libassimp">
+<h1>PyAssimp: Python bindings for libassimp<a class="headerlink" href="#pyassimp-python-bindings-for-libassimp" title="Permalink to this heading">¶</a></h1>
+<p>A simple Python wrapper for Assimp using <code class="docutils literal notranslate"><span class="pre">ctypes</span></code> to access the
+library. Requires Python &gt;= 2.6.</p>
+<p>Python 3 support is mostly here, but not well tested.</p>
+<p>Note that pyassimp is not complete. Many ASSIMP features are missing.</p>
+<section id="usage">
+<h2>USAGE<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<section id="complete-example-3d-viewer">
+<h3>Complete example: 3D viewer<a class="headerlink" href="#complete-example-3d-viewer" title="Permalink to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pyassimp</span></code> comes with a simple 3D viewer that shows how to load and
+display a 3D model using a shader-based OpenGL pipeline.</p>
+<figure class="align-default" id="id1">
+<img alt="Screenshot" src="../../../../../../_images/3d_viewer_screenshot.png" />
+<figcaption>
+<p><span class="caption-text">Screenshot</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>To use it, from within <code class="docutils literal notranslate"><span class="pre">/port/PyAssimp</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd scripts
+$ python ./3D-viewer &lt;path to your model&gt;
+</pre></div>
+</div>
+<p>You can use this code as starting point in your applications.</p>
+</section>
+<section id="writing-your-own-code">
+<h3>Writing your own code<a class="headerlink" href="#writing-your-own-code" title="Permalink to this heading">¶</a></h3>
+<p>To get started with <code class="docutils literal notranslate"><span class="pre">pyassimp</span></code>, examine the simpler <code class="docutils literal notranslate"><span class="pre">sample.py</span></code>
+script in <code class="docutils literal notranslate"><span class="pre">scripts/</span></code>, which illustrates the basic usage. All Assimp
+data structures are wrapped using <code class="docutils literal notranslate"><span class="pre">ctypes</span></code>. All the data+length fields
+in Assimp’s data structures (such as <code class="docutils literal notranslate"><span class="pre">aiMesh::mNumVertices</span></code>,
+<code class="docutils literal notranslate"><span class="pre">aiMesh::mVertices</span></code>) are replaced by simple python lists, so you can
+call <code class="docutils literal notranslate"><span class="pre">len()</span></code> on them to get their respective size and access members
+using <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
+<p>For example, to load a file named <code class="docutils literal notranslate"><span class="pre">hello.3ds</span></code> and print the first
+vertex of the first mesh, you would do (proper error handling
+substituted by assertions …):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyassimp</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="k">with</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;hello.3ds&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">scene</span><span class="p">:</span>
+
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">meshes</span><span class="p">)</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">meshes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Another example to list the ‘top nodes’ in a scene:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyassimp</span> <span class="kn">import</span> <span class="n">load</span>
+<span class="k">with</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;hello.3ds&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">scene</span><span class="p">:</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">scene</span><span class="o">.</span><span class="n">rootnode</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="install">
+<h2>INSTALL<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h2>
+<p>Install <code class="docutils literal notranslate"><span class="pre">pyassimp</span></code> by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python setup.py install
+</pre></div>
+</div>
+<p>PyAssimp requires a assimp dynamic library (<code class="docutils literal notranslate"><span class="pre">DLL</span></code> on windows, <code class="docutils literal notranslate"><span class="pre">.so</span></code>
+on linux, <code class="docutils literal notranslate"><span class="pre">.dylib</span></code> on macOS) in order to work. The default search
+directories are:</p>
+<ul class="simple">
+<li><p>the current directory</p></li>
+<li><p>on linux additionally: <code class="docutils literal notranslate"><span class="pre">/usr/lib</span></code>, <code class="docutils literal notranslate"><span class="pre">/usr/local/lib</span></code>,
+<code class="docutils literal notranslate"><span class="pre">/usr/lib/x86_64-linux-gnu</span></code></p></li>
+</ul>
+<p>To build that library, refer to the Assimp master <code class="docutils literal notranslate"><span class="pre">INSTALL</span></code>
+instructions. To look in more places, edit <code class="docutils literal notranslate"><span class="pre">./pyassimp/helper.py</span></code>.
+There’s an <code class="docutils literal notranslate"><span class="pre">additional_dirs</span></code> list waiting for your entries.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

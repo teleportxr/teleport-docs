@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Teleport Unreal SDK &mdash; Teleport XR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="4. Teleport NodeJS SDK" href="../nodejs/index.html" />
+    <link rel="prev" title="2. Teleport Unity SDK" href="../unity/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport XR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Teleport Unreal SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">3.1. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">3.2. Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-management">3.3. Resource Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">3.4. Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inputs">3.5. Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-session-hierarchy">3.6. Player Session Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sdk-reference">3.7. SDK Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">5. The Teleport VR Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">6. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Teleport XR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Teleport Unreal SDK</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/unreal/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="teleport-unreal-sdk">
+<h1><span class="section-number">3. </span>Teleport Unreal SDK<a class="headerlink" href="#teleport-unreal-sdk" title="Permalink to this heading">¶</a></h1>
+<p>The Teleport Unreal SDK provides everything necessary to run a Teleport server as an Unreal Engine 5 application. In typical usage, only the server need run Unreal Engine - the client will be a standard Teleport client app such as the Teleport reference client.</p>
+<section id="getting-started">
+<h2><span class="section-number">3.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
+<p>These instructions are for Windows platforms, Linux and MacOS support is to follow.</p>
+<section id="install-the-plugin-to-an-existing-project">
+<h3><span class="section-number">3.1.1. </span>Install the plugin to an existing project<a class="headerlink" href="#install-the-plugin-to-an-existing-project" title="Permalink to this heading">¶</a></h3>
+<p>Get the Teleport Unreal Engine plugin from its Git repo at <a class="reference external" href="https://github.com/simul/teleport-unreal">git&#64;github.com:simul/teleport-unreal.git</a>.</p>
+<p>You can install it as a Git submodule or copy the code directly, it should go in a subfolder of your Unreal Engine project called Teleport:</p>
+<p>[GAME FOLDER]/Plugins/Teleport</p>
+<p>Regenerate your game project (e.g by right-clicking on the [GAME].uproject file and selecting “Generate Visual Studio Project Files”).</p>
+<p>Then build the [GAME].sln solution. You can run Unreal as normal, or debug the C++ code by setting TeleportServer as the active C++ project in the solution, and launching it for debugging.</p>
+</section>
+</section>
+<section id="configuration">
+<h2><span class="section-number">3.2. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
+<p>First, activate the Teleport render pipeline. This adds functionality for video streaming and lighting generation. In the <em>Edit</em> menu, under <em>Project Settings…</em>, select <em>Graphics</em>. Set the Scriptable Render Pipeline Settings
+object to point to the Default Teleport Render Pipeline, found in Teleport/Resources.</p>
+<p>For global settings for the plugin, in the Project Settings panel, select <em>Teleport VR</em>.</p>
+<a class="reference internal image-reference" href="images/unreal/ProjectSettings.png"><img alt="Teleport has a page on the Project Settings panel." src="images/unreal/ProjectSettings.png" style="width: 600px;" /></a>
+<p><strong>Teleport Project Settings panel</strong></p>
+</section>
+<section id="resource-management">
+<h2><span class="section-number">3.3. </span>Resource Management<a class="headerlink" href="#resource-management" title="Permalink to this heading">¶</a></h2>
+<p>Resources in a Unreal project can be streamed to clients if they have been <em>extracted</em> - i.e. if they have been converted to and stored in, the standard formats that the Teleport protocol uses.</p>
+<a class="reference internal image-reference" href="images/Unreal/TeleportMenu.png"><img alt="Selecting the Resource Manager option in the Teleport Menu." src="images/Unreal/TeleportMenu.png" style="width: 600px;" /></a>
+<p>Select the “Teleport VR” menu from Unreal Editor’s menu bar, and click on “Resource Manager”. The Resource Manager window will open.</p>
+<a class="reference internal image-reference" href="images/Unreal/ResourceManager.png"><img alt="Teleport Resource Manager in the Unreal Editor." src="images/Unreal/ResourceManager.png" style="width: 600px;" /></a>
+<p>To extract all streamable resources in a scene, click “Scene Geometry: Extract”. This is all you will usually need to do.
+To extract the resources of a specific object, select it and click the “Selected Geometry: Extract” button.
+Separately, you can also extract the Global Illumination textures (generated by Unreal from static lights), or the Dynamic Object Lighting Textures: these are the cubemaps for specular and diffuse lighting
+generated by the Monitor.</p>
+<p>There are two main Ways to setup objects for streaming:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>By Tag</p></li>
+<li><p>By Root</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="usage">
+<h2><span class="section-number">3.4. </span>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<p>You can create a GameObject in Unreal that has the Monitor component. If not, one will be created when you run the project.</p>
+<p>When running, the server awaits connections via the Teleport protocol. When a client connects, the server creates a player instance.</p>
+<p>A client, when connected, will maintain a list of Nodes (i.e. GameObjects in Unreal) that are relevant to it. The space around the client’s
+own position is called its Area of Interest (AOI). The server will send it updates for all Nodes within its AOI.</p>
+</section>
+<section id="inputs">
+<h2><span class="section-number">3.5. </span>Inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">¶</a></h2>
+<p>To show the Inputs Panel, select Inputs from the Teleport VR menu on the main menu bar.
+Here, you can specify the inputs you want to receive from connected clients.</p>
+<a class="reference internal image-reference" href="images/Unreal/InputsPanel.png"><img alt="Teleport has a page on the Project Settings panel." src="images/Unreal/InputsPanel.png" style="width: 600px;" /></a>
+<p><strong>Teleport Inputs Panel in Unreal Editor</strong></p>
+<p>There are three elements to each input. The Name is arbitrary, but should be unique in the application. The Type specifies what kind of input this is. A Float input is floating-point, while a boolean is either on or off, true or false. A state input is updated continuously, whereas an Event input is only updated when it changes. Finally, the input’s <em>Path</em> is how the client knows what to map it to.</p>
+<p>Teleport VR clients use <a class="reference external" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#semantic-path-interaction-profiles">OpenXR interaction profiles</a> to know what inputs the XR hardware provides. Each input (buttons, triggers, poses etc) has a <em>path</em> that is mapped by the OpenXR runtime on the client device.
+When a Teleport client connects, it tries to match the path of each server-specified Teleport input to the OpenXR paths of its hardware. If any part of the OpenXR path matches the Teleport path, the mapping is made.
+One or more Teleport inputs can be mapped to a single OpenXR input if the paths match.
+Teleport input paths use <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">Regular Expression</a> syntax to match OpenXR paths.</p>
+<p>For example, if the client recognizes your hardware as supporting the <a class="reference external" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#_oculus_touch_controller_profile">Oculus Touch Controller Profile</a>:</p>
+<blockquote>
+<div><p>/interaction_profiles/oculus/touch_controller</p>
+</div></blockquote>
+<p>It will have the path:</p>
+<blockquote>
+<div><p>user/hand/left/input/x/click</p>
+</div></blockquote>
+<p>to represent the “x” button on the left-hand controller. We might specify a control:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Path</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Toggle Onscreen Display</p></td>
+<td><p>Boolean Event</p></td>
+<td><p>left/input/[a|x]/click</p></td>
+</tr>
+</tbody>
+</table>
+<p>The regex syntax [a|x] means “either ‘a’ or ‘x’”, so the client will recognize this as a match, and map the “x” button on the client-side controller to the “Toggle Onscreen Display” boolean event that the server will receive.</p>
+<section id="mapping-types">
+<h3><span class="section-number">3.5.1. </span>Mapping types<a class="headerlink" href="#mapping-types" title="Permalink to this heading">¶</a></h3>
+<p>Different control types can be mapped to each other. If a path match is found, it is possible for a boolean (“click”) action, which is only on or off, to be mapped to an Analogue input.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Teleport / OpenXR</p></th>
+<th class="head"><p>OpenXR Boolean</p></th>
+<th class="head"><p>OpenXR float</p></th>
+<th class="head"><p>OpenXR pose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Teleport Boolean</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes, client decides</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>Teleport Analogue</p></td>
+<td><p>Yes: false=0.0, true=1.0</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<p>The mapping of an OpenXR floating-point input to a Teleport Boolean input is determined by the client application. The usual method is by hysteresis, so when the control goes above a certain threshold, it will be considered to be “true”, and when it goes below a lower threshold, it will revert to “false”.
+Teleport cannot map OpenXR Pose actions to inputs, these are handled differently.</p>
+</section>
+<section id="pose-mapping">
+<h3><span class="section-number">3.5.2. </span>Pose Mapping<a class="headerlink" href="#pose-mapping" title="Permalink to this heading">¶</a></h3>
+<p>XR devices such as headsets, handsets and trackers report their state as a “pose”, containing position and orientation in space. These poses can be mapped to spatial nodes using the Teleport Controller component in Unreal.</p>
+<a class="reference internal image-reference" href="images/Unreal/TeleportController.png"><img alt="Inspector properties of a teleport Controller component." src="images/Unreal/TeleportController.png" style="width: 600px;" /></a>
+<p>==Teleport controller component in Unreal Inspector==</p>
+<p>The “Pose Regex Path” for a controller is matched client-side to an OpenXR path representing a pose state. When this mapping occurs, the object will be controlled directly by the tracked controller on the client. The Teleport_Controller component can be added to any child of a Teleport_SessionComponent Game Object.</p>
+</section>
+</section>
+<section id="player-session-hierarchy">
+<h2><span class="section-number">3.6. </span>Player Session Hierarchy<a class="headerlink" href="#player-session-hierarchy" title="Permalink to this heading">¶</a></h2>
+<p>Typically, the Unreal Game Objects would be arranged as follows in Unreal:</p>
+<a class="reference internal image-reference" href="images/Unreal/PlayerHierarchy.png"><img alt="Example player prefab hierarchy." src="images/Unreal/PlayerHierarchy.png" style="width: 400px;" /></a>
+<p>==Typical session and player hierarchy in Unreal==</p>
+<p>i.e. at the root, an object containing a Teleport_Session Component, which tracks client-specific session data. Below this, a Player object which may move in space. Below that, two controllers and a head tracking object.</p>
+<ul>
+<li><p>TeleportXR : Teleport_Session Component</p>
+<ul>
+<li><p>Player</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Left Hand Controller: Teleport_Controller Component</p></li>
+<li><p>Right Hand Controller: Teleport_Controller Component</p></li>
+<li><p>Head: Teleport_Head Component</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="sdk-reference">
+<h2><span class="section-number">3.7. </span>SDK Reference<a class="headerlink" href="#sdk-reference" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><dl class="simple">
+<dt>doxygenclass:: teleport::TeleportSettings</dt><dd><p>project: TeleportUnreal
+members:</p>
+</dd>
+</dl>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find file: G:\Jarvis\workspace\Teleport\Teleport\build_docs\docs\doxygen_unreal\xml\index.xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find file: G:\Jarvis\workspace\Teleport\Teleport\build_docs\docs\doxygen_unreal\xml\index.xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find file: G:\Jarvis\workspace\Teleport\Teleport\build_docs\docs\doxygen_unreal\xml\index.xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find file: G:\Jarvis\workspace\Teleport\Teleport\build_docs\docs\doxygen_unreal\xml\index.xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find file: G:\Jarvis\workspace\Teleport\Teleport\build_docs\docs\doxygen_unreal\xml\index.xml</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenclass: Cannot find file: G:\Jarvis\workspace\Teleport\Teleport\build_docs\docs\doxygen_unreal\xml\index.xml</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../unity/index.html" class="btn btn-neutral float-left" title="2. Teleport Unity SDK" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../nodejs/index.html" class="btn btn-neutral float-right" title="4. Teleport NodeJS SDK" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5.1. Signaling &mdash; Teleport XR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5.2. Data Service" href="service.html" />
+    <link rel="prev" title="5. The Teleport VR Protocol" href="../protocol.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						Teleport XR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">3. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">5. The Teleport VR Protocol</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">5.2. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">5.3. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">5.4. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">5.5. Video Metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">6. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Teleport XR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">5. </span>The Teleport VR Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">5.1. </span>Signaling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/signaling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="signaling">
+<h1><span class="section-number">5.1. </span>Signaling<a class="headerlink" href="#signaling" title="Permalink to this heading">¶</a></h1>
+<p><em>Signaling</em> is the process whereby client and server exchange reliable messages for initial setup, as well as configuration changes while the Teleport connection is active.</p>
+<p>In the reference implementation, WebSockets messages are used for signaling, but any suitable transport protocol may be used.</p>
+<p>The server listens for connection requests, typically on the standard HTTP ports (any port is acceptable, as long as the client knows to try it).</p>
+<p>A <strong>Client</strong> that wants to join (the <strong>Connecting Client</strong>) periodically sends to the server a <strong>Connection Request</strong> text packet. Unless the port is specified in the URL, a client will usually try a sequence of ports. The message is of the form:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;request&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;clientID&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;teleport&quot;</span><span class="p">:</span><span class="s2">&quot;0.9&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>All signals have a member <code class="docutils literal notranslate"><span class="pre">teleport-signal-type</span></code> indicating their type. In the <code class="docutils literal notranslate"><span class="pre">request</span></code> message, <code class="docutils literal notranslate"><span class="pre">clientID</span></code> is zero if the client has not yet connected to this server session, and may be a unique nonzero id if it is attempting to reconnect.
+Having received a <code class="docutils literal notranslate"><span class="pre">request</span></code>, the server can respond with a <strong>Request Response</strong>, of the form:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;request-response&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;content&quot;</span><span class="p">:</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;clientID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">397357935703467</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">clientID</span></code> must be a positive unique 64-bit number.</p>
+<p>The server will also initiate the process of creating a streaming connection. If the streaming protocol is WebRTC, this can be done using the <a class="reference external" href="https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">Interactive Connectivity Establishment</a> protocol, which attempts to establish address/port combinations for client and server to communicate with minimal latency.</p>
+<p>The server will send an <code class="docutils literal notranslate"><span class="pre">offer</span></code> of the form:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;offer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sdp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[sdp contents]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Where [sdp contents] is a text string in the <a class="reference external" href="https://en.wikipedia.org/wiki/Session_Description_Protocol">Session Description Protocol (SDP)</a> format. As well as the <code class="docutils literal notranslate"><span class="pre">offer</span></code>, one or more <code class="docutils literal notranslate"><span class="pre">candidate</span></code> strings are sent:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;candidate&quot;</span><span class="p">:</span><span class="s2">&quot;[ICE candidate string]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mid&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;mlineindex&quot;</span><span class="p">:</span><span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Where [ICE candidate string] contains an address, port and transport protocol that the client can use to stream data to the server.
+Having received at least the <code class="docutils literal notranslate"><span class="pre">offer</span></code>, the client responds with:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span>
+<span class="w">        </span><span class="p">,</span><span class="nt">&quot;sdp&quot;</span><span class="p">:</span><span class="s2">&quot;[sdp contents]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>and with its own <code class="docutils literal notranslate"><span class="pre">candidate</span></code> messages.</p></li>
+</ul>
+<p>When each side of the connection has received the other’s <code class="docutils literal notranslate"><span class="pre">offer</span></code>/<code class="docutils literal notranslate"><span class="pre">answer</span></code> and at least one <code class="docutils literal notranslate"><span class="pre">candidate</span></code>, streaming can commence.
+The signaling channel will be used only for changes of network configuration and disconnection messages, all others will use the <strong>Data Service</strong>.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../protocol.html" class="btn btn-neutral float-left" title="5. The Teleport VR Protocol" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="service.html" class="btn btn-neutral float-right" title="5.2. Data Service" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2024, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
