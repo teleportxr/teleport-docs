@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5.3. Data Transfer &mdash; Teleport XR  documentation</title>
+  <title>6.3. Data Transfer &mdash; Teleport XR  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.4. Video" href="video.html" />
-    <link rel="prev" title="5.2.2.2. Requests from Client to Server" href="service/client_to_server.html" /> 
+    <link rel="next" title="6.4. Video" href="video.html" />
+    <link rel="prev" title="6.2.2.2. Requests from Client to Server" href="service/client_to_server.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,19 +53,19 @@
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">2. Teleport Unity SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">3. Teleport Unreal SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">4. Teleport NodeJS SDK</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">5. The Teleport VR Protocol</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="signaling.html">5.1. Signaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service.html">5.2. Data Service</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3. Data Transfer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html">5.4. Video</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">5.5. Video Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">6. The Teleport VR Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">6.1. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">6.2. Data Service</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">6.4. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">6.5. Video Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">6. Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">7. Reference Implementation</a></li>
 </ul>
 
         </div>
@@ -83,8 +83,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">5. </span>The Teleport VR Protocol</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5.3. </span>Data Transfer</li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">6. </span>The Teleport VR Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.3. </span>Data Transfer</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/docs/protocol/data_transfer.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,9 +95,9 @@
            <div itemprop="articleBody">
              
   <section id="data-transfer">
-<span id="id1"></span><h1><span class="section-number">5.3. </span>Data Transfer<a class="headerlink" href="#data-transfer" title="Permalink to this heading">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">6.3. </span>Data Transfer<a class="headerlink" href="#data-transfer" title="Permalink to this heading">¶</a></h1>
 <section id="reliability">
-<h2><span class="section-number">5.3.1. </span>Reliability<a class="headerlink" href="#reliability" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.3.1. </span>Reliability<a class="headerlink" href="#reliability" title="Permalink to this heading">¶</a></h2>
 <p>To ensure the reliable streaming of content, the protocol requires four important features:</p>
 <ol class="arabic simple">
 <li><p>Lost network packets are resent within a certain time window.</p></li>
@@ -107,7 +107,7 @@
 </ol>
 </section>
 <section id="secure-reliable-transfer-protocol">
-<h2><span class="section-number">5.3.2. </span>Secure Reliable Transfer Protocol<a class="headerlink" href="#secure-reliable-transfer-protocol" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.3.2. </span>Secure Reliable Transfer Protocol<a class="headerlink" href="#secure-reliable-transfer-protocol" title="Permalink to this heading">¶</a></h2>
 <p>The Secure Reliable Transfer (SRT) protocol is used for sending network packets.
 This is an open source protocol that provides a wrapper around UDP and allows for the retransmission of lost packets.
 It has low overhead compared with TCP and deals with point 1 above.
@@ -116,7 +116,7 @@ For more information on SRT, see here: <a class="reference external" href="https
 Note: Teleport is currently using the master branch of the SRT fork.</p>
 </section>
 <section id="elastic-frame-protocol">
-<h2><span class="section-number">5.3.3. </span>Elastic Frame Protocol<a class="headerlink" href="#elastic-frame-protocol" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.3.3. </span>Elastic Frame Protocol<a class="headerlink" href="#elastic-frame-protocol" title="Permalink to this heading">¶</a></h2>
 <p>The Teleport Protocol uses the Elastic Frame Protocol (EFP) to maximize streaming reliability.
 This is an open source protocol that is independent of the underlying transport protocol.
 It groups network packets together into large chunks of data called <strong>SuperFrames</strong>.
@@ -130,7 +130,7 @@ For EFP documentation, code examples and the source, see the Simul fork here: <a
 Note: Teleport is currently using the master branch of the EFP fork.</p>
 </section>
 <section id="efp-frame-types-and-superframes">
-<h2><span class="section-number">5.3.4. </span>EFP Frame Types and SuperFrames<a class="headerlink" href="#efp-frame-types-and-superframes" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.3.4. </span>EFP Frame Types and SuperFrames<a class="headerlink" href="#efp-frame-types-and-superframes" title="Permalink to this heading">¶</a></h2>
 <p>EFP adds four different types of headers of varying size to each network packet. The types used depend on the total size of the payload and the <strong>Maximum Transmission Unit</strong> (<strong>MTU</strong>) size.
 Each payload will either have one packet with a <strong>ElasticFrameType1</strong> header or multiple packets with <strong>ElasticFrameType2</strong> headers.
 Both of these headers contain a uint64 member called hPTS (Presentation Timestamp). This is unused by EFP but used by Teleport to store the <strong>stream-payload-id</strong>, a unique identifier for a payload.
@@ -334,7 +334,7 @@ The <strong>EFP Sender</strong> on the server maintains this value.</p>
 </table>
 </section>
 <section id="initialization-of-efp-on-the-server">
-<h2><span class="section-number">5.3.5. </span>Initialization of EFP on the Server<a class="headerlink" href="#initialization-of-efp-on-the-server" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.3.5. </span>Initialization of EFP on the Server<a class="headerlink" href="#initialization-of-efp-on-the-server" title="Permalink to this heading">¶</a></h2>
 <p>On the start of a <strong>client-server session</strong>, the server initializes SRT and starts listening for messages on a user specified socket.
 An instance of an <strong>ElasticFrameProtocolSender</strong> class is created and the <strong>MTU</strong> size is passed to the constructor
 This is 1450 for UDP which is the protocol SRT is built on.
@@ -348,7 +348,7 @@ This is a uint64 value that is initialized to 0 on the start of the <strong>clie
 The <strong>stream-payload-id</strong> value is written to <strong>PTS</strong> of each EFP packet header.</p>
 </section>
 <section id="sending-data-from-the-server">
-<h2><span class="section-number">5.3.6. </span>Sending Data from the Server<a class="headerlink" href="#sending-data-from-the-server" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.3.6. </span>Sending Data from the Server<a class="headerlink" href="#sending-data-from-the-server" title="Permalink to this heading">¶</a></h2>
 <p>On each frame or application update, the server will poll SRT to check the status of the connection for each client.
 If the server and client are connected, the server will do the following to transfer data to the client for each stream:</p>
 <ol class="arabic simple">
@@ -362,7 +362,7 @@ If the server and client are connected, the server will do the following to tran
 </ol>
 </section>
 <section id="initialization-of-efp-on-the-client">
-<h2><span class="section-number">5.3.7. </span>Initialization of EFP on the Client<a class="headerlink" href="#initialization-of-efp-on-the-client" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.3.7. </span>Initialization of EFP on the Client<a class="headerlink" href="#initialization-of-efp-on-the-client" title="Permalink to this heading">¶</a></h2>
 <p>On receiving the <strong>SetupCommand</strong>, the client will initialize SRT and create and configure an SRT socket for receiving network packets from the server.
 Subsequently, the client will create an instance of an <strong>ElasticFrameProtocolReceiver</strong> or <strong>EFP Receiver</strong> and this will remain in use until the end of the
 <strong>server-client-session</strong>. A <strong>SuperFrame</strong> timeout and <strong>EFPReceiverMode</strong> are passed to the <strong>EFP Receiver</strong> constructor.
@@ -376,7 +376,7 @@ The receiver’s <strong>receiveCallback</strong> is then assigned to a function
 This function will receive a completed <strong>SuperFrame</strong> containing the server’s payload for the application to process.</p>
 </section>
 <section id="receiving-data-on-the-client">
-<h2><span class="section-number">5.3.8. </span>Receiving Data on the Client<a class="headerlink" href="#receiving-data-on-the-client" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">6.3.8. </span>Receiving Data on the Client<a class="headerlink" href="#receiving-data-on-the-client" title="Permalink to this heading">¶</a></h2>
 <p>On each frame or application update, the client will use <strong>srt_connect</strong> to try make a connection to the server using the server ip and <strong>server streaming port</strong>
 provided in the <strong>Setup Command</strong>. If a connection has been attempted, the client will poll SRT to check the status of the connection.
 If the server and client are connected, the client will do the following to process incoming packets from the server:</p>
@@ -401,8 +401,8 @@ If the data is not corrupted, the payload will be passed to the corresponding de
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="service/client_to_server.html" class="btn btn-neutral float-left" title="5.2.2.2. Requests from Client to Server" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="video.html" class="btn btn-neutral float-right" title="5.4. Video" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="service/client_to_server.html" class="btn btn-neutral float-left" title="6.2.2.2. Requests from Client to Server" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="video.html" class="btn btn-neutral float-right" title="6.4. Video" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

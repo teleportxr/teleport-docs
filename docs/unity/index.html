@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2. Teleport Unity SDK &mdash; Teleport XR  documentation</title>
+  <title>3. Teleport Unity SDK &mdash; Teleport XR  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3. Teleport Unreal SDK" href="../unreal/index.html" />
-    <link rel="prev" title="2. Android Client" href="../../AndroidClient/index.html" /> 
+    <link rel="next" title="4. Teleport Unreal SDK" href="../unreal/index.html" />
+    <link rel="prev" title="2.2. Android Client" href="../../AndroidClient/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,21 +53,21 @@
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Teleport Unity SDK</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">2.1. Getting Started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configuration">2.2. Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#resource-management">2.3. Resource Management</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#usage">2.4. Usage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#inputs">2.5. Inputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#player-session-hierarchy">2.6. Player Session Hierarchy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sdk-reference">2.7. SDK Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Teleport Unity SDK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">3.1. Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">3.2. Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resource-management">3.3. Resource Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">3.4. Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inputs">3.5. Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#player-session-hierarchy">3.6. Player Session Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sdk-reference">3.7. SDK Reference</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">3. Teleport Unreal SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">4. Teleport NodeJS SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../protocol.html">5. The Teleport VR Protocol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">6. Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">6. The Teleport VR Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">7. Reference Implementation</a></li>
 </ul>
 
         </div>
@@ -85,7 +85,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2. </span>Teleport Unity SDK</li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Teleport Unity SDK</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/docs/unity/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -96,11 +96,11 @@
            <div itemprop="articleBody">
              
   <section id="teleport-unity-sdk">
-<h1><span class="section-number">2. </span>Teleport Unity SDK<a class="headerlink" href="#teleport-unity-sdk" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">3. </span>Teleport Unity SDK<a class="headerlink" href="#teleport-unity-sdk" title="Permalink to this heading">¶</a></h1>
 <p>The Teleport Unity SDK provides everything necessary to run a Teleport server as a Unity application. In typical usage, only the server need run Unity - the client
 will be a standard Teleport client app such as the Teleport reference client.</p>
 <section id="getting-started">
-<h2><span class="section-number">2.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">¶</a></h2>
 <p>You can:</p>
 <blockquote>
 <div><ul class="simple">
@@ -109,19 +109,19 @@ will be a standard Teleport client app such as the Teleport reference client.</p
 </ul>
 </div></blockquote>
 <section id="get-the-example-project">
-<h3><span class="section-number">2.1.1. </span>Get the Example Project<a class="headerlink" href="#get-the-example-project" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.1. </span>Get the Example Project<a class="headerlink" href="#get-the-example-project" title="Permalink to this heading">¶</a></h3>
 <p>You can download a minimal example Unity project for Teleport at <a class="reference external" href="https://github.com/simul/TeleportUnityExample">git&#64;github.com:simul/TeleportUnityExample.git</a>.
 Be sure to update the submodules: the actual Teleport plugin is a submodule at Assets/Teleport in the example repo.</p>
 </section>
 <section id="install-the-plugin-to-an-existing-project">
-<h3><span class="section-number">2.1.2. </span>Install the plugin to an existing project<a class="headerlink" href="#install-the-plugin-to-an-existing-project" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.2. </span>Install the plugin to an existing project<a class="headerlink" href="#install-the-plugin-to-an-existing-project" title="Permalink to this heading">¶</a></h3>
 <p>Get the Teleport Unity plugin from its Git repo at <a class="reference external" href="https://github.com/simul/teleport-unity">git&#64;github.com:simul/teleport-unity.git</a>.</p>
 <p>Or download it as a .unitypackage from <a class="reference external" href="https://teleportvr.io/downloads">https://teleportvr.io/downloads</a>.</p>
 <p>You can install it as a Git submodule or copy the code directly, it should go in a subfolder of your Unity project’s Assets folder, e.g. Assets/Teleport.</p>
 <p>From your unity project, launch the Package Manager, and install the Core RP Library.</p>
 </section>
 <section id="building-the-unity-server-from-source">
-<h3><span class="section-number">2.1.3. </span>Building the Unity Server from Source<a class="headerlink" href="#building-the-unity-server-from-source" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">3.1.3. </span>Building the Unity Server from Source<a class="headerlink" href="#building-the-unity-server-from-source" title="Permalink to this heading">¶</a></h3>
 <p>If you’ve installed the Teleport Unity SDK as a prebuilt package, you’re ready to go. But if you’re building the Teleport C++ Server SDK from source, you’ll need to follow the instructions in the Server section of this documentation.
 Use CMakeGui to set:</p>
 <ul class="simple">
@@ -134,7 +134,7 @@ Use CMakeGui to set:</p>
 </section>
 </section>
 <section id="configuration">
-<h2><span class="section-number">2.2. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">¶</a></h2>
 <p>First, activate the Teleport render pipeline. This adds functionality for video streaming and lighting generation. In the <em>Edit</em> menu, under <em>Project Settings…</em>, select <em>Graphics</em>. Set the Scriptable Render Pipeline Settings
 object to point to the Default Teleport Render Pipeline, found in Teleport/Resources.</p>
 <a class="reference internal image-reference" href="../../_images/RenderPipelineAsset.png"><img alt="Activate the Teleport render pipeline in the Project Settings/Graphics panel." src="../../_images/RenderPipelineAsset.png" style="width: 600px;" /></a>
@@ -145,7 +145,7 @@ object to point to the Default Teleport Render Pipeline, found in Teleport/Resou
 <p><strong>Teleport Project Settings panel</strong></p>
 </section>
 <section id="resource-management">
-<h2><span class="section-number">2.3. </span>Resource Management<a class="headerlink" href="#resource-management" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Resource Management<a class="headerlink" href="#resource-management" title="Permalink to this heading">¶</a></h2>
 <p>Resources in a Unity project can be streamed to clients if they have been <em>extracted</em> - i.e. if they have been converted to and stored in, the standard formats that the Teleport protocol uses.</p>
 <a class="reference internal image-reference" href="images/unity/TeleportMenu.png"><img alt="Selecting the Resource Manager option in the Teleport Menu." src="images/unity/TeleportMenu.png" style="width: 600px;" /></a>
 <p>Select the “Teleport VR” menu from Unity Editor’s menu bar, and click on “Resource Manager”. The Resource Manager window will open.</p>
@@ -163,14 +163,14 @@ generated by the Monitor.</p>
 </div></blockquote>
 </section>
 <section id="usage">
-<h2><span class="section-number">2.4. </span>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">3.4. </span>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
 <p>You can create a GameObject in Unity that has the Monitor component. If not, one will be created when you run the project.</p>
 <p>When running, the server awaits connections via the Teleport protocol. When a client connects, the server creates a player instance.</p>
 <p>A client, when connected, will maintain a list of Nodes (i.e. GameObjects in Unity) that are relevant to it. The space around the client’s
 own position is called its Area of Interest (AOI). The server will send it updates for all Nodes within its AOI.</p>
 </section>
 <section id="inputs">
-<h2><span class="section-number">2.5. </span>Inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">3.5. </span>Inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">¶</a></h2>
 <p>To show the Inputs Panel, select Inputs from the Teleport VR menu on the main menu bar.
 Here, you can specify the inputs you want to receive from connected clients.</p>
 <a class="reference internal image-reference" href="images/unity/InputsPanel.png"><img alt="Teleport has a page on the Project Settings panel." src="images/unity/InputsPanel.png" style="width: 600px;" /></a>
@@ -205,7 +205,7 @@ Teleport input paths use <a class="reference external" href="https://en.wikipedi
 </table>
 <p>The regex syntax [a|x] means “either ‘a’ or ‘x’”, so the client will recognize this as a match, and map the “x” button on the client-side controller to the “Toggle Onscreen Display” boolean event that the server will receive.</p>
 <section id="mapping-types">
-<h3><span class="section-number">2.5.1. </span>Mapping types<a class="headerlink" href="#mapping-types" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">3.5.1. </span>Mapping types<a class="headerlink" href="#mapping-types" title="Permalink to this heading">¶</a></h3>
 <p>Different control types can be mapped to each other. If a path match is found, it is possible for a boolean (“click”) action, which is only on or off, to be mapped to an Analogue input.</p>
 <table class="docutils align-default">
 <thead>
@@ -232,7 +232,7 @@ Teleport input paths use <a class="reference external" href="https://en.wikipedi
 Teleport cannot map OpenXR Pose actions to inputs, these are handled differently.</p>
 </section>
 <section id="pose-mapping">
-<h3><span class="section-number">2.5.2. </span>Pose Mapping<a class="headerlink" href="#pose-mapping" title="Permalink to this heading">¶</a></h3>
+<h3><span class="section-number">3.5.2. </span>Pose Mapping<a class="headerlink" href="#pose-mapping" title="Permalink to this heading">¶</a></h3>
 <p>XR devices such as headsets, handsets and trackers report their state as a “pose”, containing position and orientation in space. These poses can be mapped to spatial nodes using the Teleport Controller component in Unity.</p>
 <a class="reference internal image-reference" href="images/unity/TeleportController.png"><img alt="Inspector properties of a teleport Controller component." src="images/unity/TeleportController.png" style="width: 600px;" /></a>
 <p>==Teleport controller component in Unity Inspector==</p>
@@ -240,7 +240,7 @@ Teleport cannot map OpenXR Pose actions to inputs, these are handled differently
 </section>
 </section>
 <section id="player-session-hierarchy">
-<h2><span class="section-number">2.6. </span>Player Session Hierarchy<a class="headerlink" href="#player-session-hierarchy" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">3.6. </span>Player Session Hierarchy<a class="headerlink" href="#player-session-hierarchy" title="Permalink to this heading">¶</a></h2>
 <p>Typically, the Unity Game Objects would be arranged as follows in Unity:</p>
 <a class="reference internal image-reference" href="images/unity/PlayerHierarchy.png"><img alt="Example player prefab hierarchy." src="images/unity/PlayerHierarchy.png" style="width: 400px;" /></a>
 <p>==Typical session and player hierarchy in Unity==</p>
@@ -262,7 +262,7 @@ Teleport cannot map OpenXR Pose actions to inputs, these are handled differently
 </ul>
 </section>
 <section id="sdk-reference">
-<h2><span class="section-number">2.7. </span>SDK Reference<a class="headerlink" href="#sdk-reference" title="Permalink to this heading">¶</a></h2>
+<h2><span class="section-number">3.7. </span>SDK Reference<a class="headerlink" href="#sdk-reference" title="Permalink to this heading">¶</a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt>doxygenclass:: teleport::TeleportSettings</dt><dd><p>project: TeleportUnity
@@ -325,8 +325,8 @@ members:</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../../AndroidClient/index.html" class="btn btn-neutral float-left" title="2. Android Client" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../unreal/index.html" class="btn btn-neutral float-right" title="3. Teleport Unreal SDK" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../AndroidClient/index.html" class="btn btn-neutral float-left" title="2.2. Android Client" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../unreal/index.html" class="btn btn-neutral float-right" title="4. Teleport Unreal SDK" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
