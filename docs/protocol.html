@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>6. The Teleport VR Protocol &mdash; Teleport XR  documentation</title>
+  <title>5. The Teleport VR Protocol &mdash; Teleport XR  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="6.1. Signaling" href="protocol/signaling.html" />
-    <link rel="prev" title="5. Teleport NodeJS SDK" href="nodejs/index.html" /> 
+    <link rel="next" title="5.1. Signaling" href="protocol/signaling.html" />
+    <link rel="prev" title="4. Teleport NodeJS SDK" href="nodejs/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,19 +53,19 @@
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="client/index.html">2. Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unity/index.html">3. Teleport Unity SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="unreal/index.html">4. Teleport Unreal SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nodejs/index.html">5. Teleport NodeJS SDK</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. The Teleport VR Protocol</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="protocol/signaling.html">6.1. Signaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/service.html">6.2. Data Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html">6.3. Data Transfer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video.html">6.4. Video</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html">6.5. Video Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client/index.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unity/index.html">2. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unreal/index.html">3. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nodejs/index.html">4. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. The Teleport VR Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/signaling.html">5.1. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html">5.2. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html">5.3. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html">5.4. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html">5.5. Video Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reference/index.html">7. Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">6. Reference Implementation</a></li>
 </ul>
 
         </div>
@@ -83,7 +83,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">6. </span>The Teleport VR Protocol</li>
+      <li class="breadcrumb-item active"><span class="section-number">5. </span>The Teleport VR Protocol</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/docs/protocol.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,13 +94,13 @@
            <div itemprop="articleBody">
              
   <section id="the-teleport-vr-protocol">
-<h1><span class="section-number">6. </span>The Teleport VR Protocol<a class="headerlink" href="#the-teleport-vr-protocol" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">5. </span>The Teleport VR Protocol<a class="headerlink" href="#the-teleport-vr-protocol" title="Permalink to this heading">¶</a></h1>
 <p>The Teleport VR Protocol is a network protocol for client-server immersive applications.
 Essentially this means that applications can be used remotely without downloading or installing them.
 The protocol is open, meaning that anyone can use it, either by writing a client program or by developing a server that uses the protocol.</p>
 <p>Teleport is a top-level application-layer protocol. It can use various means of transport, usually based on the UDP protocol - for example, WebRTC, or the open-source libavstream software.</p>
 <table class="docutils align-default" id="id1">
-<caption><span class="caption-number">Table 6.1 </span><span class="caption-text">Network Layers</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Network Layers</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 14.3%" />
 <col style="width: 85.7%" />
@@ -141,35 +141,35 @@ The Service Connection controls the others and is the main line of information b
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="protocol/signaling.html">6.1. Signaling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="protocol/service.html">6.2. Data Service</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#initialization">6.2.1. Initialization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#update">6.2.2. Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/signaling.html">5.1. Signaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/service.html">5.2. Data Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#initialization">5.2.1. Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#update">5.2.2. Update</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="protocol/data_transfer.html">6.3. Data Transfer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#reliability">6.3.1. Reliability</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#secure-reliable-transfer-protocol">6.3.2. Secure Reliable Transfer Protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#elastic-frame-protocol">6.3.3. Elastic Frame Protocol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#efp-frame-types-and-superframes">6.3.4. EFP Frame Types and SuperFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#initialization-of-efp-on-the-server">6.3.5. Initialization of EFP on the Server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#sending-data-from-the-server">6.3.6. Sending Data from the Server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#initialization-of-efp-on-the-client">6.3.7. Initialization of EFP on the Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#receiving-data-on-the-client">6.3.8. Receiving Data on the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/data_transfer.html">5.3. Data Transfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#reliability">5.3.1. Reliability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#secure-reliable-transfer-protocol">5.3.2. Secure Reliable Transfer Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#elastic-frame-protocol">5.3.3. Elastic Frame Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#efp-frame-types-and-superframes">5.3.4. EFP Frame Types and SuperFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#initialization-of-efp-on-the-server">5.3.5. Initialization of EFP on the Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#sending-data-from-the-server">5.3.6. Sending Data from the Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#initialization-of-efp-on-the-client">5.3.7. Initialization of EFP on the Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#receiving-data-on-the-client">5.3.8. Receiving Data on the Client</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="protocol/video.html">6.4. Video</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#video-texture-layout">6.4.1. Video Texture Layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#video-frame-structure">6.4.2. Video Frame Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#recovering-from-corruption">6.4.3. Recovering from Corruption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#minimizing-latency">6.4.4. Minimizing Latency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#processing-of-video-frame-on-the-client">6.4.5. Processing of video Frame on the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/video.html">5.4. Video</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#video-texture-layout">5.4.1. Video Texture Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#video-frame-structure">5.4.2. Video Frame Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#recovering-from-corruption">5.4.3. Recovering from Corruption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#minimizing-latency">5.4.4. Minimizing Latency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#processing-of-video-frame-on-the-client">5.4.5. Processing of video Frame on the Client</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="protocol/video_metadata.html">6.5. Video Metadata</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#structure-of-metadata">6.5.1. Structure of Metadata</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#sending-metadata-to-the-client">6.5.2. Sending Metadata to the Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#processing-metadata-on-the-client">6.5.3. Processing Metadata on the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/video_metadata.html">5.5. Video Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#structure-of-metadata">5.5.1. Structure of Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#sending-metadata-to-the-client">5.5.2. Sending Metadata to the Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#processing-metadata-on-the-client">5.5.3. Processing Metadata on the Client</a></li>
 </ul>
 </li>
 </ul>
@@ -180,8 +180,8 @@ The Service Connection controls the others and is the main line of information b
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="nodejs/index.html" class="btn btn-neutral float-left" title="5. Teleport NodeJS SDK" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="protocol/signaling.html" class="btn btn-neutral float-right" title="6.1. Signaling" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nodejs/index.html" class="btn btn-neutral float-left" title="4. Teleport NodeJS SDK" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="protocol/signaling.html" class="btn btn-neutral float-right" title="5.1. Signaling" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
