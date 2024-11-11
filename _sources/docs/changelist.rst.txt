@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Mon 11 Nov** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Sat 09 Nov** : :samp:`Add specularRenderTexture.ktx`
 | **Fri 25 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Tue 22 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport into main`
 | **Tue 22 Oct** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
@@ -95,8 +97,6 @@ Changelist
 | **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
 | **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Thu 08 Aug** : :samp:`Force ASSIMP off for Platform. Allow compilation without CUDA.`
-| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
-| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
 | **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
 | **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
 | **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
