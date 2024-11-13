@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>5.1. Signaling &mdash; Teleport XR  documentation</title>
+  <title>6.1. Signaling &mdash; Teleport XR  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="5.2. Data Service" href="service.html" />
-    <link rel="prev" title="5. The Teleport VR Protocol" href="../protocol.html" /> 
+    <link rel="next" title="6.2. Data Service" href="service.html" />
+    <link rel="prev" title="6. The Teleport VR Protocol" href="../protocol.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -53,19 +53,19 @@
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../client/index.html">Client</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">2. Teleport Unity SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">3. Teleport Unreal SDK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">4. Teleport NodeJS SDK</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">5. The Teleport VR Protocol</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. Signaling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="service.html">5.2. Data Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">5.3. Data Transfer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html">5.4. Video</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">5.5. Video Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">6. The Teleport VR Protocol</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.1. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">6.2. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">6.3. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">6.4. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">6.5. Video Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">6. Reference Implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">7. Reference Implementation</a></li>
 </ul>
 
         </div>
@@ -83,8 +83,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">5. </span>The Teleport VR Protocol</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">5.1. </span>Signaling</li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">6. </span>The Teleport VR Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.1. </span>Signaling</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/docs/protocol/signaling.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,7 +95,7 @@
            <div itemprop="articleBody">
              
   <section id="signaling">
-<h1><span class="section-number">5.1. </span>Signaling<a class="headerlink" href="#signaling" title="Permalink to this heading">¶</a></h1>
+<h1><span class="section-number">6.1. </span>Signaling<a class="headerlink" href="#signaling" title="Permalink to this heading">¶</a></h1>
 <p><em>Signaling</em> is the process whereby client and server exchange reliable messages for initial setup, as well as configuration changes while the Teleport connection is active.</p>
 <p>In the reference implementation, WebSockets messages are used for signaling, but any suitable transport protocol may be used.</p>
 <p>The server listens for connection requests, typically on the standard HTTP ports (any port is acceptable, as long as the client knows to try it).</p>
@@ -166,8 +166,8 @@ The signaling channel will be used only for changes of network configuration and
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../protocol.html" class="btn btn-neutral float-left" title="5. The Teleport VR Protocol" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="service.html" class="btn btn-neutral float-right" title="5.2. Data Service" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../protocol.html" class="btn btn-neutral float-left" title="6. The Teleport VR Protocol" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="service.html" class="btn btn-neutral float-right" title="6.2. Data Service" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
