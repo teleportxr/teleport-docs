@@ -1,5 +1,8 @@
 Changelist 
 ========= 
+| **Fri 15 Nov** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Wed 13 Nov** : :samp:`setOrigin fix`
+| **Wed 13 Nov** : :samp:`Fix struct packing on Android builds.`
 | **Wed 13 Nov** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Tue 12 Nov** : :samp:`Update to current Platform API usage.`
 | **Mon 11 Nov** : :samp:`Move abi.hpp to abi.h`
@@ -97,6 +100,3 @@ Changelist
 | **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Thu 08 Aug** : :samp:`Ptr`
 | **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
-| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
-| **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Thu 08 Aug** : :samp:`Force ASSIMP off for Platform. Allow compilation without CUDA.`
