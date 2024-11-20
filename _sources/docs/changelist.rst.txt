@@ -1,5 +1,7 @@
 Changelist 
 ========= 
+| **Wed 20 Nov** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
+| **Tue 19 Nov** : :samp:`Now using CompressTexturesAsync instead of waiting in main server thread.`
 | **Fri 15 Nov** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
 | **Wed 13 Nov** : :samp:`setOrigin fix`
 | **Wed 13 Nov** : :samp:`Fix struct packing on Android builds.`
@@ -98,5 +100,3 @@ Changelist
 | **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
 | **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
 | **Thu 08 Aug** : :samp:`Merge branch 'main' of github.com:simul/Teleport`
-| **Thu 08 Aug** : :samp:`Ptr`
-| **Thu 08 Aug** : :samp:`Update build_pc_client.yml`
