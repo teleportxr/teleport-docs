@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/protocol.html">6. The Teleport Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docs/reference/index.html">7. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">JavaScript</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/client/JavaScriptWorker/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="javascript">
+<h1>JavaScript<a class="headerlink" href="#javascript" title="Link to this heading">¶</a></h1>
+<p>A JavaScript script can be attached to any node that is to be streamed to clients. Just as scripts can be incorporated in HTML pages and run client-side in a Web browser, scripts in Teleport that are incorporated in scenes are run client-side.
+The script on a node has access to</p>
+<section id="when-and-how-a-script-is-run">
+<h2>When and how a script is run<a class="headerlink" href="#when-and-how-a-script-is-run" title="Link to this heading">¶</a></h2>
+<p>The script attached to a node is run when the node is first created on the client side. The whole script is run, so any statements that are not wrapped in a function definition are executed immediately (For comparison: in an HTML page, any &lt;script&gt; block is run whenever the page is loaded).</p>
+</section>
+<section id="special-functions">
+<h2>Special functions<a class="headerlink" href="#special-functions" title="Link to this heading">¶</a></h2>
+<p>You can define any function in the script, but certain special named functions will be invoked by the client runtime on specific events.</p>
+<p><em>onEnable()</em>: when the node state changes from <em>disabled</em> to <em>enabled</em>.</p>
+<p><em>onDisable()</em>: when the node’s state changes from <em>enabled</em> to <em>disabled</em>.</p>
+<p><em>onTick(timeStepSeconds)</em>: when a “tick” or periodic update occurs. The actual rate depends on system capabilities.</p>
+</section>
+<section id="viewing-and-modifying-the-scene">
+<h2>Viewing and Modifying the Scene<a class="headerlink" href="#viewing-and-modifying-the-scene" title="Link to this heading">¶</a></h2>
+<p>Scripts have access to scene properties. Specifically, a script attached to a given node can view and modify that node’s properties and those of its children and descendants. This is done via the Scene Object Model (SOM) (for comparison: an HTML script can access the Document Object Model, or DOM).</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/JavaScriptHost-DOM.svg"><img alt="An example of a Scene Object Model or SOM." src="../../_images/JavaScriptHost-DOM.svg" width="600" /></a>
+</figure>
+<section id="finding-som-nodes">
+<h3>Finding SOM Nodes<a class="headerlink" href="#finding-som-nodes" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Finding</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>scene.getNodeByUid(<em>uid</em>)</p></td>
+<td><p>Get the node by its uid (unique id)</p></td>
+</tr>
+<tr class="row-odd"><td><p>scene.getNodesByName(”<em>name</em>”)</p></td>
+<td><p>Get all nodes that have the given name.</p></td>
+</tr>
+<tr class="row-even"><td><p>scene.getRootNode()</p></td>
+<td><p>Get the root node.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each node has a uid that is unique for the scene, i.e. No two nodes in a given client-server context will have the same uid. However, uid’s do not persist across sessions: to identify the same node across multiple sessions, it should be given a name.
+The root node is the node that the script is attached to. A script has no knowledge of or access to nodes above or outside the hierarchy that starts at its root.</p>
+</section>
+<section id="node-properties">
+<h3>Node Properties<a class="headerlink" href="#node-properties" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Properties</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>node.id</p></td>
+<td><p>The unique id of the node</p></td>
+</tr>
+<tr class="row-odd"><td><p>node.name</p></td>
+<td><p>The name of the node, which may not be unique</p></td>
+</tr>
+<tr class="row-even"><td><p>node.pose</p></td>
+<td><p>The node’s pose, its position and orientation relative to its parent</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2025, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

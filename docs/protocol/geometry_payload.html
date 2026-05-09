@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.9. Geometry Payload &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.10. Audio" href="audio.html" />
+    <link rel="prev" title="6.8. Video Metadata" href="video_metadata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">6. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">6.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">6.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">6.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">6.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">6.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">6.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">6.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">6.8. Video Metadata</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">6.10. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">6.11. Input</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">7. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">6. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.9. </span>Geometry Payload</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/geometry_payload.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="geometry-payload">
+<span id="id1"></span><h1><span class="section-number">6.9. </span>Geometry Payload<a class="headerlink" href="#geometry-payload" title="Link to this heading">¶</a></h1>
+<p>The geometry channel carries every server-allocated resource that is not video, video-tag or audio. It is the <strong>reliable / ordered</strong> SCTP data channel labelled <code class="docutils literal notranslate"><span class="pre">&quot;geometry&quot;</span></code> (stream index 80). All multi-byte fields are little-endian and structs are 1-byte packed.</p>
+<p>Reference implementations:</p>
+<ul class="simple">
+<li><p>Encoder — <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">teleport::server::GeometryEncoder</span></code> (<code class="docutils literal notranslate"><span class="pre">Teleport/TeleportServer/GeometryEncoder.cpp</span></code>).</p></li>
+<li><p>Decoder — <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">teleport::clientrender::GeometryDecoder</span></code> (<code class="docutils literal notranslate"><span class="pre">Teleport/ClientRender/GeometryDecoder.cpp</span></code>).</p></li>
+<li><p>Payload-type enum — <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">avs::GeometryPayloadType</span></code> (<code class="docutils literal notranslate"><span class="pre">libavstream/common_exports.h</span></code>).</p></li>
+</ul>
+<section id="channel-framing">
+<h2><span class="section-number">6.9.1. </span>Channel framing<a class="headerlink" href="#channel-framing" title="Link to this heading">¶</a></h2>
+<p>Each SCTP message on the geometry channel contains a single <strong>payload chunk</strong>:</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 6.38 </span><span class="caption-text">Geometry chunk header</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>size_t</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">payloadSize</span></code> – length, in bytes, of everything that follows the size field (i.e. <code class="docutils literal notranslate"><span class="pre">type</span></code> + <code class="docutils literal notranslate"><span class="pre">uid</span></code> + body).</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>GeometryPayloadType</p></td>
+<td><p>Chunk type (see table below).</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>avs::uid</p></td>
+<td><p>Resource uid this chunk belongs to. <code class="docutils literal notranslate"><span class="pre">RemoveNodes</span></code> is the only type that omits this field.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">payloadSize</span></code> is <em>not</em> a self-delimiting framing prefix at the SCTP level; SCTP already preserves message boundaries. It is informational and is used by the decoder for sanity checking. Implementations that want to bundle multiple chunks per SCTP message can do so by emitting them back-to-back: the decoder advances <code class="docutils literal notranslate"><span class="pre">offset</span></code> by <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">+</span> <span class="pre">payloadSize</span></code> after each chunk.</p>
+</section>
+<section id="payload-types">
+<h2><span class="section-number">6.9.2. </span>Payload types<a class="headerlink" href="#payload-types" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 6.39 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">GeometryPayloadType</span></code></span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 6.0%" />
+<col style="width: 21.7%" />
+<col style="width: 72.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Body</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Invalid</p></td>
+<td><p>Reserved.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Mesh</p></td>
+<td><p>1-byte <code class="docutils literal notranslate"><span class="pre">MeshCompressionType</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code> none, <code class="docutils literal notranslate"><span class="pre">1</span></code> Draco), followed by version/name/Draco buffer. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GeometryEncoder::encodeMesh()</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Material</p></td>
+<td><p>Material name + PBR descriptor and texture-uid references. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GeometryEncoder::encodeMaterial()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>MaterialInstance</p></td>
+<td><p>Currently unused on the wire; reserved.</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Texture</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code> name length, name, 1-byte <code class="docutils literal notranslate"><span class="pre">TextureCompression</span></code>, then the codec-specific payload bytes (e.g. raw KTX2/Basis container). See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GeometryEncoder::encodeTexture()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Animation</p></td>
+<td><p>Skeletal animation: name, joint count, per-joint translation/rotation/scale keyframes.</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Node</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code> name length, name, <code class="docutils literal notranslate"><span class="pre">avs::Transform</span></code> (already converted to the client’s axes), <code class="docutils literal notranslate"><span class="pre">stationary</span></code> flag, holder client id, priority, parent uid, then the type-specific data (mesh, light, link, …).</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Skeleton</p></td>
+<td><p>Name + bone-uid array.</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>FontAtlas</p></td>
+<td><p>Font texture uid + glyph maps. See <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">GeometryEncoder::encodeFontAtlas()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>TextCanvas</p></td>
+<td><p>Backed text-canvas description.</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>TexturePointer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code> URL length + URL bytes. The body is the HTTP(S) URL of an out-of-band Texture; see <a class="reference internal" href="http.html"><span class="doc">HTTP Service</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>MeshPointer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code> URL length + URL bytes. As above but for Meshes.</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>MaterialPointer</p></td>
+<td><p>Reserved; not currently emitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>RemoveNodes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">size_t</span></code> count followed by that many <code class="docutils literal notranslate"><span class="pre">avs::uid</span></code> values to delete from the client’s scene. <strong>Has no resource uid in the header.</strong></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resource-lifecycle">
+<h2><span class="section-number">6.9.3. </span>Resource lifecycle<a class="headerlink" href="#resource-lifecycle" title="Link to this heading">¶</a></h2>
+<p>For every chunk <em>other</em> than <code class="docutils literal notranslate"><span class="pre">RemoveNodes</span></code>, <code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshPointer</span></code> and <code class="docutils literal notranslate"><span class="pre">MaterialPointer</span></code>, the server records the uid as “in flight” and waits for the client to confirm receipt by sending <code class="docutils literal notranslate"><span class="pre">ReceivedResourcesMessage</span></code> (id 4) on the reliable client-to-server channel. See <a class="reference internal" href="service/client_to_server.html"><span class="doc">Messages from Client to Server</span></a>.</p>
+<p>For pointer chunks, the server treats the resource as delivered as soon as the chunk leaves the encoder; the actual asset is then fetched out-of-band over HTTPS. The client is still expected to send <code class="docutils literal notranslate"><span class="pre">ReceivedResourcesMessage</span></code> once the HTTP body has been decoded.</p>
+<p>If the client’s decoder fails (e.g. corrupt data, missing dependency, decoder panic), the client emits <code class="docutils literal notranslate"><span class="pre">ResourceLostMessage</span></code> (id 5) to ask the server to re-send. The server should treat the uid as “not yet received” and re-encode it on the next streaming pass.</p>
+</section>
+<section id="axis-conversion">
+<h2><span class="section-number">6.9.4. </span>Axis conversion<a class="headerlink" href="#axis-conversion" title="Link to this heading">¶</a></h2>
+<p>Every geometric value (positions, transforms, vectors and quaternions) is converted from the server’s <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">avs::AxesStandard</span></code> to the client’s standard inside the encoder, using <code class="docutils literal notranslate"><span class="pre">avs::ConvertTransform</span></code>. The client therefore reads geometry data in <strong>its own</strong> axes, regardless of how the source scene is authored. The server’s axes are reported in <code class="docutils literal notranslate"><span class="pre">SetupCommand.axesStandard</span></code> for diagnostic purposes only.</p>
+</section>
+<section id="coding-conventions">
+<h2><span class="section-number">6.9.5. </span>Coding conventions<a class="headerlink" href="#coding-conventions" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Strings are <code class="docutils literal notranslate"><span class="pre">uint16</span></code>-length-prefixed UTF-8, never null-terminated.</p></li>
+<li><p>Variable-length arrays are <code class="docutils literal notranslate"><span class="pre">size_t</span></code>-length-prefixed.</p></li>
+<li><p>Quaternions are <code class="docutils literal notranslate"><span class="pre">vec4_packed</span></code> <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">w)</span></code>; positions are <code class="docutils literal notranslate"><span class="pre">vec3_packed</span></code> in metres.</p></li>
+<li><p>Compression flags (<code class="docutils literal notranslate"><span class="pre">MeshCompressionType</span></code>, <code class="docutils literal notranslate"><span class="pre">TextureCompression</span></code>) are 1-byte enums whose layout is part of the wire format; new values must bump <a class="reference internal" href="conventions.html#conventions"><span class="std std-ref">protocol_version</span></a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="video_metadata.html" class="btn btn-neutral float-left" title="6.8. Video Metadata" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="audio.html" class="btn btn-neutral float-right" title="6.10. Audio" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2025, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

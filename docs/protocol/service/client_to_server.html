@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.4.6.2. Messages from Client to Server &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="6.5. Data Transfer" href="../data_transfer.html" />
+    <link rel="prev" title="6.4.6.1. Commands from Server to Client" href="server_to_client.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../protocol.html">6. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../conventions.html">6.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../state_machine.html">6.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../signaling.html">6.3. Signaling</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../service.html">6.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../data_transfer.html">6.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../http.html">6.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../video.html">6.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../video_metadata.html">6.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_payload.html">6.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../audio.html">6.10. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../input.html">6.11. Input</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">7. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../protocol.html"><span class="section-number">6. </span>The Teleport Protocol</a></li>
+          <li class="breadcrumb-item"><a href="../service.html"><span class="section-number">6.4. </span>Data Service</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.4.6.2. </span>Messages from Client to Server</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/protocol/service/client_to_server.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="messages-from-client-to-server">
+<span id="client-to-server"></span><h1><span class="section-number">6.4.6.2. </span>Messages from Client to Server<a class="headerlink" href="#messages-from-client-to-server" title="Link to this heading">¶</a></h1>
+<p>The client emits messages over two WebRTC data channels:</p>
+<ul class="simple">
+<li><p>the <strong>reliable</strong> channel (id 100) for <code class="docutils literal notranslate"><span class="pre">Acknowledgement</span></code>, <code class="docutils literal notranslate"><span class="pre">OrthogonalAcknowledgement</span></code>, <code class="docutils literal notranslate"><span class="pre">ReceivedResources</span></code>, <code class="docutils literal notranslate"><span class="pre">ResourceLost</span></code>, <code class="docutils literal notranslate"><span class="pre">NodeStatus</span></code>, <code class="docutils literal notranslate"><span class="pre">DisplayInfo</span></code> and <code class="docutils literal notranslate"><span class="pre">Handshake</span></code> traffic that must not be lost;</p></li>
+<li><p>the <strong>unreliable</strong> channel (id 120) for per-frame messages: <code class="docutils literal notranslate"><span class="pre">ControllerPoses</span></code>, <code class="docutils literal notranslate"><span class="pre">InputStates</span></code>, <code class="docutils literal notranslate"><span class="pre">InputEvents</span></code>, <code class="docutils literal notranslate"><span class="pre">KeyframeRequest</span></code> and <code class="docutils literal notranslate"><span class="pre">PongForLatency</span></code>.</p></li>
+</ul>
+<p>The <a class="reference internal" href="../service.html#handshake"><span class="std std-ref">Handshake</span></a> is the only message sent over the signaling WebSocket; everything else uses one of the data channels.</p>
+<p>The <strong>Client</strong> sends all of its messages in its local units and <a class="reference internal" href="../conventions.html#conventions"><span class="std std-ref">AxesStandard</span></a>. The <strong>Server</strong> is responsible for converting incoming data to its own internal representation, and for converting outgoing commands to the client’s units.</p>
+<section id="common-header">
+<span id="client-message-header-full"></span><h2><span class="section-number">6.4.6.2.1. </span>Common header<a class="headerlink" href="#common-header" title="Link to this heading">¶</a></h2>
+<p>Every client-to-server message begins with the 9-byte <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::ClientMessage</span></code> header:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-number">Table 6.21 </span><span class="caption-text">ClientMessage header</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>ClientMessagePayloadType</p></td>
+<td><p>The message type (see table below).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>int64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">timestamp_session_us</span></code> – microseconds elapsed on the client since its local session start when this message was constructed.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 6.22 </span><span class="caption-text">ClientMessagePayloadType</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9.1%" />
+<col style="width: 34.1%" />
+<col style="width: 56.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Reference struct</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Invalid</span></code></p></td>
+<td><p>(never sent)</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Handshake</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::Handshake</span></code> (sent over the signaling WebSocket; see <a class="reference internal" href="../service.html#handshake"><span class="std std-ref">Handshake</span></a>)</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NodeStatus</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::NodeStatusMessage</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ReceivedResources</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::ReceivedResourcesMessage</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ControllerPoses</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::NodePosesMessage</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ResourceLost</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::ResourceLostMessage</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">InputStates</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::InputStatesMessage</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">InputEvents</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::InputEventsMessage</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">DisplayInfo</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::DisplayInfoMessage</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">KeyframeRequest</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::KeyframeRequestMessage</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PongForLatency</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::PongForLatencyMessage</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">OrthogonalAcknowledgement</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::OrthogonalAcknowledgementMessage</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Acknowledgement</span></code></p></td>
+<td><p><code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::AcknowledgementMessage</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="displayinfo-id-8">
+<h2><span class="section-number">6.4.6.2.2. </span>DisplayInfo (id = 8)<a class="headerlink" href="#displayinfo-id-8" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::DisplayInfoMessage</span></code></p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 6.23 </span><span class="caption-text">DisplayInfoMessage</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">DisplayInfo</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">width</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">height</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">framerate</span></code> (Hz, measured).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="controllerposes-id-4">
+<h2><span class="section-number">6.4.6.2.3. </span>ControllerPoses (id = 4)<a class="headerlink" href="#controllerposes-id-4" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::NodePosesMessage</span></code>. Sent on the <strong>unreliable</strong> channel.</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-number">Table 6.24 </span><span class="caption-text">NodePosesMessage</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">ControllerPoses</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>28</p></td>
+<td><p>Pose_packed</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">headPose</span></code> (vec4 orientation + vec3 position).</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>uint16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">numPoses</span></code> = N.</p></td>
+</tr>
+<tr class="row-odd"><td><p>N × 36</p></td>
+<td><p>NodePose[]</p></td>
+<td><p>For each pose: 8-byte node uid, 28-byte <code class="docutils literal notranslate"><span class="pre">PoseDynamic_packed</span></code> (pose + linear velocity + angular velocity), all in stage space.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="receivedresources-id-3">
+<h2><span class="section-number">6.4.6.2.4. </span>ReceivedResources (id = 3)<a class="headerlink" href="#receivedresources-id-3" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::ReceivedResourcesMessage</span></code>. Sent on the <strong>reliable</strong> channel.</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-number">Table 6.25 </span><span class="caption-text">ReceivedResourcesMessage</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">ReceivedResources</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>size_t</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">receivedResourcesCount</span></code> = N.</p></td>
+</tr>
+<tr class="row-even"><td><p>8 * N</p></td>
+<td><p>uid[]</p></td>
+<td><p>Resource uids that have been fully decoded and stored.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="nodestatus-id-2">
+<h2><span class="section-number">6.4.6.2.5. </span>NodeStatus (id = 2)<a class="headerlink" href="#nodestatus-id-2" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::NodeStatusMessage</span></code>. Sent on the <strong>reliable</strong> channel to tell the server which nodes the client is currently rendering, and which it has chosen to release.</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-number">Table 6.26 </span><span class="caption-text">NodeStatusMessage</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">NodeStatus</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>size_t</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nodesDrawnCount</span></code> = N.</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>size_t</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nodesWantToReleaseCount</span></code> = M.</p></td>
+</tr>
+<tr class="row-odd"><td><p>8 * N</p></td>
+<td><p>uid[]</p></td>
+<td><p>Drawn node uids.</p></td>
+</tr>
+<tr class="row-even"><td><p>8 * M</p></td>
+<td><p>uid[]</p></td>
+<td><p>Node uids the client wants to release.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="resourcelost-id-5">
+<h2><span class="section-number">6.4.6.2.6. </span>ResourceLost (id = 5)<a class="headerlink" href="#resourcelost-id-5" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::ResourceLostMessage</span></code>. Sent on the <strong>reliable</strong> channel to tell the server that a previously-confirmed resource has been lost (e.g. due to a decoder error) and must be re-sent.</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-number">Table 6.27 </span><span class="caption-text">ResourceLostMessage</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">ResourceLost</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>uint16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">resourceCount</span></code> = N.</p></td>
+</tr>
+<tr class="row-even"><td><p>8 * N</p></td>
+<td><p>uid[]</p></td>
+<td><p>Lost resource uids.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inputstates-id-6">
+<h2><span class="section-number">6.4.6.2.7. </span>InputStates (id = 6)<a class="headerlink" href="#inputstates-id-6" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::InputStatesMessage</span></code>. Sent on the <strong>unreliable</strong> channel each frame, after <a class="reference internal" href="server_to_client.html#server-to-client"><span class="std std-ref">SetupInputs</span></a> has been received. Carries the current value of every state-typed input declared by the server. See <a class="reference internal" href="../input.html"><span class="doc">Input</span></a> for the full input model.</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-number">Table 6.28 </span><span class="caption-text">InputStatesMessage</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">InputStates</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>uint16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">numBinaryStates</span></code> = B.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>uint16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">numAnalogueStates</span></code> = A.</p></td>
+</tr>
+<tr class="row-odd"><td><p>B (bits, padded to bytes)</p></td>
+<td><p>bitfield</p></td>
+<td><p>One bit per declared binary-state input, in declaration order.</p></td>
+</tr>
+<tr class="row-even"><td><p>4 * A</p></td>
+<td><p>float[]</p></td>
+<td><p>One float per declared analogue-state input, in declaration order.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="inputevents-id-7">
+<h2><span class="section-number">6.4.6.2.8. </span>InputEvents (id = 7)<a class="headerlink" href="#inputevents-id-7" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::InputEventsMessage</span></code>. Sent on the <strong>unreliable</strong> channel when one or more event-typed inputs have fired since the last frame.</p>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Table 6.29 </span><span class="caption-text">InputEventsMessage</span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">InputEvents</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>uint16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">numBinaryEvents</span></code> = B.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>uint16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">numAnalogueEvents</span></code> = A.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>uint16</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">numMotionEvents</span></code> = M.</p></td>
+</tr>
+<tr class="row-even"><td><p>B × 7</p></td>
+<td><p>InputEventBinary[]</p></td>
+<td><p>4-byte <code class="docutils literal notranslate"><span class="pre">eventID</span></code>, 2-byte <code class="docutils literal notranslate"><span class="pre">inputID</span></code>, 1-byte <code class="docutils literal notranslate"><span class="pre">activated</span></code> flag.</p></td>
+</tr>
+<tr class="row-odd"><td><p>A × 10</p></td>
+<td><p>InputEventAnalogue[]</p></td>
+<td><p>4-byte <code class="docutils literal notranslate"><span class="pre">eventID</span></code>, 2-byte <code class="docutils literal notranslate"><span class="pre">inputID</span></code>, 4-byte <code class="docutils literal notranslate"><span class="pre">strength</span></code> (float).</p></td>
+</tr>
+<tr class="row-even"><td><p>M × 14</p></td>
+<td><p>InputEventMotion[]</p></td>
+<td><p>4-byte <code class="docutils literal notranslate"><span class="pre">eventID</span></code>, 2-byte <code class="docutils literal notranslate"><span class="pre">inputID</span></code>, 8-byte <code class="docutils literal notranslate"><span class="pre">vec2</span></code> motion.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="keyframerequest-id-9">
+<h2><span class="section-number">6.4.6.2.9. </span>KeyframeRequest (id = 9)<a class="headerlink" href="#keyframerequest-id-9" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::KeyframeRequestMessage</span></code>. Sent on the <strong>unreliable</strong> channel when the video decoder has lost sync; the server forces the encoder to emit the next frame as an IDR.</p>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-number">Table 6.30 </span><span class="caption-text">KeyframeRequestMessage</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">KeyframeRequest</span></code>, timestamp). No additional fields.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pongforlatency-id-10">
+<h2><span class="section-number">6.4.6.2.10. </span>PongForLatency (id = 10)<a class="headerlink" href="#pongforlatency-id-10" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::PongForLatencyMessage</span></code>. Sent on the <strong>unreliable</strong> channel in response to <a class="reference internal" href="server_to_client.html#server-to-client"><span class="std std-ref">PingForLatency</span></a>. The server uses the round-trip to estimate one-way latency.</p>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-number">Table 6.31 </span><span class="caption-text">PongForLatencyMessage</span><a class="headerlink" href="#id11" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">PongForLatency</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>int64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unix_time_us</span></code> – the value echoed from the matching <code class="docutils literal notranslate"><span class="pre">PingForLatencyCommand</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>int64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">server_to_client_latency_us</span></code> – the client’s measured one-way latency from server to client (microseconds).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="acknowledgement-id-12">
+<h2><span class="section-number">6.4.6.2.11. </span>Acknowledgement (id = 12)<a class="headerlink" href="#acknowledgement-id-12" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::AcknowledgementMessage</span></code>. Sent on the <strong>reliable</strong> channel in response to any <a class="reference internal" href="server_to_client.html#server-to-client"><span class="std std-ref">AckedCommand</span></a> (currently <code class="docutils literal notranslate"><span class="pre">SetupLighting</span></code> and <code class="docutils literal notranslate"><span class="pre">SetOriginNode</span></code>).</p>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-number">Table 6.32 </span><span class="caption-text">AcknowledgementMessage</span><a class="headerlink" href="#id12" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">Acknowledgement</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>uint64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ack_id</span></code> – copied from the command being acknowledged.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="orthogonalacknowledgement-id-11">
+<h2><span class="section-number">6.4.6.2.12. </span>OrthogonalAcknowledgement (id = 11)<a class="headerlink" href="#orthogonalacknowledgement-id-11" title="Link to this heading">¶</a></h2>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::OrthogonalAcknowledgementMessage</span></code>. Sent on the <strong>reliable</strong> channel to confirm a single <code class="docutils literal notranslate"><span class="pre">confirmationNumber</span></code> carried by a <code class="docutils literal notranslate"><span class="pre">NodeStateCommand</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">UpdateNodeStructure</span></code>). Allows independent state updates to be confirmed without the monotonic <code class="docutils literal notranslate"><span class="pre">ack_id</span></code> ordering of <code class="docutils literal notranslate"><span class="pre">AckedCommand</span></code>.</p>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-number">Table 6.33 </span><span class="caption-text">OrthogonalAcknowledgementMessage</span><a class="headerlink" href="#id13" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>ClientMessage</p></td>
+<td><p>Standard header (<code class="docutils literal notranslate"><span class="pre">OrthogonalAcknowledgement</span></code>, timestamp).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>uint64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">confirmationNumber</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="server_to_client.html" class="btn btn-neutral float-left" title="6.4.6.1. Commands from Server to Client" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../data_transfer.html" class="btn btn-neutral float-right" title="6.5. Data Transfer" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2025, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

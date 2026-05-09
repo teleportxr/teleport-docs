@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.3. Signaling &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.esm.min.mjs";
+
+
+
+
+
+const initStyles = () => {
+    const defaultStyle = document.createElement('style');
+    defaultStyle.textContent = `pre.mermaid {
+    /* Same as .mermaid-container > pre */
+    display: block;
+    width: 100%;
+}
+
+pre.mermaid > svg {
+    /* Same as .mermaid-container > pre > svg */
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}`;
+    document.head.appendChild(defaultStyle);
+
+    const fullscreenStyle = document.createElement('style');
+    fullscreenStyle.textContent = `.mermaid-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.mermaid-container > pre {
+    display: block;
+    width: 100%;
+}
+
+.mermaid-container > pre > svg {
+    height: 500px;
+    width: 100%;
+    max-width: 100% !important;
+}
+
+.mermaid-fullscreen-btn {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    line-height: 1;
+    padding: 0;
+    color: #333;
+}
+
+.mermaid-fullscreen-btn:hover {
+    opacity: 100% !important;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-btn.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-btn.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal {
+    display: none;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 95vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
+}
+
+.mermaid-fullscreen-modal.dark-theme {
+    background: rgba(0, 0, 0, 0.98);
+}
+
+.mermaid-fullscreen-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen {
+    position: relative;
+    width: 95vw;
+    height: 90vh;
+    max-width: 95vw;
+    max-height: 90vh;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen.dark-theme {
+    background: #1a1a1a;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.mermaid-container-fullscreen pre.mermaid {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mermaid-container-fullscreen .mermaid svg {
+    height: 100% !important;
+    width: 100% !important;
+    cursor: grab;
+}
+
+.mermaid-fullscreen-close {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s;
+    font-size: 24px;
+    line-height: 1;
+    color: #333;
+}
+
+.mermaid-fullscreen-close:hover {
+    background: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+}
+
+.mermaid-fullscreen-close.dark-theme {
+    background: rgba(50, 50, 50, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+}
+
+.mermaid-fullscreen-close.dark-theme:hover {
+    background: rgba(60, 60, 60, 1);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mermaid-fullscreen-modal .mermaid-fullscreen-btn {
+    display: none !important;
+}`;
+    document.head.appendChild(fullscreenStyle);
+}
+
+// Detect if page has dark background
+const isDarkTheme = () => {
+    // We use a set of heuristics:
+    // 1. Check for common dark mode classes or attributes
+    // 2. Check computed background color brightness
+    if (document.documentElement.classList.contains('dark') ||
+        document.documentElement.getAttribute('data-theme') === 'dark' ||
+        document.body.classList.contains('dark') ||
+        document.body.getAttribute('data-theme') === 'dark') {
+        // console.log("Dark theme detected via class/attribute");
+        return true;
+    }
+    if (document.documentElement.classList.contains('light') ||
+        document.documentElement.getAttribute('data-theme') === 'light' ||
+        document.body.classList.contains('light') ||
+        document.body.getAttribute('data-theme') === 'light') {
+        // console.log("Light theme detected via class/attribute");
+        return false;
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // console.log("Dark theme detected via prefers-color-scheme");
+        return true;
+    }
+    const bgColor = window.getComputedStyle(document.body).backgroundColor;
+    const match = bgColor.match(/rgb\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+        const r = parseInt(match[1]);
+        const g = parseInt(match[2]);
+        const b = parseInt(match[3]);
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+        // console.log("Background color brightness:", brightness);
+        return brightness < 128;
+    }
+    // console.log("No dark or light theme detected, defaulting to light theme");
+    return false;
+};
+
+let darkTheme = isDarkTheme();
+let modal = null;
+let modalContent = null;
+let previousScrollOffset = [window.scrollX, window.scrollY];
+
+const runMermaid = async (rerun) => {
+    console.log("Running mermaid diagrams, rerun =", rerun);
+    // clear all existing mermaid charts
+    let all_mermaids = document.querySelectorAll(".mermaid");
+
+    if (rerun) {
+        all_mermaids.forEach((el) => {
+            if(!el.hasAttribute("data-original-code")) {
+                // store original code
+                // console.log(`Storing original code for first run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+            if(el.getAttribute("data-processed") === "true") {
+                // remove and restore original
+                el.removeAttribute("data-processed");
+                // console.log(`Restoring original code for re-run: `, el.getAttribute('data-original-code'));
+                el.innerHTML = el.getAttribute('data-original-code');
+            } else {
+                // store original code
+                // console.log(`Storing original code for re-run: `, el.innerHTML);
+                el.setAttribute('data-original-code', el.innerHTML);
+            }
+        });
+        await mermaid.run();
+    }
+
+    all_mermaids = document.querySelectorAll(".mermaid");
+    const mermaids_processed = document.querySelectorAll(".mermaid[data-processed='true']");
+
+    if ("False" === "True") {
+        const mermaids_to_add_zoom = -1 === -1 ? all_mermaids.length : -1;
+        if(mermaids_to_add_zoom > 0) {
+            var svgs = d3.selectAll("");
+            if(all_mermaids.length !== mermaids_processed.length) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else if(svgs.size() !== mermaids_to_add_zoom) {
+                setTimeout(() => runMermaid(false), 200);
+                return;
+            } else {
+                svgs.each(function() {
+                    var svg = d3.select(this);
+                    svg.html("<g class='wrapper'>" + svg.html() + "</g>");
+                    var inner = svg.select("g");
+                    var zoom = d3.zoom().on("zoom", function(event) {
+                        inner.attr("transform", event.transform);
+                    });
+                    svg.call(zoom);
+                });
+            }
+        }
+    } else if(all_mermaids.length !== mermaids_processed.length) {
+        // Wait for mermaid to process all diagrams
+        setTimeout(() => runMermaid(false), 200);
+        return;
+    }
+
+    // Stop here if not adding fullscreen capability
+    if ("True" !== "True") return;
+
+    if (modal !== null ) {
+        // Destroy existing modal
+        modal.remove();
+        modal = null;
+        modalContent = null;
+    }
+
+    modal = document.createElement('div');
+    modal.className = 'mermaid-fullscreen-modal' + (darkTheme ? ' dark-theme' : '');
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Fullscreen diagram viewer');
+    modal.innerHTML = `
+        <button class="mermaid-fullscreen-close${darkTheme ? ' dark-theme' : ''}" aria-label="Close fullscreen">✕</button>
+        <div class="mermaid-container-fullscreen${darkTheme ? ' dark-theme' : ''}"></div>
+    `;
+    document.body.appendChild(modal);
+
+    modalContent = modal.querySelector('.mermaid-container-fullscreen');
+    const closeBtn = modal.querySelector('.mermaid-fullscreen-close');
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modalContent.innerHTML = '';
+        document.body.style.overflow = ''
+        window.scrollTo({left: previousScrollOffset[0], top: previousScrollOffset[1], behavior: 'instant'});
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    document.querySelectorAll('.mermaid').forEach((mermaidDiv) => {
+        if (mermaidDiv.parentNode.classList.contains('mermaid-container') ||
+            mermaidDiv.closest('.mermaid-fullscreen-modal')) {
+            // Already processed, adjust button class if needed
+            const existingBtn = mermaidDiv.parentNode.querySelector('.mermaid-fullscreen-btn');
+            if (existingBtn) {
+                existingBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+            }
+            return;
+        }
+
+        const container = document.createElement('div');
+        container.className = 'mermaid-container';
+        mermaidDiv.parentNode.insertBefore(container, mermaidDiv);
+        container.appendChild(mermaidDiv);
+
+        const fullscreenBtn = document.createElement('button');
+        fullscreenBtn.className = 'mermaid-fullscreen-btn' + (darkTheme ? ' dark-theme' : '');
+        fullscreenBtn.setAttribute('aria-label', 'View diagram in fullscreen');
+        fullscreenBtn.textContent = '⛶';
+        fullscreenBtn.style.opacity = '50%';
+
+        // Calculate dynamic position based on diagram's margin and padding
+        const diagramStyle = window.getComputedStyle(mermaidDiv);
+        const marginTop = parseFloat(diagramStyle.marginTop) || 0;
+        const marginRight = parseFloat(diagramStyle.marginRight) || 0;
+        const paddingTop = parseFloat(diagramStyle.paddingTop) || 0;
+        const paddingRight = parseFloat(diagramStyle.paddingRight) || 0;
+        fullscreenBtn.style.top = `${marginTop + paddingTop + 4}px`;
+        fullscreenBtn.style.right = `${marginRight + paddingRight + 4}px`;
+
+        fullscreenBtn.addEventListener('click', () => {
+            previousScrollOffset = [window.scroll, window.scrollY];
+            const clone = mermaidDiv.cloneNode(true);
+            modalContent.innerHTML = '';
+            modalContent.appendChild(clone);
+
+            const svg = clone.querySelector('svg');
+            if (svg) {
+                svg.removeAttribute('width');
+                svg.removeAttribute('height');
+                svg.style.width = '100%';
+                svg.style.height = 'auto';
+                svg.style.maxWidth = '100%';
+                svg.style.sdisplay = 'block';
+
+                if ("False" === "True") {
+                    setTimeout(() => {
+                        const g = svg.querySelector('g');
+                        if (g) {
+                            var svgD3 = d3.select(svg);
+                            svgD3.html("<g class='wrapper'>" + svgD3.html() + "</g>");
+                            var inner = svgD3.select("g");
+                            var zoom = d3.zoom().on("zoom", function(event) {
+                                inner.attr("transform", event.transform);
+                            });
+                            svgD3.call(zoom);
+                        }
+                    }, 100);
+                }
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        container.appendChild(fullscreenBtn);
+    });
+};
+
+const load = async () => {
+    initStyles();
+
+    await runMermaid(true);
+
+    const reRunIfThemeChanges = async () => {
+        const newDarkTheme = isDarkTheme();
+        if (newDarkTheme !== darkTheme) {
+            darkTheme = newDarkTheme;
+            console.log("Theme change detected, re-running mermaid with", darkTheme ? "dark" : "default", "theme");
+            await mermaid.initialize(
+                {...JSON.parse(
+                    `{"startOnLoad": false}`
+                ),
+                ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+                }
+            );
+            await runMermaid(true);
+        }
+    };
+
+    // Update theme classes when theme changes
+    const themeObserver = new MutationObserver(reRunIfThemeChanges);
+    themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+    themeObserver.observe(document.body, {
+        attributes: true,
+        attributeFilter: ['class', 'style', 'data-theme']
+    });
+};
+
+
+
+
+
+console.log("Initializing mermaid with", darkTheme ? "dark" : "default", "theme");
+mermaid.initialize(
+    {...JSON.parse(
+        `{"startOnLoad": false}`
+    ),
+    ...{ darkMode: darkTheme, theme: darkTheme ? 'dark' : 'default' },
+    }
+);
+
+window.addEventListener("load", load);
+window.runMermaid = runMermaid;</script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.4. Data Service" href="service.html" />
+    <link rel="prev" title="6.2. Connection State Machine" href="state_machine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">6. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">6.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">6.2. Connection State Machine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">6.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">6.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">6.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">6.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">6.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_payload.html">6.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">6.10. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">6.11. Input</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">7. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">6. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.3. </span>Signaling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/signaling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="signaling">
+<span id="id1"></span><h1><span class="section-number">6.3. </span>Signaling<a class="headerlink" href="#signaling" title="Link to this heading">¶</a></h1>
+<p><em>Signaling</em> is the process whereby client and server exchange reliable messages for initial setup, as well as configuration changes and disconnection while the Teleport connection is active.</p>
+<p>In the reference implementation, a single <strong>WebSocket</strong> connection per server is used for signaling. Any suitable bidirectional reliable transport may be used, but the message format below must be preserved.</p>
+<section id="connection">
+<h2><span class="section-number">6.3.1. </span>Connection<a class="headerlink" href="#connection" title="Link to this heading">¶</a></h2>
+<p>The server listens for WebSocket upgrade requests, typically on port 8080 (any port is acceptable as long as the client knows to try it). The reference client opens</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ws://&lt;host&gt;:&lt;port&gt;/&lt;path&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> is taken from the <code class="docutils literal notranslate"><span class="pre">teleport://</span></code> URL the client was launched with. The path identifies the requested session on the server (it may be empty).</p>
+<p>The full message exchange:</p>
+<img src="../../_images/mermaid-1611d234ab77929bba7b0826afd9f614f8c4241a.png" alt="sequenceDiagram
+    participant C as Client
+    participant S as Server
+    C-&gt;&gt;S: WebSocket open
+    loop until response
+        C-&gt;&gt;S: connect (text)
+    end
+    S-&gt;&gt;C: connect-response (text)
+    S--&gt;&gt;C: offer (text)
+    par
+        S--&gt;&gt;C: candidate (text, one or more)
+    and
+        C--&gt;&gt;S: answer (text)
+        C--&gt;&gt;S: candidate (text, one or more)
+    end
+    Note over C,S: WebRTC PeerConnection established
+    S--&gt;&gt;C: setupCommand (over reliable data channel)
+    C--&gt;&gt;S: Handshake (binary WebSocket frame)
+    S--&gt;&gt;C: acknowledgeHandshake (over reliable data channel)
+    Note over C,S: ...streaming...
+    C-&gt;&gt;S: disconnect (text)" />
+</section>
+<section id="signal-types">
+<h2><span class="section-number">6.3.2. </span>Signal types<a class="headerlink" href="#signal-types" title="Link to this heading">¶</a></h2>
+<p>All signaling messages are JSON objects that contain a <code class="docutils literal notranslate"><span class="pre">teleport-signal-type</span></code> member identifying the message type. Unknown <code class="docutils literal notranslate"><span class="pre">teleport-signal-type</span></code> values that are not handled at the signaling layer (i.e. anything other than <code class="docutils literal notranslate"><span class="pre">connect</span></code> and <code class="docutils literal notranslate"><span class="pre">disconnect</span></code>) are forwarded to the WebRTC stack as part of the SDP/ICE exchange.</p>
+<section id="connect">
+<h3><span class="section-number">6.3.2.1. </span><code class="docutils literal notranslate"><span class="pre">connect</span></code><a class="headerlink" href="#connect" title="Link to this heading">¶</a></h3>
+<p>Sent by the client. A <strong>Client</strong> that wants to join (the <strong>Connecting Client</strong>) periodically sends a <code class="docutils literal notranslate"><span class="pre">connect</span></code> message until it receives a <code class="docutils literal notranslate"><span class="pre">connect-response</span></code>.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;connect&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;clientID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;teleport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;opaque identity string&gt;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">clientID</span></code> is zero if the client has not yet connected to this server session, and may be a unique non-zero id if it is attempting to reconnect.
+<code class="docutils literal notranslate"><span class="pre">teleport</span></code> is the protocol version (currently <code class="docutils literal notranslate"><span class="pre">&quot;0.9&quot;</span></code>).
+<code class="docutils literal notranslate"><span class="pre">identity</span></code> is an opaque string the client supplies for application-level authentication (may be empty).
+<code class="docutils literal notranslate"><span class="pre">connect-response</span></code>
+^^^^^^^^^^^^^^^^^^^^</p>
+<p>Sent by the server in response to <code class="docutils literal notranslate"><span class="pre">connect</span></code>.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;connect-response&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;clientID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">397357935703467</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;serverID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">13503465235793</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">clientID</span></code> and <code class="docutils literal notranslate"><span class="pre">serverID</span></code> are unsigned 64-bit numbers. They are unique on the server: no two clients can have the same ID. The <code class="docutils literal notranslate"><span class="pre">serverID</span></code> represents the session: if it matches a previous connection from the same client, cached resource and node ids persist; otherwise the client must clear all resource and node ids for this server.</p>
+</section>
+<section id="offer-answer">
+<h3><span class="section-number">6.3.2.2. </span><code class="docutils literal notranslate"><span class="pre">offer</span></code> / <code class="docutils literal notranslate"><span class="pre">answer</span></code><a class="headerlink" href="#offer-answer" title="Link to this heading">¶</a></h3>
+<p>After <code class="docutils literal notranslate"><span class="pre">connect-response</span></code>, the server initiates the WebRTC <a class="reference external" href="https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a> exchange. The server sends an <code class="docutils literal notranslate"><span class="pre">offer</span></code>:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;offer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sdp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[sdp contents]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>where <code class="docutils literal notranslate"><span class="pre">[sdp</span> <span class="pre">contents]</span></code> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Session_Description_Protocol">Session Description Protocol (SDP)</a> string describing the six data channels (see <a class="reference internal" href="data_transfer.html"><span class="doc">Data Transfer</span></a>).</p>
+<p>The client replies with an <code class="docutils literal notranslate"><span class="pre">answer</span></code>:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sdp&quot;</span><span class="p">:</span><span class="s2">&quot;[sdp contents]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="candidate">
+<h3><span class="section-number">6.3.2.3. </span><code class="docutils literal notranslate"><span class="pre">candidate</span></code><a class="headerlink" href="#candidate" title="Link to this heading">¶</a></h3>
+<p>Both sides also send one or more ICE candidates:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;candidate&quot;</span><span class="p">:</span><span class="s2">&quot;[ICE candidate string]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mid&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mlineindex&quot;</span><span class="p">:</span><span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>When each side has received the other’s <code class="docutils literal notranslate"><span class="pre">offer</span></code>/<code class="docutils literal notranslate"><span class="pre">answer</span></code> and at least one viable <code class="docutils literal notranslate"><span class="pre">candidate</span></code>, the WebRTC PeerConnection becomes <code class="docutils literal notranslate"><span class="pre">connected</span></code> and the data channels open.</p>
+</section>
+<section id="binary-handshake">
+<h3><span class="section-number">6.3.2.4. </span>Binary handshake<a class="headerlink" href="#binary-handshake" title="Link to this heading">¶</a></h3>
+<p>Once the data channels are open the server sends the <strong>Setup Command</strong> (see <a class="reference internal" href="service.html"><span class="doc">Data Service</span></a>) on the reliable channel. The client replies with a <a class="reference internal" href="service.html#handshake"><span class="std std-ref">Handshake</span></a> message <strong>as a binary WebSocket frame on the signaling connection</strong> (not on a data channel). This is the only binary message exchanged over the signaling WebSocket; all subsequent client-to-server traffic uses the data channels described in <a class="reference internal" href="data_transfer.html"><span class="doc">Data Transfer</span></a>.</p>
+</section>
+<section id="disconnect">
+<h3><span class="section-number">6.3.2.5. </span><code class="docutils literal notranslate"><span class="pre">disconnect</span></code><a class="headerlink" href="#disconnect" title="Link to this heading">¶</a></h3>
+<p>Sent by the client to terminate the session cleanly:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;disconnect&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>On receipt the server tears down the WebRTC PeerConnection and removes per-client state. The signaling WebSocket may also be closed at the transport layer.</p>
+</section>
+</section>
+<section id="after-connection">
+<h2><span class="section-number">6.3.3. </span>After connection<a class="headerlink" href="#after-connection" title="Link to this heading">¶</a></h2>
+<p>Once streaming is active, the signaling WebSocket is used for:</p>
+<ul class="simple">
+<li><p>further ICE <code class="docutils literal notranslate"><span class="pre">candidate</span></code> messages (network changes, NAT rebinding);</p></li>
+<li><p>renegotiation messages forwarded to the WebRTC stack;</p></li>
+<li><p>the client-to-server <code class="docutils literal notranslate"><span class="pre">disconnect</span></code>.</p></li>
+</ul>
+<p>All other application traffic (commands, geometry, video, audio, input, poses, acknowledgements) flows over the WebRTC data channels in <a class="reference internal" href="data_transfer.html"><span class="doc">Data Transfer</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="state_machine.html" class="btn btn-neutral float-left" title="6.2. Connection State Machine" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="service.html" class="btn btn-neutral float-right" title="6.4. Data Service" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2025, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

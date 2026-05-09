@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.10. Audio &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.11. Input" href="input.html" />
+    <link rel="prev" title="6.9. Geometry Payload" href="geometry_payload.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">6. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">6.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">6.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">6.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">6.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">6.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">6.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">6.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">6.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_payload.html">6.9. Geometry Payload</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.10. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">6.11. Input</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">7. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">6. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.10. </span>Audio</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/audio.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="audio">
+<span id="id1"></span><h1><span class="section-number">6.10. </span>Audio<a class="headerlink" href="#audio" title="Link to this heading">¶</a></h1>
+<p>Audio is carried on a single bidirectional WebRTC SCTP data channel labelled <code class="docutils literal notranslate"><span class="pre">&quot;audio_server_to_client&quot;</span></code> (stream index 60). The same channel carries server output to the client and, when <code class="docutils literal notranslate"><span class="pre">SetupCommand.audio_input_enabled</span></code> is true, microphone input from the client back to the server.</p>
+<p>Reference implementations:</p>
+<ul class="simple">
+<li><p>Server encoder pipeline — <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">teleport::server::AudioEncodePipeline</span></code> (<code class="docutils literal notranslate"><span class="pre">Teleport/TeleportServer/AudioEncodePipeline.cpp</span></code>).</p></li>
+<li><p>Server input handler — <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">teleport::server::ProcessAudioInput()</span></code> (registered through <code class="docutils literal notranslate"><span class="pre">Server_SetProcessAudioInputDelegate</span></code>).</p></li>
+<li><p>Wire enums — <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">avs::AudioCodec</span></code>, <code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">avs::AudioPayloadType</span></code>.</p></li>
+<li><p>Header constant — <code class="xref cpp cpp-var docutils literal notranslate"><span class="pre">avs::AudioParserInterface::HeaderSize</span></code> = 2.</p></li>
+</ul>
+<section id="channel-and-framing">
+<h2><span class="section-number">6.10.1. </span>Channel and framing<a class="headerlink" href="#channel-and-framing" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>SCTP stream index: <strong>60</strong>, label <code class="docutils literal notranslate"><span class="pre">audio_server_to_client</span></code>, reliable (set in <code class="docutils literal notranslate"><span class="pre">ClientPipeline.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">NetworkPipeline.cpp</span></code>).</p></li>
+<li><p>Each SCTP message contains a single audio packet.</p></li>
+<li><p>Packet header is 2 bytes:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>AudioPayloadType</p></td>
+<td><p>Currently the only defined value is <code class="docutils literal notranslate"><span class="pre">Capture</span></code> (0).</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>reserved</p></td>
+<td><p>Padding to align the payload to 2 bytes; ignored on receipt.</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Body: the codec-specific audio frame. For <code class="docutils literal notranslate"><span class="pre">AudioCodec::PCM</span></code> it is <code class="docutils literal notranslate"><span class="pre">numChannels</span> <span class="pre">*</span> <span class="pre">(bitsPerSample/8)</span> <span class="pre">*</span> <span class="pre">samples</span></code> interleaved bytes.</p></li>
+</ul>
+</section>
+<section id="codecs-and-parameters">
+<h2><span class="section-number">6.10.2. </span>Codecs and parameters<a class="headerlink" href="#codecs-and-parameters" title="Link to this heading">¶</a></h2>
+<p>The reference server defines the audio configuration in <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::server::AudioSettings</span></code>:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26.9%" />
+<col style="width: 20.9%" />
+<col style="width: 52.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">codec</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AudioCodec::PCM</span></code></p></td>
+<td><p>The only codec value the reference encoder produces. <code class="docutils literal notranslate"><span class="pre">Any</span></code> / <code class="docutils literal notranslate"><span class="pre">Invalid</span></code> are accepted in negotiation but mean “unspecified”.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sampleRate</span></code></p></td>
+<td><p>44100 Hz</p></td>
+<td><p>Server-driven.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bitsPerSample</span></code></p></td>
+<td><p>16</p></td>
+<td><p>Signed little-endian PCM.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">numChannels</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Stereo (channels are interleaved L, R).</p></td>
+</tr>
+</tbody>
+</table>
+<p>These parameters are <strong>not</strong> transmitted on the wire today: both endpoints must be configured to the same values out-of-band (the reference build hard-codes them on both sides). Future revisions are expected to publish them through a new <code class="docutils literal notranslate"><span class="pre">AudioConfig</span></code> block in <code class="docutils literal notranslate"><span class="pre">SetupCommand</span></code> analogous to <code class="docutils literal notranslate"><span class="pre">VideoConfig</span></code>.</p>
+</section>
+<section id="server-client">
+<h2><span class="section-number">6.10.3. </span>Server → client<a class="headerlink" href="#server-client" title="Link to this heading">¶</a></h2>
+<p>Each audio frame produced by the server’s audio source is pushed through <code class="docutils literal notranslate"><span class="pre">AudioEncodePipeline::sendAudio</span></code> and emerges on the data channel as one <code class="docutils literal notranslate"><span class="pre">AudioPayloadType::Capture</span></code> packet. The reference server does not currently apply Opus or any other codec; every frame is raw interleaved PCM.</p>
+</section>
+<section id="client-server-microphone-input">
+<h2><span class="section-number">6.10.4. </span>Client → server (microphone input)<a class="headerlink" href="#client-server-microphone-input" title="Link to this heading">¶</a></h2>
+<p>When <code class="docutils literal notranslate"><span class="pre">SetupCommand.audio_input_enabled</span></code> is non-zero, the client may write microphone data on the same channel. Packet framing is identical: 2-byte header (<code class="docutils literal notranslate"><span class="pre">Capture</span></code>, padding) followed by the PCM body in the same sample format the server uses for output.</p>
+<p>The server’s <code class="docutils literal notranslate"><span class="pre">CustomAudioStreamTarget</span></code> invokes the registered <code class="docutils literal notranslate"><span class="pre">processAudioInput(clientID,</span> <span class="pre">data,</span> <span class="pre">dataSize)</span></code> delegate for every received packet. <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">dataSize</span></code> are the <strong>payload only</strong>, with the 2-byte header stripped.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">audio_input_enabled</span></code> is zero, the client must not transmit on this channel; servers may close the connection on receipt of unsolicited audio.</p>
+</section>
+<section id="lifecycle">
+<h2><span class="section-number">6.10.5. </span>Lifecycle<a class="headerlink" href="#lifecycle" title="Link to this heading">¶</a></h2>
+<p>Audio begins as soon as the channel reports open during the WebRTC negotiation; there is no separate <code class="docutils literal notranslate"><span class="pre">StartAudio</span></code> command. <code class="docutils literal notranslate"><span class="pre">ShutdownCommand</span></code> and any transport-level close end the audio stream.</p>
+<p>Reconfiguration during a live session is not currently defined; servers that need to change sample rate or channel count must tear down the session and reissue <code class="docutils literal notranslate"><span class="pre">SetupCommand</span></code>.</p>
+</section>
+<section id="quality-and-pacing">
+<h2><span class="section-number">6.10.6. </span>Quality and pacing<a class="headerlink" href="#quality-and-pacing" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>The reference server pushes audio frames at the rate produced by the source. There is no built-in jitter buffer beyond what the SCTP transport provides; clients should implement their own playout buffer (the reference client does this in <code class="docutils literal notranslate"><span class="pre">CustomAudioStreamTarget</span></code>).</p></li>
+<li><p>Volume / gain is handled entirely on the consumer side; the wire format carries no per-packet metadata other than the type byte.</p></li>
+</ul>
+</section>
+<section id="operational-notes-for-implementers">
+<h2><span class="section-number">6.10.7. </span>Operational notes for implementers<a class="headerlink" href="#operational-notes-for-implementers" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>If you implement a non-C++ client, treat unknown <code class="docutils literal notranslate"><span class="pre">AudioPayloadType</span></code> values as a hard error — the only known value is <code class="docutils literal notranslate"><span class="pre">Capture</span></code>.</p></li>
+<li><p>The 2-byte header is the same for both directions. Do not omit the padding byte: <code class="docutils literal notranslate"><span class="pre">HeaderSize</span> <span class="pre">==</span> <span class="pre">2</span></code> is a public constant in the reference parser.</p></li>
+<li><p>Because sample rate / bit depth / channel count are out-of-band today, an interoperable client must default to 44.1 kHz, 16-bit, stereo PCM unless it has private knowledge of an alternative configuration.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="geometry_payload.html" class="btn btn-neutral float-left" title="6.9. Geometry Payload" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="input.html" class="btn btn-neutral float-right" title="6.11. Input" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2025, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6.4. Data Service &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6.4.6.1. Commands from Server to Client" href="service/server_to_client.html" />
+    <link rel="prev" title="6.3. Signaling" href="signaling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client/index.html">2. Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unity/index.html">3. Teleport Unity SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unreal/index.html">4. Teleport Unreal SDK</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nodejs/index.html">5. Teleport NodeJS SDK</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">6. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">6.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">6.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">6.3. Signaling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">6.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">6.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">6.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">6.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">6.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_payload.html">6.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">6.10. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">6.11. Input</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">7. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">6. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">6.4. </span>Data Service</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/service.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-service">
+<h1><span class="section-number">6.4. </span>Data Service<a class="headerlink" href="#data-service" title="Link to this heading">¶</a></h1>
+<section id="initialization">
+<h2><span class="section-number">6.4.1. </span>Initialization<a class="headerlink" href="#initialization" title="Link to this heading">¶</a></h2>
+<p>After a <strong>Connecting Client</strong> completes signaling, the Data Service has been created. This connection has six logical streams (channels). Each is identified on the wire by a numeric <strong>stream id</strong> that is the same on the server and the client.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-number">Table 6.2 </span><span class="caption-text">Data Service Channels</span><a class="headerlink" href="#id3" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11.9%" />
+<col style="width: 20.9%" />
+<col style="width: 10.4%" />
+<col style="width: 10.4%" />
+<col style="width: 10.4%" />
+<col style="width: 35.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Stream id</p></th>
+<th class="head"><p>Label</p></th>
+<th class="head"><p>Reliable</p></th>
+<th class="head"><p>Ordered</p></th>
+<th class="head"><p>Two-way</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>20</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">video</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Video stream from server to client (parsed as AVC/HEVC Annex-B).</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">video_tags</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Per-frame video metadata; framed payloads.</p></td>
+</tr>
+<tr class="row-even"><td><p>60</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">audio_server_to_client</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Bidirectional audio; framed payloads.</p></td>
+</tr>
+<tr class="row-odd"><td><p>80</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+<td><p>Geometry streaming to client; framed payloads with the parser described in <a class="reference internal" href="geometry_payload.html#geometry-payload"><span class="std std-ref">Geometry Payload</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">reliable</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>Reliable commands and messages, including all <code class="docutils literal notranslate"><span class="pre">CommandPayloadType</span></code> traffic and acknowledgements.</p></td>
+</tr>
+<tr class="row-odd"><td><p>120</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">unreliable</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>Unreliable, time-sensitive messages (per-frame poses, input states).</p></td>
+</tr>
+</tbody>
+</table>
+<p>The reference server defines these streams in <code class="docutils literal notranslate"><span class="pre">NetworkPipeline::initialise</span></code>; the reference client mirrors them in <code class="docutils literal notranslate"><span class="pre">ClientPipeline::Init</span></code>. The labels above must match exactly across implementations; the numeric ids are conventional but recommended.</p>
+<p>The video stream can be configured as H.264 or HEVC; see <a class="reference internal" href="video.html#video"><span class="std std-ref">Video</span></a>.</p>
+<p>When initial signaling is complete for this <strong>Client</strong>, the <strong>Server</strong> sends the <strong>Setup Command</strong> to the <strong>Client</strong> on the <strong>reliable</strong> channel (id 100).</p>
+<p><em>Definitions</em></p>
+<p>A <strong>server session</strong> starts when a server first initializes into its running state, and continues until the <strong>Server</strong> stops it.
+A <strong>client-server session</strong> starts when a client first connects to a specific server address, and continues until either the Client or the Server decides it is finished. This may include multiple <strong>network sessions</strong>, for example in the case of network outages or connection being paused by either party. The lifetime of a <strong>client-server session</strong> is a subset of the <strong>server session</strong>.
+A <strong>uid</strong> is an unsigned 64-bit number that is unique <em>for a specific Server Session</em>. <strong>uid</strong>’s are shared between the server and all of its clients. A <strong>uid</strong> need not be unique for different servers connected to the same client.</p>
+</section>
+<section id="command-packets-server-to-client">
+<span id="command-packet"></span><h2><span class="section-number">6.4.2. </span>Command packets (server-to-client)<a class="headerlink" href="#command-packets-server-to-client" title="Link to this heading">¶</a></h2>
+<p>All packets on the <strong>reliable</strong> channel from server to client are commands. Each command begins with a one-byte <code class="docutils literal notranslate"><span class="pre">CommandPayloadType</span></code> discriminator and is followed by the fixed body of the command struct, then any appended variable-length data. The full command catalogue is in <a class="reference internal" href="service/server_to_client.html"><span class="doc">Commands from Server to Client</span></a>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>bytes</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CommandPayloadType</p></td>
+<td><p>Discriminator (see below).</p></td>
+</tr>
+<tr class="row-odd"><td><p>sizeof(struct)-1</p></td>
+<td><p>command body</p></td>
+<td><p>Packed, 1-byte aligned, little-endian.</p></td>
+</tr>
+<tr class="row-even"><td><p>0+</p></td>
+<td><p>appended data</p></td>
+<td><p>Optional, command-specific (e.g. uid lists)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="message-packets-client-to-server">
+<span id="client-message-header"></span><h2><span class="section-number">6.4.3. </span>Message packets (client-to-server)<a class="headerlink" href="#message-packets-client-to-server" title="Link to this heading">¶</a></h2>
+<p>All packets sent by the client over the Data Service share a common 9-byte <code class="docutils literal notranslate"><span class="pre">ClientMessage</span></code> header. The <code class="docutils literal notranslate"><span class="pre">Handshake</span></code> (described below) is the only client message sent over the <strong>signaling</strong> WebSocket; every other client message is sent over the <strong>reliable</strong> channel (id 100) or the <strong>unreliable</strong> channel (id 120).</p>
+<p>The full client-to-server message catalogue is in <a class="reference internal" href="service/client_to_server.html"><span class="doc">Messages from Client to Server</span></a>.</p>
+</section>
+<section id="setup-command">
+<span id="id1"></span><h2><span class="section-number">6.4.4. </span>Setup Command<a class="headerlink" href="#setup-command" title="Link to this heading">¶</a></h2>
+<p>The <strong>Setup Command</strong> is the first command sent by the server, immediately after the signaling exchange completes. It tells the client how to configure its video decoder, what time-base the server is using, and which background to render. Its total size is 154 bytes (<code class="docutils literal notranslate"><span class="pre">static_assert(sizeof(SetupCommand)</span> <span class="pre">==</span> <span class="pre">154)</span></code>).</p>
+<p>Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::SetupCommand</span></code>.</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-number">Table 6.3 </span><span class="caption-text">SetupCommand</span><a class="headerlink" href="#id4" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CommandPayloadType</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Setup</span></code> (= 2).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">debug_stream</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">debug_network_packets</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">requiredLatencyMs</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">idle_connection_timeout</span></code> (ms)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>uint64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">session_id</span></code> – changes when the server session changes; clients that see the same id may keep cached resources.</p></td>
+</tr>
+<tr class="row-even"><td><p>89</p></td>
+<td><p>VideoConfig</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">video_config</span></code> (see below).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">draw_distance</span></code> (metres).</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>AxesStandard</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">axesStandard</span></code> – the server’s axis convention; the server converts everything sent to the client into the client’s standard.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>uint8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">audio_input_enabled</span></code> (1 if the server accepts an audio stream from the client).</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>uint8 (bool)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">using_ssl</span></code> – if non-zero, the client should fetch HTTP assets over HTTPS.</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>int64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">startTimestamp_utc_unix_us</span></code> – UTC Unix microseconds at which the server session began. Used as the zero point for <code class="docutils literal notranslate"><span class="pre">MovementUpdate.server_time_us</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>BackgroundMode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">backgroundMode</span></code> – <code class="docutils literal notranslate"><span class="pre">NONE</span></code> (0), <code class="docutils literal notranslate"><span class="pre">COLOUR</span></code> (1), <code class="docutils literal notranslate"><span class="pre">TEXTURE</span></code> (2), or <code class="docutils literal notranslate"><span class="pre">VIDEO</span></code> (3).</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>vec4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">backgroundColour</span></code> – used when <code class="docutils literal notranslate"><span class="pre">backgroundMode</span></code> is <code class="docutils literal notranslate"><span class="pre">COLOUR</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">backgroundTexture</span></code> – used when <code class="docutils literal notranslate"><span class="pre">backgroundMode</span></code> is <code class="docutils literal notranslate"><span class="pre">TEXTURE</span></code>; resolved via the HTTP service.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="videoconfig">
+<h3><span class="section-number">6.4.4.1. </span>VideoConfig<a class="headerlink" href="#videoconfig" title="Link to this heading">¶</a></h3>
+<p>89 bytes (<code class="docutils literal notranslate"><span class="pre">static_assert(sizeof(VideoConfig)</span> <span class="pre">==</span> <span class="pre">89)</span></code>). Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">avs::VideoConfig</span></code>. Lighting cubemap layout is <strong>not</strong> in <code class="docutils literal notranslate"><span class="pre">VideoConfig</span></code> – it is sent later via the <code class="docutils literal notranslate"><span class="pre">SetupLighting</span></code> command (see <a class="reference internal" href="service/server_to_client.html"><span class="doc">Commands from Server to Client</span></a>).</p>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-number">Table 6.4 </span><span class="caption-text">VideoConfig</span><a class="headerlink" href="#id5" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">video_width</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">video_height</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">depth_width</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">depth_height</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">perspective_width</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">perspective_height</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">perspective_fov</span></code> (degrees).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nearClipPlane</span></code> (metres).</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">webcam_width</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">webcam_height</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">webcam_offset_x</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">webcam_offset_y</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">use_10_bit_decoding</span></code> (0 or 1).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">use_yuv_444_decoding</span></code> (0 or 1).</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">use_alpha_layer_decoding</span></code> (0 or 1).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">colour_cubemap_size</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">compose_cube</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">use_cubemap</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">stream_webcam</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>avs::VideoCodec</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">videoCodec</span></code> – <code class="docutils literal notranslate"><span class="pre">Any</span></code> (0), <code class="docutils literal notranslate"><span class="pre">H264</span></code>, <code class="docutils literal notranslate"><span class="pre">HEVC</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">shadowmap_x</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">shadowmap_y</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">shadowmap_size</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="handshake">
+<span id="id2"></span><h2><span class="section-number">6.4.5. </span>Handshake<a class="headerlink" href="#handshake" title="Link to this heading">¶</a></h2>
+<p>After receiving the <strong>Setup Command</strong>, the client sends a <code class="docutils literal notranslate"><span class="pre">Handshake</span></code> message back to the server. In the reference implementation this single message is sent as a <strong>binary WebSocket frame</strong> over the signaling connection (see <code class="docutils literal notranslate"><span class="pre">DiscoveryService::SendBinary</span></code>); all other client messages travel over the Data Service.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Handshake</span></code> is variable-size: it carries the fixed body below followed by <code class="docutils literal notranslate"><span class="pre">resourceCount</span></code> <code class="docutils literal notranslate"><span class="pre">avs::uid</span></code> entries listing the resources the client already has cached. Total fixed body size: 58 bytes (<code class="docutils literal notranslate"><span class="pre">static_assert(sizeof(Handshake)</span> <span class="pre">==</span> <span class="pre">58)</span></code>). Reference implementation: <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::Handshake</span></code>.</p>
+<p>It is a <a class="reference internal" href="#client-message-header"><span class="std std-ref">ClientMessage</span></a> and therefore begins with the standard 9-byte header.</p>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-number">Table 6.5 </span><span class="caption-text">Handshake</span><a class="headerlink" href="#id6" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>ClientMessagePayloadType</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Handshake</span></code> (= 1).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>int64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">timestamp_session_us</span></code> (see <a class="reference internal" href="#client-message-header"><span class="std std-ref">Message packets (client-to-server)</span></a>).</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">startDisplayInfo.width</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">startDisplayInfo.height</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">startDisplayInfo.framerate</span></code> (Hz, measured).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MetresPerUnit</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>float</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">FOV</span></code> (degrees).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">udpBufferSize</span></code> (kilobytes).</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">maxBandwidthKpS</span></code> (kilobytes/s).</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>AxesStandard</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">axesStandard</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>uint8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">framerate</span></code> (Hz, target).</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bool</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">isVR</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>uint64</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">resourceCount</span></code> = N (number of cached resource uids that follow).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>uint32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">maxLightsSupported</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>int32</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">minimumPriority</span></code> – meshes with lower priority need not be sent.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>RenderingFeatures</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">renderingFeatures.normals</span></code> (1 byte) + <code class="docutils literal notranslate"><span class="pre">renderingFeatures.ambientOcclusion</span></code> (1 byte).</p></td>
+</tr>
+<tr class="row-even"><td><p>8 * N</p></td>
+<td><p>uid[]</p></td>
+<td><p>Cached resource uids.</p></td>
+</tr>
+</tbody>
+</table>
+<p>When the server receives the <strong>Handshake</strong>, it starts streaming data and sends an <code class="docutils literal notranslate"><span class="pre">AcknowledgeHandshake</span></code> command on the <strong>reliable</strong> channel (id 100):</p>
+<table class="docutils align-default" id="id7">
+<caption><span class="caption-number">Table 6.6 </span><span class="caption-text">AcknowledgeHandshake</span><a class="headerlink" href="#id7" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>CommandPayloadType</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">AcknowledgeHandshake</span></code> (= 3).</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>size_t (uint64)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">visibleNodeCount</span></code> = N.</p></td>
+</tr>
+<tr class="row-even"><td><p>8 * N</p></td>
+<td><p>uid[]</p></td>
+<td><p>uids of nodes the client should expect to be streamed.</p></td>
+</tr>
+</tbody>
+</table>
+<p>See <code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::core::AcknowledgeHandshakeCommand</span></code>.</p>
+<p>Once the <strong>Client</strong> has received the <code class="docutils literal notranslate"><span class="pre">AcknowledgeHandshake</span></code>, initialization is complete and the client enters the main continuous Update mode.</p>
+</section>
+<section id="update">
+<h2><span class="section-number">6.4.6. </span>Update<a class="headerlink" href="#update" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="service/server_to_client.html">6.4.6.1. Commands from Server to Client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/server_to_client.html#acknowledged-commands">6.4.6.1.1. Acknowledged commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/server_to_client.html#selected-command-layouts">6.4.6.1.2. Selected command layouts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service/client_to_server.html">6.4.6.2. Messages from Client to Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#common-header">6.4.6.2.1. Common header</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#displayinfo-id-8">6.4.6.2.2. DisplayInfo (id = 8)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#controllerposes-id-4">6.4.6.2.3. ControllerPoses (id = 4)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#receivedresources-id-3">6.4.6.2.4. ReceivedResources (id = 3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#nodestatus-id-2">6.4.6.2.5. NodeStatus (id = 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#resourcelost-id-5">6.4.6.2.6. ResourceLost (id = 5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#inputstates-id-6">6.4.6.2.7. InputStates (id = 6)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#inputevents-id-7">6.4.6.2.8. InputEvents (id = 7)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#keyframerequest-id-9">6.4.6.2.9. KeyframeRequest (id = 9)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#pongforlatency-id-10">6.4.6.2.10. PongForLatency (id = 10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#acknowledgement-id-12">6.4.6.2.11. Acknowledgement (id = 12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service/client_to_server.html#orthogonalacknowledgement-id-11">6.4.6.2.12. OrthogonalAcknowledgement (id = 11)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="signaling.html" class="btn btn-neutral float-left" title="6.3. Signaling" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="service/server_to_client.html" class="btn btn-neutral float-right" title="6.4.6.1. Commands from Server to Client" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2025, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
