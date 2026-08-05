@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.14. Reconnection &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Reference Implementation" href="../reference/index.html" />
+    <link rel="prev" title="2.13. Asset Portability" href="asset_portability.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">2.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">2.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">2.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">2.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">2.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">2.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">2.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">2.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_payload.html">2.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_nodes.html">2.10. Origins and Client-Specific Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">2.11. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">2.12. Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asset_portability.html">2.13. Asset Portability</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.14. Reconnection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">3. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">2. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.14. </span>Reconnection</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/reconnection.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="reconnection">
+<span id="id1"></span><h1><span class="section-number">2.14. </span>Reconnection<a class="headerlink" href="#reconnection" title="Link to this heading">¶</a></h1>
+<p>When an established Teleport session loses its real-time transport (the WebRTC
+peer connection drops, the WebSocket closes, or the underlying network goes
+away) the client does not immediately tear down its local reflection of the
+remote scene. Instead it tries a bounded number of times to re-establish the
+session with the same server, and only gives up — clearing the geometry cache
+and stopping rendering of the remote content — when those attempts have all
+failed.</p>
+<section id="triggering-a-reconnect">
+<h2><span class="section-number">2.14.1. </span>Triggering a reconnect<a class="headerlink" href="#triggering-a-reconnect" title="Link to this heading">¶</a></h2>
+<p>The reference client samples <code class="docutils literal notranslate"><span class="pre">avs::StreamingConnectionState</span></code> (exposed by
+<a class="reference internal" href="../reference/libavstream.html#_CPPv4N3avs19WebRtcNetworkSourceE" title="avs::WebRtcNetworkSource"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">avs::WebRtcNetworkSource</span></code></a>) once per frame. A transition from
+<code class="docutils literal notranslate"><span class="pre">CONNECTED</span></code> to any of <code class="docutils literal notranslate"><span class="pre">DISCONNECTED</span></code>, <code class="docutils literal notranslate"><span class="pre">FAILED</span></code> or <code class="docutils literal notranslate"><span class="pre">CLOSED</span></code> is treated
+as a drop of an established session and triggers reconnection, but only if the
+client had previously completed a setup handshake (<code class="docutils literal notranslate"><span class="pre">lastSessionId</span></code> is
+non-zero); an initial-connect failure is left to the user to retry.</p>
+</section>
+<section id="state-machine">
+<h2><span class="section-number">2.14.2. </span>State machine<a class="headerlink" href="#state-machine" title="Link to this heading">¶</a></h2>
+<object data="../../_images/mermaid-8cc29024961df61e01fa7ec6b368b4117f344a43.svg" type="image/svg+xml">
+            <p class="warning">stateDiagram-v2
+    [*] --&gt; UNCONNECTED
+    UNCONNECTED --&gt; OFFERING : user requests connection
+    OFFERING --&gt; AWAITING_SETUP : connect-response + Connect()
+    AWAITING_SETUP --&gt; HANDSHAKING : SetupCommand received
+    HANDSHAKING --&gt; CONNECTED : AcknowledgeHandshake received
+    CONNECTED --&gt; RECONNECTING : streaming state -&gt; DISCONNECTED/FAILED/CLOSED
+    RECONNECTING --&gt; RECONNECTING : back-off elapsed, attempt fails
+    RECONNECTING --&gt; AWAITING_SETUP : connect-response received
+    RECONNECTING --&gt; UNCONNECTED : max attempts exhausted (give up)
+    CONNECTED --&gt; UNCONNECTED : explicit disconnect</p></object>
+<p>The new <code class="docutils literal notranslate"><span class="pre">RECONNECTING</span></code> value is added to
+<code class="xref cpp cpp-enum docutils literal notranslate"><span class="pre">teleport::client::ConnectionStatus</span></code>. While the client is in
+<code class="docutils literal notranslate"><span class="pre">RECONNECTING</span></code> it does not send a <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> JSON frame to the server —
+it keeps the previous <code class="docutils literal notranslate"><span class="pre">clientID</span></code> and <code class="docutils literal notranslate"><span class="pre">serverID</span></code> so that the server can
+match the next <code class="docutils literal notranslate"><span class="pre">connect</span></code> as a continuation of the session.</p>
+</section>
+<section id="back-off">
+<h2><span class="section-number">2.14.3. </span>Back-off<a class="headerlink" href="#back-off" title="Link to this heading">¶</a></h2>
+<p>Each time the per-attempt deadline (<code class="docutils literal notranslate"><span class="pre">Options::connectionTimeout</span></code>) elapses
+without a <code class="docutils literal notranslate"><span class="pre">connect-response</span></code>, the back-off doubles, clamped to
+<code class="docutils literal notranslate"><span class="pre">Options::reconnectMaxBackoffMs</span></code>. The first wait is
+<code class="docutils literal notranslate"><span class="pre">Options::reconnectInitialBackoffMs</span></code>. After
+<code class="docutils literal notranslate"><span class="pre">Options::maxReconnectAttempts</span></code> failed attempts the client gives up.</p>
+</section>
+<section id="configuration">
+<h2><span class="section-number">2.14.4. </span>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">¶</a></h2>
+<p>The reconnection behaviour is controlled by three fields on
+<code class="xref cpp cpp-struct docutils literal notranslate"><span class="pre">teleport::client::Options</span></code>, persisted in <code class="docutils literal notranslate"><span class="pre">options.txt</span></code> under the
+keys <code class="docutils literal notranslate"><span class="pre">MaxReconnectAttempts</span></code>, <code class="docutils literal notranslate"><span class="pre">ReconnectInitialBackoffMs</span></code> and
+<code class="docutils literal notranslate"><span class="pre">ReconnectMaxBackoffMs</span></code>:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 10.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">maxReconnectAttempts</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+<td><p>Number of attempts before giving up. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable
+reconnection (the client will give up immediately on a drop).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reconnectInitialBackoffMs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">500</span></code></p></td>
+<td><p>Wait before the first attempt, in milliseconds.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reconnectMaxBackoffMs</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4000</span></code></p></td>
+<td><p>Upper bound for the back-off, in milliseconds. Each subsequent attempt
+doubles the previous wait and is clamped to this value.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="server-id-matching">
+<h2><span class="section-number">2.14.5. </span>Server-ID matching<a class="headerlink" href="#server-id-matching" title="Link to this heading">¶</a></h2>
+<p>A reconnect is only treated as a <em>continuation</em> of the previous session when
+the <code class="docutils literal notranslate"><span class="pre">serverID</span></code> returned in the <code class="docutils literal notranslate"><span class="pre">connect-response</span></code> matches the one the
+client recorded for the previous successful connection.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">clientID</span></code> and <code class="docutils literal notranslate"><span class="pre">serverID</span></code> both match the values the client already
+holds, <a class="reference internal" href="../reference/teleportclient.html#_CPPv4N8teleport6client15SignalingServerE" title="teleport::client::SignalingServer"><code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">teleport::client::SignalingServer</span></code></a> clears its
+<code class="docutils literal notranslate"><span class="pre">clearResources</span></code> flag. <code class="docutils literal notranslate"><span class="pre">SessionClient::HandleConnections</span></code> then preserves
+the geometry cache, and the next <code class="docutils literal notranslate"><span class="pre">SetupCommand</span></code> arriving with the same
+<code class="docutils literal notranslate"><span class="pre">session_id</span></code> allows the client to skip re-acknowledging resources it has
+already cached.</p></li>
+<li><p>If either id differs (for example because the server application has
+restarted and considers itself to be running a new state),
+<code class="docutils literal notranslate"><span class="pre">SignalingServer</span></code> adopts the new ids and signals
+<code class="docutils literal notranslate"><span class="pre">DiscoveryService::ShouldClear</span></code>. <code class="docutils literal notranslate"><span class="pre">SessionClient</span></code> then drops the
+geometry cache before completing the new setup, exactly as for a first-time
+connection to a fresh server.</p></li>
+</ul>
+</section>
+<section id="giving-up">
+<h2><span class="section-number">2.14.6. </span>Giving up<a class="headerlink" href="#giving-up" title="Link to this heading">¶</a></h2>
+<p>When the maximum number of attempts is exhausted, the client:</p>
+<ol class="arabic simple">
+<li><p>Tears down the streaming pipeline
+(<code class="docutils literal notranslate"><span class="pre">ClientPipeline::pipeline.deconfigure()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">source-&gt;deconfigure()</span></code>).</p></li>
+<li><p>Calls <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">teleport::client::SessionCommandInterface::OnReconnectGaveUp()</span></code>
+on the renderer. The reference <code class="xref cpp cpp-class docutils literal notranslate"><span class="pre">teleport::clientrender::InstanceRenderer</span></code>
+responds by closing the video stream and clearing the geometry cache, so
+the local reflection of the remote scene is no longer drawn.</p></li>
+<li><p>Clears the geometry cache associated with the session.</p></li>
+<li><p>Performs a clean <code class="xref cpp cpp-func docutils literal notranslate"><span class="pre">teleport::client::SessionClient::Disconnect()</span></code>,
+resetting <code class="docutils literal notranslate"><span class="pre">clientID</span></code> and sending a <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> frame to the server (if
+the WebSocket is still open).</p></li>
+<li><p>Returns to <code class="docutils literal notranslate"><span class="pre">UNCONNECTED</span></code>. A subsequent user action (clicking a bookmark,
+re-typing the URL) is needed to start a new session.</p></li>
+</ol>
+</section>
+<section id="surfacing-transport-drops">
+<h2><span class="section-number">2.14.7. </span>Surfacing transport drops<a class="headerlink" href="#surfacing-transport-drops" title="Link to this heading">¶</a></h2>
+<p>To make reconnection responsive, the WebRTC network source pushes its state to
+<code class="docutils literal notranslate"><span class="pre">DISCONNECTED</span></code> as soon as a <code class="docutils literal notranslate"><span class="pre">send</span></code> call fails because the channel is
+closed, in addition to the normal <code class="docutils literal notranslate"><span class="pre">onStateChange</span></code> callback. This guarantees
+that the next <code class="docutils literal notranslate"><span class="pre">Frame</span></code> call observes the drop without waiting for the peer
+connection’s own state machine to catch up.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="asset_portability.html" class="btn btn-neutral float-left" title="2.13. Asset Portability" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../reference/index.html" class="btn btn-neutral float-right" title="3. Reference Implementation" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

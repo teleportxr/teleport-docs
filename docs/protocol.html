@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. The Teleport Protocol &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.1. Conventions" href="protocol/conventions.html" />
+    <link rel="prev" title="1. Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. The Teleport Protocol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/conventions.html">2.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/state_machine.html">2.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/signaling.html">2.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html">2.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html">2.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/http.html">2.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html">2.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html">2.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html">2.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/client_nodes.html">2.10. Origins and Client-Specific Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html">2.11. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/input.html">2.12. Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/asset_portability.html">2.13. Asset Portability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/reconnection.html">2.14. Reconnection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">3. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2. </span>The Teleport Protocol</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/docs/protocol.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-teleport-protocol">
+<h1><span class="section-number">2. </span>The Teleport Protocol<a class="headerlink" href="#the-teleport-protocol" title="Link to this heading">¶</a></h1>
+<p>The Teleport Protocol is a network protocol for client-server immersive applications.
+Essentially this means that applications can be used remotely without downloading or installing them.
+The protocol is open, meaning that anyone can use it, either by writing a client program or by developing a server that uses the protocol.</p>
+<p>Teleport is a top-level application-layer protocol. It uses three transport layers in parallel: a WebSocket connection for signaling, a media/data transport (WebRTC by default, with optional SRT/EFP support) for real-time streams, and an HTTP(S) service for static asset retrieval.</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">Network Layers</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Teleport XR</p></td>
+<td><p>Real-time client-server interface of a virtual world.</p></td>
+</tr>
+<tr class="row-even"><td><p>WebSocket / WebRTC / HTTP(S)</p></td>
+<td><p>Signaling, real-time data channels, and static asset transfer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TCP / UDP / TLS / DTLS-SRTP / SCTP</p></td>
+<td><p>Standard transports underlying the above.</p></td>
+</tr>
+<tr class="row-even"><td><p>Network, Data Link, Physical Layer</p></td>
+<td><p>Standard network layers</p></td>
+</tr>
+</tbody>
+</table>
+<p>Teleport XR Ltd provides reference implementations of both client and server.
+The protocol and software should be considered pre-alpha, suitable for testing, evaluation and experimentation.</p>
+<p>Here is the code:</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">Reference Code</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>URL</p></th>
+<th class="head"><p>Contents</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/teleportxr/Teleport/">https://github.com/teleportxr/Teleport/</a></p></td>
+<td><p>Native C++ Client app for Windows, Linux and Quest, Native C++ server library for Unreal and Unity-based servers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/teleportxr/teleport-nodejs">https://github.com/teleportxr/teleport-nodejs</a></p></td>
+<td><p>Lightweight nodejs server library. Use <cite>npm install teleportxr</cite>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/teleportxr/teleport-nodejs-server-example">https://github.com/teleportxr/teleport-nodejs-server-example</a></p></td>
+<td><p>Lightweight nodejs server example: uses the <cite>teleportxr</cite> npm package.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/teleportxr/teleport-web-client">https://github.com/teleportxr/teleport-web-client</a></p></td>
+<td><p>Web client suitable for embedding (pre-alpha)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The protocol uses three concurrent connections between a client and server:</p>
+<p>The Signaling connection is established first; the Server then sends a
+<strong>Setup Command</strong> which contains the parameters needed by the Client to
+attach to the Data Service and the HTTP service.</p>
+<object data="../_images/mermaid-33c2a19f8f2cb087cf5aa862bb480b07cc534e7f.svg" type="image/svg+xml">
+            <p class="warning">flowchart LR
+    C[Client]
+    S[Server]
+    D[Data Source]
+    C &lt;-- &quot;WebSocket: signaling (JSON + binary)&quot; --&gt; S
+    C &lt;-- &quot;WebRTC: 6 data channels&quot; --&gt; S
+    C &lt;-- &quot;HTTP(S) GET /asset.ext&quot; --&gt; D</p></object>
+<p>The data source may be the same server, or it may be one or more other sources.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="protocol/conventions.html">2.1. Conventions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/conventions.html#endianness-alignment-and-packing">2.1.1. Endianness, alignment and packing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/conventions.html#identifiers">2.1.2. Identifiers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/conventions.html#coordinate-systems-and-units">2.1.3. Coordinate systems and units</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/conventions.html#time-base">2.1.4. Time base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/conventions.html#versioning">2.1.5. Versioning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/state_machine.html">2.2. Connection State Machine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/state_machine.html#phases">2.2.1. Phases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/state_machine.html#reconnection">2.2.2. Reconnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/state_machine.html#connection-state-enumeration">2.2.3. Connection state enumeration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/state_machine.html#timeouts">2.2.4. Timeouts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/signaling.html">2.3. Signaling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/signaling.html#connection">2.3.1. Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/signaling.html#signal-types">2.3.2. Signal types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/signaling.html#after-connection">2.3.3. After connection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/service.html">2.4. Data Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#initialization">2.4.1. Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#command-packets-server-to-client">2.4.2. Command packets (server-to-client)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#message-packets-client-to-server">2.4.3. Message packets (client-to-server)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#setup-command">2.4.4. Setup Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#handshake">2.4.5. Handshake</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/service.html#update">2.4.6. Update</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/data_transfer.html">2.5. Data Transfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#reliability-requirements">2.5.1. Reliability requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#webrtc-transport-default">2.5.2. WebRTC transport (default)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/data_transfer.html#legacy-transport-srt-efp">2.5.3. Legacy transport: SRT + EFP</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/http.html">2.6. HTTP Service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/http.html#endpoint">2.6.1. Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/http.html#url-format">2.6.2. URL format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/http.html#client-behaviour">2.6.3. Client behaviour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/http.html#lifecycle">2.6.4. Lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/http.html#sequence">2.6.5. Sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/http.html#operational-notes-for-implementers">2.6.6. Operational notes for implementers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/video.html">2.7. Video</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#video-texture-layout">2.7.1. Video Texture Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#video-frame-structure">2.7.2. Video Frame Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#recovering-from-corruption">2.7.3. Recovering from Corruption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#minimizing-latency">2.7.4. Minimizing Latency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video.html#processing-of-video-frame-on-the-client">2.7.5. Processing of video Frame on the Client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/video_metadata.html">2.8. Video Metadata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#structure-of-metadata">2.8.1. Structure of Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#sending-metadata-to-the-client">2.8.2. Sending Metadata to the Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/video_metadata.html#processing-metadata-on-the-client">2.8.3. Processing Metadata on the Client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/geometry_payload.html">2.9. Geometry Payload</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#channel-framing">2.9.1. Channel framing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#payload-types">2.9.2. Payload types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#node-payload">2.9.3. Node payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#mesh-payload">2.9.4. Mesh payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#material-payload">2.9.5. Material payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#materialinstance-payload">2.9.6. MaterialInstance payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#texture-payload">2.9.7. Texture payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#animation-payload">2.9.8. Animation payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#skeleton-payload">2.9.9. Skeleton payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#fontatlas-payload">2.9.10. FontAtlas payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#textcanvas-payload">2.9.11. TextCanvas payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#texturepointer-payload">2.9.12. TexturePointer payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#meshpointer-payload">2.9.13. MeshPointer payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#materialpointer-payload">2.9.14. MaterialPointer payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#removenodes-payload">2.9.15. RemoveNodes payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#resource-lifecycle">2.9.16. Resource lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#axis-conversion">2.9.17. Axis conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/geometry_payload.html#coding-conventions">2.9.18. Coding conventions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/client_nodes.html">2.10. Origins and Client-Specific Nodes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/client_nodes.html#the-origin-node">2.10.1. The origin node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/client_nodes.html#ownership">2.10.2. Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/client_nodes.html#lifetime">2.10.3. Lifetime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/audio.html">2.11. Audio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html#codec-and-rtp-parameters">2.11.1. Codec and RTP parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html#topology">2.11.2. Topology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html#audioconfig-inside-setupcommand">2.11.3. <code class="docutils literal notranslate"><span class="pre">AudioConfig</span></code> (inside <code class="docutils literal notranslate"><span class="pre">SetupCommand</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html#selection-policy-and-caps">2.11.4. Selection policy and caps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html#binding-audio-to-nodes">2.11.5. Binding audio to nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html#join-and-leave">2.11.6. Join and leave</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html#example">2.11.7. Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/audio.html#lifecycle">2.11.8. Lifecycle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/input.html">2.12. Input</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/input.html#negotiation-setupinputscommand">2.12.1. Negotiation: SetupInputsCommand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/input.html#inputtype-bitfield">2.12.2. InputType bitfield</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/input.html#reporting-inputstatesmessage">2.12.3. Reporting: InputStatesMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/input.html#reporting-inputeventsmessage">2.12.4. Reporting: InputEventsMessage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/input.html#pose-stream">2.12.5. Pose stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/input.html#sequence">2.12.6. Sequence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/input.html#operational-notes-for-implementers">2.12.7. Operational notes for implementers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/asset_portability.html">2.13. Asset Portability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/asset_portability.html#classes-of-portable-asset">2.13.1. Classes of portable asset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/asset_portability.html#negotiation">2.13.2. Negotiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/asset_portability.html#proof-of-right-to-use">2.13.3. Proof of right to use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/asset_portability.html#restrictions">2.13.4. Restrictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/asset_portability.html#projection-to-peers">2.13.5. Projection to peers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="protocol/reconnection.html">2.14. Reconnection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="protocol/reconnection.html#triggering-a-reconnect">2.14.1. Triggering a reconnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/reconnection.html#state-machine">2.14.2. State machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/reconnection.html#back-off">2.14.3. Back-off</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/reconnection.html#configuration">2.14.4. Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/reconnection.html#server-id-matching">2.14.5. Server-ID matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/reconnection.html#giving-up">2.14.6. Giving up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="protocol/reconnection.html#surfacing-transport-drops">2.14.7. Surfacing transport drops</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="1. Introduction" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="protocol/conventions.html" class="btn btn-neutral float-right" title="2.1. Conventions" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

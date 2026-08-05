@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.13. Asset Portability &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.14. Reconnection" href="reconnection.html" />
+    <link rel="prev" title="2.12. Input" href="input.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">2.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">2.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">2.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">2.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">2.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">2.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">2.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">2.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_payload.html">2.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_nodes.html">2.10. Origins and Client-Specific Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">2.11. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">2.12. Input</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.13. Asset Portability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconnection.html">2.14. Reconnection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">3. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">2. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.13. </span>Asset Portability</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/asset_portability.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="asset-portability">
+<span id="id1"></span><h1><span class="section-number">2.13. </span>Asset Portability<a class="headerlink" href="#asset-portability" title="Link to this heading">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This page is a <strong>design sketch</strong>. Only the avatar case is specified and implemented
+today, as <a class="reference internal" href="signaling.html#signaling-avatars"><span class="std std-ref">avatar negotiation</span></a>; the generalised message family
+described below is not yet part of the protocol. It is documented here so that the
+avatar mechanism is understood as one instance of a general pattern rather than a
+special case.</p>
+</div>
+<p>A <em>portable asset</em> is content the client brings to a world, rather than content the world
+supplies. An avatar is the obvious example, but the same shape applies to an object a user
+carries between worlds, or a collection of them held in an inventory.</p>
+<p>Portability is negotiated, never assumed. A server advertises which classes of portable
+asset it will accept and on what terms; a client offers what it holds, along with evidence
+of its right to use it; the server accepts, constrains or refuses. A world that supports no
+portable assets at all is a complete and valid Teleport server, and a client that brings
+none is a complete and valid Teleport client.</p>
+<section id="classes-of-portable-asset">
+<h2><span class="section-number">2.13.1. </span>Classes of portable asset<a class="headerlink" href="#classes-of-portable-asset" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23.1%" />
+<col style="width: 76.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Class</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">avatar</span></code></p></td>
+<td><p>The representation of the user themselves. At most one is active per client. Specified today as <a class="reference internal" href="signaling.html#signaling-avatars"><span class="std std-ref">avatar negotiation</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">borne</span></code></p></td>
+<td><p>An object the user is holding, wearing or otherwise carrying into the world. Visible to peers from the moment it is accepted.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">stashed</span></code></p></td>
+<td><p>An object held in an inventory and not currently instantiated in the scene. It costs the world nothing until the user produces it, at which point it becomes <code class="docutils literal notranslate"><span class="pre">borne</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>A server may support any subset. Supporting <code class="docutils literal notranslate"><span class="pre">stashed</span></code> without <code class="docutils literal notranslate"><span class="pre">borne</span></code> is legal but
+pointless, since nothing could ever be produced.</p>
+</section>
+<section id="negotiation">
+<h2><span class="section-number">2.13.2. </span>Negotiation<a class="headerlink" href="#negotiation" title="Link to this heading">¶</a></h2>
+<p>The exchange mirrors <a class="reference internal" href="signaling.html#signaling-avatars"><span class="std std-ref">avatar negotiation</span></a>, generalised by an
+explicit <code class="docutils literal notranslate"><span class="pre">class</span></code>. The server may open it at any time after <code class="docutils literal notranslate"><span class="pre">connect-response</span></code>, and may
+re-open it during a session — a world can begin permitting borne objects only after the
+user reaches some part of it.</p>
+<object data="../../_images/mermaid-79a89d2ce9e13832d47f7c796aa4d62fb69dcc2e.svg" type="image/svg+xml">
+            <p class="warning">sequenceDiagram
+    participant C as Client
+    participant S as Server
+    S-&gt;&gt;C: asset-policy (classes, requirements, proof schemes)
+    C-&gt;&gt;S: asset-offer (manifest + proofs)
+    S-&gt;&gt;C: asset-result (per item: accepted / constrained / rejected)
+    Note over S,C: asset appears to peers as ordinary nodes
+    S-&gt;&gt;C: asset-revoke (optional, at any time)</p></object>
+<section id="asset-policy">
+<h3><span class="section-number">2.13.2.1. </span><code class="docutils literal notranslate"><span class="pre">asset-policy</span></code><a class="headerlink" href="#asset-policy" title="Link to this heading">¶</a></h3>
+<p>Server to client. States what the world will accept. <code class="docutils literal notranslate"><span class="pre">requirements</span></code> is a free-form bag
+whose keys depend on the class; unknown keys MUST be ignored, so the set can grow without a
+version bump.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asset-policy&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                 </span><span class="nt">&quot;avatar&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;requirement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                 </span><span class="nt">&quot;borne&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;requirement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;max_concurrent&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                 </span><span class="nt">&quot;stashed&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;requirement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;forbidden&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;requirements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;glb&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;vrm&quot;</span><span class="p">],</span>
+<span class="w">                                 </span><span class="nt">&quot;max_file_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8388608</span><span class="p">,</span>
+<span class="w">                                 </span><span class="nt">&quot;max_triangles&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60000</span><span class="w"> </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;proof&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                          </span><span class="nt">&quot;accepted_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;jws-detached&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="asset-offer">
+<h3><span class="section-number">2.13.2.2. </span><code class="docutils literal notranslate"><span class="pre">asset-offer</span></code><a class="headerlink" href="#asset-offer" title="Link to this heading">¶</a></h3>
+<p>Client to server. Carries a <strong>manifest</strong> — the assets the client wishes to use — together
+with the proofs of its right to use them. A manifest may describe one item or many; an
+inventory is offered as a single manifest rather than as a message per object.</p>
+<p>Proofs sit beside the items rather than at the top of the offer, and each names the assets
+it covers. A manifest may therefore mix assets vouched for by different issuers, and one
+proof may cover a group without being repeated per item.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asset-offer&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;manifest&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                 </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                   </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;asset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:example:sword:42&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;class&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;borne&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://assets.example.com/sword.glb&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="nt">&quot;content_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256:abcd&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="nt">&quot;declared&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glb&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;file_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40960</span><span class="p">,</span>
+<span class="w">                                   </span><span class="nt">&quot;triangles&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5200</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">],</span>
+<span class="w">                 </span><span class="nt">&quot;proofs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                   </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jws-detached&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eyJ...&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="nt">&quot;covers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;urn:example:sword:42&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;allow_relay&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="asset-result">
+<h3><span class="section-number">2.13.2.3. </span><code class="docutils literal notranslate"><span class="pre">asset-result</span></code><a class="headerlink" href="#asset-result" title="Link to this heading">¶</a></h3>
+<p>Server to client. The server is free to accept an offer only in part.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;asset-result&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;items&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                 </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;asset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:example:sword:42&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;accepted_with_constraints&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="nt">&quot;node_uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;delivery&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;import&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="nt">&quot;constraints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;scale_clamped&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                   </span><span class="nt">&quot;reasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;oversize_reduced&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">},</span>
+<span class="w">                 </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;asset_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urn:example:lantern:7&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rejected&quot;</span><span class="p">,</span>
+<span class="w">                   </span><span class="nt">&quot;reasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;proof_missing&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">status</span></code> is <code class="docutils literal notranslate"><span class="pre">accepted</span></code>, <code class="docutils literal notranslate"><span class="pre">accepted_with_constraints</span></code> or <code class="docutils literal notranslate"><span class="pre">rejected</span></code>. <code class="docutils literal notranslate"><span class="pre">node_uid</span></code> and
+<code class="docutils literal notranslate"><span class="pre">delivery</span></code> carry the same meanings as in <a class="reference internal" href="signaling.html#signaling-avatars"><span class="std std-ref">avatar negotiation</span></a>.</p>
+</section>
+<section id="asset-revoke">
+<h3><span class="section-number">2.13.2.4. </span><code class="docutils literal notranslate"><span class="pre">asset-revoke</span></code><a class="headerlink" href="#asset-revoke" title="Link to this heading">¶</a></h3>
+<p>Server to client, at any time, naming <code class="docutils literal notranslate"><span class="pre">asset_id</span></code>s that are no longer valid. A server
+may revoke because a proof expired, because the user moved to a part of the world with
+different rules, or for no stated reason.</p>
+</section>
+</section>
+<section id="proof-of-right-to-use">
+<h2><span class="section-number">2.13.3. </span>Proof of right to use<a class="headerlink" href="#proof-of-right-to-use" title="Link to this heading">¶</a></h2>
+<p>Where <code class="docutils literal notranslate"><span class="pre">proof.required</span></code> is set, the client supplies evidence that it may use the assets it
+offers. The scheme is negotiated through <code class="docutils literal notranslate"><span class="pre">accepted_schemes</span></code>; the protocol does not
+mandate one.</p>
+<section id="binding">
+<h3><span class="section-number">2.13.3.1. </span>Binding<a class="headerlink" href="#binding" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>A proof MUST bind the <strong>holder</strong> to the <strong>assets it covers</strong> — the connecting client’s
+identity together with those assets’ identifiers or content hashes. A proof over an asset
+alone is a bearer token, and can be replayed by anyone who observes it.</p></li>
+<li><p>The covered set MUST be enumerated <strong>inside</strong> the signed payload. <code class="docutils literal notranslate"><span class="pre">covers</span></code> in the
+message is a routing hint: a server MUST check it against the signed content and MUST NOT
+extend coverage on the client’s say-so. Otherwise a proof covering <code class="docutils literal notranslate"><span class="pre">{A,</span> <span class="pre">B}</span></code> could be
+presented as covering <code class="docutils literal notranslate"><span class="pre">{A,</span> <span class="pre">B,</span> <span class="pre">C}</span></code>.</p></li>
+<li><p>Servers MUST reject a proof whose subject is not the connecting client.</p></li>
+</ul>
+</section>
+<section id="coverage">
+<h3><span class="section-number">2.13.3.2. </span>Coverage<a class="headerlink" href="#coverage" title="Link to this heading">¶</a></h3>
+<p>Proof is evaluated <strong>per asset</strong>, never per offer:</p>
+<ul class="simple">
+<li><p>An item covered by no valid proof is unproven, and is rejected if the policy requires
+proof for its class. Other items in the same manifest are unaffected — partial acceptance
+is the normal outcome, not an error.</p></li>
+<li><p>An item MUST NOT be treated as proven merely because it arrived in a manifest alongside
+proven items. A single proof governing a whole offer would let one legitimately held
+asset carry any number of others.</p></li>
+<li><p>A rejected item is reported in <code class="docutils literal notranslate"><span class="pre">asset-result</span></code> with its own <code class="docutils literal notranslate"><span class="pre">status</span></code> and a reason such
+as <code class="docutils literal notranslate"><span class="pre">&quot;proof_invalid&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;proof_missing&quot;</span></code>.</p></li>
+</ul>
+<p>Proof remains optional. A world that does not care who owns what leaves <code class="docutils literal notranslate"><span class="pre">proof.required</span></code>
+unset, and portability still works.</p>
+<p>See <a class="reference internal" href="signaling.html#signaling"><span class="std std-ref">identity</span></a> for the identity a proof binds to. A proof is <strong>never</strong>
+forwarded to peers.</p>
+</section>
+</section>
+<section id="restrictions">
+<h2><span class="section-number">2.13.4. </span>Restrictions<a class="headerlink" href="#restrictions" title="Link to this heading">¶</a></h2>
+<p>A server is entitled to constrain what it accepts, and to do so for reasons that are
+nothing to do with permission:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 72.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ground</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Performance</p></td>
+<td><p>Triangle, texture, file-size or animation budgets; a cap on concurrent borne objects; refusal of an asset that would exceed a per-client total.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Features</p></td>
+<td><p>A world that supports no skeletal animation, no transparency, or no emissive materials, and refuses or flattens assets that need them.</p></td>
+</tr>
+<tr class="row-even"><td><p>Representation</p></td>
+<td><p>A world with an art direction of its own may substitute a stylised stand-in, clamp scale, or restrict an object to a held position rather than free placement.</p></td>
+</tr>
+</tbody>
+</table>
+<p>A constrained acceptance is reported with <code class="docutils literal notranslate"><span class="pre">accepted_with_constraints</span></code> so the owning
+client can tell its user why what they brought does not look as they expect. The server is
+under no obligation to explain further, and MUST NOT be assumed to have applied only the
+constraints it lists.</p>
+</section>
+<section id="projection-to-peers">
+<h2><span class="section-number">2.13.5. </span>Projection to peers<a class="headerlink" href="#projection-to-peers" title="Link to this heading">¶</a></h2>
+<p><strong>A ported asset reaches other clients as an ordinary object.</strong> It is delivered as nodes
+and resources on the geometry channel, indistinguishable from content the world itself
+authored. To every other client, an avatar is an animated shape and a borne object is a
+shape parented to it.</p>
+<p>This is the point of the design rather than an implementation convenience:</p>
+<ul class="simple">
+<li><p>No signalling message tells a client anything about another client’s portable assets. As
+with avatars, every message on this page concerns the recipient’s <strong>own</strong> assets.</p></li>
+<li><p>Peers need no code for portability. A client that has never heard of inventories renders
+a world full of ported objects correctly, because there is nothing to render differently.</p></li>
+<li><p>The server remains authoritative over the scene. A ported asset that has been accepted is
+the server’s node, subject to the same lifetime, visibility and update rules as any
+other, and may be removed at any time.</p></li>
+<li><p>Provenance is not carried. Peers cannot learn where an asset came from, who vouched for
+it, or what it cost — so portability adds no new privacy surface between users.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="input.html" class="btn btn-neutral float-left" title="2.12. Input" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="reconnection.html" class="btn btn-neutral float-right" title="2.14. Reconnection" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
