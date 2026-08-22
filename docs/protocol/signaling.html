@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.3. Signaling &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.4. Data Service" href="service.html" />
+    <link rel="prev" title="2.2. Connection State Machine" href="state_machine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">2.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">2.2. Connection State Machine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">2.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">2.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">2.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">2.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">2.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_payload.html">2.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_nodes.html">2.10. Origins and Client-Specific Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">2.11. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">2.12. Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asset_portability.html">2.13. Asset Portability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconnection.html">2.14. Reconnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_control.html">2.15. Local Control Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">3. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">2. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.3. </span>Signaling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/signaling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="signaling">
+<span id="id1"></span><h1><span class="section-number">2.3. </span>Signaling<a class="headerlink" href="#signaling" title="Link to this heading">¶</a></h1>
+<p><em>Signaling</em> is the process whereby client and server exchange reliable messages for initial setup, as well as configuration changes and disconnection while the Teleport connection is active.</p>
+<p>In the reference implementation, a single <strong>WebSocket</strong> connection per server is used for signaling. Any suitable bidirectional reliable transport may be used, but the message format below must be preserved.</p>
+<section id="connection">
+<h2><span class="section-number">2.3.1. </span>Connection<a class="headerlink" href="#connection" title="Link to this heading">¶</a></h2>
+<p>The server listens for WebSocket upgrade requests, typically on port 8080 (any port is acceptable as long as the client knows to try it). The reference client opens</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ws://&lt;host&gt;:&lt;port&gt;/&lt;path&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> is taken from the <code class="docutils literal notranslate"><span class="pre">teleport://</span></code> URL the client was launched with. The path identifies the requested session on the server (it may be empty).</p>
+<p>The full message exchange:</p>
+<object data="../../_images/mermaid-d67e32ab60d8b967f12c778ebfc5d162453a80c6.svg" type="image/svg+xml">
+            <p class="warning">sequenceDiagram
+    participant C as Client
+    participant S as Server
+    C-&gt;&gt;S: WebSocket open
+    loop until response
+        C-&gt;&gt;S: connect (text)
+    end
+    S-&gt;&gt;C: connect-response (text)
+    S--&gt;&gt;C: ice-servers (text)
+    S--&gt;&gt;C: offer (text)
+    par
+        S--&gt;&gt;C: candidate (text, one or more)
+    and
+        C--&gt;&gt;S: answer (text)
+        C--&gt;&gt;S: candidate (text, one or more)
+    end
+    Note over C,S: WebRTC PeerConnection negotiating
+    S--&gt;&gt;C: setupCommand (binary WebSocket frame OR reliable data channel)
+    C--&gt;&gt;S: Handshake (binary WebSocket frame OR reliable data channel)
+    S--&gt;&gt;C: acknowledgeHandshake (same transport as above)
+    Note over C,S: ...streaming...
+    C-&gt;&gt;S: disconnect (text)</p></object>
+</section>
+<section id="signal-types">
+<h2><span class="section-number">2.3.2. </span>Signal types<a class="headerlink" href="#signal-types" title="Link to this heading">¶</a></h2>
+<p>All signaling messages are JSON objects that contain a <code class="docutils literal notranslate"><span class="pre">teleport-signal-type</span></code> member identifying the message type. Unknown <code class="docutils literal notranslate"><span class="pre">teleport-signal-type</span></code> values that are not handled at the signaling layer (i.e. anything other than <code class="docutils literal notranslate"><span class="pre">connect</span></code> and <code class="docutils literal notranslate"><span class="pre">disconnect</span></code>) are forwarded to the WebRTC stack as part of the SDP/ICE exchange.</p>
+<section id="connect">
+<h3><span class="section-number">2.3.2.1. </span><code class="docutils literal notranslate"><span class="pre">connect</span></code><a class="headerlink" href="#connect" title="Link to this heading">¶</a></h3>
+<p>Sent by the client. A <strong>Client</strong> that wants to join (the <strong>Connecting Client</strong>) periodically sends a <code class="docutils literal notranslate"><span class="pre">connect</span></code> message until it receives a <code class="docutils literal notranslate"><span class="pre">connect-response</span></code>.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;connect&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;clientID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;teleport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.9&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;identity&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;opaque identity string&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;capabilities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;example_capability&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">clientID</span></code> is zero if the client has not yet connected to this server session, and may be a unique non-zero id if it is attempting to reconnect.</p>
+<p><code class="docutils literal notranslate"><span class="pre">teleport</span></code> is the protocol version (currently <code class="docutils literal notranslate"><span class="pre">&quot;0.9&quot;</span></code>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">identity</span></code> is an opaque string the client supplies for application-level authentication (may be empty).</p>
+<p><code class="docutils literal notranslate"><span class="pre">capabilities</span></code> (optional) is a free-form object advertising optional protocol features supported by the client. Unknown keys MUST be ignored, so the set can grow without a version bump. No keys are currently defined; the member is the extension point for future signaling-level capabilities. Avatar support is <strong>not</strong> among them — see <a class="reference internal" href="#signaling-avatars"><span class="std std-ref">Avatar negotiation</span></a>.</p>
+<p>Servers MUST ignore any unrecognised member of <code class="docutils literal notranslate"><span class="pre">content</span></code>, so the message can be extended without breaking older implementations.</p>
+</section>
+<section id="connect-response">
+<h3><span class="section-number">2.3.2.2. </span><code class="docutils literal notranslate"><span class="pre">connect-response</span></code><a class="headerlink" href="#connect-response" title="Link to this heading">¶</a></h3>
+<p>Sent by the server in response to <code class="docutils literal notranslate"><span class="pre">connect</span></code>.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;connect-response&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;clientID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">397357935703467</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;serverID&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">13503465235793</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">clientID</span></code> and <code class="docutils literal notranslate"><span class="pre">serverID</span></code> are unsigned 64-bit numbers. They are unique on the server: no two clients can have the same ID.
+The <code class="docutils literal notranslate"><span class="pre">serverID</span></code> represents the session: if it matches a previous connection from the same client, cached resource and node ids may persist (but this must not be assumed);
+otherwise the client must clear all resource and node ids for this server.</p>
+</section>
+<section id="ice-servers">
+<h3><span class="section-number">2.3.2.3. </span><code class="docutils literal notranslate"><span class="pre">ice-servers</span></code><a class="headerlink" href="#ice-servers" title="Link to this heading">¶</a></h3>
+<p>The server may send an <code class="docutils literal notranslate"><span class="pre">ice-servers</span></code> message after <code class="docutils literal notranslate"><span class="pre">connect-response</span></code> and before <code class="docutils literal notranslate"><span class="pre">offer</span></code>, listing the STUN/TURN servers the client should use for ICE candidate gathering. This lets a deployment configure TURN once, on the server, rather than requiring every client to carry its own TURN credentials.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ice-servers&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;iceServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;urls&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stun:stun.example.com:19302&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;urls&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;turn:turn.example.com:3478&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;credential&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pass&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Each entry follows the standard WebRTC <code class="docutils literal notranslate"><span class="pre">RTCIceServer</span></code> shape: <code class="docutils literal notranslate"><span class="pre">urls</span></code> (a string or an array of strings), and optional <code class="docutils literal notranslate"><span class="pre">username</span></code>/<code class="docutils literal notranslate"><span class="pre">credential</span></code> for TURN entries. A client that does not receive this message, or receives an empty list, MUST fall back to its own default ICE server configuration.
+If provided, a client <strong>may</strong> use the <code class="docutils literal notranslate"><span class="pre">iceServers</span></code> list for WebRTC connections it creates for this session.</p>
+</section>
+<section id="offer-answer">
+<h3><span class="section-number">2.3.2.4. </span><code class="docutils literal notranslate"><span class="pre">offer</span></code> / <code class="docutils literal notranslate"><span class="pre">answer</span></code><a class="headerlink" href="#offer-answer" title="Link to this heading">¶</a></h3>
+<p>After <code class="docutils literal notranslate"><span class="pre">connect-response</span></code>, the server initiates the WebRTC <a class="reference external" href="https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a> exchange. The server sends an <code class="docutils literal notranslate"><span class="pre">offer</span></code>:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;offer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sdp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[sdp contents]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>where <code class="docutils literal notranslate"><span class="pre">[sdp</span> <span class="pre">contents]</span></code> is a <a class="reference external" href="https://en.wikipedia.org/wiki/Session_Description_Protocol">Session Description Protocol (SDP)</a> string describing the six data channels (see <a class="reference internal" href="data_transfer.html"><span class="doc">Data Transfer</span></a>).</p>
+<p>The client replies with an <code class="docutils literal notranslate"><span class="pre">answer</span></code>:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;answer&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sdp&quot;</span><span class="p">:</span><span class="s2">&quot;[sdp contents]&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="candidate">
+<h3><span class="section-number">2.3.2.5. </span><code class="docutils literal notranslate"><span class="pre">candidate</span></code><a class="headerlink" href="#candidate" title="Link to this heading">¶</a></h3>
+<p>Both sides also send one or more ICE candidates:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="s2">&quot;candidate&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;candidate&quot;</span><span class="p">:</span><span class="s2">&quot;[ICE candidate string]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mid&quot;</span><span class="p">:</span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mlineindex&quot;</span><span class="p">:</span><span class="mi">0</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>When each side has received the other’s <code class="docutils literal notranslate"><span class="pre">offer</span></code>/<code class="docutils literal notranslate"><span class="pre">answer</span></code> and at least one viable <code class="docutils literal notranslate"><span class="pre">candidate</span></code>, the WebRTC PeerConnection becomes <code class="docutils literal notranslate"><span class="pre">connected</span></code> and the data channels open.</p>
+</section>
+<section id="reliable-channel-transport-fallback-binary-websocket-frames">
+<span id="signaling-reliable-fallback"></span><h3><span class="section-number">2.3.2.6. </span>Reliable-channel transport fallback (binary WebSocket frames)<a class="headerlink" href="#reliable-channel-transport-fallback-binary-websocket-frames" title="Link to this heading">¶</a></h3>
+<p>The signaling WebSocket is <strong>also</strong> a transport for reliable-channel payloads. This is required because reliable-channel traffic — most importantly the <code class="docutils literal notranslate"><span class="pre">SetupCommand</span></code> and the client’s binary <code class="docutils literal notranslate"><span class="pre">Handshake</span></code> reply — typically needs to be exchanged before the WebRTC PeerConnection has reached <code class="docutils literal notranslate"><span class="pre">connected</span></code> and the <code class="docutils literal notranslate"><span class="pre">reliable</span></code> data channel (label <code class="docutils literal notranslate"><span class="pre">reliable</span></code>, id 100; see <a class="reference internal" href="data_transfer.html"><span class="doc">Data Transfer</span></a>) has reached <code class="docutils literal notranslate"><span class="pre">open</span></code>.</p>
+<p>Implementations therefore MUST support a dual reliable transport with the following rules.</p>
+<section id="payload-format">
+<h4><span class="section-number">2.3.2.6.1. </span>Payload format<a class="headerlink" href="#payload-format" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>A reliable-channel payload sent on the signaling WebSocket is transmitted as a <strong>single binary WebSocket frame</strong> whose body is <strong>byte-identical</strong> to the payload that would be sent on the WebRTC <code class="docutils literal notranslate"><span class="pre">reliable</span></code> data channel. No additional framing, length prefix or envelope is added on either transport.</p></li>
+<li><p>Text frames on the signaling WebSocket carry only the JSON message types listed above; binary frames carry only reliable-channel payloads.</p></li>
+</ul>
+</section>
+<section id="sender-rules-both-directions">
+<h4><span class="section-number">2.3.2.6.2. </span>Sender rules (both directions)<a class="headerlink" href="#sender-rules-both-directions" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>A sender MUST be able to deliver any reliable-channel payload over either transport.</p></li>
+<li><p>A sender MUST prefer the WebRTC <code class="docutils literal notranslate"><span class="pre">reliable</span></code> data channel once it has reached the <code class="docutils literal notranslate"><span class="pre">open</span></code> state, and MUST use the signaling WebSocket otherwise.</p></li>
+<li><p>The choice of transport is per payload: the sender MAY switch transports for the next payload as soon as the preferred one becomes available.</p></li>
+<li><p>A sender MUST NOT send the same logical payload over both transports.</p></li>
+</ul>
+</section>
+<section id="receiver-rules-both-directions">
+<h4><span class="section-number">2.3.2.6.3. </span>Receiver rules (both directions)<a class="headerlink" href="#receiver-rules-both-directions" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>A receiver MUST accept reliable-channel payloads on both transports for the entire lifetime of the session, not only during early connection setup.</p></li>
+<li><p>A binary WebSocket frame and a message on the WebRTC <code class="docutils literal notranslate"><span class="pre">reliable</span></code> data channel MUST be dispatched through the <strong>same</strong> parser; the <code class="docutils literal notranslate"><span class="pre">CommandPayloadType</span></code> / <code class="docutils literal notranslate"><span class="pre">ClientMessagePayloadType</span></code> discriminator that begins every payload is sufficient to identify it.</p></li>
+<li><p>Ordering across the two transports is <strong>not</strong> guaranteed. Receivers MUST tolerate a reliable-channel payload arriving on the WebSocket after another payload sent later on the WebRTC <code class="docutils literal notranslate"><span class="pre">reliable</span></code> data channel (or vice-versa). Per-message ordering tools provided by the protocol (<code class="docutils literal notranslate"><span class="pre">ack_id</span></code>, <code class="docutils literal notranslate"><span class="pre">confirmationNumber</span></code>) apply identically on both transports.</p></li>
+</ul>
+</section>
+<section id="examples">
+<h4><span class="section-number">2.3.2.6.4. </span>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h4>
+<p>The exchange around session start, with the WebRTC handshake still in flight when the server starts streaming setup:</p>
+<p>The exchange when the WebRTC handshake finished before the server sends setup:</p>
+<object data="../../_images/mermaid-46c3f0f7333801c1511eac029af6d1272aa42574.svg" type="image/svg+xml">
+            <p class="warning">sequenceDiagram
+    participant C as Client
+    participant S as Server
+    Note over C,S: WebRTC reliable channel already open
+    S--&gt;&gt;C: SetupCommand (reliable data channel)
+    C--&gt;&gt;S: Handshake (reliable data channel)
+    S--&gt;&gt;C: AcknowledgeHandshake (reliable data channel)</p></object>
+</section>
+</section>
+<section id="avatar-negotiation">
+<span id="signaling-avatars"></span><h3><span class="section-number">2.3.2.7. </span>Avatar negotiation<a class="headerlink" href="#avatar-negotiation" title="Link to this heading">¶</a></h3>
+<p>If the server supports user avatars it may send an <code class="docutils literal notranslate"><span class="pre">avatar-policy</span></code> at any time after <code class="docutils literal notranslate"><span class="pre">connect-response</span></code>.
+If avatars are not supported, the client may ignore the message and will not be asked to provide an avatar.
+If avatars are supported, the client may respond with an <code class="docutils literal notranslate"><span class="pre">avatar-offer</span></code> message containing a URL for the
+avatar it wants to use. If avatars are required, the client should send an <code class="docutils literal notranslate"><span class="pre">avatar-offer</span></code> even if it has no avatar to offer (<code class="docutils literal notranslate"><span class="pre">have_avatar</span> <span class="pre">==</span> <span class="pre">false</span></code>).
+If avatars are required and the client has no avatar to offer, the server may terminate the connection or use a default avatar for the client.
+The server will reply with an <code class="docutils literal notranslate"><span class="pre">avatar-result</span></code> indicating whether the offer was accepted or rejected.
+Servers may later send <code class="docutils literal notranslate"><span class="pre">avatar-revoke</span></code> to invalidate an accepted avatar.</p>
+<p>Every avatar message concerns the recipient’s <strong>own</strong> avatar. No signaling message tells a client anything about another client’s avatar.</p>
+<p>An offer may name the avatar directly by URL, or indirectly by the address of a signed manifest describing it — see <span class="xref std std-ref">avatar_manifest</span>.</p>
+<p>The remainder of the protocol — requirements bag, proof schemes, security and privacy model — is specified in <code class="docutils literal notranslate"><span class="pre">plans/avatars_plan.md</span></code> in the source tree.</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avatar-policy&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;requirement&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;optional&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;default_available&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;requirements&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;formats&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;glb&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;max_file_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8388608</span><span class="w"> </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;proof&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;accepted_schemes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avatar-offer&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;have_avatar&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://avatars.example.com/u/42.glb&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;content_hash&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha256:abcd&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;declared&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;glb&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;file_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="w"> </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;allow_relay&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Or, offering a <span class="xref std std-ref">manifest</span> instead of a URL:</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avatar-offer&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;have_avatar&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;manifest&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://manifests.example/u/42.jsonld&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">               </span><span class="nt">&quot;allow_relay&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;avatar-result&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;policy_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;accepted&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;node_uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">999</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;using_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;delivery&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;relay&quot;</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">&quot;reasons&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>If an avatar policy is implemented, every client receives <code class="docutils literal notranslate"><span class="pre">avatar-policy</span></code> and is expected to answer it.</p>
+<p>An accepted avatar reaches other clients as an ordinary node in the scene whose mesh resource is delivered as a <a class="reference internal" href="geometry_payload.html#geometry-payload"><span class="std std-ref">MeshPointer</span></a> chunk — a URL the receiving client fetches over HTTPS, exactly as for any other mesh. <code class="docutils literal notranslate"><span class="pre">avatar-result.delivery</span></code> tells the owner whose URL that pointer carries:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">delivery</span></code></p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;relay&quot;</span></code></p></td>
+<td><p>The default. The pointer carries the owner’s own URL, so peers fetch the asset from the avatar host. The URL is therefore visible to every other client in the session; an owner that does not want this sets <code class="docutils literal notranslate"><span class="pre">&quot;allow_relay&quot;:</span> <span class="pre">false</span></code> on its offer. A relayed URL must end in a recognised asset extension (<code class="docutils literal notranslate"><span class="pre">.glb</span></code>, <code class="docutils literal notranslate"><span class="pre">.vrm</span></code>, <code class="docutils literal notranslate"><span class="pre">.gltf</span></code>), since clients select a decoder by extension.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;import&quot;</span></code></p></td>
+<td><p>The server re-hosts the asset at a URL it controls and the pointer carries that. Peers never see the owner’s URL.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The server chooses the mode, may choose differently for different peers, and may change it during the session without notifying anyone. A client that cannot fetch a pointer reports it with the ordinary <code class="docutils literal notranslate"><span class="pre">ResourceLost</span></code> message on the reliable client-to-server channel; the server then re-hosts for that client alone. There is no avatar-specific failure message.</p>
+<p><code class="docutils literal notranslate"><span class="pre">avatar-result.node_uid</span></code> is the session uid of the avatar’s root node in the server’s scene. The owning client may use it to recognise its own avatar in geometry traffic — for example to hide it in a first-person view. It is <code class="docutils literal notranslate"><span class="pre">0</span></code> when the server accepted the avatar but created no node; treat a zero uid as “no node to track”, not as an error.</p>
+</section>
+<section id="disconnect">
+<h3><span class="section-number">2.3.2.8. </span><code class="docutils literal notranslate"><span class="pre">disconnect</span></code><a class="headerlink" href="#disconnect" title="Link to this heading">¶</a></h3>
+<p>Sent by the client to terminate the session cleanly:</p>
+<blockquote>
+<div><div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teleport-signal-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;disconnect&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>On receipt the server tears down the WebRTC PeerConnection and removes per-client state. The signaling WebSocket may also be closed at the transport layer.</p>
+</section>
+</section>
+<section id="after-connection">
+<h2><span class="section-number">2.3.3. </span>After connection<a class="headerlink" href="#after-connection" title="Link to this heading">¶</a></h2>
+<p>Once streaming is active, the signaling WebSocket is used for:</p>
+<ul class="simple">
+<li><p>further ICE <code class="docutils literal notranslate"><span class="pre">candidate</span></code> messages (network changes, NAT rebinding);</p></li>
+<li><p>renegotiation messages forwarded to the WebRTC stack;</p></li>
+<li><p>the client-to-server <code class="docutils literal notranslate"><span class="pre">disconnect</span></code>;</p></li>
+<li><p>the reliable-channel transport fallback described in <a class="reference internal" href="#signaling-reliable-fallback"><span class="std std-ref">Reliable-channel transport fallback (binary WebSocket frames)</span></a> — this remains available for the lifetime of the session, although in normal operation it falls silent once the WebRTC <code class="docutils literal notranslate"><span class="pre">reliable</span></code> data channel is open.</p></li>
+</ul>
+<p>Geometry, video, per-frame input and pose traffic always flows over the WebRTC data channels in <a class="reference internal" href="data_transfer.html"><span class="doc">Data Transfer</span></a>, and audio always flows over the WebRTC media tracks in <a class="reference internal" href="audio.html"><span class="doc">Audio</span></a>; only the <code class="docutils literal notranslate"><span class="pre">reliable</span></code>-channel payloads have the dual-transport behaviour above.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="state_machine.html" class="btn btn-neutral float-left" title="2.2. Connection State Machine" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="service.html" class="btn btn-neutral float-right" title="2.4. Data Service" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

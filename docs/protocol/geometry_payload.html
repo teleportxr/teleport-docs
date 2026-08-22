@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.9. Geometry Payload &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.10. Origins and Client-Specific Nodes" href="client_nodes.html" />
+    <link rel="prev" title="2.8. Video Metadata" href="video_metadata.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">2.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">2.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">2.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">2.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">2.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">2.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">2.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">2.8. Video Metadata</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_nodes.html">2.10. Origins and Client-Specific Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">2.11. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">2.12. Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asset_portability.html">2.13. Asset Portability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconnection.html">2.14. Reconnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_control.html">2.15. Local Control Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">3. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">2. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.9. </span>Geometry Payload</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/geometry_payload.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="geometry-payload">
+<span id="id1"></span><h1><span class="section-number">2.9. </span>Geometry Payload<a class="headerlink" href="#geometry-payload" title="Link to this heading">¶</a></h1>
+<p>The geometry channel carries every server-allocated resource that is not video, video-tag or audio.
+It is the <strong>reliable / ordered</strong> SCTP data channel labelled <code class="docutils literal notranslate"><span class="pre">&quot;geometry&quot;</span></code> (stream index 80) (if using EFP framing),
+or <code class="docutils literal notranslate"><span class="pre">&quot;geometry_unframed&quot;</span></code> (if not using framing). All multi-byte fields are little-endian and structs are 1-byte packed.</p>
+<p>Reference implementations (encoder <code class="docutils literal notranslate"><span class="pre">teleport::server::GeometryEncoder</span></code> in <code class="docutils literal notranslate"><span class="pre">Teleport/TeleportServer/GeometryEncoder.cpp</span></code>; decoder <code class="docutils literal notranslate"><span class="pre">teleport::clientrender::GeometryDecoder</span></code> in <code class="docutils literal notranslate"><span class="pre">Teleport/ClientRender/GeometryDecoder.cpp</span></code>; payload-type enum <code class="docutils literal notranslate"><span class="pre">avs::GeometryPayloadType</span></code> in <code class="docutils literal notranslate"><span class="pre">libavstream/common_exports.h</span></code>).</p>
+<section id="channel-framing">
+<h2><span class="section-number">2.9.1. </span>Channel framing<a class="headerlink" href="#channel-framing" title="Link to this heading">¶</a></h2>
+<p>Each SCTP message on the geometry channel contains a single <strong>payload chunk</strong>:</p>
+<table class="docutils align-default" id="id8">
+<caption><span class="caption-number">Table 2.41 </span><span class="caption-text">Geometry chunk header</span><a class="headerlink" href="#id8" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10.2%" />
+<col style="width: 28.6%" />
+<col style="width: 61.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bytes</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>size_t</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">payloadSize</span></code> – length, in bytes, of everything that follows the size field (i.e. <code class="docutils literal notranslate"><span class="pre">type</span></code> + <code class="docutils literal notranslate"><span class="pre">uid</span></code> + body).</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>GeometryPayloadType</p></td>
+<td><p>Chunk type (see table below).</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>avs::uid</p></td>
+<td><p>Resource uid this chunk belongs to. <code class="docutils literal notranslate"><span class="pre">RemoveNodes</span></code> is the only type that omits this field.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal notranslate"><span class="pre">payloadSize</span></code> is <em>not</em> a self-delimiting framing prefix at the SCTP level; SCTP already preserves message boundaries. It is informational and is used by the decoder for sanity checking. Implementations that want to bundle multiple chunks per SCTP message can do so by emitting them back-to-back: the decoder advances <code class="docutils literal notranslate"><span class="pre">offset</span></code> by <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">+</span> <span class="pre">payloadSize</span></code> after each chunk.</p>
+</section>
+<section id="payload-types">
+<h2><span class="section-number">2.9.2. </span>Payload types<a class="headerlink" href="#payload-types" title="Link to this heading">¶</a></h2>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-number">Table 2.42 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">GeometryPayloadType</span></code></span><a class="headerlink" href="#id9" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 6.0%" />
+<col style="width: 21.7%" />
+<col style="width: 72.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Body</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Invalid</p></td>
+<td><p>Reserved.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Mesh</p></td>
+<td><p>1-byte <code class="docutils literal notranslate"><span class="pre">MeshCompressionType</span></code> (<code class="docutils literal notranslate"><span class="pre">0</span></code> none, <code class="docutils literal notranslate"><span class="pre">1</span></code> Draco), followed by version/name/Draco buffer. See <a class="reference internal" href="#mesh-payload"><span class="std std-ref">Mesh payload</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Material</p></td>
+<td><p>Material name + PBR descriptor and texture-uid references. See <a class="reference internal" href="#material-payload"><span class="std std-ref">Material payload</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>MaterialInstance</p></td>
+<td><p>Currently unused on the wire; reserved. See <a class="reference internal" href="#material-instance-payload"><span class="std std-ref">MaterialInstance payload</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Texture</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code> name length, name, 4-byte <code class="docutils literal notranslate"><span class="pre">TextureCompression</span></code>, then the codec-specific payload bytes (e.g. raw KTX2/Basis container). See <a class="reference internal" href="#texture-payload"><span class="std std-ref">Texture payload</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Animation</p></td>
+<td><p>Skeletal animation: name, duration, per-bone position and rotation keyframe lists. See <a class="reference internal" href="#animation-payload"><span class="std std-ref">Animation payload</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Node</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code> name length, name, <code class="docutils literal notranslate"><span class="pre">avs::Transform</span></code> (already converted to the client’s axes), <code class="docutils literal notranslate"><span class="pre">stationary</span></code> flag, holder client id, priority, parent uid, then the type-specific data (mesh, light, link, …). See <a class="reference internal" href="#node-payload"><span class="std std-ref">Node payload</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Skeleton</p></td>
+<td><p>Name + bone-uid array. See <a class="reference internal" href="#skeleton-payload"><span class="std std-ref">Skeleton payload</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>FontAtlas</p></td>
+<td><p>Font texture uid + glyph maps. See <a class="reference internal" href="#font-atlas-payload"><span class="std std-ref">FontAtlas payload</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p>TextCanvas</p></td>
+<td><p>Text-canvas description (font uid, layout, colour, text). See <a class="reference internal" href="#text-canvas-payload"><span class="std std-ref">TextCanvas payload</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>TexturePointer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code> axes standard + <code class="docutils literal notranslate"><span class="pre">uint16</span></code> URL length + URL bytes. The body is the HTTP(S) URL of an out-of-band Texture; see <a class="reference internal" href="#texture-pointer-payload"><span class="std std-ref">TexturePointer payload</span></a> and <a class="reference internal" href="http.html"><span class="doc">HTTP Service</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p>MeshPointer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code> axes standard + <code class="docutils literal notranslate"><span class="pre">uint16</span></code> URL length + URL bytes. As above but for Meshes. See <a class="reference internal" href="#mesh-pointer-payload"><span class="std std-ref">MeshPointer payload</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>MaterialPointer</p></td>
+<td><p>Reserved; not currently emitted. See <a class="reference internal" href="#material-pointer-payload"><span class="std std-ref">MaterialPointer payload</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>13</p></td>
+<td><p>RemoveNodes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code> count followed by that many <code class="docutils literal notranslate"><span class="pre">avs::uid</span></code> values to delete from the client’s scene. <strong>Has no resource uid in the header.</strong> See <a class="reference internal" href="#remove-nodes-payload"><span class="std std-ref">RemoveNodes payload</span></a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>14</p></td>
+<td><p>AnimationPointer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code> axes standard + <code class="docutils literal notranslate"><span class="pre">uint16</span></code> URL length + URL bytes. As MeshPointer but for Animations. See <a class="reference internal" href="#animation-pointer-payload"><span class="std std-ref">AnimationPointer payload</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="node-payload">
+<span id="id2"></span><h2><span class="section-number">2.9.3. </span>Node payload<a class="headerlink" href="#node-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Node</span></code> chunk describes a single scene-graph entry: its transform, parent, streaming metadata and an optional <strong>component record</strong> that attaches renderable data (mesh, light, text canvas) or a link. The chunk body that follows the standard geometry chunk header (<code class="docutils literal notranslate"><span class="pre">payloadSize</span></code>, <code class="docutils literal notranslate"><span class="pre">GeometryPayloadType::Node</span></code>, <code class="docutils literal notranslate"><span class="pre">uid</span></code>) is laid out as a fixed-size <em>node header</em> followed by zero or one component records.</p>
+<p>(Reference: <code class="docutils literal notranslate"><span class="pre">avs::Node</span></code>.)</p>
+<section id="node-header">
+<h3><span class="section-number">2.9.3.1. </span>Node header<a class="headerlink" href="#node-header" title="Link to this heading">¶</a></h3>
+<table class="docutils align-default" id="id10">
+<caption><span class="caption-number">Table 2.43 </span><span class="caption-text">Node header</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 9.1%" />
+<col style="width: 13.6%" />
+<col style="width: 9.1%" />
+<col style="width: 68.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count. The string is <strong>not</strong> null-terminated.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[name</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Node name. Useful for diagnostics; the client does not key on it.</p></td>
+</tr>
+<tr class="row-even"><td><p>localTransform</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">avs::Transform</span></code></p></td>
+<td><p>40</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec3</span> <span class="pre">position</span></code> (12) + <code class="docutils literal notranslate"><span class="pre">vec4</span> <span class="pre">rotation</span></code> (16) + <code class="docutils literal notranslate"><span class="pre">vec3</span> <span class="pre">scale</span></code> (12). Already converted to the client’s <code class="docutils literal notranslate"><span class="pre">AxesStandard</span></code> (see <a class="reference internal" href="conventions.html#conventions"><span class="std std-ref">Conventions</span></a>) by the encoder.</p></td>
+</tr>
+<tr class="row-odd"><td><p>stationary</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = dynamic, non-zero = stationary. Stationary nodes are not expected to receive movement updates.</p></td>
+</tr>
+<tr class="row-even"><td><p>holder_client_id</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>Owning client id, or <code class="docutils literal notranslate"><span class="pre">0</span></code> if the node is not held by any client. A non-zero value marks the node’s lifetime as bounded by that client’s session: see <a class="reference internal" href="client_nodes.html"><span class="doc">Origins and Client-Specific Nodes</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>priority</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int32</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Streaming priority. The server may withhold the mesh of nodes below the client’s minimum priority.</p></td>
+</tr>
+<tr class="row-even"><td><p>parentID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>Parent node uid, or <code class="docutils literal notranslate"><span class="pre">0</span></code> if the node is a scene-graph root.</p></td>
+</tr>
+<tr class="row-odd"><td><p>numComponents</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Number of component records that follow. Currently <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>: if <code class="docutils literal notranslate"><span class="pre">0</span></code> the node has no renderable data and the chunk ends here; if <code class="docutils literal notranslate"><span class="pre">1</span></code> exactly one component record follows. This is a count to leave room for additional components in future versions without bumping the header layout.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Once <code class="docutils literal notranslate"><span class="pre">name</span></code> has been consumed, the remainder of the header is a fixed 62-byte tail:</p>
+<object data="../../_images/mermaid-71990b008a550a88bda2b38e135a7bbaef09c11a.svg" type="image/svg+xml">
+            <p class="warning">packet-beta
+    title Node header tail (byte offsets from end of name)
+    0-39: &quot;localTransform (avs::Transform)&quot;
+    40-40: &quot;stationary&quot;
+    41-48: &quot;holder_client_id&quot;
+    49-52: &quot;priority&quot;
+    53-60: &quot;parentID&quot;
+    61-61: &quot;numComponents&quot;</p></object>
+</section>
+<section id="component-record">
+<h3><span class="section-number">2.9.3.2. </span>Component record<a class="headerlink" href="#component-record" title="Link to this heading">¶</a></h3>
+<p>A component record is present only when <code class="docutils literal notranslate"><span class="pre">numComponents</span> <span class="pre">!=</span> <span class="pre">0</span></code> and begins with a single byte identifying the type:</p>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-number">Table 2.44 </span><span class="caption-text">Component header</span><a class="headerlink" href="#id11" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 8.7%" />
+<col style="width: 17.4%" />
+<col style="width: 8.7%" />
+<col style="width: 65.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>data_type</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code> (<code class="docutils literal notranslate"><span class="pre">NodeDataType</span></code>)</p></td>
+<td><p>1</p></td>
+<td><p>Identifies the component layout that follows; see <code class="docutils literal notranslate"><span class="pre">NodeDataType</span></code> table below.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">NodeDataType</span></code> values (reference: <code class="docutils literal notranslate"><span class="pre">avs::NodeDataType</span></code>):</p>
+<table class="docutils align-default" id="id12">
+<caption><span class="caption-number">Table 2.45 </span><span class="caption-text">NodeDataType</span><a class="headerlink" href="#id12" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 5.7%" />
+<col style="width: 25.3%" />
+<col style="width: 69.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Body</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Invalid</p></td>
+<td><p>Reserved; not emitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>None</p></td>
+<td><p>Reserved; not emitted.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Mesh</p></td>
+<td><p>Mesh component body (see below).</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Light</p></td>
+<td><p>Light component body (see below).</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>TextCanvas</p></td>
+<td><p>TextCanvas component body (see below).</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Unused1</p></td>
+<td><p>Reserved; not emitted.</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>SkeletonUnused</p></td>
+<td><p>Reserved; not emitted.</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td><p>Link</p></td>
+<td><p>Link component body (see below).</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>Script</p></td>
+<td><p>Reserved; not emitted.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The body that follows the <code class="docutils literal notranslate"><span class="pre">data_type</span></code> byte depends on the type, and is one of the four layouts below.</p>
+<section id="mesh-component">
+<h4><span class="section-number">2.9.3.2.1. </span>Mesh component<a class="headerlink" href="#mesh-component" title="Link to this heading">¶</a></h4>
+<table class="docutils align-default" id="id13">
+<caption><span class="caption-number">Table 2.46 </span><span class="caption-text">Mesh component body</span><a class="headerlink" href="#id13" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 18.0%" />
+<col style="width: 8.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>data_uid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>Mesh resource uid. Must be non-zero; the mesh itself is sent as a separate <code class="docutils literal notranslate"><span class="pre">Mesh</span></code> or <code class="docutils literal notranslate"><span class="pre">MeshPointer</span></code> chunk.</p></td>
+</tr>
+<tr class="row-odd"><td><p>skeletonID</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>Skeleton resource uid, or <code class="docutils literal notranslate"><span class="pre">0</span></code> for an unskinned mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p>joint_indices count</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Number of entries in the joint-indices array.</p></td>
+</tr>
+<tr class="row-odd"><td><p>joint_indices</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int16[count]</span></code></p></td>
+<td><p>2·<em>n</em></p></td>
+<td><p>Per-bone joint indices into the referenced skeleton. <code class="docutils literal notranslate"><span class="pre">-1</span></code> marks an unmapped bone.</p></td>
+</tr>
+<tr class="row-even"><td><p>animations count</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Number of entries in the animations array.</p></td>
+</tr>
+<tr class="row-odd"><td><p>animations</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64[count]</span></code></p></td>
+<td><p>8·<em>n</em></p></td>
+<td><p>Animation resource uids associated with this node.</p></td>
+</tr>
+<tr class="row-even"><td><p>materials count</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Number of entries in the materials array.</p></td>
+</tr>
+<tr class="row-odd"><td><p>materials</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64[count]</span></code></p></td>
+<td><p>8·<em>n</em></p></td>
+<td><p>Material resource uids; one per submesh.</p></td>
+</tr>
+<tr class="row-even"><td><p>lightmapScaleOffset</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code></p></td>
+<td><p>16</p></td>
+<td><p>Lightmap UV transform: <code class="docutils literal notranslate"><span class="pre">xy</span></code> scale, <code class="docutils literal notranslate"><span class="pre">zw</span></code> offset.</p></td>
+</tr>
+<tr class="row-odd"><td><p>globalIlluminationUid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>Texture uid for the GI / lightmap texture, or <code class="docutils literal notranslate"><span class="pre">0</span></code> if the node is not lightmapped.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="light-component">
+<h4><span class="section-number">2.9.3.2.2. </span>Light component<a class="headerlink" href="#light-component" title="Link to this heading">¶</a></h4>
+<table class="docutils align-default" id="id14">
+<caption><span class="caption-number">Table 2.47 </span><span class="caption-text">Light component body</span><a class="headerlink" href="#id14" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14.9%" />
+<col style="width: 12.8%" />
+<col style="width: 8.5%" />
+<col style="width: 63.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>lightColour</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code></p></td>
+<td><p>16</p></td>
+<td><p>Linear-space colour <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a)</span></code>. Alpha is unused by the reference renderer.</p></td>
+</tr>
+<tr class="row-odd"><td><p>lightRadius</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Light source radius, in metres.</p></td>
+</tr>
+<tr class="row-even"><td><p>lightRange</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Maximum effective distance of the light, in metres.</p></td>
+</tr>
+<tr class="row-odd"><td><p>lightDirection</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec3</span></code></p></td>
+<td><p>12</p></td>
+<td><p>Forward direction in the client’s axes (already converted by the encoder).</p></td>
+</tr>
+<tr class="row-even"><td><p>lightType</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Light-type tag (point / spot / directional / area). See the <code class="docutils literal notranslate"><span class="pre">lightType</span></code> field on <code class="docutils literal notranslate"><span class="pre">avs::Node</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The Light component body is 37 bytes:</p>
+<object data="../../_images/mermaid-bd63a9cbf20a286532b0028004564cefa9d642a9.svg" type="image/svg+xml">
+            <p class="warning">packet-beta
+    title Light component body (byte offsets after data_type)
+    0-15: &quot;lightColour&quot;
+    16-19: &quot;lightRadius&quot;
+    20-23: &quot;lightRange&quot;
+    24-35: &quot;lightDirection&quot;
+    36-36: &quot;lightType&quot;</p></object>
+</section>
+<section id="textcanvas-component">
+<h4><span class="section-number">2.9.3.2.3. </span>TextCanvas component<a class="headerlink" href="#textcanvas-component" title="Link to this heading">¶</a></h4>
+<table class="docutils align-default" id="id15">
+<caption><span class="caption-number">Table 2.48 </span><span class="caption-text">TextCanvas component body</span><a class="headerlink" href="#id15" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 18.0%" />
+<col style="width: 8.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>data_uid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>TextCanvas resource uid. The canvas contents are delivered separately as a <code class="docutils literal notranslate"><span class="pre">TextCanvas</span></code> chunk (id 9).</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="link-component">
+<h4><span class="section-number">2.9.3.2.4. </span>Link component<a class="headerlink" href="#link-component" title="Link to this heading">¶</a></h4>
+<table class="docutils align-default" id="id16">
+<caption><span class="caption-number">Table 2.49 </span><span class="caption-text">Link component body</span><a class="headerlink" href="#id16" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 17.3%" />
+<col style="width: 11.5%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>url length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count of the target URL.</p></td>
+</tr>
+<tr class="row-odd"><td><p>url</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[url</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Target URL activated when the user follows the link.</p></td>
+</tr>
+<tr class="row-even"><td><p>query length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count of the query string.</p></td>
+</tr>
+<tr class="row-odd"><td><p>query</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[query</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Optional query string appended to the URL on activation; empty for links that take no parameters.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="notes">
+<h3><span class="section-number">2.9.3.3. </span>Notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>String fields obey the file-wide convention from <a class="reference internal" href="#coding-conventions">Coding conventions</a>: <code class="docutils literal notranslate"><span class="pre">uint16</span></code>-length-prefixed UTF-8, never null-terminated.</p></li>
+<li><p>All vectors, quaternions and <code class="docutils literal notranslate"><span class="pre">Transform</span></code> values are already in the client’s <code class="docutils literal notranslate"><span class="pre">AxesStandard</span></code> (see <a class="reference internal" href="conventions.html#conventions"><span class="std std-ref">Conventions</span></a>) when they reach the wire.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">numComponents</span></code> byte is a forward-compatibility hook. Senders currently write <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>; future revisions can attach multiple components to one node without a wire-level layout change.</p></li>
+</ul>
+</section>
+</section>
+<section id="mesh-payload">
+<span id="id3"></span><h2><span class="section-number">2.9.4. </span>Mesh payload<a class="headerlink" href="#mesh-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Mesh</span></code> chunk carries a compressed mesh resource (geometry + skin binding). Only <code class="docutils literal notranslate"><span class="pre">MeshCompressionType::DRACO</span></code> is currently emitted; uncompressed meshes are not supported on the wire.</p>
+<p>(In-memory representation: <code class="docutils literal notranslate"><span class="pre">avs::CompressedMesh</span></code>.)</p>
+<table class="docutils align-default" id="id17">
+<caption><span class="caption-number">Table 2.50 </span><span class="caption-text">Mesh body</span><a class="headerlink" href="#id17" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 20.4%" />
+<col style="width: 7.4%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>meshCompressionType</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code> (<code class="docutils literal notranslate"><span class="pre">MeshCompressionType</span></code>)</p></td>
+<td><p>1</p></td>
+<td><p>Compression scheme for the submesh buffers; see <code class="docutils literal notranslate"><span class="pre">MeshCompressionType</span></code> table below.</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Mesh-payload version. Currently <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>dracoVersion</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int32</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Draco bitstream version number. Currently <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count.</p></td>
+</tr>
+<tr class="row-even"><td><p>name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[name</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Mesh name.</p></td>
+</tr>
+<tr class="row-odd"><td><p>invBindDataSize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code></p></td>
+<td><p>8</p></td>
+<td><p>Length in bytes of the inverse-bind-matrix block that follows. <code class="docutils literal notranslate"><span class="pre">0</span></code> if the mesh is unskinned.</p></td>
+</tr>
+<tr class="row-even"><td><p>invBindData</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[invBindDataSize]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Tightly packed array of <code class="docutils literal notranslate"><span class="pre">mat4</span></code> (16 floats = 64 bytes each), one per joint. Omitted when <code class="docutils literal notranslate"><span class="pre">invBindDataSize</span> <span class="pre">==</span> <span class="pre">0</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>submeshCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint32</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Number of submesh records that follow.</p></td>
+</tr>
+<tr class="row-even"><td><p>submeshes</p></td>
+<td><p><em>see below</em></p></td>
+<td><p>variable</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">submeshCount</span></code> records.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each submesh record is:</p>
+<table class="docutils align-default" id="id18">
+<caption><span class="caption-number">Table 2.51 </span><span class="caption-text">Submesh record</span><a class="headerlink" href="#id18" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 18.0%" />
+<col style="width: 8.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bufferSize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code></p></td>
+<td><p>8</p></td>
+<td><p>Length of the Draco buffer that follows.</p></td>
+</tr>
+<tr class="row-odd"><td><p>buffer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[bufferSize]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Raw Draco-encoded submesh bytes; see the <a class="reference external" href="https://google.github.io/draco/spec/">Draco bitstream specification</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">MeshCompressionType</span></code> values (reference: <code class="docutils literal notranslate"><span class="pre">avs::MeshCompressionType</span></code>):</p>
+<table class="docutils align-default" id="id19">
+<caption><span class="caption-number">Table 2.52 </span><span class="caption-text">MeshCompressionType</span><a class="headerlink" href="#id19" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 6.0%" />
+<col style="width: 21.7%" />
+<col style="width: 72.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>NONE</p></td>
+<td><p>Uncompressed; not supported on the wire and rejected by the decoder.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>DRACO</p></td>
+<td><p>Each submesh buffer is a Draco-encoded bitstream.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="material-payload">
+<span id="id4"></span><h2><span class="section-number">2.9.5. </span>Material payload<a class="headerlink" href="#material-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Material</span></code> chunk carries a PBR (metallic-roughness) material descriptor and a list of extension records. Texture resources referenced by <code class="docutils literal notranslate"><span class="pre">avs::uid</span></code> are sent as separate <code class="docutils literal notranslate"><span class="pre">Texture</span></code> or <code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code> chunks.</p>
+<p>(In-memory representation: <code class="docutils literal notranslate"><span class="pre">avs::Material</span></code>.)</p>
+<table class="docutils align-default" id="id20">
+<caption><span class="caption-number">Table 2.53 </span><span class="caption-text">Material body</span><a class="headerlink" href="#id20" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 19.6%" />
+<col style="width: 19.6%" />
+<col style="width: 7.1%" />
+<col style="width: 53.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[name</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Material name.</p></td>
+</tr>
+<tr class="row-even"><td><p>materialMode</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code> (<code class="docutils literal notranslate"><span class="pre">MaterialMode</span></code>)</p></td>
+<td><p>1</p></td>
+<td><p>Blend / alpha behaviour; see <code class="docutils literal notranslate"><span class="pre">MaterialMode</span></code> table below.</p></td>
+</tr>
+<tr class="row-odd"><td><p>baseColorTexture</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TextureAccessor</span></code></p></td>
+<td><p>25</p></td>
+<td><p>PBR base colour texture (see <em>TextureAccessor</em> below).</p></td>
+</tr>
+<tr class="row-even"><td><p>baseColorFactor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code></p></td>
+<td><p>16</p></td>
+<td><p>Linear-space multiplier <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a)</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>metallicRoughnessTexture</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TextureAccessor</span></code></p></td>
+<td><p>25</p></td>
+<td><p>Metallic + roughness texture.</p></td>
+</tr>
+<tr class="row-even"><td><p>metallicFactor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Multiplier for the metallic channel.</p></td>
+</tr>
+<tr class="row-odd"><td><p>roughnessMultiplier</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Multiplier for the roughness channel.</p></td>
+</tr>
+<tr class="row-even"><td><p>roughnessOffset</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Constant added to roughness after the multiplier.</p></td>
+</tr>
+<tr class="row-odd"><td><p>normalTexture</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TextureAccessor</span></code></p></td>
+<td><p>25</p></td>
+<td><p>Normal map; the union member is interpreted as <code class="docutils literal notranslate"><span class="pre">scale</span></code>. If the client did not declare <code class="docutils literal notranslate"><span class="pre">normals</span></code> support in the handshake, <code class="docutils literal notranslate"><span class="pre">index</span></code> is forced to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>occlusionTexture</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TextureAccessor</span></code></p></td>
+<td><p>25</p></td>
+<td><p>Ambient occlusion map; the union member is interpreted as <code class="docutils literal notranslate"><span class="pre">strength</span></code>. If the client did not declare <code class="docutils literal notranslate"><span class="pre">ambientOcclusion</span></code> support, <code class="docutils literal notranslate"><span class="pre">index</span></code> is forced to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>emissiveTexture</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TextureAccessor</span></code></p></td>
+<td><p>25</p></td>
+<td><p>Emissive map.</p></td>
+</tr>
+<tr class="row-even"><td><p>emissiveFactor</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec3</span></code></p></td>
+<td><p>12</p></td>
+<td><p>Linear-space emissive colour.</p></td>
+</tr>
+<tr class="row-odd"><td><p>doubleSided</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Non-zero if the material should be rendered on both sides.</p></td>
+</tr>
+<tr class="row-even"><td><p>lightmapTexCoordIndex</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Index of the UV channel used for lightmaps.</p></td>
+</tr>
+<tr class="row-odd"><td><p>extensionCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code></p></td>
+<td><p>8</p></td>
+<td><p>Number of material extensions that follow.</p></td>
+</tr>
+<tr class="row-even"><td><p>extensions</p></td>
+<td><p><em>see below</em></p></td>
+<td><p>variable</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">extensionCount</span></code> extension records.</p></td>
+</tr>
+<tr class="row-odd"><td><p>inlineTextureCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code></p></td>
+<td><p>8</p></td>
+<td><p>Number of inline <code class="docutils literal notranslate"><span class="pre">Texture</span></code> chunks that follow this material on the wire. Currently always <code class="docutils literal notranslate"><span class="pre">0</span></code>; texture resources are sent independently.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">TextureAccessor</span></code> is a 25-byte fixed-size record:</p>
+<table class="docutils align-default" id="id21">
+<caption><span class="caption-number">Table 2.54 </span><span class="caption-text">TextureAccessor</span><a class="headerlink" href="#id21" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 18.0%" />
+<col style="width: 8.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>index</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>Texture resource uid, or <code class="docutils literal notranslate"><span class="pre">0</span></code> if absent.</p></td>
+</tr>
+<tr class="row-odd"><td><p>texCoord</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p>UV channel index (<code class="docutils literal notranslate"><span class="pre">TEXCOORD_n</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p>tiling.x</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>UV tiling on the U axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tiling.y</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>UV tiling on the V axis.</p></td>
+</tr>
+<tr class="row-even"><td><p>scale / strength</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Union: normal-map <code class="docutils literal notranslate"><span class="pre">scale</span></code> or occlusion <code class="docutils literal notranslate"><span class="pre">strength</span></code>. Other slots ignore the value but the field is always present.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each extension record begins with a 4-byte identifier:</p>
+<table class="docutils align-default" id="id22">
+<caption><span class="caption-number">Table 2.55 </span><span class="caption-text">Extension record</span><a class="headerlink" href="#id22" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>id</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint32</span></code> (<code class="docutils literal notranslate"><span class="pre">MaterialExtensionIdentifier</span></code>)</p></td>
+<td><p>4</p></td>
+<td><p>Identifies the extension layout; see <code class="docutils literal notranslate"><span class="pre">MaterialExtensionIdentifier</span></code> table below.</p></td>
+</tr>
+<tr class="row-odd"><td><p>body</p></td>
+<td><p><em>id-specific</em></p></td>
+<td><p>variable</p></td>
+<td><p>Layout defined by the named extension.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">MaterialMode</span></code> values (reference: <code class="docutils literal notranslate"><span class="pre">avs::MaterialMode</span></code>):</p>
+<table class="docutils align-default" id="id23">
+<caption><span class="caption-number">Table 2.56 </span><span class="caption-text">MaterialMode</span><a class="headerlink" href="#id23" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 5.7%" />
+<col style="width: 25.3%" />
+<col style="width: 69.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>UNKNOWN</p></td>
+<td><p>Unspecified; treated by the client as opaque.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>OPAQUE</p></td>
+<td><p>Fully opaque surface; alpha channel ignored.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>TRANSPARENT</p></td>
+<td><p>Alpha-blended surface.</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>MASKED</p></td>
+<td><p>Alpha-tested cutout; fragments are kept or discarded based on the base-colour alpha threshold.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">MaterialExtensionIdentifier</span></code> values (reference: <code class="docutils literal notranslate"><span class="pre">avs::MaterialExtensionIdentifier</span></code>):</p>
+<table class="docutils align-default" id="id24">
+<caption><span class="caption-number">Table 2.57 </span><span class="caption-text">MaterialExtensionIdentifier</span><a class="headerlink" href="#id24" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 5.7%" />
+<col style="width: 25.3%" />
+<col style="width: 69.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>SIMPLE_GRASS_WIND</p></td>
+<td><p>Simple wind animation for grass-like vegetation.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="materialinstance-payload">
+<span id="material-instance-payload"></span><h2><span class="section-number">2.9.6. </span>MaterialInstance payload<a class="headerlink" href="#materialinstance-payload" title="Link to this heading">¶</a></h2>
+<p>Reserved. <code class="docutils literal notranslate"><span class="pre">MaterialInstance</span></code> (id 3) is not currently emitted; the body is unspecified and receivers must skip the chunk by advancing past <code class="docutils literal notranslate"><span class="pre">payloadSize</span></code> bytes.</p>
+</section>
+<section id="texture-payload">
+<span id="id5"></span><h2><span class="section-number">2.9.7. </span>Texture payload<a class="headerlink" href="#texture-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Texture</span></code> chunk carries an inline compressed texture. Large textures (over ~1 MiB) are normally promoted to a <a class="reference internal" href="#texture-pointer-payload"><span class="std std-ref">TexturePointer payload</span></a> instead.</p>
+<p>(In-memory representation: <code class="docutils literal notranslate"><span class="pre">avs::Texture</span></code>.)</p>
+<table class="docutils align-default" id="id25">
+<caption><span class="caption-number">Table 2.58 </span><span class="caption-text">Texture body</span><a class="headerlink" href="#id25" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[name</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Texture name (often the source file stem).</p></td>
+</tr>
+<tr class="row-even"><td><p>compression</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint32</span></code> (<code class="docutils literal notranslate"><span class="pre">TextureCompression</span></code>)</p></td>
+<td><p>4</p></td>
+<td><p>Codec for <code class="docutils literal notranslate"><span class="pre">compressedData</span></code>; see <code class="docutils literal notranslate"><span class="pre">TextureCompression</span></code> table below.</p></td>
+</tr>
+<tr class="row-odd"><td><p>compressedData</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[…]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Codec-specific payload. Its length is implied by <code class="docutils literal notranslate"><span class="pre">payloadSize</span> <span class="pre">-</span> <span class="pre">(2</span> <span class="pre">+</span> <span class="pre">nameLength</span> <span class="pre">+</span> <span class="pre">4)</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">TextureCompression</span></code> values (reference: <code class="docutils literal notranslate"><span class="pre">avs::TextureCompression</span></code>):</p>
+<table class="docutils align-default" id="id26">
+<caption><span class="caption-number">Table 2.59 </span><span class="caption-text">TextureCompression</span><a class="headerlink" href="#id26" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 5.7%" />
+<col style="width: 25.3%" />
+<col style="width: 69.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Id</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>UNCOMPRESSED</p></td>
+<td><p>Reserved; rejected on the wire.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>PNG</p></td>
+<td><p>Single PNG image.</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>MULTIPLE_PNG</p></td>
+<td><p>Face/mip array of length-prefixed PNG blobs; the byte-exact layout is defined by the texture-cache writer in the reference server.</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>KTX</p></td>
+<td><p>KTX2 / Basis container.</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>JPEG</p></td>
+<td><p>Single JPEG image.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="animation-payload">
+<span id="id6"></span><h2><span class="section-number">2.9.8. </span>Animation payload<a class="headerlink" href="#animation-payload" title="Link to this heading">¶</a></h2>
+<p>An <code class="docutils literal notranslate"><span class="pre">Animation</span></code> chunk carries a per-bone keyframe track. Clips are more commonly delivered out-of-band as files via an <a class="reference internal" href="#animation-pointer-payload"><span class="std std-ref">AnimationPointer payload</span></a> chunk; the inline form below is what the fetched body decodes to when it is not a glTF-family file.</p>
+<p>(In-memory representation: <code class="docutils literal notranslate"><span class="pre">teleport::core::Animation</span></code>.)</p>
+<table class="docutils align-default" id="id27">
+<caption><span class="caption-number">Table 2.60 </span><span class="caption-text">Animation body</span><a class="headerlink" href="#id27" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 20.4%" />
+<col style="width: 7.4%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[name</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Animation name.</p></td>
+</tr>
+<tr class="row-even"><td><p>duration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Animation length in seconds. Must be <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">0</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>boneTrackCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code></p></td>
+<td><p>8</p></td>
+<td><p>Number of bone tracks that follow.</p></td>
+</tr>
+<tr class="row-even"><td><p>tracks</p></td>
+<td><p><em>see below</em></p></td>
+<td><p>variable</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boneTrackCount</span></code> bone tracks.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each bone track is:</p>
+<table class="docutils align-default" id="id28">
+<caption><span class="caption-number">Table 2.61 </span><span class="caption-text">Bone track</span><a class="headerlink" href="#id28" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 16.7%" />
+<col style="width: 20.4%" />
+<col style="width: 7.4%" />
+<col style="width: 55.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>boneIndex</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Index of the bone within the referencing skeleton; <code class="docutils literal notranslate"><span class="pre">-1</span></code> means unmapped.</p></td>
+</tr>
+<tr class="row-odd"><td><p>positionKeyframeCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Number of position keyframes.</p></td>
+</tr>
+<tr class="row-even"><td><p>positionKeyframes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{float</span> <span class="pre">time,</span> <span class="pre">vec3</span> <span class="pre">value}[count]</span></code></p></td>
+<td><p>16·n</p></td>
+<td><p>Position keyframes in the client’s axes. Time in seconds; value in metres.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotationKeyframeCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Number of rotation keyframes.</p></td>
+</tr>
+<tr class="row-even"><td><p>rotationKeyframes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{float</span> <span class="pre">time,</span> <span class="pre">vec4</span> <span class="pre">value}[count]</span></code></p></td>
+<td><p>20·n</p></td>
+<td><p>Rotation keyframes. <code class="docutils literal notranslate"><span class="pre">vec4</span></code> is a quaternion <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">w)</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="skeleton-payload">
+<span id="id7"></span><h2><span class="section-number">2.9.9. </span>Skeleton payload<a class="headerlink" href="#skeleton-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">Skeleton</span></code> chunk gives the ordered list of bone-node uids that make up a skeletal hierarchy. The bones themselves are normal scene nodes sent as <a class="reference internal" href="#node-payload"><span class="std std-ref">Node payload</span></a> chunks.</p>
+<p>(In-memory representation: <code class="docutils literal notranslate"><span class="pre">avs::Skeleton</span></code>.)</p>
+<table class="docutils align-default" id="id29">
+<caption><span class="caption-number">Table 2.62 </span><span class="caption-text">Skeleton body</span><a class="headerlink" href="#id29" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>name length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count.</p></td>
+</tr>
+<tr class="row-odd"><td><p>name</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[name</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Skeleton name.</p></td>
+</tr>
+<tr class="row-even"><td><p>boneCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code></p></td>
+<td><p>8</p></td>
+<td><p>Number of bone uids that follow.</p></td>
+</tr>
+<tr class="row-odd"><td><p>boneIDs</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64[boneCount]</span></code></p></td>
+<td><p>8·n</p></td>
+<td><p>Bone-node uids, in the order expected by the Mesh component’s <code class="docutils literal notranslate"><span class="pre">joint_indices</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="fontatlas-payload">
+<span id="font-atlas-payload"></span><h2><span class="section-number">2.9.10. </span>FontAtlas payload<a class="headerlink" href="#fontatlas-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">FontAtlas</span></code> chunk carries the glyph-position metadata for a font, keyed by point size. The actual glyph bitmap is delivered as a separate <code class="docutils literal notranslate"><span class="pre">Texture</span></code> whose uid is given here.</p>
+<p>(In-memory representation: <code class="docutils literal notranslate"><span class="pre">teleport::core::FontAtlas</span></code>.)</p>
+<table class="docutils align-default" id="id30">
+<caption><span class="caption-number">Table 2.63 </span><span class="caption-text">FontAtlas body</span><a class="headerlink" href="#id30" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>font_texture_uid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>Texture uid of the font bitmap.</p></td>
+</tr>
+<tr class="row-odd"><td><p>mapCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p>Number of font-size maps that follow. Maximum <code class="docutils literal notranslate"><span class="pre">255</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>maps</p></td>
+<td><p><em>see below</em></p></td>
+<td><p>variable</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mapCount</span></code> font maps.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Each font map is:</p>
+<table class="docutils align-default" id="id31">
+<caption><span class="caption-number">Table 2.64 </span><span class="caption-text">Font map</span><a class="headerlink" href="#id31" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>pointSize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Font size key for this map.</p></td>
+</tr>
+<tr class="row-odd"><td><p>lineHeight</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Line height in pixels for this size.</p></td>
+</tr>
+<tr class="row-even"><td><p>glyphCount</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Number of glyphs that follow.</p></td>
+</tr>
+<tr class="row-odd"><td><p>glyphs</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Glyph[glyphCount]</span></code></p></td>
+<td><p>30·n</p></td>
+<td><p>Packed glyph records (see below).</p></td>
+</tr>
+</tbody>
+</table>
+<p>A <code class="docutils literal notranslate"><span class="pre">Glyph</span></code> is a 30-byte packed record:</p>
+<object data="../../_images/mermaid-30780a4ebaf2ac9485ad9ac618083d4bae6f5f91.svg" type="image/svg+xml">
+            <p class="warning">packet-beta
+    title Glyph (byte offsets)
+    0-1: &quot;index&quot;
+    2-3: &quot;x0&quot;
+    4-5: &quot;y0&quot;
+    6-7: &quot;x1&quot;
+    8-9: &quot;y1&quot;
+    10-13: &quot;xOffset&quot;
+    14-17: &quot;yOffset&quot;
+    18-21: &quot;xAdvance&quot;
+    22-25: &quot;xOffset2&quot;
+    26-29: &quot;yOffset2&quot;</p></object>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index,</span> <span class="pre">x0,</span> <span class="pre">y0,</span> <span class="pre">x1,</span> <span class="pre">y1</span></code> are <code class="docutils literal notranslate"><span class="pre">uint16</span></code> and describe the bounding box of the glyph in the font texture.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xOffset,</span> <span class="pre">yOffset,</span> <span class="pre">xAdvance,</span> <span class="pre">xOffset2,</span> <span class="pre">yOffset2</span></code> are <code class="docutils literal notranslate"><span class="pre">float</span></code> and describe placement and advance, in the canvas’s local units.</p></li>
+</ul>
+</section>
+<section id="textcanvas-payload">
+<span id="text-canvas-payload"></span><h2><span class="section-number">2.9.11. </span>TextCanvas payload<a class="headerlink" href="#textcanvas-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">TextCanvas</span></code> chunk carries the renderable contents of a text canvas referenced by a Node’s <a class="reference internal" href="#node-payload"><span class="std std-ref">TextCanvas component</span></a>.</p>
+<p>(In-memory representation: <code class="docutils literal notranslate"><span class="pre">teleport::core::TextCanvas</span></code>.)</p>
+<table class="docutils align-default" id="id32">
+<caption><span class="caption-number">Table 2.65 </span><span class="caption-text">TextCanvas body</span><a class="headerlink" href="#id32" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>font_uid</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64</span></code> (<code class="docutils literal notranslate"><span class="pre">avs::uid</span></code>)</p></td>
+<td><p>8</p></td>
+<td><p>FontAtlas uid this canvas renders with.</p></td>
+</tr>
+<tr class="row-odd"><td><p>pointSize</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int32</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Selected point size; must match one of the FontAtlas’s <code class="docutils literal notranslate"><span class="pre">pointSize</span></code> keys.</p></td>
+</tr>
+<tr class="row-even"><td><p>lineHeight</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td><p>4</p></td>
+<td><p>Per-canvas line-height override, in the canvas’s local units.</p></td>
+</tr>
+<tr class="row-odd"><td><p>colour</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">vec4</span></code></p></td>
+<td><p>16</p></td>
+<td><p>Foreground colour <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">g,</span> <span class="pre">b,</span> <span class="pre">a)</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>text length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count of the text payload.</p></td>
+</tr>
+<tr class="row-odd"><td><p>text</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[text</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>UTF-8 text. Not null-terminated.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The fixed 32-byte head:</p>
+<object data="../../_images/mermaid-292eefc51957df000c89f87983eeb0b207630ee2.svg" type="image/svg+xml">
+            <p class="warning">packet-beta
+    title TextCanvas head (byte offsets)
+    0-7: &quot;font_uid&quot;
+    8-11: &quot;pointSize&quot;
+    12-15: &quot;lineHeight&quot;
+    16-31: &quot;colour&quot;</p></object>
+</section>
+<section id="texturepointer-payload">
+<span id="texture-pointer-payload"></span><h2><span class="section-number">2.9.12. </span>TexturePointer payload<a class="headerlink" href="#texturepointer-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code> chunk delivers a Texture indirectly: it carries an HTTP(S) URL that the client fetches and then decodes as a <a class="reference internal" href="#texture-payload"><span class="std std-ref">Texture payload</span></a>. See <a class="reference internal" href="http.html"><span class="doc">HTTP Service</span></a> for the fetch and caching rules.</p>
+<p>Every pointer body (<code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshPointer</span></code>, <code class="docutils literal notranslate"><span class="pre">MaterialPointer</span></code>, <code class="docutils literal notranslate"><span class="pre">AnimationPointer</span></code>) begins with a single axes-standard byte, ahead of the URL, so it is always in the same place. For <code class="docutils literal notranslate"><span class="pre">MaterialPointer</span></code>, whose asset has no geometric frame, the byte is a placeholder and stays <code class="docutils literal notranslate"><span class="pre">NotInitialized</span></code> (0).</p>
+<p>For a texture the byte states the axes standard the file’s <strong>contents</strong> are laid out in. It matters for cubemaps, whose six faces have an orientation. Note the asymmetry with geometry: every geometric value is converted to the client’s axes standard by the server (see <a class="reference internal" href="#axes-conversion"><span class="std std-ref">Axis conversion</span></a>), but texture contents never are — the server sends the file as authored, and the client converts its sample directions into the declared frame instead.</p>
+<table class="docutils align-default" id="id33">
+<caption><span class="caption-number">Table 2.66 </span><span class="caption-text">TexturePointer body</span><a class="headerlink" href="#id33" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>axesStandard</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p>The frame the texture’s contents are laid out in. <code class="docutils literal notranslate"><span class="pre">NotInitialized</span></code> (0) means “the same as the server’s scene”, i.e. <code class="docutils literal notranslate"><span class="pre">SetupCommand.axesStandard</span></code>. A texture with no orientation of its own may declare anything; clients ignore the byte unless they sample the texture as a cubemap.</p></td>
+</tr>
+<tr class="row-odd"><td><p>url length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count.</p></td>
+</tr>
+<tr class="row-even"><td><p>url</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[url</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Absolute URL (<code class="docutils literal notranslate"><span class="pre">http://</span></code> / <code class="docutils literal notranslate"><span class="pre">https://</span></code>) or path relative to the cache’s <code class="docutils literal notranslate"><span class="pre">defaultURLRoot</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example body bytes for a Z-up cubemap at <code class="docutils literal notranslate"><span class="pre">&quot;/a/b.ktx2&quot;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">09</span>                                     <span class="o">--</span> <span class="n">axesStandard</span> <span class="o">=</span> <span class="n">EngineeringStyle</span>
+<span class="mi">09</span> <span class="mi">00</span>                                  <span class="o">--</span> <span class="n">url</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="mi">2</span><span class="n">F</span> <span class="mi">61</span> <span class="mi">2</span><span class="n">F</span> <span class="mi">62</span> <span class="mi">2</span><span class="n">E</span> <span class="mi">6</span><span class="n">B</span> <span class="mi">74</span> <span class="mi">78</span> <span class="mi">32</span>             <span class="o">--</span> <span class="s2">&quot;/a/b.ktx2&quot;</span>
+</pre></div>
+</div>
+<p>A client whose own frame is Y-up right-handed converts each sample direction from its frame into the file’s before the lookup; one already working Z-up right-handed samples the file unchanged. Note that a conversion between standards of <strong>differing handedness</strong> is a mirror rather than a rotation, so a client that carries environment orientation as a rotation alone cannot express it and must handle the reflection separately. Both reference clients do.</p>
+</section>
+<section id="meshpointer-payload">
+<span id="mesh-pointer-payload"></span><h2><span class="section-number">2.9.13. </span>MeshPointer payload<a class="headerlink" href="#meshpointer-payload" title="Link to this heading">¶</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">MeshPointer</span></code> chunk has the same layout as <a class="reference internal" href="#texture-pointer-payload"><span class="std std-ref">TexturePointer payload</span></a>, with a meaningful axes-standard byte. Most geometry is delivered this way rather than inline.</p>
+<p>The body fetched from the URL is <strong>not</strong> necessarily a <a class="reference internal" href="#mesh-payload"><span class="std std-ref">Mesh payload</span></a>; the client selects a decoder from the URL’s extension:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Extension</p></th>
+<th class="head"><p>Decoded as</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.glb</span></code>, <code class="docutils literal notranslate"><span class="pre">.vrm</span></code>, <code class="docutils literal notranslate"><span class="pre">.vrma</span></code></p></td>
+<td><p>glTF 2.0 binary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.gltf</span></code></p></td>
+<td><p>glTF 2.0 text.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.mesh</span></code>, <code class="docutils literal notranslate"><span class="pre">.mesh_compressed</span></code></p></td>
+<td><p>Teleport-native <a class="reference internal" href="#mesh-payload"><span class="std std-ref">Mesh payload</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>An unrecognised extension is rejected. Servers MUST therefore give pointer URLs an extension the client can dispatch on; content type alone is not sufficient.</p>
+<table class="docutils align-default" id="id34">
+<caption><span class="caption-number">Table 2.67 </span><span class="caption-text">MeshPointer body</span><a class="headerlink" href="#id34" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>axesStandard</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8</span></code></p></td>
+<td><p>1</p></td>
+<td><p>The <a class="reference internal" href="conventions.html#conventions"><span class="std std-ref">Conventions</span></a> standard the fetched asset is authored in (an <code class="docutils literal notranslate"><span class="pre">avs::AxesStandard</span></code> value). A glTF-family file (<code class="docutils literal notranslate"><span class="pre">.glb</span></code>/<code class="docutils literal notranslate"><span class="pre">.vrm</span></code>/<code class="docutils literal notranslate"><span class="pre">.vrma</span></code>) is always <code class="docutils literal notranslate"><span class="pre">GlStyle</span></code>. <code class="docutils literal notranslate"><span class="pre">NotInitialized</span></code> (0) means the asset shares the server’s scene axes. Unlike inline geometry, the fetched body is <em>not</em> pre-converted to the client’s standard; the client converts from this standard after decoding.</p></td>
+</tr>
+<tr class="row-odd"><td><p>url length</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>UTF-8 byte count.</p></td>
+</tr>
+<tr class="row-even"><td><p>url</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint8[url</span> <span class="pre">length]</span></code></p></td>
+<td><p>variable</p></td>
+<td><p>Absolute URL or relative path; see <a class="reference internal" href="http.html"><span class="doc">HTTP Service</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="assets-with-external-textures">
+<span id="external-textures"></span><h3><span class="section-number">2.9.13.1. </span>Assets with external textures<a class="headerlink" href="#assets-with-external-textures" title="Link to this heading">¶</a></h3>
+<p>A glTF may either embed its images — in a <code class="docutils literal notranslate"><span class="pre">bufferView</span></code>, or inline as a <code class="docutils literal notranslate"><span class="pre">data:</span></code> URI — or reference them as separate files beside it, with a relative <code class="docutils literal notranslate"><span class="pre">uri</span></code> in its <code class="docutils literal notranslate"><span class="pre">images</span></code> array. Both forms reach clients as a <code class="docutils literal notranslate"><span class="pre">MeshPointer</span></code>, and the second makes each referenced file a <strong>resource in its own right</strong>:</p>
+<ul class="simple">
+<li><p>The <strong>server</strong> treats those files as dependencies of the mesh. Whenever it streams the mesh to a client it streams them too, as ordinary <code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code> chunks, refcounted so a texture two streamed meshes share is held until both let go. The reference servers find them either from an explicit declaration (the Node.js server’s <code class="docutils literal notranslate"><span class="pre">scene.json</span></code> <code class="docutils literal notranslate"><span class="pre">meshes[url].textures</span></code> array) or by reading the asset’s own <code class="docutils literal notranslate"><span class="pre">images</span></code> array; neither materials nor nodes name them, so nothing else would.</p></li>
+<li><p>The <strong>client</strong> resolves each <code class="docutils literal notranslate"><span class="pre">uri</span></code> against the URL it fetched the asset from, per the glTF spec: <code class="docutils literal notranslate"><span class="pre">tex.png</span></code> inside <code class="docutils literal notranslate"><span class="pre">https://host/props/chair.glb</span></code> is <code class="docutils literal notranslate"><span class="pre">https://host/props/tex.png</span></code>. A leading <code class="docutils literal notranslate"><span class="pre">/</span></code> is relative to the scheme and authority; a <code class="docutils literal notranslate"><span class="pre">uri</span></code> with a scheme is used as-is.</p></li>
+</ul>
+<p>The resolved URL is the <strong>identity</strong> of the texture resource. A <code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code> naming a URL and an image <code class="docutils literal notranslate"><span class="pre">uri</span></code> resolving to the same URL are one resource, and a client that has already been given it MUST reuse it rather than fetch, decode and upload the file a second time. That applies across the whole of a client’s cache tree, not only between an asset and its server: two sub-scenes fetched from two different <code class="docutils literal notranslate"><span class="pre">MeshPointer</span></code> URLs that name one texture URL share the one texture. A URL the server never announced is fetched by the client itself.</p>
+<p>Reuse is required whether or not the file has finished arriving. A server streams a mesh and the textures it depends on in the same pass, so an asset commonly reaches an image <code class="docutils literal notranslate"><span class="pre">uri</span></code> while the matching <code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code> is still being fetched; a client that only reuses textures it has <em>finished</em> decoding fetches most of them twice. Exactly one fetch per URL is the requirement, however many assets name it and in whatever order.</p>
+<p>Ownership follows from identity. Because one URL is one resource shared by every asset that names it, such a texture belongs to the <strong>session’s</strong> cache — not to the sub-scene of whichever asset reached it first. A sub-scene neither outlives the session nor is visible to its siblings, so a texture held there could be shared with neither; and a uid issued by one cache means nothing in another. A sub-scene’s materials therefore <em>refer</em> to the texture without holding it, and a uid alone does not identify one of these textures — the cache holding it is part of the answer. The reference client keeps the URL registry on the root cache and records the owning cache on the texture itself, so that a tool navigating from a material to its texture knows where to look.</p>
+<p>Where both a <code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code> and an asset name one URL, the uid the server chose is authoritative — the server’s own materials and commands refer to the texture by it — and the client makes the single texture answer to that uid as well as to any it had already issued for the URL. One texture under several names, never several textures.</p>
+<p>A fetch that fails releases whatever is waiting on it rather than stalling: the materials that named the URL complete with their fallback textures and render visibly wrong, instead of never completing and so never rendering at all. The URL is left unclaimed, so a later reference to it may try again.</p>
+<p>Because the URL is the identity, a server MUST publish each file at <strong>one</strong> URL. The same bytes offered under two paths — a per-asset directory holding its own copy of a shared texture, say — are two resources to every client, fetched, decoded and held in GPU memory once each. The reference client warns (<code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">being</span> <span class="pre">fetched</span> <span class="pre">from</span> <span class="pre">a</span> <span class="pre">second</span> <span class="pre">url</span></code>) when it sees one filename at two URLs.</p>
+<p>A client fetches only those images a material it will actually draw with samples. An asset split out of a larger collection commonly declares the whole collection’s <code class="docutils literal notranslate"><span class="pre">images</span></code> array while using a handful of them, and the images no primitive’s material references are not resources the client needs.</p>
+<p>This applies to server-owned scene assets. A client-supplied avatar is required to be self-contained (see <a class="reference internal" href="signaling.html"><span class="doc">Signaling</span></a>), and an asset offered with external references is refused rather than resolved.</p>
+</section>
+</section>
+<section id="animationpointer-payload">
+<span id="animation-pointer-payload"></span><h2><span class="section-number">2.9.14. </span>AnimationPointer payload<a class="headerlink" href="#animationpointer-payload" title="Link to this heading">¶</a></h2>
+<p>An <code class="docutils literal notranslate"><span class="pre">AnimationPointer</span></code> chunk has exactly the layout and semantics of <a class="reference internal" href="#mesh-pointer-payload"><span class="std std-ref">MeshPointer payload</span></a>, but the URL identifies an out-of-band Animation clip: the client fetches it and decodes the body as an <a class="reference internal" href="#animation-payload"><span class="std std-ref">Animation payload</span></a> (a <code class="docutils literal notranslate"><span class="pre">.vrma</span></code>/<code class="docutils literal notranslate"><span class="pre">.glb</span></code> is glTF binary), registered under the chunk’s uid. That uid is what <code class="docutils literal notranslate"><span class="pre">ApplyAnimationCommand</span></code> references, so the clip’s axes standard must agree with the humanoid rig it will be retargeted onto, which arrives as a MeshPointer with its own declaration. See <a class="reference internal" href="service/server_to_client.html"><span class="doc">Commands from Server to Client</span></a> for the animation commands.</p>
+</section>
+<section id="materialpointer-payload">
+<span id="material-pointer-payload"></span><h2><span class="section-number">2.9.15. </span>MaterialPointer payload<a class="headerlink" href="#materialpointer-payload" title="Link to this heading">¶</a></h2>
+<p>Reserved. <code class="docutils literal notranslate"><span class="pre">MaterialPointer</span></code> (id 12) is not currently emitted; receivers must skip the chunk by advancing past <code class="docutils literal notranslate"><span class="pre">payloadSize</span></code> bytes. The intended body matches <a class="reference internal" href="#texture-pointer-payload"><span class="std std-ref">TexturePointer payload</span></a> but for Material resources.</p>
+</section>
+<section id="removenodes-payload">
+<span id="remove-nodes-payload"></span><h2><span class="section-number">2.9.16. </span>RemoveNodes payload<a class="headerlink" href="#removenodes-payload" title="Link to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">RemoveNodes</span></code> chunk instructs the client to delete one or more scene nodes. It is the <strong>only</strong> payload type whose chunk header omits the <code class="docutils literal notranslate"><span class="pre">uid</span></code> field — there is no single resource this chunk is “about”.</p>
+<table class="docutils align-default" id="id35">
+<caption><span class="caption-number">Table 2.68 </span><span class="caption-text">RemoveNodes body</span><a class="headerlink" href="#id35" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 13.5%" />
+<col style="width: 21.2%" />
+<col style="width: 7.7%" />
+<col style="width: 57.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Size (bytes)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint16</span></code></p></td>
+<td><p>2</p></td>
+<td><p>Number of node uids that follow. Must be <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">0</span></code>; senders skip emitting the chunk entirely when there is nothing to remove.</p></td>
+</tr>
+<tr class="row-odd"><td><p>nodeIDs</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">uint64[count]</span></code></p></td>
+<td><p>8·n</p></td>
+<td><p>Node uids to delete. Each delete is idempotent and silently succeeds if the node is unknown.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example body removing two nodes with uids <code class="docutils literal notranslate"><span class="pre">0x11</span></code> and <code class="docutils literal notranslate"><span class="pre">0x22</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">02</span> <span class="mi">00</span>                                    <span class="o">--</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="mi">11</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>                  <span class="o">--</span> <span class="n">uid</span> <span class="mh">0x11</span>
+<span class="mi">22</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>                  <span class="o">--</span> <span class="n">uid</span> <span class="mh">0x22</span>
+</pre></div>
+</div>
+</section>
+<section id="resource-lifecycle">
+<h2><span class="section-number">2.9.17. </span>Resource lifecycle<a class="headerlink" href="#resource-lifecycle" title="Link to this heading">¶</a></h2>
+<p>For every chunk <em>other</em> than <code class="docutils literal notranslate"><span class="pre">RemoveNodes</span></code>, <code class="docutils literal notranslate"><span class="pre">TexturePointer</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshPointer</span></code> and <code class="docutils literal notranslate"><span class="pre">MaterialPointer</span></code>, the server records the uid as “in flight” and waits for the client to confirm receipt by sending <code class="docutils literal notranslate"><span class="pre">ReceivedResourcesMessage</span></code> (id 3) on the reliable client-to-server channel. See <a class="reference internal" href="service/client_to_server.html"><span class="doc">Messages from Client to Server</span></a>.</p>
+<p>For pointer chunks, the server treats the resource as delivered as soon as the chunk leaves the encoder; the actual asset is then fetched out-of-band over HTTPS. The client is still expected to send <code class="docutils literal notranslate"><span class="pre">ReceivedResourcesMessage</span></code> once the HTTP body has been decoded.</p>
+<p>If the client’s decoder fails (e.g. corrupt data, missing dependency, decoder panic), the client emits <code class="docutils literal notranslate"><span class="pre">ResourceLostMessage</span></code> (id 5) to ask the server to re-send. The server should treat the uid as “not yet received” and re-encode it on the next streaming pass.</p>
+</section>
+<section id="axis-conversion">
+<span id="axes-conversion"></span><h2><span class="section-number">2.9.18. </span>Axis conversion<a class="headerlink" href="#axis-conversion" title="Link to this heading">¶</a></h2>
+<p>Every geometric value (positions, transforms, vectors and quaternions) is converted from the server’s <code class="docutils literal notranslate"><span class="pre">AxesStandard</span></code> (see <a class="reference internal" href="conventions.html#conventions"><span class="std std-ref">Conventions</span></a>) to the client’s standard inside the encoder, using <code class="docutils literal notranslate"><span class="pre">avs::ConvertTransform</span></code>. The client therefore reads geometry data in <strong>its own</strong> axes, regardless of how the source scene is authored.</p>
+<p><strong>Asset contents are the exception.</strong> A file referenced by a pointer chunk is served exactly as authored — the server does not rewrite a <code class="docutils literal notranslate"><span class="pre">.glb</span></code>, and does not reproject a cubemap. Each pointer body therefore declares the frame its asset is in, in the leading axes-standard byte, and the client converts: mesh and animation data when it is decoded, cubemap sample directions when the texture is used. <code class="docutils literal notranslate"><span class="pre">NotInitialized</span></code> (0) in that byte means “the same as the server’s scene”, which is what <code class="docutils literal notranslate"><span class="pre">SetupCommand.axesStandard</span></code> reports.</p>
+</section>
+<section id="coding-conventions">
+<h2><span class="section-number">2.9.19. </span>Coding conventions<a class="headerlink" href="#coding-conventions" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Strings are <code class="docutils literal notranslate"><span class="pre">uint16</span></code>-length-prefixed UTF-8, never null-terminated.</p></li>
+<li><p>Variable-length arrays are <code class="docutils literal notranslate"><span class="pre">size_t</span></code>-length-prefixed.</p></li>
+<li><p>Quaternions are <code class="docutils literal notranslate"><span class="pre">vec4_packed</span></code> <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">w)</span></code>; positions are <code class="docutils literal notranslate"><span class="pre">vec3_packed</span></code> in metres.</p></li>
+<li><p>Compression flags (<code class="docutils literal notranslate"><span class="pre">MeshCompressionType</span></code>, <code class="docutils literal notranslate"><span class="pre">TextureCompression</span></code>) are 1-byte enums whose layout is part of the wire format; new values must bump <a class="reference internal" href="conventions.html#conventions"><span class="std std-ref">protocol_version</span></a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="video_metadata.html" class="btn btn-neutral float-left" title="2.8. Video Metadata" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="client_nodes.html" class="btn btn-neutral float-right" title="2.10. Origins and Client-Specific Nodes" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

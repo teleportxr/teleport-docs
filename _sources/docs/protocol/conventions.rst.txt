@@ -1,0 +1,109 @@
+.. _conventions:
+
+###########
+Conventions
+###########
+
+This page collects the cross-cutting conventions used by every wire format in the protocol. Implementers should read it before any of the per-channel pages.
+
+Endianness, alignment and packing
+=================================
+
+* All multi-byte scalars on every channel are encoded **little-endian**, matching the layout used by the reference C++ implementation on the platforms it targets. (this is subject to change: network byte order may be preferable.)
+* Every struct that crosses the wire is packed: implementations must use 1-byte alignment and assume **no implicit padding** between fields.
+* ``bool`` is one byte. Id's are **8 bytes** (the protocol assumes a 64-bit platform on both ends).
+* Strings sent on the geometry channel are UTF-8 and are **not** null-terminated; they are always preceded by an explicit ``uint16`` length.
+* Implementations MUST bounds-check when reading binary data.
+* Strings carried in JSON signaling messages follow normal JSON / UTF-8 rules.
+
+Identifiers
+===========
+
+``uid``
+    A 64-bit unsigned integer (``uint64``) used to identify every server-allocated resource (textures, meshes, materials, animations, skeletons, font atlases, text canvases, nodes, dynamic-lighting cubemaps, and the session itself). ``0`` is the reserved "invalid" uid. Uids are minted by the server and are unique within the lifetime of one server process; the client treats them as opaque.
+
+``InputId``
+    A 16-bit unsigned integer (``uint16_t``) that identifies one input declared by a :ref:`SetupInputsCommand <input>`. Input ids are unique within one ``SetupInputsCommand`` and become invalid when the next ``SetupInputsCommand`` is received.
+
+``ack_id`` / ``confirmationNumber``
+    Both are ``uint64``. ``ack_id`` is used by ``AckedCommand`` and is monotonically increasing per session — clients may discard any command whose ``ack_id`` is less than or equal to the highest one already processed. ``confirmationNumber`` is carried by ``NodeStateCommand`` and is acknowledged independently.
+
+Coordinate systems and units
+============================
+
+Many commonly used renderers use different axis standards. While Y-vertical, right-handed is common in OpenGL applications, Unreal Engine uses Z-vertical, left-handed system. The protocol is intended to be easily implementable on differing hardware and software platforms, so it does not specify an axis standard but rather negotiates this between client and server.
+
+Every server-to-client packet that contains geometric data is provided in the ``AxesStandard`` (reference: ``avs::AxesStandard``) that the client specified on connection. ``AxesStandard`` is a 1-byte bitfield with the following values on the wire:
+
+.. list-table:: AxesStandard
+   :widths: 12 18 50
+   :header-rows: 1
+
+   * - Value
+     - Name
+     - Meaning
+   * - 0
+     - ``NotInitialized``
+     - Reserved; never sent on the wire.
+   * - 1
+     - ``RightHanded``
+     - Handedness flag (component bit).
+   * - 2
+     - ``LeftHanded``
+     - Handedness flag (component bit).
+   * - 4
+     - ``YVertical``
+     - Vertical-axis flag (component bit).
+   * - 8
+     - ``ZVertical``
+     - Vertical-axis flag (component bit).
+   * - 9 (= 8 | 1)
+     - ``EngineeringStyle``
+     - Right-handed, +X right, +Y forward, +Z up (``ZVertical | RightHanded``).
+   * - 21 (= 16 | 4 | 1)
+     - ``GlStyle``
+     - Right-handed, +X right, +Y up, -Z forward (``YVertical | RightHanded``).
+   * - 42 (= 32 | 8 | 2)
+     - ``UnrealStyle``
+     - Left-handed, +X forward, +Y right, +Z up (``ZVertical | LeftHanded``).
+   * - 70 (= 64 | 4 | 2)
+     - ``UnityStyle``
+     - Left-handed, +X right, +Y up, +Z forward (``YVertical | LeftHanded``).
+
+The low four bits describe the standard — handedness and which axis is vertical — but they do not identify it on their own: ``GlStyle`` and ``UnityStyle`` are both ``YVertical``, and differ from other conceivable standards with the same handedness only by convention. Bits 16, 32 and 64 are therefore discriminators that make each of the four complete standards a distinct byte. Implementations must compare against the whole byte, and may read the low bits to answer "is this left-handed" or "is Z up" — never the reverse. In particular ``EngineeringStyle`` is ``ZVertical | RightHanded`` with **no** discriminator bit, so it is 9 and not 8 | anything else.
+
+A server must be capable of supporting clients in at least ``EngineeringStyle`` and ``GlStyle``.
+
+* The client declares its native axes as part of the :ref:`Handshake <signaling>`.
+* The server publishes the axes its scene is authored in via ``SetupCommand.axesStandard``. Numbers on the wire are always already in the client's standard, so for geometry the value is informational — but a client must remember it, because it is what an unset axes-standard byte on a pointer chunk means (see :ref:`axes_conversion`).
+* Assets fetched over HTTP are the exception to "always in the client's standard": a mesh, animation or cubemap file is served as authored, and the pointer chunk that names it declares which frame that is. The client converts.
+* Linear units are **metres**.
+* Quaternions are stored as ``vec4_packed`` with the layout ``(x, y, z, w)``.
+* All transforms are local, i.e. relative to the parent node. A root node -- one whose ``parent_uid`` is zero -- is therefore expressed directly in the server's global space, and its global transform is its local transform. Node transforms are **not** relative to the session origin: the origin is itself an ordinary node in that same global space. See :doc:`client_nodes`.
+
+Time base
+=========
+
+Time is expressed in microseconds. The setup command specifies the session start time in UTC Unix time, and all other times on the wire are offsets from this.
+
+.. list-table::
+   :widths: 18 25 25
+   :header-rows: 1
+
+   * - Time base
+     - Where it appears
+     - Meaning
+   * - Server UTC Unix microseconds (``int64``)
+     - ``SetupCommand.startTimestamp_utc_unix_us``;
+       ``PingForLatencyCommand.unix_time_us`` and the matching ``PongForLatencyMessage`` echo
+     - The server's wall clock. Used as the session-start anchor and as the timestamp for round-trip / one-way latency estimation. The same clock in both fields, used for two different purposes.
+   * - Client session-relative microseconds (``int64``)
+     - 9-byte ``ClientMessage`` header (``timestamp_session_us``)
+     - Microseconds elapsed on the client since its local session start. Monotonic within a session; not comparable across clients or to any UTC clock.
+
+Versioning
+==========
+
+* ``Handshake.protocol_version`` and ``AcknowledgeHandshakeCommand`` together establish that the two endpoints understand the same wire format. The reference protocol version is **0.9**.
+* There is currently no formal capability-negotiation handshake beyond ``RenderingFeatures`` and the WebRTC SDP exchange. Endpoints that disagree on ``protocol_version`` should drop the connection rather than try to negotiate.
+* ``avs::VideoCodec``, ``avs::AudioCodec``, ``avs::AxesStandard`` and the ``CommandPayloadType`` / ``ClientMessagePayloadType`` / ``GeometryPayloadType`` enumerations are part of the wire format. Adding a new value is a backwards-incompatible change and must bump ``protocol_version``.
