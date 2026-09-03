@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.8. The Teleport Core library &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.9. Client Render Library" href="clientrenderer.html" />
+    <link rel="prev" title="3.7. LibAVStream Example" href="libavstream_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Reference Implementation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html">3.1. Teleport Unity SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unreal/index.html">3.2. Teleport Unreal SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs/index.html">3.3. Teleport NodeJS SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">3.4. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">3.5. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">3.6. LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">3.7. LibAVStream Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.8. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">3.9. Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">3.10. Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">3.11. Video with Vulkan on Android</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">3. </span>Reference Implementation</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.8. </span>The Teleport Core library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/reference/teleportcore.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-teleport-core-library">
+<h1><span class="section-number">3.8. </span>The Teleport Core library<a class="headerlink" href="#the-teleport-core-library" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">3.8.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>Teleport Core is a library of fundamental classes shared by clients and servers.</p>
+</section>
+<section id="commands">
+<h2><span class="section-number">3.8.2. </span>Commands<a class="headerlink" href="#commands" title="Link to this heading">¶</a></h2>
+<p>Commands are sent from the server to the client on a reliable data channel. All commands derive from teleport::core::Command.</p>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core7CommandE">
+<span id="_CPPv3N8teleport4core7CommandE"></span><span id="_CPPv2N8teleport4core7CommandE"></span><span id="teleport::core::Command"></span><span class="target" id="structteleport_1_1core_1_1_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Command</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core7CommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>A message from a server to a client. The commandPayloadType specifies the size and interpretation of the packet. </p>
+<p>Subclassed by teleport::core::AckedCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_acknowledge_handshake_command"><span class="std std-ref">teleport::core::AcknowledgeHandshakeCommand</span></a>, teleport::core::ApplyAnimationCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_assign_node_pose_path_command"><span class="std std-ref">teleport::core::AssignNodePosePathCommand</span></a>, teleport::core::AudioParticipantStateChangeCommand, teleport::core::AudioSourceMappingCommand, teleport::core::NodeStateCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_node_visibility_command"><span class="std std-ref">teleport::core::NodeVisibilityCommand</span></a>, teleport::core::PingForLatencyCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_reconfigure_video_command"><span class="std std-ref">teleport::core::ReconfigureVideoCommand</span></a>, teleport::core::SetNodeAnimationSpeedCommand, <a class="reference internal" href="#structteleport_1_1core_1_1_set_node_highlighted_command"><span class="std std-ref">teleport::core::SetNodeHighlightedCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_setup_command"><span class="std std-ref">teleport::core::SetupCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_setup_inputs_command"><span class="std std-ref">teleport::core::SetupInputsCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_shutdown_command"><span class="std std-ref">teleport::core::ShutdownCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_update_node_enabled_state_command"><span class="std std-ref">teleport::core::UpdateNodeEnabledStateCommand</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_update_node_movement_command"><span class="std std-ref">teleport::core::UpdateNodeMovementCommand</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core7Command18commandPayloadTypeE">
+<span id="_CPPv3N8teleport4core7Command18commandPayloadTypeE"></span><span id="_CPPv2N8teleport4core7Command18commandPayloadTypeE"></span><span id="teleport::core::Command::commandPayloadType__CommandPayloadType"></span><span class="target" id="structteleport_1_1core_1_1_command_1a3747ba5ab3ea74cda926e64a652a4ccb"></span><span class="n"><span class="pre">CommandPayloadType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">commandPayloadType</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core7Command18commandPayloadTypeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>What type of command this is, how to interpret it. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “teleport::core::SetStageSpaceOriginNodeCommand” in doxygen xml output for project “TeleportXR” from directory: /home/runner/work/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core27AcknowledgeHandshakeCommandE">
+<span id="_CPPv3N8teleport4core27AcknowledgeHandshakeCommandE"></span><span id="_CPPv2N8teleport4core27AcknowledgeHandshakeCommandE"></span><span id="teleport::core::AcknowledgeHandshakeCommand"></span><span class="target" id="structteleport_1_1core_1_1_acknowledge_handshake_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AcknowledgeHandshakeCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core27AcknowledgeHandshakeCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The message sent by a server to a client on receipt of the client’s handshake, confirming that the session can begin. size is variable, as visible node uid’s are appended. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core27AcknowledgeHandshakeCommand16visibleNodeCountE">
+<span id="_CPPv3N8teleport4core27AcknowledgeHandshakeCommand16visibleNodeCountE"></span><span id="_CPPv2N8teleport4core27AcknowledgeHandshakeCommand16visibleNodeCountE"></span><span id="teleport::core::AcknowledgeHandshakeCommand::visibleNodeCount__s"></span><span class="target" id="structteleport_1_1core_1_1_acknowledge_handshake_command_1a5aa7e6dd0461f28cbb1fbf045c2213a6"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">visibleNodeCount</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core27AcknowledgeHandshakeCommand16visibleNodeCountE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Count of visible node IDs appended to the command payload. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommandE">
+<span id="_CPPv3N8teleport4core12SetupCommandE"></span><span id="_CPPv2N8teleport4core12SetupCommandE"></span><span id="teleport::core::SetupCommand"></span><span class="target" id="structteleport_1_1core_1_1_setup_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetupCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The setup information sent by the server on connection to a given client. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand12debug_streamE">
+<span id="_CPPv3N8teleport4core12SetupCommand12debug_streamE"></span><span id="_CPPv2N8teleport4core12SetupCommand12debug_streamE"></span><span id="teleport::core::SetupCommand::debug_stream__uint32_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a5fe803427c43214e69df692895a483d4"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">debug_stream</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12debug_streamE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>1+4=5 </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand21debug_network_packetsE">
+<span id="_CPPv3N8teleport4core12SetupCommand21debug_network_packetsE"></span><span id="_CPPv2N8teleport4core12SetupCommand21debug_network_packetsE"></span><span id="teleport::core::SetupCommand::debug_network_packets__uint32_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a21cefaf10485a3e885484f520efc8d56"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">debug_network_packets</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand21debug_network_packetsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>5+4=9 </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand17requiredLatencyMsE">
+<span id="_CPPv3N8teleport4core12SetupCommand17requiredLatencyMsE"></span><span id="_CPPv2N8teleport4core12SetupCommand17requiredLatencyMsE"></span><span id="teleport::core::SetupCommand::requiredLatencyMs__int32_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a530ccb3b4818dadfbe4a94980bbed6ba"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">requiredLatencyMs</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand17requiredLatencyMsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>9+4=13 </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand23idle_connection_timeoutE">
+<span id="_CPPv3N8teleport4core12SetupCommand23idle_connection_timeoutE"></span><span id="_CPPv2N8teleport4core12SetupCommand23idle_connection_timeoutE"></span><span id="teleport::core::SetupCommand::idle_connection_timeout__uint32_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a3f6ceedb32ca2770710afaef6fcbc7d2"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">idle_connection_timeout</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5000</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand23idle_connection_timeoutE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>13+4=17 </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand10session_idE">
+<span id="_CPPv3N8teleport4core12SetupCommand10session_idE"></span><span id="_CPPv2N8teleport4core12SetupCommand10session_idE"></span><span id="teleport::core::SetupCommand::session_id__uint64_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a05a70ae2140595adb75dea63e537b352"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">session_id</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand10session_idE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>17+8=25 The server’s session id changes when the server session changes. 37 bytes </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand12video_configE">
+<span id="_CPPv3N8teleport4core12SetupCommand12video_configE"></span><span id="_CPPv2N8teleport4core12SetupCommand12video_configE"></span><span id="teleport::core::SetupCommand::video_config__avs::VideoConfig"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a960333e990324a5cf27722d34b09d8b8"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs11VideoConfigE" title="avs::VideoConfig"><span class="n"><span class="pre">VideoConfig</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">video_config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12video_configE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>25+89=114 Video setup structure. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand12audio_configE">
+<span id="_CPPv3N8teleport4core12SetupCommand12audio_configE"></span><span id="_CPPv2N8teleport4core12SetupCommand12audio_configE"></span><span id="teleport::core::SetupCommand::audio_config__avs::AudioConfig"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a81c9b933f7e3ca674e2bcabd7312ced3"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs11AudioConfigE" title="avs::AudioConfig"><span class="n"><span class="pre">AudioConfig</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">audio_config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12audio_configE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>114+17=131 Audio media-track config. See docs/protocol/audio.rst. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand13draw_distanceE">
+<span id="_CPPv3N8teleport4core12SetupCommand13draw_distanceE"></span><span id="_CPPv2N8teleport4core12SetupCommand13draw_distanceE"></span><span id="teleport::core::SetupCommand::draw_distance__float"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1aa332eb5102c56ec255948174c593ff75"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">draw_distance</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0.0f</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand13draw_distanceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>131+4=135 Maximum distance in metres to render locally. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand12axesStandardE">
+<span id="_CPPv3N8teleport4core12SetupCommand12axesStandardE"></span><span id="_CPPv2N8teleport4core12SetupCommand12axesStandardE"></span><span id="teleport::core::SetupCommand::axesStandard__avs::AxesStandard"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a3e5e3f1b3225ebcc2ffebedeb8599b17"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">axesStandard</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandard14NotInitializedE" title="avs::AxesStandard::NotInitialized"><span class="n"><span class="pre">NotInitialized</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand12axesStandardE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>135+1=136 The axis standard that the server uses, may be different from the client’s. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand19audio_input_enabledE">
+<span id="_CPPv3N8teleport4core12SetupCommand19audio_input_enabledE"></span><span id="_CPPv2N8teleport4core12SetupCommand19audio_input_enabledE"></span><span id="teleport::core::SetupCommand::audio_input_enabled__uint8_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a5de0cc980c86cce3ee7ce5bb8341b8fd"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">audio_input_enabled</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand19audio_input_enabledE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>136+1=137 Server accepts a microphone media track from the client. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand9using_sslE">
+<span id="_CPPv3N8teleport4core12SetupCommand9using_sslE"></span><span id="_CPPv2N8teleport4core12SetupCommand9using_sslE"></span><span id="teleport::core::SetupCommand::using_ssl__b"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a518426ed29787303428b34a66e39e065"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">using_ssl</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">true</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand9using_sslE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>137+1=138 Not in use, for later. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand26startTimestamp_utc_unix_usE">
+<span id="_CPPv3N8teleport4core12SetupCommand26startTimestamp_utc_unix_usE"></span><span id="_CPPv2N8teleport4core12SetupCommand26startTimestamp_utc_unix_usE"></span><span id="teleport::core::SetupCommand::startTimestamp_utc_unix_us__int64_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1ad7467e25378869bfc3b01594fd6010a1"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">startTimestamp_utc_unix_us</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand26startTimestamp_utc_unix_usE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>138+8=146 UTC Unix Timestamp in microseconds when the server session began. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand14backgroundModeE">
+<span id="_CPPv3N8teleport4core12SetupCommand14backgroundModeE"></span><span id="_CPPv2N8teleport4core12SetupCommand14backgroundModeE"></span><span id="teleport::core::SetupCommand::backgroundMode__BackgroundMode"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a738a225b5046141b963d02501bc569eb"></span><span class="n"><span class="pre">BackgroundMode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">backgroundMode</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand14backgroundModeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>146+1=147 Whether the server supplies a background, and of which type. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand16backgroundColourE">
+<span id="_CPPv3N8teleport4core12SetupCommand16backgroundColourE"></span><span id="_CPPv2N8teleport4core12SetupCommand16backgroundColourE"></span><span id="teleport::core::SetupCommand::backgroundColour__vec4_packed"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a2c9b6351b723cded5fbf644b83aa7222"></span><span class="n"><span class="pre">vec4_packed</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">backgroundColour</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand16backgroundColourE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>147+16=163 If the background is of the COLOUR type, which colour to use. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core12SetupCommand17backgroundTextureE">
+<span id="_CPPv3N8teleport4core12SetupCommand17backgroundTextureE"></span><span id="_CPPv2N8teleport4core12SetupCommand17backgroundTextureE"></span><span id="teleport::core::SetupCommand::backgroundTexture__avs::uid"></span><span class="target" id="structteleport_1_1core_1_1_setup_command_1a5460b17117f4a207f8075e6d2100c893"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">backgroundTexture</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core12SetupCommand17backgroundTextureE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>163+8=171 </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core18SetLightingCommandE">
+<span id="_CPPv3N8teleport4core18SetLightingCommandE"></span><span id="_CPPv2N8teleport4core18SetLightingCommandE"></span><span id="teleport::core::SetLightingCommand"></span><span class="target" id="structteleport_1_1core_1_1_set_lighting_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetLightingCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">AckedCommand</span></span><a class="headerlink" href="#_CPPv4N8teleport4core18SetLightingCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sends GI textures. The packet will be sizeof(SetLightingCommand) + num_gi_textures uid’s, each 64 bits. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core18SetLightingCommand21clientDynamicLightingE">
+<span id="_CPPv3N8teleport4core18SetLightingCommand21clientDynamicLightingE"></span><span id="_CPPv2N8teleport4core18SetLightingCommand21clientDynamicLightingE"></span><span id="teleport::core::SetLightingCommand::clientDynamicLighting__ClientDynamicLighting"></span><span class="target" id="structteleport_1_1core_1_1_set_lighting_command_1a3feaf0598970d5a411e2fb2ec39429ea"></span><span class="n"><span class="pre">ClientDynamicLighting</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clientDynamicLighting</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core18SetLightingCommand21clientDynamicLightingE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>If this is nonzero, implicitly gi should be enabled. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core18SetupInputsCommandE">
+<span id="_CPPv3N8teleport4core18SetupInputsCommandE"></span><span id="_CPPv2N8teleport4core18SetupInputsCommandE"></span><span id="teleport::core::SetupInputsCommand"></span><span class="target" id="structteleport_1_1core_1_1_setup_inputs_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetupInputsCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core18SetupInputsCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sends <a class="reference internal" href="#classteleport_1_1core_1_1_input"><span class="std std-ref">Input</span></a> definitions. The packet will be sizeof(SetLightingCommand) + num_gi_textures uid’s, each 64 bits. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core18SetupInputsCommand9numInputsE">
+<span id="_CPPv3N8teleport4core18SetupInputsCommand9numInputsE"></span><span id="_CPPv2N8teleport4core18SetupInputsCommand9numInputsE"></span><span id="teleport::core::SetupInputsCommand::numInputs__uint16_t"></span><span class="target" id="structteleport_1_1core_1_1_setup_inputs_command_1ad47d529faed1bbb56dc7df04694c718d"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numInputs</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core18SetupInputsCommand9numInputsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The number of inputs to follow the command. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core23ReconfigureVideoCommandE">
+<span id="_CPPv3N8teleport4core23ReconfigureVideoCommandE"></span><span id="_CPPv2N8teleport4core23ReconfigureVideoCommandE"></span><span id="teleport::core::ReconfigureVideoCommand"></span><span class="target" id="structteleport_1_1core_1_1_reconfigure_video_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ReconfigureVideoCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core23ReconfigureVideoCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Instructs the client to accept a new video configuration, e.g. if bandwidth requires a change of resolution. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core23ReconfigureVideoCommand12video_configE">
+<span id="_CPPv3N8teleport4core23ReconfigureVideoCommand12video_configE"></span><span id="_CPPv2N8teleport4core23ReconfigureVideoCommand12video_configE"></span><span id="teleport::core::ReconfigureVideoCommand::video_config__avs::VideoConfig"></span><span class="target" id="structteleport_1_1core_1_1_reconfigure_video_command_1acb5e3b8910b170df7cd2263499f5e4c2"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs11VideoConfigE" title="avs::VideoConfig"><span class="n"><span class="pre">VideoConfig</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">video_config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core23ReconfigureVideoCommand12video_configE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The configuration to use. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core15ShutdownCommandE">
+<span id="_CPPv3N8teleport4core15ShutdownCommandE"></span><span id="_CPPv2N8teleport4core15ShutdownCommandE"></span><span id="teleport::core::ShutdownCommand"></span><span class="target" id="structteleport_1_1core_1_1_shutdown_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ShutdownCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core15ShutdownCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Instructs the client to close the connection. </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core21NodeVisibilityCommandE">
+<span id="_CPPv3N8teleport4core21NodeVisibilityCommandE"></span><span id="_CPPv2N8teleport4core21NodeVisibilityCommandE"></span><span id="teleport::core::NodeVisibilityCommand"></span><span class="target" id="structteleport_1_1core_1_1_node_visibility_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NodeVisibilityCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core21NodeVisibilityCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Instructs the client to show or hide the specified nodes. </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core25UpdateNodeMovementCommandE">
+<span id="_CPPv3N8teleport4core25UpdateNodeMovementCommandE"></span><span id="_CPPv2N8teleport4core25UpdateNodeMovementCommandE"></span><span id="teleport::core::UpdateNodeMovementCommand"></span><span class="target" id="structteleport_1_1core_1_1_update_node_movement_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateNodeMovementCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core25UpdateNodeMovementCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Instructs the client to modify the motion of the specified nodes. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core25UpdateNodeMovementCommand12updatesCountE">
+<span id="_CPPv3N8teleport4core25UpdateNodeMovementCommand12updatesCountE"></span><span id="_CPPv2N8teleport4core25UpdateNodeMovementCommand12updatesCountE"></span><span id="teleport::core::UpdateNodeMovementCommand::updatesCount__s"></span><span class="target" id="structteleport_1_1core_1_1_update_node_movement_command_1a100a57ae4e918676b9a30d77fa709e9e"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">updatesCount</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core25UpdateNodeMovementCommand12updatesCountE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>How many updates are included. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core29UpdateNodeEnabledStateCommandE">
+<span id="_CPPv3N8teleport4core29UpdateNodeEnabledStateCommandE"></span><span id="_CPPv2N8teleport4core29UpdateNodeEnabledStateCommandE"></span><span id="teleport::core::UpdateNodeEnabledStateCommand"></span><span class="target" id="structteleport_1_1core_1_1_update_node_enabled_state_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateNodeEnabledStateCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core29UpdateNodeEnabledStateCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Instructs the client to modify the enabled state of the specified nodes. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core29UpdateNodeEnabledStateCommand12updatesCountE">
+<span id="_CPPv3N8teleport4core29UpdateNodeEnabledStateCommand12updatesCountE"></span><span id="_CPPv2N8teleport4core29UpdateNodeEnabledStateCommand12updatesCountE"></span><span id="teleport::core::UpdateNodeEnabledStateCommand::updatesCount__s"></span><span class="target" id="structteleport_1_1core_1_1_update_node_enabled_state_command_1a6fb8afeea5851b80f202d6bfdb8854a8"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">updatesCount</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core29UpdateNodeEnabledStateCommand12updatesCountE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>How many updates are included. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core25SetNodeHighlightedCommandE">
+<span id="_CPPv3N8teleport4core25SetNodeHighlightedCommandE"></span><span id="_CPPv2N8teleport4core25SetNodeHighlightedCommandE"></span><span id="teleport::core::SetNodeHighlightedCommand"></span><span class="target" id="structteleport_1_1core_1_1_set_node_highlighted_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetNodeHighlightedCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core25SetNodeHighlightedCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Instructs the client to modify the highlighted state of the specified nodes. </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core26UpdateNodeStructureCommandE">
+<span id="_CPPv3N8teleport4core26UpdateNodeStructureCommandE"></span><span id="_CPPv2N8teleport4core26UpdateNodeStructureCommandE"></span><span id="teleport::core::UpdateNodeStructureCommand"></span><span class="target" id="structteleport_1_1core_1_1_update_node_structure_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UpdateNodeStructureCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeStateCommand</span></span><a class="headerlink" href="#_CPPv4N8teleport4core26UpdateNodeStructureCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Instructs the client to reparent the specified node. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core26UpdateNodeStructureCommand8parentIDE">
+<span id="_CPPv3N8teleport4core26UpdateNodeStructureCommand8parentIDE"></span><span id="_CPPv2N8teleport4core26UpdateNodeStructureCommand8parentIDE"></span><span id="teleport::core::UpdateNodeStructureCommand::parentID__avs::uid"></span><span class="target" id="structteleport_1_1core_1_1_update_node_structure_command_1afb522d4807c012c2d5e687e24f557de5"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">parentID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core26UpdateNodeStructureCommand8parentIDE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The new parent uid. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core26UpdateNodeStructureCommand12relativePoseE">
+<span id="_CPPv3N8teleport4core26UpdateNodeStructureCommand12relativePoseE"></span><span id="_CPPv2N8teleport4core26UpdateNodeStructureCommand12relativePoseE"></span><span id="teleport::core::UpdateNodeStructureCommand::relativePose__Pose_packed"></span><span class="target" id="structteleport_1_1core_1_1_update_node_structure_command_1aa25490b0282f596c9183ba384987a899"></span><span class="n"><span class="pre">Pose_packed</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">relativePose</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core26UpdateNodeStructureCommand12relativePoseE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The new relative pose of the child node. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core25AssignNodePosePathCommandE">
+<span id="_CPPv3N8teleport4core25AssignNodePosePathCommandE"></span><span id="_CPPv2N8teleport4core25AssignNodePosePathCommandE"></span><span id="teleport::core::AssignNodePosePathCommand"></span><span class="target" id="structteleport_1_1core_1_1_assign_node_pose_path_command"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AssignNodePosePathCommand</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core7CommandE" title="teleport::core::Command"><span class="n"><span class="pre">Command</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core25AssignNodePosePathCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>A command to set the locally-tracked pose of a node, for example, a node can here be linked to a regex path for an OpenXR pose control. If pathLength&gt;0, followed by a number of chars given in pathLength for the utf8 regex path. If pathLength==0, control of the node is returned to the server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core25AssignNodePosePathCommand10pathLengthE">
+<span id="_CPPv3N8teleport4core25AssignNodePosePathCommand10pathLengthE"></span><span id="_CPPv2N8teleport4core25AssignNodePosePathCommand10pathLengthE"></span><span id="teleport::core::AssignNodePosePathCommand::pathLength__uint16_t"></span><span class="target" id="structteleport_1_1core_1_1_assign_node_pose_path_command_1ae3e46391818c8a6f93e5d31560a7d78e"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">pathLength</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core25AssignNodePosePathCommand10pathLengthE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>A regular expression that will be used to match the full component path of a client-side pose. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="client-messages">
+<h2><span class="section-number">3.8.3. </span>Client Messages<a class="headerlink" href="#client-messages" title="Link to this heading">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core13ClientMessageE">
+<span id="_CPPv3N8teleport4core13ClientMessageE"></span><span id="_CPPv2N8teleport4core13ClientMessageE"></span><span id="teleport::core::ClientMessage"></span><span class="target" id="structteleport_1_1core_1_1_client_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessage</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core13ClientMessageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>A message from a client to a server. </p>
+<p>Subclassed by teleport::core::AcknowledgementMessage, teleport::core::DisplayInfoMessage, teleport::core::Handshake, teleport::core::InputEventsMessage, teleport::core::InputStatesMessage, teleport::core::KeyframeRequestMessage, <a class="reference internal" href="#structteleport_1_1core_1_1_node_poses_message"><span class="std std-ref">teleport::core::NodePosesMessage</span></a>, <a class="reference internal" href="#structteleport_1_1core_1_1_node_status_message"><span class="std std-ref">teleport::core::NodeStatusMessage</span></a>, teleport::core::OrthogonalAcknowledgementMessage, teleport::core::PongForLatencyMessage, <a class="reference internal" href="#structteleport_1_1core_1_1_received_resources_message"><span class="std std-ref">teleport::core::ReceivedResourcesMessage</span></a>, teleport::core::ResourceLostMessage</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core13ClientMessage24clientMessagePayloadTypeE">
+<span id="_CPPv3N8teleport4core13ClientMessage24clientMessagePayloadTypeE"></span><span id="_CPPv2N8teleport4core13ClientMessage24clientMessagePayloadTypeE"></span><span id="teleport::core::ClientMessage::clientMessagePayloadType__ClientMessagePayloadType"></span><span class="target" id="structteleport_1_1core_1_1_client_message_1a596ae365a57d532f495c79b0822a482c"></span><span class="n"><span class="pre">ClientMessagePayloadType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clientMessagePayloadType</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core13ClientMessage24clientMessagePayloadTypeE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Specifies what type of client message this is. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfoE">
+<span id="_CPPv3N3avs11DisplayInfoE"></span><span id="_CPPv2N3avs11DisplayInfoE"></span><span id="avs::DisplayInfo"></span><span class="target" id="structavs_1_1_display_info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DisplayInfo</span></span></span><br /></dt>
+<dd><p>Information on the resolution of a client’s display. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo5widthE">
+<span id="_CPPv3N3avs11DisplayInfo5widthE"></span><span id="_CPPv2N3avs11DisplayInfo5widthE"></span><span id="avs::DisplayInfo::width__uint32_t"></span><span class="target" id="structavs_1_1_display_info_1add5215d132700cec9c8b883ab7d52a9e"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">width</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo5widthE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Width of the display. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo6heightE">
+<span id="_CPPv3N3avs11DisplayInfo6heightE"></span><span id="_CPPv2N3avs11DisplayInfo6heightE"></span><span id="avs::DisplayInfo::height__uint32_t"></span><span class="target" id="structavs_1_1_display_info_1a5546e31586c6a7373655df1aa08b5de6"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">height</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo6heightE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Height of the display. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3avs11DisplayInfo9framerateE">
+<span id="_CPPv3N3avs11DisplayInfo9framerateE"></span><span id="_CPPv2N3avs11DisplayInfo9framerateE"></span><span id="avs::DisplayInfo::framerate__float"></span><span class="target" id="structavs_1_1_display_info_1ac3e803d37f3588265cda693b3b8a373b"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">framerate</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0.f</span></span><a class="headerlink" href="#_CPPv4N3avs11DisplayInfo9framerateE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Measured recent framerate. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core17NodeStatusMessageE">
+<span id="_CPPv3N8teleport4core17NodeStatusMessageE"></span><span id="_CPPv2N8teleport4core17NodeStatusMessageE"></span><span id="teleport::core::NodeStatusMessage"></span><span class="target" id="structteleport_1_1core_1_1_node_status_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NodeStatusMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core13ClientMessageE" title="teleport::core::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core17NodeStatusMessageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing how many nodes have changed to what state; sent alongside two lists of node UIDs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core17NodeStatusMessage15nodesDrawnCountE">
+<span id="_CPPv3N8teleport4core17NodeStatusMessage15nodesDrawnCountE"></span><span id="_CPPv2N8teleport4core17NodeStatusMessage15nodesDrawnCountE"></span><span id="teleport::core::NodeStatusMessage::nodesDrawnCount__s"></span><span class="target" id="structteleport_1_1core_1_1_node_status_message_1ae7052738a3410e4462abbc93a527491a"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodesDrawnCount</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core17NodeStatusMessage15nodesDrawnCountE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>How many nodes the client is drawing. The node uid’s will be appended first in the packet. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core17NodeStatusMessage23nodesWantToReleaseCountE">
+<span id="_CPPv3N8teleport4core17NodeStatusMessage23nodesWantToReleaseCountE"></span><span id="_CPPv2N8teleport4core17NodeStatusMessage23nodesWantToReleaseCountE"></span><span id="teleport::core::NodeStatusMessage::nodesWantToReleaseCount__s"></span><span class="target" id="structteleport_1_1core_1_1_node_status_message_1ab4dbe669a57fbe333499f8106c8ab944"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodesWantToReleaseCount</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core17NodeStatusMessage23nodesWantToReleaseCountE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>How many nodes the client has but is no longer drawing. The node uid’s will be appended second in the packet. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core24ReceivedResourcesMessageE">
+<span id="_CPPv3N8teleport4core24ReceivedResourcesMessageE"></span><span id="_CPPv2N8teleport4core24ReceivedResourcesMessageE"></span><span id="teleport::core::ReceivedResourcesMessage"></span><span class="target" id="structteleport_1_1core_1_1_received_resources_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ReceivedResourcesMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core13ClientMessageE" title="teleport::core::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core24ReceivedResourcesMessageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing how many resources were received; sent alongside a list of UIDs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core24ReceivedResourcesMessage22receivedResourcesCountE">
+<span id="_CPPv3N8teleport4core24ReceivedResourcesMessage22receivedResourcesCountE"></span><span id="_CPPv2N8teleport4core24ReceivedResourcesMessage22receivedResourcesCountE"></span><span id="teleport::core::ReceivedResourcesMessage::receivedResourcesCount__s"></span><span class="target" id="structteleport_1_1core_1_1_received_resources_message_1a5879694e06deb58dbc82aa35b5375f24"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">receivedResourcesCount</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core24ReceivedResourcesMessage22receivedResourcesCountE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>How many resources were received. The uid’s will be appended in the packet. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core16NodePosesMessageE">
+<span id="_CPPv3N8teleport4core16NodePosesMessageE"></span><span id="_CPPv2N8teleport4core16NodePosesMessageE"></span><span id="teleport::core::NodePosesMessage"></span><span class="target" id="structteleport_1_1core_1_1_node_poses_message"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NodePosesMessage</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport4core13ClientMessageE" title="teleport::core::ClientMessage"><span class="n"><span class="pre">ClientMessage</span></span></a><a class="headerlink" href="#_CPPv4N8teleport4core16NodePosesMessageE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Message info struct containing head and other node poses. followed by numPoses NodePose structs. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core16NodePosesMessage8headPoseE">
+<span id="_CPPv3N8teleport4core16NodePosesMessage8headPoseE"></span><span id="_CPPv2N8teleport4core16NodePosesMessage8headPoseE"></span><span id="teleport::core::NodePosesMessage::headPose__Pose_packed"></span><span class="target" id="structteleport_1_1core_1_1_node_poses_message_1ab9c797f689191150f5ad7de414efd57b"></span><span class="n"><span class="pre">Pose_packed</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">headPose</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core16NodePosesMessage8headPoseE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The headset’s pose. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core16NodePosesMessage8numPosesE">
+<span id="_CPPv3N8teleport4core16NodePosesMessage8numPosesE"></span><span id="_CPPv2N8teleport4core16NodePosesMessage8numPosesE"></span><span id="teleport::core::NodePosesMessage::numPoses__uint16_t"></span><span class="target" id="structteleport_1_1core_1_1_node_poses_message_1a476e5cb84adac38b5d3c725b44b8b533"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">numPoses</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#_CPPv4N8teleport4core16NodePosesMessage8numPosesE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Poses of the controllers. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="animation">
+<h2><span class="section-number">3.8.4. </span>Animation<a class="headerlink" href="#animation" title="Link to this heading">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core9AnimationE">
+<span id="_CPPv3N8teleport4core9AnimationE"></span><span id="_CPPv2N8teleport4core9AnimationE"></span><span id="teleport::core::Animation"></span><span class="target" id="structteleport_1_1core_1_1_animation"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Animation</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core9AnimationE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>An animation, comprising a list of keyframes. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core9Animation14compressedDataE">
+<span id="_CPPv3N8teleport4core9Animation14compressedDataE"></span><span id="_CPPv2N8teleport4core9Animation14compressedDataE"></span><span id="teleport::core::Animation::compressedData__std::vector:uint8_t:"></span><span class="target" id="structteleport_1_1core_1_1_animation_1a5419013acaf214b0abab4b6f6802c8d8"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">uint8_t</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compressedData</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core9Animation14compressedDataE" title="Link to this definition">¶</a><br /></dt>
+<dd><p><a class="reference internal" href="#structteleport_1_1core_1_1_animation"><span class="std std-ref">Animation</span></a> sheould contain either compressedData, or content in boneKeyframes. Not both. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core21TransformKeyframeListE">
+<span id="_CPPv3N8teleport4core21TransformKeyframeListE"></span><span id="_CPPv2N8teleport4core21TransformKeyframeListE"></span><span id="teleport::core::TransformKeyframeList"></span><span class="target" id="structteleport_1_1core_1_1_transform_keyframe_list"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TransformKeyframeList</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core21TransformKeyframeListE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>A list of keyframes to be used in an animation. </p>
+</dd></dl>
+
+</section>
+<section id="input-and-control">
+<h2><span class="section-number">3.8.5. </span>Input and control<a class="headerlink" href="#input-and-control" title="Link to this heading">¶</a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5InputE">
+<span id="_CPPv3N8teleport4core5InputE"></span><span id="_CPPv2N8teleport4core5InputE"></span><span id="teleport::core::Input"></span><span class="target" id="classteleport_1_1core_1_1_input"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Input</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core5InputE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>A class to store current input states. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input11clearEventsEv">
+<span id="_CPPv3N8teleport4core5Input11clearEventsEv"></span><span id="_CPPv2N8teleport4core5Input11clearEventsEv"></span><span id="teleport::core::Input::clearEvents"></span><span class="target" id="classteleport_1_1core_1_1_input_1afc60d8da8f3bbbf92d3a7327d3192be2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">clearEvents</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input11clearEventsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Clear the current lists of states and events. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input14addBinaryEventE7InputIdb">
+<span id="_CPPv3N8teleport4core5Input14addBinaryEventE7InputIdb"></span><span id="_CPPv2N8teleport4core5Input14addBinaryEventE7InputIdb"></span><span id="teleport::core::Input::addBinaryEvent__InputId.b"></span><span class="target" id="classteleport_1_1core_1_1_input_1a11899af0a1b872667581d59580dcf803"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addBinaryEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">InputId</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">activated</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input14addBinaryEventE7InputIdb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Add a binary (on/off) event for the specified inputID. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input16addAnalogueEventE7InputIdf">
+<span id="_CPPv3N8teleport4core5Input16addAnalogueEventE7InputIdf"></span><span id="_CPPv2N8teleport4core5Input16addAnalogueEventE7InputIdf"></span><span id="teleport::core::Input::addAnalogueEvent__InputId.float"></span><span class="target" id="classteleport_1_1core_1_1_input_1abf7b6800ecfeae0cf88682b316a1d23d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addAnalogueEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">InputId</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">strength</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input16addAnalogueEventE7InputIdf" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Add an analogue [0,1.0] or [-1.0,1.0] event for the specified inputID. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input14addMotionEventE7InputId4vec2">
+<span id="_CPPv3N8teleport4core5Input14addMotionEventE7InputId4vec2"></span><span id="_CPPv2N8teleport4core5Input14addMotionEventE7InputId4vec2"></span><span id="teleport::core::Input::addMotionEvent__InputId.vec2"></span><span class="target" id="classteleport_1_1core_1_1_input_1a39d546e5a1d61b62f10b52160eaca826"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addMotionEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">InputId</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="n"><span class="pre">vec2</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">motion</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input14addMotionEventE7InputId4vec2" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Add a notion (xy) event for the specified inputID. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input14setBinaryStateE8uint16_tb">
+<span id="_CPPv3N8teleport4core5Input14setBinaryStateE8uint16_tb"></span><span id="_CPPv2N8teleport4core5Input14setBinaryStateE8uint16_tb"></span><span id="teleport::core::Input::setBinaryState__uint16_t.b"></span><span class="target" id="classteleport_1_1core_1_1_input_1aa89e8ed2ccc2056369fec146bb63758f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setBinaryState</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">activated</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input14setBinaryStateE8uint16_tb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set a binary state for the specified inputID. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core5Input16setAnalogueStateE8uint16_tf">
+<span id="_CPPv3N8teleport4core5Input16setAnalogueStateE8uint16_tf"></span><span id="_CPPv2N8teleport4core5Input16setAnalogueStateE8uint16_tf"></span><span id="teleport::core::Input::setAnalogueState__uint16_t.float"></span><span class="target" id="classteleport_1_1core_1_1_input_1abba1877503428973531a9b10a25fc946"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setAnalogueState</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span>, <span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">strength</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport4core5Input16setAnalogueStateE8uint16_tf" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set an analogue state for the specified inputID. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport4core5Input20getLastAnalogueEventE8uint16_t">
+<span id="_CPPv3NK8teleport4core5Input20getLastAnalogueEventE8uint16_t"></span><span id="_CPPv2NK8teleport4core5Input20getLastAnalogueEventE8uint16_t"></span><span id="teleport::core::Input::getLastAnalogueEvent__uint16_tC"></span><span class="target" id="classteleport_1_1core_1_1_input_1acd17bdde67eab294b71ca320fd3f27c2"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">InputEventAnalogue</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastAnalogueEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport4core5Input20getLastAnalogueEventE8uint16_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>For debugging only: get the last event at this id. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport4core5Input18getLastBinaryEventE8uint16_t">
+<span id="_CPPv3NK8teleport4core5Input18getLastBinaryEventE8uint16_t"></span><span id="_CPPv2NK8teleport4core5Input18getLastBinaryEventE8uint16_t"></span><span id="teleport::core::Input::getLastBinaryEvent__uint16_tC"></span><span class="target" id="classteleport_1_1core_1_1_input_1a409efb6ad82a453e507ce797629b9274"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">InputEventBinary</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">getLastBinaryEvent</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">inputID</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport4core5Input18getLastBinaryEventE8uint16_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>For debugging only: get the last event at this id. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="text-and-fonts">
+<h2><span class="section-number">3.8.6. </span>Text and Fonts<a class="headerlink" href="#text-and-fonts" title="Link to this heading">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core9FontAtlasE">
+<span id="_CPPv3N8teleport4core9FontAtlasE"></span><span id="_CPPv2N8teleport4core9FontAtlasE"></span><span id="teleport::core::FontAtlas"></span><span class="target" id="structteleport_1_1core_1_1_font_atlas"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FontAtlas</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core9FontAtlasE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Each font size represented has a FontMap. </p>
+<p>Subclassed by teleport::clientrender::FontAtlas</p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport4core10TextCanvasE">
+<span id="_CPPv3N8teleport4core10TextCanvasE"></span><span id="_CPPv2N8teleport4core10TextCanvasE"></span><span id="teleport::core::TextCanvas"></span><span class="target" id="structteleport_1_1core_1_1_text_canvas"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TextCanvas</span></span></span><a class="headerlink" href="#_CPPv4N8teleport4core10TextCanvasE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Current state of a <a class="reference internal" href="#structteleport_1_1core_1_1_text_canvas"><span class="std std-ref">TextCanvas</span></a> component. </p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="libavstream_example.html" class="btn btn-neutral float-left" title="3.7. LibAVStream Example" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="clientrenderer.html" class="btn btn-neutral float-right" title="3.9. Client Render Library" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

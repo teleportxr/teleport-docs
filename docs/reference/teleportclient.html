@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.5. The Teleport Client library &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.6. LibAVStream" href="libavstream.html" />
+    <link rel="prev" title="3.4. Server" href="server.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Reference Implementation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html">3.1. Teleport Unity SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unreal/index.html">3.2. Teleport Unreal SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs/index.html">3.3. Teleport NodeJS SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">3.4. Server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.5. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">3.6. LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">3.7. LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">3.8. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">3.9. Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">3.10. Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">3.11. Video with Vulkan on Android</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">3. </span>Reference Implementation</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.5. </span>The Teleport Client library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/reference/teleportclient.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-teleport-client-library">
+<h1><span class="section-number">3.5. </span>The Teleport Client library<a class="headerlink" href="#the-teleport-client-library" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">3.5.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>TeleportClient is a library that provides client functionality, in particular client-specific networking and object management.</p>
+</section>
+<section id="tab-context">
+<h2><span class="section-number">3.5.2. </span>Tab Context<a class="headerlink" href="#tab-context" title="Link to this heading">¶</a></h2>
+<p>A TabContext is created for each connection. A TabContext is like a tab in a web browser, it can connect to a server, thus initializing a session. A TabContext can only be permanently maintain a single connection, but in transitioning it can have two connections: the existing connection that has already been established, and the new one that should replace it.</p>
+<object data="../../_images/mermaid-084c16fc5e3a0a4a1cf93256d406278361e8988b.svg" type="image/svg+xml">
+            <p class="warning">flowchart TD
+        subgraph &quot;TabContext 1&quot;
+                A[Connection A] --&gt; B[Connection B]
+        end
+        subgraph &quot;TabContext 2&quot;
+                C[Connection C]
+        end
+        subgraph &quot;TabContext 3&quot;
+                D[Connection D] --&gt; E[Connection E]
+        end</p></object>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client10TabContextE">
+<span id="_CPPv3N8teleport6client10TabContextE"></span><span id="_CPPv2N8teleport6client10TabContextE"></span><span id="teleport::client::TabContext"></span><span class="target" id="classteleport_1_1client_1_1_tab_context"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TabContext</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client10TabContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>A “tab” in the Teleport client represents an ongoing connection to a single server The tab manages sessionClient creation/destruction. The tab may retain a temporary connection to an outgoing server while a new connection is established. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE">
+<span id="_CPPv3N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE"></span><span id="_CPPv2N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE"></span><span id="teleport::client::TabContext::ConnectionComplete__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_tab_context_1a0bc1bb536ac8a38a95df4b0fd9db7de3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ConnectionComplete</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client10TabContext18ConnectionCompleteEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Communication from <a class="reference internal" href="#classteleport_1_1client_1_1_session_client"><span class="std std-ref">SessionClient</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client10TabContext7IsInUseEv">
+<span id="_CPPv3NK8teleport6client10TabContext7IsInUseEv"></span><span id="_CPPv2NK8teleport6client10TabContext7IsInUseEv"></span><span id="teleport::client::TabContext::IsInUseC"></span><span class="target" id="classteleport_1_1client_1_1_tab_context_1a2827fdd792f888c4372b38e23cccaf87"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IsInUse</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client10TabContext7IsInUseEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Is the tabContext connected or connecting? If not, it’s available for a connection. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="session-client">
+<h2><span class="section-number">3.5.3. </span>Session Client<a class="headerlink" href="#session-client" title="Link to this heading">¶</a></h2>
+<p>When a connection is made, a SessionClient is created to manage it. The SessionClient has a state that should progress as follows:</p>
+<object data="../../_images/mermaid-d7be83059aae347d2a079876292d979dea065152.svg" type="image/svg+xml">
+            <p class="warning">flowchart TD
+        UNCONNECTED -- &quot;User initiates connection&quot; --&gt; OFFERING
+        OFFERING  -- &quot;User initiates connection&quot; --&gt; AWAITING_SETUP
+        AWAITING_SETUP --&gt; HANDSHAKING
+        HANDSHAKING --&gt; CONNECTED</p></object>
+<p>The SessionClient class is:</p>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClientE">
+<span id="_CPPv3N8teleport6client13SessionClientE"></span><span id="_CPPv2N8teleport6client13SessionClientE"></span><span id="teleport::client::SessionClient"></span><span class="target" id="classteleport_1_1client_1_1_session_client"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SessionClient</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs22GenericTargetInterfaceE" title="avs::GenericTargetInterface"><span class="n"><span class="pre">GenericTargetInterface</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClientE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE">
+<span id="_CPPv3N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE"></span><span id="_CPPv2N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE"></span><span id="teleport::client::SessionClient::ApplySetup__teleport::core::SetupCommandCR"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a009d45f85a85a2ff5bb179be2b47402e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ApplySetup</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="teleportcore.html#_CPPv4N8teleport4core12SetupCommandE" title="teleport::core::SetupCommand"><span class="n"><span class="pre">SetupCommand</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">s</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClient10ApplySetupERKN8teleport4core12SetupCommandE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>For use only internally or by Renderer for the local session. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client13SessionClient19GetConnectionStatusEv">
+<span id="_CPPv3NK8teleport6client13SessionClient19GetConnectionStatusEv"></span><span id="_CPPv2NK8teleport6client13SessionClient19GetConnectionStatusEv"></span><span id="teleport::client::SessionClient::GetConnectionStatusC"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1accc9775109fabfc7567e17702abec0c6"></span><span class="n"><span class="pre">ConnectionStatus</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetConnectionStatus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client13SessionClient19GetConnectionStatusEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns the current connection status as determined by the signaling. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client13SessionClient15IsReadyToRenderEv">
+<span id="_CPPv3NK8teleport6client13SessionClient15IsReadyToRenderEv"></span><span id="_CPPv2NK8teleport6client13SessionClient15IsReadyToRenderEv"></span><span id="teleport::client::SessionClient::IsReadyToRenderC"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a72e47cbef089d1c3db0794b0cb7ee670"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IsReadyToRender</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client13SessionClient15IsReadyToRenderEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Is this client ready to render, i.e. does it have the final setup from the server required to initialize rendering? return true if ready, false if not. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClient16GetAvatarManagerEv">
+<span id="_CPPv3N8teleport6client13SessionClient16GetAvatarManagerEv"></span><span id="_CPPv2N8teleport6client13SessionClient16GetAvatarManagerEv"></span><span id="teleport::client::SessionClient::GetAvatarManager"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1a16531a21c13e71fa8d368ce2aa7f3db3"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">AvatarManager</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetAvatarManager</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClient16GetAvatarManagerEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Avatar-negotiation state for this server. The host application sets its PolicyCallback via this object’s SetOnAvatarPolicy(). </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-functions">Public Static Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client13SessionClient19GetConnectElapsedMsEv">
+<span id="_CPPv3N8teleport6client13SessionClient19GetConnectElapsedMsEv"></span><span id="_CPPv2N8teleport6client13SessionClient19GetConnectElapsedMsEv"></span><span id="teleport::client::SessionClient::GetConnectElapsedMs"></span><span class="target" id="classteleport_1_1client_1_1_session_client_1afc02c9739f84a1c866572d59d6c33917"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetConnectElapsedMs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client13SessionClient19GetConnectElapsedMsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns milliseconds elapsed since the most recent Connect() call. Safe to call from any thread. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="classes">
+<h2><span class="section-number">3.5.4. </span>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client17ClientServerStateE">
+<span id="_CPPv3N8teleport6client17ClientServerStateE"></span><span id="_CPPv2N8teleport6client17ClientServerStateE"></span><span id="teleport::client::ClientServerState"></span><span class="target" id="structteleport_1_1client_1_1_client_server_state"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientServerState</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client17ClientServerStateE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The generic state of the client hardware device e.g. headset, controllers etc. There exists one of these for each server, plus one for the null server (local state). </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client14ClientPipelineE">
+<span id="_CPPv3N8teleport6client14ClientPipelineE"></span><span id="_CPPv2N8teleport6client14ClientPipelineE"></span><span id="teleport::client::ClientPipeline"></span><span class="target" id="classteleport_1_1client_1_1_client_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientPipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client14ClientPipelineE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Contains the full pipeline and member nodes for the client. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client14ClientPipeline21Debug_BreakConnectionEv">
+<span id="_CPPv3N8teleport6client14ClientPipeline21Debug_BreakConnectionEv"></span><span id="_CPPv2N8teleport6client14ClientPipeline21Debug_BreakConnectionEv"></span><span id="teleport::client::ClientPipeline::Debug_BreakConnection"></span><span class="target" id="classteleport_1_1client_1_1_client_pipeline_1a4fa9567679c2d89971cb2259a1c6da3f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Debug_BreakConnection</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client14ClientPipeline21Debug_BreakConnectionEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Break the connection without logging off - the server should initiate reconnection. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6ConfigE">
+<span id="_CPPv3N8teleport6client6ConfigE"></span><span id="_CPPv2N8teleport6client6ConfigE"></span><span id="teleport::client::Config"></span><span class="target" id="classteleport_1_1client_1_1_config"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Config</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6ConfigE" title="Link to this definition">¶</a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6Config14StoreRecentURLEPKc">
+<span id="_CPPv3N8teleport6client6Config14StoreRecentURLEPKc"></span><span id="_CPPv2N8teleport6client6Config14StoreRecentURLEPKc"></span><span id="teleport::client::Config::StoreRecentURL__cCP"></span><span class="target" id="classteleport_1_1client_1_1_config_1aa3b510858d524f07be774b9ace9512f5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">StoreRecentURL</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">r</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6Config14StoreRecentURLEPKc" title="Link to this definition">¶</a><br /></dt>
+<dd><p>When we connect, store the URL. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6Config16SetStorageFolderEPKc">
+<span id="_CPPv3N8teleport6client6Config16SetStorageFolderEPKc"></span><span id="_CPPv2N8teleport6client6Config16SetStorageFolderEPKc"></span><span id="teleport::client::Config::SetStorageFolder__cCP"></span><span class="target" id="classteleport_1_1client_1_1_config_1a1f4d228d80b76797c35fabd626b68e92"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetStorageFolder</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">f</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6Config16SetStorageFolderEPKc" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Where do we store temp files? </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client16DiscoveryServiceE">
+<span id="_CPPv3N8teleport6client16DiscoveryServiceE"></span><span id="_CPPv2N8teleport6client16DiscoveryServiceE"></span><span id="teleport::client::DiscoveryService"></span><span class="target" id="classteleport_1_1client_1_1_discovery_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DiscoveryService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client16DiscoveryServiceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Abstract discovery service for clients to connect to the server. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t">
+<span id="_CPPv3N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t"></span><span id="_CPPv2N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t"></span><span id="teleport::client::DiscoveryService::Discover__uint64_t.ss.uint16_t"></span><span class="target" id="classteleport_1_1client_1_1_discovery_service_1a2e8ee15f356e2c841dbb4932d4f59894"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Discover</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">serverIP</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">serverDiscoveryPort</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client16DiscoveryService8DiscoverE8uint64_tNSt6stringE8uint16_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns Client ID. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXRE">
+<span id="_CPPv3N8teleport6client6OpenXRE"></span><span id="_CPPv2N8teleport6client6OpenXRE"></span><span id="teleport::client::OpenXR"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OpenXR</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXRE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Subclassed by teleport::UseOpenXR, teleport::android::OpenXR</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR18SetFallbackBindingE8ActionIdNSt6stringE">
+<span id="_CPPv3N8teleport6client6OpenXR18SetFallbackBindingE8ActionIdNSt6stringE"></span><span id="_CPPv2N8teleport6client6OpenXR18SetFallbackBindingE8ActionIdNSt6stringE"></span><span id="teleport::client::OpenXR::SetFallbackBinding__ActionId.ss"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a70eefc1143e156a4bf68e5e1a28d65c0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetFallbackBinding</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ActionId</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">actionId</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR18SetFallbackBindingE8ActionIdNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set a “virtual” pose binding - e.g. mouse emulation. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi">
+<span id="_CPPv3N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi"></span><span id="_CPPv2N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi"></span><span id="teleport::client::OpenXR::OnMouseButtonPressed__b.b.b.i"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1aa2da10b7c2560408722b4b1c838c67af"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OnMouseButtonPressed</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bLeftButtonDown</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bRightButtonDown</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bMiddleButtonDown</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">nMouseWheelDelta</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR20OnMouseButtonPressedEbbbi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Process mouse and keyboard. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE">
+<span id="_CPPv3N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE"></span><span id="_CPPv2N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE"></span><span id="teleport::client::OpenXR::RemoveNodePoseMapping__avs::uid.avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a74668cc4def51641c07f8a7171df70ca"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RemoveNodePoseMapping</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span>, <a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR21RemoveNodePoseMappingEN3avs3uidEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Remove the mapping of the specified node - it has perhaps been unmapped or destroyed. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE">
+<span id="_CPPv3N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE"></span><span id="_CPPv2N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE"></span><span id="teleport::client::OpenXR::GetServerInputMappings__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1ac6487be1c4940944fcccae644c5d5ea4"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">InputMapping</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetServerInputMappings</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR22GetServerInputMappingsEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the currently bound input mappings for the server. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR25GetServerNodePoseMappingsEN3avs3uidE">
+<span id="_CPPv3N8teleport6client6OpenXR25GetServerNodePoseMappingsEN3avs3uidE"></span><span id="_CPPv2N8teleport6client6OpenXR25GetServerNodePoseMappingsEN3avs3uidE"></span><span id="teleport::client::OpenXR::GetServerNodePoseMappings__avs::uid"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1ae6aa1ad7f867238bae7ca42dd2381543"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">NodePoseMapping</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetServerNodePoseMappings</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">server_uid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR25GetServerNodePoseMappingsEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the currently bound pose mappings for the server. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv">
+<span id="_CPPv3NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv"></span><span id="_CPPv2NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv"></span><span id="teleport::client::OpenXR::GetHeadPose_StageSpaceC"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a84eafd6c21c342b4c7670a2946b3e848"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Pose</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetHeadPose_StageSpace</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client6OpenXR22GetHeadPose_StageSpaceEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the head pose in the device’s stage space (axes adapted to the Engineering standard, Z=up). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client6OpenXR24GetTrackedHandJointPosesEi">
+<span id="_CPPv3N8teleport6client6OpenXR24GetTrackedHandJointPosesEi"></span><span id="_CPPv2N8teleport6client6OpenXR24GetTrackedHandJointPosesEi"></span><span id="teleport::client::OpenXR::GetTrackedHandJointPoses__i"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a25fbbd0301822d01c59077da56271929"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Pose</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="sig-name descname"><span class="n"><span class="pre">GetTrackedHandJointPoses</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6client6OpenXR24GetTrackedHandJointPosesEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the poses relative to the hand root. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6client6OpenXR22GetTrackedHandRootPoseEi">
+<span id="_CPPv3NK8teleport6client6OpenXR22GetTrackedHandRootPoseEi"></span><span id="_CPPv2NK8teleport6client6OpenXR22GetTrackedHandRootPoseEi"></span><span id="teleport::client::OpenXR::GetTrackedHandRootPose__iC"></span><span class="target" id="classteleport_1_1client_1_1_open_x_r_1a8162d29f2f5ad512aaeed25d738045a1"></span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Pose</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetTrackedHandRootPose</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">i</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6client6OpenXR22GetTrackedHandRootPoseEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the hand root pose in local space. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> – index of the hand. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6client15SignalingServerE">
+<span id="_CPPv3N8teleport6client15SignalingServerE"></span><span id="_CPPv2N8teleport6client15SignalingServerE"></span><span id="teleport::client::SignalingServer"></span><span class="target" id="structteleport_1_1client_1_1_signaling_server"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SignalingServer</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6client15SignalingServerE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Identifies a remote server as seen by the <a class="reference internal" href="#classteleport_1_1client_1_1_discovery_service"><span class="std std-ref">DiscoveryService</span></a>. </p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="server.html" class="btn btn-neutral float-left" title="3.4. Server" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="libavstream.html" class="btn btn-neutral float-right" title="3.6. LibAVStream" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
