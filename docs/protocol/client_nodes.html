@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.10. Origins and Client-Specific Nodes &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.11. Audio" href="audio.html" />
+    <link rel="prev" title="2.9. Geometry Payload" href="geometry_payload.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="conventions.html">2.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">2.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">2.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">2.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">2.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">2.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">2.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">2.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_payload.html">2.9. Geometry Payload</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.10. Origins and Client-Specific Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">2.11. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">2.12. Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asset_portability.html">2.13. Asset Portability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconnection.html">2.14. Reconnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_control.html">2.15. Local Control Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">3. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">2. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.10. </span>Origins and Client-Specific Nodes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/client_nodes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="origins-and-client-specific-nodes">
+<span id="client-nodes"></span><h1><span class="section-number">2.10. </span>Origins and Client-Specific Nodes<a class="headerlink" href="#origins-and-client-specific-nodes" title="Link to this heading">¶</a></h1>
+<p>Most nodes in a session are scenery: the server owns them, every client receives
+them, and they outlive any one connection. Some are not. A node may be created
+<em>because</em> a client connected – the origin of that client’s tracking space, an
+avatar representing it to others – and must then disappear when that client
+goes. This page describes how such nodes are identified, who receives them, and
+when they are destroyed.</p>
+<section id="the-origin-node">
+<span id="origin-node"></span><h2><span class="section-number">2.10.1. </span>The origin node<a class="headerlink" href="#the-origin-node" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">SetOriginNodeCommand</span></code> names one node as a client’s <strong>origin</strong>: the origin of
+that client’s local tracking space, expressed as a node in the server’s global
+space.</p>
+<p>The origin is not the client’s avatar, and not its head. It is the frame the
+client’s own tracking is measured from:</p>
+<ul>
+<li><p>Node transforms are local to their parent, so a root node is already in global
+space (see <a class="reference internal" href="conventions.html"><span class="doc">Conventions</span></a>). The origin node is an ordinary node in that
+space, with no special treatment in the hierarchy.</p></li>
+<li><p>Head and controller poses travel from client to server in the client’s <strong>stage
+space</strong> – relative to its origin, not to the world. To place a client in
+global space, compose its reported pose with the global transform of its
+origin node:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>global_head = origin.global_rotation * head_stage_position + origin.global_position
+</pre></div>
+</div>
+</li>
+<li><p>An origin is normally <strong>stationary</strong>, changing only intermittently: a teleport,
+boarding a vehicle, moving to another room. It is not a per-frame quantity.
+<code class="docutils literal notranslate"><span class="pre">SetOriginNodeCommand</span></code> is acknowledged and carries a monotonic
+<code class="docutils literal notranslate"><span class="pre">valid_counter</span></code> for exactly this reason – an out-of-order or duplicated
+origin change must never take effect.</p></li>
+</ul>
+<p>A client must always be able to see its own origin node. Its peers should
+normally see it too, since it is the parent transform of everything that client
+carries with it.</p>
+</section>
+<section id="ownership">
+<h2><span class="section-number">2.10.2. </span>Ownership<a class="headerlink" href="#ownership" title="Link to this heading">¶</a></h2>
+<p>Every node payload carries <code class="docutils literal notranslate"><span class="pre">holder_client_id</span></code> (see
+<a class="reference internal" href="geometry_payload.html"><span class="doc">Geometry Payload</span></a>). Zero means the node belongs to the session as a whole.
+Any other value is the <code class="docutils literal notranslate"><span class="pre">clientID</span></code> of the client the node was created for, and
+marks the node’s lifetime as bounded by that client’s session.</p>
+<p>A server may send the same node to some clients and not others. Three cases are
+useful in practice:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23.1%" />
+<col style="width: 76.9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Visibility</p></th>
+<th class="head"><p>Sent to</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>everyone</p></td>
+<td><p>The owner and all peers. Correct for an origin node.</p></td>
+</tr>
+<tr class="row-odd"><td><p>owner only</p></td>
+<td><p>Only the client named by <code class="docutils literal notranslate"><span class="pre">holder_client_id</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>peers only</p></td>
+<td><p>Every client except the owner. Correct for an avatar in a first-person
+client, which would otherwise be rendered from inside.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Visibility is a server-side decision and is not signalled: a client is simply
+never sent a node it may not see, and is sent a <code class="docutils literal notranslate"><span class="pre">RemoveNodes</span></code> payload if it
+may no longer see one it already has.</p>
+</section>
+<section id="lifetime">
+<h2><span class="section-number">2.10.3. </span>Lifetime<a class="headerlink" href="#lifetime" title="Link to this heading">¶</a></h2>
+<p>A client-specific node is created when its client connects and destroyed when
+that client’s session ends. Destruction reaches the other clients through the
+ordinary geometry channel:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>client B disconnects
+  -&gt; server destroys the nodes whose holder_client_id is B
+  -&gt; those nodes leave every other client&#39;s streamed set
+  -&gt; each is sent RemoveNodes [ ...uids... ]
+</pre></div>
+</div>
+<p>No separate notification exists, and none is needed: leaving a client’s streamed
+set <em>is</em> the removal. Nodes that were never sent to a given client generate no
+payload for it.</p>
+<section id="ending-a-session">
+<h3><span class="section-number">2.10.3.1. </span>Ending a session<a class="headerlink" href="#ending-a-session" title="Link to this heading">¶</a></h3>
+<p>A server should treat all of the following as ending a session:</p>
+<ul class="simple">
+<li><p>an explicit <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> signal from the client;</p></li>
+<li><p>the signalling connection closing, whether or not a <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> preceded it;</p></li>
+<li><p>the client falling silent. <code class="docutils literal notranslate"><span class="pre">SetupCommand</span></code> advertises
+<code class="docutils literal notranslate"><span class="pre">idle_connection_timeout</span></code>; a server that publishes one should enforce it,
+for instance with WebSocket ping/pong.</p></li>
+</ul>
+<p>The second and third cases matter more than they look. A client that vanishes
+without a <code class="docutils literal notranslate"><span class="pre">disconnect</span></code> – a crash, a closed laptop, a dropped NAT binding –
+otherwise leaves its nodes in the scene indefinitely, visible to every other
+client as an avatar that never moves and never leaves.</p>
+</section>
+<section id="reconnection">
+<h3><span class="section-number">2.10.3.2. </span>Reconnection<a class="headerlink" href="#reconnection" title="Link to this heading">¶</a></h3>
+<p>A server may hold a departed client’s nodes briefly rather than destroying them
+at once, so that a client which returns within that window keeps the nodes it
+already had and its peers never see it flicker out and back. This is only
+possible where the returning client can be recognised as the same participant:
+<code class="docutils literal notranslate"><span class="pre">clientID</span></code> identifies a <em>connection</em>, so it will differ, and a stable identity
+is required (see <a class="reference internal" href="signaling.html"><span class="doc">Signaling</span></a>). Where no such identity exists, the nodes
+should be destroyed when the session ends.</p>
+<p>See also <a class="reference internal" href="reconnection.html"><span class="doc">Reconnection</span></a> for what a client is expected to re-establish.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="geometry_payload.html" class="btn btn-neutral float-left" title="2.9. Geometry Payload" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="audio.html" class="btn btn-neutral float-right" title="2.11. Audio" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3.4. Server &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3.5. The Teleport Client library" href="teleportclient.html" />
+    <link rel="prev" title="3.3. Teleport NodeJS SDK" href="nodejs/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">3. Reference Implementation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unity/index.html">3.1. Teleport Unity SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="unreal/index.html">3.2. Teleport Unreal SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodejs/index.html">3.3. Teleport NodeJS SDK</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3.4. Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportclient.html">3.5. The Teleport Client library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream.html">3.6. LibAVStream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="libavstream_example.html">3.7. LibAVStream Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="teleportcore.html">3.8. The Teleport Core library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clientrenderer.html">3.9. Client Render Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_ndk_decoding.html">3.10. Video Decoding with Android NDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_vulkan_android_import_and_ycbcr.html">3.11. Video with Vulkan on Android</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html"><span class="section-number">3. </span>Reference Implementation</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3.4. </span>Server</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/reference/server.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="server">
+<span id="id1"></span><h1><span class="section-number">3.4. </span>Server<a class="headerlink" href="#server" title="Link to this heading">¶</a></h1>
+<section id="introduction">
+<h2><span class="section-number">3.4.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<p>TeleportServer is a library that provides server functionality in conjunction with a real-time game or simulation engine. The library is usually dynamically-linked, and can be controlled from engine-side
+entirely by means of the functions that the dll exports. Therefore there is no need to include C++ headers from the server library engine-side, and indeed the engine need not be in C++.</p>
+</section>
+<section id="api">
+<h2><span class="section-number">3.4.2. </span>API<a class="headerlink" href="#api" title="Link to this heading">¶</a></h2>
+<p>The server library’s exported functions are described below. These global functions are declared as exports.</p>
+<section id="structure">
+<h3><span class="section-number">3.4.2.1. </span>Structure<a class="headerlink" href="#structure" title="Link to this heading">¶</a></h3>
+</section>
+<section id="preparation">
+<h3><span class="section-number">3.4.2.2. </span>Preparation<a class="headerlink" href="#preparation" title="Link to this heading">¶</a></h3>
+<p>In order to start a server session, it’s necessary to prepare the data - objects and resources - so it is ready to be streamed to connecting clients.
+On the engine side there will often be a user interface for this - see for example</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416Server_StoreNodeN3avs3uidERK11InteropNode">
+<span id="_CPPv316Server_StoreNodeN3avs3uidERK11InteropNode"></span><span id="_CPPv216Server_StoreNodeN3avs3uidERK11InteropNode"></span><span id="Server_StoreNode__avs::uid.InteropNodeCR"></span><span class="target" id="_plugin_main_8cpp_1a25a532e3288809fb46a4cf797b3da830"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreNode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">InteropNode</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">interopNode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416Server_StoreNodeN3avs3uidERK11InteropNode" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store the given node in memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417Server_RemoveNodeN3avs3uidE">
+<span id="_CPPv317Server_RemoveNodeN3avs3uidE"></span><span id="_CPPv217Server_RemoveNodeN3avs3uidE"></span><span id="Server_RemoveNode__avs::uid"></span><span class="target" id="_plugin_main_8cpp_1a31783bc2fbeed60d439d8b856baaaf4d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_RemoveNode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">nodeID</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417Server_RemoveNodeN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Remove the given node from memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414Server_GetNodeN3avs3uidEP11InteropNode">
+<span id="_CPPv314Server_GetNodeN3avs3uidEP11InteropNode"></span><span id="_CPPv214Server_GetNodeN3avs3uidEP11InteropNode"></span><span id="Server_GetNode__avs::uid.InteropNodeP"></span><span class="target" id="_plugin_main_8cpp_1a0ae609bac4f3d4b9f562d786a02ec1c7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GetNode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span>, <span class="n"><span class="pre">InteropNode</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">node</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414Server_GetNodeN3avs3uidEP11InteropNode" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the given node’s data if stored. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420Server_StoreSkeletonN3avs3uidE15InteropSkeleton">
+<span id="_CPPv320Server_StoreSkeletonN3avs3uidE15InteropSkeleton"></span><span id="_CPPv220Server_StoreSkeletonN3avs3uidE15InteropSkeleton"></span><span id="Server_StoreSkeleton__avs::uid.InteropSkeleton"></span><span class="target" id="_plugin_main_8cpp_1a0ebdedced26a883ca003514bc4874e56"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreSkeleton</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span>, <span class="n"><span class="pre">InteropSkeleton</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">skeleton</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420Server_StoreSkeletonN3avs3uidE15InteropSkeleton" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store the given skeleton in memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430Server_StoreTransformAnimationN3avs3uidEPKcP25InteropTransformAnimation">
+<span id="_CPPv330Server_StoreTransformAnimationN3avs3uidEPKcP25InteropTransformAnimation"></span><span id="_CPPv230Server_StoreTransformAnimationN3avs3uidEPKcP25InteropTransformAnimation"></span><span id="Server_StoreTransformAnimation__avs::uid.cCP.InteropTransformAnimationP"></span><span class="target" id="_plugin_main_8cpp_1ad1634a8d91d617809ece569f04480d25"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreTransformAnimation</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">animationID</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span>, <span class="n"><span class="pre">InteropTransformAnimation</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">animation</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430Server_StoreTransformAnimationN3avs3uidEPKcP25InteropTransformAnimation" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store the given animation in memory and on disk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416Server_StoreMeshN3avs3uidEPKcNSt6time_tEPK11InteropMeshN3avs12AxesStandardEb">
+<span id="_CPPv316Server_StoreMeshN3avs3uidEPKcNSt6time_tEPK11InteropMeshN3avs12AxesStandardEb"></span><span id="_CPPv216Server_StoreMeshN3avs3uidEPKcNSt6time_tEPK11InteropMeshN3avs12AxesStandardEb"></span><span id="Server_StoreMesh__avs::uid.cCP.std::time_t.InteropMeshCP.avs::AxesStandard.b"></span><span class="target" id="_plugin_main_8cpp_1ae346429379663996abe4e46f489b1be7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreMesh</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">time_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">lastModified</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">InteropMesh</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mesh</span></span>, <a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">extractToStandard</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">verify</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416Server_StoreMeshN3avs3uidEPKcNSt6time_tEPK11InteropMeshN3avs12AxesStandardEb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store the given mesh in memory and on disk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420Server_StoreMaterialN3avs3uidEPKcNSt6time_tE15InteropMaterial">
+<span id="_CPPv320Server_StoreMaterialN3avs3uidEPKcNSt6time_tE15InteropMaterial"></span><span id="_CPPv220Server_StoreMaterialN3avs3uidEPKcNSt6time_tE15InteropMaterial"></span><span id="Server_StoreMaterial__avs::uid.cCP.std::time_t.InteropMaterial"></span><span class="target" id="_plugin_main_8cpp_1aacb7649e6b9e0e17c1b8ce661bcd93e0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreMaterial</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">time_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">lastModified</span></span>, <span class="n"><span class="pre">InteropMaterial</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">material</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420Server_StoreMaterialN3avs3uidEPKcNSt6time_tE15InteropMaterial" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store the given material in memory and on disk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419Server_StoreTextureN3avs3uidEPKcNSt6time_tE14InteropTexturebbb">
+<span id="_CPPv319Server_StoreTextureN3avs3uidEPKcNSt6time_tE14InteropTexturebbb"></span><span id="_CPPv219Server_StoreTextureN3avs3uidEPKcNSt6time_tE14InteropTexturebbb"></span><span id="Server_StoreTexture__avs::uid.cCP.std::time_t.InteropTexture.b.b.b"></span><span class="target" id="_plugin_main_8cpp_1a01d87502b3b768194c832cd2af4c89ff"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreTexture</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">relative_asset_path</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">time_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">lastModified</span></span>, <span class="n"><span class="pre">InteropTexture</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">texture</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">genMips</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">highQualityUASTC</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">forceOverwrite</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419Server_StoreTextureN3avs3uidEPKcNSt6time_tE14InteropTexturebbb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store the given texture in memory and on disk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416Server_StoreFontPKcPKcNSt6time_tEi">
+<span id="_CPPv316Server_StoreFontPKcPKcNSt6time_tEi"></span><span id="_CPPv216Server_StoreFontPKcPKcNSt6time_tEi"></span><span id="Server_StoreFont__cCP.cCP.std::time_t.i"></span><span class="target" id="_plugin_main_8cpp_1ad66a6d56a34592922ddf1a00ad24a181"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreFont</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ttf_path</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">relative_asset_path</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">time_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">lastModified</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416Server_StoreFontPKcPKcNSt6time_tEi" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store the given font in memory and on disk. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422Server_StoreTextCanvasPKcPK17InteropTextCanvas">
+<span id="_CPPv322Server_StoreTextCanvasPKcPK17InteropTextCanvas"></span><span id="_CPPv222Server_StoreTextCanvasPKcPK17InteropTextCanvas"></span><span id="Server_StoreTextCanvas__cCP.InteropTextCanvasCP"></span><span class="target" id="_plugin_main_8cpp_1adf62a4baf5d5243cb14211afb1e2a624"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreTextCanvas</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">relative_asset_path</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">InteropTextCanvas</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">interopTextCanvas</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422Server_StoreTextCanvasPKcPK17InteropTextCanvas" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store the given text canvas in memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419Server_GetFontAtlasPKcP16InteropFontAtlas">
+<span id="_CPPv319Server_GetFontAtlasPKcP16InteropFontAtlas"></span><span id="_CPPv219Server_GetFontAtlasPKcP16InteropFontAtlas"></span><span id="Server_GetFontAtlas__cCP.InteropFontAtlasP"></span><span class="target" id="_plugin_main_8cpp_1a65db2fed74c9bd77f3e6ba5a38950d26"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GetFontAtlas</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ttf_path</span></span>, <span class="n"><span class="pre">InteropFontAtlas</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">interopFontAtlas</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419Server_GetFontAtlasPKcP16InteropFontAtlas" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the font atlas which has the given path. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421Server_StoreShadowMapN3avs3uidEPKcNSt6time_tE14InteropTexture">
+<span id="_CPPv321Server_StoreShadowMapN3avs3uidEPKcNSt6time_tE14InteropTexture"></span><span id="_CPPv221Server_StoreShadowMapN3avs3uidEPKcNSt6time_tE14InteropTexture"></span><span id="Server_StoreShadowMap__avs::uid.cCP.std::time_t.InteropTexture"></span><span class="target" id="_plugin_main_8cpp_1aedc134173997b810c05cb1329ae48ef8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_StoreShadowMap</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">time_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">lastModified</span></span>, <span class="n"><span class="pre">InteropTexture</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">shadowMap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421Server_StoreShadowMapN3avs3uidEPKcNSt6time_tE14InteropTexture" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Store a shadow map in memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419Server_IsNodeStoredN3avs3uidE">
+<span id="_CPPv319Server_IsNodeStoredN3avs3uidE"></span><span id="_CPPv219Server_IsNodeStoredN3avs3uidE"></span><span id="Server_IsNodeStored__avs::uid"></span><span class="target" id="_plugin_main_8cpp_1a0f459ce73f3a43a85b3fab62ee59bdec"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_IsNodeStored</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419Server_IsNodeStoredN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if id is the id of a node stored in memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Server_IsSkeletonStoredN3avs3uidE">
+<span id="_CPPv323Server_IsSkeletonStoredN3avs3uidE"></span><span id="_CPPv223Server_IsSkeletonStoredN3avs3uidE"></span><span id="Server_IsSkeletonStored__avs::uid"></span><span class="target" id="_plugin_main_8cpp_1aabd203afbefe89bc01e7717872dd1c9f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_IsSkeletonStored</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Server_IsSkeletonStoredN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if id is the id of a skeleton stored in memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419Server_IsMeshStoredN3avs3uidE">
+<span id="_CPPv319Server_IsMeshStoredN3avs3uidE"></span><span id="_CPPv219Server_IsMeshStoredN3avs3uidE"></span><span id="Server_IsMeshStored__avs::uid"></span><span class="target" id="_plugin_main_8cpp_1a697fb88e4c0b74277313347fc5517e41"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_IsMeshStored</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419Server_IsMeshStoredN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if id is the id of a mesh stored in memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Server_IsMaterialStoredN3avs3uidE">
+<span id="_CPPv323Server_IsMaterialStoredN3avs3uidE"></span><span id="_CPPv223Server_IsMaterialStoredN3avs3uidE"></span><span id="Server_IsMaterialStored__avs::uid"></span><span class="target" id="_plugin_main_8cpp_1ac743b6a88815403b69805f080fda6590"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_IsMaterialStored</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Server_IsMaterialStoredN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if id is the id of a material stored in memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422Server_IsTextureStoredN3avs3uidE">
+<span id="_CPPv322Server_IsTextureStoredN3avs3uidE"></span><span id="_CPPv222Server_IsTextureStoredN3avs3uidE"></span><span id="Server_IsTextureStored__avs::uid"></span><span class="target" id="_plugin_main_8cpp_1a1211e1f08350a19aa06ee1685d4b18a7"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_IsTextureStored</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422Server_IsTextureStoredN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if id is the id of a texture stored in memory. </p>
+</dd></dl>
+
+</section>
+<section id="lifecycle">
+<h3><span class="section-number">3.4.2.3. </span>Lifecycle<a class="headerlink" href="#lifecycle" title="Link to this heading">¶</a></h3>
+<object data="../../_images/mermaid-d929c22fdf53db4e521a6130fecd565da08eed07.svg" type="image/svg+xml">
+            <p class="warning">flowchart TD
+        subgraph MainInitialization
+                A(Server_Teleport_Initialize)
+        end
+        subgraph MainLoop
+                B(Server_Tick)
+        end
+        subgraph EndSession
+                C(Server_Teleport_Shutdown)
+        end
+        MainInitialization --&gt; MainLoop(&quot;Main Loop&quot;)
+        MainLoop --&gt; EndSession
+        MainLoop ---&gt; MainLoop</p></object>
+<p>The lifecycle of a server session is controlled by these functions:</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426Server_Teleport_InitializePKN8teleport6server22InitializationSettingsE">
+<span id="_CPPv326Server_Teleport_InitializePKN8teleport6server22InitializationSettingsE"></span><span id="_CPPv226Server_Teleport_InitializePKN8teleport6server22InitializationSettingsE"></span><span id="Server_Teleport_Initialize__teleport::server::InitializationSettingsCP"></span><span class="target" id="_plugin_main_8cpp_1a3fa0e0555f9ca0bca0fdf28ff4a2fb99"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_Teleport_Initialize</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">InitializationSettings</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">initializationSettings</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426Server_Teleport_InitializePKN8teleport6server22InitializationSettingsE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize the server for a server session. </p>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “teleport::server::InitializationSettings” in doxygen xml output for project “TeleportXR” from directory: /home/runner/work/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424Server_Teleport_Shutdownv">
+<span id="_CPPv324Server_Teleport_Shutdownv"></span><span id="_CPPv224Server_Teleport_Shutdownv"></span><span id="Server_Teleport_Shutdown"></span><span class="target" id="_plugin_main_8cpp_1a6e92ca74d35a0f34a272b086bbd82f8d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_Teleport_Shutdown</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424Server_Teleport_Shutdownv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Shut down the server. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411Server_Tickf">
+<span id="_CPPv311Server_Tickf"></span><span id="_CPPv211Server_Tickf"></span><span id="Server_Tick__float"></span><span class="target" id="_plugin_main_8cpp_1a7f367f7dc5b89aed186ab215defb146d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_Tick</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">deltaTimeSeconds</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411Server_Tickf" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Perform periodic (e.g. once-per-frame) updates while playing. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417Server_EditorTickv">
+<span id="_CPPv317Server_EditorTickv"></span><span id="_CPPv217Server_EditorTickv"></span><span id="Server_EditorTick"></span><span class="target" id="_plugin_main_8cpp_1ae3080af3f7b801c7f0e042dc50cfe184"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_EditorTick</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417Server_EditorTickv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Perform periodic (e.g. once-per-frame) updates for Editor mode (not playing). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431Server_Teleport_GetSessionStateRN8teleport6server12SessionStateE">
+<span id="_CPPv331Server_Teleport_GetSessionStateRN8teleport6server12SessionStateE"></span><span id="_CPPv231Server_Teleport_GetSessionStateRN8teleport6server12SessionStateE"></span><span id="Server_Teleport_GetSessionState__teleport::server::SessionStateR"></span><span class="target" id="_plugin_main_8cpp_1ab56ea73ee7c5dd6a0ba68f6cf64c6f48"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_Teleport_GetSessionState</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">SessionState</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">sessionState</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431Server_Teleport_GetSessionStateRN8teleport6server12SessionStateE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Request the dll fill in the server session state. </p>
+</dd></dl>
+
+</section>
+<section id="state-management">
+<h3><span class="section-number">3.4.2.4. </span>State Management<a class="headerlink" href="#state-management" title="Link to this heading">¶</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426Server_GetUnlinkedClientIDv">
+<span id="_CPPv326Server_GetUnlinkedClientIDv"></span><span id="_CPPv226Server_GetUnlinkedClientIDv"></span><span id="Server_GetUnlinkedClientID"></span><span class="target" id="_plugin_main_8cpp_1abd27aec75e6d93e6eb3d983a20553fbc"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GetUnlinkedClientID</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426Server_GetUnlinkedClientIDv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get an id for a client that has connected but not yet been hooked up engine-side. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418Server_GenerateUidv">
+<span id="_CPPv318Server_GenerateUidv"></span><span id="_CPPv218Server_GenerateUidv"></span><span id="Server_GenerateUid"></span><span class="target" id="_plugin_main_8cpp_1acfd736d95675209107a9fad63f71f7f9"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GenerateUid</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418Server_GenerateUidv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get a new unique id. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Server_GetOrGenerateUidPKc">
+<span id="_CPPv323Server_GetOrGenerateUidPKc"></span><span id="_CPPv223Server_GetOrGenerateUidPKc"></span><span id="Server_GetOrGenerateUid__cCP"></span><span class="target" id="_plugin_main_8cpp_1ae00263cc7583a52e9cef4e8316934313"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GetOrGenerateUid</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Server_GetOrGenerateUidPKc" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the unique id (avs::uid) corresponding to the given resource path. Generate a new one if no id is yet associated with this path. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416Server_PathToUidPKc">
+<span id="_CPPv316Server_PathToUidPKc"></span><span id="_CPPv216Server_PathToUidPKc"></span><span id="Server_PathToUid__cCP"></span><span class="target" id="_plugin_main_8cpp_1ad492dd210eb0a21082dd3d374be28e68"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_PathToUid</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416Server_PathToUidPKc" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the unique id (avs::uid) corresponding to the given resource path. Returns 0 if none is defined. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416Server_UidToPathN3avs3uidEPCc6size_t">
+<span id="_CPPv316Server_UidToPathN3avs3uidEPCc6size_t"></span><span id="_CPPv216Server_UidToPathN3avs3uidEPCc6size_t"></span><span id="Server_UidToPath__avs::uid.cPC.s"></span><span class="target" id="_plugin_main_8cpp_1ab530ada66b06aa6a85977504e80fcc3b"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_UidToPath</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">path</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416Server_UidToPathN3avs3uidEPCc6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the resource path corresponding to the given unique id. Returns the length of the path string, or 0 if none is defined. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429Server_EnsureResourceIsLoadedN3avs3uidE">
+<span id="_CPPv329Server_EnsureResourceIsLoadedN3avs3uidE"></span><span id="_CPPv229Server_EnsureResourceIsLoadedN3avs3uidE"></span><span id="Server_EnsureResourceIsLoaded__avs::uid"></span><span class="target" id="_plugin_main_8cpp_1ae927290f90b5c3737857800ac577dc87"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_EnsureResourceIsLoaded</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429Server_EnsureResourceIsLoadedN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>If the resource is already loaded in memory, return true. If it is not, try to load it from the file cache and return true if succeeded, false otherwise. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433Server_EnsurePathResourceIsLoadedPKc">
+<span id="_CPPv333Server_EnsurePathResourceIsLoadedPKc"></span><span id="_CPPv233Server_EnsurePathResourceIsLoadedPKc"></span><span id="Server_EnsurePathResourceIsLoaded__cCP"></span><span class="target" id="_plugin_main_8cpp_1a98a8e2916b599e37f780e227e077ec3a"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_EnsurePathResourceIsLoaded</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433Server_EnsurePathResourceIsLoadedPKc" title="Link to this definition">¶</a><br /></dt>
+<dd><p>If the resource is loaded in memory, return the uid for the given path. If not, try to load it, return the corresponding uid if successful or 0 if not. </p>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “Server_SaveGeometryStore” in doxygen xml output for project “TeleportXR” from directory: /home/runner/work/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434Server_CheckGeometryStoreForErrorsv">
+<span id="_CPPv334Server_CheckGeometryStoreForErrorsv"></span><span id="_CPPv234Server_CheckGeometryStoreForErrorsv"></span><span id="Server_CheckGeometryStoreForErrors"></span><span class="target" id="_plugin_main_8cpp_1af997c4c477d03a94e0b9d33f6a867c81"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_CheckGeometryStoreForErrors</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434Server_CheckGeometryStoreForErrorsv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check all resources in memory for errors. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424Server_LoadGeometryStoreP6size_tPP14LoadedResourceP6size_tPP14LoadedResourceP6size_tPP14LoadedResource">
+<span id="_CPPv324Server_LoadGeometryStoreP6size_tPP14LoadedResourceP6size_tPP14LoadedResourceP6size_tPP14LoadedResource"></span><span id="_CPPv224Server_LoadGeometryStoreP6size_tPP14LoadedResourceP6size_tPP14LoadedResourceP6size_tPP14LoadedResource"></span><span id="Server_LoadGeometryStore__sP.LoadedResourcePP.sP.LoadedResourcePP.sP.LoadedResourcePP"></span><span class="target" id="_plugin_main_8cpp_1aaf970775519fe6298220717e36982d49"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_LoadGeometryStore</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">meshAmount</span></span>, <span class="n"><span class="pre">LoadedResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">meshes</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">textureAmount</span></span>, <span class="n"><span class="pre">LoadedResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">textures</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">materialAmount</span></span>, <span class="n"><span class="pre">LoadedResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">materials</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424Server_LoadGeometryStoreP6size_tPP14LoadedResourceP6size_tPP14LoadedResourceP6size_tPP14LoadedResource" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Load all resources that can be found in the disk cache into memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425Server_ClearGeometryStorev">
+<span id="_CPPv325Server_ClearGeometryStorev"></span><span id="_CPPv225Server_ClearGeometryStorev"></span><span id="Server_ClearGeometryStore"></span><span class="target" id="_plugin_main_8cpp_1a4678ff854d8d6679dd42808b177130fa"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_ClearGeometryStore</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425Server_ClearGeometryStorev" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Clear all resources from memory. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv433Server_SetDelayTextureCompressionb">
+<span id="_CPPv333Server_SetDelayTextureCompressionb"></span><span id="_CPPv233Server_SetDelayTextureCompressionb"></span><span id="Server_SetDelayTextureCompression__b"></span><span class="target" id="_plugin_main_8cpp_1af9ede62cd7bd6cf9d4c7ddccc9916f86"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetDelayTextureCompression</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">willDelay</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv433Server_SetDelayTextureCompressionb" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll whether to delay texture compression (rather than compress instantly when textures are stored). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427Server_SetCompressionLevels7uint8_t7uint8_t">
+<span id="_CPPv327Server_SetCompressionLevels7uint8_t7uint8_t"></span><span id="_CPPv227Server_SetCompressionLevels7uint8_t7uint8_t"></span><span id="Server_SetCompressionLevels__uint8_t.uint8_t"></span><span class="target" id="_plugin_main_8cpp_1ae176b1da1d5750b37b66c1296b1b25d7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetCompressionLevels</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">compressionStrength</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">compressionQuality</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Server_SetCompressionLevels7uint8_t7uint8_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what compression values to use for textures. Applies only to future compression events, does not recompress existing data. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv417Server_ResendNodeN3avs3uidE">
+<span id="_CPPv317Server_ResendNodeN3avs3uidE"></span><span id="_CPPv217Server_ResendNodeN3avs3uidE"></span><span id="Server_ResendNode__avs::uid"></span><span class="target" id="_plugin_main_8cpp_1ad410f9c2f635a7bc45dfaf8d3de0262a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_ResendNode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417Server_ResendNodeN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Resend the specified node to all clients. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv447Server_GetNumberOfTexturesWaitingForCompressionv">
+<span id="_CPPv347Server_GetNumberOfTexturesWaitingForCompressionv"></span><span id="_CPPv247Server_GetNumberOfTexturesWaitingForCompressionv"></span><span id="Server_GetNumberOfTexturesWaitingForCompression"></span><span class="target" id="_plugin_main_8cpp_1a989ea92379db54a05eb2d58b3098a0a4"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GetNumberOfTexturesWaitingForCompression</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv447Server_GetNumberOfTexturesWaitingForCompressionv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns how many textures are in the queue to be compressed and stored. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv441Server_GetMessageForNextCompressedTexturePc6size_t">
+<span id="_CPPv341Server_GetMessageForNextCompressedTexturePc6size_t"></span><span id="_CPPv241Server_GetMessageForNextCompressedTexturePc6size_t"></span><span id="Server_GetMessageForNextCompressedTexture__cP.s"></span><span class="target" id="_plugin_main_8cpp_1a418407dc71a690f38128243fd08dbf51"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_GetMessageForNextCompressedTexture</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv441Server_GetMessageForNextCompressedTexturePc6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get a progress update message for the texture next in the compression queue. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426Server_CompressNextTexturev">
+<span id="_CPPv326Server_CompressNextTexturev"></span><span id="_CPPv226Server_CompressNextTexturev"></span><span id="Server_CompressNextTexture"></span><span class="target" id="_plugin_main_8cpp_1ae4edaa69f3edfd11027ac68d1d662aab"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_CompressNextTexture</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426Server_CompressNextTexturev" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Compress the next texture in the queue. </p>
+</dd></dl>
+
+</section>
+<section id="axis-conversions">
+<h3><span class="section-number">3.4.2.5. </span>Axis Conversions<a class="headerlink" href="#axis-conversions" title="Link to this heading">¶</a></h3>
+<p>Various axis conventions are used in different applications, game engines and API’s. The reference API defines  <a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><code class="xref any cpp cpp-enum docutils literal notranslate"><span class="pre">avs::AxesStandard</span></code></a> to represent the possible standards that can be used.</p>
+<figure class="align-default">
+<img alt="../../_images/AxesStandards.png" src="../../_images/AxesStandards.png" />
+</figure>
+<p>The API provides conversion functions to transform between axis systems
+.. doxygenfunction:: Server_ConvertTransform</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422Server_ConvertRotationN3avs12AxesStandardEN3avs12AxesStandardER4vec4">
+<span id="_CPPv322Server_ConvertRotationN3avs12AxesStandardEN3avs12AxesStandardER4vec4"></span><span id="_CPPv222Server_ConvertRotationN3avs12AxesStandardEN3avs12AxesStandardER4vec4"></span><span id="Server_ConvertRotation__avs::AxesStandard.avs::AxesStandard.vec4R"></span><span class="target" id="_plugin_main_8cpp_1a1dc56936cb11bd9ce332342cab6c8c45"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_ConvertRotation</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fromStandard</span></span>, <a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">toStandard</span></span>, <span class="n"><span class="pre">vec4</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">rotation</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422Server_ConvertRotationN3avs12AxesStandardEN3avs12AxesStandardER4vec4" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Convert a quaternion rotation between two avs::AxesStandard’s. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422Server_ConvertPositionN3avs12AxesStandardEN3avs12AxesStandardER4vec3">
+<span id="_CPPv322Server_ConvertPositionN3avs12AxesStandardEN3avs12AxesStandardER4vec3"></span><span id="_CPPv222Server_ConvertPositionN3avs12AxesStandardEN3avs12AxesStandardER4vec3"></span><span id="Server_ConvertPosition__avs::AxesStandard.avs::AxesStandard.vec3R"></span><span class="target" id="_plugin_main_8cpp_1a5b41e7a45edf912457277999bca55d3a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_ConvertPosition</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fromStandard</span></span>, <a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">toStandard</span></span>, <span class="n"><span class="pre">vec3</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">position</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422Server_ConvertPositionN3avs12AxesStandardEN3avs12AxesStandardER4vec3" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Convert a position between two avs::AxesStandard’s. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419Server_ConvertScaleN3avs12AxesStandardEN3avs12AxesStandardER4vec3">
+<span id="_CPPv319Server_ConvertScaleN3avs12AxesStandardEN3avs12AxesStandardER4vec3"></span><span id="_CPPv219Server_ConvertScaleN3avs12AxesStandardEN3avs12AxesStandardER4vec3"></span><span id="Server_ConvertScale__avs::AxesStandard.avs::AxesStandard.vec3R"></span><span class="target" id="_plugin_main_8cpp_1a7c0910f3827c4930dd8bd25d63ecd428"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_ConvertScale</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fromStandard</span></span>, <a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">toStandard</span></span>, <span class="n"><span class="pre">vec3</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">scale</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419Server_ConvertScaleN3avs12AxesStandardEN3avs12AxesStandardER4vec3" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Convert a scale between two avs::AxesStandard’s. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418Server_ConvertAxisN3avs12AxesStandardEN3avs12AxesStandardE6int8_t">
+<span id="_CPPv318Server_ConvertAxisN3avs12AxesStandardEN3avs12AxesStandardE6int8_t"></span><span id="_CPPv218Server_ConvertAxisN3avs12AxesStandardEN3avs12AxesStandardE6int8_t"></span><span id="Server_ConvertAxis__avs::AxesStandard.avs::AxesStandard.int8_t"></span><span class="target" id="_plugin_main_8cpp_1a3a84ed48d4b5709a49941ec976c3e9f1"></span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_ConvertAxis</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fromStandard</span></span>, <a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">toStandard</span></span>, <span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">axis</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv418Server_ConvertAxisN3avs12AxesStandardEN3avs12AxesStandardE6int8_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Convert the specified axis index between two avs::AxesStandard’s. </p>
+</dd></dl>
+
+</section>
+<section id="memory">
+<h3><span class="section-number">3.4.2.6. </span>Memory<a class="headerlink" href="#memory" title="Link to this heading">¶</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427Server_DeleteUnmanagedArrayPPv">
+<span id="_CPPv327Server_DeleteUnmanagedArrayPPv"></span><span id="_CPPv227Server_DeleteUnmanagedArrayPPv"></span><span id="Server_DeleteUnmanagedArray__voidPP"></span><span class="target" id="_plugin_main_8cpp_1a638d537e790dc860f017fb7b9f824ce2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_DeleteUnmanagedArray</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">unmanagedArray</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Server_DeleteUnmanagedArrayPPv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Delete an array that was created in the dll. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413Server_SizeOfPKc">
+<span id="_CPPv313Server_SizeOfPKc"></span><span id="_CPPv213Server_SizeOfPKc"></span><span id="Server_SizeOf__cCP"></span><span class="target" id="_plugin_main_8cpp_1af708a728161f15999541fe402975d0db"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SizeOf</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413Server_SizeOfPKc" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns the size of the named structure according to the dll. This should match the size of the corresponding interop structure in the engine. </p>
+</dd></dl>
+
+</section>
+<section id="setting-properties">
+<h3><span class="section-number">3.4.2.7. </span>Setting Properties<a class="headerlink" href="#setting-properties" title="Link to this heading">¶</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427Server_UpdateServerSettingsK14ServerSettings">
+<span id="_CPPv327Server_UpdateServerSettingsK14ServerSettings"></span><span id="_CPPv227Server_UpdateServerSettingsK14ServerSettings"></span><span id="Server_UpdateServerSettings__ServerSettingsC"></span><span class="target" id="_plugin_main_8cpp_1a83956251dcd44e3b22f643c880daece1"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_UpdateServerSettings</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ServerSettings</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newSettings</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Server_UpdateServerSettingsK14ServerSettings" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Apply new server settings. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419Server_SetCachePathPKc">
+<span id="_CPPv319Server_SetCachePathPKc"></span><span id="_CPPv219Server_SetCachePathPKc"></span><span id="Server_SetCachePath__cCP"></span><span class="target" id="_plugin_main_8cpp_1aef40f1e71ec5c786def0debdc7315fed"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetCachePath</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419Server_SetCachePathPKc" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Set the local (server-side) path where cached streamable resources are stored. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427Server_SetConnectionTimeout7int32_t">
+<span id="_CPPv327Server_SetConnectionTimeout7int32_t"></span><span id="_CPPv227Server_SetConnectionTimeout7int32_t"></span><span id="Server_SetConnectionTimeout__int32_t"></span><span class="target" id="_plugin_main_8cpp_1aff3f3787b2a62b25939f131dfd940071"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetConnectionTimeout</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeout</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427Server_SetConnectionTimeout7int32_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll how long to wait for a timeout. </p>
+</dd></dl>
+
+</section>
+<section id="setting-delegates">
+<h3><span class="section-number">3.4.2.8. </span>Setting Delegates<a class="headerlink" href="#setting-delegates" title="Link to this heading">¶</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv444Server_SetClientStoppedRenderingNodeDelegate28ClientStoppedRenderingNodeFn">
+<span id="_CPPv344Server_SetClientStoppedRenderingNodeDelegate28ClientStoppedRenderingNodeFn"></span><span id="_CPPv244Server_SetClientStoppedRenderingNodeDelegate28ClientStoppedRenderingNodeFn"></span><span id="Server_SetClientStoppedRenderingNodeDelegate__ClientStoppedRenderingNodeFn"></span><span class="target" id="_plugin_main_8cpp_1ad783c6ffbffe41128fb950c7db833ff2"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetClientStoppedRenderingNodeDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ClientStoppedRenderingNodeFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">clientStoppedRenderingNode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv444Server_SetClientStoppedRenderingNodeDelegate28ClientStoppedRenderingNodeFn" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use when a client has stopped rendering a node. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv444Server_SetClientStartedRenderingNodeDelegate28ClientStartedRenderingNodeFn">
+<span id="_CPPv344Server_SetClientStartedRenderingNodeDelegate28ClientStartedRenderingNodeFn"></span><span id="_CPPv244Server_SetClientStartedRenderingNodeDelegate28ClientStartedRenderingNodeFn"></span><span id="Server_SetClientStartedRenderingNodeDelegate__ClientStartedRenderingNodeFn"></span><span class="target" id="_plugin_main_8cpp_1a090226c5340bf8caa0bcc5518026abdb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetClientStartedRenderingNodeDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ClientStartedRenderingNodeFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">clientStartedRenderingNode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv444Server_SetClientStartedRenderingNodeDelegate28ClientStartedRenderingNodeFn" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use when a client has started rendering a node. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432Server_SetHeadPoseSetterDelegate13SetHeadPoseFn">
+<span id="_CPPv332Server_SetHeadPoseSetterDelegate13SetHeadPoseFn"></span><span id="_CPPv232Server_SetHeadPoseSetterDelegate13SetHeadPoseFn"></span><span id="Server_SetHeadPoseSetterDelegate__SetHeadPoseFn"></span><span class="target" id="_plugin_main_8cpp_1a27f88cf2f254a94b97cbc9f60b212e9b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetHeadPoseSetterDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">SetHeadPoseFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">headPoseSetter</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432Server_SetHeadPoseSetterDelegate13SetHeadPoseFn" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use when a client has updated its head pose. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv441Server_SetNewInputStateProcessingDelegate22ProcessNewInputStateFn">
+<span id="_CPPv341Server_SetNewInputStateProcessingDelegate22ProcessNewInputStateFn"></span><span id="_CPPv241Server_SetNewInputStateProcessingDelegate22ProcessNewInputStateFn"></span><span id="Server_SetNewInputStateProcessingDelegate__ProcessNewInputStateFn"></span><span class="target" id="_plugin_main_8cpp_1a7df30148305a56470ca8a5a91e31bd2e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetNewInputStateProcessingDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ProcessNewInputStateFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newInputProcessing</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv441Server_SetNewInputStateProcessingDelegate22ProcessNewInputStateFn" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use when a client has sent the server new input state data to process. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv442Server_SetNewInputEventsProcessingDelegate23ProcessNewInputEventsFn">
+<span id="_CPPv342Server_SetNewInputEventsProcessingDelegate23ProcessNewInputEventsFn"></span><span id="_CPPv242Server_SetNewInputEventsProcessingDelegate23ProcessNewInputEventsFn"></span><span id="Server_SetNewInputEventsProcessingDelegate__ProcessNewInputEventsFn"></span><span class="target" id="_plugin_main_8cpp_1af4aae4fd761b07908bc3fed3c75124b6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetNewInputEventsProcessingDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ProcessNewInputEventsFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">newInputProcessing</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv442Server_SetNewInputEventsProcessingDelegate23ProcessNewInputEventsFn" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use when a client has sent the server new input events to process. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428Server_SetDisconnectDelegate12DisconnectFn">
+<span id="_CPPv328Server_SetDisconnectDelegate12DisconnectFn"></span><span id="_CPPv228Server_SetDisconnectDelegate12DisconnectFn"></span><span id="Server_SetDisconnectDelegate__DisconnectFn"></span><span class="target" id="_plugin_main_8cpp_1a4f0de00568891b289f5f78ff6721d6ea"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetDisconnectDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">DisconnectFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">disconnect</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428Server_SetDisconnectDelegate12DisconnectFn" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use when a client has disconnected. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435Server_SetProcessAudioInputDelegate19ProcessAudioInputFn">
+<span id="_CPPv335Server_SetProcessAudioInputDelegate19ProcessAudioInputFn"></span><span id="_CPPv235Server_SetProcessAudioInputDelegate19ProcessAudioInputFn"></span><span id="Server_SetProcessAudioInputDelegate__ProcessAudioInputFn"></span><span class="target" id="_plugin_main_8cpp_1ae52dfc9de5c02f10347875bdf9ebc55c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetProcessAudioInputDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ProcessAudioInputFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">f</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435Server_SetProcessAudioInputDelegate19ProcessAudioInputFn" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use when a client has sent audio packets. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv434Server_SetGetUnixTimestampDelegate18GetUnixTimestampFn">
+<span id="_CPPv334Server_SetGetUnixTimestampDelegate18GetUnixTimestampFn"></span><span id="_CPPv234Server_SetGetUnixTimestampDelegate18GetUnixTimestampFn"></span><span id="Server_SetGetUnixTimestampDelegate__GetUnixTimestampFn"></span><span class="target" id="_plugin_main_8cpp_1a81d58d3615feda1702cd0cc8e1a1268c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetGetUnixTimestampDelegate</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">GetUnixTimestampFn</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">function</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv434Server_SetGetUnixTimestampDelegate18GetUnixTimestampFn" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use to obtain a current Unix timestamp. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432Server_SetMessageHandlerDelegateN3avs18MessageHandlerFuncE">
+<span id="_CPPv332Server_SetMessageHandlerDelegateN3avs18MessageHandlerFuncE"></span><span id="_CPPv232Server_SetMessageHandlerDelegateN3avs18MessageHandlerFuncE"></span><span id="Server_SetMessageHandlerDelegate__avs::MessageHandlerFunc"></span><span class="target" id="_plugin_main_8cpp_1a1722c6fa31bd0aab441701e425f964e9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetMessageHandlerDelegate</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs18MessageHandlerFuncE" title="avs::MessageHandlerFunc"><span class="n"><span class="pre">MessageHandlerFunc</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">msgh</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432Server_SetMessageHandlerDelegateN3avs18MessageHandlerFuncE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the dll what delegate to use to send log messages. </p>
+</dd></dl>
+
+</section>
+<section id="video">
+<h3><span class="section-number">3.4.2.9. </span>Video<a class="headerlink" href="#video" title="Link to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “Server_GetVideoEncodeCapabilities” in doxygen xml output for project “TeleportXR” from directory: /home/runner/work/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429Server_InitializeVideoEncoderN3avs3uidER17VideoEncodeParams">
+<span id="_CPPv329Server_InitializeVideoEncoderN3avs3uidER17VideoEncodeParams"></span><span id="_CPPv229Server_InitializeVideoEncoderN3avs3uidER17VideoEncodeParams"></span><span id="Server_InitializeVideoEncoder__avs::uid.VideoEncodeParamsR"></span><span class="target" id="_plugin_main_8cpp_1a61ff899cd50e10b3f7a59168d0817aa9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_InitializeVideoEncoder</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clientID</span></span>, <span class="n"><span class="pre">VideoEncodeParams</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">videoEncodeParams</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429Server_InitializeVideoEncoderN3avs3uidER17VideoEncodeParams" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Initialize for video encoding. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430Server_ReconfigureVideoEncoderN3avs3uidER17VideoEncodeParams">
+<span id="_CPPv330Server_ReconfigureVideoEncoderN3avs3uidER17VideoEncodeParams"></span><span id="_CPPv230Server_ReconfigureVideoEncoderN3avs3uidER17VideoEncodeParams"></span><span id="Server_ReconfigureVideoEncoder__avs::uid.VideoEncodeParamsR"></span><span class="target" id="_plugin_main_8cpp_1ad4ffbbe27bfcd0db87fc6ffbdeb3cd14"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_ReconfigureVideoEncoder</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clientID</span></span>, <span class="n"><span class="pre">VideoEncodeParams</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">videoEncodeParams</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430Server_ReconfigureVideoEncoderN3avs3uidER17VideoEncodeParams" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Reconfigure video encoding while running. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Server_EncodeVideoFrameN3avs3uidEPK7uint8_t6size_t">
+<span id="_CPPv323Server_EncodeVideoFrameN3avs3uidEPK7uint8_t6size_t"></span><span id="_CPPv223Server_EncodeVideoFrameN3avs3uidEPK7uint8_t6size_t"></span><span id="Server_EncodeVideoFrame__avs::uid.uint8_tCP.s"></span><span class="target" id="_plugin_main_8cpp_1a097d965824af3ef445e32c51e61fc2ad"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_EncodeVideoFrame</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">clientID</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">tagData</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">tagDataSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Server_EncodeVideoFrameN3avs3uidEPK7uint8_t6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Encode the given (uncompressed) video frame from memory. </p>
+</dd></dl>
+
+</section>
+<section id="audio">
+<h3><span class="section-number">3.4.2.10. </span>Audio<a class="headerlink" href="#audio" title="Link to this heading">¶</a></h3>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423Server_SetAudioSettingsRK13AudioSettings">
+<span id="_CPPv323Server_SetAudioSettingsRK13AudioSettings"></span><span id="_CPPv223Server_SetAudioSettingsRK13AudioSettings"></span><span id="Server_SetAudioSettings__AudioSettingsCR"></span><span class="target" id="_plugin_main_8cpp_1a08d561fc15bf0827ceb51fd71f37882f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SetAudioSettings</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">AudioSettings</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">newAudioSettings</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423Server_SetAudioSettingsRK13AudioSettings" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Assign new audio settings. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416Server_SendAudioPK7uint8_t6size_t">
+<span id="_CPPv316Server_SendAudioPK7uint8_t6size_t"></span><span id="_CPPv216Server_SendAudioPK7uint8_t6size_t"></span><span id="Server_SendAudio__uint8_tCP.s"></span><span class="target" id="_plugin_main_8cpp_1ace3efc3518d85755e134128d11989c59"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Server_SendAudio</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">dataSize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416Server_SendAudioPK7uint8_t6size_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Send a chunk of audio data to all clients. </p>
+</dd></dl>
+
+</section>
+</section>
+<section id="classes">
+<h2><span class="section-number">3.4.3. </span>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server19AudioEncodePipelineE">
+<span id="_CPPv3N8teleport6server19AudioEncodePipelineE"></span><span id="_CPPv2N8teleport6server19AudioEncodePipelineE"></span><span id="teleport::server::AudioEncodePipeline"></span><span class="target" id="classteleport_1_1server_1_1_audio_encode_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncodePipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server19AudioEncodePipelineE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>A wrapper for an <a class="reference internal" href="libavstream.html#classavs_1_1_audio_encoder"><span class="std std-ref">avs::AudioEncoder</span></a> and an <a class="reference internal" href="libavstream.html#classavs_1_1_pipeline"><span class="std std-ref">avs::Pipeline</span></a>. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server12AudioEncoderE">
+<span id="_CPPv3N8teleport6server12AudioEncoderE"></span><span id="_CPPv2N8teleport6server12AudioEncoderE"></span><span id="teleport::server::AudioEncoder"></span><span class="target" id="classteleport_1_1server_1_1_audio_encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AudioEncoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs28AudioEncoderBackendInterfaceE" title="avs::AudioEncoderBackendInterface"><span class="n"><span class="pre">AudioEncoderBackendInterface</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6server12AudioEncoderE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Implementation of the default audio encoding. </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server20ClientNetworkContextE">
+<span id="_CPPv3N8teleport6server20ClientNetworkContextE"></span><span id="_CPPv2N8teleport6server20ClientNetworkContextE"></span><span id="teleport::server::ClientNetworkContext"></span><span class="target" id="structteleport_1_1server_1_1_client_network_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientNetworkContext</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server20ClientNetworkContextE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Wrapper for the network pipeline objects for a given client. // </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server10ClientDataE">
+<span id="_CPPv3N8teleport6server10ClientDataE"></span><span id="_CPPv2N8teleport6server10ClientDataE"></span><span id="teleport::server::ClientData"></span><span class="target" id="classteleport_1_1server_1_1_client_data"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientData</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server10ClientDataE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Data object for a connected client. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server10ClientData12reparentNodeEN3avs3uidE">
+<span id="_CPPv3N8teleport6server10ClientData12reparentNodeEN3avs3uidE"></span><span id="_CPPv2N8teleport6server10ClientData12reparentNodeEN3avs3uidE"></span><span id="teleport::server::ClientData::reparentNode__avs::uid"></span><span class="target" id="classteleport_1_1server_1_1_client_data_1a4b0eda2f2d7ed3bc908eddf4084aba69"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">reparentNode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">nodeID</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server10ClientData12reparentNodeEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Called after reparenting to inform the client of the new parent. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server10ClientData29RouteIncomingSignalingMessageERKNSt6stringE">
+<span id="_CPPv3N8teleport6server10ClientData29RouteIncomingSignalingMessageERKNSt6stringE"></span><span id="_CPPv2N8teleport6server10ClientData29RouteIncomingSignalingMessageERKNSt6stringE"></span><span id="teleport::server::ClientData::RouteIncomingSignalingMessage__ssCR"></span><span class="target" id="classteleport_1_1server_1_1_client_data_1adcf1a0c459c36ea11dc65578aed048cc"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RouteIncomingSignalingMessage</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server10ClientData29RouteIncomingSignalingMessageERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Inspect a JSON text frame pulled off the signaling WebSocket and dispatch it to AvatarService when it carries one of the avatar-negotiation signal types. Returns true if the message was consumed; false leaves the caller to forward it through the WebRTC streaming-control pipeline as before. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13ClientManagerE">
+<span id="_CPPv3N8teleport6server13ClientManagerE"></span><span id="_CPPv2N8teleport6server13ClientManagerE"></span><span id="teleport::server::ClientManager"></span><span class="target" id="classteleport_1_1server_1_1_client_manager"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientManager</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server13ClientManagerE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Container for the client-specific data objects. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server15ClientMessagingE">
+<span id="_CPPv3N8teleport6server15ClientMessagingE"></span><span id="_CPPv2N8teleport6server15ClientMessagingE"></span><span id="teleport::server::ClientMessaging"></span><span class="target" id="classteleport_1_1server_1_1_client_messaging"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ClientMessaging</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs22GenericTargetInterfaceE" title="avs::GenericTargetInterface"><span class="n"><span class="pre">GenericTargetInterface</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6server15ClientMessagingE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Per-client messaging handler. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6server15ClientMessaging15GetServerTimeUsEv">
+<span id="_CPPv3NK8teleport6server15ClientMessaging15GetServerTimeUsEv"></span><span id="_CPPv2NK8teleport6server15ClientMessaging15GetServerTimeUsEv"></span><span id="teleport::server::ClientMessaging::GetServerTimeUsC"></span><span class="target" id="classteleport_1_1server_1_1_client_messaging_1a7c4bc9ad98195fbed952ed5e95ae0cf7"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetServerTimeUs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6server15ClientMessaging15GetServerTimeUsEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get current server-time in nanoseconds (i.e. time since server started). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server16SignalingServiceE">
+<span id="_CPPv3N8teleport6server16SignalingServiceE"></span><span id="_CPPv2N8teleport6server16SignalingServiceE"></span><span id="teleport::server::SignalingService"></span><span class="target" id="classteleport_1_1server_1_1_signaling_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SignalingService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server16SignalingServiceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Signaling service for establishing connections with clients. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server15GeometryEncoderE">
+<span id="_CPPv3N8teleport6server15GeometryEncoderE"></span><span id="_CPPv2N8teleport6server15GeometryEncoderE"></span><span id="teleport::server::GeometryEncoder"></span><span class="target" id="classteleport_1_1server_1_1_geometry_encoder"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryEncoder</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs31GeometryEncoderBackendInterfaceE" title="avs::GeometryEncoderBackendInterface"><span class="n"><span class="pre">GeometryEncoderBackendInterface</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6server15GeometryEncoderE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Backend implementation of the geometry encoder. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStoreE">
+<span id="_CPPv3N8teleport6server13GeometryStoreE"></span><span id="_CPPv2N8teleport6server13GeometryStoreE"></span><span id="teleport::server::GeometryStore"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryStore</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStoreE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Singleton for storing geometry data and managing the geometry file cache. The definitive geometry store is the file structure pointed to by SetCachePath(). The structure in <a class="reference internal" href="#classteleport_1_1server_1_1_geometry_store"><span class="std std-ref">GeometryStore</span></a> is the <em>session</em> structure, using uid’s for quick reference. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStore11SetHttpRootEPKc">
+<span id="_CPPv3N8teleport6server13GeometryStore11SetHttpRootEPKc"></span><span id="_CPPv2N8teleport6server13GeometryStore11SetHttpRootEPKc"></span><span id="teleport::server::GeometryStore::SetHttpRoot__cCP"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1a5f4185e5bfa5c77e4f53dbd30067f788"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SetHttpRoot</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="p"><span class="pre">*</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStore11SetHttpRootEPKc" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Sets the root http address this server will use to serve files via http. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStore21registerExternalAssetERKNSt6stringEN3avs12AxesStandardE">
+<span id="_CPPv3N8teleport6server13GeometryStore21registerExternalAssetERKNSt6stringEN3avs12AxesStandardE"></span><span id="_CPPv2N8teleport6server13GeometryStore21registerExternalAssetERKNSt6stringEN3avs12AxesStandardE"></span><span id="teleport::server::GeometryStore::registerExternalAsset__ssCR.avs::AxesStandard"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1a92603aeb4a3f6a24351d95a71de030a8"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">registerExternalAsset</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">pathWithExtension</span></span>, <a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">axesStandard</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandard14NotInitializedE" title="avs::AxesStandard::NotInitialized"><span class="n"><span class="pre">NotInitialized</span></span></a><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStore21registerExternalAssetERKNSt6stringEN3avs12AxesStandardE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Register an asset that exists as a file beside the server rather than as an extracted resource - a .glb/.vrm mesh, or a texture that one of them references. Returns its uid.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pathWithExtension</span></code> is the path as it is written and served, e.g. “props/chair.glb”. The uid is minted from the path <em>without</em> the extension, because resource paths here carry none: the extension belongs to the resource type and is appended when a url is built (see GetOrGenerateUid, which rejects a path containing a period, and encodeTexturePointer, which appends one). The extension is recorded here so a url can still be built for an asset that has no stored resource to take one from.</p>
+<p>The axes standard is the one the file’s own contents are authored in, and is sent on the pointer that names it. Left at NotInitialized it is derived from the extension: a glTF-family file is always Y-up right-handed whatever the scene around it uses, and anything else - an ordinary 2D image - has no orientation of its own to declare, which is what NotInitialized means. Pass one explicitly only for a file that disagrees, a cubemap being the case that arises. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6server13GeometryStore25GetExternalAssetExtensionEN3avs3uidE">
+<span id="_CPPv3NK8teleport6server13GeometryStore25GetExternalAssetExtensionEN3avs3uidE"></span><span id="_CPPv2NK8teleport6server13GeometryStore25GetExternalAssetExtensionEN3avs3uidE"></span><span id="teleport::server::GeometryStore::GetExternalAssetExtension__avs::uidC"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1aac87a11a671a295e55c8b9721c488bb2"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetExternalAssetExtension</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6server13GeometryStore25GetExternalAssetExtensionEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The file extension recorded for an external asset, e.g. “.glb”. Empty for anything that was not registered with registerExternalAsset. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6server13GeometryStore28GetExternalAssetAxesStandardEN3avs3uidE">
+<span id="_CPPv3NK8teleport6server13GeometryStore28GetExternalAssetAxesStandardEN3avs3uidE"></span><span id="_CPPv2NK8teleport6server13GeometryStore28GetExternalAssetAxesStandardEN3avs3uidE"></span><span id="teleport::server::GeometryStore::GetExternalAssetAxesStandard__avs::uidC"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1a459da877762d0ff5602ae594cbc74cb9"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs12AxesStandardE" title="avs::AxesStandard"><span class="n"><span class="pre">AxesStandard</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetExternalAssetAxesStandard</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6server13GeometryStore28GetExternalAssetAxesStandardEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p><p>The axes standard recorded for an external asset. NotInitialized for anything that was not registered with registerExternalAsset, which the client reads as “the same as the</p>
+<p>server’s scene”.</p>
+</p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6server13GeometryStore15IsExternalAssetEN3avs3uidE">
+<span id="_CPPv3NK8teleport6server13GeometryStore15IsExternalAssetEN3avs3uidE"></span><span id="_CPPv2NK8teleport6server13GeometryStore15IsExternalAssetEN3avs3uidE"></span><span id="teleport::server::GeometryStore::IsExternalAsset__avs::uidC"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1aa283c52956ed7050338cf083b052a9f3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IsExternalAsset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6server13GeometryStore15IsExternalAssetEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>True if this uid is a file served beside us rather than a resource extracted into the store, and so is streamed as a pointer to its url rather than inline. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStore26getMeshTextureDependenciesEN3avs3uidE">
+<span id="_CPPv3N8teleport6server13GeometryStore26getMeshTextureDependenciesEN3avs3uidE"></span><span id="_CPPv2N8teleport6server13GeometryStore26getMeshTextureDependenciesEN3avs3uidE"></span><span id="teleport::server::GeometryStore::getMeshTextureDependencies__avs::uid"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1acf28a241498d8fa4b0ff157b45472879"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getMeshTextureDependencies</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">meshId</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStore26getMeshTextureDependenciesEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The textures a mesh asset references as external files, and therefore depends on.</p>
+<p>A .glb/.vrm may embed its images or reference them as separate files; the second form makes each of those files a resource a client streaming the mesh must also receive, and nothing else in the scene says so. Empty for an asset that embeds its images, for an extracted mesh, and for anything unreadable.</p>
+<p>The asset is parsed once and the result kept, re-read only if the file’s modification time moves: this is asked for every time a node enters a client’s streamed set, and re-reading a 30 MB avatar each time would be absurd. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStore14CheckForErrorsEN3avs3uidE">
+<span id="_CPPv3N8teleport6server13GeometryStore14CheckForErrorsEN3avs3uidE"></span><span id="_CPPv2N8teleport6server13GeometryStore14CheckForErrorsEN3avs3uidE"></span><span id="teleport::server::GeometryStore::CheckForErrors__avs::uid"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1a51a345e164b0e588b2b175b0c7e2f2d6"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CheckForErrors</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">uid</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStore14CheckForErrorsEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Check for errors - these should be resolved before using this store in a server. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStore16GetOrGenerateUidERKNSt6stringE">
+<span id="_CPPv3N8teleport6server13GeometryStore16GetOrGenerateUidERKNSt6stringE"></span><span id="_CPPv2N8teleport6server13GeometryStore16GetOrGenerateUidERKNSt6stringE"></span><span id="teleport::server::GeometryStore::GetOrGenerateUid__ssCR"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1a6282fa8ba2699ff99f3c9d327eb69e96"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetOrGenerateUid</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStore16GetOrGenerateUidERKNSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get or generate a uid. If the path already corresponds to an id, that will be returned. Otherwise a new one will be added. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStore11GenerateUidEv">
+<span id="_CPPv3N8teleport6server13GeometryStore11GenerateUidEv"></span><span id="_CPPv2N8teleport6server13GeometryStore11GenerateUidEv"></span><span id="teleport::server::GeometryStore::GenerateUid"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1a6321fae602cecc7e340aa6b615d1e7cb"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GenerateUid</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStore11GenerateUidEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Generate a uid. Used mainly for nodes, which don’t have persistent paths. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6server13GeometryStore9PathToUidENSt6stringE">
+<span id="_CPPv3NK8teleport6server13GeometryStore9PathToUidENSt6stringE"></span><span id="_CPPv2NK8teleport6server13GeometryStore9PathToUidENSt6stringE"></span><span id="teleport::server::GeometryStore::PathToUid__ssC"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1af099cccdf297146835ed1b82c1970b87"></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PathToUid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">p</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6server13GeometryStore9PathToUidENSt6stringE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the current session uid corresponding to the given resource/asset path. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6server13GeometryStore9UidToPathEN3avs3uidE">
+<span id="_CPPv3NK8teleport6server13GeometryStore9UidToPathEN3avs3uidE"></span><span id="_CPPv2NK8teleport6server13GeometryStore9UidToPathEN3avs3uidE"></span><span id="teleport::server::GeometryStore::UidToPath__avs::uidC"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1a393eafc85e4e461e1b3506329fbc0701"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UidToPath</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6server13GeometryStore9UidToPathEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Get the resource/asset path corresponding to the current session uid. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server13GeometryStore22EnsureResourceIsLoadedEN3avs3uidE">
+<span id="_CPPv3N8teleport6server13GeometryStore22EnsureResourceIsLoadedEN3avs3uidE"></span><span id="_CPPv2N8teleport6server13GeometryStore22EnsureResourceIsLoadedEN3avs3uidE"></span><span id="teleport::server::GeometryStore::EnsureResourceIsLoaded__avs::uid"></span><span class="target" id="classteleport_1_1server_1_1_geometry_store_1a07f58bb4d300b3fe96034cf791be3873"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EnsureResourceIsLoaded</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">u</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server13GeometryStore22EnsureResourceIsLoadedEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Load the resource if possible from the file cache into memory. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server24GeometryStreamingServiceE">
+<span id="_CPPv3N8teleport6server24GeometryStreamingServiceE"></span><span id="_CPPv2N8teleport6server24GeometryStreamingServiceE"></span><span id="teleport::server::GeometryStreamingService"></span><span class="target" id="classteleport_1_1server_1_1_geometry_streaming_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GeometryStreamingService</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs33GeometryRequesterBackendInterfaceE" title="avs::GeometryRequesterBackendInterface"><span class="n"><span class="pre">GeometryRequesterBackendInterface</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6server24GeometryStreamingServiceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>This per-client class tracks the resources and nodes that the client needs, and returns them via GeometryRequesterBackendInterface to the encoder. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server24GeometryStreamingService15encodedResourceEN3avs3uidE">
+<span id="_CPPv3N8teleport6server24GeometryStreamingService15encodedResourceEN3avs3uidE"></span><span id="_CPPv2N8teleport6server24GeometryStreamingService15encodedResourceEN3avs3uidE"></span><span id="teleport::server::GeometryStreamingService::encodedResource__avs::uid"></span><span class="target" id="classteleport_1_1server_1_1_geometry_streaming_service_1ae51fcf560da08ce7e32bf4561056eb1f"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">encodedResource</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">resourceID</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N8teleport6server24GeometryStreamingService15encodedResourceEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the StreamingService that a resource has been sent. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server24GeometryStreamingService15confirmResourceEN3avs3uidE">
+<span id="_CPPv3N8teleport6server24GeometryStreamingService15confirmResourceEN3avs3uidE"></span><span id="_CPPv2N8teleport6server24GeometryStreamingService15confirmResourceEN3avs3uidE"></span><span id="teleport::server::GeometryStreamingService::confirmResource__avs::uid"></span><span class="target" id="classteleport_1_1server_1_1_geometry_streaming_service_1ab65bdda4c66ce0ada1e2689048ede2ea"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">confirmResource</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">resourceID</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4N8teleport6server24GeometryStreamingService15confirmResourceEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Tell the StreamingService that a resource has been received by the client. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6server24GeometryStreamingService20getResourcesToStreamERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEE">
+<span id="_CPPv3NK8teleport6server24GeometryStreamingService20getResourcesToStreamERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEE"></span><span id="_CPPv2NK8teleport6server24GeometryStreamingService20getResourcesToStreamERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEE"></span><span id="teleport::server::GeometryStreamingService::getResourcesToStream__std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:R.std::set:avs::uid:RC"></span><span class="target" id="classteleport_1_1server_1_1_geometry_streaming_service_1a996ebcfb4324a32ce7a78ef569bfa15b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getResourcesToStream</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">outNodeIDs</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">removeNodeIDs</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">genericTextureUids</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">meshes</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">materials</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">textures</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">skeletons</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">bones</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">animations</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">textCanvases</span></span>, <span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">set</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">fontAtlases</span></span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><a class="headerlink" href="#_CPPv4NK8teleport6server24GeometryStreamingService20getResourcesToStreamERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEERNSt3setIN3avs3uidEEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>The Geometry Streaming Service tracks. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK8teleport6server24GeometryStreamingService26getClientRenderingFeaturesEv">
+<span id="_CPPv3NK8teleport6server24GeometryStreamingService26getClientRenderingFeaturesEv"></span><span id="_CPPv2NK8teleport6server24GeometryStreamingService26getClientRenderingFeaturesEv"></span><span id="teleport::server::GeometryStreamingService::getClientRenderingFeaturesC"></span><span class="target" id="classteleport_1_1server_1_1_geometry_streaming_service_1a8137fae571a384ee38e70ceaa82c38d7"></span><span class="k"><span class="pre">virtual</span></span><span class="w"> </span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs17RenderingFeaturesE" title="avs::RenderingFeatures"><span class="n"><span class="pre">RenderingFeatures</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">getClientRenderingFeatures</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">override</span></span><a class="headerlink" href="#_CPPv4NK8teleport6server24GeometryStreamingService26getClientRenderingFeaturesEv" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns the rendering features the client supports. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server24GeometryStreamingService10streamNodeEN3avs3uidE">
+<span id="_CPPv3N8teleport6server24GeometryStreamingService10streamNodeEN3avs3uidE"></span><span id="_CPPv2N8teleport6server24GeometryStreamingService10streamNodeEN3avs3uidE"></span><span id="teleport::server::GeometryStreamingService::streamNode__avs::uid"></span><span class="target" id="classteleport_1_1server_1_1_geometry_streaming_service_1a4c9f5ad3d4cdde3e1697e8e683643562"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">streamNode</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">nodeID</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server24GeometryStreamingService10streamNodeEN3avs3uidE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Returns true if the node is in the <a class="reference internal" href="#classteleport_1_1server_1_1_geometry_store"><span class="std std-ref">GeometryStore</span></a> and thus could be added. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server24GeometryStreamingService10GetNewUIDsERNSt6vectorIN3avs3uidEEE">
+<span id="_CPPv3N8teleport6server24GeometryStreamingService10GetNewUIDsERNSt6vectorIN3avs3uidEEE"></span><span id="_CPPv2N8teleport6server24GeometryStreamingService10GetNewUIDsERNSt6vectorIN3avs3uidEEE"></span><span id="teleport::server::GeometryStreamingService::GetNewUIDs__std::vector:avs::uid:R"></span><span class="target" id="classteleport_1_1server_1_1_geometry_streaming_service_1abf09cb874766c98e79804b3fdcbf9aec"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetNewUIDs</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs3uidE" title="avs::uid"><span class="n"><span class="pre">uid</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">outUIDs</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server24GeometryStreamingService10GetNewUIDsERNSt6vectorIN3avs3uidEEE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>From the list of uid’s given, which do we not think the client has? </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server11HTTPServiceE">
+<span id="_CPPv3N8teleport6server11HTTPServiceE"></span><span id="_CPPv2N8teleport6server11HTTPServiceE"></span><span id="teleport::server::HTTPService"></span><span class="target" id="classteleport_1_1server_1_1_h_t_t_p_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HTTPService</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server11HTTPServiceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Interface for http services. </p>
+<p>Subclassed by <a class="reference internal" href="#classteleport_1_1server_1_1_default_h_t_t_p_service"><span class="std std-ref">teleport::server::DefaultHTTPService</span></a></p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server18DefaultHTTPServiceE">
+<span id="_CPPv3N8teleport6server18DefaultHTTPServiceE"></span><span id="_CPPv2N8teleport6server18DefaultHTTPServiceE"></span><span id="teleport::server::DefaultHTTPService"></span><span class="target" id="classteleport_1_1server_1_1_default_h_t_t_p_service"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DefaultHTTPService</span></span></span><span class="w"> </span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="k"><span class="pre">public</span></span><span class="w"> </span><span class="n"><span class="pre">teleport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">::</span></span><a class="reference internal" href="#_CPPv4N8teleport6server11HTTPServiceE" title="teleport::server::HTTPService"><span class="n"><span class="pre">HTTPService</span></span></a><a class="headerlink" href="#_CPPv4N8teleport6server18DefaultHTTPServiceE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Default service for HTTP download of resources from the Teleport server. </p>
+</dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server15NetworkPipelineE">
+<span id="_CPPv3N8teleport6server15NetworkPipelineE"></span><span id="_CPPv2N8teleport6server15NetworkPipelineE"></span><span id="teleport::server::NetworkPipeline"></span><span class="target" id="classteleport_1_1server_1_1_network_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NetworkPipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server15NetworkPipelineE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Network pipeline. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server15NetworkPipeline23setAudioOpusPayloadTypeE7uint8_t">
+<span id="_CPPv3N8teleport6server15NetworkPipeline23setAudioOpusPayloadTypeE7uint8_t"></span><span id="_CPPv2N8teleport6server15NetworkPipeline23setAudioOpusPayloadTypeE7uint8_t"></span><span id="teleport::server::NetworkPipeline::setAudioOpusPayloadType__uint8_t"></span><span class="target" id="classteleport_1_1server_1_1_network_pipeline_1a7f031d416093d69da8cf21db191cdfb0"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setAudioOpusPayloadType</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">payloadType</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server15NetworkPipeline23setAudioOpusPayloadTypeE7uint8_t" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Enable the recvonly Opus mic track in the WebRTC offer. payloadType == 0 disables it (default). Must be called before initialise(). </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server15NetworkPipeline19setMicFrameCallbackEN3avs17WebRtcNetworkSink16MicFrameCallbackE">
+<span id="_CPPv3N8teleport6server15NetworkPipeline19setMicFrameCallbackEN3avs17WebRtcNetworkSink16MicFrameCallbackE"></span><span id="_CPPv2N8teleport6server15NetworkPipeline19setMicFrameCallbackEN3avs17WebRtcNetworkSink16MicFrameCallbackE"></span><span id="teleport::server::NetworkPipeline::setMicFrameCallback__avs::WebRtcNetworkSink::MicFrameCallback"></span><span class="target" id="classteleport_1_1server_1_1_network_pipeline_1a04bc915c94b595f78385cc24b8341145"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">setMicFrameCallback</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="libavstream.html#_CPPv43avs" title="avs"><span class="n"><span class="pre">avs</span></span></a><span class="p"><span class="pre">::</span></span><a class="reference internal" href="libavstream.html#_CPPv4N3avs17WebRtcNetworkSinkE" title="avs::WebRtcNetworkSink"><span class="n"><span class="pre">WebRtcNetworkSink</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MicFrameCallback</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">cb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N8teleport6server15NetworkPipeline19setMicFrameCallbackEN3avs17WebRtcNetworkSink16MicFrameCallbackE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Register a callback for raw Opus frames from the client microphone. Thread-safe; may be called after initialise(). </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenstruct: Cannot find class “teleport::server::ServerSettings” in doxygen xml output for project “TeleportXR” from directory: /home/runner/work/Teleport/Teleport/build_docs/docs/doxygen/xml</p>
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server21SourceNetworkPipelineE">
+<span id="_CPPv3N8teleport6server21SourceNetworkPipelineE"></span><span id="_CPPv2N8teleport6server21SourceNetworkPipelineE"></span><span id="teleport::server::SourceNetworkPipeline"></span><span class="target" id="classteleport_1_1server_1_1_source_network_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SourceNetworkPipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server21SourceNetworkPipelineE" title="Link to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv4N8teleport6server19VideoEncodePipelineE">
+<span id="_CPPv3N8teleport6server19VideoEncodePipelineE"></span><span id="_CPPv2N8teleport6server19VideoEncodePipelineE"></span><span id="teleport::server::VideoEncodePipeline"></span><span class="target" id="classteleport_1_1server_1_1_video_encode_pipeline"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">VideoEncodePipeline</span></span></span><a class="headerlink" href="#_CPPv4N8teleport6server19VideoEncodePipelineE" title="Link to this definition">¶</a><br /></dt>
+<dd><p>Wrapper for the video encoding pipeline objects. </p>
+</dd></dl>
+
+</section>
+<section id="networking">
+<h2><span class="section-number">3.4.4. </span>Networking<a class="headerlink" href="#networking" title="Link to this heading">¶</a></h2>
+<p>Each client connection contains a pipeline that gathers data for sending to the client, and distributes incoming data from the client.
+This pipeline is distributed over threads, which communicate using avs::Queue pipeline nodes.</p>
+<object data="../../_images/mermaid-bd83451983350bc2766d04f2f69f04e42d077144.svg" type="image/svg+xml">
+            <p class="warning">flowchart LR
+        subgraph &quot;Network Thread&quot;
+                H(Network Sink)
+        end
+        A(Video Queue) --&gt;|1| H(Network Sink)
+        B(Tag Queue) --&gt;|2| H
+        C(Audio Queue) --&gt;|3| H
+        D(Geometry Queue) --&gt;|4| H
+        E(Command Queue) --&gt;|5| H
+        subgraph &quot;Geometry Encoding Thread&quot;
+                F(Geometry Encoder)
+        end
+        F(Geometry Encoder) --&gt; D
+        H --&gt;I(Message Queue)
+        subgraph &quot;Main Thread 2&quot;
+                J(Message Decoder)
+        end
+        I --&gt; J(Message Decoder)
+        subgraph &quot;Render Thread&quot;
+                K(Video Encoder)
+        end
+        K --&gt; A
+        K --&gt; B
+        subgraph &quot;Main Thread 1&quot;
+                L(Command Encoder)
+        end
+        L --&gt; E</p></object>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nodejs/index.html" class="btn btn-neutral float-left" title="3.3. Teleport NodeJS SDK" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="teleportclient.html" class="btn btn-neutral float-right" title="3.5. The Teleport Client library" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

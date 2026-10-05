@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.1. Conventions &mdash; TeleportXR  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=8dae8fb0"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.2. Connection State Machine" href="state_machine.html" />
+    <link rel="prev" title="2. The Teleport Protocol" href="../protocol.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+			<a href="../../index.html"  class="" >
+				
+					<span class="sidebartitle">
+						TeleportXR
+					</span>
+				
+			</a>
+<div role="search">
+    <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+        <label class="search-label" for="q">Search the teleport documentation</label>
+        <input type="text" name="q" id="q" placeholder="Search..." aria-label="Search docs" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction.html">1. Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../protocol.html">2. The Teleport Protocol</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_machine.html">2.2. Connection State Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="signaling.html">2.3. Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service.html">2.4. Data Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_transfer.html">2.5. Data Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http.html">2.6. HTTP Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html">2.7. Video</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video_metadata.html">2.8. Video Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry_payload.html">2.9. Geometry Payload</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_nodes.html">2.10. Origins and Client-Specific Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="audio.html">2.11. Audio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html">2.12. Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asset_portability.html">2.13. Asset Portability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconnection.html">2.14. Reconnection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_control.html">2.15. Local Control Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">3. Reference Implementation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+		<h2 class="wy-nav-top">Navigation</h2><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TeleportXR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../protocol.html"><span class="section-number">2. </span>The Teleport Protocol</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.1. </span>Conventions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/protocol/conventions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conventions">
+<span id="id1"></span><h1><span class="section-number">2.1. </span>Conventions<a class="headerlink" href="#conventions" title="Link to this heading">¶</a></h1>
+<p>This page collects the cross-cutting conventions used by every wire format in the protocol. Implementers should read it before any of the per-channel pages.</p>
+<section id="endianness-alignment-and-packing">
+<h2><span class="section-number">2.1.1. </span>Endianness, alignment and packing<a class="headerlink" href="#endianness-alignment-and-packing" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>All multi-byte scalars on every channel are encoded <strong>little-endian</strong>, matching the layout used by the reference C++ implementation on the platforms it targets. (this is subject to change: network byte order may be preferable.)</p></li>
+<li><p>Every struct that crosses the wire is packed: implementations must use 1-byte alignment and assume <strong>no implicit padding</strong> between fields.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bool</span></code> is one byte. Id’s are <strong>8 bytes</strong> (the protocol assumes a 64-bit platform on both ends).</p></li>
+<li><p>Strings sent on the geometry channel are UTF-8 and are <strong>not</strong> null-terminated; they are always preceded by an explicit <code class="docutils literal notranslate"><span class="pre">uint16</span></code> length.</p></li>
+<li><p>Implementations MUST bounds-check when reading binary data.</p></li>
+<li><p>Strings carried in JSON signaling messages follow normal JSON / UTF-8 rules.</p></li>
+</ul>
+</section>
+<section id="identifiers">
+<h2><span class="section-number">2.1.2. </span>Identifiers<a class="headerlink" href="#identifiers" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">uid</span></code></dt><dd><p>A 64-bit unsigned integer (<code class="docutils literal notranslate"><span class="pre">uint64</span></code>) used to identify every server-allocated resource (textures, meshes, materials, animations, skeletons, font atlases, text canvases, nodes, dynamic-lighting cubemaps, and the session itself). <code class="docutils literal notranslate"><span class="pre">0</span></code> is the reserved “invalid” uid. Uids are minted by the server and are unique within the lifetime of one server process; the client treats them as opaque.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">InputId</span></code></dt><dd><p>A 16-bit unsigned integer (<code class="docutils literal notranslate"><span class="pre">uint16_t</span></code>) that identifies one input declared by a <a class="reference internal" href="input.html#input"><span class="std std-ref">SetupInputsCommand</span></a>. Input ids are unique within one <code class="docutils literal notranslate"><span class="pre">SetupInputsCommand</span></code> and become invalid when the next <code class="docutils literal notranslate"><span class="pre">SetupInputsCommand</span></code> is received.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ack_id</span></code> / <code class="docutils literal notranslate"><span class="pre">confirmationNumber</span></code></dt><dd><p>Both are <code class="docutils literal notranslate"><span class="pre">uint64</span></code>. <code class="docutils literal notranslate"><span class="pre">ack_id</span></code> is used by <code class="docutils literal notranslate"><span class="pre">AckedCommand</span></code> and is monotonically increasing per session — clients may discard any command whose <code class="docutils literal notranslate"><span class="pre">ack_id</span></code> is less than or equal to the highest one already processed. <code class="docutils literal notranslate"><span class="pre">confirmationNumber</span></code> is carried by <code class="docutils literal notranslate"><span class="pre">NodeStateCommand</span></code> and is acknowledged independently.</p>
+</dd>
+</dl>
+</section>
+<section id="coordinate-systems-and-units">
+<h2><span class="section-number">2.1.3. </span>Coordinate systems and units<a class="headerlink" href="#coordinate-systems-and-units" title="Link to this heading">¶</a></h2>
+<p>Many commonly used renderers use different axis standards. While Y-vertical, right-handed is common in OpenGL applications, Unreal Engine uses Z-vertical, left-handed system. The protocol is intended to be easily implementable on differing hardware and software platforms, so it does not specify an axis standard but rather negotiates this between client and server.</p>
+<p>Every server-to-client packet that contains geometric data is provided in the <code class="docutils literal notranslate"><span class="pre">AxesStandard</span></code> (reference: <code class="docutils literal notranslate"><span class="pre">avs::AxesStandard</span></code>) that the client specified on connection. <code class="docutils literal notranslate"><span class="pre">AxesStandard</span></code> is a 1-byte bitfield with the following values on the wire:</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-number">Table 2.3 </span><span class="caption-text">AxesStandard</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 22.5%" />
+<col style="width: 62.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NotInitialized</span></code></p></td>
+<td><p>Reserved; never sent on the wire.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RightHanded</span></code></p></td>
+<td><p>Handedness flag (component bit).</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LeftHanded</span></code></p></td>
+<td><p>Handedness flag (component bit).</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">YVertical</span></code></p></td>
+<td><p>Vertical-axis flag (component bit).</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ZVertical</span></code></p></td>
+<td><p>Vertical-axis flag (component bit).</p></td>
+</tr>
+<tr class="row-odd"><td><p>9 (= 8 | 1)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EngineeringStyle</span></code></p></td>
+<td><p>Right-handed, +X right, +Y forward, +Z up (<code class="docutils literal notranslate"><span class="pre">ZVertical</span> <span class="pre">|</span> <span class="pre">RightHanded</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p>21 (= 16 | 4 | 1)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">GlStyle</span></code></p></td>
+<td><p>Right-handed, +X right, +Y up, -Z forward (<code class="docutils literal notranslate"><span class="pre">YVertical</span> <span class="pre">|</span> <span class="pre">RightHanded</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p>42 (= 32 | 8 | 2)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UnrealStyle</span></code></p></td>
+<td><p>Left-handed, +X forward, +Y right, +Z up (<code class="docutils literal notranslate"><span class="pre">ZVertical</span> <span class="pre">|</span> <span class="pre">LeftHanded</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p>70 (= 64 | 4 | 2)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">UnityStyle</span></code></p></td>
+<td><p>Left-handed, +X right, +Y up, +Z forward (<code class="docutils literal notranslate"><span class="pre">YVertical</span> <span class="pre">|</span> <span class="pre">LeftHanded</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
+<p>The low four bits describe the standard — handedness and which axis is vertical — but they do not identify it on their own: <code class="docutils literal notranslate"><span class="pre">GlStyle</span></code> and <code class="docutils literal notranslate"><span class="pre">UnityStyle</span></code> are both <code class="docutils literal notranslate"><span class="pre">YVertical</span></code>, and differ from other conceivable standards with the same handedness only by convention. Bits 16, 32 and 64 are therefore discriminators that make each of the four complete standards a distinct byte. Implementations must compare against the whole byte, and may read the low bits to answer “is this left-handed” or “is Z up” — never the reverse. In particular <code class="docutils literal notranslate"><span class="pre">EngineeringStyle</span></code> is <code class="docutils literal notranslate"><span class="pre">ZVertical</span> <span class="pre">|</span> <span class="pre">RightHanded</span></code> with <strong>no</strong> discriminator bit, so it is 9 and not 8 | anything else.</p>
+<p>A server must be capable of supporting clients in at least <code class="docutils literal notranslate"><span class="pre">EngineeringStyle</span></code> and <code class="docutils literal notranslate"><span class="pre">GlStyle</span></code>.</p>
+<ul class="simple">
+<li><p>The client declares its native axes as part of the <a class="reference internal" href="signaling.html#signaling"><span class="std std-ref">Handshake</span></a>.</p></li>
+<li><p>The server publishes the axes its scene is authored in via <code class="docutils literal notranslate"><span class="pre">SetupCommand.axesStandard</span></code>. Numbers on the wire are always already in the client’s standard, so for geometry the value is informational — but a client must remember it, because it is what an unset axes-standard byte on a pointer chunk means (see <a class="reference internal" href="geometry_payload.html#axes-conversion"><span class="std std-ref">Axis conversion</span></a>).</p></li>
+<li><p>Assets fetched over HTTP are the exception to “always in the client’s standard”: a mesh, animation or cubemap file is served as authored, and the pointer chunk that names it declares which frame that is. The client converts.</p></li>
+<li><p>Linear units are <strong>metres</strong>.</p></li>
+<li><p>Quaternions are stored as <code class="docutils literal notranslate"><span class="pre">vec4_packed</span></code> with the layout <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">w)</span></code>.</p></li>
+<li><p>All transforms are local, i.e. relative to the parent node. A root node – one whose <code class="docutils literal notranslate"><span class="pre">parent_uid</span></code> is zero – is therefore expressed directly in the server’s global space, and its global transform is its local transform. Node transforms are <strong>not</strong> relative to the session origin: the origin is itself an ordinary node in that same global space. See <a class="reference internal" href="client_nodes.html"><span class="doc">Origins and Client-Specific Nodes</span></a>.</p></li>
+</ul>
+</section>
+<section id="time-base">
+<h2><span class="section-number">2.1.4. </span>Time base<a class="headerlink" href="#time-base" title="Link to this heading">¶</a></h2>
+<p>Time is expressed in microseconds. The setup command specifies the session start time in UTC Unix time, and all other times on the wire are offsets from this.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26.5%" />
+<col style="width: 36.8%" />
+<col style="width: 36.8%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Time base</p></th>
+<th class="head"><p>Where it appears</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Server UTC Unix microseconds (<code class="docutils literal notranslate"><span class="pre">int64</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SetupCommand.startTimestamp_utc_unix_us</span></code>;
+<code class="docutils literal notranslate"><span class="pre">PingForLatencyCommand.unix_time_us</span></code> and the matching <code class="docutils literal notranslate"><span class="pre">PongForLatencyMessage</span></code> echo</p></td>
+<td><p>The server’s wall clock. Used as the session-start anchor and as the timestamp for round-trip / one-way latency estimation. The same clock in both fields, used for two different purposes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Client session-relative microseconds (<code class="docutils literal notranslate"><span class="pre">int64</span></code>)</p></td>
+<td><p>9-byte <code class="docutils literal notranslate"><span class="pre">ClientMessage</span></code> header (<code class="docutils literal notranslate"><span class="pre">timestamp_session_us</span></code>)</p></td>
+<td><p>Microseconds elapsed on the client since its local session start. Monotonic within a session; not comparable across clients or to any UTC clock.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="versioning">
+<h2><span class="section-number">2.1.5. </span>Versioning<a class="headerlink" href="#versioning" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Handshake.protocol_version</span></code> and <code class="docutils literal notranslate"><span class="pre">AcknowledgeHandshakeCommand</span></code> together establish that the two endpoints understand the same wire format. The reference protocol version is <strong>0.9</strong>.</p></li>
+<li><p>There is currently no formal capability-negotiation handshake beyond <code class="docutils literal notranslate"><span class="pre">RenderingFeatures</span></code> and the WebRTC SDP exchange. Endpoints that disagree on <code class="docutils literal notranslate"><span class="pre">protocol_version</span></code> should drop the connection rather than try to negotiate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">avs::VideoCodec</span></code>, <code class="docutils literal notranslate"><span class="pre">avs::AudioCodec</span></code>, <code class="docutils literal notranslate"><span class="pre">avs::AxesStandard</span></code> and the <code class="docutils literal notranslate"><span class="pre">CommandPayloadType</span></code> / <code class="docutils literal notranslate"><span class="pre">ClientMessagePayloadType</span></code> / <code class="docutils literal notranslate"><span class="pre">GeometryPayloadType</span></code> enumerations are part of the wire format. Adding a new value is a backwards-incompatible change and must bump <code class="docutils literal notranslate"><span class="pre">protocol_version</span></code>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../protocol.html" class="btn btn-neutral float-left" title="2. The Teleport Protocol" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="state_machine.html" class="btn btn-neutral float-right" title="2.2. Connection State Machine" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018-2026, Teleport XR Ltd.</p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
